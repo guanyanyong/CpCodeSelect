@@ -1,0 +1,6 @@
+D:\code\cp\CpCodeSelect\CpCodeSelect.Model\bin\Debug\CpCodeSelect.Model.dll
+D:\code\cp\CpCodeSelect\CpCodeSelect.Model\bin\Debug\CpCodeSelect.Model.pdb
+D:\code\cp\CpCodeSelect\CpCodeSelect.Model\obj\Debug\CpCodeSelect.Model.csproj.AssemblyReference.cache
+D:\code\cp\CpCodeSelect\CpCodeSelect.Model\obj\Debug\CpCodeSelect.Model.csproj.CoreCompileInputs.cache
+D:\code\cp\CpCodeSelect\CpCodeSelect.Model\obj\Debug\CpCodeSelect.Model.dll
+D:\code\cp\CpCodeSelect\CpCodeSelect.Model\obj\Debug\CpCodeSelect.Model.pdb

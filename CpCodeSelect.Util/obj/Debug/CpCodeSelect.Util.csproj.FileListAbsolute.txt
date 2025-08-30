@@ -1,0 +1,9 @@
+D:\code\cp\CpCodeSelect\CpCodeSelect.Util\bin\Debug\CpCodeSelect.Util.dll
+D:\code\cp\CpCodeSelect\CpCodeSelect.Util\bin\Debug\CpCodeSelect.Util.pdb
+D:\code\cp\CpCodeSelect\CpCodeSelect.Util\bin\Debug\CpCodeSelect.Model.dll
+D:\code\cp\CpCodeSelect\CpCodeSelect.Util\bin\Debug\CpCodeSelect.Model.pdb
+D:\code\cp\CpCodeSelect\CpCodeSelect.Util\obj\Debug\CpCodeSelect.Util.csproj.AssemblyReference.cache
+D:\code\cp\CpCodeSelect\CpCodeSelect.Util\obj\Debug\CpCodeSelect.Util.csproj.CoreCompileInputs.cache
+D:\code\cp\CpCodeSelect\CpCodeSelect.Util\obj\Debug\CpCodeSe.62D69A4E.Up2Date
+D:\code\cp\CpCodeSelect\CpCodeSelect.Util\obj\Debug\CpCodeSelect.Util.dll
+D:\code\cp\CpCodeSelect\CpCodeSelect.Util\obj\Debug\CpCodeSelect.Util.pdb

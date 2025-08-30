@@ -33,6 +33,12 @@
             this.txtFIlePath = new System.Windows.Forms.TextBox();
             this.btnSelectFile = new System.Windows.Forms.Button();
             this.labelError = new System.Windows.Forms.Label();
+            this.txtNumber = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.listBoxHistory = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnGetLast10record = new System.Windows.Forms.Button();
+            this.btnClearHistory = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -44,6 +50,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "开始执行";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -85,14 +92,81 @@
             this.labelError.TabIndex = 1;
             this.labelError.Text = "显示错误信息";
             // 
+            // txtNumber
+            // 
+            this.txtNumber.Location = new System.Drawing.Point(184, 231);
+            this.txtNumber.Multiline = true;
+            this.txtNumber.Name = "txtNumber";
+            this.txtNumber.Size = new System.Drawing.Size(853, 182);
+            this.txtNumber.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(43, 311);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(88, 25);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "推荐号码";
+            // 
+            // listBoxHistory
+            // 
+            this.listBoxHistory.FormattingEnabled = true;
+            this.listBoxHistory.ItemHeight = 12;
+            this.listBoxHistory.Items.AddRange(new object[] {
+            " "});
+            this.listBoxHistory.Location = new System.Drawing.Point(196, 665);
+            this.listBoxHistory.Name = "listBoxHistory";
+            this.listBoxHistory.Size = new System.Drawing.Size(841, 196);
+            this.listBoxHistory.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(43, 742);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(126, 25);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "当前操作历史";
+            // 
+            // btnGetLast10record
+            // 
+            this.btnGetLast10record.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnGetLast10record.Location = new System.Drawing.Point(1116, 665);
+            this.btnGetLast10record.Name = "btnGetLast10record";
+            this.btnGetLast10record.Size = new System.Drawing.Size(168, 31);
+            this.btnGetLast10record.TabIndex = 3;
+            this.btnGetLast10record.Text = "只留10条记录";
+            this.btnGetLast10record.UseVisualStyleBackColor = true;
+            this.btnGetLast10record.Click += new System.EventHandler(this.btnGetLast10record_Click);
+            // 
+            // btnClearHistory
+            // 
+            this.btnClearHistory.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnClearHistory.Location = new System.Drawing.Point(1116, 760);
+            this.btnClearHistory.Name = "btnClearHistory";
+            this.btnClearHistory.Size = new System.Drawing.Size(168, 31);
+            this.btnClearHistory.TabIndex = 3;
+            this.btnClearHistory.Text = "清空历史记录";
+            this.btnClearHistory.UseVisualStyleBackColor = true;
+            this.btnClearHistory.Click += new System.EventHandler(this.btnClearHistory_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1441, 1009);
+            this.Controls.Add(this.listBoxHistory);
+            this.Controls.Add(this.txtNumber);
+            this.Controls.Add(this.btnClearHistory);
+            this.Controls.Add(this.btnGetLast10record);
             this.Controls.Add(this.btnSelectFile);
             this.Controls.Add(this.txtFIlePath);
             this.Controls.Add(this.labelError);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
@@ -109,6 +183,12 @@
         private System.Windows.Forms.TextBox txtFIlePath;
         private System.Windows.Forms.Button btnSelectFile;
         private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.TextBox txtNumber;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox listBoxHistory;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnGetLast10record;
+        private System.Windows.Forms.Button btnClearHistory;
     }
 }
 
