@@ -1,0 +1,9 @@
+D:\code\cp\CpCodeSelect\CpCodeSelect.DA\bin\Debug\CpCodeSelect.DA.dll
+D:\code\cp\CpCodeSelect\CpCodeSelect.DA\bin\Debug\CpCodeSelect.DA.pdb
+D:\code\cp\CpCodeSelect\CpCodeSelect.DA\bin\Debug\System.Data.SQLite.dll
+D:\code\cp\CpCodeSelect\CpCodeSelect.DA\bin\Debug\System.Data.SQLite.xml
+D:\code\cp\CpCodeSelect\CpCodeSelect.DA\obj\Debug\CpCodeSelect.DA.csproj.AssemblyReference.cache
+D:\code\cp\CpCodeSelect\CpCodeSelect.DA\obj\Debug\CpCodeSelect.DA.csproj.CoreCompileInputs.cache
+D:\code\cp\CpCodeSelect\CpCodeSelect.DA\obj\Debug\CpCodeSe.F2841DA6.Up2Date
+D:\code\cp\CpCodeSelect\CpCodeSelect.DA\obj\Debug\CpCodeSelect.DA.dll
+D:\code\cp\CpCodeSelect\CpCodeSelect.DA\obj\Debug\CpCodeSelect.DA.pdb

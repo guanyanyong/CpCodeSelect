@@ -33,12 +33,12 @@
             this.txtFIlePath = new System.Windows.Forms.TextBox();
             this.btnSelectFile = new System.Windows.Forms.Button();
             this.labelError = new System.Windows.Forms.Label();
-            this.txtNumber = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listBoxHistory = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnGetLast10record = new System.Windows.Forms.Button();
             this.btnClearHistory = new System.Windows.Forms.Button();
+            this.listBoxTuiJian = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // button1
@@ -64,16 +64,16 @@
             // 
             // txtFIlePath
             // 
-            this.txtFIlePath.Font = new System.Drawing.Font("宋体", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtFIlePath.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.txtFIlePath.Location = new System.Drawing.Point(184, 63);
             this.txtFIlePath.Name = "txtFIlePath";
-            this.txtFIlePath.Size = new System.Drawing.Size(514, 32);
+            this.txtFIlePath.Size = new System.Drawing.Size(853, 32);
             this.txtFIlePath.TabIndex = 2;
             // 
             // btnSelectFile
             // 
             this.btnSelectFile.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnSelectFile.Location = new System.Drawing.Point(716, 64);
+            this.btnSelectFile.Location = new System.Drawing.Point(1083, 64);
             this.btnSelectFile.Name = "btnSelectFile";
             this.btnSelectFile.Size = new System.Drawing.Size(116, 31);
             this.btnSelectFile.TabIndex = 3;
@@ -92,14 +92,6 @@
             this.labelError.TabIndex = 1;
             this.labelError.Text = "显示错误信息";
             // 
-            // txtNumber
-            // 
-            this.txtNumber.Location = new System.Drawing.Point(184, 231);
-            this.txtNumber.Multiline = true;
-            this.txtNumber.Name = "txtNumber";
-            this.txtNumber.Size = new System.Drawing.Size(853, 182);
-            this.txtNumber.TabIndex = 4;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -112,13 +104,14 @@
             // 
             // listBoxHistory
             // 
+            this.listBoxHistory.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.listBoxHistory.FormattingEnabled = true;
-            this.listBoxHistory.ItemHeight = 12;
+            this.listBoxHistory.ItemHeight = 25;
             this.listBoxHistory.Items.AddRange(new object[] {
             " "});
             this.listBoxHistory.Location = new System.Drawing.Point(196, 665);
             this.listBoxHistory.Name = "listBoxHistory";
-            this.listBoxHistory.Size = new System.Drawing.Size(841, 196);
+            this.listBoxHistory.Size = new System.Drawing.Size(841, 304);
             this.listBoxHistory.TabIndex = 5;
             // 
             // label3
@@ -153,13 +146,25 @@
             this.btnClearHistory.UseVisualStyleBackColor = true;
             this.btnClearHistory.Click += new System.EventHandler(this.btnClearHistory_Click);
             // 
+            // listBoxTuiJian
+            // 
+            this.listBoxTuiJian.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.listBoxTuiJian.FormattingEnabled = true;
+            this.listBoxTuiJian.ItemHeight = 25;
+            this.listBoxTuiJian.Items.AddRange(new object[] {
+            " "});
+            this.listBoxTuiJian.Location = new System.Drawing.Point(196, 207);
+            this.listBoxTuiJian.Name = "listBoxTuiJian";
+            this.listBoxTuiJian.Size = new System.Drawing.Size(841, 404);
+            this.listBoxTuiJian.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1441, 1009);
+            this.Controls.Add(this.listBoxTuiJian);
             this.Controls.Add(this.listBoxHistory);
-            this.Controls.Add(this.txtNumber);
             this.Controls.Add(this.btnClearHistory);
             this.Controls.Add(this.btnGetLast10record);
             this.Controls.Add(this.btnSelectFile);
@@ -183,12 +188,12 @@
         private System.Windows.Forms.TextBox txtFIlePath;
         private System.Windows.Forms.Button btnSelectFile;
         private System.Windows.Forms.Label labelError;
-        private System.Windows.Forms.TextBox txtNumber;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBoxHistory;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnGetLast10record;
         private System.Windows.Forms.Button btnClearHistory;
+        private System.Windows.Forms.ListBox listBoxTuiJian;
     }
 }
 

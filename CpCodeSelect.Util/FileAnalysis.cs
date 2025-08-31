@@ -41,23 +41,26 @@ namespace CpCodeSelect.Util
         public static List<Code> GetCodeListByCodeListStr(List<string> strCodeList)
         {
             List<Code> codeList = null;
-            if (strCodeList!=null && strCodeList.Count>0)
+            if (strCodeList != null && strCodeList.Count > 0)
             {
-                codeList=new List<Code>();
-                foreach(var strCode in strCodeList)
+                codeList = new List<Code>();
+                foreach (var strCode in strCodeList)
                 {
-                    var codeArray = strCode.Split(new char[] { '\t', ' ', }, StringSplitOptions.RemoveEmptyEntries);
-                    if (codeArray.Length == 2)
+                    if (!string.IsNullOrEmpty(strCode))
                     {
-                        var code = new Code
+                        var codeArray = strCode.Split(new char[] { '\t', ' ', }, StringSplitOptions.RemoveEmptyEntries);
+                        if (codeArray.Length == 2)
                         {
-                            CodeQiHao = codeArray[0],
-                            CodeNumber = codeArray[1]
-                        };
-                        codeList.Add(code);
+                            var code = new Code
+                            {
+                                CodeQiHao = codeArray[0],
+                                CodeNumber = codeArray[1]
+                            };
+                            codeList.Add(code);
+                        }
                     }
                 }
-                
+
             }
             return codeList;
         }

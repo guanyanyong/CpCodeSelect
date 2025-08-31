@@ -10,6 +10,16 @@ namespace CpCodeSelect.Model
     {
         public string CodeQiHao { get; set; }
         public string CodeNumber { get; set; }
+        /// <summary>
+        /// 上一期号码
+        /// </summary>
+        public Code PreCode { get; set; }
+        public PositionNumber Wan { get; set; }
+        public PositionNumber Qian { get; set; }
+        public PositionNumber Bai { get; set; }
+        public PositionNumber Shi { get; set; }
+        public PositionNumber Ge { get; set; }
+
 
     }
 }
