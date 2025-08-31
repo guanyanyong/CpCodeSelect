@@ -9,24 +9,42 @@ namespace CpCodeSelect.Util
 {
     public static class FileUtil
     {
+        public static int TryTime = 1;
         public static string ReadFileFirstRecord(string filePath,int maxReadNumber=100)
         {
             var firstLineStr= string.Empty;
             int readCount = 0;
-            using (StreamReader reader = new StreamReader(filePath))
+            try
             {
-                if (reader != null)
+                using (StreamReader reader = new StreamReader(filePath))
                 {
-                    firstLineStr = reader.ReadLine();
-                    while (string.IsNullOrEmpty(firstLineStr))
+                    if (reader != null)
                     {
                         firstLineStr = reader.ReadLine();
-                        readCount++;
-                        if (readCount >= maxReadNumber)
-                            break;
+                        while (string.IsNullOrEmpty(firstLineStr))
+                        {
+                            firstLineStr = reader.ReadLine();
+                            readCount++;
+                            if (readCount >= maxReadNumber)
+                                break;
+                        }
                     }
                 }
             }
+            catch (IOException ex)
+            {
+                if (TryTime > 4)
+                {
+                    TryTime = 1;
+                    throw ex;
+                }
+                else
+                {
+                    TryTime++;
+                    return ReadFileFirstRecord(filePath, maxReadNumber);
+                }
+            }
+            
             return firstLineStr;
 
         }
