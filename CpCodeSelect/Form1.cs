@@ -75,7 +75,7 @@ namespace CpCodeSelect
         public void ReadFirstLine()
         {
             var firstRecord = FileUtil.ReadFileFirstRecord(filePath);
-            var code =FileAnalysis.GetCodeByStr(firstRecord);
+            var code = FileAnalysis.GetCodeByStr(firstRecord);
             if (code != null)
             {
                 code.PreCode = lastCode;
@@ -98,7 +98,7 @@ namespace CpCodeSelect
         {
             var codeStrList = FileUtil.ReadFileAllRecods(filePath);
             var codeList = FileAnalysis.GetCodeListByCodeListStr(codeStrList);
-            if (codeList != null && codeList.Count>0)
+            if (codeList != null && codeList.Count > 0)
             {
                 AddRecord("第一次执行,需要从底下最后一条开始执行记录");
                 for (int i = codeList.Count - 1; i >= 0; i--)
@@ -121,7 +121,7 @@ namespace CpCodeSelect
         /// </summary>
         public void AnalySisCode(Code code)
         {
-            code.Wan= new PositionNumber
+            code.Wan = new PositionNumber
             {
                 PositionType = PositionType.万,
                 Number = int.Parse(code.CodeNumber[0].ToString())
@@ -160,21 +160,21 @@ namespace CpCodeSelect
         {
             if (needClear)
             {
-                   listBoxTuiJian.Items.Clear();
+                listBoxTuiJian.Items.Clear();
             }
-            AddToListBoxTuiJian(currentCode.Wan);
-            AddToListBoxTuiJian(currentCode.Qian);
-            AddToListBoxTuiJian(currentCode.Bai);
-            AddToListBoxTuiJian(currentCode.Shi);
-            AddToListBoxTuiJian(currentCode.Ge);
+            AddToListBoxTuiJian(currentCode.Wan,currentCode);
+            AddToListBoxTuiJian(currentCode.Qian, currentCode);
+            AddToListBoxTuiJian(currentCode.Bai, currentCode);
+            AddToListBoxTuiJian(currentCode.Shi, currentCode);
+            AddToListBoxTuiJian(currentCode.Ge, currentCode);
         }
 
-        private void AddToListBoxTuiJian(PositionNumber positionNumber)
+        private void AddToListBoxTuiJian(PositionNumber positionNumber, Code code)
         {
 
             if (!string.IsNullOrEmpty(positionNumber.DaXiaoTuijianNumber))
             {
-                var tuijianqishu= positionNumber.DaXiaoTuijianNumber=="大"? positionNumber.DaLianKai: positionNumber.XiaoLianKai;
+                var tuijianqishu = positionNumber.DaXiaoTuijianNumber == "大" ? positionNumber.DaLianKai : positionNumber.XiaoLianKai;
                 listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位大小推荐:{positionNumber.DaXiaoTuijianNumber},推荐原因:连开{tuijianqishu}期");
             }
             if (!string.IsNullOrEmpty(positionNumber.DanShuangTuijianNumber))
@@ -183,23 +183,39 @@ namespace CpCodeSelect
                 listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位单双推荐:{positionNumber.DanShuangTuijianNumber},推荐原因:连开{tuijianqishu}期");
             }
 
-            if(!string.IsNullOrEmpty(positionNumber.DaXiaoLianGuaTuiJianNumber))
+            if (!string.IsNullOrEmpty(positionNumber.DaXiaoLianGuaTuiJianNumber))
             {
-                listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位大小连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},推荐参考:{positionNumber.DaXiaoLianGuaTuiJianCanKao},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount+1}期");
+                listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位大小连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},推荐参考:{positionNumber.DaXiaoLianGuaTuiJianCanKao},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount + 1}期");
             }
             if (!string.IsNullOrEmpty(positionNumber.DanShuangLianGuaTuiJianNumber))
             {
                 listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位单双连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},推荐参考:{positionNumber.DanShuangLianGuaTuiJianCanKao},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
             }
+
+            //using (var writer = new StreamWriter("log.txt", true))
+            //{
+            //    if (positionNumber.DaXiaoLianKaiGuaCount >= 4)
+            //    {
+            //        writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #"+$"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位大小连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},推荐参考:{positionNumber.DaXiaoLianGuaTuiJianCanKao},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount + 1}期");
+            //        writer.Flush();
+            //    }
+            //    if (positionNumber.DanShuangLianKaiGuaCount >= 4)
+            //    {
+            //        writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位单双连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},推荐参考:{positionNumber.DanShuangLianGuaTuiJianCanKao},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
+            //        writer.Flush();
+            //    }
+            //}
+
         }
-        private void SetAllPositionNumber(Code code) {
+        private void SetAllPositionNumber(Code code)
+        {
             SetPositionNumber(code, code.Wan);
             SetPositionNumber(code, code.Qian);
             SetPositionNumber(code, code.Bai);
             SetPositionNumber(code, code.Shi);
             SetPositionNumber(code, code.Ge);
         }
-        private void SetPositionNumber(Code code,PositionNumber positionNumber)
+        private void SetPositionNumber(Code code, PositionNumber positionNumber)
         {
             SetPositionNumberDaXiaoDanShuang(code, positionNumber);
 
@@ -434,7 +450,7 @@ namespace CpCodeSelect
         private void SetLianKaiHouGuaNumber(Code code)
         {
             #region 先设置之前有连开的逻辑
-            SetLianKaiHouGuaDiYiCi(code.PreCode==null?null:code.PreCode.Wan, code.Wan);
+            SetLianKaiHouGuaDiYiCi(code.PreCode == null ? null : code.PreCode.Wan, code.Wan);
             SetLianKaiHouGuaDiYiCi(code.PreCode == null ? null : code.PreCode.Qian, code.Qian);
             SetLianKaiHouGuaDiYiCi(code.PreCode == null ? null : code.PreCode.Bai, code.Bai);
             SetLianKaiHouGuaDiYiCi(code.PreCode == null ? null : code.PreCode.Shi, code.Shi);
@@ -467,7 +483,7 @@ namespace CpCodeSelect
 
                 positionNumber.DaXiaoLianKaiGuaCount = 1;
                 positionNumber.DaXiaoLianGuaTuiJianNumber = "小";
-                positionNumber.DaXiaoLianGuaTuiJianCanKao = "大小小大大小大小小大";
+                positionNumber.DaXiaoLianGuaTuiJianCanKao = "大小小大大小大小小大大小小";
             }
             if (prePositionNumber.XiaoLianKai >= 4 && positionNumber.DaLianKai == 1)
             {
@@ -476,7 +492,7 @@ namespace CpCodeSelect
 
                 positionNumber.DaXiaoLianKaiGuaCount = 1;
                 positionNumber.DaXiaoLianGuaTuiJianNumber = "大";
-                positionNumber.DaXiaoLianGuaTuiJianCanKao = "小大大小小大小大大小";
+                positionNumber.DaXiaoLianGuaTuiJianCanKao = "小大大小小大小大大小小大大";
             }
             if (prePositionNumber.DanLianKai >= 4 && positionNumber.ShuangLianKai == 1)
             {
@@ -485,7 +501,7 @@ namespace CpCodeSelect
 
                 positionNumber.DanShuangLianKaiGuaCount = 1;
                 positionNumber.DanShuangLianGuaTuiJianNumber = "双";
-                positionNumber.DanShuangLianGuaTuiJianCanKao = "单双双单单双单双双单";
+                positionNumber.DanShuangLianGuaTuiJianCanKao = "单双双单单双单双双单单双双";
             }
             if (prePositionNumber.ShuangLianKai >= 4 && positionNumber.DanLianKai == 1)
             {
@@ -494,14 +510,14 @@ namespace CpCodeSelect
 
                 positionNumber.DanShuangLianKaiGuaCount = 1;
                 positionNumber.DanShuangLianGuaTuiJianNumber = "单";
-                positionNumber.DanShuangLianGuaTuiJianCanKao = "双单单双双单双单单双";
+                positionNumber.DanShuangLianGuaTuiJianCanKao = "双单单双双单双单单双双单单";
             }
 
         }
 
-        private void SetLianKaiHouGuaJiXuGua(PositionNumber prePositionNumber,PositionNumber positionNumber)
+        private void SetLianKaiHouGuaJiXuGua(PositionNumber prePositionNumber, PositionNumber positionNumber)
         {
-            if(prePositionNumber == null)
+            if (prePositionNumber == null)
             {
                 return;
             }
@@ -519,7 +535,7 @@ namespace CpCodeSelect
                 else if (prePositionNumber.DaXiaoLianGuaTuiJianNumber == "大" && positionNumber.DaXiao == DaXiaoType.小)
                 {
                     ////上期推荐大,现在结果是小,继续挂,连挂数加1,推荐号码设置为往后移一个
-                    positionNumber.DaXiaoLianKaiGuaCount= prePositionNumber.DaXiaoLianKaiGuaCount+1;
+                    positionNumber.DaXiaoLianKaiGuaCount = prePositionNumber.DaXiaoLianKaiGuaCount + 1;
                     var daXiaoArray = positionNumber.DaXiaoLianGuaTuiJianCanKao.ToCharArray();
                     positionNumber.DaXiaoLianGuaTuiJianNumber = daXiaoArray[positionNumber.DaXiaoLianKaiGuaCount].ToString();
 
@@ -533,7 +549,7 @@ namespace CpCodeSelect
                 else if (prePositionNumber.DaXiaoLianGuaTuiJianNumber == "小" && positionNumber.DaXiao == DaXiaoType.大)
                 {
                     //推荐小,结果是大,继续挂,连挂数加1,推荐号码设置为往后移一个
-                    positionNumber.DaXiaoLianKaiGuaCount= prePositionNumber.DaXiaoLianKaiGuaCount+1;
+                    positionNumber.DaXiaoLianKaiGuaCount = prePositionNumber.DaXiaoLianKaiGuaCount + 1;
                     var daXiaoArray = positionNumber.DaXiaoLianGuaTuiJianCanKao.ToCharArray();
                     positionNumber.DaXiaoLianGuaTuiJianNumber = daXiaoArray[positionNumber.DaXiaoLianKaiGuaCount].ToString();
                 }
@@ -551,7 +567,7 @@ namespace CpCodeSelect
                 else if (prePositionNumber.DanShuangLianGuaTuiJianNumber == "单" && positionNumber.DanShuang == DanShuangType.双)
                 {
                     //上期推荐单,现在结果是双,继续挂,连挂数加1,推荐号码设置为往后移一个
-                    positionNumber.DanShuangLianKaiGuaCount= prePositionNumber.DanShuangLianKaiGuaCount+1;
+                    positionNumber.DanShuangLianKaiGuaCount = prePositionNumber.DanShuangLianKaiGuaCount + 1;
                     var danShuangArray = positionNumber.DanShuangLianGuaTuiJianCanKao.ToCharArray();
                     positionNumber.DanShuangLianGuaTuiJianNumber = danShuangArray[positionNumber.DanShuangLianKaiGuaCount].ToString();
                 }
@@ -565,7 +581,7 @@ namespace CpCodeSelect
                 else if (prePositionNumber.DanShuangLianGuaTuiJianNumber == "双" && positionNumber.DanShuang == DanShuangType.单)
                 {
                     //推荐双,结果是单,继续挂,连挂数加1,推荐号码设置为往后移一个
-                    positionNumber.DanShuangLianKaiGuaCount= prePositionNumber.DanShuangLianKaiGuaCount+1;
+                    positionNumber.DanShuangLianKaiGuaCount = prePositionNumber.DanShuangLianKaiGuaCount + 1;
                     var danShuangArray = positionNumber.DanShuangLianGuaTuiJianCanKao.ToCharArray();
                     positionNumber.DanShuangLianGuaTuiJianNumber = danShuangArray[positionNumber.DanShuangLianKaiGuaCount].ToString();
                 }
@@ -716,6 +732,19 @@ namespace CpCodeSelect
         {
             fileWatcher?.Dispose();
             base.OnFormClosing(e);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            TxtFileExecForm form=new TxtFileExecForm();
+            form.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            LianKaiForm form = new LianKaiForm();
+            form.ShowDialog();
         }
     }
 }

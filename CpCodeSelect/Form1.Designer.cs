@@ -39,12 +39,14 @@
             this.btnGetLast10record = new System.Windows.Forms.Button();
             this.btnClearHistory = new System.Windows.Forms.Button();
             this.listBoxTuiJian = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button1.Location = new System.Drawing.Point(1268, 931);
+            this.button1.Location = new System.Drawing.Point(1123, 732);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(161, 66);
             this.button1.TabIndex = 0;
@@ -96,7 +98,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(43, 311);
+            this.label2.Location = new System.Drawing.Point(43, 219);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 25);
             this.label2.TabIndex = 1;
@@ -109,7 +111,7 @@
             this.listBoxHistory.ItemHeight = 25;
             this.listBoxHistory.Items.AddRange(new object[] {
             " "});
-            this.listBoxHistory.Location = new System.Drawing.Point(196, 665);
+            this.listBoxHistory.Location = new System.Drawing.Point(184, 573);
             this.listBoxHistory.Name = "listBoxHistory";
             this.listBoxHistory.Size = new System.Drawing.Size(841, 304);
             this.listBoxHistory.TabIndex = 5;
@@ -118,7 +120,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(43, 742);
+            this.label3.Location = new System.Drawing.Point(43, 650);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(126, 25);
             this.label3.TabIndex = 1;
@@ -127,7 +129,7 @@
             // btnGetLast10record
             // 
             this.btnGetLast10record.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnGetLast10record.Location = new System.Drawing.Point(1116, 665);
+            this.btnGetLast10record.Location = new System.Drawing.Point(1116, 573);
             this.btnGetLast10record.Name = "btnGetLast10record";
             this.btnGetLast10record.Size = new System.Drawing.Size(168, 31);
             this.btnGetLast10record.TabIndex = 3;
@@ -138,7 +140,7 @@
             // btnClearHistory
             // 
             this.btnClearHistory.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnClearHistory.Location = new System.Drawing.Point(1116, 760);
+            this.btnClearHistory.Location = new System.Drawing.Point(1116, 668);
             this.btnClearHistory.Name = "btnClearHistory";
             this.btnClearHistory.Size = new System.Drawing.Size(168, 31);
             this.btnClearHistory.TabIndex = 3;
@@ -153,16 +155,40 @@
             this.listBoxTuiJian.ItemHeight = 25;
             this.listBoxTuiJian.Items.AddRange(new object[] {
             " "});
-            this.listBoxTuiJian.Location = new System.Drawing.Point(196, 207);
+            this.listBoxTuiJian.Location = new System.Drawing.Point(184, 115);
             this.listBoxTuiJian.Name = "listBoxTuiJian";
             this.listBoxTuiJian.Size = new System.Drawing.Size(841, 404);
             this.listBoxTuiJian.TabIndex = 6;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.button2.Location = new System.Drawing.Point(1123, 832);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(161, 45);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "执行文本文档";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.button3.Location = new System.Drawing.Point(1124, 899);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(160, 47);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "执行连开计划";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1441, 1009);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.listBoxTuiJian);
             this.Controls.Add(this.listBoxHistory);
             this.Controls.Add(this.btnClearHistory);
@@ -194,6 +220,8 @@
         private System.Windows.Forms.Button btnGetLast10record;
         private System.Windows.Forms.Button btnClearHistory;
         private System.Windows.Forms.ListBox listBoxTuiJian;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 
