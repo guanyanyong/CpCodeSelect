@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpCodeSelect.Model", "..\Cp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpCodeSelect.DA", "..\CpCodeSelect.DA\CpCodeSelect.DA.csproj", "{3B2B5C25-93BA-478F-926A-E50EA2FB60A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpCodeSelect.Business", "..\CpCodeSelect.Business\CpCodeSelect.Business.csproj", "{BC3A2293-15FE-433D-B066-ABC6AD67C546}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3B2B5C25-93BA-478F-926A-E50EA2FB60A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B2B5C25-93BA-478F-926A-E50EA2FB60A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B2B5C25-93BA-478F-926A-E50EA2FB60A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC3A2293-15FE-433D-B066-ABC6AD67C546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC3A2293-15FE-433D-B066-ABC6AD67C546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC3A2293-15FE-433D-B066-ABC6AD67C546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC3A2293-15FE-433D-B066-ABC6AD67C546}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -20,6 +20,7 @@ namespace CpCodeSelect.Model
         public PositionNumber Shi { get; set; }
         public PositionNumber Ge { get; set; }
 
+        public List<PositionDragonTiger> DragonTigerList { get; set; }
 
     }
 }

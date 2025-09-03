@@ -26,4 +26,11 @@ namespace CpCodeSelect.Model
         单=0,
         双=1
     }
+    public enum DragonTigerType
+    {
+        和=0,
+        龙=1,
+        虎=2
+
+    }
 }
