@@ -18,3 +18,7 @@
 /CpCodeSelect.Model/obj/Release
 /CpCodeSelect.Util/obj/Release
 /CpCodeSelect.Util/bin/Release
+/CpCodeSelect/bin
+/CpCodeSelect.Business/bin/Debug
+/CpCodeSelect.Business/obj/Debug
+/CpCodeSelect.DA/bin/Release
