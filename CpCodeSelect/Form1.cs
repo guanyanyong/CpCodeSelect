@@ -130,20 +130,54 @@ namespace CpCodeSelect
             SetLianKaiHouGuaNumber(code);
 
             DragonTigerBusiness.SetPositionNumberDragonTiger(code);
-
+            AddToLogFileDragonTiger(code, "DragonTigerGuaLog.txt");
             //在这里把分析后的可以推荐的号码显示到界面上
             AddTolistBoxTuiJian(true);
 
-            AddToLogFile(currentCode.Wan, currentCode, "LogGuaLog");
-            AddToLogFile(currentCode.Qian, currentCode, "LogGuaLog");
-            AddToLogFile(currentCode.Bai, currentCode, "LogGuaLog");
-            AddToLogFile(currentCode.Shi, currentCode, "LogGuaLog");
-            AddToLogFile(currentCode.Ge, currentCode, "LogGuaLog");
+            AddToLogFileDaXiaoDanShuang(currentCode.Wan, currentCode, "LogGuaLog.txt");
+            AddToLogFileDaXiaoDanShuang(currentCode.Qian, currentCode, "LogGuaLog.txt");
+            AddToLogFileDaXiaoDanShuang(currentCode.Bai, currentCode, "LogGuaLog.txt");
+            AddToLogFileDaXiaoDanShuang(currentCode.Shi, currentCode, "LogGuaLog.txt");
+            AddToLogFileDaXiaoDanShuang(currentCode.Ge, currentCode, "LogGuaLog.txt");
 
         }
 
 
-        private void AddToLogFile(PositionNumber positionNumber, Code code, string logFileName)
+        /// <summary>
+        /// 添加龙虎的日志
+        /// 包括第一期的推荐和已经挂的日志
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="logFileName"></param>
+        private void AddToLogFileDragonTiger( Code code, string logFileName)
+        {
+            using (var writer = new StreamWriter(logFileName, true))
+            {
+                if (code.DragonTigerList != null && code.DragonTigerList.Count > 0)
+                {
+                    foreach (var dragonTiger in code.DragonTigerList)
+                    {
+                        if (!string.IsNullOrEmpty(dragonTiger.DisplayMessage))
+                        {
+                            if(dragonTiger.DisplayMessage.IndexOf("已挂")!=-1)
+                            {
+                                writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{dragonTiger.BeginPositoin}-{dragonTiger.EndPosition}位龙虎已挂。提示信息是{dragonTiger.DisplayMessage}");
+                                writer.Flush();
+                            }
+                        }
+                    }
+
+                    foreach (var codeDragonTiger in code.DragonTigerList.Where(d => d.HeAfterTime1==1&&d.IsHeAfter1))
+                    {
+                        writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{codeDragonTiger.BeginPositoin}-{codeDragonTiger.EndPosition}位龙虎出现机会。推荐号是{codeDragonTiger.TuiJianDragonTiger1}");
+                        writer.Flush();
+                    }
+                }
+            }
+        }
+
+
+        private void AddToLogFileDaXiaoDanShuang(PositionNumber positionNumber, Code code, string logFileName)
         {
             using (var writer = new StreamWriter(logFileName, true))
             {
