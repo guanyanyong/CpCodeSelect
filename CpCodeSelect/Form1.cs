@@ -17,7 +17,7 @@ namespace CpCodeSelect
 {
     public partial class Form1 : Form
     {
-        private string filePath = @"D:\Program Files (x86)\星欧挂机软件\OpenCode\TXFFC.txt";
+        private string filePath = @"D:\Program Files (x86)\恒盛挂机软件\OpenCode\TXFFC.txt";
         private FileSystemWatcher fileWatcher;
         private System.Windows.Forms.Timer showErrorTexttimer;
         //private Timer addTextTimer;
@@ -149,7 +149,7 @@ namespace CpCodeSelect
         /// </summary>
         /// <param name="code"></param>
         /// <param name="logFileName"></param>
-        private void AddToLogFileDragonTiger( Code code, string logFileName)
+        private void AddToLogFileDragonTiger(Code code, string logFileName)
         {
             using (var writer = new StreamWriter(logFileName, true))
             {
@@ -159,7 +159,7 @@ namespace CpCodeSelect
                     {
                         if (!string.IsNullOrEmpty(dragonTiger.DisplayMessage))
                         {
-                            if(dragonTiger.DisplayMessage.IndexOf("已挂")!=-1)
+                            if (dragonTiger.DisplayMessage.IndexOf("已挂") != -1)
                             {
                                 writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{dragonTiger.BeginPositoin}-{dragonTiger.EndPosition}位龙虎已挂。提示信息是{dragonTiger.DisplayMessage}");
                                 writer.Flush();
@@ -167,7 +167,7 @@ namespace CpCodeSelect
                         }
                     }
 
-                    foreach (var codeDragonTiger in code.DragonTigerList.Where(d => d.HeAfterTime1==1&&d.IsHeAfter1))
+                    foreach (var codeDragonTiger in code.DragonTigerList.Where(d => d.HeAfterTime1 == 1 && d.IsHeAfter1))
                     {
                         writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{codeDragonTiger.BeginPositoin}-{codeDragonTiger.EndPosition}位龙虎出现机会。推荐号是{codeDragonTiger.TuiJianDragonTiger1}");
                         writer.Flush();
@@ -199,13 +199,18 @@ namespace CpCodeSelect
             {
                 listBoxTuiJian.Items.Clear();
             }
-            AddToListBoxTuiJian(currentCode.Wan, currentCode);
-            AddToListBoxTuiJian(currentCode.Qian, currentCode);
-            AddToListBoxTuiJian(currentCode.Bai, currentCode);
-            AddToListBoxTuiJian(currentCode.Shi, currentCode);
-            AddToListBoxTuiJian(currentCode.Ge, currentCode);
-
-            AddDragonTigerToListBoxTuiJian(currentCode);
+            if (chkDaXiao.Checked)
+            {
+                AddToListBoxTuiJian(currentCode.Wan, currentCode);
+                AddToListBoxTuiJian(currentCode.Qian, currentCode);
+                AddToListBoxTuiJian(currentCode.Bai, currentCode);
+                AddToListBoxTuiJian(currentCode.Shi, currentCode);
+                AddToListBoxTuiJian(currentCode.Ge, currentCode);
+            }
+            if (chkLongHu.Checked)
+            {
+                AddDragonTigerToListBoxTuiJian(currentCode);
+            }
 
         }
         private void AddDragonTigerToListBoxTuiJian(Code code)
@@ -451,12 +456,22 @@ namespace CpCodeSelect
             showErrorTexttimer.Interval = 3000; // 3秒
             showErrorTexttimer.Tick += Timer_Tick;
 
-
+            InitData();
+            InitForm();
             //addTextTimer = new Timer();
             //addTextTimer.Interval = 100; // 0.1秒
             //addTextTimer.Tick += AddTexTimer_Tick;
-
-
+        }
+        private void InitForm()
+        {
+            listBoxTuiJian.Items.Clear();
+            listBoxHistory.Items.Clear();
+        }
+        private void InitData()
+        {
+            lastCode = null;
+            currentCode = null;
+            firstTime = true;//是否第一次执行
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -513,6 +528,13 @@ namespace CpCodeSelect
 
         private void button1_Click(object sender, EventArgs e)
         {
+            StartExec();
+        }
+        /// <summary>
+        /// 开始执行
+        /// </summary>
+        private void StartExec()
+        {
             if (DateTime.Now >= Convert.ToDateTime("2025-09-10"))
             {
                 //MessageBox.Show("软件试用期已过期，请联系作者购买正式版");
@@ -523,7 +545,6 @@ namespace CpCodeSelect
                 AddRecord("开始执行");
                 StartMonitoring(filePath);
             }
-
         }
 
 
@@ -587,6 +608,12 @@ namespace CpCodeSelect
 
             LianKaiForm form = new LianKaiForm();
             form.ShowDialog();
+        }
+
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+            Init();
+            StartExec();
         }
     }
 }

@@ -41,12 +41,15 @@
             this.listBoxTuiJian = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.chkDaXiao = new System.Windows.Forms.CheckBox();
+            this.chkLongHu = new System.Windows.Forms.CheckBox();
+            this.btnRestart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button1.Location = new System.Drawing.Point(1123, 732);
+            this.button1.Location = new System.Drawing.Point(1061, 730);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(161, 66);
             this.button1.TabIndex = 0;
@@ -182,11 +185,48 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // chkDaXiao
+            // 
+            this.chkDaXiao.AutoSize = true;
+            this.chkDaXiao.Checked = true;
+            this.chkDaXiao.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDaXiao.Location = new System.Drawing.Point(1083, 130);
+            this.chkDaXiao.Name = "chkDaXiao";
+            this.chkDaXiao.Size = new System.Drawing.Size(72, 16);
+            this.chkDaXiao.TabIndex = 9;
+            this.chkDaXiao.Text = "大小单双";
+            this.chkDaXiao.UseVisualStyleBackColor = true;
+            // 
+            // chkLongHu
+            // 
+            this.chkLongHu.AutoSize = true;
+            this.chkLongHu.Checked = true;
+            this.chkLongHu.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkLongHu.Location = new System.Drawing.Point(1083, 166);
+            this.chkLongHu.Name = "chkLongHu";
+            this.chkLongHu.Size = new System.Drawing.Size(48, 16);
+            this.chkLongHu.TabIndex = 10;
+            this.chkLongHu.Text = "龙虎";
+            this.chkLongHu.UseVisualStyleBackColor = true;
+            // 
+            // btnRestart
+            // 
+            this.btnRestart.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnRestart.Location = new System.Drawing.Point(1246, 730);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(161, 66);
+            this.btnRestart.TabIndex = 0;
+            this.btnRestart.Text = "重新开始";
+            this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1441, 1009);
+            this.Controls.Add(this.chkLongHu);
+            this.Controls.Add(this.chkDaXiao);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.listBoxTuiJian);
@@ -199,6 +239,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "号码推荐";
@@ -222,6 +263,9 @@
         private System.Windows.Forms.ListBox listBoxTuiJian;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox chkDaXiao;
+        private System.Windows.Forms.CheckBox chkLongHu;
+        private System.Windows.Forms.Button btnRestart;
     }
 }
 
