@@ -25,11 +25,13 @@ namespace CpCodeSelect
         private Code currentCode;
         private bool firstTime = true;//是否第一次执行
         private Object lockObj = new Object();
+        public MoniRunDaXiao moniDaxiao=new MoniRunDaXiao();
         public Form1()
         {
             InitializeComponent();
             Init();
             txtFIlePath.Text = filePath;
+            moniDaxiao.Hide();
         }
 
         private void StartMonitoring(string filePath)
@@ -97,7 +99,7 @@ namespace CpCodeSelect
         /// </summary>
         public void ReadAllLine()
         {
-            var codeStrList = FileUtil.ReadFileAllRecods(filePath);
+            var codeStrList = FileUtil.ReadFileAllRecods(filePath,100);
             var codeList = FileAnalysis.GetCodeListByCodeListStr(codeStrList);
             if (codeList != null && codeList.Count > 0)
             {
@@ -139,6 +141,10 @@ namespace CpCodeSelect
             AddToLogFileDaXiaoDanShuang(currentCode.Bai, currentCode, "LogGuaLog.txt");
             AddToLogFileDaXiaoDanShuang(currentCode.Shi, currentCode, "LogGuaLog.txt");
             AddToLogFileDaXiaoDanShuang(currentCode.Ge, currentCode, "LogGuaLog.txt");
+
+            //执行模拟挂机
+            moniDaxiao.Run(code);
+
 
         }
 
@@ -191,6 +197,30 @@ namespace CpCodeSelect
                     writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位单双连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},推荐参考:{positionNumber.DanShuangLianGuaTuiJianCanKao},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
                     writer.Flush();
                 }
+            }
+            using (var writer = new StreamWriter("Log3ge3GuaLog.txt", true))
+            {
+                if (positionNumber.DaXiaoLianKaiGuaCount == 2)
+                {
+                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位大小出现机会,连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount + 1}期");
+                    writer.Flush();
+                }
+                if (positionNumber.DanShuangLianKaiGuaCount == 2)
+                {
+                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位单双出现机会,连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
+                    writer.Flush();
+                }
+                if (positionNumber.DaXiaoLianKaiGuaCount == 5)
+                {
+                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位大小连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},推荐参考:{positionNumber.DaXiaoLianGuaTuiJianCanKao},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount + 1}期");
+                    writer.Flush();
+                }
+                if (positionNumber.DanShuangLianKaiGuaCount == 5)
+                {
+                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位单双连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},推荐参考:{positionNumber.DanShuangLianGuaTuiJianCanKao},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
+                    writer.Flush();
+                }
+
             }
         }
         private void AddTolistBoxTuiJian(bool needClear)
@@ -605,15 +635,18 @@ namespace CpCodeSelect
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            LianKaiForm form = new LianKaiForm();
-            form.ShowDialog();
+            moniDaxiao.Show();
         }
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
             Init();
             StartExec();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            Init();
         }
     }
 }

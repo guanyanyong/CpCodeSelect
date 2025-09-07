@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DaXiaoDanShuangMoniBusiness.cs" />
     <Compile Include="DragonTigerBusiness.cs" />
     <Compile Include="DaXiaoDanShuangBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

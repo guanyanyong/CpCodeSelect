@@ -73,6 +73,12 @@
     <Compile Include="LianKaiForm.Designer.cs">
       <DependentUpon>LianKaiForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MoniRunDaXiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoniRunDaXiao.Designer.cs">
+      <DependentUpon>MoniRunDaXiao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TxtFileExecForm.cs">
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LianKaiForm.resx">
       <DependentUpon>LianKaiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MoniRunDaXiao.resx">
+      <DependentUpon>MoniRunDaXiao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
