@@ -41,7 +41,11 @@ namespace CpCodeSelect
             txtCurrentQi.Text = moniBusiness.CurrentaQi.ToString();
             int zhongjiangCount = 0;
             if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu+1;
-            txtCurrentCi.Text = (moniBusiness.CurrentLunZhongJiangCiShu ).ToString();
+
+            if (moniBusiness.CurrentLun > 1)
+                txtCurrentCi.Text = (moniBusiness.CurrentLunZhongJiangCiShu+1 ).ToString();
+            else
+                txtCurrentCi.Text = (moniBusiness.CurrentLunZhongJiangCiShu).ToString();
 
             txtTotalAmount.Text=moniBusiness.TotalResult.ToString("0.00");
 
