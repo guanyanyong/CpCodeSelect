@@ -73,6 +73,12 @@
     <Compile Include="LianKaiForm.Designer.cs">
       <DependentUpon>LianKaiForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MoniRunDaXiao2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoniRunDaXiao2.Designer.cs">
+      <DependentUpon>MoniRunDaXiao2.cs</DependentUpon>
+    </Compile>
     <Compile Include="MoniRunDaXiao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LianKaiForm.resx">
       <DependentUpon>LianKaiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MoniRunDaXiao2.resx">
+      <DependentUpon>MoniRunDaXiao2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MoniRunDaXiao.resx">
       <DependentUpon>MoniRunDaXiao.cs</DependentUpon>

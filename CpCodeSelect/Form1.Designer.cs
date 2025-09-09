@@ -46,6 +46,7 @@
             this.btnRestart = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnmoni = new System.Windows.Forms.Button();
+            this.btnMoni2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -244,6 +245,17 @@
             this.btnmoni.UseVisualStyleBackColor = true;
             this.btnmoni.Click += new System.EventHandler(this.button3_Click);
             // 
+            // btnMoni2
+            // 
+            this.btnMoni2.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnMoni2.Location = new System.Drawing.Point(720, 766);
+            this.btnMoni2.Name = "btnMoni2";
+            this.btnMoni2.Size = new System.Drawing.Size(197, 45);
+            this.btnMoni2.TabIndex = 8;
+            this.btnMoni2.Text = "显示模拟2执行信息";
+            this.btnMoni2.UseVisualStyleBackColor = true;
+            this.btnMoni2.Click += new System.EventHandler(this.btnMoni2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -251,6 +263,7 @@
             this.ClientSize = new System.Drawing.Size(1441, 843);
             this.Controls.Add(this.chkLongHu);
             this.Controls.Add(this.chkDaXiao);
+            this.Controls.Add(this.btnMoni2);
             this.Controls.Add(this.btnmoni);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -294,6 +307,7 @@
         private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnmoni;
+        private System.Windows.Forms.Button btnMoni2;
     }
 }
 

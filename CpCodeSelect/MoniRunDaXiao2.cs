@@ -13,15 +13,15 @@ using System.Windows.Forms;
 
 namespace CpCodeSelect
 {
-    public partial class MoniRunDaXiao : Form
+    public partial class MoniRunDaXiao2 : Form
     {
-        private DaXiaoDanShuangMoniBusiness moniBusiness;
+        private DaXiaoDanShuangMoniBusiness2 moniBusiness;
         Code beforeCode = null;
         Code currentCode = null;
-        public MoniRunDaXiao()
+        public MoniRunDaXiao2()
         {
             InitializeComponent();
-            moniBusiness=new DaXiaoDanShuangMoniBusiness(CustomLogMethod);
+            moniBusiness=new DaXiaoDanShuangMoniBusiness2(CustomLogMethod);
         }
         public void Run(Code code)
         {

@@ -1,6 +1,6 @@
 ﻿namespace CpCodeSelect
 {
-    partial class MoniRunDaXiao
+    partial class MoniRunDaXiao2
     {
         /// <summary>
         /// Required designer variable.
@@ -54,7 +54,7 @@
             " "});
             this.listBoxExeMsg.Location = new System.Drawing.Point(25, 188);
             this.listBoxExeMsg.Name = "listBoxExeMsg";
-            this.listBoxExeMsg.Size = new System.Drawing.Size(1342, 404);
+            this.listBoxExeMsg.Size = new System.Drawing.Size(1421, 404);
             this.listBoxExeMsg.TabIndex = 7;
             // 
             // label2
@@ -194,11 +194,11 @@
             this.txtLiushui.TabIndex = 12;
             this.txtLiushui.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // MoniRunDaXiao
+            // MoniRunDaXiao2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1379, 640);
+            this.ClientSize = new System.Drawing.Size(1450, 640);
             this.Controls.Add(this.txtCurrentBei);
             this.Controls.Add(this.txtCurrentQi);
             this.Controls.Add(this.txtCurrentCi);
@@ -214,8 +214,8 @@
             this.Controls.Add(this.btnYinChang);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxExeMsg);
-            this.Name = "MoniRunDaXiao";
-            this.Text = "模拟执行3个3";
+            this.Name = "MoniRunDaXiao2";
+            this.Text = "模拟执行4个3";
             this.ResumeLayout(false);
             this.PerformLayout();
 
