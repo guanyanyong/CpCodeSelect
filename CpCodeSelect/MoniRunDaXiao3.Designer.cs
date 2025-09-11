@@ -1,6 +1,6 @@
 ﻿namespace CpCodeSelect
 {
-    partial class MoniRunDaXiao2
+    partial class MoniRunDaXiao3
     {
         /// <summary>
         /// Required designer variable.
@@ -202,11 +202,11 @@
             this.label8.ForeColor = System.Drawing.Color.Red;
             this.label8.Location = new System.Drawing.Point(525, 28);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(335, 25);
+            this.label8.Size = new System.Drawing.Size(324, 25);
             this.label8.TabIndex = 8;
-            this.label8.Text = "4个3,每轮中出10元,第4轮需要中出3个";
+            this.label8.Text = "3个3,每轮中出50元,每轮需要中出3个";
             // 
-            // MoniRunDaXiao2
+            // MoniRunDaXiao3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -227,9 +227,9 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxExeMsg);
-            this.Name = "MoniRunDaXiao2";
+            this.Name = "MoniRunDaXiao3";
             this.Text = "模拟执行4个3";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MoniRunDaXiao2_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MoniRunDaXiao3_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -13,15 +13,15 @@ using System.Windows.Forms;
 
 namespace CpCodeSelect
 {
-    public partial class MoniRunDaXiao : Form
+    public partial class MoniRunDaXiao3 : Form
     {
-        private DaXiaoDanShuangMoniBusiness moniBusiness;
+        private DaXiaoDanShuangMoniBusiness3 moniBusiness;
         Code beforeCode = null;
         Code currentCode = null;
-        public MoniRunDaXiao()
+        public MoniRunDaXiao3()
         {
             InitializeComponent();
-            moniBusiness=new DaXiaoDanShuangMoniBusiness(CustomLogMethod);
+            moniBusiness=new DaXiaoDanShuangMoniBusiness3(CustomLogMethod);
         }
         public void Run(Code code)
         {
@@ -41,11 +41,7 @@ namespace CpCodeSelect
             txtCurrentQi.Text = moniBusiness.CurrentaQi.ToString();
             int zhongjiangCount = 0;
             if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu+1;
-
-            if (moniBusiness.CurrentLun > 0)
-                txtCurrentCi.Text = (moniBusiness.CurrentLunZhongJiangCiShu+1 ).ToString();
-            else
-                txtCurrentCi.Text = (moniBusiness.CurrentLunZhongJiangCiShu).ToString();
+            txtCurrentCi.Text = (moniBusiness.CurrentLunZhongJiangCiShu ).ToString();
 
             txtTotalAmount.Text=moniBusiness.TotalResult.ToString("0.00");
 
@@ -68,7 +64,7 @@ namespace CpCodeSelect
             this.Hide();
         }
 
-        private void MoniRunDaXiao_FormClosing(object sender, FormClosingEventArgs e)
+        private void MoniRunDaXiao3_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();
             e.Cancel = true;

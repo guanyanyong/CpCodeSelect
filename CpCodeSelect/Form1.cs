@@ -27,6 +27,7 @@ namespace CpCodeSelect
         private Object lockObj = new Object();
         public MoniRunDaXiao moniDaxiao=new MoniRunDaXiao();
         public MoniRunDaXiao2 moniDaxiao2 = new MoniRunDaXiao2();
+        public MoniRunDaXiao3 moniDaxiao3 = new MoniRunDaXiao3();
         public Form1()
         {
             InitializeComponent();
@@ -146,7 +147,7 @@ namespace CpCodeSelect
             //执行模拟挂机
             moniDaxiao.Run(code);
             moniDaxiao2.Run(code);
-
+            moniDaxiao3.Run(code);
 
         }
 
@@ -654,6 +655,11 @@ namespace CpCodeSelect
         private void btnMoni2_Click(object sender, EventArgs e)
         {
             moniDaxiao2.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            moniDaxiao3.Show();
         }
     }
 }

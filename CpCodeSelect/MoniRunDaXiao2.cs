@@ -21,12 +21,12 @@ namespace CpCodeSelect
         public MoniRunDaXiao2()
         {
             InitializeComponent();
-            moniBusiness=new DaXiaoDanShuangMoniBusiness2(CustomLogMethod);
+            moniBusiness = new DaXiaoDanShuangMoniBusiness2(CustomLogMethod);
         }
         public void Run(Code code)
         {
             currentCode = code;
-            if (beforeCode ==null || beforeCode.CodeQiHao != code.CodeQiHao)
+            if (beforeCode == null || beforeCode.CodeQiHao != code.CodeQiHao)
             {
                 //当上一期期号和当前期号不一样时，才进行计算
                 moniBusiness.CalcCode(code);
@@ -36,16 +36,16 @@ namespace CpCodeSelect
         }
         public void SetFormTxtValue()
         {
-            txtCurrentLun.Text= moniBusiness.CurrentLun.ToString();
-            txtCurrentBei.Text= moniBusiness.CurrentBei.ToString();
+            txtCurrentLun.Text = moniBusiness.CurrentLun.ToString();
+            txtCurrentBei.Text = moniBusiness.CurrentBei.ToString();
             txtCurrentQi.Text = moniBusiness.CurrentaQi.ToString();
             int zhongjiangCount = 0;
-            if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu+1;
-            txtCurrentCi.Text = (moniBusiness.CurrentLunZhongJiangCiShu ).ToString();
+            if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu + 1;
+            txtCurrentCi.Text = (moniBusiness.CurrentLunZhongJiangCiShu).ToString();
 
-            txtTotalAmount.Text=moniBusiness.TotalResult.ToString("0.00");
+            txtTotalAmount.Text = moniBusiness.TotalResult.ToString("0.00");
 
-            txtLiushui.Text=moniBusiness.TotalLiuShui.ToString("0.00");
+            txtLiushui.Text = moniBusiness.TotalLiuShui.ToString("0.00");
         }
         public void CustomLogMethod(string message)
         {
@@ -54,7 +54,7 @@ namespace CpCodeSelect
             SetFormTxtValue();
             using (var writer = new StreamWriter("moni.txt", true))
             {
-                writer.WriteLine(message); 
+                writer.WriteLine(message);
                 writer.Flush();
             }
         }
@@ -62,6 +62,12 @@ namespace CpCodeSelect
         private void btnYinChang_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void MoniRunDaXiao2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true; // 取消关闭操作
         }
     }
 }
