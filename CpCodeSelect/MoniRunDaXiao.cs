@@ -42,7 +42,7 @@ namespace CpCodeSelect
             int zhongjiangCount = 0;
             if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu+1;
 
-            if (moniBusiness.CurrentLun > 1)
+            if (moniBusiness.CurrentLun > 0)
                 txtCurrentCi.Text = (moniBusiness.CurrentLunZhongJiangCiShu+1 ).ToString();
             else
                 txtCurrentCi.Text = (moniBusiness.CurrentLunZhongJiangCiShu).ToString();
