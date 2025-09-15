@@ -142,18 +142,18 @@ namespace CpCodeSelect.Business
                         //如果是单双连开挂
                         IsDaXiao = false;
                         CurrentStr = positionNumber.DanShuangTuijianNumber;
-                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双,当前推荐【{positionNumber.DanShuangLianGuaTuiJianNumber}】,倍数是【{CurrentBei}】");
                         TotalResult = TotalResult - CurrentBei / 2;
                         TotalLiuShui += CurrentBei / 2;
+                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双,当前推荐【{positionNumber.DanShuangLianGuaTuiJianNumber}】,倍数是【{CurrentBei}】,总额【{TotalResult}】");
                     }
                     else
                     {
                         //如果是大小连开挂
                         IsDaXiao = true;
                         CurrentStr = positionNumber.DaXiaoTuijianNumber;
-                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的大小,当前推荐【{positionNumber.DaXiaoLianGuaTuiJianNumber}】,倍数是【{CurrentBei}】");
                         TotalResult = TotalResult - CurrentBei / 2;
                         TotalLiuShui += CurrentBei / 2;
+                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的大小,当前推荐【{positionNumber.DaXiaoLianGuaTuiJianNumber}】,倍数是【{CurrentBei}】,总额【{TotalResult}】");
                     }
                 }
             }
@@ -172,19 +172,21 @@ namespace CpCodeSelect.Business
                     {
                         //如果是单双连开挂
                         IsDaXiao = false;
-                        CurrentStr = positionNumber.DanShuangTuijianNumber;
-                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双当前推荐【{positionNumber.DanShuangLianGuaTuiJianNumber}】,倍数是【{CurrentBei}】");
+                        CurrentStr = positionNumber.DanShuangTuijianNumber; 
                         TotalResult = TotalResult - CurrentBei / 2;
                         TotalLiuShui += CurrentBei / 2;
+                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双当前推荐【{positionNumber.DanShuangLianGuaTuiJianNumber}】,倍数是【{CurrentBei}】,总额【{TotalResult}】");
+                        
                     }
                     else
                     {
                         //如果是大小连开挂
                         IsDaXiao = true;
                         CurrentStr = positionNumber.DaXiaoTuijianNumber;
-                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的大小当前推荐【{positionNumber.DaXiaoLianGuaTuiJianNumber}】,倍数是【{CurrentBei}】");
                         TotalResult = TotalResult - CurrentBei / 2;
                         TotalLiuShui += CurrentBei / 2;
+                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的大小当前推荐【{positionNumber.DaXiaoLianGuaTuiJianNumber}】,倍数是【{CurrentBei}】,总额【{TotalResult}】");
+                        
                     }
                 }
             }
@@ -213,14 +215,14 @@ namespace CpCodeSelect.Business
                                     //如果当前轮次大于总轮次,则表示结束
                                     //Todo 添加结束逻辑
                                     //LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-模拟结束,总金额是{TotalResult}");
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi - 1}期的【{CurrentPositionType.ToString()}】位的大小已挂,当前12期计划已挂********************");
+                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi - 1}期的【{CurrentPositionType.ToString()}】位的大小已挂,总额【{TotalResult}】,当前12期计划已挂********************");
                                     LunInit();
                                     return;
                                 }
                                 else
                                 {
                                     //进入下一轮,重新设置当前的连挂期数和倍数
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun - 1}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi - 1}期的【{CurrentPositionType.ToString()}】位的大小已挂,等待机会进入下一轮##########");
+                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun - 1}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi - 1}期的【{CurrentPositionType.ToString()}】位的大小已挂,总额【{TotalResult}】,等待机会进入下一轮##########");
                                     CurrentLunZhongJiangCiShu = 0;
                                     CurrentBei = 0;
                                 }
@@ -229,10 +231,11 @@ namespace CpCodeSelect.Business
                             else
                             {
                                 //当前期数未大于3,则继续当前轮次,倍数变为下一期
-                                CurrentBei = LunAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
-                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi - 1}期的【{CurrentPositionType.ToString()}】位的大小已挂当前推荐【{position.DaXiaoLianGuaTuiJianNumber}】,进入下一期倍数是【{CurrentBei}】+++++");
+                                CurrentBei = LunAmountMatrix[CurrentLun - 1, CurrentaQi - 1]; 
                                 TotalResult = TotalResult - CurrentBei / 2;
                                 TotalLiuShui += CurrentBei / 2;
+                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi - 1}期的【{CurrentPositionType.ToString()}】位的大小已挂当前推荐【{position.DaXiaoLianGuaTuiJianNumber}】,进入下一期倍数是【{CurrentBei}】,总额【{TotalResult}】+++++");
+                                
                             }
                         }
                         else if (lianGuaCount == 0)
@@ -241,10 +244,10 @@ namespace CpCodeSelect.Business
                             if (CurrentLun == 1)
                             {
                                 //第一轮中出,则直接重新初始化
-                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的大小已中出,机会寻找中...");
                                 var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
-                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
                                 TotalResult = TotalResult + ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
+                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的大小已中出,总额【{TotalResult}】,机会寻找中...");
+                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
                                 LunInit();
                                 //LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-第一轮中出等待下一次");
 
@@ -285,21 +288,21 @@ namespace CpCodeSelect.Business
                                 if (CurrentLunZhongJiangCiShu > 3) CurrentLunZhongJiangCiShu = 3;
                                 if (CurrentLunZhongJiangCiShu == 3)
                                 {
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的大小已中出,已中出3次,机会寻找中...");
-                                    //中出3轮,则重新初始化
                                     var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
                                     TotalResult = TotalResult + ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
+                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的大小已中出,已中出3次,总额【{TotalResult}】,机会寻找中...");
+                                    //中出3轮,则重新初始化
+                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
                                     LunInit();
                                 }
                                 else 
                                 {
                                     //没到3轮,则进入下一轮
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的大小已中出,目前中出{CurrentLunZhongJiangCiShu}次,本轮还需要再中{3- CurrentLunZhongJiangCiShu}次,机会寻找中...");
-
                                     var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
                                     TotalResult = TotalResult + ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
+                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的大小已中出,目前中出{CurrentLunZhongJiangCiShu}次,本轮还需要再中{3- CurrentLunZhongJiangCiShu}次,总额【{TotalResult}】,机会寻找中...");
+
+                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
 
                                     CurrentaQi = 0;
                                     CurrentBei = 0;
@@ -327,14 +330,14 @@ namespace CpCodeSelect.Business
                                     //如果当前轮次大于总轮次,则表示结束
                                     //Todo 添加结束逻辑
                                     //LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-模拟结束,总金额是{TotalResult}");
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi - 1}期的【{CurrentPositionType.ToString()}】位的单双已挂,当前12期计划已挂********************");
+                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi - 1}期的【{CurrentPositionType.ToString()}】位的单双已挂,总额【{TotalResult}】,当前12期计划已挂********************");
                                     LunInit();
                                     return;
                                 }
                                 else
                                 {
                                     //进入下一轮,重新设置当前的连挂期数和倍数
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun - 1}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi - 1}期的【{CurrentPositionType.ToString()}】位的单双已挂,等待机会进入下一轮##########");
+                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun - 1}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi - 1}期的【{CurrentPositionType.ToString()}】位的单双已挂,总额【{TotalResult}】,等待机会进入下一轮##########");
                                     CurrentLunZhongJiangCiShu = 0;
                                     CurrentBei = 0;
                                 }
@@ -345,9 +348,9 @@ namespace CpCodeSelect.Business
                                 //当前期数未大于3,则继续当前轮次,倍数变为下一期
                                 CurrentBei = LunAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
 
-                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi - 1}期的【{CurrentPositionType.ToString()}】位的单双已挂当前推荐【{position.DanShuangLianGuaTuiJianNumber}】,进入下一期倍数是【{CurrentBei}】+++++");
                                 TotalResult = TotalResult - CurrentBei / 2;
                                 TotalLiuShui += CurrentBei / 2;
+                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi - 1}期的【{CurrentPositionType.ToString()}】位的单双已挂当前推荐【{position.DanShuangLianGuaTuiJianNumber}】,进入下一期倍数是【{CurrentBei}】,总额【{TotalResult}】+++++");
                             }
                         }
                         else if (lianGuaCount == 0)
@@ -356,44 +359,46 @@ namespace CpCodeSelect.Business
                             if (CurrentLun == 1)
                             {
                                 //第一轮中出,则直接重新初始化
-                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双已中出,机会寻找中...");
 
                                 var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
-                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
                                 TotalResult = TotalResult + ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
+                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双已中出,总额【{TotalResult}】,机会寻找中...");
+
+                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
                                 LunInit();
                                 //LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-第一轮中出等待下一次");
 
                             }
-                            else if (CurrentLun == 2 || CurrentLun == 3)
-                            {
-                                //第2轮第3轮中出 如果当前轮次大于1,则表示当前轮次结束,进入下一轮
 
-                                CurrentLunZhongJiangCiShu++;
-                                if (CurrentLunZhongJiangCiShu > 2) CurrentLunZhongJiangCiShu = 2;
-                                if (CurrentLunZhongJiangCiShu == 2)
-                                {
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双已中出,已中出2次,机会寻找中...");
+                            //else if (CurrentLun == 2 || CurrentLun == 3)
+                            //{
+                            //    //第2轮第3轮中出 如果当前轮次大于1,则表示当前轮次结束,进入下一轮
 
-                                    var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
-                                    TotalResult = TotalResult + ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
-                                    //中出2轮,则重新初始化
-                                    LunInit();
-                                }
-                                else
-                                {
-                                    //只中一轮,则进入下一轮
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双已中出,目前中出1次,本轮还需要再中一次,机会寻找中...");
+                            //    CurrentLunZhongJiangCiShu++;
+                            //    if (CurrentLunZhongJiangCiShu > 2) CurrentLunZhongJiangCiShu = 2;
+                            //    if (CurrentLunZhongJiangCiShu == 2)
+                            //    {
+                            //        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双已中出,已中出2次,机会寻找中...");
 
-                                    var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
-                                    TotalResult = TotalResult + ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
+                            //        var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
+                            //        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
+                            //        TotalResult = TotalResult + ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
+                            //        //中出2轮,则重新初始化
+                            //        LunInit();
+                            //    }
+                            //    else
+                            //    {
+                            //        //只中一轮,则进入下一轮
+                            //        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双已中出,目前中出1次,本轮还需要再中一次,机会寻找中...");
 
-                                    CurrentaQi = 0;
-                                    CurrentBei = 0;
-                                }
-                            }
+                            //        var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
+                            //        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
+                            //        TotalResult = TotalResult + ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
+
+                            //        CurrentaQi = 0;
+                            //        CurrentBei = 0;
+                            //    }
+                            //}
                             else
                             {
                                 //第4轮中出 如果当前轮次大于1,则表示当前轮次结束,进入下一轮
@@ -402,22 +407,22 @@ namespace CpCodeSelect.Business
                                 if (CurrentLunZhongJiangCiShu > 3) CurrentLunZhongJiangCiShu = 3;
                                 if (CurrentLunZhongJiangCiShu == 3)
                                 {
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双已中出,已中出3次,机会寻找中...");
-
                                     var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
                                     TotalResult = TotalResult + ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
+                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双已中出,已中出3次,总额【{TotalResult}】,机会寻找中...");
+
+                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
                                     //中出2轮,则重新初始化
                                     LunInit();
                                 }
                                 else
                                 {
                                     //中一轮,则进入下一轮
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双已中出,目前中出{CurrentLunZhongJiangCiShu}次,本轮还需要再中{3- CurrentLunZhongJiangCiShu}次,机会寻找中...");
-
                                     var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
-                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
                                     TotalResult = TotalResult + ZhongJiangAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
+                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双已中出,目前中出{CurrentLunZhongJiangCiShu}次,本轮还需要再中{3- CurrentLunZhongJiangCiShu}次,总额【{TotalResult}】,机会寻找中...");
+
+                                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
 
                                     CurrentaQi = 0;
                                     CurrentBei = 0;
