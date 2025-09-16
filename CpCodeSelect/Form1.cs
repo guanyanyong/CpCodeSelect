@@ -17,6 +17,7 @@ namespace CpCodeSelect
 {
     public partial class Form1 : Form
     {
+        public Dictionary<int, List<StatisticModel>> StatisticDic = new Dictionary<int, List<StatisticModel>>();
         private string filePath = @"D:\Program Files (x86)\恒盛挂机软件\OpenCode\TXFFC.txt";
         private FileSystemWatcher fileWatcher;
         private System.Windows.Forms.Timer showErrorTexttimer;
@@ -25,15 +26,30 @@ namespace CpCodeSelect
         private Code currentCode;
         private bool firstTime = true;//是否第一次执行
         private Object lockObj = new Object();
-        public MoniRunDaXiao moniDaxiao=new MoniRunDaXiao();
+        public MoniRunDaXiao moniDaxiao = new MoniRunDaXiao();
         public MoniRunDaXiao2 moniDaxiao2 = new MoniRunDaXiao2();
         public MoniRunDaXiao3 moniDaxiao3 = new MoniRunDaXiao3();
+        public StatisticForm statisticForm = new StatisticForm();
         public Form1()
         {
             InitializeComponent();
             Init();
             txtFIlePath.Text = filePath;
             moniDaxiao.Hide();
+        }
+
+        public void AddStatisticToDic(int number, StatisticModel model)
+        {
+            if (StatisticDic.ContainsKey(number))
+            {
+                StatisticDic[number].Add(model);
+            }
+            else
+            {
+                var list = new List<StatisticModel>();
+                list.Add(model);
+                StatisticDic.Add(number, list);
+            }
         }
 
         private void StartMonitoring(string filePath)
@@ -101,7 +117,7 @@ namespace CpCodeSelect
         /// </summary>
         public void ReadAllLine()
         {
-            var codeStrList = FileUtil.ReadFileAllRecods(filePath,100);
+            var codeStrList = FileUtil.ReadFileAllRecods(filePath, 100);
             var codeList = FileAnalysis.GetCodeListByCodeListStr(codeStrList);
             if (codeList != null && codeList.Count > 0)
             {
@@ -331,11 +347,11 @@ namespace CpCodeSelect
             #endregion
 
             #region 再设置已经是连开后挂的逻辑 是否继续挂
-            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Wan, code.Wan);
-            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Qian, code.Qian);
-            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Bai, code.Bai);
-            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Shi, code.Shi);
-            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Ge, code.Ge);
+            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Wan, code.Wan, code);
+            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Qian, code.Qian, code);
+            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Bai, code.Bai, code);
+            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Shi, code.Shi, code);
+            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Ge, code.Ge, code);
             #endregion
         }
         /// <summary>
@@ -385,10 +401,9 @@ namespace CpCodeSelect
                 positionNumber.DanShuangLianGuaTuiJianNumber = "单";
                 positionNumber.DanShuangLianGuaTuiJianCanKao = "双单单双双单双单单双双单双单双单单双双";
             }
-
         }
 
-        private void SetLianKaiHouGuaJiXuGua(PositionNumber prePositionNumber, PositionNumber positionNumber)
+        private void SetLianKaiHouGuaJiXuGua(PositionNumber prePositionNumber, PositionNumber positionNumber, Code code = null)
         {
             if (prePositionNumber == null)
             {
@@ -411,7 +426,21 @@ namespace CpCodeSelect
                     positionNumber.DaXiaoLianKaiGuaCount = prePositionNumber.DaXiaoLianKaiGuaCount + 1;
                     var daXiaoArray = positionNumber.DaXiaoLianGuaTuiJianCanKao.ToCharArray();
                     positionNumber.DaXiaoLianGuaTuiJianNumber = daXiaoArray[positionNumber.DaXiaoLianKaiGuaCount].ToString();
-
+                    if (code != null)
+                    {
+                        if (positionNumber.DaXiaoLianKaiGuaCount >= 2)
+                        {
+                            AddStatisticToDic(positionNumber.DaXiaoLianKaiGuaCount, new StatisticModel()
+                            {
+                                CodeNumber = code.CodeNumber,
+                                CodeQiHao = code.CodeQiHao,
+                                PositionNumber = positionNumber,
+                                PositionType = positionNumber.PositionType,
+                                StatisticType = "大小",
+                                GuaCount= positionNumber.DaXiaoLianKaiGuaCount
+                            });
+                        }
+                    }
                 }
                 if (prePositionNumber.DaXiaoLianGuaTuiJianNumber == "小" && positionNumber.DaXiao == DaXiaoType.小)
                 {
@@ -425,6 +454,21 @@ namespace CpCodeSelect
                     positionNumber.DaXiaoLianKaiGuaCount = prePositionNumber.DaXiaoLianKaiGuaCount + 1;
                     var daXiaoArray = positionNumber.DaXiaoLianGuaTuiJianCanKao.ToCharArray();
                     positionNumber.DaXiaoLianGuaTuiJianNumber = daXiaoArray[positionNumber.DaXiaoLianKaiGuaCount].ToString();
+                    if (code != null)
+                    {
+                        if (positionNumber.DaXiaoLianKaiGuaCount >= 2)
+                        {
+                            AddStatisticToDic(positionNumber.DaXiaoLianKaiGuaCount, new StatisticModel()
+                            {
+                                CodeNumber = code.CodeNumber,
+                                CodeQiHao = code.CodeQiHao,
+                                PositionNumber = positionNumber,
+                                PositionType = positionNumber.PositionType,
+                                StatisticType = "大小",
+                                GuaCount = positionNumber.DaXiaoLianKaiGuaCount
+                            });
+                        }
+                    }
                 }
             }
             if (prePositionNumber.DanShuangLianKaiGuaCount > 0)
@@ -443,6 +487,21 @@ namespace CpCodeSelect
                     positionNumber.DanShuangLianKaiGuaCount = prePositionNumber.DanShuangLianKaiGuaCount + 1;
                     var danShuangArray = positionNumber.DanShuangLianGuaTuiJianCanKao.ToCharArray();
                     positionNumber.DanShuangLianGuaTuiJianNumber = danShuangArray[positionNumber.DanShuangLianKaiGuaCount].ToString();
+                    if (code != null)
+                    {
+                        if (positionNumber.DanShuangLianKaiGuaCount >= 2)
+                        {
+                            AddStatisticToDic(positionNumber.DanShuangLianKaiGuaCount, new StatisticModel()
+                            {
+                                CodeNumber = code.CodeNumber,
+                                CodeQiHao = code.CodeQiHao,
+                                PositionNumber = positionNumber,
+                                PositionType = positionNumber.PositionType,
+                                StatisticType = "单双",
+                                GuaCount = positionNumber.DanShuangLianKaiGuaCount
+                            });
+                        }
+                    }
                 }
 
                 if (prePositionNumber.DanShuangLianGuaTuiJianNumber == "双" && positionNumber.DanShuang == DanShuangType.双)
@@ -457,6 +516,21 @@ namespace CpCodeSelect
                     positionNumber.DanShuangLianKaiGuaCount = prePositionNumber.DanShuangLianKaiGuaCount + 1;
                     var danShuangArray = positionNumber.DanShuangLianGuaTuiJianCanKao.ToCharArray();
                     positionNumber.DanShuangLianGuaTuiJianNumber = danShuangArray[positionNumber.DanShuangLianKaiGuaCount].ToString();
+                    if (code != null)
+                    {
+                        if (positionNumber.DanShuangLianKaiGuaCount >= 2)
+                        {
+                            AddStatisticToDic(positionNumber.DanShuangLianKaiGuaCount, new StatisticModel()
+                            {
+                                CodeNumber = code.CodeNumber,
+                                CodeQiHao = code.CodeQiHao,
+                                PositionNumber = positionNumber,
+                                PositionType = positionNumber.PositionType,
+                                StatisticType = "单双",
+                                GuaCount = positionNumber.DanShuangLianKaiGuaCount
+                            });
+                        }
+                    }
                 }
             }
         }
@@ -568,7 +642,7 @@ namespace CpCodeSelect
         /// </summary>
         private void StartExec()
         {
-            if (DateTime.Now >= Convert.ToDateTime("2025-09-17"))
+            if (DateTime.Now >= Convert.ToDateTime("2025-09-22"))
             {
                 //MessageBox.Show("软件试用期已过期，请联系作者购买正式版");
                 return;
@@ -660,6 +734,12 @@ namespace CpCodeSelect
         private void button4_Click(object sender, EventArgs e)
         {
             moniDaxiao3.Show();
+        }
+
+        private void btnStatistic_Click(object sender, EventArgs e)
+        {
+            statisticForm.SetStatistic(this.StatisticDic);
+            statisticForm.Show();
         }
     }
 }

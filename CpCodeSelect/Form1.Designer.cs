@@ -48,6 +48,7 @@
             this.btnmoni = new System.Windows.Forms.Button();
             this.btnMoni2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.btnStatistic = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -268,6 +269,17 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // btnStatistic
+            // 
+            this.btnStatistic.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnStatistic.Location = new System.Drawing.Point(1257, 591);
+            this.btnStatistic.Name = "btnStatistic";
+            this.btnStatistic.Size = new System.Drawing.Size(161, 66);
+            this.btnStatistic.TabIndex = 0;
+            this.btnStatistic.Text = "显示统计信息";
+            this.btnStatistic.UseVisualStyleBackColor = true;
+            this.btnStatistic.Click += new System.EventHandler(this.btnStatistic_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -291,6 +303,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRestart);
+            this.Controls.Add(this.btnStatistic);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
@@ -322,6 +335,7 @@
         private System.Windows.Forms.Button btnmoni;
         private System.Windows.Forms.Button btnMoni2;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnStatistic;
     }
 }
 

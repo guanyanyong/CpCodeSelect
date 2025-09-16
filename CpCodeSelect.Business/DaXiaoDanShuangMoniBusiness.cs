@@ -117,6 +117,11 @@ namespace CpCodeSelect.Business
         {
             return CurrentLun > 0 && CurrentaQi == 0;
         }
+        /// <summary>
+        /// 添加统计信息到dic中
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="model"></param>
         public void CalcCode(Code code)
         {
             List<PositionNumber> list = new List<PositionNumber>();
@@ -144,7 +149,6 @@ namespace CpCodeSelect.Business
                         TotalResult = TotalResult - CurrentBei / 2;
                         TotalLiuShui += CurrentBei / 2;
                         LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentLunZhongJiangCiShu + 1}次第{CurrentaQi}期的【{CurrentPositionType.ToString()}】位的单双,当前推荐【{positionNumber.DanShuangLianGuaTuiJianNumber}】,倍数是【{CurrentBei}】,总额【{TotalResult}】");
-                        
                     }
                     else
                     {

@@ -118,6 +118,10 @@ namespace CpCodeSelect.Business
         {
             return CurrentLun > 0 && CurrentaQi == 0;
         }
+        /// <summary>
+        /// 号码统计
+        /// </summary>
+        /// <param name="code"></param>
         public void CalcCode(Code code)
         {
             List<PositionNumber> list = new List<PositionNumber>();
