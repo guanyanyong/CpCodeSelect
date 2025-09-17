@@ -33,4 +33,14 @@ namespace CpCodeSelect.Model
         虎=2
 
     }
+    /// <summary>
+    /// 杀3码位置
+    /// </summary>
+
+    public enum Kill3Position
+    {
+        前三=0,
+        中三=1,
+        后三 =2
+    }
 }
