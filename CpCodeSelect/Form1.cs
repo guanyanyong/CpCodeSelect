@@ -741,5 +741,15 @@ namespace CpCodeSelect
             statisticForm.SetStatistic(this.StatisticDic);
             statisticForm.Show();
         }
+
+        private void txtFIlePath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

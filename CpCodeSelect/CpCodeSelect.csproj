@@ -67,6 +67,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kill3Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kill3Form.Designer.cs">
+      <DependentUpon>Kill3Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="LianKaiForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kill3Form.resx">
+      <DependentUpon>Kill3Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LianKaiForm.resx">
       <DependentUpon>LianKaiForm.cs</DependentUpon>

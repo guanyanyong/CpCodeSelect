@@ -71,6 +71,7 @@
             this.label1.Size = new System.Drawing.Size(88, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "文档路径";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtFIlePath
             // 
@@ -79,6 +80,7 @@
             this.txtFIlePath.Name = "txtFIlePath";
             this.txtFIlePath.Size = new System.Drawing.Size(853, 32);
             this.txtFIlePath.TabIndex = 2;
+            this.txtFIlePath.TextChanged += new System.EventHandler(this.txtFIlePath_TextChanged);
             // 
             // btnSelectFile
             // 
