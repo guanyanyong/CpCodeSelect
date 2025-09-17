@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code.cs" />
+    <Compile Include="Kill3Model.cs" />
     <Compile Include="PositionDragonTiger.cs" />
     <Compile Include="PositionNumber.cs" />
     <Compile Include="PositionType.cs" />

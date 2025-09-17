@@ -19,8 +19,15 @@ namespace CpCodeSelect.Model
         public PositionNumber Bai { get; set; }
         public PositionNumber Shi { get; set; }
         public PositionNumber Ge { get; set; }
-
+        /// <summary>
+        /// 龙虎列表
+        /// </summary>
         public List<PositionDragonTiger> DragonTigerList { get; set; }
+
+        /// <summary>
+        /// 杀3码的位置列表
+        /// </summary>
+        public List<Kill3Model> Kill3ModelList { get; set; }
 
     }
 }

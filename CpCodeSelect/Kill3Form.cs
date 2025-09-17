@@ -142,396 +142,66 @@ namespace CpCodeSelect
         /// </summary>
         public void AnalySisCode(Code code)
         {
-            DaXiaoDanShuangBusiness.InitDaXiaoDanShuang(code);
-            DragonTigerBusiness.InitDragonTigerBusiness(code);
-
-            SetAllPositionNumber(code);
-
-            SetLianKaiHouGuaNumber(code);
-
-            DragonTigerBusiness.SetPositionNumberDragonTiger(code);
-            AddToLogFileDragonTiger(code, "DragonTigerGuaLog.txt");
+            Kill3CodeBusiness.InitCode(code);
+            AddToLogFileKill3(code, "Kill3.txt");
             //在这里把分析后的可以推荐的号码显示到界面上
-            AddTolistBoxTuiJian(true);
+            AddToListBox(code);
 
-            AddToLogFileDaXiaoDanShuang(currentCode.Wan, currentCode, "LogGuaLog.txt");
-            AddToLogFileDaXiaoDanShuang(currentCode.Qian, currentCode, "LogGuaLog.txt");
-            AddToLogFileDaXiaoDanShuang(currentCode.Bai, currentCode, "LogGuaLog.txt");
-            AddToLogFileDaXiaoDanShuang(currentCode.Shi, currentCode, "LogGuaLog.txt");
-            AddToLogFileDaXiaoDanShuang(currentCode.Ge, currentCode, "LogGuaLog.txt");
 
             //执行模拟挂机
-            moniDaxiao.Run(code);
-            moniDaxiao2.Run(code);
-            moniDaxiao3.Run(code);
+            //moniDaxiao.Run(code);
+            //moniDaxiao2.Run(code);
+            //moniDaxiao3.Run(code);
 
         }
 
-
-        /// <summary>
-        /// 添加龙虎的日志
-        /// 包括第一期的推荐和已经挂的日志
-        /// </summary>
-        /// <param name="code"></param>
-        /// <param name="logFileName"></param>
-        private void AddToLogFileDragonTiger(Code code, string logFileName)
+        private void AddToLogFileKill3(Code code, string kill3FileName)
         {
-            using (var writer = new StreamWriter(logFileName, true))
+            using (var writer = new StreamWriter(kill3FileName, true))
             {
-                if (code.DragonTigerList != null && code.DragonTigerList.Count > 0)
+                if (code.Kill3ModelList != null && code.Kill3ModelList.Count > 0)
                 {
-                    foreach (var dragonTiger in code.DragonTigerList)
+                    foreach (var kill3Model in code.Kill3ModelList)
                     {
-                        if (!string.IsNullOrEmpty(dragonTiger.DisplayMessage))
+                        bool needFlush = false;
+                        if (kill3Model.IsLianGua)
                         {
-                            if (dragonTiger.DisplayMessage.IndexOf("已挂") != -1)
-                            {
-                                writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{dragonTiger.BeginPositoin}-{dragonTiger.EndPosition}位龙虎已挂。提示信息是{dragonTiger.DisplayMessage}");
-                                writer.Flush();
-                            }
+                            needFlush = true;
+                            writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}连挂中,当前连挂次数{kill3Model.GuaCount},挂后中次数{kill3Model.GuaHouZhong}");
+
+                        }
+                        if (kill3Model.LianZhongCount > 3)
+                        {
+                            needFlush = true;
+                            writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}当前是连中,当前连中次数{kill3Model.LianZhongCount}");
+                        }
+                        if (needFlush)
+                        {
+                            writer.Flush();
                         }
                     }
 
-                    foreach (var codeDragonTiger in code.DragonTigerList.Where(d => d.HeAfterTime1 == 1 && d.IsHeAfter1))
-                    {
-                        writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{codeDragonTiger.BeginPositoin}-{codeDragonTiger.EndPosition}位龙虎出现机会。推荐号是{codeDragonTiger.TuiJianDragonTiger1}");
-                        writer.Flush();
-                    }
                 }
             }
         }
 
-
-        private void AddToLogFileDaXiaoDanShuang(PositionNumber positionNumber, Code code, string logFileName)
+        private void AddToListBox(Code code)
         {
-            using (var writer = new StreamWriter(logFileName, true))
+            if (code.Kill3ModelList != null && code.Kill3ModelList.Count > 0)
             {
-                if (positionNumber.DaXiaoLianKaiGuaCount >= 6)
+                foreach (var kill3Model in code.Kill3ModelList)
                 {
-                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位大小连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},推荐参考:{positionNumber.DaXiaoLianGuaTuiJianCanKao},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount + 1}期");
-                    writer.Flush();
-                }
-                if (positionNumber.DanShuangLianKaiGuaCount >= 6)
-                {
-                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位单双连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},推荐参考:{positionNumber.DanShuangLianGuaTuiJianCanKao},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
-                    writer.Flush();
-                }
-            }
-            using (var writer = new StreamWriter("Log3ge3GuaLog.txt", true))
-            {
-                if (positionNumber.DaXiaoLianKaiGuaCount == 2)
-                {
-                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位大小出现机会,连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount + 1}期");
-                    writer.Flush();
-                }
-                if (positionNumber.DanShuangLianKaiGuaCount == 2)
-                {
-                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位单双出现机会,连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
-                    writer.Flush();
-                }
-                if (positionNumber.DaXiaoLianKaiGuaCount == 5)
-                {
-                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位大小连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},推荐参考:{positionNumber.DaXiaoLianGuaTuiJianCanKao},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount + 1}期");
-                    writer.Flush();
-                }
-                if (positionNumber.DanShuangLianKaiGuaCount == 5)
-                {
-                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位单双连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},推荐参考:{positionNumber.DanShuangLianGuaTuiJianCanKao},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
-                    writer.Flush();
-                }
-
-            }
-        }
-        private void AddTolistBoxTuiJian(bool needClear)
-        {
-            if (needClear)
-            {
-                listBoxTuiJian.Items.Clear();
-            }
-            if (chkDaXiao.Checked)
-            {
-                AddToListBoxTuiJian(currentCode.Wan, currentCode);
-                AddToListBoxTuiJian(currentCode.Qian, currentCode);
-                AddToListBoxTuiJian(currentCode.Bai, currentCode);
-                AddToListBoxTuiJian(currentCode.Shi, currentCode);
-                AddToListBoxTuiJian(currentCode.Ge, currentCode);
-            }
-            if (chkLongHu.Checked)
-            {
-                AddDragonTigerToListBoxTuiJian(currentCode);
-            }
-
-        }
-        private void AddDragonTigerToListBoxTuiJian(Code code)
-        {
-            if (code.DragonTigerList != null && code.DragonTigerList.Count > 0)
-            {
-                foreach (var dragonTiger in code.DragonTigerList)
-                {
-                    if (!string.IsNullOrEmpty(dragonTiger.TuiJianDragonTiger1))
+                    if (kill3Model.IsLianGua)
                     {
-                        listBoxTuiJian.Items.Add($"{dragonTiger.BeginPositoin}-{dragonTiger.EndPosition}位龙虎推荐:{dragonTiger.TuiJianDragonTiger1},当前第{dragonTiger.HeAfterTime1}期");
-                    }
-                    if (!string.IsNullOrEmpty(dragonTiger.DisplayMessage))
-                    {
-                        listBoxTuiJian.Items.Add($"{dragonTiger.BeginPositoin}-{dragonTiger.EndPosition}位龙虎信息:{dragonTiger.DisplayMessage}");
+                        listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}连挂中,当前连挂次数{kill3Model.GuaCount},挂后中次数{kill3Model.GuaHouZhong}");
 
                     }
-                }
-            }
-        }
-
-        private void AddToListBoxTuiJian(PositionNumber positionNumber, Code code)
-        {
-
-            if (!string.IsNullOrEmpty(positionNumber.DaXiaoTuijianNumber))
-            {
-                var tuijianqishu = positionNumber.DaXiaoTuijianNumber == "大" ? positionNumber.DaLianKai : positionNumber.XiaoLianKai;
-                listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位大小推荐:{positionNumber.DaXiaoTuijianNumber},推荐原因:连开{tuijianqishu}期");
-            }
-            if (!string.IsNullOrEmpty(positionNumber.DanShuangTuijianNumber))
-            {
-                var tuijianqishu = positionNumber.DanShuangTuijianNumber == "单" ? positionNumber.DanLianKai : positionNumber.ShuangLianKai;
-                listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位单双推荐:{positionNumber.DanShuangTuijianNumber},推荐原因:连开{tuijianqishu}期");
-            }
-
-            if (!string.IsNullOrEmpty(positionNumber.DaXiaoLianGuaTuiJianNumber))
-            {
-                listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位大小连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},推荐参考:{positionNumber.DaXiaoLianGuaTuiJianCanKao},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount + 1}期");
-            }
-            if (!string.IsNullOrEmpty(positionNumber.DanShuangLianGuaTuiJianNumber))
-            {
-                listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位单双连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},推荐参考:{positionNumber.DanShuangLianGuaTuiJianCanKao},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
-            }
-
-            //using (var writer = new StreamWriter("log.txt", true))
-            //{
-            //    if (positionNumber.DaXiaoLianKaiGuaCount >= 4)
-            //    {
-            //        writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #"+$"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位大小连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},推荐参考:{positionNumber.DaXiaoLianGuaTuiJianCanKao},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount + 1}期");
-            //        writer.Flush();
-            //    }
-            //    if (positionNumber.DanShuangLianKaiGuaCount >= 4)
-            //    {
-            //        writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位单双连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},推荐参考:{positionNumber.DanShuangLianGuaTuiJianCanKao},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
-            //        writer.Flush();
-            //    }
-            //}
-
-        }
-        private void SetAllPositionNumber(Code code)
-        {
-            SetPositionNumber(code, code.Wan);
-            SetPositionNumber(code, code.Qian);
-            SetPositionNumber(code, code.Bai);
-            SetPositionNumber(code, code.Shi);
-            SetPositionNumber(code, code.Ge);
-        }
-        private void SetPositionNumber(Code code, PositionNumber positionNumber)
-        {
-            DaXiaoDanShuangBusiness.SetPositionNumberDaXiaoDanShuang(code, positionNumber);
-
-        }
-        /// <summary>
-        /// 设置连开后挂次数及推荐号码
-        /// </summary>
-        /// <param name=""></param>
-        private void SetLianKaiHouGuaNumber(Code code)
-        {
-            #region 先设置之前有连开的逻辑
-            SetLianKaiHouGuaDiYiCi(code.PreCode == null ? null : code.PreCode.Wan, code.Wan);
-            SetLianKaiHouGuaDiYiCi(code.PreCode == null ? null : code.PreCode.Qian, code.Qian);
-            SetLianKaiHouGuaDiYiCi(code.PreCode == null ? null : code.PreCode.Bai, code.Bai);
-            SetLianKaiHouGuaDiYiCi(code.PreCode == null ? null : code.PreCode.Shi, code.Shi);
-            SetLianKaiHouGuaDiYiCi(code.PreCode == null ? null : code.PreCode.Ge, code.Ge);
-            #endregion
-
-            #region 再设置已经是连开后挂的逻辑 是否继续挂
-            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Wan, code.Wan, code);
-            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Qian, code.Qian, code);
-            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Bai, code.Bai, code);
-            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Shi, code.Shi, code);
-            SetLianKaiHouGuaJiXuGua(code.PreCode == null ? null : code.PreCode.Ge, code.Ge, code);
-            #endregion
-        }
-        /// <summary>
-        /// 设置位置的连开后挂第一次的情况
-        /// </summary>
-        /// <param name="prePositionNumber"></param>
-        /// <param name="positionNumber"></param>
-        private void SetLianKaiHouGuaDiYiCi(PositionNumber prePositionNumber, PositionNumber positionNumber)
-        {
-            if (prePositionNumber == null)
-            {
-                return;
-            }
-            if (prePositionNumber.DaLianKai >= 4 && positionNumber.XiaoLianKai == 1)
-            {
-                //之前是大连开4期,现在开小了,设置大后挂1,推荐号码为第二期的小
-                //对应的是大小小大大小大小小大
-
-                positionNumber.DaXiaoLianKaiGuaCount = 1;
-                positionNumber.DaXiaoLianGuaTuiJianNumber = "小";
-                positionNumber.DaXiaoLianGuaTuiJianCanKao = "大小小大大小大小小大大小大小大小小大大";
-            }
-            if (prePositionNumber.XiaoLianKai >= 4 && positionNumber.DaLianKai == 1)
-            {
-                //之前是小连开超过4期,现在开大了,设置小后挂1,推荐号码为第二期的大
-                //对应的是小大大小小大小大大小
-
-                positionNumber.DaXiaoLianKaiGuaCount = 1;
-                positionNumber.DaXiaoLianGuaTuiJianNumber = "大";
-                positionNumber.DaXiaoLianGuaTuiJianCanKao = "小大大小小大小大大小小大小大小大大小小";
-            }
-            if (prePositionNumber.DanLianKai >= 4 && positionNumber.ShuangLianKai == 1)
-            {
-                //之前是单连开4期,现在开双了,设置单后挂1,推荐号码为第二期的双
-                //对应的是单双双单单双单双单
-
-                positionNumber.DanShuangLianKaiGuaCount = 1;
-                positionNumber.DanShuangLianGuaTuiJianNumber = "双";
-                positionNumber.DanShuangLianGuaTuiJianCanKao = "单双双单单双单双双单单双单双单双双单单";
-            }
-            if (prePositionNumber.ShuangLianKai >= 4 && positionNumber.DanLianKai == 1)
-            {
-                //之前是双连开4期,现在开单了,设置双后挂1,推荐号码为第二期的单
-                //对应的是双单双双单双双单双
-
-                positionNumber.DanShuangLianKaiGuaCount = 1;
-                positionNumber.DanShuangLianGuaTuiJianNumber = "单";
-                positionNumber.DanShuangLianGuaTuiJianCanKao = "双单单双双单双单单双双单双单双单单双双";
-            }
-        }
-
-        private void SetLianKaiHouGuaJiXuGua(PositionNumber prePositionNumber, PositionNumber positionNumber, Code code = null)
-        {
-            if (prePositionNumber == null)
-            {
-                return;
-            }
-            if (prePositionNumber.DaXiaoLianKaiGuaCount > 0)
-            {
-                positionNumber.DaXiaoLianGuaTuiJianCanKao = prePositionNumber.DaXiaoLianGuaTuiJianCanKao;
-
-                //先判断是否继续挂
-                if (prePositionNumber.DaXiaoLianGuaTuiJianNumber == "大" && positionNumber.DaXiao == DaXiaoType.大)
-                {
-                    //上期推荐大,现在结果也是大,结束挂
-                    positionNumber.DaXiaoLianKaiGuaCount = 0;
-                    positionNumber.DaXiaoLianGuaTuiJianNumber = "";
-                }
-                else if (prePositionNumber.DaXiaoLianGuaTuiJianNumber == "大" && positionNumber.DaXiao == DaXiaoType.小)
-                {
-                    ////上期推荐大,现在结果是小,继续挂,连挂数加1,推荐号码设置为往后移一个
-                    positionNumber.DaXiaoLianKaiGuaCount = prePositionNumber.DaXiaoLianKaiGuaCount + 1;
-                    var daXiaoArray = positionNumber.DaXiaoLianGuaTuiJianCanKao.ToCharArray();
-                    positionNumber.DaXiaoLianGuaTuiJianNumber = daXiaoArray[positionNumber.DaXiaoLianKaiGuaCount].ToString();
-                    if (code != null)
+                    if (kill3Model.LianZhongCount > 3)
                     {
-                        if (positionNumber.DaXiaoLianKaiGuaCount >= 2)
-                        {
-                            AddStatisticToDic(positionNumber.DaXiaoLianKaiGuaCount, new StatisticModel()
-                            {
-                                CodeNumber = code.CodeNumber,
-                                CodeQiHao = code.CodeQiHao,
-                                PositionNumber = positionNumber,
-                                PositionType = positionNumber.PositionType,
-                                StatisticType = "大小",
-                                GuaCount= positionNumber.DaXiaoLianKaiGuaCount
-                            });
-                        }
-                    }
-                }
-                if (prePositionNumber.DaXiaoLianGuaTuiJianNumber == "小" && positionNumber.DaXiao == DaXiaoType.小)
-                {
-                    //推荐小,结果也是小,结束挂
-                    positionNumber.DaXiaoLianKaiGuaCount = 0;
-                    positionNumber.DaXiaoLianGuaTuiJianNumber = "";
-                }
-                else if (prePositionNumber.DaXiaoLianGuaTuiJianNumber == "小" && positionNumber.DaXiao == DaXiaoType.大)
-                {
-                    //推荐小,结果是大,继续挂,连挂数加1,推荐号码设置为往后移一个
-                    positionNumber.DaXiaoLianKaiGuaCount = prePositionNumber.DaXiaoLianKaiGuaCount + 1;
-                    var daXiaoArray = positionNumber.DaXiaoLianGuaTuiJianCanKao.ToCharArray();
-                    positionNumber.DaXiaoLianGuaTuiJianNumber = daXiaoArray[positionNumber.DaXiaoLianKaiGuaCount].ToString();
-                    if (code != null)
-                    {
-                        if (positionNumber.DaXiaoLianKaiGuaCount >= 2)
-                        {
-                            AddStatisticToDic(positionNumber.DaXiaoLianKaiGuaCount, new StatisticModel()
-                            {
-                                CodeNumber = code.CodeNumber,
-                                CodeQiHao = code.CodeQiHao,
-                                PositionNumber = positionNumber,
-                                PositionType = positionNumber.PositionType,
-                                StatisticType = "大小",
-                                GuaCount = positionNumber.DaXiaoLianKaiGuaCount
-                            });
-                        }
-                    }
-                }
-            }
-            if (prePositionNumber.DanShuangLianKaiGuaCount > 0)
-            {
-                positionNumber.DanShuangLianGuaTuiJianCanKao = prePositionNumber.DanShuangLianGuaTuiJianCanKao;
-                //先判断是否继续挂
-                if (prePositionNumber.DanShuangLianGuaTuiJianNumber == "单" && positionNumber.DanShuang == DanShuangType.单)
-                {
-                    //上期推荐单,现在结果也是单,结束挂
-                    positionNumber.DanShuangLianKaiGuaCount = 0;
-                    positionNumber.DanShuangLianGuaTuiJianNumber = "";
-                }
-                else if (prePositionNumber.DanShuangLianGuaTuiJianNumber == "单" && positionNumber.DanShuang == DanShuangType.双)
-                {
-                    //上期推荐单,现在结果是双,继续挂,连挂数加1,推荐号码设置为往后移一个
-                    positionNumber.DanShuangLianKaiGuaCount = prePositionNumber.DanShuangLianKaiGuaCount + 1;
-                    var danShuangArray = positionNumber.DanShuangLianGuaTuiJianCanKao.ToCharArray();
-                    positionNumber.DanShuangLianGuaTuiJianNumber = danShuangArray[positionNumber.DanShuangLianKaiGuaCount].ToString();
-                    if (code != null)
-                    {
-                        if (positionNumber.DanShuangLianKaiGuaCount >= 2)
-                        {
-                            AddStatisticToDic(positionNumber.DanShuangLianKaiGuaCount, new StatisticModel()
-                            {
-                                CodeNumber = code.CodeNumber,
-                                CodeQiHao = code.CodeQiHao,
-                                PositionNumber = positionNumber,
-                                PositionType = positionNumber.PositionType,
-                                StatisticType = "单双",
-                                GuaCount = positionNumber.DanShuangLianKaiGuaCount
-                            });
-                        }
+                        listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}当前是连中,当前连中次数{kill3Model.LianZhongCount}");
                     }
                 }
 
-                if (prePositionNumber.DanShuangLianGuaTuiJianNumber == "双" && positionNumber.DanShuang == DanShuangType.双)
-                {
-                    //推荐双,结果也是双,结束挂
-                    positionNumber.DanShuangLianKaiGuaCount = 0;
-                    positionNumber.DanShuangLianGuaTuiJianNumber = "";
-                }
-                else if (prePositionNumber.DanShuangLianGuaTuiJianNumber == "双" && positionNumber.DanShuang == DanShuangType.单)
-                {
-                    //推荐双,结果是单,继续挂,连挂数加1,推荐号码设置为往后移一个
-                    positionNumber.DanShuangLianKaiGuaCount = prePositionNumber.DanShuangLianKaiGuaCount + 1;
-                    var danShuangArray = positionNumber.DanShuangLianGuaTuiJianCanKao.ToCharArray();
-                    positionNumber.DanShuangLianGuaTuiJianNumber = danShuangArray[positionNumber.DanShuangLianKaiGuaCount].ToString();
-                    if (code != null)
-                    {
-                        if (positionNumber.DanShuangLianKaiGuaCount >= 2)
-                        {
-                            AddStatisticToDic(positionNumber.DanShuangLianKaiGuaCount, new StatisticModel()
-                            {
-                                CodeNumber = code.CodeNumber,
-                                CodeQiHao = code.CodeQiHao,
-                                PositionNumber = positionNumber,
-                                PositionType = positionNumber.PositionType,
-                                StatisticType = "单双",
-                                GuaCount = positionNumber.DanShuangLianKaiGuaCount
-                            });
-                        }
-                    }
-                }
             }
         }
         /// <summary>

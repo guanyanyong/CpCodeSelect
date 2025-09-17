@@ -46,6 +46,7 @@
     <Compile Include="DaXiaoDanShuangMoniBusiness.cs" />
     <Compile Include="DragonTigerBusiness.cs" />
     <Compile Include="DaXiaoDanShuangBusiness.cs" />
+    <Compile Include="Kill3CodeBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
