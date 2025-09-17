@@ -35,6 +35,10 @@ namespace CpCodeSelect.Model
         /// 挂的次数
         /// </summary>
         public int GuaCount { get; set; }
+        /// <summary>
+        /// 挂后中
+        /// </summary>
+        public int GuaHouZhong { get; set; }
 
     }
 }

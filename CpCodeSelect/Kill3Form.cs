@@ -170,7 +170,7 @@ namespace CpCodeSelect
                             writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}连挂中,当前连挂次数{kill3Model.GuaCount},挂后中次数{kill3Model.GuaHouZhong}");
 
                         }
-                        if (kill3Model.LianZhongCount > 3)
+                        if (kill3Model.LianZhongCount >= 3)
                         {
                             needFlush = true;
                             writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}当前是连中,当前连中次数{kill3Model.LianZhongCount}");
@@ -193,10 +193,21 @@ namespace CpCodeSelect
                 {
                     if (kill3Model.IsLianGua)
                     {
-                        listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}连挂中,当前连挂次数{kill3Model.GuaCount},挂后中次数{kill3Model.GuaHouZhong}");
-
+                        if (kill3Model.GuaCount >= 2)
+                        {
+                            AddStatisticToDic(kill3Model.GuaCount, new StatisticModel()
+                            {
+                                CodeNumber = code.CodeNumber,
+                                CodeQiHao = code.CodeQiHao,
+                                StatisticType = kill3Model.Name,
+                                GuaCount = kill3Model.GuaCount,
+                                GuaHouZhong = kill3Model.GuaHouZhong
+                            });
+                        }
+                        if (chkLianGua.Checked)
+                            listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}连挂中,当前连挂次数{kill3Model.GuaCount},挂后中次数{kill3Model.GuaHouZhong}");
                     }
-                    if (kill3Model.LianZhongCount > 3)
+                    if (kill3Model.LianZhongCount >= 3 && chkLianZhong.Checked)
                     {
                         listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}当前是连中,当前连中次数{kill3Model.LianZhongCount}");
                     }

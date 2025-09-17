@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,17 @@ namespace CpCodeSelect
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            var str= ConfigurationManager.AppSettings["SetUpForm"];
+            if(str== "Kill3")
+            {
+                Application.Run(new Kill3Form());
+            }
+            else
+            {
+                Application.Run(new Form1());
+            }
+
         }
     }
 }

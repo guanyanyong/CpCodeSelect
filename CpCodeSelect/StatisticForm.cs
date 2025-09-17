@@ -13,6 +13,7 @@ namespace CpCodeSelect
 {
     public partial class StatisticForm : Form
     {
+
         private Dictionary<int, List<StatisticModel>> StatisticDic = null;
         public StatisticForm()
         {
@@ -76,7 +77,9 @@ namespace CpCodeSelect
             dataGridView.Columns["StatisticType"].HeaderText = "统计类型";
             dataGridView.Columns["PositionType"].HeaderText = "位置信息";
             dataGridView.Columns["GuaCount"].HeaderText = "已挂次数";
+            dataGridView.Columns["GuaHouZhong"].HeaderText = "挂后中";
             dataGridView.Columns["PositionNumber"].Visible = false;
+            dataGridView.Columns["PositionType"].Visible = false;
             //dataGridView.Columns["IsActive"].HeaderText = "是否激活";
 
             // 设置日期格式

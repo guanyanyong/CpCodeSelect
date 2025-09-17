@@ -1,6 +1,7 @@
 ﻿using CpCodeSelect.Model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +13,21 @@ namespace CpCodeSelect.Business
     /// </summary>
     public static class Kill3CodeBusiness
     {
+        static Kill3CodeBusiness()
+        {
+            var Kill3NeedZhongCount = ConfigurationManager.AppSettings["Kill3NeedZhongCount"];
+            if (!string.IsNullOrEmpty(Kill3NeedZhongCount))
+            {
+                GuaHouNeedZhongCount = int.Parse(Kill3NeedZhongCount);
+            }
+            else GuaHouNeedZhongCount = 2;
+
+
+        }
         /// <summary>
         /// 挂后需要连中次数
         /// </summary>
-        public static int GuaHouNeedZhongCount = 2;
+        public static int GuaHouNeedZhongCount ;
         /// <summary>
         /// 初始化大小单双
         /// </summary>
@@ -86,24 +98,24 @@ namespace CpCodeSelect.Business
             {
                 if (code.Wan.Number == code.PreCode.Wan.Number || code.Qian.Number == code.PreCode.Qian.Number || code.Bai.Number == code.PreCode.Bai.Number)
                 {
-                    return true;
+                    return false;
                 }
             }
             else if (model.Kill3Position == Kill3Position.中三)
             {
                 if (code.Qian.Number == code.PreCode.Qian.Number || code.Bai.Number == code.PreCode.Bai.Number || code.Shi.Number == code.PreCode.Shi.Number)
                 {
-                    return true;
+                    return false;
                 }
             }
             else if (model.Kill3Position == Kill3Position.后三)
             {
                 if (code.Bai.Number == code.PreCode.Bai.Number || code.Shi.Number == code.PreCode.Shi.Number || code.Ge.Number == code.PreCode.Ge.Number )
                 {
-                    return true;
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
         /// <summary>
         /// 设置杀3码的位置信息
@@ -115,22 +127,22 @@ namespace CpCodeSelect.Business
         {
             if (code.PreCode != null)
             {
-                var kill3ModelBefore = code.PreCode.Kill3ModelList.Where(p => model.Name == model.Name).FirstOrDefault();
+                var kill3ModelBefore = code.PreCode.Kill3ModelList.Where(p => p.Name == model.Name).First();
                 if (kill3ModelBefore != null)
                 {
                     if (!IsKill3Zhong(code,model))
                     {
                         //当前的号码和上期的号码,有相同的号码,则表示挂
                         model.IsLianGua = true;
-                        if (kill3ModelBefore.IsLianGua)
+                        if (kill3ModelBefore.IsLianGua && kill3ModelBefore.GuaHouZhong<GuaHouNeedZhongCount)
                         {
-                            //上期已经是连挂
-                            model.GuaCount += 1;
+                            //上期是挂中，并且连中次数小于需要中的次数
+                            model.GuaCount = kill3ModelBefore.GuaCount + 1;
                             model.LianZhongCount = 0;
                         }
                         else
                         {
-                            //上期不是连挂
+                            //上期不是连挂,或者是挂但是已经到需要的中出次数
                             model.GuaCount = 1;
                             model.LianZhongCount = 0;
                         }
@@ -141,15 +153,20 @@ namespace CpCodeSelect.Business
                         if (kill3ModelBefore.IsLianGua)
                         {
                             //如果是连挂,则设置连挂后的中出
-                            model.GuaHouZhong += 1;
+                            model.GuaHouZhong = kill3ModelBefore.GuaHouZhong + 1;
                             model.LianZhongCount = 0;
-                            if (kill3ModelBefore.GuaHouZhong >= GuaHouNeedZhongCount)
+                            if (model.GuaHouZhong > GuaHouNeedZhongCount)
                             {
                                 //如果连挂后的中出次数,大于等于需要的中出次数,则表示连挂结束
                                 model.IsLianGua = false;
                                 model.GuaCount = 0;
                                 model.GuaHouZhong = 0;
                                 model.LianZhongCount = kill3ModelBefore.GuaHouZhong;
+                            }
+                            else
+                            {
+                                model.IsLianGua = true;
+                                model.GuaCount = kill3ModelBefore.GuaCount;
                             }
                         }
                         else
