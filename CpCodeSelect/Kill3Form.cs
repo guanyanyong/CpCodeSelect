@@ -187,6 +187,7 @@ namespace CpCodeSelect
 
         private void AddToListBox(Code code)
         {
+            var needSlip = false;
             if (code.Kill3ModelList != null && code.Kill3ModelList.Count > 0)
             {
                 foreach (var kill3Model in code.Kill3ModelList)
@@ -205,15 +206,21 @@ namespace CpCodeSelect
                             });
                         }
                         if (chkLianGua.Checked)
-                            listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}连挂中,当前连挂次数{kill3Model.GuaCount},挂后中次数{kill3Model.GuaHouZhong}");
+                        {
+                            listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}连挂中,连挂次数{kill3Model.GuaCount},挂后中次数{kill3Model.GuaHouZhong}");
+                            needSlip = true;
+                        }
                     }
                     if (kill3Model.LianZhongCount >= 3 && chkLianZhong.Checked)
                     {
-                        listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}当前是连中,当前连中次数{kill3Model.LianZhongCount}");
+                        listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}连中,连中次数{kill3Model.LianZhongCount}");
+                        needSlip = true;
                     }
                 }
 
             }
+            if(needSlip)
+            listBoxTuiJian.TopIndex = listBoxTuiJian.Items.Count - 1; // 自动滚动到底部
         }
         /// <summary>
         /// 从文件中获取最新的号码
