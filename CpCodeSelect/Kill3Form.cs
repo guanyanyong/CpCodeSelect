@@ -26,16 +26,16 @@ namespace CpCodeSelect
         private Code currentCode;
         private bool firstTime = true;//是否第一次执行
         private Object lockObj = new Object();
-        public MoniRunDaXiao moniDaxiao = new MoniRunDaXiao();
-        public MoniRunDaXiao2 moniDaxiao2 = new MoniRunDaXiao2();
-        public MoniRunDaXiao3 moniDaxiao3 = new MoniRunDaXiao3();
+        public MoniRunKill3 moniKill3 = new MoniRunKill3();
+        public MoniRunKill3_2 moniKill3_2 = new MoniRunKill3_2();
+        public MoniRunKill3_3 moniKill3_3 = new MoniRunKill3_3();
         public StatisticForm statisticForm = new StatisticForm();
         public Kill3Form()
         {
             InitializeComponent();
             Init();
             txtFIlePath.Text = filePath;
-            moniDaxiao.Hide();
+            moniKill3.Hide();
         }
 
         public void AddStatisticToDic(int number, StatisticModel model)
@@ -117,7 +117,7 @@ namespace CpCodeSelect
         /// </summary>
         public void ReadAllLine()
         {
-            var codeStrList = FileUtil.ReadFileAllRecods(filePath, 100);
+            var codeStrList = FileUtil.ReadFileAllRecods(filePath, 1000);
             var codeList = FileAnalysis.GetCodeListByCodeListStr(codeStrList);
             if (codeList != null && codeList.Count > 0)
             {
@@ -147,11 +147,10 @@ namespace CpCodeSelect
             //在这里把分析后的可以推荐的号码显示到界面上
             AddToListBox(code);
 
-
             //执行模拟挂机
-            //moniDaxiao.Run(code);
-            //moniDaxiao2.Run(code);
-            //moniDaxiao3.Run(code);
+            moniKill3.Run(code);
+            moniKill3_2.Run(code);
+            moniKill3_3.Run(code);
 
         }
 
@@ -400,7 +399,7 @@ namespace CpCodeSelect
 
         private void button3_Click(object sender, EventArgs e)
         {
-            moniDaxiao.Show();
+            moniKill3.Show();
         }
 
         private void btnRestart_Click(object sender, EventArgs e)
@@ -416,12 +415,12 @@ namespace CpCodeSelect
 
         private void btnMoni2_Click(object sender, EventArgs e)
         {
-            moniDaxiao2.Show();
+            moniKill3_2.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            moniDaxiao3.Show();
+            moniKill3_3.Show();
         }
 
         private void btnStatistic_Click(object sender, EventArgs e)

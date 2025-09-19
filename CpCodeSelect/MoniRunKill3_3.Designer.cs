@@ -1,6 +1,6 @@
 ﻿namespace CpCodeSelect
 {
-    partial class MoniRunKill3
+    partial class MoniRunKill3_3
     {
         /// <summary>
         /// Required designer variable.
@@ -44,8 +44,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtLiushui = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.txtYiGuaCount = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBoxExeMsg
@@ -206,53 +206,53 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(267, 25);
             this.label8.TabIndex = 8;
-            this.label8.Text = "挂1个开始,每次投注至少赢1元";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label9.Location = new System.Drawing.Point(34, 154);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 21);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "已挂次数:";
+            this.label8.Text = "挂3个开始,每次投注至少赢1元";
             // 
             // txtYiGuaCount
             // 
             this.txtYiGuaCount.Enabled = false;
             this.txtYiGuaCount.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.txtYiGuaCount.Location = new System.Drawing.Point(125, 151);
+            this.txtYiGuaCount.Location = new System.Drawing.Point(116, 150);
             this.txtYiGuaCount.Name = "txtYiGuaCount";
             this.txtYiGuaCount.Size = new System.Drawing.Size(296, 29);
-            this.txtYiGuaCount.TabIndex = 12;
+            this.txtYiGuaCount.TabIndex = 14;
             this.txtYiGuaCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // MoniRunKill3
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label9.Location = new System.Drawing.Point(25, 153);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(78, 21);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "已挂次数:";
+            // 
+            // MoniRunKill3_3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1379, 640);
+            this.Controls.Add(this.txtYiGuaCount);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.txtCurrentBei);
             this.Controls.Add(this.txtCurrentQi);
             this.Controls.Add(this.txtCurrentCi);
             this.Controls.Add(this.txtLiushui);
-            this.Controls.Add(this.txtYiGuaCount);
             this.Controls.Add(this.txtTotalAmount);
             this.Controls.Add(this.txtCurrentLun);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnYinChang);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxExeMsg);
-            this.Name = "MoniRunKill3";
-            this.Text = "模拟执行挂1个开始";
+            this.Name = "MoniRunKill3_3";
+            this.Text = "模拟执行挂3个开始";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MoniRunDaXiao_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -277,7 +277,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtLiushui;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtYiGuaCount;
+        private System.Windows.Forms.Label label9;
     }
 }
