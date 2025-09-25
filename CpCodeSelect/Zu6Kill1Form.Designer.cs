@@ -1,6 +1,6 @@
 ﻿namespace CpCodeSelect
 {
-    partial class Kill3Form
+    partial class Zu6Kill1Form
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -258,7 +258,7 @@
             this.chkLianZhong.Text = "连中";
             this.chkLianZhong.UseVisualStyleBackColor = true;
             // 
-            // Kill3Form
+            // Zu6Kill1Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -282,8 +282,8 @@
             this.Controls.Add(this.btnStatistic);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.button1);
-            this.Name = "Kill3Form";
-            this.Text = "杀3码推荐";
+            this.Name = "Zu6Kill1Form";
+            this.Text = "组六杀1码推荐";
             this.ResumeLayout(false);
             this.PerformLayout();
 

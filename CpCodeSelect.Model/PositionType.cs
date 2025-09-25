@@ -43,4 +43,13 @@ namespace CpCodeSelect.Model
         中三=1,
         后三 =2
     }
+    /// <summary>
+    /// 组六杀一码位置
+    /// </summary>
+    public enum Zu6Kill1Position
+    {
+        前三 = 0,
+        中三 = 1,
+        后三 = 2
+    }
 }

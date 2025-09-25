@@ -32,6 +32,10 @@ namespace CpCodeSelect.Model
         /// </summary>
         public string StatisticType {  get; set; }
         /// <summary>
+        /// 号码
+        /// </summary>
+        public int Number { get; set; }
+        /// <summary>
         /// 挂的次数
         /// </summary>
         public int GuaCount { get; set; }

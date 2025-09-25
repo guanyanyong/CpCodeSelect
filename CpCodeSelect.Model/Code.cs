@@ -28,6 +28,10 @@ namespace CpCodeSelect.Model
         /// 杀3码的位置列表
         /// </summary>
         public List<Kill3Model> Kill3ModelList { get; set; }
+        /// <summary>
+        /// 组六杀1码的位置列表
+        /// </summary>
+        public List<Zu6Kill1Model> Zu6Kill1ModelList { get; set; }
 
     }
 }

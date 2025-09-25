@@ -23,9 +23,13 @@ namespace CpCodeSelect
             {
                 Application.Run(new Kill3Form());
             }
-            else
+            else if(str== "Form1")
             {
                 Application.Run(new Form1());
+            }else if (str == "Zu6Kill1")
+            {
+
+                Application.Run(new Zu6Kill1Form());
             }
 
         }

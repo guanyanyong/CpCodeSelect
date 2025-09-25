@@ -309,7 +309,7 @@
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "号码推荐";
+            this.Text = "大小单双推荐";
             this.ResumeLayout(false);
             this.PerformLayout();
 
