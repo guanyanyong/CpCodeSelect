@@ -27,3 +27,9 @@
 /CpCodeSelect.Model/bin
 /CpCodeSelect.Business/obj/Release
 /CpCodeSelect.Business/bin/Release
+/CpCodeSelect.Model/bin/Debug/CpCodeSelect.Model.pdb
+/CpCodeSelect.Model/obj/Debug/CpCodeSelect.Model.csproj.CoreCompileInputs.cache
+/CpCodeSelect.Util/bin/Debug/CpCodeSelect.Model.dll
+/CpCodeSelect.Util/bin/Debug/CpCodeSelect.Model.pdb
+/CpCodeSelect.Model/obj/Debug/CpCodeSelect.Model.dll
+/CpCodeSelect.Model/obj/Debug/CpCodeSelect.Model.pdb
