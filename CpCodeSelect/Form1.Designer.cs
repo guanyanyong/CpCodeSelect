@@ -49,6 +49,7 @@
             this.btnMoni2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnStatistic = new System.Windows.Forms.Button();
+            this.chkDanShuang = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
@@ -199,17 +200,15 @@
             this.chkDaXiao.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkDaXiao.Location = new System.Drawing.Point(1083, 130);
             this.chkDaXiao.Name = "chkDaXiao";
-            this.chkDaXiao.Size = new System.Drawing.Size(72, 16);
+            this.chkDaXiao.Size = new System.Drawing.Size(48, 16);
             this.chkDaXiao.TabIndex = 9;
-            this.chkDaXiao.Text = "大小单双";
+            this.chkDaXiao.Text = "大小";
             this.chkDaXiao.UseVisualStyleBackColor = true;
             // 
             // chkLongHu
             // 
             this.chkLongHu.AutoSize = true;
-            this.chkLongHu.Checked = true;
-            this.chkLongHu.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkLongHu.Location = new System.Drawing.Point(1083, 166);
+            this.chkLongHu.Location = new System.Drawing.Point(1083, 203);
             this.chkLongHu.Name = "chkLongHu";
             this.chkLongHu.Size = new System.Drawing.Size(48, 16);
             this.chkLongHu.TabIndex = 10;
@@ -282,12 +281,23 @@
             this.btnStatistic.UseVisualStyleBackColor = true;
             this.btnStatistic.Click += new System.EventHandler(this.btnStatistic_Click);
             // 
+            // chkDanShuang
+            // 
+            this.chkDanShuang.AutoSize = true;
+            this.chkDanShuang.Location = new System.Drawing.Point(1083, 167);
+            this.chkDanShuang.Name = "chkDanShuang";
+            this.chkDanShuang.Size = new System.Drawing.Size(48, 16);
+            this.chkDanShuang.TabIndex = 9;
+            this.chkDanShuang.Text = "单双";
+            this.chkDanShuang.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1441, 843);
             this.Controls.Add(this.chkLongHu);
+            this.Controls.Add(this.chkDanShuang);
             this.Controls.Add(this.chkDaXiao);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnMoni2);
@@ -338,6 +348,7 @@
         private System.Windows.Forms.Button btnMoni2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnStatistic;
+        private System.Windows.Forms.CheckBox chkDanShuang;
     }
 }
 

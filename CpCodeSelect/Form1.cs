@@ -284,39 +284,31 @@ namespace CpCodeSelect
         private void AddToListBoxTuiJian(PositionNumber positionNumber, Code code)
         {
 
-            if (!string.IsNullOrEmpty(positionNumber.DaXiaoTuijianNumber))
+            if(chkDaXiao.Checked )
             {
-                var tuijianqishu = positionNumber.DaXiaoTuijianNumber == "大" ? positionNumber.DaLianKai : positionNumber.XiaoLianKai;
-                listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位大小推荐:{positionNumber.DaXiaoTuijianNumber},推荐原因:连开{tuijianqishu}期");
+                if (!string.IsNullOrEmpty(positionNumber.DaXiaoTuijianNumber))
+                {
+                    var tuijianqishu = positionNumber.DaXiaoTuijianNumber == "大" ? positionNumber.DaLianKai : positionNumber.XiaoLianKai;
+                    listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位大小推荐:{positionNumber.DaXiaoTuijianNumber},推荐原因:连开{tuijianqishu}期");
+                }
+                if (!string.IsNullOrEmpty(positionNumber.DaXiaoLianGuaTuiJianNumber))
+                {
+                    listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位大小连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},推荐参考:{positionNumber.DaXiaoLianGuaTuiJianCanKao},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount + 1}期");
+                }
             }
-            if (!string.IsNullOrEmpty(positionNumber.DanShuangTuijianNumber))
+            if (chkDanShuang.Checked)
             {
-                var tuijianqishu = positionNumber.DanShuangTuijianNumber == "单" ? positionNumber.DanLianKai : positionNumber.ShuangLianKai;
-                listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位单双推荐:{positionNumber.DanShuangTuijianNumber},推荐原因:连开{tuijianqishu}期");
-            }
+                if (!string.IsNullOrEmpty(positionNumber.DanShuangTuijianNumber))
+                {
+                    var tuijianqishu = positionNumber.DanShuangTuijianNumber == "单" ? positionNumber.DanLianKai : positionNumber.ShuangLianKai;
+                    listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位单双推荐:{positionNumber.DanShuangTuijianNumber},推荐原因:连开{tuijianqishu}期");
+                }
 
-            if (!string.IsNullOrEmpty(positionNumber.DaXiaoLianGuaTuiJianNumber))
-            {
-                listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位大小连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},推荐参考:{positionNumber.DaXiaoLianGuaTuiJianCanKao},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount + 1}期");
+                if (!string.IsNullOrEmpty(positionNumber.DanShuangLianGuaTuiJianNumber))
+                {
+                    listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位单双连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},推荐参考:{positionNumber.DanShuangLianGuaTuiJianCanKao},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
+                }
             }
-            if (!string.IsNullOrEmpty(positionNumber.DanShuangLianGuaTuiJianNumber))
-            {
-                listBoxTuiJian.Items.Add($"{positionNumber.PositionType}位单双连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},推荐参考:{positionNumber.DanShuangLianGuaTuiJianCanKao},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
-            }
-
-            //using (var writer = new StreamWriter("log.txt", true))
-            //{
-            //    if (positionNumber.DaXiaoLianKaiGuaCount >= 4)
-            //    {
-            //        writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #"+$"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位大小连开后挂推荐:{positionNumber.DaXiaoLianGuaTuiJianNumber},推荐参考:{positionNumber.DaXiaoLianGuaTuiJianCanKao},已挂{positionNumber.DaXiaoLianKaiGuaCount}期,,当前{positionNumber.DaXiaoLianKaiGuaCount + 1}期");
-            //        writer.Flush();
-            //    }
-            //    if (positionNumber.DanShuangLianKaiGuaCount >= 4)
-            //    {
-            //        writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，" + $"{positionNumber.PositionType}位单双连开后挂推荐:{positionNumber.DanShuangLianGuaTuiJianNumber},推荐参考:{positionNumber.DanShuangLianGuaTuiJianCanKao},已挂{positionNumber.DanShuangLianKaiGuaCount}期,,当前{positionNumber.DanShuangLianKaiGuaCount + 1}期");
-            //        writer.Flush();
-            //    }
-            //}
 
         }
         private void SetAllPositionNumber(Code code)
