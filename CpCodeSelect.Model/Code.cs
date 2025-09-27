@@ -33,5 +33,7 @@ namespace CpCodeSelect.Model
         /// </summary>
         public List<Zu6Kill1Model> Zu6Kill1ModelList { get; set; }
 
+        public List<Five1MaModel> Five1MaModelList { get; set; }
+
     }
 }

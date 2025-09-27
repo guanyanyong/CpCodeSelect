@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace CpCodeSelect
 {
-    public partial class Zu6Kill1Form : Form
+    public partial class Five1MaForm : Form
     {
         public Dictionary<int, List<StatisticModel>> StatisticDic = new Dictionary<int, List<StatisticModel>>();
         private string filePath = @"D:\Program Files (x86)\恒盛挂机软件\OpenCode\TXFFC.txt";
@@ -26,17 +26,16 @@ namespace CpCodeSelect
         private Code currentCode;
         private bool firstTime = true;//是否第一次执行
         private Object lockObj = new Object();
-        public MoniRunKill3 moniKill3 = new MoniRunKill3();
-        public MoniRunKill3_2 moniKill3_2 = new MoniRunKill3_2();
-        public MoniRunKill3_3 moniKill3_3 = new MoniRunKill3_3();
+        public MoniRunDaXiao moniDaxiao = new MoniRunDaXiao();
+        public MoniRunDaXiao2 moniDaxiao2 = new MoniRunDaXiao2();
+        public MoniRunDaXiao3 moniDaxiao3 = new MoniRunDaXiao3();
         public StatisticForm statisticForm = new StatisticForm();
-        private int NeedGuaCount = 4; //需要连挂的次数
-        public Zu6Kill1Form()
+        public Five1MaForm()
         {
             InitializeComponent();
             Init();
             txtFIlePath.Text = filePath;
-            moniKill3.Hide();
+            moniDaxiao.Hide();
         }
 
         public void AddStatisticToDic(int number, StatisticModel model)
@@ -118,7 +117,7 @@ namespace CpCodeSelect
         /// </summary>
         public void ReadAllLine()
         {
-            var codeStrList = FileUtil.ReadFileAllRecods(filePath, 1000);
+            var codeStrList = FileUtil.ReadFileAllRecods(filePath, 100);
             var codeList = FileAnalysis.GetCodeListByCodeListStr(codeStrList);
             if (codeList != null && codeList.Count > 0)
             {
@@ -143,48 +142,37 @@ namespace CpCodeSelect
         /// </summary>
         public void AnalySisCode(Code code)
         {
-            Zu6Kill1Business.InitCode(code);
-            AddToLogFileZu6Kill1(code, "Zu6Kill1.txt");
+            Five1MaBusiness.InitCode(code);
+            AddToLogFileFive1Ma(code, "Five1Ma.txt");
             //在这里把分析后的可以推荐的号码显示到界面上
-            AddToListBox(code);
+            AddTolistBoxTuiJian(true);
+
 
             //执行模拟挂机
-            //moniKill3.Run(code);
-            //moniKill3_2.Run(code);
-            //moniKill3_3.Run(code);
+            //moniDaxiao.Run(code);
+            //moniDaxiao2.Run(code);
+            //moniDaxiao3.Run(code);
 
         }
 
-        private void AddToLogFileZu6Kill1(Code code, string zu6Kill1FileName)
+
+        /// <summary>
+        /// 添加龙虎的日志
+        /// 包括第一期的推荐和已经挂的日志
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="logFileName"></param>
+        private void AddToLogFileFive1Ma(Code code, string logFileName)
         {
-            using (var writer = new StreamWriter(zu6Kill1FileName, true))
+            using (var writer = new StreamWriter(logFileName, true))
             {
-                if (code.Zu6Kill1ModelList != null && code.Zu6Kill1ModelList.Count > 0)
+                if (code.Five1MaModelList != null && code.Five1MaModelList.Count > 0)
                 {
-                    foreach (var zu6Kill1Mode in code.Zu6Kill1ModelList)
+                    foreach (var five1Ma in code.Five1MaModelList)
                     {
-                        bool needFlush = false;
-                        var list = zu6Kill1Mode.Zu6Kill1Items.Where(p => (p.IsLianGua && p.GuaCount >= 1) || (!p.IsLianGua && p.LianZhongCount >= 1)).ToList();
-                        if (list.Count>0)
+                        if (five1Ma.GuaCount >= 3)
                         {
-                            foreach(var recode in list)
-                            {
-                                if (recode.IsLianGua)
-                                {
-                                    needFlush = true;
-                                    //连挂中
-                                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{zu6Kill1Mode.Name}的{recode.Number}连挂中,当前连挂次数{recode.GuaCount}");
-                                }
-                                else
-                                {
-                                    needFlush = true;
-                                    //连中
-                                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{zu6Kill1Mode.Name}的{recode.Number}连中,连中次数{recode.LianZhongCount}");
-                                }
-                            }
-                        }
-                        if (needFlush)
-                        {
+                            writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，推荐号码:{five1Ma.Number}-已挂{five1Ma.GuaCount}。");
                             writer.Flush();
                         }
                     }
@@ -193,57 +181,32 @@ namespace CpCodeSelect
             }
         }
 
-        private void AddToListBox(Code code)
+        private void AddTolistBoxTuiJian(bool needClear)
         {
-            var needSlip = false;
-
-            if (code.Zu6Kill1ModelList != null && code.Zu6Kill1ModelList.Count > 0)
+            if (needClear)
             {
-                foreach (var zu6Kill1Mode in code.Zu6Kill1ModelList)
-                {
-                    var list = zu6Kill1Mode.Zu6Kill1Items.Where(p => (p.IsLianGua && p.GuaCount >= NeedGuaCount) || (!p.IsLianGua && p.LianZhongCount >= NeedGuaCount)).ToList();
-                    if (list.Count > 0)
-                    {
-                        foreach (var record in list)
-                        {
-                            if (record.IsLianGua)
-                            {
-                                //连挂中
-                                AddStatisticToDic(record.GuaCount, new StatisticModel()
-                                {
-                                    CodeNumber = code.CodeNumber,
-                                    CodeQiHao = code.CodeQiHao,
-                                    StatisticType = zu6Kill1Mode.Name,
-                                    GuaCount = record.GuaCount,
-                                    Number = record.Number,
-                                });
-                                if (chkLianGua.Checked)
-                                {
-                                    listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}的{zu6Kill1Mode.Name}{record.Number}连挂中,连挂次数{record.GuaCount}");
-                                    needSlip = true;
-                                }
-                            }
-                            if (record.LianZhongCount >= 3 && chkLianZhong.Checked)
-                            {
-                                // 连中
-                                listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}的{zu6Kill1Mode.Name}{record.Number}连中,连中次数{record.LianZhongCount}");
-                                needSlip = true;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        //numDownUp
-                        listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}的 {zu6Kill1Mode.Name}没有机会");
-                        needSlip = true;
-                    }
-                }
-
+                listBoxTuiJian.Items.Clear();
             }
+            AddToListBoxTuiJian(currentCode);
 
-
-            if(needSlip)
-            listBoxTuiJian.TopIndex = listBoxTuiJian.Items.Count - 1; // 自动滚动到底部
+        }
+        private void AddToListBoxTuiJian(Code code)
+        {
+            if (code.Five1MaModelList != null && code.Five1MaModelList.Count > 0)
+            {
+                foreach (var five1Ma in code.Five1MaModelList)
+                {
+                    AddStatisticToDic(five1Ma.GuaCount, new StatisticModel()
+                    {
+                        CodeNumber = code.CodeNumber,
+                        CodeQiHao = code.CodeQiHao,
+                        StatisticType = "五星1码",
+                        GuaCount = five1Ma.GuaCount,
+                        Number = five1Ma.Number,
+                    });
+                    listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，推荐号码:{five1Ma.Number}-已挂{five1Ma.GuaCount}。");
+                }
+            }
         }
         /// <summary>
         /// 从文件中获取最新的号码
@@ -353,12 +316,11 @@ namespace CpCodeSelect
         /// </summary>
         private void StartExec()
         {
-            if (DateTime.Now >= Convert.ToDateTime("2025-10-31"))
+            if (DateTime.Now >= Convert.ToDateTime("2025-10-22"))
             {
                 //MessageBox.Show("软件试用期已过期，请联系作者购买正式版");
                 return;
             }
-            NeedGuaCount = Convert.ToInt32(numDownUp.Value);
             if (!string.IsNullOrEmpty(filePath))
             {
                 AddRecord("开始执行");
@@ -424,7 +386,7 @@ namespace CpCodeSelect
 
         private void button3_Click(object sender, EventArgs e)
         {
-            moniKill3.Show();
+            moniDaxiao.Show();
         }
 
         private void btnRestart_Click(object sender, EventArgs e)
@@ -440,12 +402,12 @@ namespace CpCodeSelect
 
         private void btnMoni2_Click(object sender, EventArgs e)
         {
-            moniKill3_2.Show();
+            moniDaxiao2.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            moniKill3_3.Show();
+            moniDaxiao3.Show();
         }
 
         private void btnStatistic_Click(object sender, EventArgs e)

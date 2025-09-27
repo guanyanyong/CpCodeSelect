@@ -30,6 +30,9 @@ namespace CpCodeSelect
             {
 
                 Application.Run(new Zu6Kill1Form());
+            }else if(str == "Five1Ma")
+            {
+                Application.Run(new Five1MaForm());
             }
 
         }

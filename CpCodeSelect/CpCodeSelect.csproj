@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Five1MaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Five1MaForm.Designer.cs">
+      <DependentUpon>Five1MaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Zu6Kill1Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     <Compile Include="TxtFileExecForm.Designer.cs">
       <DependentUpon>TxtFileExecForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Five1MaForm.resx">
+      <DependentUpon>Five1MaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Zu6Kill1Form.resx">
       <DependentUpon>Zu6Kill1Form.cs</DependentUpon>
     </EmbeddedResource>
