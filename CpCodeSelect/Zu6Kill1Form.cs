@@ -197,6 +197,8 @@ namespace CpCodeSelect
         {
             var needSlip = false;
 
+            NeedGuaCount = Convert.ToInt32(numDownUp.Value);
+
             if (code.Zu6Kill1ModelList != null && code.Zu6Kill1ModelList.Count > 0)
             {
                 foreach (var zu6Kill1Mode in code.Zu6Kill1ModelList)
