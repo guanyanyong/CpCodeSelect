@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Five1MaBusinessMoniBusiness.cs" />
     <Compile Include="DaXiaoDanShuangMoniBusiness3.cs" />
     <Compile Include="DaXiaoDanShuangMoniBusiness2.cs" />
     <Compile Include="DaXiaoDanShuangMoniBusiness.cs" />

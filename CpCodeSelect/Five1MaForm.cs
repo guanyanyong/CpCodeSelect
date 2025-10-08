@@ -149,7 +149,7 @@ namespace CpCodeSelect
 
 
             //执行模拟挂机
-            //moniDaxiao.Run(code);
+            moniDaxiao.Run(code);
             //moniDaxiao2.Run(code);
             //moniDaxiao3.Run(code);
 
