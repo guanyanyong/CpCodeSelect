@@ -35,5 +35,11 @@ namespace CpCodeSelect.Model
 
         public List<Five1MaModel> Five1MaModelList { get; set; }
 
+
+        /// <summary>
+        /// 组六杀1码中跟挂停的位置列表
+        /// </summary>
+        public List<Zu6Kill1ZGGTModel> Zu6Kill1ZGGTModelList { get; set; }
+
     }
 }

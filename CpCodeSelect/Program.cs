@@ -33,6 +33,9 @@ namespace CpCodeSelect
             }else if(str == "Five1Ma")
             {
                 Application.Run(new Five1MaForm());
+            }else if(str== "Zu6Kill1ZGGT")
+            {
+                Application.Run(new Zu6Kill1ZGGTForm());
             }
 
         }

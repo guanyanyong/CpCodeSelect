@@ -68,6 +68,18 @@
     <Compile Include="Five1MaForm.Designer.cs">
       <DependentUpon>Five1MaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Zu6Kill1ZGGTTxtFileExecForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zu6Kill1ZGGTTxtFileExecForm.Designer.cs">
+      <DependentUpon>Zu6Kill1ZGGTTxtFileExecForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Zu6Kill1ZGGTForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zu6Kill1ZGGTForm.Designer.cs">
+      <DependentUpon>Zu6Kill1ZGGTForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Zu6Kill1Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +157,12 @@
     <EmbeddedResource Include="Five1MaForm.resx">
       <DependentUpon>Five1MaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Zu6Kill1ZGGTTxtFileExecForm.resx">
+      <DependentUpon>Zu6Kill1ZGGTTxtFileExecForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zu6Kill1ZGGTForm.resx">
+      <DependentUpon>Zu6Kill1ZGGTForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Zu6Kill1Form.resx">
       <DependentUpon>Zu6Kill1Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +239,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\2025-09-01_Txqq1f.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\hint.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
