@@ -17,7 +17,7 @@ namespace CpCodeSelect
 {
     public partial class Zu6Kill1ZGGTTxtFileExecForm : Form
     {
-        string txtFilePath = "D:\\code\\cp\\CpCodeSelect\\CpCodeSelect\\data\\2025-09-01_Txqq1f.txt";
+        string txtFilePath = "D:\\code\\cp\\CpCodeSelect\\CpCodeSelect\\data\\2025-09-09_Txqq1f.txt";
 
         private Code lastCode;
         private Code currentCode;
@@ -39,7 +39,7 @@ namespace CpCodeSelect
             }
             else
             {
-                txtFilePath = "D:\\code\\cp\\CpCodeSelect\\CpCodeSelect\\data\\2025-09-01_Txqq1f.txt";
+                txtFilePath = "D:\\code\\cp\\CpCodeSelect\\CpCodeSelect\\data\\2025-09-09_Txqq1f.txt";
             }
 
             txtDataFIlePath.Text = txtFilePath;
@@ -137,14 +137,14 @@ namespace CpCodeSelect
 
         private void AddToFile(Code code)
         {
-            using (var writer = new StreamWriter("Zu6Kill1ZGGTlog.txt", true))
+            using (var writer = new StreamWriter("Zu6Kill1ZGGTlog_2025-10-10.txt", true))
             {
                 if (code.Zu6Kill1ZGGTModelList != null && code.Zu6Kill1ZGGTModelList.Count > 0)
                 {
                     foreach (var zu6Kill1Mode in code.Zu6Kill1ZGGTModelList)
                     {
 
-                        var list = zu6Kill1Mode.Zu6Kill1ZGGTItems.Where(p => p.IsZGGT && p.ZGGTGuaCount >= 12 ).ToList();
+                        var list = zu6Kill1Mode.Zu6Kill1ZGGTItems.Where(p => p.IsZGGT && p.ZGGTGuaCount >= 10 ).ToList();
                         
                         if (list.Count > 0)
                         {
