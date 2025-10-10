@@ -40,6 +40,11 @@ namespace CpCodeSelect.Model
         /// 组六杀1码中跟挂停的位置列表
         /// </summary>
         public List<Zu6Kill1ZGGTModel> Zu6Kill1ZGGTModelList { get; set; }
+        /// <summary>
+        /// 组六杀1码中跟2的位置列表
+        /// </summary>
+
+        public List<Zu6Kill1ZG2Model> Zu6Kill1ZG2ModelList { get; set; }
 
     }
 }

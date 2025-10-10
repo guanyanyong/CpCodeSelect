@@ -68,6 +68,12 @@
     <Compile Include="Five1MaForm.Designer.cs">
       <DependentUpon>Five1MaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Zu6Kill1ZG2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Zu6Kill1ZG2Form.Designer.cs">
+      <DependentUpon>Zu6Kill1ZG2Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Zu6Kill1ZGGTTxtFileExecForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     <EmbeddedResource Include="Five1MaForm.resx">
       <DependentUpon>Five1MaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Zu6Kill1ZG2Form.resx">
+      <DependentUpon>Zu6Kill1ZG2Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Zu6Kill1ZGGTTxtFileExecForm.resx">
       <DependentUpon>Zu6Kill1ZGGTTxtFileExecForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -245,6 +254,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="data\hint.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="data\yanhua.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -36,6 +36,10 @@ namespace CpCodeSelect
             }else if(str== "Zu6Kill1ZGGT")
             {
                 Application.Run(new Zu6Kill1ZGGTForm());
+            }else if(str== "Zu6Kill1ZG2")
+            {
+                Application.Run(new Zu6Kill1ZG2Form());
+
             }
 
         }

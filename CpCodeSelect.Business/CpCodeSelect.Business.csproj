@@ -54,6 +54,7 @@
     <Compile Include="Kill3moniBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Five1MaBusiness.cs" />
+    <Compile Include="Zu6Kill1ZG2Business.cs" />
     <Compile Include="Zu6Kill1ZGGTBusiness.cs" />
     <Compile Include="Zu6Kill1Business.cs" />
   </ItemGroup>
