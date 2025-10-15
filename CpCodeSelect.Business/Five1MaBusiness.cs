@@ -78,7 +78,8 @@ namespace CpCodeSelect.Business
             {
                 preTuijianList = code.PreCode.Five1MaModelList;
             }
-            //处理判断当期是否有对子
+            //处理推荐的号码是否有出现,出现了删除 没有出现则加1
+            //同时处理对子
             Dictionary<int, int> dic = new Dictionary<int, int>();
             SetDictionaryAndTuijian(dic, code.Wan.Number, preTuijianList);
             SetDictionaryAndTuijian(dic, code.Qian.Number, preTuijianList);
