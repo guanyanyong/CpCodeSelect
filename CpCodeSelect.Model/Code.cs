@@ -46,5 +46,14 @@ namespace CpCodeSelect.Model
 
         public List<Zu6Kill1ZG2Model> Zu6Kill1ZG2ModelList { get; set; }
 
+        /// <summary>
+        /// 获取后二字符串
+        /// </summary>
+        /// <returns></returns>
+        public string GetHou2String()
+        {
+            return $"{Shi.Number}{Ge.Number}";
+        }
+
     }
 }

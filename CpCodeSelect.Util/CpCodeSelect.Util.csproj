@@ -44,6 +44,8 @@
     <Compile Include="Class1.cs" />
     <Compile Include="FileAnalysis.cs" />
     <Compile Include="FileUtil.cs" />
+    <Compile Include="NumberFilter.cs" />
+    <Compile Include="NumberSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

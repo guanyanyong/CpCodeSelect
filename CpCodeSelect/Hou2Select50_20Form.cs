@@ -15,10 +15,10 @@ using System.Windows.Forms;
 
 namespace CpCodeSelect
 {
-    public partial class Kill3Form : Form
+    public partial class Hou2Select50_20Form : Form
     {
         public Dictionary<int, List<StatisticModel>> StatisticDic = new Dictionary<int, List<StatisticModel>>();
-        private string filePath = @"D:\Program Files (x86)\恒盛挂机软件\OpenCode\TXFFC.txt";
+        private string filePath = @"D:\Program Files (x86)\益达挂机软件\OpenCode\YDYLTXFFC.txt";
         private FileSystemWatcher fileWatcher;
         private System.Windows.Forms.Timer showErrorTexttimer;
         //private Timer addTextTimer;
@@ -30,7 +30,7 @@ namespace CpCodeSelect
         public MoniRunKill3_2 moniKill3_2 = new MoniRunKill3_2();
         public MoniRunKill3_3 moniKill3_3 = new MoniRunKill3_3();
         public StatisticForm statisticForm = new StatisticForm();
-        public Kill3Form()
+        public Hou2Select50_20Form()
         {
             InitializeComponent();
             Init();
@@ -142,37 +142,151 @@ namespace CpCodeSelect
         /// </summary>
         public void AnalySisCode(Code code)
         {
-            Kill3CodeBusiness.InitCode(code);
-            AddToLogFileKill3(code, "Kill3.txt");
+            Hou2Select50_20Business.InitCode(code);
+            InitOfferNumber();
+            GenerateOfferNumber();
+
+            //AddToLogFileZu6Kill1(code, "Hou2Select50.txt");
             //在这里把分析后的可以推荐的号码显示到界面上
-            AddToListBox(code);
+
 
             //执行模拟挂机
-            moniKill3.Run(code);
-            moniKill3_2.Run(code);
-            moniKill3_3.Run(code);
+            //moniKill3.Run(code);
+            //moniKill3_2.Run(code);
+            //moniKill3_3.Run(code);
 
         }
-
-        private void AddToLogFileKill3(Code code, string kill3FileName)
+        public void InitOfferNumber()
         {
-            using (var writer = new StreamWriter(kill3FileName, true))
+            if (chkRefersh.Checked)
             {
-                if (code.Kill3ModelList != null && code.Kill3ModelList.Count > 0)
+                offerNumber01.Text = "";
+                offerNumber02.Text = "";
+                offerNumber03.Text = "";
+                offerNumber04.Text = "";
+                offerNumber05.Text = "";
+                offerNumber06.Text = "";
+                offerNumber07.Text = "";
+                offerNumber08.Text = "";
+                offerNumber09.Text = "";
+                offerNumber10.Text = "";
+                offerNumber11.Text = "";
+                offerNumber12.Text = "";
+                offerNumber13.Text = "";
+                offerNumber14.Text = "";
+                offerNumber15.Text = "";
+                offerNumber16.Text = "";
+                offerNumber17.Text = "";
+                offerNumber18.Text = "";
+                offerNumber19.Text = "";
+                offerNumber20.Text = "";
+                offerNumber21.Text = "";
+                offerNumber22.Text = "";
+                offerNumber23.Text = "";
+                offerNumber24.Text = "";
+                offerNumber25.Text = "";
+                offerNumber26.Text = "";
+                offerNumber27.Text = "";
+                offerNumber28.Text = "";
+                offerNumber29.Text = "";
+                offerNumber30.Text = "";
+            }
+        }
+        public void GenerateOfferNumber()
+        {
+            if (chkRefersh.Checked)
+            {
+                offerNumber01.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber02.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber03.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber04.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber05.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber06.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber07.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber08.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber09.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber10.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber11.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber12.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber13.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber14.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber15.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber16.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber17.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber18.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber19.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber20.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+
+                offerNumber21.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber22.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber23.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber24.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber25.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber26.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber27.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber28.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber29.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+                offerNumber30.Text = Hou2Select50_20Business.GetHou2_50NumerString();
+                Thread.Sleep(10);
+            }
+        }
+
+        private void AddToLogFileZu6Kill1(Code code, string zu6Kill1FileName)
+        {
+            using (var writer = new StreamWriter(zu6Kill1FileName, true))
+            {
+                if (code.Zu6Kill1ModelList != null && code.Zu6Kill1ModelList.Count > 0)
                 {
-                    foreach (var kill3Model in code.Kill3ModelList)
+                    foreach (var zu6Kill1Mode in code.Zu6Kill1ModelList)
                     {
                         bool needFlush = false;
-                        if (kill3Model.IsLianGua)
+                        var list = zu6Kill1Mode.Zu6Kill1Items.Where(p => (p.IsLianGua && p.GuaCount >= 1) || (!p.IsLianGua && p.LianZhongCount >= 1)).ToList();
+                        if (list.Count>0)
                         {
-                            needFlush = true;
-                            writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}连挂中,当前连挂次数{kill3Model.GuaCount},挂后中次数{kill3Model.GuaHouZhong}");
-
-                        }
-                        if (kill3Model.LianZhongCount >= 3)
-                        {
-                            needFlush = true;
-                            writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}当前是连中,当前连中次数{kill3Model.LianZhongCount}");
+                            foreach(var recode in list)
+                            {
+                                if (recode.IsLianGua)
+                                {
+                                    needFlush = true;
+                                    //连挂中
+                                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{zu6Kill1Mode.Name}的{recode.Number}连挂中,当前连挂次数{recode.GuaCount}");
+                                }
+                                else
+                                {
+                                    needFlush = true;
+                                    //连中
+                                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{zu6Kill1Mode.Name}的{recode.Number}连中,连中次数{recode.LianZhongCount}");
+                                }
+                            }
                         }
                         if (needFlush)
                         {
@@ -184,43 +298,6 @@ namespace CpCodeSelect
             }
         }
 
-        private void AddToListBox(Code code)
-        {
-            var needSlip = false;
-            if (code.Kill3ModelList != null && code.Kill3ModelList.Count > 0)
-            {
-                foreach (var kill3Model in code.Kill3ModelList)
-                {
-                    if (kill3Model.IsLianGua)
-                    {
-                        if (kill3Model.GuaCount >= 2)
-                        {
-                            AddStatisticToDic(kill3Model.GuaCount, new StatisticModel()
-                            {
-                                CodeNumber = code.CodeNumber,
-                                CodeQiHao = code.CodeQiHao,
-                                StatisticType = kill3Model.Name,
-                                GuaCount = kill3Model.GuaCount,
-                                GuaHouZhong = kill3Model.GuaHouZhong
-                            });
-                        }
-                        if (chkLianGua.Checked)
-                        {
-                            listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}连挂中,连挂次数{kill3Model.GuaCount},挂后中次数{kill3Model.GuaHouZhong}");
-                            needSlip = true;
-                        }
-                    }
-                    if (kill3Model.LianZhongCount >= 3 && chkLianZhong.Checked)
-                    {
-                        listBoxTuiJian.Items.Add($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{kill3Model.Name}连中,连中次数{kill3Model.LianZhongCount}");
-                        needSlip = true;
-                    }
-                }
-
-            }
-            if(needSlip)
-            listBoxTuiJian.TopIndex = listBoxTuiJian.Items.Count - 1; // 自动滚动到底部
-        }
         /// <summary>
         /// 从文件中获取最新的号码
         /// </summary>
@@ -258,8 +335,6 @@ namespace CpCodeSelect
         }
         private void InitForm()
         {
-            listBoxTuiJian.Items.Clear();
-            listBoxHistory.Items.Clear();
         }
         private void InitData()
         {
@@ -329,11 +404,12 @@ namespace CpCodeSelect
         /// </summary>
         private void StartExec()
         {
-            if (DateTime.Now >= Convert.ToDateTime("2025-11-22"))
+            if (DateTime.Now >= Convert.ToDateTime("2025-11-30"))
             {
                 //MessageBox.Show("软件试用期已过期，请联系作者购买正式版");
                 return;
             }
+            
             if (!string.IsNullOrEmpty(filePath))
             {
                 AddRecord("开始执行");
@@ -354,6 +430,7 @@ namespace CpCodeSelect
             }
         }
         int recordCount = 0;
+
         /// <summary>
         /// 添加记录到操作历史列表中
         /// </summary>

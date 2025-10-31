@@ -18,7 +18,7 @@ namespace CpCodeSelect
     public partial class Five1MaForm : Form
     {
         public Dictionary<int, List<StatisticModel>> StatisticDic = new Dictionary<int, List<StatisticModel>>();
-        private string filePath = @"D:\Program Files (x86)\恒盛挂机软件\OpenCode\TXFFC.txt";
+        private string filePath = @"C:\Program Files (x86)\恒盛挂机软件\OpenCode\TXFFC.txt";
         private FileSystemWatcher fileWatcher;
         private System.Windows.Forms.Timer showErrorTexttimer;
         //private Timer addTextTimer;

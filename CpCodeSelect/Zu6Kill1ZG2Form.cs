@@ -19,7 +19,7 @@ namespace CpCodeSelect
     public partial class Zu6Kill1ZG2Form : Form
     {
         public Dictionary<int, List<StatisticModel>> StatisticDic = new Dictionary<int, List<StatisticModel>>();
-        private string filePath = @"D:\Program Files (x86)\恒盛挂机软件\OpenCode\TXFFC.txt";
+        private string filePath = @"c:\Program Files (x86)\恒盛挂机软件\OpenCode\TXFFC.txt";
         private FileSystemWatcher fileWatcher;
         private System.Windows.Forms.Timer showErrorTexttimer;
         //private Timer addTextTimer;

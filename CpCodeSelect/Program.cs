@@ -40,6 +40,9 @@ namespace CpCodeSelect
             {
                 Application.Run(new Zu6Kill1ZG2Form());
 
+            }else if(str== "Hou2Select50_20")
+            {
+                Application.Run(new Hou2Select50_20Form());
             }
 
         }
