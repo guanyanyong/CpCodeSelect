@@ -148,8 +148,8 @@ namespace CpCodeSelect
             GenerateOfferNumber();
             SetForm();
             //AddToLogFileZu6Kill1(code, "Hou2Select50.txt");
+            AddToLogFileHou2Select50Auto(code);
             //在这里把分析后的可以推荐的号码显示到界面上
-
 
             //执行模拟挂机
             //moniKill3.Run(code);
@@ -159,9 +159,10 @@ namespace CpCodeSelect
         }
         public void SetForm()
         {
-            if (Hou2Select50AutoBusiness.modelList.Count > 0)
+            if (Hou2Select50AutoBusiness.modelList.Where(p => p.NeedZhong == false).ToList().Count > 0)
             {
-                lblMaxGua.Text = Hou2Select50AutoBusiness.modelList.Max(p => p.GuaCount).ToString();
+
+                lblMaxGua.Text = Hou2Select50AutoBusiness.modelList.Where(p => p.NeedZhong == false).Max(p => p.GuaCount).ToString();
                 lblTotalNumber.Text = Hou2Select50AutoBusiness.modelList.Count.ToString();
             }
             else
@@ -214,40 +215,29 @@ namespace CpCodeSelect
             }
         }
 
-        private void AddToLogFileZu6Kill1(Code code, string zu6Kill1FileName)
+        private void AddToLogFileHou2Select50Auto(Code code)
         {
-            using (var writer = new StreamWriter(zu6Kill1FileName, true))
+            if (Hou2Select50AutoBusiness.modelList.Count > 1000)
             {
-                if (code.Zu6Kill1ModelList != null && code.Zu6Kill1ModelList.Count > 0)
-                {
-                    foreach (var zu6Kill1Mode in code.Zu6Kill1ModelList)
-                    {
-                        bool needFlush = false;
-                        var list = zu6Kill1Mode.Zu6Kill1Items.Where(p => (p.IsLianGua && p.GuaCount >= 1) || (!p.IsLianGua && p.LianZhongCount >= 1)).ToList();
-                        if (list.Count > 0)
-                        {
-                            foreach (var recode in list)
-                            {
-                                if (recode.IsLianGua)
-                                {
-                                    needFlush = true;
-                                    //连挂中
-                                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{zu6Kill1Mode.Name}的{recode.Number}连挂中,当前连挂次数{recode.GuaCount}");
-                                }
-                                else
-                                {
-                                    needFlush = true;
-                                    //连中
-                                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，{zu6Kill1Mode.Name}的{recode.Number}连中,连中次数{recode.LianZhongCount}");
-                                }
-                            }
-                        }
-                        if (needFlush)
-                        {
-                            writer.Flush();
-                        }
-                    }
 
+                bool needFlush = false;
+                string fileName = "Hou2Select50Auto.txt";
+                using (var writer = new StreamWriter(fileName, true))
+                {
+                    var maxNumber = Hou2Select50AutoBusiness.modelList.Where(p=>p.NeedZhong==false).Max(p => p.GuaCount);
+                    if (maxNumber >= 16)
+                    {
+                        needFlush = true;
+                        Hou2Select50AutoBusiness.modelList.Where(p => p.GuaCount == maxNumber).ToList().ForEach(recode =>
+                        {
+                            writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}，号码：{string.Join(" ", recode.Number50)}");
+                            //writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}");
+                        });
+                    }
+                    if (needFlush)
+                    {
+                        writer.Flush();
+                    }
                 }
             }
         }
@@ -542,6 +532,11 @@ namespace CpCodeSelect
             autoClkTimer.Stop();
             btnStartAuto.Enabled = true;
             btnStopAuto.Enabled = false;
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

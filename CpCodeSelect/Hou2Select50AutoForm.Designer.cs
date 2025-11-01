@@ -48,11 +48,6 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.CodeQiHao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numer50 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lblTotalNumber = new System.Windows.Forms.Label();
@@ -63,6 +58,11 @@
             this.btnStopAuto = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDownAutoClick = new System.Windows.Forms.NumericUpDown();
+            this.CodeQiHao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numer50 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -193,6 +193,7 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "总体信息";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // tabPage2
             // 
@@ -306,38 +307,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // CodeQiHao
-            // 
-            this.CodeQiHao.DataPropertyName = "CodeQiHao";
-            this.CodeQiHao.HeaderText = "期号";
-            this.CodeQiHao.Name = "CodeQiHao";
-            // 
-            // CodeNumber
-            // 
-            this.CodeNumber.DataPropertyName = "CodeNumber";
-            this.CodeNumber.HeaderText = "期号开奖号";
-            this.CodeNumber.Name = "CodeNumber";
-            // 
-            // GuaCount
-            // 
-            this.GuaCount.DataPropertyName = "GuaCount";
-            this.GuaCount.HeaderText = "连挂次数";
-            this.GuaCount.Name = "GuaCount";
-            // 
-            // ZhongGount
-            // 
-            this.ZhongGount.DataPropertyName = "ZhongGount";
-            this.ZhongGount.HeaderText = "连中次数";
-            this.ZhongGount.Name = "ZhongGount";
-            // 
-            // Numer50
-            // 
-            this.Numer50.DataPropertyName = "Numer50";
-            this.Numer50.HeaderText = "50号码";
-            this.Numer50.Name = "Numer50";
-            this.Numer50.Text = "查看50个号码";
-            this.Numer50.UseColumnTextForButtonValue = true;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -433,6 +402,38 @@
             0,
             0});
             // 
+            // CodeQiHao
+            // 
+            this.CodeQiHao.DataPropertyName = "CodeQiHao";
+            this.CodeQiHao.HeaderText = "期号";
+            this.CodeQiHao.Name = "CodeQiHao";
+            // 
+            // CodeNumber
+            // 
+            this.CodeNumber.DataPropertyName = "CodeNumber";
+            this.CodeNumber.HeaderText = "开奖号";
+            this.CodeNumber.Name = "CodeNumber";
+            // 
+            // GuaCount
+            // 
+            this.GuaCount.DataPropertyName = "GuaCount";
+            this.GuaCount.HeaderText = "连挂数";
+            this.GuaCount.Name = "GuaCount";
+            // 
+            // ZhongGount
+            // 
+            this.ZhongGount.DataPropertyName = "ZhongGount";
+            this.ZhongGount.HeaderText = "连中数";
+            this.ZhongGount.Name = "ZhongGount";
+            // 
+            // Numer50
+            // 
+            this.Numer50.DataPropertyName = "Numer50";
+            this.Numer50.HeaderText = "50号码";
+            this.Numer50.Name = "Numer50";
+            this.Numer50.Text = "查看50个号码";
+            this.Numer50.UseColumnTextForButtonValue = true;
+            // 
             // Hou2Select50AutoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -482,11 +483,6 @@
         private System.Windows.Forms.TextBox txt50Number;
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodeQiHao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodeNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZhongGount;
-        private System.Windows.Forms.DataGridViewButtonColumn Numer50;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblTotalNumber;
@@ -497,6 +493,11 @@
         private System.Windows.Forms.Button btnStartAuto;
         private System.Windows.Forms.NumericUpDown numericUpDownAutoClick;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodeQiHao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodeNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZhongGount;
+        private System.Windows.Forms.DataGridViewButtonColumn Numer50;
     }
 }
 

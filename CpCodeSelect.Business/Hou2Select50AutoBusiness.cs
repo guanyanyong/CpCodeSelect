@@ -67,9 +67,9 @@ namespace CpCodeSelect.Business
         public static void RemoveOldModel(int guaCount=3)
         {
             List<Hou2Select50_20Model> removeList = new List<Hou2Select50_20Model>();
-            while (modelList.Count > 3000)
+            while (modelList.Count > 3500)
             {
-                for(int i = 0; i < 50; i++)
+                for(int i = 0; i < 200; i++)
                 {
                     var model = modelList[i];
                     if (model.GuaCount <= guaCount)
