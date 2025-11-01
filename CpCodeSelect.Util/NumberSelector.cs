@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CpCodeSelect.Util
 {
     public class NumberSelector
     {
+        private static readonly ThreadLocal<Random> _threadLocalRandom =
+        new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
+
         /// <summary>
         /// 从80个号码中随机分成5组，每组随机抽取10个号码
         /// </summary>
@@ -30,7 +34,7 @@ namespace CpCodeSelect.Util
                 }
             }
 
-            Random random = new Random();
+            Random random = _threadLocalRandom.Value;
 
             // 第一步：将80个号码随机分成5组（每组16个号码）
             List<List<string>> initialGroups = DistributeTo5Groups(inputNumbers, random);

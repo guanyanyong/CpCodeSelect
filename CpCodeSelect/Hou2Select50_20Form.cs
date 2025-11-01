@@ -197,66 +197,35 @@ namespace CpCodeSelect
             if (chkRefersh.Checked)
             {
                 offerNumber01.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber02.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber03.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber04.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber05.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber06.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber07.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber08.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber09.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber10.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber11.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber12.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber13.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber14.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber15.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber16.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber17.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber18.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber19.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber20.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
-
                 offerNumber21.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber22.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber23.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber24.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber25.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber26.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber27.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber28.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber29.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
                 offerNumber30.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                Thread.Sleep(10);
             }
         }
 
