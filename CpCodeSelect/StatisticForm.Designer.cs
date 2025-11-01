@@ -1,4 +1,6 @@
-﻿namespace CpCodeSelect
+﻿using System.Windows.Forms;
+
+namespace CpCodeSelect
 {
     partial class StatisticForm
     {
@@ -115,6 +117,8 @@
             this.dataGridView.RowTemplate.Height = 23;
             this.dataGridView.Size = new System.Drawing.Size(1026, 484);
             this.dataGridView.TabIndex = 5;
+
+
             // 
             // StatisticForm
             // 

@@ -48,6 +48,7 @@
     <Compile Include="DaXiaoDanShuangMoniBusiness.cs" />
     <Compile Include="DragonTigerBusiness.cs" />
     <Compile Include="DaXiaoDanShuangBusiness.cs" />
+    <Compile Include="Hou2Select50AutoBusiness.cs" />
     <Compile Include="Kill3CodeBusiness.cs" />
     <Compile Include="Kill3moniBusiness_3.cs" />
     <Compile Include="Kill3moniBusiness_2.cs" />
