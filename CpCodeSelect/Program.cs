@@ -48,6 +48,10 @@ namespace CpCodeSelect
             {
                 Application.Run(new Hou2Select50AutoForm());
             }
+            else if(str == "Hou2Select50YiLouSet")
+            {
+                Application.Run(new Hou2Select50YiLouSetForm());
+            }
 
         }
     }
