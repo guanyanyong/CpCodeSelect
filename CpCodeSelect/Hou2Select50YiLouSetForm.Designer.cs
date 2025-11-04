@@ -45,13 +45,34 @@
             this.lblTotalNumber = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.SetSearch = new System.Windows.Forms.TabPage();
+            this.txtNum3 = new System.Windows.Forms.TextBox();
             this.txtNum2 = new System.Windows.Forms.TextBox();
             this.txtNum1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.num13E = new System.Windows.Forms.NumericUpDown();
+            this.num12E = new System.Windows.Forms.NumericUpDown();
+            this.num11E = new System.Windows.Forms.NumericUpDown();
+            this.num10E = new System.Windows.Forms.NumericUpDown();
+            this.num9E = new System.Windows.Forms.NumericUpDown();
+            this.num8E = new System.Windows.Forms.NumericUpDown();
+            this.num7E = new System.Windows.Forms.NumericUpDown();
+            this.num6E = new System.Windows.Forms.NumericUpDown();
+            this.num5E = new System.Windows.Forms.NumericUpDown();
+            this.num4E = new System.Windows.Forms.NumericUpDown();
             this.num3E = new System.Windows.Forms.NumericUpDown();
             this.num2E = new System.Windows.Forms.NumericUpDown();
             this.num1E = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.num13B = new System.Windows.Forms.NumericUpDown();
+            this.num12B = new System.Windows.Forms.NumericUpDown();
+            this.num11B = new System.Windows.Forms.NumericUpDown();
+            this.num10B = new System.Windows.Forms.NumericUpDown();
+            this.num9B = new System.Windows.Forms.NumericUpDown();
+            this.num8B = new System.Windows.Forms.NumericUpDown();
+            this.num7B = new System.Windows.Forms.NumericUpDown();
+            this.num6B = new System.Windows.Forms.NumericUpDown();
+            this.num5B = new System.Windows.Forms.NumericUpDown();
+            this.num4B = new System.Windows.Forms.NumericUpDown();
             this.num3B = new System.Windows.Forms.NumericUpDown();
             this.num2B = new System.Windows.Forms.NumericUpDown();
             this.num1B = new System.Windows.Forms.NumericUpDown();
@@ -69,42 +90,41 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Numer50 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CodeQiHao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numer50 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.num4B = new System.Windows.Forms.NumericUpDown();
-            this.num4E = new System.Windows.Forms.NumericUpDown();
-            this.num5B = new System.Windows.Forms.NumericUpDown();
-            this.num5E = new System.Windows.Forms.NumericUpDown();
-            this.num6B = new System.Windows.Forms.NumericUpDown();
-            this.num6E = new System.Windows.Forms.NumericUpDown();
-            this.num7B = new System.Windows.Forms.NumericUpDown();
-            this.num7E = new System.Windows.Forms.NumericUpDown();
-            this.num8B = new System.Windows.Forms.NumericUpDown();
-            this.num8E = new System.Windows.Forms.NumericUpDown();
-            this.num9B = new System.Windows.Forms.NumericUpDown();
-            this.num9E = new System.Windows.Forms.NumericUpDown();
-            this.num10B = new System.Windows.Forms.NumericUpDown();
-            this.num10E = new System.Windows.Forms.NumericUpDown();
-            this.num11B = new System.Windows.Forms.NumericUpDown();
-            this.num11E = new System.Windows.Forms.NumericUpDown();
-            this.num12B = new System.Windows.Forms.NumericUpDown();
-            this.num12E = new System.Windows.Forms.NumericUpDown();
-            this.num13B = new System.Windows.Forms.NumericUpDown();
-            this.num13E = new System.Windows.Forms.NumericUpDown();
-            this.txtNum3 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num13E)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num12E)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num11E)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num10E)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num9E)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num8E)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num7E)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num6E)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num5E)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num4E)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num3E)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num2E)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num1E)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num13B)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num12B)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num11B)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num10B)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num9B)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num8B)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num7B)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num6B)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num5B)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num4B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num3B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num2B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num1B)).BeginInit();
@@ -113,26 +133,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoClick)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num4B)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num4E)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num5B)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num5E)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num6B)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num6E)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num7B)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num7E)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num8B)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num8E)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num9B)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num9E)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num10B)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num10E)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num11B)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num11E)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num12B)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num12E)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num13B)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num13E)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -336,6 +336,14 @@
             this.SetSearch.Text = "搜索设置";
             this.SetSearch.UseVisualStyleBackColor = true;
             // 
+            // txtNum3
+            // 
+            this.txtNum3.Location = new System.Drawing.Point(1036, 375);
+            this.txtNum3.Multiline = true;
+            this.txtNum3.Name = "txtNum3";
+            this.txtNum3.Size = new System.Drawing.Size(341, 287);
+            this.txtNum3.TabIndex = 6;
+            // 
             // txtNum2
             // 
             this.txtNum2.Location = new System.Drawing.Point(1036, 62);
@@ -361,6 +369,176 @@
             this.button2.Text = "开始搜索";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // num13E
+            // 
+            this.num13E.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num13E.Location = new System.Drawing.Point(265, 683);
+            this.num13E.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num13E.Name = "num13E";
+            this.num13E.Size = new System.Drawing.Size(120, 36);
+            this.num13E.TabIndex = 4;
+            this.num13E.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            // 
+            // num12E
+            // 
+            this.num12E.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num12E.Location = new System.Drawing.Point(265, 641);
+            this.num12E.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num12E.Name = "num12E";
+            this.num12E.Size = new System.Drawing.Size(120, 36);
+            this.num12E.TabIndex = 4;
+            this.num12E.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // num11E
+            // 
+            this.num11E.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num11E.Location = new System.Drawing.Point(265, 599);
+            this.num11E.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num11E.Name = "num11E";
+            this.num11E.Size = new System.Drawing.Size(120, 36);
+            this.num11E.TabIndex = 4;
+            this.num11E.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // num10E
+            // 
+            this.num10E.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num10E.Location = new System.Drawing.Point(265, 557);
+            this.num10E.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num10E.Name = "num10E";
+            this.num10E.Size = new System.Drawing.Size(120, 36);
+            this.num10E.TabIndex = 4;
+            // 
+            // num9E
+            // 
+            this.num9E.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num9E.Location = new System.Drawing.Point(265, 515);
+            this.num9E.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num9E.Name = "num9E";
+            this.num9E.Size = new System.Drawing.Size(120, 36);
+            this.num9E.TabIndex = 4;
+            // 
+            // num8E
+            // 
+            this.num8E.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num8E.Location = new System.Drawing.Point(265, 473);
+            this.num8E.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num8E.Name = "num8E";
+            this.num8E.Size = new System.Drawing.Size(120, 36);
+            this.num8E.TabIndex = 4;
+            this.num8E.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // num7E
+            // 
+            this.num7E.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num7E.Location = new System.Drawing.Point(265, 431);
+            this.num7E.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num7E.Name = "num7E";
+            this.num7E.Size = new System.Drawing.Size(120, 36);
+            this.num7E.TabIndex = 4;
+            this.num7E.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // num6E
+            // 
+            this.num6E.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num6E.Location = new System.Drawing.Point(265, 389);
+            this.num6E.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num6E.Name = "num6E";
+            this.num6E.Size = new System.Drawing.Size(120, 36);
+            this.num6E.TabIndex = 4;
+            this.num6E.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // num5E
+            // 
+            this.num5E.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num5E.Location = new System.Drawing.Point(265, 347);
+            this.num5E.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num5E.Name = "num5E";
+            this.num5E.Size = new System.Drawing.Size(120, 36);
+            this.num5E.TabIndex = 4;
+            this.num5E.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // num4E
+            // 
+            this.num4E.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num4E.Location = new System.Drawing.Point(265, 305);
+            this.num4E.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num4E.Name = "num4E";
+            this.num4E.Size = new System.Drawing.Size(120, 36);
+            this.num4E.TabIndex = 4;
+            this.num4E.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // num3E
             // 
@@ -438,6 +616,151 @@
             0,
             0,
             0});
+            // 
+            // num13B
+            // 
+            this.num13B.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num13B.Location = new System.Drawing.Point(110, 683);
+            this.num13B.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num13B.Name = "num13B";
+            this.num13B.Size = new System.Drawing.Size(120, 36);
+            this.num13B.TabIndex = 4;
+            this.num13B.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // num12B
+            // 
+            this.num12B.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num12B.Location = new System.Drawing.Point(110, 641);
+            this.num12B.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num12B.Name = "num12B";
+            this.num12B.Size = new System.Drawing.Size(120, 36);
+            this.num12B.TabIndex = 4;
+            this.num12B.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            // 
+            // num11B
+            // 
+            this.num11B.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num11B.Location = new System.Drawing.Point(110, 599);
+            this.num11B.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num11B.Name = "num11B";
+            this.num11B.Size = new System.Drawing.Size(120, 36);
+            this.num11B.TabIndex = 4;
+            this.num11B.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            // 
+            // num10B
+            // 
+            this.num10B.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num10B.Location = new System.Drawing.Point(110, 557);
+            this.num10B.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num10B.Name = "num10B";
+            this.num10B.Size = new System.Drawing.Size(120, 36);
+            this.num10B.TabIndex = 4;
+            // 
+            // num9B
+            // 
+            this.num9B.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num9B.Location = new System.Drawing.Point(110, 515);
+            this.num9B.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num9B.Name = "num9B";
+            this.num9B.Size = new System.Drawing.Size(120, 36);
+            this.num9B.TabIndex = 4;
+            // 
+            // num8B
+            // 
+            this.num8B.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num8B.Location = new System.Drawing.Point(110, 473);
+            this.num8B.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num8B.Name = "num8B";
+            this.num8B.Size = new System.Drawing.Size(120, 36);
+            this.num8B.TabIndex = 4;
+            // 
+            // num7B
+            // 
+            this.num7B.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num7B.Location = new System.Drawing.Point(110, 431);
+            this.num7B.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num7B.Name = "num7B";
+            this.num7B.Size = new System.Drawing.Size(120, 36);
+            this.num7B.TabIndex = 4;
+            // 
+            // num6B
+            // 
+            this.num6B.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num6B.Location = new System.Drawing.Point(110, 389);
+            this.num6B.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num6B.Name = "num6B";
+            this.num6B.Size = new System.Drawing.Size(120, 36);
+            this.num6B.TabIndex = 4;
+            // 
+            // num5B
+            // 
+            this.num5B.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num5B.Location = new System.Drawing.Point(110, 347);
+            this.num5B.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num5B.Name = "num5B";
+            this.num5B.Size = new System.Drawing.Size(120, 36);
+            this.num5B.TabIndex = 4;
+            // 
+            // num4B
+            // 
+            this.num4B.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.num4B.Location = new System.Drawing.Point(110, 305);
+            this.num4B.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.num4B.Name = "num4B";
+            this.num4B.Size = new System.Drawing.Size(120, 36);
+            this.num4B.TabIndex = 4;
             // 
             // num3B
             // 
@@ -672,17 +995,35 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Numer50,
             this.CodeQiHao,
             this.CodeNumber,
             this.GuaCount,
-            this.ZhongGount,
-            this.Numer50});
+            this.ZhongGount});
             this.dataGridView1.Location = new System.Drawing.Point(45, 141);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(700, 661);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
+            // Numer50
+            // 
+            this.Numer50.DataPropertyName = "Numer50";
+            this.Numer50.HeaderText = "50号码";
+            this.Numer50.Name = "Numer50";
+            this.Numer50.Text = "查看50个号码";
+            this.Numer50.UseColumnTextForButtonValue = true;
             // 
             // CodeQiHao
             // 
@@ -708,347 +1049,6 @@
             this.ZhongGount.HeaderText = "连中数";
             this.ZhongGount.Name = "ZhongGount";
             // 
-            // Numer50
-            // 
-            this.Numer50.DataPropertyName = "Numer50";
-            this.Numer50.HeaderText = "50号码";
-            this.Numer50.Name = "Numer50";
-            this.Numer50.Text = "查看50个号码";
-            this.Numer50.UseColumnTextForButtonValue = true;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
-            // 
-            // num4B
-            // 
-            this.num4B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num4B.Location = new System.Drawing.Point(110, 305);
-            this.num4B.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num4B.Name = "num4B";
-            this.num4B.Size = new System.Drawing.Size(120, 36);
-            this.num4B.TabIndex = 4;
-            // 
-            // num4E
-            // 
-            this.num4E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num4E.Location = new System.Drawing.Point(265, 305);
-            this.num4E.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num4E.Name = "num4E";
-            this.num4E.Size = new System.Drawing.Size(120, 36);
-            this.num4E.TabIndex = 4;
-            this.num4E.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // num5B
-            // 
-            this.num5B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num5B.Location = new System.Drawing.Point(110, 347);
-            this.num5B.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num5B.Name = "num5B";
-            this.num5B.Size = new System.Drawing.Size(120, 36);
-            this.num5B.TabIndex = 4;
-            // 
-            // num5E
-            // 
-            this.num5E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num5E.Location = new System.Drawing.Point(265, 347);
-            this.num5E.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num5E.Name = "num5E";
-            this.num5E.Size = new System.Drawing.Size(120, 36);
-            this.num5E.TabIndex = 4;
-            this.num5E.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // num6B
-            // 
-            this.num6B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num6B.Location = new System.Drawing.Point(110, 389);
-            this.num6B.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num6B.Name = "num6B";
-            this.num6B.Size = new System.Drawing.Size(120, 36);
-            this.num6B.TabIndex = 4;
-            // 
-            // num6E
-            // 
-            this.num6E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num6E.Location = new System.Drawing.Point(265, 389);
-            this.num6E.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num6E.Name = "num6E";
-            this.num6E.Size = new System.Drawing.Size(120, 36);
-            this.num6E.TabIndex = 4;
-            this.num6E.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // num7B
-            // 
-            this.num7B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num7B.Location = new System.Drawing.Point(110, 431);
-            this.num7B.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num7B.Name = "num7B";
-            this.num7B.Size = new System.Drawing.Size(120, 36);
-            this.num7B.TabIndex = 4;
-            // 
-            // num7E
-            // 
-            this.num7E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num7E.Location = new System.Drawing.Point(265, 431);
-            this.num7E.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num7E.Name = "num7E";
-            this.num7E.Size = new System.Drawing.Size(120, 36);
-            this.num7E.TabIndex = 4;
-            this.num7E.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // num8B
-            // 
-            this.num8B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num8B.Location = new System.Drawing.Point(110, 473);
-            this.num8B.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num8B.Name = "num8B";
-            this.num8B.Size = new System.Drawing.Size(120, 36);
-            this.num8B.TabIndex = 4;
-            // 
-            // num8E
-            // 
-            this.num8E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num8E.Location = new System.Drawing.Point(265, 473);
-            this.num8E.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num8E.Name = "num8E";
-            this.num8E.Size = new System.Drawing.Size(120, 36);
-            this.num8E.TabIndex = 4;
-            this.num8E.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // num9B
-            // 
-            this.num9B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num9B.Location = new System.Drawing.Point(110, 515);
-            this.num9B.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num9B.Name = "num9B";
-            this.num9B.Size = new System.Drawing.Size(120, 36);
-            this.num9B.TabIndex = 4;
-            // 
-            // num9E
-            // 
-            this.num9E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num9E.Location = new System.Drawing.Point(265, 515);
-            this.num9E.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num9E.Name = "num9E";
-            this.num9E.Size = new System.Drawing.Size(120, 36);
-            this.num9E.TabIndex = 4;
-            // 
-            // num10B
-            // 
-            this.num10B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num10B.Location = new System.Drawing.Point(110, 557);
-            this.num10B.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num10B.Name = "num10B";
-            this.num10B.Size = new System.Drawing.Size(120, 36);
-            this.num10B.TabIndex = 4;
-            // 
-            // num10E
-            // 
-            this.num10E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num10E.Location = new System.Drawing.Point(265, 557);
-            this.num10E.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num10E.Name = "num10E";
-            this.num10E.Size = new System.Drawing.Size(120, 36);
-            this.num10E.TabIndex = 4;
-            // 
-            // num11B
-            // 
-            this.num11B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num11B.Location = new System.Drawing.Point(110, 599);
-            this.num11B.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num11B.Name = "num11B";
-            this.num11B.Size = new System.Drawing.Size(120, 36);
-            this.num11B.TabIndex = 4;
-            this.num11B.Value = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            // 
-            // num11E
-            // 
-            this.num11E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num11E.Location = new System.Drawing.Point(265, 599);
-            this.num11E.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num11E.Name = "num11E";
-            this.num11E.Size = new System.Drawing.Size(120, 36);
-            this.num11E.TabIndex = 4;
-            this.num11E.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            // 
-            // num12B
-            // 
-            this.num12B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num12B.Location = new System.Drawing.Point(110, 641);
-            this.num12B.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num12B.Name = "num12B";
-            this.num12B.Size = new System.Drawing.Size(120, 36);
-            this.num12B.TabIndex = 4;
-            this.num12B.Value = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            // 
-            // num12E
-            // 
-            this.num12E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num12E.Location = new System.Drawing.Point(265, 641);
-            this.num12E.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num12E.Name = "num12E";
-            this.num12E.Size = new System.Drawing.Size(120, 36);
-            this.num12E.TabIndex = 4;
-            this.num12E.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            // 
-            // num13B
-            // 
-            this.num13B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num13B.Location = new System.Drawing.Point(110, 683);
-            this.num13B.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num13B.Name = "num13B";
-            this.num13B.Size = new System.Drawing.Size(120, 36);
-            this.num13B.TabIndex = 4;
-            this.num13B.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            // 
-            // num13E
-            // 
-            this.num13E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num13E.Location = new System.Drawing.Point(265, 683);
-            this.num13E.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num13E.Name = "num13E";
-            this.num13E.Size = new System.Drawing.Size(120, 36);
-            this.num13E.TabIndex = 4;
-            this.num13E.Value = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            // 
-            // txtNum3
-            // 
-            this.txtNum3.Location = new System.Drawing.Point(1036, 375);
-            this.txtNum3.Multiline = true;
-            this.txtNum3.Name = "txtNum3";
-            this.txtNum3.Size = new System.Drawing.Size(341, 287);
-            this.txtNum3.TabIndex = 6;
-            // 
             // Hou2Select50YiLouSetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1069,10 +1069,30 @@
             this.TotalInfo.PerformLayout();
             this.SetSearch.ResumeLayout(false);
             this.SetSearch.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num13E)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num12E)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num11E)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num10E)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num9E)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num8E)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num7E)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num6E)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num5E)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num4E)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num3E)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num2E)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num1E)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num13B)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num12B)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num11B)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num10B)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num9B)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num8B)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num7B)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num6B)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num5B)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num4B)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num3B)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num2B)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num1B)).EndInit();
@@ -1082,26 +1102,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoClick)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num4B)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num4E)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num5B)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num5E)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num6B)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num6E)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num7B)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num7E)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num8B)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num8E)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num9B)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num9E)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num10B)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num10E)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num11B)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num11E)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num12B)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num12E)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num13B)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num13E)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1138,11 +1138,6 @@
         private System.Windows.Forms.Button btnStartAuto;
         private System.Windows.Forms.NumericUpDown numericUpDownAutoClick;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodeQiHao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodeNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZhongGount;
-        private System.Windows.Forms.DataGridViewButtonColumn Numer50;
         private System.Windows.Forms.TabPage SetSearch;
         private System.Windows.Forms.NumericUpDown numericUpDownCondition;
         private System.Windows.Forms.Label label7;
@@ -1178,6 +1173,11 @@
         private System.Windows.Forms.NumericUpDown num5B;
         private System.Windows.Forms.NumericUpDown num4B;
         private System.Windows.Forms.TextBox txtNum3;
+        private System.Windows.Forms.DataGridViewButtonColumn Numer50;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodeQiHao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodeNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZhongGount;
     }
 }
 

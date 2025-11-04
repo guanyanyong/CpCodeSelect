@@ -114,68 +114,70 @@ namespace CpCodeSelect.Business
 
             if (AllCode.Count > 130)
             {
-                int count = 0;
-                while (count < 50)
+
+                while (true)
                 {
+                    var takeCodeList = new List<string>();
+                    var excludeAllList = new List<string>();
+                    var AllCode = Hou2Select50YiLouSetBusiness.AllCode;
+                    List<Code> LeftCode = new List<Code>();
+                    LeftCode.AddRange(AllCode);
 
-                    while (true)
+                    int n1 = ThreadSafeRandom.Next(4, 12);
+                    int n2 = ThreadSafeRandom.Next(8, 20);
+                    int n3 = ThreadSafeRandom.Next(8, 20);
+                    int n4 = ThreadSafeRandom.Next(0, 0);
+                    int n5 = ThreadSafeRandom.Next(0, 0);
+                    int n6 = ThreadSafeRandom.Next(0, 1);
+                    int n7 = ThreadSafeRandom.Next(0, 1);
+                    int n8 = ThreadSafeRandom.Next(0, 1);
+                    int n9 = ThreadSafeRandom.Next(0, 10);
+                    int n10 = ThreadSafeRandom.Next(0, 1);
+                    int n11 = ThreadSafeRandom.Next(0, 10);
+                    int n12 = ThreadSafeRandom.Next(0, 1);
+                    int n13 = ThreadSafeRandom.Next(8, 20);
+
+                    Cacl(n1, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n2, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n3, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n4, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n5, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n6, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n7, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n8, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n9, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n10, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n11, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n12, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n13, ref LeftCode, ref excludeAllList, ref takeCodeList);
+
+
+                    takeCodeList = takeCodeList.Distinct().ToList();
+                    excludeAllList = excludeAllList.Distinct().ToList();
+
+                    if (!excludeAllList.Any(item => takeCodeList.Contains(item)))
                     {
-                        var takeCodeList = new List<string>();
-                        var excludeAllList = new List<string>();
-                        var AllCode = Hou2Select50YiLouSetBusiness.AllCode;
-                        List<Code> LeftCode = new List<Code>();
-                        LeftCode.AddRange(AllCode);
+                        /*
+                        var numerList = NumberSelectForYiLou.Select50NumbersSafe(excludeAllList, takeCodeList);
 
-                        int n1 = ThreadSafeRandom.Next(4, 12);
-                        int n2 = ThreadSafeRandom.Next(8, 20);
-                        int n3 = ThreadSafeRandom.Next(8, 20);
-                        int n4 = ThreadSafeRandom.Next(0, 0);
-                        int n5 = ThreadSafeRandom.Next(0, 0);
-                        int n6 = ThreadSafeRandom.Next(0, 1);
-                        int n7 = ThreadSafeRandom.Next(0, 1);
-                        int n8 = ThreadSafeRandom.Next(0, 1);
-                        int n9 = ThreadSafeRandom.Next(0, 10);
-                        int n10 = ThreadSafeRandom.Next(0, 1);
-                        int n11 = ThreadSafeRandom.Next(0, 10);
-                        int n12 = ThreadSafeRandom.Next(0, 1);
-                        int n13 = ThreadSafeRandom.Next(8, 20);
+                        numerList = numerList.OrderBy(item => item).ToList();
+                        
+                        */
 
-                        Cacl(n1, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n2, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n3, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n4, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n5, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n6, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n7, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n8, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n9, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n10, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n11, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n12, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n13, ref LeftCode, ref excludeAllList, ref takeCodeList);
-
-
-                        takeCodeList = takeCodeList.Distinct().ToList();
-                        excludeAllList = excludeAllList.Distinct().ToList();
-
-                        if (!excludeAllList.Any(item => takeCodeList.Contains(item)))
+                        var numerList = MultiThreadedNumberSelectForYiLou.GenerateMultipleGroups(50, excludeAllList, takeCodeList);
+                        foreach (var number in numerList)
                         {
-                            var numerList = NumberSelectForYiLou.Select50NumbersSafe(excludeAllList, takeCodeList);
-                            numerList = numerList.OrderBy(item => item).ToList();
-                            if (numerList.Count > 0)
+                            if (number.Count > 0)
                             {
                                 Hou2Select50_20Model model = new Hou2Select50_20Model();
-                                model.Number50 = numerList;
+                                model.Number50 = number;
                                 model.CodeNumber = code.CodeNumber;
                                 model.CodeQiHao = code.CodeQiHao;
                                 model.NeedZhong = true;
-
                                 modelList.Add(model);
-                                count++;
-                                break;
                             }
-                            
                         }
+                        break;
                     }
                 }
             }
