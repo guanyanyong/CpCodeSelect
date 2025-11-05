@@ -114,7 +114,7 @@ namespace CpCodeSelect.Business
 
             if (AllCode.Count > 130)
             {
-
+                int count = 0;
                 while (true)
                 {
                     var takeCodeList = new List<string>();
@@ -154,7 +154,6 @@ namespace CpCodeSelect.Business
 
                     takeCodeList = takeCodeList.Distinct().ToList();
                     excludeAllList = excludeAllList.Distinct().ToList();
-
                     if (!excludeAllList.Any(item => takeCodeList.Contains(item)))
                     {
                         /*
@@ -163,7 +162,6 @@ namespace CpCodeSelect.Business
                         numerList = numerList.OrderBy(item => item).ToList();
                         
                         */
-
                         var numerList = MultiThreadedNumberSelectForYiLou.GenerateMultipleGroups(50, excludeAllList, takeCodeList);
                         foreach (var number in numerList)
                         {
@@ -180,6 +178,10 @@ namespace CpCodeSelect.Business
                         }
                         break;
                     }
+
+                    count++;
+                    if (count > 100)
+                        break;
                 }
             }
         }
