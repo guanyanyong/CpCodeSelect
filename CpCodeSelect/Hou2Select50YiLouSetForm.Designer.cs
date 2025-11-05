@@ -93,10 +93,10 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numer50 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CodeQiHao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
@@ -995,10 +995,10 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.GuaCount,
             this.Numer50,
             this.CodeQiHao,
             this.CodeNumber,
-            this.GuaCount,
             this.ZhongGount});
             this.dataGridView1.Location = new System.Drawing.Point(45, 141);
             this.dataGridView1.Name = "dataGridView1";
@@ -1016,6 +1016,12 @@
             // 
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
+            // GuaCount
+            // 
+            this.GuaCount.DataPropertyName = "GuaCount";
+            this.GuaCount.HeaderText = "连挂数";
+            this.GuaCount.Name = "GuaCount";
             // 
             // Numer50
             // 
@@ -1036,12 +1042,6 @@
             this.CodeNumber.DataPropertyName = "CodeNumber";
             this.CodeNumber.HeaderText = "开奖号";
             this.CodeNumber.Name = "CodeNumber";
-            // 
-            // GuaCount
-            // 
-            this.GuaCount.DataPropertyName = "GuaCount";
-            this.GuaCount.HeaderText = "连挂数";
-            this.GuaCount.Name = "GuaCount";
             // 
             // ZhongGount
             // 
@@ -1173,10 +1173,10 @@
         private System.Windows.Forms.NumericUpDown num5B;
         private System.Windows.Forms.NumericUpDown num4B;
         private System.Windows.Forms.TextBox txtNum3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
         private System.Windows.Forms.DataGridViewButtonColumn Numer50;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodeQiHao;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodeNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZhongGount;
     }
 }

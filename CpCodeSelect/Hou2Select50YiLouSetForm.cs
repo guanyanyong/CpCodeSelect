@@ -483,6 +483,10 @@ namespace CpCodeSelect
                 {
                     var model = row.DataBoundItem as Hou2Select50_20Model;
                     txt50Number.Text = string.Join(" ", model.Number50);
+                    Thread.Sleep(300);
+
+                    var numberText = txt50Number.Text;
+                    Clipboard.SetText(numberText);
                 }
             }
         }

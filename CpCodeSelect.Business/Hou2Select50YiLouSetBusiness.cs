@@ -169,8 +169,9 @@ namespace CpCodeSelect.Business
                         {
                             if (number.Count > 0)
                             {
+                                var list = number.OrderBy(p => p).ToList();
                                 Hou2Select50_20Model model = new Hou2Select50_20Model();
-                                model.Number50 = number;
+                                model.Number50 = list;
                                 model.CodeNumber = code.CodeNumber;
                                 model.CodeQiHao = code.CodeQiHao;
                                 model.NeedZhong = true;
