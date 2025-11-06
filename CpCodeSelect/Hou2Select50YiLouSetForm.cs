@@ -13,6 +13,8 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Collections;
+using System.Media;
+using System.Configuration;
 
 namespace CpCodeSelect
 {
@@ -32,6 +34,7 @@ namespace CpCodeSelect
         public MoniRunKill3_3 moniKill3_3 = new MoniRunKill3_3();
         public StatisticForm statisticForm = new StatisticForm();
         public List<Hou2Select50_20Model> modelList = new List<Hou2Select50_20Model>();
+        private int boFangYanhuaCount = 12;
         public Hou2Select50YiLouSetForm()
         {
             InitializeComponent();
@@ -218,10 +221,12 @@ namespace CpCodeSelect
 
         private void AddToLogFileHou2Select50Auto(Code code)
         {
+            bool needPlay = false;
             if (Hou2Select50YiLouSetBusiness.modelList.Count > 1000)
             {
 
                 bool needFlush = false;
+                
                 string fileName = "Hou2Select50YiLouSet.txt";
                 using (var writer = new StreamWriter(fileName, true))
                 {
@@ -239,6 +244,21 @@ namespace CpCodeSelect
                     {
                         writer.Flush();
                     }
+
+                    if (maxNumber >= boFangYanhuaCount)
+                    {
+                        needPlay = true;
+                    }
+                }
+            }
+
+            if (needPlay)
+            {
+
+                using (SoundPlayer player = new SoundPlayer(".\\data\\yanhua.wav")) // 替换为你的音乐文件路径
+                {
+                    // 播放音乐
+                    player.Play();
                 }
             }
         }
@@ -291,6 +311,16 @@ namespace CpCodeSelect
             lastCode = null;
             currentCode = null;
             firstTime = true;//是否第一次执行
+
+            var boFangYanhuaCountStr = ConfigurationManager.AppSettings["BoFangYanhuaCount"];
+            if(int.TryParse(boFangYanhuaCountStr, out int count))
+            {
+                boFangYanhuaCount = count;
+            }
+            else
+            {
+                boFangYanhuaCount = 12;
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)

@@ -255,9 +255,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
+    <Content Include="App.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CpCodeSelect.Business\CpCodeSelect.Business.csproj">
