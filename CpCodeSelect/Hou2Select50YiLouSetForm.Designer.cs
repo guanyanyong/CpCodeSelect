@@ -90,14 +90,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numer50 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CodeQiHao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.BtnCopy2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -299,6 +300,7 @@
             this.SetSearch.Controls.Add(this.txtNum3);
             this.SetSearch.Controls.Add(this.txtNum2);
             this.SetSearch.Controls.Add(this.txtNum1);
+            this.SetSearch.Controls.Add(this.BtnCopy2);
             this.SetSearch.Controls.Add(this.button2);
             this.SetSearch.Controls.Add(this.num13E);
             this.SetSearch.Controls.Add(this.num12E);
@@ -1007,16 +1009,6 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
-            // 
             // GuaCount
             // 
             this.GuaCount.DataPropertyName = "GuaCount";
@@ -1048,6 +1040,26 @@
             this.ZhongGount.DataPropertyName = "ZhongGount";
             this.ZhongGount.HeaderText = "连中数";
             this.ZhongGount.Name = "ZhongGount";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
+            // BtnCopy2
+            // 
+            this.BtnCopy2.Location = new System.Drawing.Point(487, 253);
+            this.BtnCopy2.Name = "BtnCopy2";
+            this.BtnCopy2.Size = new System.Drawing.Size(134, 172);
+            this.BtnCopy2.TabIndex = 5;
+            this.BtnCopy2.Text = "开始搜索";
+            this.BtnCopy2.UseVisualStyleBackColor = true;
+            this.BtnCopy2.Click += new System.EventHandler(this.BtnCopy2_Click);
             // 
             // Hou2Select50YiLouSetForm
             // 
@@ -1178,6 +1190,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CodeQiHao;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodeNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZhongGount;
+        private System.Windows.Forms.Button BtnCopy2;
     }
 }
 

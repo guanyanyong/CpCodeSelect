@@ -226,7 +226,7 @@ namespace CpCodeSelect
             {
 
                 bool needFlush = false;
-                
+
                 string fileName = "Hou2Select50YiLouSet.txt";
                 using (var writer = new StreamWriter(fileName, true))
                 {
@@ -313,7 +313,7 @@ namespace CpCodeSelect
             firstTime = true;//是否第一次执行
 
             var boFangYanhuaCountStr = ConfigurationManager.AppSettings["BoFangYanhuaCount"];
-            if(int.TryParse(boFangYanhuaCountStr, out int count))
+            if (int.TryParse(boFangYanhuaCountStr, out int count))
             {
                 boFangYanhuaCount = count;
             }
@@ -537,6 +537,12 @@ namespace CpCodeSelect
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            BtnSelectClick();
+
+        }
+
+        private void BtnSelectClick()
+        {
             var number = numericUpDown1.Value;
             var list = Hou2Select50YiLouSetBusiness.modelList.Where(p => p.NeedZhong == false && p.GuaCount >= number).OrderByDescending(p => p.GuaCount).ToList();
             dataGridView1.DataSource = list;
@@ -548,7 +554,6 @@ namespace CpCodeSelect
             dataGridView1.Columns["IsShow"].Visible = false;
             dataGridView1.Columns["NeedZhong"].Visible = false;
             dataGridView1.Columns["ZhongGount"].Visible = false;
-
         }
 
         private void btnStartAuto_Click(object sender, EventArgs e)
@@ -557,7 +562,7 @@ namespace CpCodeSelect
             btnStartAuto.Enabled = false;
             btnStopAuto.Enabled = true;
             autoClkTimer.Interval = (int)numericUpDownAutoClick.Value * 1000; // 10秒
-            btnSelect.PerformClick();
+            BtnSelectClick();
         }
 
         private void btnStopAuto_Click(object sender, EventArgs e)
@@ -574,6 +579,8 @@ namespace CpCodeSelect
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            txtNum2.Text = "成功生成号码";
+            txtNum3.Text = "";
             //int b1 = (int)num1B.Value;
             //int e1 = (int)num1E.Value;
             //int b2 = (int)num2B.Value;
@@ -619,12 +626,18 @@ namespace CpCodeSelect
                 {
                     var numerList = NumberSelectForYiLou.Select50NumbersSafe(excludeAllList, takeCodeList);
                     numerList = numerList.OrderBy(item => item).ToList();
-                    txtNum3.Text = string.Join(" ", numerList);
-                    break;
+                    if (numerList.Count > 0)
+                    {
+                        txtNum3.Text = string.Join(" ", numerList);
+                        txtNum2.Text = "成功生成号码";
+                        Clipboard.SetText(txtNum3.Text);
+                        break;
+                    }
                 }
                 else
                 {
                     txtNum2.Text = "出现重复号码，请调整参数";
+                    txtNum3.Text = "";
                 }
             }
         }
@@ -721,6 +734,12 @@ namespace CpCodeSelect
                 }
             }
             return Hou2NumberCount.Keys.ToList();
+        }
+
+        private void BtnCopy2_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtNum3.Text))
+                Clipboard.SetText(txtNum3.Text);
         }
     }
 }
