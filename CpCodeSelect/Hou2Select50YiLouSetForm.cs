@@ -29,6 +29,7 @@ namespace CpCodeSelect
         private Code currentCode;
         private bool firstTime = true;//是否第一次执行
         private Object lockObj = new Object();
+        private Object LockPlayObj = new object();
         public MoniRunKill3 moniKill3 = new MoniRunKill3();
         public MoniRunKill3_2 moniKill3_2 = new MoniRunKill3_2();
         public MoniRunKill3_3 moniKill3_3 = new MoniRunKill3_3();
@@ -254,12 +255,16 @@ namespace CpCodeSelect
 
             if (needPlay)
             {
-
-                using (SoundPlayer player = new SoundPlayer(".\\data\\yanhua.wav")) // 替换为你的音乐文件路径
+                lock(LockPlayObj)
                 {
-                    // 播放音乐
-                    player.Play();
+
+                    using (SoundPlayer player = new SoundPlayer(".\\data\\yanhua.wav")) // 替换为你的音乐文件路径
+                    {
+                        // 播放音乐
+                        player.Play();
+                    }
                 }
+
             }
         }
 
@@ -389,7 +394,7 @@ namespace CpCodeSelect
         /// </summary>
         private void StartExec()
         {
-            if (DateTime.Now >= Convert.ToDateTime("2025-11-30"))
+            if (DateTime.Now >= Convert.ToDateTime("2025-12-30"))
             {
                 //MessageBox.Show("软件试用期已过期，请联系作者购买正式版");
                 return;

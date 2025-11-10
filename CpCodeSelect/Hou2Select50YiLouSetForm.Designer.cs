@@ -48,6 +48,7 @@
             this.txtNum3 = new System.Windows.Forms.TextBox();
             this.txtNum2 = new System.Windows.Forms.TextBox();
             this.txtNum1 = new System.Windows.Forms.TextBox();
+            this.BtnCopy2 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.num13E = new System.Windows.Forms.NumericUpDown();
             this.num12E = new System.Windows.Forms.NumericUpDown();
@@ -98,7 +99,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.BtnCopy2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -361,6 +361,16 @@
             this.txtNum1.Name = "txtNum1";
             this.txtNum1.Size = new System.Drawing.Size(341, 610);
             this.txtNum1.TabIndex = 6;
+            // 
+            // BtnCopy2
+            // 
+            this.BtnCopy2.Location = new System.Drawing.Point(487, 253);
+            this.BtnCopy2.Name = "BtnCopy2";
+            this.BtnCopy2.Size = new System.Drawing.Size(134, 172);
+            this.BtnCopy2.TabIndex = 5;
+            this.BtnCopy2.Text = "复制";
+            this.BtnCopy2.UseVisualStyleBackColor = true;
+            this.BtnCopy2.Click += new System.EventHandler(this.BtnCopy2_Click);
             // 
             // button2
             // 
@@ -932,12 +942,12 @@
             this.numericUpDownAutoClick.Font = new System.Drawing.Font("微软雅黑", 16F);
             this.numericUpDownAutoClick.Location = new System.Drawing.Point(1093, 68);
             this.numericUpDownAutoClick.Maximum = new decimal(new int[] {
-            40,
+            50,
             0,
             0,
             0});
             this.numericUpDownAutoClick.Minimum = new decimal(new int[] {
-            10,
+            3,
             0,
             0,
             0});
@@ -945,7 +955,7 @@
             this.numericUpDownAutoClick.Size = new System.Drawing.Size(120, 36);
             this.numericUpDownAutoClick.TabIndex = 2;
             this.numericUpDownAutoClick.Value = new decimal(new int[] {
-            10,
+            5,
             0,
             0,
             0});
@@ -1050,16 +1060,6 @@
             // 
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
-            // 
-            // BtnCopy2
-            // 
-            this.BtnCopy2.Location = new System.Drawing.Point(487, 253);
-            this.BtnCopy2.Name = "BtnCopy2";
-            this.BtnCopy2.Size = new System.Drawing.Size(134, 172);
-            this.BtnCopy2.TabIndex = 5;
-            this.BtnCopy2.Text = "开始搜索";
-            this.BtnCopy2.UseVisualStyleBackColor = true;
-            this.BtnCopy2.Click += new System.EventHandler(this.BtnCopy2_Click);
             // 
             // Hou2Select50YiLouSetForm
             // 

@@ -43,14 +43,14 @@ namespace CpCodeSelect.Util
                     results.Add(group);
 
                     // 可选：显示进度
-                    if ((i + 1) % 10 == 0)
-                    {
-                        Console.WriteLine($"已生成 {i + 1}/{groupCount} 组号码");
-                    }
+                    //if ((i + 1) % 10 == 0)
+                    //{
+                    //    Console.WriteLine($"已生成 {i + 1}/{groupCount} 组号码");
+                    //}
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"生成第{i + 1}组号码时出错: {ex.Message}");
+                    //Console.WriteLine($"生成第{i + 1}组号码时出错: {ex.Message}");
                 }
             });
 

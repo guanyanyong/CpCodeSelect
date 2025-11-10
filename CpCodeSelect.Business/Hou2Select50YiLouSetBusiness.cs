@@ -67,9 +67,10 @@ namespace CpCodeSelect.Business
         public static void RemoveOldModel(int guaCount = 3)
         {
             List<Hou2Select50_20Model> removeList = new List<Hou2Select50_20Model>();
+            int count = 0;
             while (modelList.Count > 3500)
             {
-                for (int i = 0; i < 200; i++)
+                for (int i = 0; i < 500; i++)
                 {
                     var model = modelList[i];
                     if (model.GuaCount <= guaCount)
@@ -82,6 +83,9 @@ namespace CpCodeSelect.Business
                     modelList.Remove(model);
                 }
                 removeList.Clear();
+                count++;
+                // 如果执行10次号码还是大于3500,则退出循环
+                if (count > 10) break;
             }
         }
         public static void CalcExistCode(Code code)
