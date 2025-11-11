@@ -223,7 +223,7 @@ namespace CpCodeSelect
         private void AddToLogFileHou2Select50Auto(Code code)
         {
             bool needPlay = false;
-            if (Hou2Select50YiLouSetBusiness.modelList.Count > 1000)
+            if (Hou2Select50YiLouSetBusiness.modelList.Count > 500)
             {
 
                 bool needFlush = false;
@@ -232,7 +232,7 @@ namespace CpCodeSelect
                 using (var writer = new StreamWriter(fileName, true))
                 {
                     var maxNumber = Hou2Select50YiLouSetBusiness.modelList.Where(p => p.NeedZhong == false).Max(p => p.GuaCount);
-                    if (maxNumber >= 12)
+                    if (maxNumber >= boFangYanhuaCount)
                     {
                         needFlush = true;
                         Hou2Select50YiLouSetBusiness.modelList.Where(p => p.GuaCount == maxNumber).ToList().ForEach(recode =>

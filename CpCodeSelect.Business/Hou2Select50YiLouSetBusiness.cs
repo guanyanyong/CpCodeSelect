@@ -17,6 +17,7 @@ namespace CpCodeSelect.Business
         public static List<string> Hou2_20Numer = new List<string>();
         public static Object lockObj = new Object();
         public static List<Hou2Select50_20Model> modelList = new List<Hou2Select50_20Model>();
+        public static string leftNumberCountStr = ConfigurationManager.AppSettings["LeftNumberCount"];
         /// <summary>
         /// 初始化号码
         /// </summary>
@@ -66,17 +67,25 @@ namespace CpCodeSelect.Business
         /// <param name="guaCount"></param>
         public static void RemoveOldModel(int guaCount = 3)
         {
+
             List<Hou2Select50_20Model> removeList = new List<Hou2Select50_20Model>();
             int count = 0;
-            while (modelList.Count > 3500)
+            int numberCount = 1000;
+            if (!int.TryParse(leftNumberCountStr,out numberCount))
             {
-                for (int i = 0; i < 500; i++)
+                numberCount = 1000;
+
+            }
+
+            while (modelList.Count > numberCount)
+            {
+                for (int i = 0; i < 50; i++)
                 {
                     var model = modelList[i];
-                    if (model.GuaCount <= guaCount)
-                    {
-                        removeList.Add(model);
-                    }
+                    //if (model.GuaCount <= guaCount)
+                    //{
+                    removeList.Add(model);
+                    //}
                 }
                 foreach (var model in removeList)
                 {
@@ -93,7 +102,6 @@ namespace CpCodeSelect.Business
             var hou2 = code.GetHou2String();
             foreach (var model in modelList)
             {
-
                 if (model.Number50.Contains(hou2))
                 {
                     model.ZhongGount++;
@@ -104,10 +112,10 @@ namespace CpCodeSelect.Business
                 {
                     model.GuaCount++;
                     model.ZhongGount = 0;
-                    if (model.GuaCount >= 5)
-                    {
-                        model.NeedZhong = false;
-                    }
+                    //if (model.GuaCount >= 5)
+                    //{
+                    //    model.NeedZhong = false;
+                    //}
                 }
             }
         }
@@ -184,8 +192,12 @@ namespace CpCodeSelect.Business
                     }
 
                     count++;
-                    if (count > 100)
+                    if (count > 1000)
+                    {
+                        // 如果计算100次还没有有效数据,则退出
                         break;
+                    }
+                        
                 }
             }
         }
