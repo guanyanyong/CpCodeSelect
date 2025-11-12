@@ -1098,7 +1098,7 @@
             // lblMaxGua2
             // 
             this.lblMaxGua2.AutoSize = true;
-            this.lblMaxGua2.Location = new System.Drawing.Point(694, 17);
+            this.lblMaxGua2.Location = new System.Drawing.Point(628, 17);
             this.lblMaxGua2.Name = "lblMaxGua2";
             this.lblMaxGua2.Size = new System.Drawing.Size(0, 30);
             this.lblMaxGua2.TabIndex = 7;
@@ -1115,7 +1115,7 @@
             // lblTotalNumber2
             // 
             this.lblTotalNumber2.AutoSize = true;
-            this.lblTotalNumber2.Location = new System.Drawing.Point(228, 17);
+            this.lblTotalNumber2.Location = new System.Drawing.Point(193, 17);
             this.lblTotalNumber2.Name = "lblTotalNumber2";
             this.lblTotalNumber2.Size = new System.Drawing.Size(0, 30);
             this.lblTotalNumber2.TabIndex = 9;
