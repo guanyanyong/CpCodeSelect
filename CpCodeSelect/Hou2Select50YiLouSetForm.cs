@@ -170,12 +170,16 @@ namespace CpCodeSelect
 
                 lblMaxGua.Text = Hou2Select50YiLouSetBusiness.modelList.Where(p => p.NeedZhong == false).Max(p => p.GuaCount).ToString();
                 lblTotalNumber.Text = Hou2Select50YiLouSetBusiness.modelList.Count.ToString();
+
             }
             else
             {
                 lblMaxGua.Text = "0";
                 lblTotalNumber.Text = "0";
             }
+
+            lblMaxGua2.Text = lblMaxGua.Text;
+            lblTotalNumber2.Text= lblTotalNumber.Text;
         }
         public void InitOfferNumber()
         {

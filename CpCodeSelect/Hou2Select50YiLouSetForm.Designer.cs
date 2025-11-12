@@ -101,6 +101,10 @@
             this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblError = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.lblMaxGua2 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblTotalNumber2 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -855,6 +859,10 @@
             // 
             // ResultPage
             // 
+            this.ResultPage.Controls.Add(this.lblMaxGua2);
+            this.ResultPage.Controls.Add(this.label10);
+            this.ResultPage.Controls.Add(this.lblTotalNumber2);
+            this.ResultPage.Controls.Add(this.label12);
             this.ResultPage.Controls.Add(this.label8);
             this.ResultPage.Controls.Add(this.lblError);
             this.ResultPage.Controls.Add(this.txt50Number);
@@ -1072,7 +1080,7 @@
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(684, 14);
+            this.lblError.Location = new System.Drawing.Point(925, 17);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(145, 30);
             this.lblError.TabIndex = 5;
@@ -1081,11 +1089,45 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(572, 14);
+            this.label8.Location = new System.Drawing.Point(813, 17);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(106, 30);
             this.label8.TabIndex = 6;
             this.label8.Text = "显示信息:";
+            // 
+            // lblMaxGua2
+            // 
+            this.lblMaxGua2.AutoSize = true;
+            this.lblMaxGua2.Location = new System.Drawing.Point(694, 17);
+            this.lblMaxGua2.Name = "lblMaxGua2";
+            this.lblMaxGua2.Size = new System.Drawing.Size(0, 30);
+            this.lblMaxGua2.TabIndex = 7;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(472, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(150, 30);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "当前最大遗漏:";
+            // 
+            // lblTotalNumber2
+            // 
+            this.lblTotalNumber2.AutoSize = true;
+            this.lblTotalNumber2.Location = new System.Drawing.Point(228, 17);
+            this.lblTotalNumber2.Name = "lblTotalNumber2";
+            this.lblTotalNumber2.Size = new System.Drawing.Size(0, 30);
+            this.lblTotalNumber2.TabIndex = 9;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 17);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(172, 30);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "当前走势总数量:";
             // 
             // Hou2Select50YiLouSetForm
             // 
@@ -1219,6 +1261,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ZhongGount;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblMaxGua2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblTotalNumber2;
+        private System.Windows.Forms.Label label12;
     }
 }
 
