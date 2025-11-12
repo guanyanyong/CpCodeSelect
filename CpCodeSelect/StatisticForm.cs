@@ -80,6 +80,7 @@ namespace CpCodeSelect
             dataGridView.Columns["GuaHouZhong"].HeaderText = "挂后中";
             dataGridView.Columns["PositionNumber"].Visible = false;
             dataGridView.Columns["PositionType"].Visible = false;
+            
             //dataGridView.Columns["IsActive"].HeaderText = "是否激活";
 
             // 设置日期格式

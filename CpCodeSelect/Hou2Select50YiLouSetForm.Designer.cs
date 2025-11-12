@@ -91,14 +91,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numer50 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CodeQiHao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.lblError = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -238,7 +240,7 @@
             this.tabControl1.Controls.Add(this.SetSearch);
             this.tabControl1.Controls.Add(this.ResultPage);
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.tabControl1.Location = new System.Drawing.Point(58, 118);
+            this.tabControl1.Location = new System.Drawing.Point(3, 118);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1478, 849);
@@ -853,6 +855,8 @@
             // 
             // ResultPage
             // 
+            this.ResultPage.Controls.Add(this.label8);
+            this.ResultPage.Controls.Add(this.lblError);
             this.ResultPage.Controls.Add(this.txt50Number);
             this.ResultPage.Controls.Add(this.btnClear);
             this.ResultPage.Controls.Add(this.btnCopy);
@@ -884,9 +888,9 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.btnClear.Location = new System.Drawing.Point(791, 600);
+            this.btnClear.Location = new System.Drawing.Point(728, 549);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(158, 184);
+            this.btnClear.Size = new System.Drawing.Size(221, 235);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "清除";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -895,9 +899,9 @@
             // btnCopy
             // 
             this.btnCopy.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.btnCopy.Location = new System.Drawing.Point(791, 153);
+            this.btnCopy.Location = new System.Drawing.Point(728, 153);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(158, 381);
+            this.btnCopy.Size = new System.Drawing.Size(221, 381);
             this.btnCopy.TabIndex = 3;
             this.btnCopy.Text = "拷贝数值";
             this.btnCopy.UseVisualStyleBackColor = true;
@@ -1012,25 +1016,36 @@
             this.CodeQiHao,
             this.CodeNumber,
             this.ZhongGount});
-            this.dataGridView1.Location = new System.Drawing.Point(45, 141);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 141);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(700, 661);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
             // GuaCount
             // 
             this.GuaCount.DataPropertyName = "GuaCount";
-            this.GuaCount.HeaderText = "连挂数";
+            this.GuaCount.HeaderText = "挂数";
+            this.GuaCount.MinimumWidth = 60;
             this.GuaCount.Name = "GuaCount";
             // 
             // Numer50
             // 
             this.Numer50.DataPropertyName = "Numer50";
-            this.Numer50.HeaderText = "50号码";
+            this.Numer50.HeaderText = "号码";
             this.Numer50.Name = "Numer50";
-            this.Numer50.Text = "查看50个号码";
+            this.Numer50.Text = "查号";
             this.Numer50.UseColumnTextForButtonValue = true;
             // 
             // CodeQiHao
@@ -1043,23 +1058,34 @@
             // 
             this.CodeNumber.DataPropertyName = "CodeNumber";
             this.CodeNumber.HeaderText = "开奖号";
+            this.CodeNumber.MinimumWidth = 120;
             this.CodeNumber.Name = "CodeNumber";
+            this.CodeNumber.Width = 150;
             // 
             // ZhongGount
             // 
             this.ZhongGount.DataPropertyName = "ZhongGount";
-            this.ZhongGount.HeaderText = "连中数";
+            this.ZhongGount.HeaderText = "连中";
             this.ZhongGount.Name = "ZhongGount";
             // 
-            // contextMenuStrip1
+            // lblError
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.lblError.AutoSize = true;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(684, 14);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(145, 30);
+            this.lblError.TabIndex = 5;
+            this.lblError.Text = "显示操作信息";
             // 
-            // contextMenuStrip2
+            // label8
             // 
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(572, 14);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(106, 30);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "显示信息:";
             // 
             // Hou2Select50YiLouSetForm
             // 
@@ -1185,12 +1211,14 @@
         private System.Windows.Forms.NumericUpDown num5B;
         private System.Windows.Forms.NumericUpDown num4B;
         private System.Windows.Forms.TextBox txtNum3;
+        private System.Windows.Forms.Button BtnCopy2;
         private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
         private System.Windows.Forms.DataGridViewButtonColumn Numer50;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodeQiHao;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodeNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZhongGount;
-        private System.Windows.Forms.Button BtnCopy2;
+        private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label label8;
     }
 }
 

@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Media;
 using System.Configuration;
+using System.Data.SqlClient;
 
 namespace CpCodeSelect
 {
@@ -255,7 +256,7 @@ namespace CpCodeSelect
 
             if (needPlay)
             {
-                lock(LockPlayObj)
+                lock (LockPlayObj)
                 {
 
                     using (SoundPlayer player = new SoundPlayer(".\\data\\yanhua.wav")) // 替换为你的音乐文件路径
@@ -336,7 +337,9 @@ namespace CpCodeSelect
 
         private void AutoClkTimer_Tick(object sender, EventArgs e)
         {
-            btnSelect.PerformClick();
+            //btnSelect.PerformClick();
+            lblError.Text = "";
+            BtnSelectClick();
         }
 
 
@@ -511,6 +514,7 @@ namespace CpCodeSelect
             // 检查点击是否有效（非标题行）且是特定的按钮列
             if (e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].Name == "Numer50")
             {
+                lblError.Text = "";
                 // 可以获取当前行的数据
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 // ... 执行你的业务逻辑，例如根据row.Cells["SomeColumn"].Value进行不同操作
@@ -519,7 +523,19 @@ namespace CpCodeSelect
                     var model = row.DataBoundItem as Hou2Select50_20Model;
                     txt50Number.Text = string.Join(" ", model.Number50);
                     var numberText = txt50Number.Text;
-                    Clipboard.SetText(numberText);
+                    try
+                    {
+                        Clipboard.SetText(numberText);
+                        lblError.Text = "号码已拷贝";
+                    }
+                    catch
+                    {
+                        lblError.Text = "拷贝失败,请手动复制";
+                    }
+                    finally
+                    {
+
+                    }
                 }
             }
         }
@@ -542,8 +558,11 @@ namespace CpCodeSelect
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            btnSelect.Enabled = false;
+            lblError.Text = "";
+            txt50Number.Text = "";
             BtnSelectClick();
-
+            btnSelect.Enabled = true;
         }
 
         private void BtnSelectClick()
@@ -551,19 +570,22 @@ namespace CpCodeSelect
             var number = numericUpDown1.Value;
             var list = Hou2Select50YiLouSetBusiness.modelList.Where(p => p.NeedZhong == false && p.GuaCount >= number).OrderByDescending(p => p.GuaCount).ToList();
             dataGridView1.DataSource = list;
-
+            
             dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
 
-
+            //dataGridView1.Columns["GuaCount"].MinimumWidth = 100;
+            //dataGridView1.Columns["CodeNumber"].MinimumWidth = 150;
             dataGridView1.Columns["IsShow"].Visible = false;
             dataGridView1.Columns["NeedZhong"].Visible = false;
             dataGridView1.Columns["ZhongGount"].Visible = false;
+
         }
 
         private void btnStartAuto_Click(object sender, EventArgs e)
         {
             autoClkTimer.Start();
+            lblError.Text = $"开始每{(int)numericUpDownAutoClick.Value}秒自动执行一次查询";
             btnStartAuto.Enabled = false;
             btnStopAuto.Enabled = true;
             autoClkTimer.Interval = (int)numericUpDownAutoClick.Value * 1000; // 10秒
@@ -573,6 +595,7 @@ namespace CpCodeSelect
         private void btnStopAuto_Click(object sender, EventArgs e)
         {
             autoClkTimer.Stop();
+            lblError.Text = $"结束自动执行查询";
             btnStartAuto.Enabled = true;
             btnStopAuto.Enabled = false;
         }
