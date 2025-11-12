@@ -58,20 +58,20 @@ namespace CpCodeSelect.Business
             // 生成新的50码
             GenerateCode(code);
 
-            //删除超过3000条的记录 如果没有3挂的就删除
-            RemoveOldModel(3);
+            //删除超过3000条的记录 如果没有4挂的就删除
+            RemoveOldModel(4);
         }
         /// <summary>
         ///  删除小于指定挂数的旧记录
         /// </summary>
         /// <param name="guaCount"></param>
-        public static void RemoveOldModel(int guaCount = 3)
+        public static void RemoveOldModel(int guaCount = 4)
         {
 
             List<Hou2Select50_20Model> removeList = new List<Hou2Select50_20Model>();
             int count = 0;
             int numberCount = 1000;
-            if (!int.TryParse(leftNumberCountStr,out numberCount))
+            if (!int.TryParse(leftNumberCountStr, out numberCount))
             {
                 numberCount = 1000;
 
@@ -82,10 +82,10 @@ namespace CpCodeSelect.Business
                 for (int i = 0; i < 50; i++)
                 {
                     var model = modelList[i];
-                    //if (model.GuaCount <= guaCount)
-                    //{
-                    removeList.Add(model);
-                    //}
+                    if (model.GuaCount <= guaCount)
+                    {
+                        removeList.Add(model);
+                    }
                 }
                 foreach (var model in removeList)
                 {
@@ -197,7 +197,7 @@ namespace CpCodeSelect.Business
                         // 如果计算100次还没有有效数据,则退出
                         break;
                     }
-                        
+
                 }
             }
         }
