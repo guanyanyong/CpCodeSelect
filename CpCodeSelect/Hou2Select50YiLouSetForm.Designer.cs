@@ -200,12 +200,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(6, 356);
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.label3.Location = new System.Drawing.Point(56, 88);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 25);
+            this.label3.Size = new System.Drawing.Size(167, 30);
             this.label3.TabIndex = 1;
-            this.label3.Text = "当前操作历史";
+            this.label3.Text = "当前操作历史：";
             // 
             // btnRestart
             // 
@@ -225,9 +225,9 @@
             this.listBoxHistory.ItemHeight = 25;
             this.listBoxHistory.Items.AddRange(new object[] {
             " "});
-            this.listBoxHistory.Location = new System.Drawing.Point(166, 291);
+            this.listBoxHistory.Location = new System.Drawing.Point(61, 141);
             this.listBoxHistory.Name = "listBoxHistory";
-            this.listBoxHistory.Size = new System.Drawing.Size(1139, 454);
+            this.listBoxHistory.Size = new System.Drawing.Size(1375, 679);
             this.listBoxHistory.TabIndex = 5;
             // 
             // chkRefersh
@@ -263,7 +263,7 @@
             this.TotalInfo.Location = new System.Drawing.Point(4, 37);
             this.TotalInfo.Name = "TotalInfo";
             this.TotalInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.TotalInfo.Size = new System.Drawing.Size(1470, 808);
+            this.TotalInfo.Size = new System.Drawing.Size(1470, 875);
             this.TotalInfo.TabIndex = 0;
             this.TotalInfo.Text = "总体信息";
             this.TotalInfo.UseVisualStyleBackColor = true;
@@ -272,7 +272,7 @@
             // lblMaxGua
             // 
             this.lblMaxGua.AutoSize = true;
-            this.lblMaxGua.Location = new System.Drawing.Point(700, 54);
+            this.lblMaxGua.Location = new System.Drawing.Point(700, 20);
             this.lblMaxGua.Name = "lblMaxGua";
             this.lblMaxGua.Size = new System.Drawing.Size(0, 30);
             this.lblMaxGua.TabIndex = 6;
@@ -280,7 +280,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(527, 54);
+            this.label6.Location = new System.Drawing.Point(527, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(150, 30);
             this.label6.TabIndex = 6;
@@ -289,7 +289,7 @@
             // lblTotalNumber
             // 
             this.lblTotalNumber.AutoSize = true;
-            this.lblTotalNumber.Location = new System.Drawing.Point(234, 54);
+            this.lblTotalNumber.Location = new System.Drawing.Point(234, 20);
             this.lblTotalNumber.Name = "lblTotalNumber";
             this.lblTotalNumber.Size = new System.Drawing.Size(0, 30);
             this.lblTotalNumber.TabIndex = 6;
@@ -297,7 +297,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(56, 54);
+            this.label4.Location = new System.Drawing.Point(56, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(172, 30);
             this.label4.TabIndex = 6;
@@ -892,15 +892,16 @@
             // 
             this.lblMaxGua2.AutoSize = true;
             this.lblMaxGua2.ForeColor = System.Drawing.Color.Red;
-            this.lblMaxGua2.Location = new System.Drawing.Point(730, 49);
+            this.lblMaxGua2.Location = new System.Drawing.Point(152, 0);
             this.lblMaxGua2.Name = "lblMaxGua2";
-            this.lblMaxGua2.Size = new System.Drawing.Size(0, 30);
+            this.lblMaxGua2.Size = new System.Drawing.Size(26, 30);
             this.lblMaxGua2.TabIndex = 7;
+            this.lblMaxGua2.Text = "0";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(574, 49);
+            this.label10.Location = new System.Drawing.Point(-4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(150, 30);
             this.label10.TabIndex = 8;
@@ -910,15 +911,16 @@
             // 
             this.lblTotalNumber2.AutoSize = true;
             this.lblTotalNumber2.ForeColor = System.Drawing.Color.Red;
-            this.lblTotalNumber2.Location = new System.Drawing.Point(193, 49);
+            this.lblTotalNumber2.Location = new System.Drawing.Point(175, 45);
             this.lblTotalNumber2.Name = "lblTotalNumber2";
-            this.lblTotalNumber2.Size = new System.Drawing.Size(0, 30);
+            this.lblTotalNumber2.Size = new System.Drawing.Size(26, 30);
             this.lblTotalNumber2.TabIndex = 9;
+            this.lblTotalNumber2.Text = "0";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 49);
+            this.label12.Location = new System.Drawing.Point(-3, 45);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(172, 30);
             this.label12.TabIndex = 10;
@@ -927,7 +929,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(813, 49);
+            this.label8.Location = new System.Drawing.Point(614, 3);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(106, 30);
             this.label8.TabIndex = 6;
@@ -937,7 +939,7 @@
             // 
             this.lblError.AutoSize = true;
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(925, 49);
+            this.lblError.Location = new System.Drawing.Point(726, 3);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(145, 30);
             this.lblError.TabIndex = 5;
@@ -978,9 +980,9 @@
             // 
             this.btnStopAuto.Enabled = false;
             this.btnStopAuto.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnStopAuto.Location = new System.Drawing.Point(579, 95);
+            this.btnStopAuto.Location = new System.Drawing.Point(436, 6);
             this.btnStopAuto.Name = "btnStopAuto";
-            this.btnStopAuto.Size = new System.Drawing.Size(145, 85);
+            this.btnStopAuto.Size = new System.Drawing.Size(144, 169);
             this.btnStopAuto.TabIndex = 3;
             this.btnStopAuto.Text = "结束自动";
             this.btnStopAuto.UseVisualStyleBackColor = true;
@@ -989,9 +991,9 @@
             // btnStartAuto
             // 
             this.btnStartAuto.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnStartAuto.Location = new System.Drawing.Point(416, 49);
+            this.btnStartAuto.Location = new System.Drawing.Point(254, 3);
             this.btnStartAuto.Name = "btnStartAuto";
-            this.btnStartAuto.Size = new System.Drawing.Size(123, 131);
+            this.btnStartAuto.Size = new System.Drawing.Size(168, 174);
             this.btnStartAuto.TabIndex = 3;
             this.btnStartAuto.Text = "开始自动";
             this.btnStartAuto.UseVisualStyleBackColor = true;
@@ -1000,9 +1002,9 @@
             // btnSelect
             // 
             this.btnSelect.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnSelect.Location = new System.Drawing.Point(264, 49);
+            this.btnSelect.Location = new System.Drawing.Point(609, 45);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(101, 131);
+            this.btnSelect.Size = new System.Drawing.Size(119, 128);
             this.btnSelect.TabIndex = 3;
             this.btnSelect.Text = "搜索";
             this.btnSelect.UseVisualStyleBackColor = true;
@@ -1011,7 +1013,7 @@
             // numericUpDownAutoClick
             // 
             this.numericUpDownAutoClick.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numericUpDownAutoClick.Location = new System.Drawing.Point(1093, 99);
+            this.numericUpDownAutoClick.Location = new System.Drawing.Point(1050, 99);
             this.numericUpDownAutoClick.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1034,7 +1036,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numericUpDown1.Location = new System.Drawing.Point(122, 95);
+            this.numericUpDown1.Location = new System.Drawing.Point(107, 95);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             20,
             0,
@@ -1058,7 +1060,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label5.Location = new System.Drawing.Point(813, 101);
+            this.label5.Location = new System.Drawing.Point(770, 101);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(255, 30);
             this.label5.TabIndex = 1;
@@ -1068,7 +1070,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label2.Location = new System.Drawing.Point(15, 95);
+            this.label2.Location = new System.Drawing.Point(0, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 30);
             this.label2.TabIndex = 1;
@@ -1138,7 +1140,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 150);
+            this.label9.Location = new System.Drawing.Point(0, 147);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(84, 30);
             this.label9.TabIndex = 8;
@@ -1148,10 +1150,11 @@
             // 
             this.lblResultCount.AutoSize = true;
             this.lblResultCount.ForeColor = System.Drawing.Color.Red;
-            this.lblResultCount.Location = new System.Drawing.Point(105, 150);
+            this.lblResultCount.Location = new System.Drawing.Point(90, 147);
             this.lblResultCount.Name = "lblResultCount";
-            this.lblResultCount.Size = new System.Drawing.Size(0, 30);
+            this.lblResultCount.Size = new System.Drawing.Size(26, 30);
             this.lblResultCount.TabIndex = 9;
+            this.lblResultCount.Text = "0";
             // 
             // Hou2Select50YiLouSetForm
             // 
