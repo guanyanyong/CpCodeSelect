@@ -81,7 +81,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.ResultPage = new System.Windows.Forms.TabPage();
             this.lblMaxGua2 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.lblResultCount = new System.Windows.Forms.Label();
             this.lblTotalNumber2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -105,8 +107,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblResultCount = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -201,11 +201,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label3.Location = new System.Drawing.Point(56, 88);
+            this.label3.Location = new System.Drawing.Point(61, 72);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(167, 30);
+            this.label3.Size = new System.Drawing.Size(123, 30);
             this.label3.TabIndex = 1;
-            this.label3.Text = "当前操作历史：";
+            this.label3.Text = "操作历史：";
             // 
             // btnRestart
             // 
@@ -220,14 +220,15 @@
             // 
             // listBoxHistory
             // 
+            this.listBoxHistory.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBoxHistory.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.listBoxHistory.FormattingEnabled = true;
             this.listBoxHistory.ItemHeight = 25;
             this.listBoxHistory.Items.AddRange(new object[] {
             " "});
-            this.listBoxHistory.Location = new System.Drawing.Point(61, 141);
+            this.listBoxHistory.Location = new System.Drawing.Point(3, 143);
             this.listBoxHistory.Name = "listBoxHistory";
-            this.listBoxHistory.Size = new System.Drawing.Size(1375, 679);
+            this.listBoxHistory.Size = new System.Drawing.Size(1464, 729);
             this.listBoxHistory.TabIndex = 5;
             // 
             // chkRefersh
@@ -282,9 +283,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(527, 20);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 30);
+            this.label6.Size = new System.Drawing.Size(106, 30);
             this.label6.TabIndex = 6;
-            this.label6.Text = "当前最大遗漏:";
+            this.label6.Text = "最大遗漏:";
             // 
             // lblTotalNumber
             // 
@@ -299,9 +300,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(56, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(172, 30);
+            this.label4.Size = new System.Drawing.Size(128, 30);
             this.label4.TabIndex = 6;
-            this.label4.Text = "当前走势总数量:";
+            this.label4.Text = "走势总数量:";
             // 
             // SetSearch
             // 
@@ -341,7 +342,7 @@
             this.SetSearch.Controls.Add(this.label7);
             this.SetSearch.Location = new System.Drawing.Point(4, 37);
             this.SetSearch.Name = "SetSearch";
-            this.SetSearch.Size = new System.Drawing.Size(1470, 808);
+            this.SetSearch.Size = new System.Drawing.Size(1470, 875);
             this.SetSearch.TabIndex = 2;
             this.SetSearch.Text = "搜索设置";
             this.SetSearch.UseVisualStyleBackColor = true;
@@ -892,26 +893,45 @@
             // 
             this.lblMaxGua2.AutoSize = true;
             this.lblMaxGua2.ForeColor = System.Drawing.Color.Red;
-            this.lblMaxGua2.Location = new System.Drawing.Point(152, 0);
+            this.lblMaxGua2.Location = new System.Drawing.Point(108, 0);
             this.lblMaxGua2.Name = "lblMaxGua2";
             this.lblMaxGua2.Size = new System.Drawing.Size(26, 30);
             this.lblMaxGua2.TabIndex = 7;
             this.lblMaxGua2.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(0, 147);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 30);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "结果数:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(-4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(150, 30);
+            this.label10.Size = new System.Drawing.Size(106, 30);
             this.label10.TabIndex = 8;
-            this.label10.Text = "当前最大遗漏:";
+            this.label10.Text = "最大遗漏:";
+            // 
+            // lblResultCount
+            // 
+            this.lblResultCount.AutoSize = true;
+            this.lblResultCount.ForeColor = System.Drawing.Color.Red;
+            this.lblResultCount.Location = new System.Drawing.Point(90, 147);
+            this.lblResultCount.Name = "lblResultCount";
+            this.lblResultCount.Size = new System.Drawing.Size(26, 30);
+            this.lblResultCount.TabIndex = 9;
+            this.lblResultCount.Text = "0";
             // 
             // lblTotalNumber2
             // 
             this.lblTotalNumber2.AutoSize = true;
             this.lblTotalNumber2.ForeColor = System.Drawing.Color.Red;
-            this.lblTotalNumber2.Location = new System.Drawing.Point(175, 45);
+            this.lblTotalNumber2.Location = new System.Drawing.Point(109, 45);
             this.lblTotalNumber2.Name = "lblTotalNumber2";
             this.lblTotalNumber2.Size = new System.Drawing.Size(26, 30);
             this.lblTotalNumber2.TabIndex = 9;
@@ -922,9 +942,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(-3, 45);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(172, 30);
+            this.label12.Size = new System.Drawing.Size(106, 30);
             this.label12.TabIndex = 10;
-            this.label12.Text = "当前走势总数量:";
+            this.label12.Text = "走势总量:";
             // 
             // label8
             // 
@@ -1020,7 +1040,7 @@
             0,
             0});
             this.numericUpDownAutoClick.Minimum = new decimal(new int[] {
-            3,
+            2,
             0,
             0,
             0});
@@ -1028,7 +1048,7 @@
             this.numericUpDownAutoClick.Size = new System.Drawing.Size(120, 36);
             this.numericUpDownAutoClick.TabIndex = 2;
             this.numericUpDownAutoClick.Value = new decimal(new int[] {
-            5,
+            2,
             0,
             0,
             0});
@@ -1136,25 +1156,6 @@
             // 
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(0, 147);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 30);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "结果数:";
-            // 
-            // lblResultCount
-            // 
-            this.lblResultCount.AutoSize = true;
-            this.lblResultCount.ForeColor = System.Drawing.Color.Red;
-            this.lblResultCount.Location = new System.Drawing.Point(90, 147);
-            this.lblResultCount.Name = "lblResultCount";
-            this.lblResultCount.Size = new System.Drawing.Size(26, 30);
-            this.lblResultCount.TabIndex = 9;
-            this.lblResultCount.Text = "0";
             // 
             // Hou2Select50YiLouSetForm
             // 

@@ -155,6 +155,8 @@ namespace CpCodeSelect
             SetForm();
             //AddToLogFileZu6Kill1(code, "Hou2Select50.txt");
             AddToLogFileHou2Select50Auto(code);
+
+
             //在这里把分析后的可以推荐的号码显示到界面上
 
             //执行模拟挂机
