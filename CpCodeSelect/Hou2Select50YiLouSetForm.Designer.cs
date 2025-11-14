@@ -1058,7 +1058,7 @@
             this.numericUpDown1.Font = new System.Drawing.Font("微软雅黑", 16F);
             this.numericUpDown1.Location = new System.Drawing.Point(107, 95);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            20,
+            25,
             0,
             0,
             0});
@@ -1071,7 +1071,7 @@
             this.numericUpDown1.Size = new System.Drawing.Size(120, 36);
             this.numericUpDown1.TabIndex = 2;
             this.numericUpDown1.Value = new decimal(new int[] {
-            6,
+            8,
             0,
             0,
             0});
