@@ -80,6 +80,12 @@
             this.numericUpDownCondition = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.ResultPage = new System.Windows.Forms.TabPage();
+            this.lblMaxGua2 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblTotalNumber2 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblError = new System.Windows.Forms.Label();
             this.txt50Number = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
@@ -91,20 +97,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numer50 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CodeQiHao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblError = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblMaxGua2 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblTotalNumber2 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblResultCount = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -244,10 +246,10 @@
             this.tabControl1.Controls.Add(this.SetSearch);
             this.tabControl1.Controls.Add(this.ResultPage);
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.tabControl1.Location = new System.Drawing.Point(3, 118);
+            this.tabControl1.Location = new System.Drawing.Point(3, 95);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1478, 849);
+            this.tabControl1.Size = new System.Drawing.Size(1478, 916);
             this.tabControl1.TabIndex = 8;
             // 
             // TotalInfo
@@ -860,7 +862,9 @@
             // ResultPage
             // 
             this.ResultPage.Controls.Add(this.lblMaxGua2);
+            this.ResultPage.Controls.Add(this.label9);
             this.ResultPage.Controls.Add(this.label10);
+            this.ResultPage.Controls.Add(this.lblResultCount);
             this.ResultPage.Controls.Add(this.lblTotalNumber2);
             this.ResultPage.Controls.Add(this.label12);
             this.ResultPage.Controls.Add(this.label8);
@@ -879,15 +883,70 @@
             this.ResultPage.Location = new System.Drawing.Point(4, 37);
             this.ResultPage.Name = "ResultPage";
             this.ResultPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ResultPage.Size = new System.Drawing.Size(1470, 808);
+            this.ResultPage.Size = new System.Drawing.Size(1470, 875);
             this.ResultPage.TabIndex = 1;
             this.ResultPage.Text = "显示信息";
             this.ResultPage.UseVisualStyleBackColor = true;
             // 
+            // lblMaxGua2
+            // 
+            this.lblMaxGua2.AutoSize = true;
+            this.lblMaxGua2.ForeColor = System.Drawing.Color.Red;
+            this.lblMaxGua2.Location = new System.Drawing.Point(730, 49);
+            this.lblMaxGua2.Name = "lblMaxGua2";
+            this.lblMaxGua2.Size = new System.Drawing.Size(0, 30);
+            this.lblMaxGua2.TabIndex = 7;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(574, 49);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(150, 30);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "当前最大遗漏:";
+            // 
+            // lblTotalNumber2
+            // 
+            this.lblTotalNumber2.AutoSize = true;
+            this.lblTotalNumber2.ForeColor = System.Drawing.Color.Red;
+            this.lblTotalNumber2.Location = new System.Drawing.Point(193, 49);
+            this.lblTotalNumber2.Name = "lblTotalNumber2";
+            this.lblTotalNumber2.Size = new System.Drawing.Size(0, 30);
+            this.lblTotalNumber2.TabIndex = 9;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 49);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(172, 30);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "当前走势总数量:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(813, 49);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(106, 30);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "显示信息:";
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(925, 49);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(145, 30);
+            this.lblError.TabIndex = 5;
+            this.lblError.Text = "显示操作信息";
+            // 
             // txt50Number
             // 
             this.txt50Number.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.txt50Number.Location = new System.Drawing.Point(975, 153);
+            this.txt50Number.Location = new System.Drawing.Point(975, 211);
             this.txt50Number.Multiline = true;
             this.txt50Number.Name = "txt50Number";
             this.txt50Number.Size = new System.Drawing.Size(406, 631);
@@ -896,9 +955,9 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.btnClear.Location = new System.Drawing.Point(728, 549);
+            this.btnClear.Location = new System.Drawing.Point(728, 571);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(221, 235);
+            this.btnClear.Size = new System.Drawing.Size(221, 271);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "清除";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -907,9 +966,9 @@
             // btnCopy
             // 
             this.btnCopy.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.btnCopy.Location = new System.Drawing.Point(728, 153);
+            this.btnCopy.Location = new System.Drawing.Point(728, 211);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(221, 381);
+            this.btnCopy.Size = new System.Drawing.Size(221, 337);
             this.btnCopy.TabIndex = 3;
             this.btnCopy.Text = "拷贝数值";
             this.btnCopy.UseVisualStyleBackColor = true;
@@ -919,31 +978,31 @@
             // 
             this.btnStopAuto.Enabled = false;
             this.btnStopAuto.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnStopAuto.Location = new System.Drawing.Point(659, 63);
+            this.btnStopAuto.Location = new System.Drawing.Point(579, 95);
             this.btnStopAuto.Name = "btnStopAuto";
-            this.btnStopAuto.Size = new System.Drawing.Size(123, 39);
+            this.btnStopAuto.Size = new System.Drawing.Size(145, 85);
             this.btnStopAuto.TabIndex = 3;
-            this.btnStopAuto.Text = "结束自动点击";
+            this.btnStopAuto.Text = "结束自动";
             this.btnStopAuto.UseVisualStyleBackColor = true;
             this.btnStopAuto.Click += new System.EventHandler(this.btnStopAuto_Click);
             // 
             // btnStartAuto
             // 
             this.btnStartAuto.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnStartAuto.Location = new System.Drawing.Point(499, 63);
+            this.btnStartAuto.Location = new System.Drawing.Point(416, 49);
             this.btnStartAuto.Name = "btnStartAuto";
-            this.btnStartAuto.Size = new System.Drawing.Size(123, 39);
+            this.btnStartAuto.Size = new System.Drawing.Size(123, 131);
             this.btnStartAuto.TabIndex = 3;
-            this.btnStartAuto.Text = "开始自动点击";
+            this.btnStartAuto.Text = "开始自动";
             this.btnStartAuto.UseVisualStyleBackColor = true;
             this.btnStartAuto.Click += new System.EventHandler(this.btnStartAuto_Click);
             // 
             // btnSelect
             // 
             this.btnSelect.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnSelect.Location = new System.Drawing.Point(343, 63);
+            this.btnSelect.Location = new System.Drawing.Point(264, 49);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(123, 39);
+            this.btnSelect.Size = new System.Drawing.Size(101, 131);
             this.btnSelect.TabIndex = 3;
             this.btnSelect.Text = "搜索";
             this.btnSelect.UseVisualStyleBackColor = true;
@@ -952,7 +1011,7 @@
             // numericUpDownAutoClick
             // 
             this.numericUpDownAutoClick.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numericUpDownAutoClick.Location = new System.Drawing.Point(1093, 68);
+            this.numericUpDownAutoClick.Location = new System.Drawing.Point(1093, 99);
             this.numericUpDownAutoClick.Maximum = new decimal(new int[] {
             50,
             0,
@@ -975,7 +1034,7 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numericUpDown1.Location = new System.Drawing.Point(157, 63);
+            this.numericUpDown1.Location = new System.Drawing.Point(122, 95);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             20,
             0,
@@ -999,7 +1058,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label5.Location = new System.Drawing.Point(813, 68);
+            this.label5.Location = new System.Drawing.Point(813, 101);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(255, 30);
             this.label5.TabIndex = 1;
@@ -1009,7 +1068,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label2.Location = new System.Drawing.Point(50, 63);
+            this.label2.Location = new System.Drawing.Point(15, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 30);
             this.label2.TabIndex = 1;
@@ -1024,22 +1083,12 @@
             this.CodeQiHao,
             this.CodeNumber,
             this.ZhongGount});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 141);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 199);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(700, 661);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
             // GuaCount
             // 
@@ -1076,58 +1125,33 @@
             this.ZhongGount.HeaderText = "连中";
             this.ZhongGount.Name = "ZhongGount";
             // 
-            // lblError
+            // contextMenuStrip1
             // 
-            this.lblError.AutoSize = true;
-            this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(925, 17);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(145, 30);
-            this.lblError.TabIndex = 5;
-            this.lblError.Text = "显示操作信息";
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // label8
+            // contextMenuStrip2
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(813, 17);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 30);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "显示信息:";
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
-            // lblMaxGua2
+            // label9
             // 
-            this.lblMaxGua2.AutoSize = true;
-            this.lblMaxGua2.Location = new System.Drawing.Point(628, 17);
-            this.lblMaxGua2.Name = "lblMaxGua2";
-            this.lblMaxGua2.Size = new System.Drawing.Size(0, 30);
-            this.lblMaxGua2.TabIndex = 7;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(15, 150);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 30);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "结果数:";
             // 
-            // label10
+            // lblResultCount
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(472, 17);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(150, 30);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "当前最大遗漏:";
-            // 
-            // lblTotalNumber2
-            // 
-            this.lblTotalNumber2.AutoSize = true;
-            this.lblTotalNumber2.Location = new System.Drawing.Point(193, 17);
-            this.lblTotalNumber2.Name = "lblTotalNumber2";
-            this.lblTotalNumber2.Size = new System.Drawing.Size(0, 30);
-            this.lblTotalNumber2.TabIndex = 9;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 17);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(172, 30);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "当前走势总数量:";
+            this.lblResultCount.AutoSize = true;
+            this.lblResultCount.ForeColor = System.Drawing.Color.Red;
+            this.lblResultCount.Location = new System.Drawing.Point(105, 150);
+            this.lblResultCount.Name = "lblResultCount";
+            this.lblResultCount.Size = new System.Drawing.Size(0, 30);
+            this.lblResultCount.TabIndex = 9;
             // 
             // Hou2Select50YiLouSetForm
             // 
@@ -1265,6 +1289,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblTotalNumber2;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblResultCount;
     }
 }
 

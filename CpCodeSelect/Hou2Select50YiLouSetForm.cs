@@ -574,7 +574,7 @@ namespace CpCodeSelect
             var number = numericUpDown1.Value;
             var list = Hou2Select50YiLouSetBusiness.modelList.Where(p => p.NeedZhong == false && p.GuaCount >= number).OrderByDescending(p => p.GuaCount).ToList();
             dataGridView1.DataSource = list;
-            
+            lblResultCount.Text = list.Count.ToString();
             dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
 
