@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code.cs" />
+    <Compile Include="ExModel\YiLouSetExModel.cs" />
     <Compile Include="Five1MaModel.cs" />
     <Compile Include="Kill3Model.cs" />
     <Compile Include="PositionDragonTiger.cs" />

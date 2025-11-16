@@ -16,6 +16,10 @@ using System.Collections;
 using System.Media;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using CpCodeSelect.Model.ExModel;
 
 namespace CpCodeSelect
 {
@@ -37,6 +41,7 @@ namespace CpCodeSelect
         public StatisticForm statisticForm = new StatisticForm();
         public List<Hou2Select50_20Model> modelList = new List<Hou2Select50_20Model>();
         private int boFangYanhuaCount = 12;
+        private string apiUri = "http://127.0.0.1:5000/";
         public Hou2Select50YiLouSetForm()
         {
             InitializeComponent();
@@ -156,6 +161,8 @@ namespace CpCodeSelect
             //AddToLogFileZu6Kill1(code, "Hou2Select50.txt");
             AddToLogFileHou2Select50Auto(code);
 
+            //把记录添加到界面上 异步方式
+            AddRecordToPage(code);
 
             //在这里把分析后的可以推荐的号码显示到界面上
 
@@ -164,6 +171,53 @@ namespace CpCodeSelect
             //moniKill3_2.Run(code);
             //moniKill3_3.Run(code);
 
+        }
+
+        private async void AddRecordToPage(Code code)
+        {
+            var needAddList = Hou2Select50YiLouSetBusiness.modelList.Where(p => p.NeedZhong == false && p.GuaCount >= boFangYanhuaCount).OrderByDescending(p => p.GuaCount).ToList();
+            List<YiLouSetExModel> exModelList = new List<YiLouSetExModel>();
+            if (needAddList.Count > 0)
+            {
+                foreach (var model in needAddList)
+                {
+                    YiLouSetExModel exModel = new YiLouSetExModel();
+                    exModel.当前期号 = code.CodeQiHao;
+                    exModel.当前开奖号 = code.CodeNumber;
+                    exModel.遗漏数 = model.GuaCount;
+                    exModel.期号 = model.CodeQiHao;
+                    exModel.开奖号 = model.CodeNumber;
+                    exModel.五十码 = string.Join(" ", model.Number50);
+                    exModelList.Add(exModel);
+                }
+                var data = new { data = exModelList };
+                // 将对象序列化为JSON字符串
+                string jsonString = JsonConvert.SerializeObject(data);
+
+                // 设置请求内容
+                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+                // 创建HttpClient（在实际应用中，建议使用IHttpClientFactory以避免资源耗尽）
+                using (var httpClient = new HttpClient())
+                {
+                    try
+                    {
+                        // 发送POST请求
+                        HttpResponseMessage response = await httpClient.PostAsync(apiUri + @"api/receive_batch_data", content);
+
+                        // 确保请求成功（状态码为2xx）
+                        response.EnsureSuccessStatusCode();
+
+                        // 读取响应内容
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        Console.WriteLine($"服务器响应: {responseBody}");
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        Console.WriteLine($"请求失败: {ex.Message}");
+                    }
+                }
+            }
         }
         public void SetForm()
         {
@@ -181,7 +235,7 @@ namespace CpCodeSelect
             }
 
             lblMaxGua2.Text = lblMaxGua.Text;
-            lblTotalNumber2.Text= lblTotalNumber.Text;
+            lblTotalNumber2.Text = lblTotalNumber.Text;
         }
         public void InitOfferNumber()
         {
@@ -325,6 +379,9 @@ namespace CpCodeSelect
             firstTime = true;//是否第一次执行
 
             var boFangYanhuaCountStr = ConfigurationManager.AppSettings["BoFangYanhuaCount"];
+            apiUri = ConfigurationManager.AppSettings["apiUri"];
+            if (string.IsNullOrEmpty(apiUri))
+                apiUri = "http://127.0.0.1:5000/";
             if (int.TryParse(boFangYanhuaCountStr, out int count))
             {
                 boFangYanhuaCount = count;
