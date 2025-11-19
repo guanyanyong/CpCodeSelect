@@ -42,6 +42,7 @@ namespace CpCodeSelect
         public List<Hou2Select50_20Model> modelList = new List<Hou2Select50_20Model>();
         private int boFangYanhuaCount = 12;
         private string apiUri = "http://127.0.0.1:5000/";
+        private string DataSource = "rexguan-hp2024-01";
         public Hou2Select50YiLouSetForm()
         {
             InitializeComponent();
@@ -188,6 +189,7 @@ namespace CpCodeSelect
                     exModel.期号 = model.CodeQiHao;
                     exModel.开奖号 = model.CodeNumber;
                     exModel.五十码 = string.Join(" ", model.Number50);
+                    exModel.数据来源 = DataSource;
                     exModelList.Add(exModel);
                 }
                 var data = new { data = exModelList };
@@ -380,6 +382,7 @@ namespace CpCodeSelect
 
             var boFangYanhuaCountStr = ConfigurationManager.AppSettings["BoFangYanhuaCount"];
             apiUri = ConfigurationManager.AppSettings["apiUri"];
+            DataSource = ConfigurationManager.AppSettings["DataSource"];
             if (string.IsNullOrEmpty(apiUri))
                 apiUri = "http://127.0.0.1:5000/";
             if (int.TryParse(boFangYanhuaCountStr, out int count))

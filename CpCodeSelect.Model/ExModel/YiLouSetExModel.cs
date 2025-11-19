@@ -14,5 +14,6 @@ namespace CpCodeSelect.Model.ExModel
         public string 期号 { get; set; }
         public string 开奖号 { get; set; }
         public string 五十码 {get;set;}
+        public string 数据来源 { get; set; }
     }
 }
