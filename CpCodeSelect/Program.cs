@@ -51,6 +51,9 @@ namespace CpCodeSelect
             else if(str == "Hou2Select50YiLouSet")
             {
                 Application.Run(new Hou2Select50YiLouSetForm());
+            }else if(str == "Hou2Select50YiLouSetForm3guashang")
+            {
+                Application.Run(new Hou2Select50YiLouSetForm3guashangForm());
             }
 
         }
