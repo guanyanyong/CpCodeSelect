@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CpCodeSelect.Model
 {
-    public class Hou2Select50_20Model
+    public class Hou2Select50_ZhouQiZhong
     {
         public static int ShowNumber = 6;
         /// <summary>
@@ -29,10 +29,34 @@ namespace CpCodeSelect.Model
         /// </summary>
         public string CodeNumber { get; set; }
         /// <summary>
-        /// 当前挂的个数
+        /// 当前连挂次数
         /// </summary>
+
         public int GuaCount { get; set; } = 0;
+        /// <summary>
+        /// 当前连中次数
+        /// </summary>
         public int ZhongGount { get; set; } = 0;
+        /// <summary>
+        /// 中之前挂的次数
+        /// </summary>
+        public int ZhongBeforeGua { get; set; } = 0;
+        /// <summary>
+        /// 3中之前挂的次数
+        /// </summary>
+        public int Zhong3BeforeGua { get; set; } = 0;
+        /// <summary>
+        /// 2中之前挂的次数
+        /// </summary>
+        public int Zhong2BeforeGua { get;set; } = 0;
+        /// <summary>
+        /// 当前是否在周期内的中后周期
+        /// </summary>
+        public bool IsZhouQiZhongHou { get; set; } = false;
+        /// <summary>
+        /// 周期内中后周期内挂的次数
+        /// </summary>
+        public int ZhouQiZhongHouGua { get; set; } = 0;
 
         /// <summary>
         /// 是否需要显示

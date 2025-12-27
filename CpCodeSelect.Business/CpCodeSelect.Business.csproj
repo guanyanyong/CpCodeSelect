@@ -48,6 +48,7 @@
     <Compile Include="DaXiaoDanShuangMoniBusiness.cs" />
     <Compile Include="DragonTigerBusiness.cs" />
     <Compile Include="DaXiaoDanShuangBusiness.cs" />
+    <Compile Include="Hou2Select50YiLouSetFormZhouQiZhongBusiness.cs" />
     <Compile Include="Hou2Select50YiLouSetForm3guashang25zhuBusiness.cs" />
     <Compile Include="Hou2Select50YiLouSetForm3guashangBusiness.cs" />
     <Compile Include="Hou2Select50YiLouSetBusiness.cs" />
