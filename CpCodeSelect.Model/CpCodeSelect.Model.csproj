@@ -44,6 +44,7 @@
     <Compile Include="Code.cs" />
     <Compile Include="ExModel\YiLouSetExModel.cs" />
     <Compile Include="Five1MaModel.cs" />
+    <Compile Include="Hou2Select50YiLouSetForm3guashang25zhuModel.cs" />
     <Compile Include="Hou2Select50YiLouSetForm3guashangModel.cs" />
     <Compile Include="Kill3Model.cs" />
     <Compile Include="PositionDragonTiger.cs" />

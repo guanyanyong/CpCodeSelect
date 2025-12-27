@@ -184,7 +184,7 @@ namespace CpCodeSelect.Business
                         numerList = numerList.OrderBy(item => item).ToList();
                         
                         */
-                        var numerList = MultiThreadedNumberSelectForYiLou.GenerateMultipleGroups(50, excludeAllList, takeCodeList);
+                        var numerList = MultiThreadedNumberSelectForYiLou.GenerateMultipleGroups(50, excludeAllList, takeCodeList,50);
                         foreach (var number in numerList)
                         {
                             if (number.Count > 0)

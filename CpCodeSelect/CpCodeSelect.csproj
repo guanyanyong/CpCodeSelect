@@ -71,6 +71,12 @@
     <Compile Include="Five1MaForm.Designer.cs">
       <DependentUpon>Five1MaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hou2Select50YiLouSetForm3guashang25zhu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hou2Select50YiLouSetForm3guashang25zhu.Designer.cs">
+      <DependentUpon>Hou2Select50YiLouSetForm3guashang25zhu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hou2Select50YiLouSetForm3guashang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </Compile>
     <EmbeddedResource Include="Five1MaForm.resx">
       <DependentUpon>Five1MaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hou2Select50YiLouSetForm3guashang25zhu.resx">
+      <DependentUpon>Hou2Select50YiLouSetForm3guashang25zhu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hou2Select50YiLouSetForm3guashang.resx">
       <DependentUpon>Hou2Select50YiLouSetForm3guashang.cs</DependentUpon>

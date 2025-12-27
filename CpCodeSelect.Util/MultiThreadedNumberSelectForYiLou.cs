@@ -18,11 +18,13 @@ namespace CpCodeSelect.Util
         /// <param name="groupCount">要生成的组数</param>
         /// <param name="excludedNumbers">全局排除号码</param>
         /// <param name="mustIncludeNumbers">全局必须包含号码</param>
+        /// <param name="getCountPerGroup">每组号码,默认50</param>
         /// <returns>号码组列表</returns>
         public static List<List<string>> GenerateMultipleGroups(
             int groupCount = 50,
             List<string> excludedNumbers = null,
-            List<string> mustIncludeNumbers = null)
+            List<string> mustIncludeNumbers = null,
+            int getCountPerGroup=50)
         {
             excludedNumbers = excludedNumbers ?? new List<string>();
             mustIncludeNumbers = mustIncludeNumbers ?? new List<string>();
@@ -39,7 +41,7 @@ namespace CpCodeSelect.Util
                     var localRandom = new Random(GetThreadSafeSeed());
 
                     // 生成一组号码
-                    var group = GenerateSingleGroup(localRandom, excludedNumbers, mustIncludeNumbers);
+                    var group = GenerateSingleGroup(localRandom, excludedNumbers, mustIncludeNumbers, getCountPerGroup);
                     results.Add(group);
 
                     // 可选：显示进度
@@ -112,14 +114,19 @@ namespace CpCodeSelect.Util
             var results = await Task.WhenAll(tasks);
             return results.ToList();
         }
-
         /// <summary>
         /// 生成单组号码（50个）
         /// </summary>
+        /// <param name="random"></param>
+        /// <param name="excludedNumbers"></param>
+        /// <param name="mustIncludeNumbers"></param>
+        /// <param name="getCountPerGroup">每组号码数,默认50,可以是20或者27</param>
+        /// <returns></returns>
         private static List<string> GenerateSingleGroup(
             Random random,
             List<string> excludedNumbers,
-            List<string> mustIncludeNumbers)
+            List<string> mustIncludeNumbers,
+            int getCountPerGroup=50)
         {
             // 生成所有号码
             var allNumbers = GenerateAllNumbers();
@@ -132,7 +139,7 @@ namespace CpCodeSelect.Util
             while (true)
             {
                 // 计算需要随机选择的数量
-                int numbersNeeded = 50 - validMustInclude.Count;
+                int numbersNeeded = getCountPerGroup - validMustInclude.Count;
 
                 // 创建可用号码池
                 var availableNumbers = allNumbers
@@ -145,25 +152,27 @@ namespace CpCodeSelect.Util
                 {
                     //throw new InvalidOperationException("可用号码不足");
                     count++;
-                    if(count<100)
+                    if (count < 1000)
                         continue;
                     else
                     {
-                        //单次执行100次后,出循环,返回空集合
+                        //单次执行1000次后,出循环,返回空集合
                         break;
                     }
                 }
+                else
+                {
+                    // 随机选择号码
+                    var randomlySelected = SelectRandomNumbers(availableNumbers, numbersNeeded, random);
 
-                // 随机选择号码
-                var randomlySelected = SelectRandomNumbers(availableNumbers, numbersNeeded, random);
+                    // 合并结果
+                    finalResult.AddRange(validMustInclude);
+                    finalResult.AddRange(randomlySelected);
 
-                // 合并结果
-                finalResult.AddRange(validMustInclude);
-                finalResult.AddRange(randomlySelected);
-
-                // 随机打乱
-                Shuffle(finalResult, random);
-                break;
+                    // 随机打乱
+                    Shuffle(finalResult, random);
+                    break;
+                }
             }
             return finalResult;
         }

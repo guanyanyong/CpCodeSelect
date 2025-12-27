@@ -1,6 +1,6 @@
 ﻿namespace CpCodeSelect
 {
-    partial class Hou2Select50YiLouSetForm
+    partial class Hou2Select50YiLouSetForm3guashang25zhu
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -50,7 +50,6 @@
             this.txtNum1 = new System.Windows.Forms.TextBox();
             this.BtnCopy2 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.num14E = new System.Windows.Forms.NumericUpDown();
             this.num13E = new System.Windows.Forms.NumericUpDown();
             this.num12E = new System.Windows.Forms.NumericUpDown();
             this.num11E = new System.Windows.Forms.NumericUpDown();
@@ -64,8 +63,7 @@
             this.num3E = new System.Windows.Forms.NumericUpDown();
             this.num2E = new System.Windows.Forms.NumericUpDown();
             this.num1E = new System.Windows.Forms.NumericUpDown();
-            this.numCondition = new System.Windows.Forms.NumericUpDown();
-            this.num14B = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.num13B = new System.Windows.Forms.NumericUpDown();
             this.num12B = new System.Windows.Forms.NumericUpDown();
             this.num11B = new System.Windows.Forms.NumericUpDown();
@@ -101,23 +99,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Gua3TimeCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numer50 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CodeQiHao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label11 = new System.Windows.Forms.Label();
-            this.numHaoMa = new System.Windows.Forms.NumericUpDown();
-            this.btnyiloudijian = new System.Windows.Forms.Button();
-            this.btn10T30Begin = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num14E)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num13E)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num12E)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num11E)).BeginInit();
@@ -131,8 +123,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.num3E)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num2E)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num1E)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numCondition)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num14B)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num13B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num12B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num11B)).BeginInit();
@@ -151,7 +142,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoClick)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numHaoMa)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -320,10 +310,7 @@
             this.SetSearch.Controls.Add(this.txtNum2);
             this.SetSearch.Controls.Add(this.txtNum1);
             this.SetSearch.Controls.Add(this.BtnCopy2);
-            this.SetSearch.Controls.Add(this.btn10T30Begin);
-            this.SetSearch.Controls.Add(this.btnyiloudijian);
             this.SetSearch.Controls.Add(this.button2);
-            this.SetSearch.Controls.Add(this.num14E);
             this.SetSearch.Controls.Add(this.num13E);
             this.SetSearch.Controls.Add(this.num12E);
             this.SetSearch.Controls.Add(this.num11E);
@@ -337,9 +324,7 @@
             this.SetSearch.Controls.Add(this.num3E);
             this.SetSearch.Controls.Add(this.num2E);
             this.SetSearch.Controls.Add(this.num1E);
-            this.SetSearch.Controls.Add(this.numHaoMa);
-            this.SetSearch.Controls.Add(this.numCondition);
-            this.SetSearch.Controls.Add(this.num14B);
+            this.SetSearch.Controls.Add(this.numericUpDown3);
             this.SetSearch.Controls.Add(this.num13B);
             this.SetSearch.Controls.Add(this.num12B);
             this.SetSearch.Controls.Add(this.num11B);
@@ -354,7 +339,6 @@
             this.SetSearch.Controls.Add(this.num2B);
             this.SetSearch.Controls.Add(this.num1B);
             this.SetSearch.Controls.Add(this.numericUpDownCondition);
-            this.SetSearch.Controls.Add(this.label11);
             this.SetSearch.Controls.Add(this.label7);
             this.SetSearch.Location = new System.Drawing.Point(4, 37);
             this.SetSearch.Name = "SetSearch";
@@ -365,31 +349,31 @@
             // 
             // txtNum3
             // 
-            this.txtNum3.Location = new System.Drawing.Point(1036, 472);
+            this.txtNum3.Location = new System.Drawing.Point(1036, 375);
             this.txtNum3.Multiline = true;
             this.txtNum3.Name = "txtNum3";
-            this.txtNum3.Size = new System.Drawing.Size(410, 287);
+            this.txtNum3.Size = new System.Drawing.Size(341, 287);
             this.txtNum3.TabIndex = 6;
             // 
             // txtNum2
             // 
-            this.txtNum2.Location = new System.Drawing.Point(1045, 178);
+            this.txtNum2.Location = new System.Drawing.Point(1036, 62);
             this.txtNum2.Multiline = true;
             this.txtNum2.Name = "txtNum2";
-            this.txtNum2.Size = new System.Drawing.Size(410, 261);
+            this.txtNum2.Size = new System.Drawing.Size(341, 261);
             this.txtNum2.TabIndex = 6;
             // 
             // txtNum1
             // 
-            this.txtNum1.Location = new System.Drawing.Point(643, 173);
+            this.txtNum1.Location = new System.Drawing.Point(643, 52);
             this.txtNum1.Multiline = true;
             this.txtNum1.Name = "txtNum1";
-            this.txtNum1.Size = new System.Drawing.Size(341, 588);
+            this.txtNum1.Size = new System.Drawing.Size(341, 610);
             this.txtNum1.TabIndex = 6;
             // 
             // BtnCopy2
             // 
-            this.BtnCopy2.Location = new System.Drawing.Point(487, 267);
+            this.BtnCopy2.Location = new System.Drawing.Point(487, 253);
             this.BtnCopy2.Name = "BtnCopy2";
             this.BtnCopy2.Size = new System.Drawing.Size(134, 172);
             this.BtnCopy2.TabIndex = 5;
@@ -399,31 +383,13 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(487, 178);
+            this.button2.Location = new System.Drawing.Point(487, 173);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(134, 44);
             this.button2.TabIndex = 5;
             this.button2.Text = "开始搜索";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // num14E
-            // 
-            this.num14E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num14E.Location = new System.Drawing.Point(265, 725);
-            this.num14E.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num14E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.num14E.Name = "num14E";
-            this.num14E.Size = new System.Drawing.Size(120, 36);
-            this.num14E.TabIndex = 4;
             // 
             // num13E
             // 
@@ -434,14 +400,14 @@
             0,
             0,
             0});
-            this.num13E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num13E.Name = "num13E";
             this.num13E.Size = new System.Drawing.Size(120, 36);
             this.num13E.TabIndex = 4;
+            this.num13E.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
             // 
             // num12E
             // 
@@ -452,14 +418,14 @@
             0,
             0,
             0});
-            this.num12E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num12E.Name = "num12E";
             this.num12E.Size = new System.Drawing.Size(120, 36);
             this.num12E.TabIndex = 4;
+            this.num12E.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             // 
             // num11E
             // 
@@ -470,16 +436,11 @@
             0,
             0,
             0});
-            this.num11E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num11E.Name = "num11E";
             this.num11E.Size = new System.Drawing.Size(120, 36);
             this.num11E.TabIndex = 4;
             this.num11E.Value = new decimal(new int[] {
-            1,
+            20,
             0,
             0,
             0});
@@ -493,19 +454,9 @@
             0,
             0,
             0});
-            this.num10E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num10E.Name = "num10E";
             this.num10E.Size = new System.Drawing.Size(120, 36);
             this.num10E.TabIndex = 4;
-            this.num10E.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
             // 
             // num9E
             // 
@@ -516,19 +467,9 @@
             0,
             0,
             0});
-            this.num9E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num9E.Name = "num9E";
             this.num9E.Size = new System.Drawing.Size(120, 36);
             this.num9E.TabIndex = 4;
-            this.num9E.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
             // 
             // num8E
             // 
@@ -539,16 +480,11 @@
             0,
             0,
             0});
-            this.num8E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num8E.Name = "num8E";
             this.num8E.Size = new System.Drawing.Size(120, 36);
             this.num8E.TabIndex = 4;
             this.num8E.Value = new decimal(new int[] {
-            6,
+            1,
             0,
             0,
             0});
@@ -562,16 +498,11 @@
             0,
             0,
             0});
-            this.num7E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num7E.Name = "num7E";
             this.num7E.Size = new System.Drawing.Size(120, 36);
             this.num7E.TabIndex = 4;
             this.num7E.Value = new decimal(new int[] {
-            8,
+            1,
             0,
             0,
             0});
@@ -585,16 +516,11 @@
             0,
             0,
             0});
-            this.num6E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num6E.Name = "num6E";
             this.num6E.Size = new System.Drawing.Size(120, 36);
             this.num6E.TabIndex = 4;
             this.num6E.Value = new decimal(new int[] {
-            10,
+            1,
             0,
             0,
             0});
@@ -608,16 +534,11 @@
             0,
             0,
             0});
-            this.num5E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num5E.Name = "num5E";
             this.num5E.Size = new System.Drawing.Size(120, 36);
             this.num5E.TabIndex = 4;
             this.num5E.Value = new decimal(new int[] {
-            12,
+            10,
             0,
             0,
             0});
@@ -631,16 +552,11 @@
             0,
             0,
             0});
-            this.num4E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num4E.Name = "num4E";
             this.num4E.Size = new System.Drawing.Size(120, 36);
             this.num4E.TabIndex = 4;
             this.num4E.Value = new decimal(new int[] {
-            16,
+            1,
             0,
             0,
             0});
@@ -654,16 +570,11 @@
             0,
             0,
             0});
-            this.num3E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num3E.Name = "num3E";
             this.num3E.Size = new System.Drawing.Size(120, 36);
             this.num3E.TabIndex = 4;
             this.num3E.Value = new decimal(new int[] {
-            20,
+            10,
             0,
             0,
             0});
@@ -677,16 +588,11 @@
             0,
             0,
             0});
-            this.num2E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num2E.Name = "num2E";
             this.num2E.Size = new System.Drawing.Size(120, 36);
             this.num2E.TabIndex = 4;
             this.num2E.Value = new decimal(new int[] {
-            18,
+            1,
             0,
             0,
             0});
@@ -700,11 +606,6 @@
             0,
             0,
             0});
-            this.num1E.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num1E.Name = "num1E";
             this.num1E.Size = new System.Drawing.Size(120, 36);
             this.num1E.TabIndex = 4;
@@ -714,51 +615,28 @@
             0,
             0});
             // 
-            // numCondition
+            // numericUpDown3
             // 
-            this.numCondition.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numCondition.Location = new System.Drawing.Point(152, 52);
-            this.numCondition.Maximum = new decimal(new int[] {
+            this.numericUpDown3.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.numericUpDown3.Location = new System.Drawing.Point(152, 52);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.numCondition.Minimum = new decimal(new int[] {
+            this.numericUpDown3.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numCondition.Name = "numCondition";
-            this.numCondition.Size = new System.Drawing.Size(120, 36);
-            this.numCondition.TabIndex = 4;
-            this.numCondition.Value = new decimal(new int[] {
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(120, 36);
+            this.numericUpDown3.TabIndex = 4;
+            this.numericUpDown3.Value = new decimal(new int[] {
             6,
             0,
             0,
             0});
-            // 
-            // num14B
-            // 
-            this.num14B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num14B.Location = new System.Drawing.Point(110, 725);
-            this.num14B.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.num14B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.num14B.Name = "num14B";
-            this.num14B.Size = new System.Drawing.Size(120, 36);
-            this.num14B.TabIndex = 8;
-            this.num14B.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             // 
             // num13B
             // 
@@ -769,19 +647,14 @@
             0,
             0,
             0});
-            this.num13B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num13B.Name = "num13B";
             this.num13B.Size = new System.Drawing.Size(120, 36);
             this.num13B.TabIndex = 4;
             this.num13B.Value = new decimal(new int[] {
-            1,
+            4,
             0,
             0,
-            -2147483648});
+            0});
             // 
             // num12B
             // 
@@ -792,14 +665,14 @@
             0,
             0,
             0});
-            this.num12B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num12B.Name = "num12B";
             this.num12B.Size = new System.Drawing.Size(120, 36);
             this.num12B.TabIndex = 4;
+            this.num12B.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
             // 
             // num11B
             // 
@@ -810,14 +683,14 @@
             0,
             0,
             0});
-            this.num11B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num11B.Name = "num11B";
             this.num11B.Size = new System.Drawing.Size(120, 36);
             this.num11B.TabIndex = 4;
+            this.num11B.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
             // 
             // num10B
             // 
@@ -828,19 +701,9 @@
             0,
             0,
             0});
-            this.num10B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num10B.Name = "num10B";
             this.num10B.Size = new System.Drawing.Size(120, 36);
             this.num10B.TabIndex = 4;
-            this.num10B.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // num9B
             // 
@@ -851,19 +714,9 @@
             0,
             0,
             0});
-            this.num9B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num9B.Name = "num9B";
             this.num9B.Size = new System.Drawing.Size(120, 36);
             this.num9B.TabIndex = 4;
-            this.num9B.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
             // 
             // num8B
             // 
@@ -874,19 +727,9 @@
             0,
             0,
             0});
-            this.num8B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num8B.Name = "num8B";
             this.num8B.Size = new System.Drawing.Size(120, 36);
             this.num8B.TabIndex = 4;
-            this.num8B.Value = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
             // 
             // num7B
             // 
@@ -897,19 +740,9 @@
             0,
             0,
             0});
-            this.num7B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num7B.Name = "num7B";
             this.num7B.Size = new System.Drawing.Size(120, 36);
             this.num7B.TabIndex = 4;
-            this.num7B.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
             // 
             // num6B
             // 
@@ -920,19 +753,9 @@
             0,
             0,
             0});
-            this.num6B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num6B.Name = "num6B";
             this.num6B.Size = new System.Drawing.Size(120, 36);
             this.num6B.TabIndex = 4;
-            this.num6B.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
             // 
             // num5B
             // 
@@ -943,19 +766,9 @@
             0,
             0,
             0});
-            this.num5B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num5B.Name = "num5B";
             this.num5B.Size = new System.Drawing.Size(120, 36);
             this.num5B.TabIndex = 4;
-            this.num5B.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
             // 
             // num4B
             // 
@@ -966,19 +779,9 @@
             0,
             0,
             0});
-            this.num4B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num4B.Name = "num4B";
             this.num4B.Size = new System.Drawing.Size(120, 36);
             this.num4B.TabIndex = 4;
-            this.num4B.Value = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
             // 
             // num3B
             // 
@@ -989,19 +792,9 @@
             0,
             0,
             0});
-            this.num3B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num3B.Name = "num3B";
             this.num3B.Size = new System.Drawing.Size(120, 36);
             this.num3B.TabIndex = 4;
-            this.num3B.Value = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
             // 
             // num2B
             // 
@@ -1012,19 +805,9 @@
             0,
             0,
             0});
-            this.num2B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num2B.Name = "num2B";
             this.num2B.Size = new System.Drawing.Size(120, 36);
             this.num2B.TabIndex = 4;
-            this.num2B.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             // 
             // num1B
             // 
@@ -1035,19 +818,14 @@
             0,
             0,
             0});
-            this.num1B.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             this.num1B.Name = "num1B";
             this.num1B.Size = new System.Drawing.Size(120, 36);
             this.num1B.TabIndex = 4;
             this.num1B.Value = new decimal(new int[] {
-            1,
+            8,
             0,
             0,
-            -2147483648});
+            0});
             // 
             // numericUpDownCondition
             // 
@@ -1293,7 +1071,7 @@
             this.numericUpDown1.Size = new System.Drawing.Size(120, 36);
             this.numericUpDown1.TabIndex = 2;
             this.numericUpDown1.Value = new decimal(new int[] {
-            8,
+            3,
             0,
             0,
             0});
@@ -1322,17 +1100,24 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Gua3TimeCount,
             this.GuaCount,
             this.Numer50,
             this.CodeQiHao,
-            this.CodeNumber,
-            this.ZhongGount});
+            this.CodeNumber});
             this.dataGridView1.Location = new System.Drawing.Point(6, 199);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(700, 661);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Gua3TimeCount
+            // 
+            this.Gua3TimeCount.DataPropertyName = "Gua3TimeCount";
+            this.Gua3TimeCount.HeaderText = "挂3次数";
+            this.Gua3TimeCount.Name = "Gua3TimeCount";
+            this.Gua3TimeCount.Width = 120;
             // 
             // GuaCount
             // 
@@ -1363,12 +1148,6 @@
             this.CodeNumber.Name = "CodeNumber";
             this.CodeNumber.Width = 150;
             // 
-            // ZhongGount
-            // 
-            this.ZhongGount.DataPropertyName = "ZhongGount";
-            this.ZhongGount.HeaderText = "连中";
-            this.ZhongGount.Name = "ZhongGount";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -1379,60 +1158,7 @@
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
-            // contextMenuStrip3
-            // 
-            this.contextMenuStrip3.Name = "contextMenuStrip3";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label11.Location = new System.Drawing.Point(302, 58);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(79, 30);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "注数：";
-            // 
-            // numHaoMa
-            // 
-            this.numHaoMa.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numHaoMa.Location = new System.Drawing.Point(387, 53);
-            this.numHaoMa.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numHaoMa.Name = "numHaoMa";
-            this.numHaoMa.Size = new System.Drawing.Size(120, 36);
-            this.numHaoMa.TabIndex = 4;
-            this.numHaoMa.Value = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
-            // 
-            // btnyiloudijian
-            // 
-            this.btnyiloudijian.Location = new System.Drawing.Point(567, 47);
-            this.btnyiloudijian.Name = "btnyiloudijian";
-            this.btnyiloudijian.Size = new System.Drawing.Size(134, 44);
-            this.btnyiloudijian.TabIndex = 5;
-            this.btnyiloudijian.Text = "遗漏递减";
-            this.btnyiloudijian.UseVisualStyleBackColor = true;
-            this.btnyiloudijian.Click += new System.EventHandler(this.btnyiloudijian_Click);
-            // 
-            // btn10T30Begin
-            // 
-            this.btn10T30Begin.Location = new System.Drawing.Point(731, 47);
-            this.btn10T30Begin.Name = "btn10T30Begin";
-            this.btn10T30Begin.Size = new System.Drawing.Size(134, 44);
-            this.btn10T30Begin.TabIndex = 5;
-            this.btn10T30Begin.Text = "10-30开始";
-            this.btn10T30Begin.UseVisualStyleBackColor = true;
-            this.btn10T30Begin.Click += new System.EventHandler(this.btn10T30Begin_Click);
-            // 
-            // Hou2Select50YiLouSetForm
+            // Hou2Select50YiLouSetForm3guashang25zhu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1445,14 +1171,13 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.button1);
-            this.Name = "Hou2Select50YiLouSetForm";
-            this.Text = "50注遗漏搜索";
+            this.Name = "Hou2Select50YiLouSetForm3guashang25zhu";
+            this.Text = "遗漏设置挂3后跟25注";
             this.tabControl1.ResumeLayout(false);
             this.TotalInfo.ResumeLayout(false);
             this.TotalInfo.PerformLayout();
             this.SetSearch.ResumeLayout(false);
             this.SetSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num14E)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num13E)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num12E)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num11E)).EndInit();
@@ -1466,8 +1191,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.num3E)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num2E)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num1E)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numCondition)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num14B)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num13B)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num12B)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num11B)).EndInit();
@@ -1487,7 +1211,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoClick)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numHaoMa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1530,7 +1253,7 @@
         private System.Windows.Forms.NumericUpDown num3E;
         private System.Windows.Forms.NumericUpDown num2E;
         private System.Windows.Forms.NumericUpDown num1E;
-        private System.Windows.Forms.NumericUpDown numCondition;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.NumericUpDown num3B;
         private System.Windows.Forms.NumericUpDown num2B;
         private System.Windows.Forms.NumericUpDown num1B;
@@ -1560,11 +1283,6 @@
         private System.Windows.Forms.NumericUpDown num4B;
         private System.Windows.Forms.TextBox txtNum3;
         private System.Windows.Forms.Button BtnCopy2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
-        private System.Windows.Forms.DataGridViewButtonColumn Numer50;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodeQiHao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodeNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZhongGount;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblMaxGua2;
@@ -1573,13 +1291,11 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblResultCount;
-        private System.Windows.Forms.NumericUpDown num14E;
-        private System.Windows.Forms.NumericUpDown num14B;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
-        private System.Windows.Forms.NumericUpDown numHaoMa;
-        private System.Windows.Forms.Button btnyiloudijian;
-        private System.Windows.Forms.Button btn10T30Begin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gua3TimeCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
+        private System.Windows.Forms.DataGridViewButtonColumn Numer50;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodeQiHao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodeNumber;
     }
 }
 

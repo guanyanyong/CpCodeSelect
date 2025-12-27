@@ -4,20 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using static CpCodeSelect.Model.Zu6Kill1Model;
 
 namespace CpCodeSelect.Business
 {
-    public static class Hou2Select50YiLouSetBusiness
+    public static class Hou2Select50YiLouSetForm3guashang25zhuBusiness
     {
         public static List<Code> AllCode = new List<Code>();
         public static Dictionary<string, int> Hou2NumberCount = new Dictionary<string, int>();
         public static List<string> Hou2_20Numer = new List<string>();
         public static Object lockObj = new Object();
-        public static List<Hou2Select50_20Model> modelList = new List<Hou2Select50_20Model>();
+        public static List<Hou2Select50YiLouSetForm3guashang25zhuModel> modelList = new List<Hou2Select50YiLouSetForm3guashang25zhuModel>();
         public static string leftNumberCountStr = ConfigurationManager.AppSettings["LeftNumberCount"];
         /// <summary>
         /// 初始化号码
@@ -59,17 +58,17 @@ namespace CpCodeSelect.Business
             // 生成新的50码
             GenerateCode(code);
 
-            //删除超过3000条的记录 如果没有4挂的就删除
-            RemoveOldModel(code,4);
+            //删除超过3000条的记录 如果3连挂的次数为0的就删除
+            RemoveOldModel(1);
         }
         /// <summary>
         ///  删除小于指定挂数的旧记录
         /// </summary>
         /// <param name="guaCount"></param>
-        public static void RemoveOldModel(Code code, int guaCount = 4)
+        public static void RemoveOldModel(int guaCount = 1)
         {
-            var codeDecimal = Convert.ToDecimal(code.CodeQiHao);
-            List<Hou2Select50_20Model> removeList = new List<Hou2Select50_20Model>();
+
+            List<Hou2Select50YiLouSetForm3guashang25zhuModel> removeList = new List<Hou2Select50YiLouSetForm3guashang25zhuModel>();
             int count = 0;
             int numberCount = 1000;
             if (!int.TryParse(leftNumberCountStr, out numberCount))
@@ -78,17 +77,12 @@ namespace CpCodeSelect.Business
 
             }
 
-            while (modelList.Count >= numberCount)
+            while (modelList.Count > numberCount)
             {
                 for (int i = 0; i < 50; i++)
                 {
                     var model = modelList[i];
-                    var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if(codeDecimal - currentDecimal > 30)
-                    {
-                        removeList.Add(model);
-                    }
-                    else if (model.GuaCount <= guaCount)
+                    if (model.Gua3TimeCount <= guaCount)
                     {
                         removeList.Add(model);
                     }
@@ -99,42 +93,8 @@ namespace CpCodeSelect.Business
                 }
                 removeList.Clear();
                 count++;
-                // 如果执行10次号码还是大于1000,则退出循环
+                // 如果执行10次号码还是大于3500,则退出循环
                 if (count > 10) break;
-            }
-
-            while (true)
-            {
-                if (modelList.Count > 50)
-                {
-
-                    for (int i = 0; i < 10; i++)
-                    {
-                        var model = modelList[i];
-                        var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                        if (codeDecimal - currentDecimal > 30)
-                        {
-                            removeList.Add(model);
-                        }
-                    }
-
-                    foreach (var model in removeList)
-                    {
-                        modelList.Remove(model);
-                    }
-
-                    removeList.Clear();
-
-                    count++;
-
-                    // 如果执行10次号码还是大于1000,则退出循环
-                    if (count > 3) break;
-                }
-                else
-                {
-                    break;
-                }
-
             }
         }
         public static void CalcExistCode(Code code)
@@ -144,6 +104,16 @@ namespace CpCodeSelect.Business
             {
                 if (model.Number50.Contains(hou2))
                 {
+                    if (model.GuaCount >= 4)
+                    {
+                        //在挂超过3次以后中的话,挂3次的次数需要加上1
+                        model.Gua3TimeCount++;
+                    }
+                    else
+                    {
+                        //之前没有挂超过3次,则设置挂3次的次数为0
+                        model.Gua3TimeCount = 0;
+                    }
                     model.ZhongGount++;
                     model.NeedZhong = false;
                     model.GuaCount = 0;
@@ -171,101 +141,73 @@ namespace CpCodeSelect.Business
                 {
                     var takeCodeList = new List<string>();
                     var excludeAllList = new List<string>();
-                    var AllCode = Hou2Select50YiLouSetBusiness.AllCode;
+                    var AllCode = Hou2Select50YiLouSetForm3guashangBusiness.AllCode;
                     List<Code> LeftCode = new List<Code>();
                     LeftCode.AddRange(AllCode);
 
-                    if (string.IsNullOrEmpty(code.NumberCondition))
+                    int n1 = ThreadSafeRandom.Next(0, 0);
+                    int n2 = ThreadSafeRandom.Next(0, 0);
+                    int n3 = ThreadSafeRandom.Next(0, 1);
+                    int n4 = ThreadSafeRandom.Next(0, 2);
+                    int n5 = ThreadSafeRandom.Next(0, 2);
+                    int n6 = ThreadSafeRandom.Next(0, 15);
+                    int n7 = ThreadSafeRandom.Next(0, 2);
+                    int n8 = ThreadSafeRandom.Next(0, 15);
+                    int n9 = ThreadSafeRandom.Next(0, 2);
+                    int n10 = ThreadSafeRandom.Next(0, 30);
+                    //int n11 = ThreadSafeRandom.Next(0, 10);
+                    //int n12 = ThreadSafeRandom.Next(0, 1);
+                    //int n13 = ThreadSafeRandom.Next(8, 20);
+
+                    Cacl(n1, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n2, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n3, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n4, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n5, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n6, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n7, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n8, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n9, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    Cacl(n10, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    //Cacl(n11, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    //Cacl(n12, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    //Cacl(n13, ref LeftCode, ref excludeAllList, ref takeCodeList);
+
+
+                    takeCodeList = takeCodeList.Distinct().ToList();
+                    excludeAllList = excludeAllList.Distinct().ToList();
+                    if (!excludeAllList.Any(item => takeCodeList.Contains(item)))
                     {
+                        /*
+                        var numerList = NumberSelectForYiLou.Select50NumbersSafe(excludeAllList, takeCodeList);
 
-
-                        int n0 = ThreadSafeRandom.Next(8, 20);
-                        int n1 = ThreadSafeRandom.Next(4, 12);
-                        int n2 = ThreadSafeRandom.Next(8, 20);
-                        int n3 = ThreadSafeRandom.Next(8, 20);
-                        int n4 = ThreadSafeRandom.Next(0, 0);
-                        int n5 = ThreadSafeRandom.Next(0, 0);
-                        int n6 = ThreadSafeRandom.Next(0, 1);
-                        int n7 = ThreadSafeRandom.Next(0, 1);
-                        int n8 = ThreadSafeRandom.Next(0, 1);
-                        int n9 = ThreadSafeRandom.Next(0, 10);
-                        int n10 = ThreadSafeRandom.Next(0, 1);
-                        int n11 = ThreadSafeRandom.Next(0, 10);
-                        int n12 = ThreadSafeRandom.Next(0, 1);
-                        int n13 = ThreadSafeRandom.Next(8, 20);
-
-                        Cacl(n0, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n1, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n2, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n3, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n4, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n5, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n6, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n7, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n8, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n9, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n10, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n11, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n12, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                        Cacl(n13, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                        numerList = numerList.OrderBy(item => item).ToList();
+                        
+                        */
+                        var numerList = MultiThreadedNumberSelectForYiLou.GenerateMultipleGroups(50, excludeAllList, takeCodeList,25);
+                        foreach (var number in numerList)
+                        {
+                            if (number.Count > 0)
+                            {
+                                var list = number.OrderBy(p => p).ToList();
+                                Hou2Select50YiLouSetForm3guashang25zhuModel model = new Hou2Select50YiLouSetForm3guashang25zhuModel();
+                                model.Number50 = list;
+                                model.CodeNumber = code.CodeNumber;
+                                model.CodeQiHao = code.CodeQiHao;
+                                model.NeedZhong = true;
+                                modelList.Add(model);
+                            }
+                        }
+                        break;
                     }
-                    else
+
+                    count++;
+                    if (count > 1000)
                     {
-                        var conditions = code.NumberCondition.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        foreach (var condition in conditions)
-                        {
-                            var conDetail = condition.Split(new char[] { '+' }, StringSplitOptions.RemoveEmptyEntries);
-                            if (conDetail.Length == 2)
-                            {
-                                int b1 = 0;
-                                int b2 = 0;
-                                if (int.TryParse(conDetail[0], out b1) && int.TryParse(conDetail[1], out b2))
-                                {
-                                    if (b1 >= 0 && b2 >= 0 && b2 >= b1)
-                                    {
-                                        Cacl(b2 - b1, ref LeftCode, ref excludeAllList, ref takeCodeList);
-                                    }
-                                }
-                            }
-
-
-                        }
-
-                        takeCodeList = takeCodeList.Distinct().ToList();
-                        excludeAllList = excludeAllList.Distinct().ToList();
-                        if (!excludeAllList.Any(item => takeCodeList.Contains(item)))
-                        {
-                            /*
-                            var numerList = NumberSelectForYiLou.Select50NumbersSafe(excludeAllList, takeCodeList);
-
-                            numerList = numerList.OrderBy(item => item).ToList();
-
-                            */
-                            var numerList = MultiThreadedNumberSelectForYiLou.GenerateMultipleGroups(50, excludeAllList, takeCodeList,code.GetNumberCount);
-                            foreach (var number in numerList)
-                            {
-                                if (number.Count > 0)
-                                {
-                                    var list = number.OrderBy(p => p).ToList();
-                                    Hou2Select50_20Model model = new Hou2Select50_20Model();
-                                    model.Number50 = list;
-                                    model.CodeNumber = code.CodeNumber;
-                                    model.CodeQiHao = code.CodeQiHao;
-                                    model.NeedZhong = true;
-                                    modelList.Add(model);
-                                }
-                            }
-                            break;
-                        }
-
-                        count++;
-                        if (count > 3500)
-                        {
-                            // 如果计算1000次还没有有效数据,则退出
-                            break;
-                        }
-
+                        // 如果计算100次还没有有效数据,则退出
+                        break;
                     }
+
                 }
             }
         }
@@ -356,7 +298,7 @@ namespace CpCodeSelect.Business
                 var numberList = Hou2Select50AutoBusiness.GetHou2_50NumerListString();
                 if (numberList.Count > 0)
                 {
-                    Hou2Select50_20Model model = new Hou2Select50_20Model();
+                    Hou2Select50YiLouSetForm3guashang25zhuModel model = new Hou2Select50YiLouSetForm3guashang25zhuModel();
                     model.Number50 = numberList;
                     model.CodeNumber = code.CodeNumber;
                     model.CodeQiHao = code.CodeQiHao;

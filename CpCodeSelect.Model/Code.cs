@@ -47,6 +47,16 @@ namespace CpCodeSelect.Model
         public List<Zu6Kill1ZG2Model> Zu6Kill1ZG2ModelList { get; set; }
 
         /// <summary>
+        /// 号码生成条件,类似于 "10-20,5-8,6-9,10-12" 逗号分割每个条件,-分割开始和结束
+        /// </summary>
+        public string NumberCondition { get; set; }
+
+        /// <summary>
+        /// 获取号码的数量 默认50
+        /// </summary>
+        public int GetNumberCount { get; set; } = 50;
+
+        /// <summary>
         /// 获取后二字符串
         /// </summary>
         /// <returns></returns>
