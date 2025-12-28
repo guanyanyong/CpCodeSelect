@@ -1,6 +1,6 @@
 ﻿namespace CpCodeSelect
 {
-    partial class Hou2Select50YiLouSetFormZhouQiZhong
+    partial class Hou3Select350YiLouSetFormZhouQiZhong
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -102,8 +102,12 @@
             this.btnStartAuto = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.numericUpDownAutoClick = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ZhouQiZhongHouGua = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,6 +121,7 @@
             this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -153,6 +158,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCondition)).BeginInit();
             this.ResultPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoClick)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -268,6 +275,7 @@
             // 
             // TotalInfo
             // 
+            this.TotalInfo.Controls.Add(this.button3);
             this.TotalInfo.Controls.Add(this.lblMaxGua);
             this.TotalInfo.Controls.Add(this.label6);
             this.TotalInfo.Controls.Add(this.lblTotalNumber);
@@ -1161,8 +1169,12 @@
             this.ResultPage.Controls.Add(this.btnStartAuto);
             this.ResultPage.Controls.Add(this.btnSelect);
             this.ResultPage.Controls.Add(this.numericUpDownAutoClick);
+            this.ResultPage.Controls.Add(this.numericUpDown3);
+            this.ResultPage.Controls.Add(this.numericUpDown2);
             this.ResultPage.Controls.Add(this.numericUpDown1);
             this.ResultPage.Controls.Add(this.label5);
+            this.ResultPage.Controls.Add(this.label14);
+            this.ResultPage.Controls.Add(this.label13);
             this.ResultPage.Controls.Add(this.label2);
             this.ResultPage.Controls.Add(this.dataGridView1);
             this.ResultPage.Location = new System.Drawing.Point(4, 37);
@@ -1186,7 +1198,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(0, 147);
+            this.label9.Location = new System.Drawing.Point(3, 233);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(84, 30);
             this.label9.TabIndex = 8;
@@ -1205,7 +1217,7 @@
             // 
             this.lblResultCount.AutoSize = true;
             this.lblResultCount.ForeColor = System.Drawing.Color.Red;
-            this.lblResultCount.Location = new System.Drawing.Point(90, 147);
+            this.lblResultCount.Location = new System.Drawing.Point(93, 233);
             this.lblResultCount.Name = "lblResultCount";
             this.lblResultCount.Size = new System.Drawing.Size(26, 30);
             this.lblResultCount.TabIndex = 9;
@@ -1337,6 +1349,52 @@
             0,
             0});
             // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.numericUpDown3.Location = new System.Drawing.Point(110, 190);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(120, 36);
+            this.numericUpDown3.TabIndex = 2;
+            this.numericUpDown3.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.numericUpDown2.Location = new System.Drawing.Point(108, 143);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(120, 36);
+            this.numericUpDown2.TabIndex = 2;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            // 
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("微软雅黑", 16F);
@@ -1360,15 +1418,35 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "自动点击间隔时间单位秒";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.label14.Location = new System.Drawing.Point(3, 190);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(57, 30);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "挂数";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.label13.Location = new System.Drawing.Point(1, 143);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(101, 30);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "周期挂止";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 16F);
             this.label2.Location = new System.Drawing.Point(0, 95);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 30);
+            this.label2.Size = new System.Drawing.Size(101, 30);
             this.label2.TabIndex = 1;
-            this.label2.Text = "周期挂";
+            this.label2.Text = "周期挂始";
             // 
             // dataGridView1
             // 
@@ -1381,10 +1459,10 @@
             this.CodeNumber,
             this.ZhongGount,
             this.GuaCount});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 199);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 295);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(895, 661);
+            this.dataGridView1.Size = new System.Drawing.Size(895, 565);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -1452,7 +1530,17 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // Hou2Select50YiLouSetFormZhouQiZhong
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(532, 78);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(137, 38);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "模拟运行1";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // Hou3Select350YiLouSetFormZhouQiZhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1465,8 +1553,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.button1);
-            this.Name = "Hou2Select50YiLouSetFormZhouQiZhong";
-            this.Text = "50注遗漏搜索";
+            this.Name = "Hou3Select350YiLouSetFormZhouQiZhong";
+            this.Text = "350注遗漏搜索";
             this.tabControl1.ResumeLayout(false);
             this.TotalInfo.ResumeLayout(false);
             this.TotalInfo.PerformLayout();
@@ -1506,6 +1594,8 @@
             this.ResultPage.ResumeLayout(false);
             this.ResultPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoClick)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -1603,6 +1693,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ZhongGount;
         private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
         private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button button3;
     }
 }
 

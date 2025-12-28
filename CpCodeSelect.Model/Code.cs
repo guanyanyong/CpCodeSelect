@@ -64,6 +64,9 @@ namespace CpCodeSelect.Model
         {
             return $"{Shi.Number}{Ge.Number}";
         }
-
+        public string GetHou3String()
+        {
+            return $"{Bai.Number}{Shi.Number}{Ge.Number}";
+        }
     }
 }

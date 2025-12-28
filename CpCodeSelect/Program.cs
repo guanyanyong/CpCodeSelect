@@ -64,6 +64,9 @@ namespace CpCodeSelect
             }else if(str== "Hou2Select50YiLouSetFormZhouQiZhong")
             {
                 Application.Run(new Hou2Select50YiLouSetFormZhouQiZhong());
+            }else if(str== "Hou3Select350YiLouSetFormZhouQiZhong")
+            {
+                Application.Run(new Hou3Select350YiLouSetFormZhouQiZhong());
             }
 
         }

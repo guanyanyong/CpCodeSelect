@@ -44,6 +44,8 @@
     <Compile Include="Class1.cs" />
     <Compile Include="FileAnalysis.cs" />
     <Compile Include="FileUtil.cs" />
+    <Compile Include="Generate350Code.cs" />
+    <Compile Include="MultiThreadedNumberSelectFor350Hou3.cs" />
     <Compile Include="MultiThreadedNumberSelectForYiLou.cs" />
     <Compile Include="NumberFilter.cs" />
     <Compile Include="NumberSelectForYiLou.cs" />

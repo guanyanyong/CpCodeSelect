@@ -18,6 +18,7 @@ namespace CpCodeSelect.Business
         public static List<string> Hou2_20Numer = new List<string>();
         public static Object lockObj = new Object();
         public static List<Hou2Select50_ZhouQiZhong> modelList = new List<Hou2Select50_ZhouQiZhong>();
+        public static List<Hou3Select350_ZhouQiZhong> model350List = new List<Hou3Select350_ZhouQiZhong>();
         public static string leftNumberCountStr = ConfigurationManager.AppSettings["LeftNumberCount"];
         /// <summary>
         /// 初始化号码
@@ -291,6 +292,11 @@ namespace CpCodeSelect.Business
                                     model.CodeQiHao = code.CodeQiHao;
                                     model.NeedZhong = true;
                                     modelList.Add(model);
+
+                                    Hou3Select350_ZhouQiZhong model350 = new Hou3Select350_ZhouQiZhong();
+                                    model350.CodeNumber = code.CodeNumber;
+                                    model.CodeQiHao = code.CodeQiHao;
+                                    model350List.Add(model350);
                                 }
                             }
                             break;
@@ -352,6 +358,29 @@ namespace CpCodeSelect.Business
                 }
             }
             return Hou2NumberCount.Keys.ToList();
+        }
+
+        /// <summary>
+        /// 从Code列表中生成指定数量的后3号码,没有做滤重操作
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="AllCode"></param>
+        /// <returns></returns>
+        public static List<string> GenerateHou3NumbereFromCode(int number)
+        {
+            
+            List<string> Hou3NumberCount = new List<string>();
+            Hou3NumberCount.Clear();
+            foreach (var code in AllCode)
+            {
+                if (Hou3NumberCount.Count == number)
+                {
+                    break;
+                }
+                var key = code.GetHou3String();
+                Hou3NumberCount.Add(key);
+            }
+            return Hou3NumberCount.ToList();
         }
 
         /// <summary>
@@ -450,6 +479,27 @@ namespace CpCodeSelect.Business
                 }
                 return string.Join(" ", result50Number);
             }
+        }
+        public static List<string> Generate270Code()
+        {
+            Hou2NumberCount.Clear();
+            foreach (var code in AllCode)
+            {
+                var key = code.GetHou2String();
+                if (!Hou2NumberCount.Keys.Contains(key))
+                {
+                    Hou2NumberCount.Add(key, 1);
+                }
+                else
+                {
+                    Hou2NumberCount[key] = Hou2NumberCount[key] + 1;
+                }
+                if (Hou2NumberCount.Keys.Count == 20)
+                {
+                    break;
+                }
+            }
+            return Hou2NumberCount.Keys.ToList();
         }
         /// <summary>
         /// 根据历史记录的后二生成20码

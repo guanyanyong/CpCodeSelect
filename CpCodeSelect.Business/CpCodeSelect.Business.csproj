@@ -42,12 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness.cs" />
     <Compile Include="Five1MaBusinessMoniBusiness.cs" />
     <Compile Include="DaXiaoDanShuangMoniBusiness3.cs" />
     <Compile Include="DaXiaoDanShuangMoniBusiness2.cs" />
     <Compile Include="DaXiaoDanShuangMoniBusiness.cs" />
     <Compile Include="DragonTigerBusiness.cs" />
     <Compile Include="DaXiaoDanShuangBusiness.cs" />
+    <Compile Include="Hou3Select350YiLouSetFormZhouQiZhongBusiness.cs" />
     <Compile Include="Hou2Select50YiLouSetFormZhouQiZhongBusiness.cs" />
     <Compile Include="Hou2Select50YiLouSetForm3guashang25zhuBusiness.cs" />
     <Compile Include="Hou2Select50YiLouSetForm3guashangBusiness.cs" />
