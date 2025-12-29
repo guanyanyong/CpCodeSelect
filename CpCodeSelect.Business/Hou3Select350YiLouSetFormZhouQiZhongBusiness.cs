@@ -143,6 +143,7 @@ namespace CpCodeSelect.Business
                 }
                 else
                 {
+                    //挂了
                     model.GuaCount++;
                     model.ZhongGount = 0;
                     if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
@@ -154,12 +155,6 @@ namespace CpCodeSelect.Business
                         //挂超过2次后就不是周期内
                         model.IsZhouQiZhongHou = false;
                     }
-
-
-                    //if (model.GuaCount >= 5)
-                    //{
-                    //    model.NeedZhong = false;
-                    //}
                 }
             }
         }

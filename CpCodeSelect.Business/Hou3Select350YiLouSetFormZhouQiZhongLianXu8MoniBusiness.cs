@@ -11,18 +11,19 @@ namespace CpCodeSelect.Business
     /// <summary>
     /// 模拟执行4个2轮的确认点买入
     /// </summary>
-    public class Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness
+    public class Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness
     {
         public delegate void LogDelegate(string message);
         private LogDelegate _logMethod;
-        private List<Hou3Select350_ZhouQiZhong> model350List= new List<Hou3Select350_ZhouQiZhong>();
-        public List<string> current350List=new List<string>();
-        public List<string> before350List=new List<string>();
+        private List<Hou3Select350_ZhouQiZhong> model350List = new List<Hou3Select350_ZhouQiZhong>();
+        public List<string> current350List = new List<string>();
+        public List<string> before350List = new List<string>();
         public List<YilouStatistic> yilouStatisticList = new List<YilouStatistic>();
-        public Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhong> model350List)
+        public Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhong> model350List)
         {
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
             this.model350List = model350List;
+
 
             for (int i = 0; i <= 8; i++)
             {
@@ -46,16 +47,10 @@ namespace CpCodeSelect.Business
         /// 每轮的投注矩阵,金额
         /// </summary>
         private decimal[,] LunAmountMatrix = {
-                    { 56.7M, 88.55M },
-                    { 138.6M, 217M },
-                    { 339.5M, 530.95M },
-                    { 830.9M, 1299.9M }
+                    { 56.7M, 88.55M,138.6M, 217M,339.5M, 530.95M,830.9M, 1299.9M},
                 };
         private decimal[,] ZhongJiangAmountMatrix = {
-                    { 157.14M, 245.41M },
-                    { 384.12M, 601.4M },
-                    { 940.9M, 1471.49M },
-                    { 2302.78M, 3602.58M }
+                    { 157.14M, 245.41M ,384.12M, 601.4M,940.9M, 1471.49M ,2302.78M, 3602.58M}
                 };
         /// <summary>
         /// 总金额
@@ -144,7 +139,7 @@ namespace CpCodeSelect.Business
         public void CalcCode(Code code)
         {
             List<PositionNumber> list = new List<PositionNumber>();
-            
+
             if (IsOriginBeginStatus())
             {
                 //如果是初始状态,肯定不是执行中 开始执行
@@ -164,12 +159,13 @@ namespace CpCodeSelect.Business
                     {
                         //执行中,中出
                         TotalZhong++;
-                        var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, GuaCount-1];
+                        var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, GuaCount - 1];
+
                         int zhongjiangqi = (CurrentLun - 1) * 2 + GuaCount;
                         yilouStatisticList[zhongjiangqi - 1].TotalCount = yilouStatisticList[zhongjiangqi - 1].TotalCount + 1;
                         TotalResult = TotalResult + zhongjiangAmount;
                         //LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
-                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{GuaCount }期已中出,中奖金额:{zhongjiangAmount}，总额【{TotalResult}】。");
+                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{GuaCount}期已中出,中奖金额:{zhongjiangAmount}，总额【{TotalResult}】。");
                         LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-总中奖次数{TotalZhong}，总额【{TotalResult}】。总挂次数{TotalGua}");
 
                         LunInit();
@@ -181,34 +177,30 @@ namespace CpCodeSelect.Business
                     {
                         //执行中，未中出
                         GuaCount++;
-                        if (GuaCount == 2)
+                        if (GuaCount <= 8)
                         {
-                            //挂2说明挂了1次
+                            //挂8以内说明挂了1次
                             IsRunning = true;
-                            CurrentaQi=2;
+                            CurrentaQi = GuaCount;
                             StartCalc(code);
                         }
-                        else if(GuaCount==3)
+                        else if (GuaCount == 9)
                         {
-                            //挂3说明挂了2次,当前轮结束,开始下一轮
+                            //挂9说明挂了8次,结束
                             IsRunning = false;
-                            CurrentLun++;
                             CurrentaQi = 1;
                             GuaCount = 1;
 
-                            if(CurrentLun> TotalLun)
-                            {
-                                //超过总轮次，结束
-                                TotalGua++;
-                                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，已超过总轮次{TotalLun}轮，结束本次执行。");
-                                LunInit();
-                                before350List = current350List;
-                                Select350AndStartCalc(code);
-                                yilouStatisticList[8].TotalCount = yilouStatisticList[8].TotalCount + 1;
-                                return;
-                            }
-                            before350List=current350List;
-                            Select350AndGoonCalc(code);
+                            //超过总轮次，结束
+                            TotalGua++;
+                            LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，已超过总轮次{TotalLun}轮，结束本次执行。");
+                            LunInit();
+                            before350List = current350List;
+                            Select350AndStartCalc(code);
+
+                            before350List = current350List;
+
+                            yilouStatisticList[8].TotalCount = yilouStatisticList[8].TotalCount + 1;
                         }
                     }
                 }
@@ -216,7 +208,7 @@ namespace CpCodeSelect.Business
                 {
                     // 如果不是执行中，说明上一轮中出后结束，开始下一轮
                     before350List = current350List;
-                    Select350AndGoonCalc(code);
+                    Select350AndStartCalc(code);
                 }
             }
         }
@@ -227,7 +219,7 @@ namespace CpCodeSelect.Business
         public void Select350AndStartCalc(Code code)
         {
             //list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.
-            var list = model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 &&p.GuaCount==1 &&p.IsZhouQiZhongHou).ToList();
+            var list = model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == 1 && p.IsZhouQiZhongHou).ToList();
             var record = list.FirstOrDefault();
             if (record != null && record.Number350.Count > 0)
             {
@@ -242,7 +234,7 @@ namespace CpCodeSelect.Business
                 TotalResult = TotalResult - CurrentAmount;
                 TotalLiuShui += CurrentAmount;
                 LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentaQi}期,下注金额【{CurrentAmount}】,投注后总额【{TotalResult}】");
-                CurrentaQi=2;
+                CurrentaQi = 2;
             }
         }
         /// <summary>
@@ -257,7 +249,7 @@ namespace CpCodeSelect.Business
             if (record != null && record.Number350.Count > 0)
             {
                 current350List = record.Number350;
-                
+
                 IsRunning = true;
                 CurrentaQi = 1;
                 GuaCount = 1;
@@ -265,7 +257,7 @@ namespace CpCodeSelect.Business
                 TotalResult = TotalResult - CurrentAmount;
                 TotalLiuShui += CurrentAmount;
                 LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentaQi}期,下注金额【{CurrentAmount}】,投注后总额【{TotalResult}】");
-                CurrentaQi=2;
+                CurrentaQi = 2;
             }
         }
 
@@ -275,7 +267,7 @@ namespace CpCodeSelect.Business
         /// <param name="code"></param>
         public void StartCalc(Code code)
         {
-            CurrentAmount = LunAmountMatrix[CurrentLun - 1, CurrentaQi-1];
+            CurrentAmount = LunAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
             TotalResult = TotalResult - CurrentAmount;
             TotalLiuShui += CurrentAmount;
             LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentaQi}期,下注金额【{CurrentAmount}】,投注后总额【{TotalResult}】");

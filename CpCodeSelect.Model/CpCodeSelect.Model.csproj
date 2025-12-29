@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Code.cs" />
     <Compile Include="ExModel\YiLouSetExModel.cs" />
+    <Compile Include="ExModel\YilouStatistic.cs" />
     <Compile Include="Five1MaModel.cs" />
     <Compile Include="Hou2Select50YiLouSetForm3guashang25zhuModel.cs" />
     <Compile Include="Hou2Select50YiLouSetForm3guashangModel.cs" />

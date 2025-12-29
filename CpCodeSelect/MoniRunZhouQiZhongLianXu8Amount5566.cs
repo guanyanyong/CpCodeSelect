@@ -13,15 +13,15 @@ using System.Windows.Forms;
 
 namespace CpCodeSelect
 {
-    public partial class MoniRunZhouQiZhong : Form
+    public partial class MoniRunZhouQiZhongLianXu8Amount5566 : Form
     {
-        private Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness moniBusiness;
+        protected Hou3Select350YiLouSetFormZhouQiZhongLianXu8Amount5566MoniBusiness moniBusiness;
         Code beforeCode = null;
         Code currentCode = null;
-        public MoniRunZhouQiZhong()
+        public MoniRunZhouQiZhongLianXu8Amount5566()
         {
             InitializeComponent();
-            moniBusiness=new Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List);
+            moniBusiness=new Hou3Select350YiLouSetFormZhouQiZhongLianXu8Amount5566MoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List);
             dataGridView1.DataSource = moniBusiness.yilouStatisticList;
         }
         public void Run(Code code)

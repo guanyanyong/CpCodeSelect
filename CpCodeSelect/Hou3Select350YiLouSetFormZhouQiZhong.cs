@@ -26,7 +26,7 @@ namespace CpCodeSelect
     public partial class Hou3Select350YiLouSetFormZhouQiZhong : Form
     {
         public Dictionary<int, List<StatisticModel>> StatisticDic = new Dictionary<int, List<StatisticModel>>();
-        private string filePath = @"D:\Program Files (x86)\益达挂机软件\OpenCode\YDYLTXFFC.txt";
+        private string filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt";
         private FileSystemWatcher fileWatcher;
         private System.Windows.Forms.Timer showErrorTexttimer;
         //private Timer addTextTimer;
@@ -44,6 +44,8 @@ namespace CpCodeSelect
         private string apiUri = "http://127.0.0.1:5000/";
         private string DataSource = "rexguan-hp2024-01";
         private MoniRunZhouQiZhong moniRunZhouQiZhong = new MoniRunZhouQiZhong();
+        private MoniRunZhouQiZhongLianXu8 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongLianXu8();
+        private MoniRunZhouQiZhongLianXu8Amount5566 moniRunZhouQiZhongLianXu8Amount5566 = new MoniRunZhouQiZhongLianXu8Amount5566();
         public Hou3Select350YiLouSetFormZhouQiZhong()
         {
             InitializeComponent();
@@ -166,6 +168,9 @@ namespace CpCodeSelect
             //AddToLogFileZu6Kill1(code, "Hou2Select50.txt");
             AddToLogFileHou2Select50Auto(code);
             moniRunZhouQiZhong.Run(code);
+            moniRunZhouQiZhongLianXu8.Run(code);
+            moniRunZhouQiZhongLianXu8Amount5566.Run(code);
+
             //把记录添加到界面上 异步方式
             //AddRecordToPage(code);
 
@@ -960,6 +965,16 @@ namespace CpCodeSelect
         private void button3_Click_1(object sender, EventArgs e)
         {
             moniRunZhouQiZhong.Show();
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            moniRunZhouQiZhongLianXu8.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            moniRunZhouQiZhongLianXu8Amount5566.Show();
         }
     }
 }

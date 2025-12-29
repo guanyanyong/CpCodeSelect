@@ -1,6 +1,6 @@
 ﻿namespace CpCodeSelect
 {
-    partial class MoniRunZhouQiZhong
+    partial class MoniRunZhouQiZhongLianXu8Amount5566
     {
         /// <summary>
         /// Required designer variable.
@@ -55,7 +55,7 @@
             this.txt350Code = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.YilouCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsZhouQiZhongHou = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -215,9 +215,9 @@
             this.label8.ForeColor = System.Drawing.Color.Red;
             this.label8.Location = new System.Drawing.Point(546, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(365, 25);
+            this.label8.Size = new System.Drawing.Size(515, 25);
             this.label8.TabIndex = 8;
-            this.label8.Text = "4个2,确认点后遗漏1打2次,每次中出100元";
+            this.label8.Text = "1个8,确认点后遗漏1打8期,每次中出100元 1-2-3-4-5-5-6-6";
             // 
             // btnBefore350Code
             // 
@@ -277,7 +277,7 @@
             this.txt350Code.Location = new System.Drawing.Point(1155, 214);
             this.txt350Code.Multiline = true;
             this.txt350Code.Name = "txt350Code";
-            this.txt350Code.Size = new System.Drawing.Size(469, 434);
+            this.txt350Code.Size = new System.Drawing.Size(469, 432);
             this.txt350Code.TabIndex = 13;
             // 
             // dataGridView1
@@ -293,18 +293,18 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.YilouCount,
-            this.IsZhouQiZhongHou});
+            this.TotalCount});
             this.dataGridView1.Location = new System.Drawing.Point(1155, 665);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(469, 303);
@@ -317,16 +317,16 @@
             this.YilouCount.Name = "YilouCount";
             this.YilouCount.Width = 150;
             // 
-            // IsZhouQiZhongHou
+            // TotalCount
             // 
-            this.IsZhouQiZhongHou.DataPropertyName = "TotalCount";
-            this.IsZhouQiZhongHou.HeaderText = "总数";
-            this.IsZhouQiZhongHou.Name = "IsZhouQiZhongHou";
-            this.IsZhouQiZhongHou.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IsZhouQiZhongHou.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.IsZhouQiZhongHou.Width = 120;
+            this.TotalCount.DataPropertyName = "TotalCount";
+            this.TotalCount.HeaderText = "总数";
+            this.TotalCount.Name = "TotalCount";
+            this.TotalCount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TotalCount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TotalCount.Width = 120;
             // 
-            // MoniRunZhouQiZhong
+            // MoniRunZhouQiZhongLianXu8Amount5566
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -354,8 +354,8 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxExeMsg);
-            this.Name = "MoniRunZhouQiZhong";
-            this.Text = "模拟执行4个2-350注确认点买入";
+            this.Name = "MoniRunZhouQiZhongLianXu8Amount5566";
+            this.Text = "模拟执行4个2-350注确认点1遗漏连续买入8期";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MoniRunDaXiao_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -389,6 +389,6 @@
         private System.Windows.Forms.TextBox txt350Code;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn YilouCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IsZhouQiZhongHou;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalCount;
     }
 }

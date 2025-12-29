@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Hou3Select350YiLouSetFormZhouQiZhongLianXu8Amount5566MoniBusiness.cs" />
+    <Compile Include="Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness.cs" />
     <Compile Include="Five1MaBusinessMoniBusiness.cs" />
     <Compile Include="DaXiaoDanShuangMoniBusiness3.cs" />

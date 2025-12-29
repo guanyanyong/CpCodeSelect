@@ -40,6 +40,7 @@
             this.chkRefersh = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TotalInfo = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.lblMaxGua = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblTotalNumber = new System.Windows.Forms.Label();
@@ -121,7 +122,8 @@
             this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -275,6 +277,8 @@
             // 
             // TotalInfo
             // 
+            this.TotalInfo.Controls.Add(this.button5);
+            this.TotalInfo.Controls.Add(this.button4);
             this.TotalInfo.Controls.Add(this.button3);
             this.TotalInfo.Controls.Add(this.lblMaxGua);
             this.TotalInfo.Controls.Add(this.label6);
@@ -290,6 +294,16 @@
             this.TotalInfo.Text = "总体信息";
             this.TotalInfo.UseVisualStyleBackColor = true;
             this.TotalInfo.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(532, 78);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(168, 38);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "模拟运行4*2";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // lblMaxGua
             // 
@@ -1530,15 +1544,25 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // button3
+            // button4
             // 
-            this.button3.Location = new System.Drawing.Point(532, 78);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(137, 38);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "模拟运行1";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            this.button4.Location = new System.Drawing.Point(747, 78);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(160, 38);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "模拟运行8*1";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(923, 78);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(226, 38);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "模拟运行8*1-5566";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Hou3Select350YiLouSetFormZhouQiZhong
             // 
@@ -1698,6 +1722,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
 

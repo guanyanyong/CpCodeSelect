@@ -37,7 +37,7 @@ namespace CpCodeSelect.Util
                 setA = GenerateSetA(270, random);
 
             // 2. 快速找到子集B（110-120个）
-            var subsetB = FindSubsetB_Fast(setA, 110, 120, random);
+            var subsetB = FindSubsetB_Fast(setA, 90, 100, random);
 
             // 3. 生成集合C（A中没有的字符串）
             var setC = allPossibleStrings.Except(setA.Distinct()).ToList();
