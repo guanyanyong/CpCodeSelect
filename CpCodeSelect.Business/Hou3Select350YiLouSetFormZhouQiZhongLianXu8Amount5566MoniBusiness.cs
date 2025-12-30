@@ -1,10 +1,12 @@
 ﻿using CpCodeSelect.Model;
 using CpCodeSelect.Model.ExModel;
+using CpCodeSelect.Util;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CpCodeSelect.Business
@@ -21,6 +23,8 @@ namespace CpCodeSelect.Business
         public List<string> current350List = new List<string>();
         public List<string> before350List = new List<string>();
         public List<YilouStatistic> yilouStatisticList = new List<YilouStatistic>();
+        private static readonly ThreadLocal<Random> _threadLocalRandom =
+        new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
         public Hou3Select350YiLouSetFormZhouQiZhongLianXu8Amount5566MoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhong> model350List)
         {
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
@@ -148,6 +152,7 @@ namespace CpCodeSelect.Business
         /// <param name="model"></param>
         public void CalcCode(Code code)
         {
+            var record = model350List[3];
             List<PositionNumber> list = new List<PositionNumber>();
 
             if (IsOriginBeginStatus())
@@ -230,15 +235,39 @@ namespace CpCodeSelect.Business
             //list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.
             var list = model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == 1 && p.IsZhouQiZhongHou).ToList();
             Hou3Select350_ZhouQiZhong record = null;
-            if (list.Count < 2) return;
-            if (UserFirstRecord)
+            if (list.Count == 0) return;
+            //最多查找5次,如果5次没有找到合适的记录就不投注
+            int calcTime = 5;
+            var totalCount = list.Count;
+            if (list.Count > 5) calcTime = list.Count;
+            bool foundRecord = false;
+            Dictionary<int, int> keyValuePairs = new Dictionary<int, int>();
+
+            for (int i = 0; keyValuePairs.Count < calcTime; i++)
             {
-                record = list[0];
+                int index = GetThreadSafeSeed(totalCount - 1);
+                if (keyValuePairs.ContainsKey(index))
+                {
+                    keyValuePairs[index] = keyValuePairs[index] + 1;
+                    continue;
+                }
+                else keyValuePairs.Add(index, 1);
+                var zhouQiZhongRecord = list[index];
+                var klinLIst = zhouQiZhongRecord.KLineList;
+                if (KLineCalc.KLineIsEnough(klinLIst).Result)
+                {
+                    foundRecord = true;
+                    record = zhouQiZhongRecord;
+                    break;
+                }
+                if (i >= 10)
+                {
+                    foundRecord = false;
+                    break;
+                }
             }
-            else if (!UserFirstRecord && list.Count >= 2)
-            {
-                record = list[1];
-            }
+            // 没有找到合适的记录,本期不投注
+            if (!foundRecord) return;
             if (record != null && record.Number350.Count > 0)
             {
                 IsRunning = true;
@@ -290,6 +319,19 @@ namespace CpCodeSelect.Business
             TotalLiuShui += CurrentAmount;
             LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentaQi}期,下注金额【{CurrentAmount}】,投注后总额【{TotalResult}】");
             //CurrentaQi++;
+        }
+
+
+        /// <summary>
+        /// 获取线程安全的随机数种子
+        /// </summary>
+        private static int GetThreadSafeSeed(int number)
+        {
+            if (number <= 0) return 0;
+            lock (_threadLocalRandom)
+            {
+                return _threadLocalRandom.Value.Next(0,number);
+            }
         }
     }
 }

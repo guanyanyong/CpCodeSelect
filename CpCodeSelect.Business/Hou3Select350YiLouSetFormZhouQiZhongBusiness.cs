@@ -1,10 +1,12 @@
 ﻿using CpCodeSelect.Model;
+using CpCodeSelect.Model.ExModel;
 using CpCodeSelect.Util;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using static CpCodeSelect.Model.Zu6Kill1Model;
@@ -15,6 +17,7 @@ namespace CpCodeSelect.Business
     {
         public static List<Code> AllCode = new List<Code>();
         public static Dictionary<string, int> Hou2NumberCount = new Dictionary<string, int>();
+        public static Code code = null;
         public static Object lockObj = new Object();
         public static List<Hou3Select350_ZhouQiZhong> model350List = new List<Hou3Select350_ZhouQiZhong>();
         public static string leftNumberCountStr = ConfigurationManager.AppSettings["LeftNumberCount"];
@@ -64,6 +67,7 @@ namespace CpCodeSelect.Business
                 //删除超过3000条的记录 如果没有4挂的就删除
                 RemoveOldModel(code, 1);
             }
+            Hou3Select350YiLouSetFormZhouQiZhongBusiness.code = code;
         }
         /// <summary>
         ///  删除小于指定挂数的旧记录
@@ -156,6 +160,9 @@ namespace CpCodeSelect.Business
                         model.IsZhouQiZhongHou = false;
                     }
                 }
+
+                //计算当前期的K线
+                KLineCalc.CalcKlineCurrent(model, code);
             }
         }
 
@@ -191,6 +198,8 @@ namespace CpCodeSelect.Business
                         model350.CodeNumber = code.CodeNumber;
                         model350.CodeQiHao = code.CodeQiHao;
                         model350.NeedZhong = true;
+                        model350.KLineList = new List<KLine>();
+                        KLineCalc.CalcKLineHistoryList(model350, AllCode,100);
                         model350List.Add(model350);
                     }
                 }

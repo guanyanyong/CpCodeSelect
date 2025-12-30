@@ -40,6 +40,8 @@
             this.chkRefersh = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TotalInfo = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.lblMaxGua = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -122,8 +124,7 @@
             this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnTestCode = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -295,6 +296,26 @@
             this.TotalInfo.UseVisualStyleBackColor = true;
             this.TotalInfo.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(923, 78);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(226, 38);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "模拟运行8*1-5566";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(747, 78);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(160, 38);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "模拟运行8*1";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(532, 78);
@@ -347,6 +368,7 @@
             this.SetSearch.Controls.Add(this.BtnCopy2);
             this.SetSearch.Controls.Add(this.btn10T30Begin);
             this.SetSearch.Controls.Add(this.btnyiloudijian);
+            this.SetSearch.Controls.Add(this.btnTestCode);
             this.SetSearch.Controls.Add(this.btnTest);
             this.SetSearch.Controls.Add(this.button2);
             this.SetSearch.Controls.Add(this.num14E);
@@ -1544,25 +1566,15 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // button4
+            // btnTestCode
             // 
-            this.button4.Location = new System.Drawing.Point(747, 78);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(160, 38);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "模拟运行8*1";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(923, 78);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(226, 38);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "模拟运行8*1-5566";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnTestCode.Location = new System.Drawing.Point(1112, 46);
+            this.btnTestCode.Name = "btnTestCode";
+            this.btnTestCode.Size = new System.Drawing.Size(323, 44);
+            this.btnTestCode.TabIndex = 5;
+            this.btnTestCode.Text = "验证350注号码是否符合条件";
+            this.btnTestCode.UseVisualStyleBackColor = true;
+            this.btnTestCode.Click += new System.EventHandler(this.btnTestCode_Click);
             // 
             // Hou3Select350YiLouSetFormZhouQiZhong
             // 
@@ -1724,6 +1736,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnTestCode;
     }
 }
 

@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BollingerBandsSimple.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="FileAnalysis.cs" />
     <Compile Include="FileUtil.cs" />
     <Compile Include="Generate350Code.cs" />
+    <Compile Include="KLineCalc.cs" />
     <Compile Include="MultiThreadedNumberSelectFor350Hou3.cs" />
     <Compile Include="MultiThreadedNumberSelectForYiLou.cs" />
     <Compile Include="NumberFilter.cs" />

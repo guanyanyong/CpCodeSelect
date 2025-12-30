@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CpCodeSelect.Model.ExModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -57,6 +58,11 @@ namespace CpCodeSelect.Model
         /// 周期内中后周期内挂的次数
         /// </summary>
         public int ZhouQiZhongHouGua { get; set; } = 0;
+        /// <summary>
+        /// K线列表
+        /// </summary>
+
+        public List<KLine> KLineList { get; set; }
 
         /// <summary>
         /// 是否需要显示
@@ -68,6 +74,5 @@ namespace CpCodeSelect.Model
                 return GuaCount >= ShowNumber;
             }
         }
-
     }
 }

@@ -497,7 +497,7 @@ namespace CpCodeSelect
         /// </summary>
         private void StartExec()
         {
-            if (DateTime.Now >= Convert.ToDateTime("2025-12-30"))
+            if (DateTime.Now >= Convert.ToDateTime("2026-12-30"))
             {
                 //MessageBox.Show("软件试用期已过期，请联系作者购买正式版");
                 return;
@@ -975,6 +975,28 @@ namespace CpCodeSelect
         private void button5_Click(object sender, EventArgs e)
         {
             moniRunZhouQiZhongLianXu8Amount5566.Show();
+        }
+
+        private void btnTestCode_Click(object sender, EventArgs e)
+        {
+            var list= txtNum3.Text.Split(' ').ToList();
+            Hou3Select350_ZhouQiZhong model350 = new Hou3Select350_ZhouQiZhong();
+            Code code = Hou3Select350YiLouSetFormZhouQiZhongBusiness.code;
+            model350.Number350 = list;
+            model350.CodeNumber = code.CodeNumber;
+            model350.CodeQiHao = code.CodeQiHao;
+            model350.NeedZhong = true;
+            model350.KLineList = new List<KLine>();
+            KLineCalc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormZhouQiZhongBusiness.AllCode, 100);
+            var result = KLineCalc.KLineIsEnough(model350.KLineList);
+            if (result.Result)
+            {
+                txtNum2.Text = "满足条件";
+            }
+            else
+            {
+                txtNum2.Text = result.Message;
+            }
         }
     }
 }
