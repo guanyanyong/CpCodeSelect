@@ -103,8 +103,26 @@ namespace CpCodeSelect.Business
                 removeList.Clear();
                 count++;
                 // 如果执行10次号码还是大于1000,则退出循环
-                if (count > 10) 
+                if (count > 10)
                     break;
+            }
+
+            //超过30期就删除
+            {
+                for (int i = 0; i < model350List.Count; i++)
+                {
+                    var model = model350List[i];
+                    var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
+                    if (codeDecimal - currentDecimal >= 30)
+                    {
+                        removeList.Add(model);
+                    }
+                }
+                foreach (var model in removeList)
+                {
+                    model350List.Remove(model);
+                }
+                removeList.Clear();
             }
         }
         public static void CalcExist350Code(Code code)
@@ -169,7 +187,7 @@ namespace CpCodeSelect.Business
         public static void Generate350Code(Code code)
         {
 
-            if (AllCode!=null && AllCode.Count > 270)
+            if (AllCode != null && AllCode.Count > 270)
             {
                 int count = 0;
                 //while (true)
@@ -199,7 +217,7 @@ namespace CpCodeSelect.Business
                         model350.CodeQiHao = code.CodeQiHao;
                         model350.NeedZhong = true;
                         model350.KLineList = new List<KLine>();
-                        KLineCalc.CalcKLineHistoryList(model350, AllCode,100);
+                        KLineCalc.CalcKLineHistoryList(model350, AllCode, 100);
                         model350List.Add(model350);
                     }
                 }
