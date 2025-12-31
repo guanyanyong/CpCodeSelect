@@ -15,17 +15,18 @@ namespace CpCodeSelect.Util
         {
             var kline = new KLine();
             var hou3Str = code.GetHou3String();
-            if(model.KLineList.Count == 0)
+            if (model.KLineList.Count == 0)
             {
                 //判断是否中奖
                 if (model.Number350.Contains(hou3Str))
                 {
                     //中了 K值加1.857
-                    kline.KValue =  1.857;
-                }else
+                    kline.KValue = 1.857;
+                }
+                else
                 {
                     //没中 K值减1.0
-                    kline.KValue = - 1.0;
+                    kline.KValue = -1.0;
                 }
             }
             else
@@ -35,13 +36,14 @@ namespace CpCodeSelect.Util
                 {
                     //中了 K值加1.857
                     kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue + 1.857;
-                }else
+                }
+                else
                 {
                     //没中 K值减1.0
                     kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue - 1.0;
                 }
             }
-            
+
             if (model.KLineList.Count >= 20)
             {
                 //超过20期开始计算布林带
@@ -166,25 +168,25 @@ namespace CpCodeSelect.Util
             var checkResult = new CheckResult();
             var count = kLineList.Count;
             var blowMiddleCount = 0;
-            //1 最近20期内是否有12个在中轨下
-            for(var i = count;i> count - 20; i--)
+            //1 最近20期内是否有10个在中轨下
+            for (var i = count; i > count - 20; i--)
             {
                 var kline = kLineList[i - 1];
-                if(kline.Bolling != null)
+                if (kline.Bolling != null)
                 {
-                    if(!kline.IsOverMiddle)
+                    if (!kline.IsOverMiddle)
                     {
                         blowMiddleCount++;
                     }
                 }
             }
-            if(blowMiddleCount >= 10)
+            if (blowMiddleCount >= 10)
             {
                 checkResult.Result = false;
                 checkResult.Message = "最近20期有10个在中轨下";
                 return checkResult;
             }
-            //2 最近30期内是否有超过8挂含8挂
+            //2 最近30期内是否有超过7挂含7挂
             for (var i = count; i > count - 30; i--)
             {
                 var kline = kLineList[i - 1];
@@ -197,21 +199,56 @@ namespace CpCodeSelect.Util
             }
             //3 中轨10个有7个下降
             var middleDownCount = 0;
-            for(var i = count; i > count - 10; i--)
+            for (var i = count; i > count - 10; i--)
             {
                 var kline = kLineList[i - 1];
                 var klinBefore = kLineList[i - 2];
-                if(kline.Bolling.MiddleValue<klinBefore.Bolling.MiddleValue)
+                if (kline.Bolling.MiddleValue < klinBefore.Bolling.MiddleValue)
                 {
                     middleDownCount++;
                 }
             }
-            if(middleDownCount >= 7)
+            if (middleDownCount >= 7)
             {
                 checkResult.Result = false;
                 checkResult.Message = "连续10个有7个下降";
                 return checkResult;
             }
+            // 30期内是否有在理论周期内开出8个以上的。
+            for (var i = count; i > count - 30; i--)
+            {
+                int lianKaiCount = 0;
+                if (kLineList[i - 1].CurrentGuaCount <= 1)
+                {
+                    lianKaiCount = 1;
+                    //如果当前的挂的次数小于等于1 则表示在理论周期内开出
+                    //继续向后查找
+                    for (int j = i - 1; j > count - 30; j--)
+                    {
+                        if (kLineList[j - 1].CurrentGuaCount <= 1)
+                        {
+                            //如果当前的挂的次数小于等于1 则表示在理论周期内开出
+                            if (kLineList[j - 1].CurrentGuaCount == 0)
+                            {
+                                lianKaiCount++;
+                                if (lianKaiCount >= 8)
+                                {
+                                    checkResult.Result = false;
+                                    checkResult.Message = "30期内存在理论周期内开出8个以上";
+                                    return checkResult;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //否则跳出循环
+                            break;
+                        }
+                    }
+                }
+            }
+
+
             checkResult.Result = true;
             return checkResult;
 

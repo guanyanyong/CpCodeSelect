@@ -60,7 +60,7 @@ namespace CpCodeSelect
             listBoxExeMsg.TopIndex = 0; // 自动滚动到底部
             //listBoxExeMsg.TopIndex = listBoxExeMsg.Items.Count - 1; // 自动滚动到底部
             SetFormTxtValue();
-            using (var writer = new StreamWriter("moni.txt", true))
+            using (var writer = new StreamWriter("moni8期.txt", true))
             {
                 writer.WriteLine(message); 
                 writer.Flush();

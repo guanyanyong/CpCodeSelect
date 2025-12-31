@@ -207,7 +207,7 @@ namespace CpCodeSelect.Business
 
                             //超过总轮次，结束
                             TotalGua++;
-                            LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，已超过总轮次{TotalLun}轮，结束本次执行。");
+                            LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，已超过总轮次{TotalLun}轮，结束本次执行。350注号码是{string.Join(" ",current350List)}");
                             LunInit();
                             before350List = current350List;
                             Select350AndStartCalc(code);
