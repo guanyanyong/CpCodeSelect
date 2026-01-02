@@ -54,6 +54,7 @@
             this.BtnCopy2 = new System.Windows.Forms.Button();
             this.btn10T30Begin = new System.Windows.Forms.Button();
             this.btnyiloudijian = new System.Windows.Forms.Button();
+            this.btnTestCode = new System.Windows.Forms.Button();
             this.btnTest = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.num14E = new System.Windows.Forms.NumericUpDown();
@@ -103,6 +104,7 @@
             this.btnCopy = new System.Windows.Forms.Button();
             this.btnStopAuto = new System.Windows.Forms.Button();
             this.btnStartAuto = new System.Windows.Forms.Button();
+            this.btnSelectConditonEnough = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.numericUpDownAutoClick = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
@@ -124,7 +126,13 @@
             this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnTestCode = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtDownLoadFilePath = new System.Windows.Forms.TextBox();
+            this.btnSelectFile2 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -165,6 +173,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -214,7 +223,7 @@
             this.labelError.AutoSize = true;
             this.labelError.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(1572, 25);
+            this.labelError.Location = new System.Drawing.Point(911, 73);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(126, 25);
             this.labelError.TabIndex = 1;
@@ -233,7 +242,7 @@
             // btnRestart
             // 
             this.btnRestart.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnRestart.Location = new System.Drawing.Point(1387, 23);
+            this.btnRestart.Location = new System.Drawing.Point(1220, 61);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(161, 31);
             this.btnRestart.TabIndex = 0;
@@ -249,9 +258,9 @@
             this.listBoxHistory.ItemHeight = 25;
             this.listBoxHistory.Items.AddRange(new object[] {
             " "});
-            this.listBoxHistory.Location = new System.Drawing.Point(3, 143);
+            this.listBoxHistory.Location = new System.Drawing.Point(3, 304);
             this.listBoxHistory.Name = "listBoxHistory";
-            this.listBoxHistory.Size = new System.Drawing.Size(1464, 729);
+            this.listBoxHistory.Size = new System.Drawing.Size(1404, 429);
             this.listBoxHistory.TabIndex = 5;
             // 
             // chkRefersh
@@ -269,11 +278,12 @@
             this.tabControl1.Controls.Add(this.TotalInfo);
             this.tabControl1.Controls.Add(this.SetSearch);
             this.tabControl1.Controls.Add(this.ResultPage);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.tabControl1.Location = new System.Drawing.Point(3, 95);
+            this.tabControl1.Location = new System.Drawing.Point(3, 117);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1478, 916);
+            this.tabControl1.Size = new System.Drawing.Size(1418, 777);
             this.tabControl1.TabIndex = 8;
             // 
             // TotalInfo
@@ -290,7 +300,7 @@
             this.TotalInfo.Location = new System.Drawing.Point(4, 37);
             this.TotalInfo.Name = "TotalInfo";
             this.TotalInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.TotalInfo.Size = new System.Drawing.Size(1470, 875);
+            this.TotalInfo.Size = new System.Drawing.Size(1410, 736);
             this.TotalInfo.TabIndex = 0;
             this.TotalInfo.Text = "总体信息";
             this.TotalInfo.UseVisualStyleBackColor = true;
@@ -298,7 +308,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(923, 78);
+            this.button5.Location = new System.Drawing.Point(505, 138);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(226, 38);
             this.button5.TabIndex = 7;
@@ -308,7 +318,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(747, 78);
+            this.button4.Location = new System.Drawing.Point(274, 138);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(160, 38);
             this.button4.TabIndex = 7;
@@ -318,7 +328,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(532, 78);
+            this.button3.Location = new System.Drawing.Point(41, 138);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(168, 38);
             this.button3.TabIndex = 7;
@@ -329,7 +339,7 @@
             // lblMaxGua
             // 
             this.lblMaxGua.AutoSize = true;
-            this.lblMaxGua.Location = new System.Drawing.Point(700, 20);
+            this.lblMaxGua.Location = new System.Drawing.Point(459, 20);
             this.lblMaxGua.Name = "lblMaxGua";
             this.lblMaxGua.Size = new System.Drawing.Size(0, 30);
             this.lblMaxGua.TabIndex = 6;
@@ -337,7 +347,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(527, 20);
+            this.label6.Location = new System.Drawing.Point(286, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 30);
             this.label6.TabIndex = 6;
@@ -406,14 +416,14 @@
             this.SetSearch.Controls.Add(this.label7);
             this.SetSearch.Location = new System.Drawing.Point(4, 37);
             this.SetSearch.Name = "SetSearch";
-            this.SetSearch.Size = new System.Drawing.Size(1470, 875);
+            this.SetSearch.Size = new System.Drawing.Size(1410, 736);
             this.SetSearch.TabIndex = 2;
             this.SetSearch.Text = "搜索设置";
             this.SetSearch.UseVisualStyleBackColor = true;
             // 
             // txtNum3
             // 
-            this.txtNum3.Location = new System.Drawing.Point(1045, 473);
+            this.txtNum3.Location = new System.Drawing.Point(786, 416);
             this.txtNum3.Multiline = true;
             this.txtNum3.Name = "txtNum3";
             this.txtNum3.Size = new System.Drawing.Size(410, 287);
@@ -421,7 +431,7 @@
             // 
             // txtNum2
             // 
-            this.txtNum2.Location = new System.Drawing.Point(1045, 178);
+            this.txtNum2.Location = new System.Drawing.Point(786, 116);
             this.txtNum2.Multiline = true;
             this.txtNum2.Name = "txtNum2";
             this.txtNum2.Size = new System.Drawing.Size(410, 261);
@@ -429,15 +439,15 @@
             // 
             // txtNum1
             // 
-            this.txtNum1.Location = new System.Drawing.Point(643, 173);
+            this.txtNum1.Location = new System.Drawing.Point(515, 116);
             this.txtNum1.Multiline = true;
             this.txtNum1.Name = "txtNum1";
-            this.txtNum1.Size = new System.Drawing.Size(341, 588);
+            this.txtNum1.Size = new System.Drawing.Size(222, 588);
             this.txtNum1.TabIndex = 6;
             // 
             // BtnCopy2
             // 
-            this.BtnCopy2.Location = new System.Drawing.Point(487, 267);
+            this.BtnCopy2.Location = new System.Drawing.Point(363, 197);
             this.BtnCopy2.Name = "BtnCopy2";
             this.BtnCopy2.Size = new System.Drawing.Size(134, 172);
             this.BtnCopy2.TabIndex = 5;
@@ -465,19 +475,29 @@
             this.btnyiloudijian.UseVisualStyleBackColor = true;
             this.btnyiloudijian.Click += new System.EventHandler(this.btnyiloudijian_Click);
             // 
+            // btnTestCode
+            // 
+            this.btnTestCode.Location = new System.Drawing.Point(1025, 46);
+            this.btnTestCode.Name = "btnTestCode";
+            this.btnTestCode.Size = new System.Drawing.Size(132, 44);
+            this.btnTestCode.TabIndex = 5;
+            this.btnTestCode.Text = "验证350注";
+            this.btnTestCode.UseVisualStyleBackColor = true;
+            this.btnTestCode.Click += new System.EventHandler(this.btnTestCode_Click);
+            // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(896, 45);
+            this.btnTest.Location = new System.Drawing.Point(875, 45);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(199, 44);
+            this.btnTest.Size = new System.Drawing.Size(129, 44);
             this.btnTest.TabIndex = 5;
-            this.btnTest.Text = "测试生成350注";
+            this.btnTest.Text = "生成350注";
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(487, 178);
+            this.button2.Location = new System.Drawing.Point(363, 122);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(134, 44);
             this.button2.TabIndex = 5;
@@ -488,7 +508,7 @@
             // num14E
             // 
             this.num14E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num14E.Location = new System.Drawing.Point(265, 725);
+            this.num14E.Location = new System.Drawing.Point(213, 669);
             this.num14E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -506,7 +526,7 @@
             // num13E
             // 
             this.num13E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num13E.Location = new System.Drawing.Point(265, 683);
+            this.num13E.Location = new System.Drawing.Point(213, 627);
             this.num13E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -524,7 +544,7 @@
             // num12E
             // 
             this.num12E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num12E.Location = new System.Drawing.Point(265, 641);
+            this.num12E.Location = new System.Drawing.Point(213, 585);
             this.num12E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -542,7 +562,7 @@
             // num11E
             // 
             this.num11E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num11E.Location = new System.Drawing.Point(265, 599);
+            this.num11E.Location = new System.Drawing.Point(213, 543);
             this.num11E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -565,7 +585,7 @@
             // num10E
             // 
             this.num10E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num10E.Location = new System.Drawing.Point(265, 557);
+            this.num10E.Location = new System.Drawing.Point(213, 501);
             this.num10E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -588,7 +608,7 @@
             // num9E
             // 
             this.num9E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num9E.Location = new System.Drawing.Point(265, 515);
+            this.num9E.Location = new System.Drawing.Point(213, 459);
             this.num9E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -611,7 +631,7 @@
             // num8E
             // 
             this.num8E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num8E.Location = new System.Drawing.Point(265, 473);
+            this.num8E.Location = new System.Drawing.Point(213, 417);
             this.num8E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -634,7 +654,7 @@
             // num7E
             // 
             this.num7E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num7E.Location = new System.Drawing.Point(265, 431);
+            this.num7E.Location = new System.Drawing.Point(213, 375);
             this.num7E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -657,7 +677,7 @@
             // num6E
             // 
             this.num6E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num6E.Location = new System.Drawing.Point(265, 389);
+            this.num6E.Location = new System.Drawing.Point(213, 333);
             this.num6E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -680,7 +700,7 @@
             // num5E
             // 
             this.num5E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num5E.Location = new System.Drawing.Point(265, 347);
+            this.num5E.Location = new System.Drawing.Point(213, 291);
             this.num5E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -703,7 +723,7 @@
             // num4E
             // 
             this.num4E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num4E.Location = new System.Drawing.Point(265, 305);
+            this.num4E.Location = new System.Drawing.Point(213, 249);
             this.num4E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -726,7 +746,7 @@
             // num3E
             // 
             this.num3E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num3E.Location = new System.Drawing.Point(265, 261);
+            this.num3E.Location = new System.Drawing.Point(213, 205);
             this.num3E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -749,7 +769,7 @@
             // num2E
             // 
             this.num2E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num2E.Location = new System.Drawing.Point(265, 216);
+            this.num2E.Location = new System.Drawing.Point(213, 160);
             this.num2E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -772,7 +792,7 @@
             // num1E
             // 
             this.num1E.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num1E.Location = new System.Drawing.Point(265, 173);
+            this.num1E.Location = new System.Drawing.Point(213, 117);
             this.num1E.Maximum = new decimal(new int[] {
             50,
             0,
@@ -836,7 +856,7 @@
             // num14B
             // 
             this.num14B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num14B.Location = new System.Drawing.Point(110, 725);
+            this.num14B.Location = new System.Drawing.Point(58, 669);
             this.num14B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -859,7 +879,7 @@
             // num13B
             // 
             this.num13B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num13B.Location = new System.Drawing.Point(110, 683);
+            this.num13B.Location = new System.Drawing.Point(58, 627);
             this.num13B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -882,7 +902,7 @@
             // num12B
             // 
             this.num12B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num12B.Location = new System.Drawing.Point(110, 641);
+            this.num12B.Location = new System.Drawing.Point(58, 585);
             this.num12B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -900,7 +920,7 @@
             // num11B
             // 
             this.num11B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num11B.Location = new System.Drawing.Point(110, 599);
+            this.num11B.Location = new System.Drawing.Point(58, 543);
             this.num11B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -918,7 +938,7 @@
             // num10B
             // 
             this.num10B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num10B.Location = new System.Drawing.Point(110, 557);
+            this.num10B.Location = new System.Drawing.Point(58, 501);
             this.num10B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -941,7 +961,7 @@
             // num9B
             // 
             this.num9B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num9B.Location = new System.Drawing.Point(110, 515);
+            this.num9B.Location = new System.Drawing.Point(58, 459);
             this.num9B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -964,7 +984,7 @@
             // num8B
             // 
             this.num8B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num8B.Location = new System.Drawing.Point(110, 473);
+            this.num8B.Location = new System.Drawing.Point(58, 417);
             this.num8B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -987,7 +1007,7 @@
             // num7B
             // 
             this.num7B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num7B.Location = new System.Drawing.Point(110, 431);
+            this.num7B.Location = new System.Drawing.Point(58, 375);
             this.num7B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1010,7 +1030,7 @@
             // num6B
             // 
             this.num6B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num6B.Location = new System.Drawing.Point(110, 389);
+            this.num6B.Location = new System.Drawing.Point(58, 333);
             this.num6B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1033,7 +1053,7 @@
             // num5B
             // 
             this.num5B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num5B.Location = new System.Drawing.Point(110, 347);
+            this.num5B.Location = new System.Drawing.Point(58, 291);
             this.num5B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1056,7 +1076,7 @@
             // num4B
             // 
             this.num4B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num4B.Location = new System.Drawing.Point(110, 305);
+            this.num4B.Location = new System.Drawing.Point(58, 249);
             this.num4B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1079,7 +1099,7 @@
             // num3B
             // 
             this.num3B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num3B.Location = new System.Drawing.Point(110, 261);
+            this.num3B.Location = new System.Drawing.Point(58, 205);
             this.num3B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1102,7 +1122,7 @@
             // num2B
             // 
             this.num2B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num2B.Location = new System.Drawing.Point(110, 216);
+            this.num2B.Location = new System.Drawing.Point(58, 160);
             this.num2B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1125,7 +1145,7 @@
             // num1B
             // 
             this.num1B.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.num1B.Location = new System.Drawing.Point(110, 173);
+            this.num1B.Location = new System.Drawing.Point(58, 117);
             this.num1B.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1203,6 +1223,7 @@
             this.ResultPage.Controls.Add(this.btnCopy);
             this.ResultPage.Controls.Add(this.btnStopAuto);
             this.ResultPage.Controls.Add(this.btnStartAuto);
+            this.ResultPage.Controls.Add(this.btnSelectConditonEnough);
             this.ResultPage.Controls.Add(this.btnSelect);
             this.ResultPage.Controls.Add(this.numericUpDownAutoClick);
             this.ResultPage.Controls.Add(this.numericUpDown3);
@@ -1216,7 +1237,7 @@
             this.ResultPage.Location = new System.Drawing.Point(4, 37);
             this.ResultPage.Name = "ResultPage";
             this.ResultPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ResultPage.Size = new System.Drawing.Size(1470, 875);
+            this.ResultPage.Size = new System.Drawing.Size(1410, 736);
             this.ResultPage.TabIndex = 1;
             this.ResultPage.Text = "显示信息";
             this.ResultPage.UseVisualStyleBackColor = true;
@@ -1300,18 +1321,18 @@
             // txt50Number
             // 
             this.txt50Number.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.txt50Number.Location = new System.Drawing.Point(1148, 211);
+            this.txt50Number.Location = new System.Drawing.Point(1029, 211);
             this.txt50Number.Multiline = true;
             this.txt50Number.Name = "txt50Number";
-            this.txt50Number.Size = new System.Drawing.Size(287, 631);
+            this.txt50Number.Size = new System.Drawing.Size(287, 506);
             this.txt50Number.TabIndex = 4;
             // 
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.btnClear.Location = new System.Drawing.Point(921, 554);
+            this.btnClear.Location = new System.Drawing.Point(877, 477);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(221, 271);
+            this.btnClear.Size = new System.Drawing.Size(134, 228);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "清除";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -1320,9 +1341,9 @@
             // btnCopy
             // 
             this.btnCopy.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.btnCopy.Location = new System.Drawing.Point(921, 211);
+            this.btnCopy.Location = new System.Drawing.Point(877, 211);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(221, 337);
+            this.btnCopy.Size = new System.Drawing.Size(134, 239);
             this.btnCopy.TabIndex = 3;
             this.btnCopy.Text = "拷贝数值";
             this.btnCopy.UseVisualStyleBackColor = true;
@@ -1332,7 +1353,7 @@
             // 
             this.btnStopAuto.Enabled = false;
             this.btnStopAuto.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnStopAuto.Location = new System.Drawing.Point(436, 6);
+            this.btnStopAuto.Location = new System.Drawing.Point(426, 6);
             this.btnStopAuto.Name = "btnStopAuto";
             this.btnStopAuto.Size = new System.Drawing.Size(144, 169);
             this.btnStopAuto.TabIndex = 3;
@@ -1343,13 +1364,24 @@
             // btnStartAuto
             // 
             this.btnStartAuto.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnStartAuto.Location = new System.Drawing.Point(254, 3);
+            this.btnStartAuto.Location = new System.Drawing.Point(244, 3);
             this.btnStartAuto.Name = "btnStartAuto";
             this.btnStartAuto.Size = new System.Drawing.Size(168, 174);
             this.btnStartAuto.TabIndex = 3;
             this.btnStartAuto.Text = "开始自动";
             this.btnStartAuto.UseVisualStyleBackColor = true;
             this.btnStartAuto.Click += new System.EventHandler(this.btnStartAuto_Click);
+            // 
+            // btnSelectConditonEnough
+            // 
+            this.btnSelectConditonEnough.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.btnSelectConditonEnough.Location = new System.Drawing.Point(609, 190);
+            this.btnSelectConditonEnough.Name = "btnSelectConditonEnough";
+            this.btnSelectConditonEnough.Size = new System.Drawing.Size(119, 86);
+            this.btnSelectConditonEnough.TabIndex = 3;
+            this.btnSelectConditonEnough.Text = "搜索2";
+            this.btnSelectConditonEnough.UseVisualStyleBackColor = true;
+            this.btnSelectConditonEnough.Click += new System.EventHandler(this.btnSelectConditonEnough_Click);
             // 
             // btnSelect
             // 
@@ -1406,7 +1438,7 @@
             1,
             0,
             0,
-            -2147483648});
+            0});
             // 
             // numericUpDown2
             // 
@@ -1425,11 +1457,6 @@
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(120, 36);
             this.numericUpDown2.TabIndex = 2;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
             // 
             // numericUpDown1
             // 
@@ -1498,7 +1525,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(6, 295);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(895, 565);
+            this.dataGridView1.Size = new System.Drawing.Size(865, 435);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -1566,21 +1593,83 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // btnTestCode
+            // tabPage1
             // 
-            this.btnTestCode.Location = new System.Drawing.Point(1112, 46);
-            this.btnTestCode.Name = "btnTestCode";
-            this.btnTestCode.Size = new System.Drawing.Size(323, 44);
-            this.btnTestCode.TabIndex = 5;
-            this.btnTestCode.Text = "验证350注号码是否符合条件";
-            this.btnTestCode.UseVisualStyleBackColor = true;
-            this.btnTestCode.Click += new System.EventHandler(this.btnTestCode_Click);
+            this.tabPage1.Controls.Add(this.txtResult);
+            this.tabPage1.Controls.Add(this.button7);
+            this.tabPage1.Controls.Add(this.button6);
+            this.tabPage1.Controls.Add(this.btnSelectFile2);
+            this.tabPage1.Controls.Add(this.txtDownLoadFilePath);
+            this.tabPage1.Controls.Add(this.label15);
+            this.tabPage1.Location = new System.Drawing.Point(4, 37);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(1410, 736);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "参数设置";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(101, 64);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(101, 30);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "文件路径";
+            // 
+            // txtDownLoadFilePath
+            // 
+            this.txtDownLoadFilePath.Location = new System.Drawing.Point(238, 61);
+            this.txtDownLoadFilePath.Name = "txtDownLoadFilePath";
+            this.txtDownLoadFilePath.Size = new System.Drawing.Size(586, 36);
+            this.txtDownLoadFilePath.TabIndex = 2;
+            // 
+            // btnSelectFile2
+            // 
+            this.btnSelectFile2.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnSelectFile2.Location = new System.Drawing.Point(868, 66);
+            this.btnSelectFile2.Name = "btnSelectFile2";
+            this.btnSelectFile2.Size = new System.Drawing.Size(181, 31);
+            this.btnSelectFile2.TabIndex = 4;
+            this.btnSelectFile2.Text = "设置下载文件路径";
+            this.btnSelectFile2.UseVisualStyleBackColor = true;
+            this.btnSelectFile2.Click += new System.EventHandler(this.btnSelectFile2_Click);
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.button6.Location = new System.Drawing.Point(177, 192);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(181, 31);
+            this.button6.TabIndex = 4;
+            this.button6.Text = "开始同步";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // txtResult
+            // 
+            this.txtResult.Location = new System.Drawing.Point(106, 455);
+            this.txtResult.Multiline = true;
+            this.txtResult.Name = "txtResult";
+            this.txtResult.Size = new System.Drawing.Size(718, 107);
+            this.txtResult.TabIndex = 5;
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.button7.Location = new System.Drawing.Point(418, 192);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(200, 31);
+            this.button7.TabIndex = 4;
+            this.button7.Text = "修改记录保留350条";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Hou3Select350YiLouSetFormZhouQiZhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1782, 1023);
+            this.ClientSize = new System.Drawing.Size(1431, 910);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.chkRefersh);
             this.Controls.Add(this.btnSelectFile);
@@ -1634,6 +1723,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1737,6 +1828,14 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnTestCode;
+        private System.Windows.Forms.Button btnSelectConditonEnough;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TextBox txtDownLoadFilePath;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnSelectFile2;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox txtResult;
+        private System.Windows.Forms.Button button7;
     }
 }
 

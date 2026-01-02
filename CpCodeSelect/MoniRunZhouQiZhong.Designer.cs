@@ -68,7 +68,7 @@
             " "});
             this.listBoxExeMsg.Location = new System.Drawing.Point(25, 214);
             this.listBoxExeMsg.Name = "listBoxExeMsg";
-            this.listBoxExeMsg.Size = new System.Drawing.Size(1112, 754);
+            this.listBoxExeMsg.Size = new System.Drawing.Size(996, 604);
             this.listBoxExeMsg.TabIndex = 7;
             // 
             // label2
@@ -274,10 +274,10 @@
             // txt350Code
             // 
             this.txt350Code.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.txt350Code.Location = new System.Drawing.Point(1155, 214);
+            this.txt350Code.Location = new System.Drawing.Point(1027, 214);
             this.txt350Code.Multiline = true;
             this.txt350Code.Name = "txt350Code";
-            this.txt350Code.Size = new System.Drawing.Size(469, 434);
+            this.txt350Code.Size = new System.Drawing.Size(421, 307);
             this.txt350Code.TabIndex = 13;
             // 
             // dataGridView1
@@ -294,7 +294,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.YilouCount,
             this.IsZhouQiZhongHou});
-            this.dataGridView1.Location = new System.Drawing.Point(1155, 665);
+            this.dataGridView1.Location = new System.Drawing.Point(1027, 527);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -307,7 +307,7 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(469, 303);
+            this.dataGridView1.Size = new System.Drawing.Size(421, 291);
             this.dataGridView1.TabIndex = 15;
             // 
             // YilouCount
@@ -330,7 +330,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1636, 998);
+            this.ClientSize = new System.Drawing.Size(1503, 852);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txt350Code);
             this.Controls.Add(this.txtCurrentAmount);

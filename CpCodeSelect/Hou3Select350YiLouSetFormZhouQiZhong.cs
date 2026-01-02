@@ -51,6 +51,7 @@ namespace CpCodeSelect
             InitializeComponent();
             Init();
             txtFIlePath.Text = filePath;
+            txtDownLoadFilePath.Text = filePath;
             moniKill3.Hide();
         }
 
@@ -407,6 +408,11 @@ namespace CpCodeSelect
         }
         private void InitForm()
         {
+            var path = ConfigurationManager.AppSettings["FilePath"];
+            if (!string.IsNullOrEmpty(path))
+            {
+                filePath = path;
+            }
         }
         private void InitData()
         {
@@ -677,8 +683,9 @@ namespace CpCodeSelect
             }
             if (guaCount > -1)
             {
-                list=list.Where(p=>p.GuaCount>=guaCount).ToList().OrderByDescending(p => p.ZhouQiZhongHouGua).ThenByDescending(p => p.IsZhouQiZhongHou).ToList(); ;
+                list = list.Where(p => p.GuaCount >= guaCount).ToList().OrderByDescending(p => p.ZhouQiZhongHouGua).ThenByDescending(p => p.IsZhouQiZhongHou).ToList(); ;
             }
+            /*
             dataGridView1.DataSource = list;
             lblResultCount.Text = list.Count.ToString();
             dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -692,9 +699,26 @@ namespace CpCodeSelect
             dataGridView1.Columns["ZhongBeforeGua"].Visible = false;
             dataGridView1.Columns["Zhong2BeforeGua"].Visible = false;
             dataGridView1.Columns["Zhong3BeforeGua"].Visible = false;
+            */
+            SetDataSource(list);
 
         }
+        private void SetDataSource(List<Hou3Select350_ZhouQiZhong> list)
+        {
+            dataGridView1.DataSource = list;
+            lblResultCount.Text = list.Count.ToString();
+            dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
 
+            //dataGridView1.Columns["GuaCount"].MinimumWidth = 100;
+            //dataGridView1.Columns["CodeNumber"].MinimumWidth = 150;
+            dataGridView1.Columns["IsShow"].Visible = false;
+            dataGridView1.Columns["NeedZhong"].Visible = false;
+            dataGridView1.Columns["ZhongGount"].Visible = false;
+            dataGridView1.Columns["ZhongBeforeGua"].Visible = false;
+            dataGridView1.Columns["Zhong2BeforeGua"].Visible = false;
+            dataGridView1.Columns["Zhong3BeforeGua"].Visible = false;
+        }
         private void btnStartAuto_Click(object sender, EventArgs e)
         {
             autoClkTimer.Start();
@@ -979,7 +1003,7 @@ namespace CpCodeSelect
 
         private void btnTestCode_Click(object sender, EventArgs e)
         {
-            var list= txtNum3.Text.Split(' ').ToList();
+            var list = txtNum3.Text.Split(' ').ToList();
             Hou3Select350_ZhouQiZhong model350 = new Hou3Select350_ZhouQiZhong();
             Code code = Hou3Select350YiLouSetFormZhouQiZhongBusiness.code;
             model350.Number350 = list;
@@ -996,6 +1020,109 @@ namespace CpCodeSelect
             else
             {
                 txtNum2.Text = result.Message;
+            }
+        }
+
+        private void btnSelectConditonEnough_Click(object sender, EventArgs e)
+        {
+            var list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == 1 && p.IsZhouQiZhongHou).ToList();
+            List<Hou3Select350_ZhouQiZhong> recordList = new List<Hou3Select350_ZhouQiZhong>();
+
+            if (list.Count > 0)
+            {
+
+                //最多查找5次,如果5次没有找到合适的记录就不投注
+                bool foundRecord = false;
+                for (int i = 0; i < list.Count; i++)
+                {
+
+                    var zhouQiZhongRecord = list[i];
+                    var klinLIst = zhouQiZhongRecord.KLineList;
+                    if (KLineCalc.KLineIsEnough(klinLIst).Result)
+                    {
+                        foundRecord = true;
+                        recordList.Add(zhouQiZhongRecord);
+                    }
+                }
+            }
+
+
+            SetDataSource(recordList);
+        }
+
+        private void btnSelectFile2_Click(object sender, EventArgs e)
+        {
+            var fileName = SelectFile();
+            if (string.IsNullOrEmpty(fileName))
+            {
+                labelError.Text = "必须选择文件路径";
+                showErrorTexttimer.Start();
+            }
+            else
+            {
+                txtDownLoadFilePath.Text = filePath;
+            }
+        }
+
+        private async void button6_Click(object sender, EventArgs e)
+        {
+            var downloader = new FileDownload();
+            try
+            {
+                // 配置服务器地址
+
+                string serverUrl = ConfigurationManager.AppSettings["txtFileNameSerever"];
+                if (string.IsNullOrEmpty(serverUrl)) serverUrl = "http://111.229.194.107:8099/";
+                string url1 = $"{serverUrl}/api/download-source-file";
+                string postData1 = "{\"file_name\":\"txffc_file\", \"download_name\":\"downloaded_example.txt\"}";
+                string savePath1 = txtDownLoadFilePath.Text;
+                if (string.IsNullOrEmpty(savePath1))
+                {
+                    savePath1 = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt";
+                }
+
+                bool success1 = await downloader.DownloadFileByPostAsync(url1, postData1, savePath1);
+                if (success1)
+                {
+                    txtResult.Text = "同步成功";
+                }
+                else
+                {
+                    txtResult.Text = "同步失败";
+                }
+            }
+            catch (Exception ex)
+            {
+                txtResult.Text = "$\"发生错误: {ex.Message}";
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int linesToKeep = 350;
+                // 读取文件的所有行
+                var lines = File.ReadAllLines(txtDownLoadFilePath.Text);
+
+                // 如果文件行数小于等于要保留的行数，则不需要处理
+                if (lines.Length <= linesToKeep)
+                {
+                    txtResult.Text = $"文件只有 {lines.Length} 行，小于等于 {linesToKeep} 行，无需处理。";
+                }
+
+                // 只取前N行
+                var firstLines = lines.Take(linesToKeep).ToArray();
+
+                // 写回文件（覆盖原文件）
+                File.WriteAllLines(filePath, firstLines);
+
+                txtResult.Text = $"已成功保留前 {linesToKeep} 行，删除了 {lines.Length - linesToKeep} 行。";
+            }
+            catch (Exception ex)
+            {
+                txtResult.Text = $"处理文件时出错: {ex.Message}";
+
             }
         }
     }

@@ -166,6 +166,7 @@ namespace CpCodeSelect.Util
         public static CheckResult KLineIsEnough(List<KLine> kLineList)
         {
             var checkResult = new CheckResult();
+            checkResult.Result = true;
             var count = kLineList.Count;
             var blowMiddleCount = 0;
             //0 最新5期都要在中轨上
@@ -176,7 +177,7 @@ namespace CpCodeSelect.Util
                 {
                     checkResult.Result = false;
                     checkResult.Message = "最近5期至少一期不在中轨上";
-                    return checkResult;
+                    break;
                 }
             }
             //0.1 遗漏2期后还是在中轨上
@@ -185,8 +186,15 @@ namespace CpCodeSelect.Util
                 if (kline.KValue - 2 <= kline.Bolling.MiddleValue)
                 {
                     checkResult.Result = false;
-                    checkResult.Message = "挂2期后,K线到中下轨";
-                    return checkResult;
+                    if (!string.IsNullOrEmpty(checkResult.Message))
+                    {
+                        checkResult.Message+= Environment.NewLine + "\r\n挂2期后,K线到中下轨";
+                    }
+                    else
+                    {
+
+                       checkResult.Message = "挂2期后,K线到中下轨";
+                    }
                 }
             }
 
@@ -197,8 +205,15 @@ namespace CpCodeSelect.Util
                 if (!kline.IsOverMiddle)
                 {
                     checkResult.Result = false;
-                    checkResult.Message = "最近5期至少一期不在中轨上";
-                    return checkResult;
+                    if (!string.IsNullOrEmpty(checkResult.Message))
+                    {
+                        checkResult.Message += Environment.NewLine + "\n\r最近5期至少一期不在中轨上";
+                    }
+                    else
+                    {
+                        checkResult.Message = "最近5期至少一期不在中轨上";
+                    }
+                    break;
                 }
             }
             //1 最近20期内是否有10个在中轨下
@@ -216,8 +231,14 @@ namespace CpCodeSelect.Util
             if (blowMiddleCount >= 10)
             {
                 checkResult.Result = false;
-                checkResult.Message = "最近20期内是否有10个在中轨下";
-                return checkResult;
+                if (!string.IsNullOrEmpty(checkResult.Message))
+                {
+                    checkResult.Message += Environment.NewLine + "\n\r最近20期内是否有10个在中轨下";
+                }
+                else
+                {
+                    checkResult.Message = "最近20期内是否有10个在中轨下";
+                }
             }
             //1.1 最近50期内是否有20个在中轨下
             blowMiddleCount = 0;
@@ -236,8 +257,14 @@ namespace CpCodeSelect.Util
             if (blowMiddleCount >= 20)
             {
                 checkResult.Result = false;
-                checkResult.Message = "最近50期内是否有20个在中轨下";
-                return checkResult;
+                if (!string.IsNullOrEmpty(checkResult.Message))
+                {
+                    checkResult.Message += Environment.NewLine + "\n\r最近50期内是否有20个在中轨下";
+                }
+                else
+                {
+                    checkResult.Message = "最近50期内是否有20个在中轨下";
+                }
             }
 
 
@@ -248,8 +275,15 @@ namespace CpCodeSelect.Util
                 if (kline.CurrentGuaCount >= 7)
                 {
                     checkResult.Result = false;
-                    checkResult.Message = "最近30期有超过7挂";
-                    return checkResult;
+                    if (!string.IsNullOrEmpty(checkResult.Message))
+                    {
+                        checkResult.Message += Environment.NewLine + "\n\r最近30期有超过7挂";
+                    }
+                    else
+                    {
+                        checkResult.Message = "最近30期有超过7挂";
+                    }
+                    break;
                 }
             }
 
@@ -260,8 +294,15 @@ namespace CpCodeSelect.Util
                 if (kline.CurrentGuaCount >= 8)
                 {
                     checkResult.Result = false;
-                    checkResult.Message = "最近70期有超过8挂";
-                    return checkResult;
+                    if (!string.IsNullOrEmpty(checkResult.Message))
+                    {
+                        checkResult.Message += Environment.NewLine + "\n\r最近70期有超过8挂";
+                    }
+                    else
+                    {
+                        checkResult.Message = "最近70期有超过8挂";
+                    }
+                    break;
                 }
             }
 
@@ -280,8 +321,14 @@ namespace CpCodeSelect.Util
             if (middleDownCount >= 7)
             {
                 checkResult.Result = false;
-                checkResult.Message = "连续10个有7个下降";
-                return checkResult;
+                if (!string.IsNullOrEmpty(checkResult.Message))
+                {
+                    checkResult.Message += Environment.NewLine + "\n\r连续10个有7个下降";
+                }
+                else
+                {
+                    checkResult.Message = "连续10个有7个下降";
+                }
             }
             //4 70期内是否有在理论周期内开出8个以上的。
             for (var i = count; i > count - 70; i--)
@@ -303,8 +350,14 @@ namespace CpCodeSelect.Util
                                 if (lianKaiCount >= 8)
                                 {
                                     checkResult.Result = false;
-                                    checkResult.Message = "70期内存在理论周期内开出8个以上";
-                                    return checkResult;
+                                    if (!string.IsNullOrEmpty(checkResult.Message))
+                                    {
+                                        checkResult.Message += Environment.NewLine + "\n\r70期内存在理论周期内开出8个以上";
+                                    }
+                                    else
+                                    {
+                                        checkResult.Message = "70期内存在理论周期内开出8个以上";
+                                    }
                                 }
                             }
                         }
@@ -318,7 +371,6 @@ namespace CpCodeSelect.Util
             }
 
 
-            checkResult.Result = true;
             return checkResult;
 
         }
