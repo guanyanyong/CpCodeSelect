@@ -46,8 +46,12 @@
     <Compile Include="FileAnalysis.cs" />
     <Compile Include="FileDownload.cs" />
     <Compile Include="FileUtil.cs" />
+    <Compile Include="Generate270Code.cs" />
     <Compile Include="Generate350Code.cs" />
+    <Compile Include="KLine270Calc.cs" />
+    <Compile Include="KLine350Calc.cs" />
     <Compile Include="KLineCalc.cs" />
+    <Compile Include="MultiThreadedNumberSelectFor270Hou3.cs" />
     <Compile Include="MultiThreadedNumberSelectFor350Hou3.cs" />
     <Compile Include="MultiThreadedNumberSelectForYiLou.cs" />
     <Compile Include="NumberFilter.cs" />

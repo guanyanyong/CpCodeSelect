@@ -1,6 +1,6 @@
 ﻿namespace CpCodeSelect
 {
-    partial class Hou3Select350YiLouSetFormZhouQiZhong
+    partial class Hou3Select270YiLouSetFormZhouQiZhong
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -40,9 +40,7 @@
             this.chkRefersh = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TotalInfo = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.lblMaxGua = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblTotalNumber = new System.Windows.Forms.Label();
@@ -288,9 +286,7 @@
             // 
             // TotalInfo
             // 
-            this.TotalInfo.Controls.Add(this.button5);
             this.TotalInfo.Controls.Add(this.button4);
-            this.TotalInfo.Controls.Add(this.button3);
             this.TotalInfo.Controls.Add(this.lblMaxGua);
             this.TotalInfo.Controls.Add(this.label6);
             this.TotalInfo.Controls.Add(this.lblTotalNumber);
@@ -306,35 +302,15 @@
             this.TotalInfo.UseVisualStyleBackColor = true;
             this.TotalInfo.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(505, 138);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(226, 38);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "模拟运行8*1-5566";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(274, 138);
+            this.button4.Location = new System.Drawing.Point(66, 135);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(160, 38);
             this.button4.TabIndex = 7;
-            this.button4.Text = "模拟运行8*1";
+            this.button4.Text = "模拟运行9*1";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(41, 138);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(168, 38);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "模拟运行4*2";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // lblMaxGua
             // 
@@ -416,7 +392,7 @@
             this.SetSearch.Controls.Add(this.label7);
             this.SetSearch.Location = new System.Drawing.Point(4, 37);
             this.SetSearch.Name = "SetSearch";
-            this.SetSearch.Size = new System.Drawing.Size(1410, 736);
+            this.SetSearch.Size = new System.Drawing.Size(1410, 725);
             this.SetSearch.TabIndex = 2;
             this.SetSearch.Text = "搜索设置";
             this.SetSearch.UseVisualStyleBackColor = true;
@@ -1237,7 +1213,7 @@
             this.ResultPage.Location = new System.Drawing.Point(4, 37);
             this.ResultPage.Name = "ResultPage";
             this.ResultPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ResultPage.Size = new System.Drawing.Size(1410, 736);
+            this.ResultPage.Size = new System.Drawing.Size(1410, 725);
             this.ResultPage.TabIndex = 1;
             this.ResultPage.Text = "显示信息";
             this.ResultPage.UseVisualStyleBackColor = true;
@@ -1588,7 +1564,7 @@
             this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Location = new System.Drawing.Point(4, 37);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1410, 736);
+            this.tabPage1.Size = new System.Drawing.Size(1410, 725);
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "参数设置";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1665,7 +1641,7 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // Hou3Select350YiLouSetFormZhouQiZhong
+            // Hou3Select270YiLouSetFormZhouQiZhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1678,8 +1654,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.button1);
-            this.Name = "Hou3Select350YiLouSetFormZhouQiZhong";
-            this.Text = "350注遗漏搜索";
+            this.Name = "Hou3Select270YiLouSetFormZhouQiZhong";
+            this.Text = "270注遗漏搜索";
             this.tabControl1.ResumeLayout(false);
             this.TotalInfo.ResumeLayout(false);
             this.TotalInfo.PerformLayout();
@@ -1824,9 +1800,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnTestCode;
         private System.Windows.Forms.Button btnSelectConditonEnough;
         private System.Windows.Forms.TabPage tabPage1;

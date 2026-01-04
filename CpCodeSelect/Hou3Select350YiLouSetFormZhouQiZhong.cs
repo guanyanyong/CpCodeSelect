@@ -1011,8 +1011,8 @@ namespace CpCodeSelect
             model350.CodeQiHao = code.CodeQiHao;
             model350.NeedZhong = true;
             model350.KLineList = new List<KLine>();
-            KLineCalc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormZhouQiZhongBusiness.AllCode, 100);
-            var result = KLineCalc.KLineIsEnough(model350.KLineList);
+            KLine350Calc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormZhouQiZhongBusiness.AllCode, 100);
+            var result = KLine350Calc.KLineIsEnough(model350.KLineList);
             if (result.Result)
             {
                 txtNum2.Text = "满足条件";
@@ -1038,7 +1038,7 @@ namespace CpCodeSelect
 
                     var zhouQiZhongRecord = list[i];
                     var klinLIst = zhouQiZhongRecord.KLineList;
-                    if (KLineCalc.KLineIsEnough(klinLIst).Result)
+                    if (KLine350Calc.KLineIsEnough(klinLIst).Result)
                     {
                         foundRecord = true;
                         recordList.Add(zhouQiZhongRecord);

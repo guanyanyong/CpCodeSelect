@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CpCodeSelect.Util
 {
-    public class MultiThreadedNumberSelectFor350Hou3
+    public class MultiThreadedNumberSelectFor270Hou3
     {
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
@@ -31,12 +31,12 @@ namespace CpCodeSelect.Util
             //try
             //{
                 // 使用 Parallel.For 进行并行处理
-                Parallel.For(0, groupCount, new ParallelOptions { MaxDegreeOfParallelism = 10 }, i =>
+                Parallel.For(0, groupCount, new ParallelOptions { MaxDegreeOfParallelism = 1 }, i =>
                 {
                     // 为每个线程创建独立的 Random 实例，避免线程安全问题
                     var localRandom = new Random(GetThreadSafeSeed());
                     // 生成一组号码
-                    var group = GenerateSingleGroupFor350(localRandom,codeHou3List);
+                    var group = GenerateSingleGroupFor270(localRandom,codeHou3List);
                     if (group != null && group.Count > 0)
                         results.Add(group);
 
@@ -112,15 +112,15 @@ namespace CpCodeSelect.Util
         }
 
         /// <summary>
-        /// 生成单组号码（270个）
+        /// 生成单组号码（350个）
         /// </summary>
         /// <param name="codeHou3List">原始已存在的Code后3码的列表,这里目前是固定的270</param>
         /// <returns></returns>
-        private static List<string> GenerateSingleGroupFor350(
+        private static List<string> GenerateSingleGroupFor270(
             Random random,
             List<string> codeHou3List)
         {
-            return Generate350Code.Generate(codeHou3List,random);
+            return Generate270Code.Generate(codeHou3List,random);
         }
         /// <summary>
         /// 生成单组号码（50个）

@@ -254,7 +254,7 @@ namespace CpCodeSelect.Business
                 else keyValuePairs.Add(index, 1);
                 var zhouQiZhongRecord = list[index];
                 var klinLIst = zhouQiZhongRecord.KLineList;
-                if (KLineCalc.KLineIsEnough(klinLIst).Result)
+                if (KLine350Calc.KLineIsEnough(klinLIst).Result)
                 {
                     foundRecord = true;
                     record = zhouQiZhongRecord;

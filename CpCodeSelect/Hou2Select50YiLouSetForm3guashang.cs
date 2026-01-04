@@ -43,7 +43,6 @@ namespace CpCodeSelect
         private int boFangYanhuaCount = 12;
         private string apiUri = "http://127.0.0.1:5000/";
         private string DataSource = "rexguan-hp2024-01";
-        private int gua3SendMessageTime = 3;
         public Hou2Select50YiLouSetForm3guashangForm()
         {
             InitializeComponent();
