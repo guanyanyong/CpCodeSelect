@@ -13,7 +13,7 @@ namespace CpCodeSelect.Business
     /// <summary>
     /// 模拟执行4个2轮的确认点买入
     /// </summary>
-    public class Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness
+    public class Hou3Select350YiLouSetFormZhouQiZhongLianXu3MoniBusiness
     {
         public delegate void LogDelegate(string message);
         private LogDelegate _logMethod;
@@ -23,13 +23,13 @@ namespace CpCodeSelect.Business
         public List<YilouStatistic> yilouStatisticList = new List<YilouStatistic>();
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
-        public Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhong> model350List)
+        public Hou3Select350YiLouSetFormZhouQiZhongLianXu3MoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhong> model350List)
         {
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
             this.model350List = model350List;
 
 
-            for (int i = 0; i <= 8; i++)
+            for (int i = 0; i <= 3; i++)
             {
                 YilouStatistic entity = new YilouStatistic();
                 entity.YilouCount = i;
@@ -187,16 +187,16 @@ namespace CpCodeSelect.Business
                     {
                         //执行中，未中出
                         GuaCount++;
-                        if (GuaCount <= 8)
+                        if (GuaCount <= 3)
                         {
                             //挂8以内说明挂了1次
                             IsRunning = true;
                             CurrentaQi = GuaCount;
                             StartCalc(code);
                         }
-                        else if (GuaCount == 9)
+                        else if (GuaCount == 4)
                         {
-                            //挂9说明挂了8次,结束
+                            //挂4说明挂了3次,结束
                             IsRunning = false;
                             CurrentaQi = 1;
                             GuaCount = 1;
@@ -210,7 +210,7 @@ namespace CpCodeSelect.Business
 
                             before350List = current350List;
 
-                            yilouStatisticList[8].TotalCount = yilouStatisticList[8].TotalCount + 1;
+                            yilouStatisticList[3].TotalCount = yilouStatisticList[3].TotalCount + 1;
                         }
                     }
                 }

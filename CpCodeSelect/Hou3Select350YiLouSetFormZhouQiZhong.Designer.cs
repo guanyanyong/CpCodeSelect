@@ -133,6 +133,7 @@
             this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button8 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -289,6 +290,7 @@
             // TotalInfo
             // 
             this.TotalInfo.Controls.Add(this.button5);
+            this.TotalInfo.Controls.Add(this.button8);
             this.TotalInfo.Controls.Add(this.button4);
             this.TotalInfo.Controls.Add(this.button3);
             this.TotalInfo.Controls.Add(this.lblMaxGua);
@@ -416,7 +418,7 @@
             this.SetSearch.Controls.Add(this.label7);
             this.SetSearch.Location = new System.Drawing.Point(4, 37);
             this.SetSearch.Name = "SetSearch";
-            this.SetSearch.Size = new System.Drawing.Size(1410, 736);
+            this.SetSearch.Size = new System.Drawing.Size(1410, 725);
             this.SetSearch.TabIndex = 2;
             this.SetSearch.Text = "搜索设置";
             this.SetSearch.UseVisualStyleBackColor = true;
@@ -1237,7 +1239,7 @@
             this.ResultPage.Location = new System.Drawing.Point(4, 37);
             this.ResultPage.Name = "ResultPage";
             this.ResultPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ResultPage.Size = new System.Drawing.Size(1410, 736);
+            this.ResultPage.Size = new System.Drawing.Size(1410, 725);
             this.ResultPage.TabIndex = 1;
             this.ResultPage.Text = "显示信息";
             this.ResultPage.UseVisualStyleBackColor = true;
@@ -1588,7 +1590,7 @@
             this.tabPage1.Controls.Add(this.label15);
             this.tabPage1.Location = new System.Drawing.Point(4, 37);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1410, 736);
+            this.tabPage1.Size = new System.Drawing.Size(1410, 725);
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "参数设置";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1664,6 +1666,16 @@
             // 
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(762, 138);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(160, 38);
+            this.button8.TabIndex = 7;
+            this.button8.Text = "模拟运行3*1";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button4_Click_1);
             // 
             // Hou3Select350YiLouSetFormZhouQiZhong
             // 
@@ -1836,6 +1848,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
     }
 }
 

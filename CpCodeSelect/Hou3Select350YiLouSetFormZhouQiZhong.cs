@@ -45,6 +45,7 @@ namespace CpCodeSelect
         private string DataSource = "rexguan-hp2024-01";
         private MoniRunZhouQiZhong moniRunZhouQiZhong = new MoniRunZhouQiZhong();
         private MoniRunZhouQiZhongLianXu8 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongLianXu8();
+        private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
         private MoniRunZhouQiZhongLianXu8Amount5566 moniRunZhouQiZhongLianXu8Amount5566 = new MoniRunZhouQiZhongLianXu8Amount5566();
         public Hou3Select350YiLouSetFormZhouQiZhong()
         {
@@ -171,6 +172,7 @@ namespace CpCodeSelect
             moniRunZhouQiZhong.Run(code);
             moniRunZhouQiZhongLianXu8.Run(code);
             moniRunZhouQiZhongLianXu8Amount5566.Run(code);
+            moniRunZhouQiZhongLianXu3.Run(code);
 
             //把记录添加到界面上 异步方式
             //AddRecordToPage(code);
@@ -993,7 +995,7 @@ namespace CpCodeSelect
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            moniRunZhouQiZhongLianXu8.Show();
+            moniRunZhouQiZhongLianXu3.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)

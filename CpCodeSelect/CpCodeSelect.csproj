@@ -131,6 +131,12 @@
     <Compile Include="MoniRun270ZhouQiZhongLianXu9.Designer.cs">
       <DependentUpon>MoniRun270ZhouQiZhongLianXu9.cs</DependentUpon>
     </Compile>
+    <Compile Include="MoniRunZhouQiZhongLianXu3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoniRunZhouQiZhongLianXu3.Designer.cs">
+      <DependentUpon>MoniRunZhouQiZhongLianXu3.cs</DependentUpon>
+    </Compile>
     <Compile Include="MoniRunZhouQiZhongLianXu8Amount5566.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MoniRun270ZhouQiZhongLianXu9.resx">
       <DependentUpon>MoniRun270ZhouQiZhongLianXu9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MoniRunZhouQiZhongLianXu3.resx">
+      <DependentUpon>MoniRunZhouQiZhongLianXu3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MoniRunZhouQiZhongLianXu8Amount5566.resx">
       <DependentUpon>MoniRunZhouQiZhongLianXu8Amount5566.cs</DependentUpon>
