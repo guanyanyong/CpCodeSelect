@@ -27,6 +27,7 @@ namespace CpCodeSelect
     {
         public Dictionary<int, List<StatisticModel>> StatisticDic = new Dictionary<int, List<StatisticModel>>();
         private string filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt";
+        private string feilePath3fen = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TX3FC.txt";
         private FileSystemWatcher fileWatcher;
         private System.Windows.Forms.Timer showErrorTexttimer;
         //private Timer addTextTimer;
@@ -414,6 +415,30 @@ namespace CpCodeSelect
             if (!string.IsNullOrEmpty(path))
             {
                 filePath = path;
+            }
+
+            var path3fen = ConfigurationManager.AppSettings["3FenCaiFilePath"];
+            var is3fen = ConfigurationManager.AppSettings["Is3fen"];
+            if (!string.IsNullOrEmpty(is3fen))
+            {
+                if (is3fen == "1")
+                {
+                    chk3fen.Checked = true;
+                    filePath = path3fen;
+                    if (string.IsNullOrEmpty(filePath))
+                    {
+                        filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TX3FC.txt"; ;
+                    }
+                }
+                else
+                {
+                    chk3fen.Checked = false;
+                    filePath = path;
+                    if (string.IsNullOrEmpty(filePath))
+                    {
+                        filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt"; ;
+                    }
+                }
             }
         }
         private void InitData()
@@ -1076,17 +1101,32 @@ namespace CpCodeSelect
                 string serverUrl = ConfigurationManager.AppSettings["txtFileNameSerever"];
                 if (string.IsNullOrEmpty(serverUrl)) serverUrl = "http://111.229.194.107:8099/";
                 string url1 = $"{serverUrl}/api/download-source-file";
+                bool is3fen = chk3fen.Checked;
                 string postData1 = "{\"file_name\":\"txffc_file\", \"download_name\":\"downloaded_example.txt\"}";
+                if (is3fen)
+                {
+                    postData1 = "{\"file_name\":\"tx3fc_file\", \"download_name\":\"downloaded_example.txt\"}";
+                }
                 string savePath1 = txtDownLoadFilePath.Text;
                 if (string.IsNullOrEmpty(savePath1))
                 {
                     savePath1 = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt";
                 }
+                if (is3fen)
+                {
+                    savePath1 = ConfigurationManager.AppSettings["3FenCaiFilePath"];
+                    if (string.IsNullOrEmpty(savePath1))
+                    {
+                        savePath1 = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TX3FC.txt";
+                    }
+                }
 
                 bool success1 = await downloader.DownloadFileByPostAsync(url1, postData1, savePath1);
                 if (success1)
                 {
-                    txtResult.Text = "同步成功";
+                    var lines = File.ReadAllLines(txtDownLoadFilePath.Text);
+
+                    txtResult.Text = $"同步{lines.Length}条记录成功";
                 }
                 else
                 {
@@ -1103,7 +1143,7 @@ namespace CpCodeSelect
         {
             try
             {
-                int linesToKeep = 350;
+                int linesToKeep = (int)numericUpDown4.Value;
                 // 读取文件的所有行
                 var lines = File.ReadAllLines(txtDownLoadFilePath.Text);
 
@@ -1112,20 +1152,57 @@ namespace CpCodeSelect
                 {
                     txtResult.Text = $"文件只有 {lines.Length} 行，小于等于 {linesToKeep} 行，无需处理。";
                 }
+                else
+                {
 
-                // 只取前N行
-                var firstLines = lines.Take(linesToKeep).ToArray();
 
-                // 写回文件（覆盖原文件）
-                File.WriteAllLines(filePath, firstLines);
+                    // 只取前N行
+                    var firstLines = lines.Take(linesToKeep).ToArray();
 
-                txtResult.Text = $"已成功保留前 {linesToKeep} 行，删除了 {lines.Length - linesToKeep} 行。";
+                    // 写回文件（覆盖原文件）
+                    File.WriteAllLines(filePath, firstLines);
+
+                    txtResult.Text = $"已成功保留前 {linesToKeep} 行，删除了 {lines.Length - linesToKeep} 行。";
+                }
             }
             catch (Exception ex)
             {
                 txtResult.Text = $"处理文件时出错: {ex.Message}";
 
             }
+        }
+
+        private void chk3fen_CheckedChanged(object sender, EventArgs e)
+        {
+            var path = ConfigurationManager.AppSettings["FilePath"];
+            if (!string.IsNullOrEmpty(path))
+            {
+                filePath = path;
+            }
+
+            var path3fen = ConfigurationManager.AppSettings["3FenCaiFilePath"];
+            var is3fen = ConfigurationManager.AppSettings["Is3fen"];
+
+            var is3Checked = chk3fen.Checked;
+            if (is3Checked)
+            {
+                filePath = path3fen;
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TX3FC.txt"; ;
+                }
+            }
+            else
+            {
+                filePath = path;
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt"; ;
+                }
+            }
+
+            txtFIlePath.Text = filePath;
+            txtDownLoadFilePath.Text = filePath;
         }
     }
 }

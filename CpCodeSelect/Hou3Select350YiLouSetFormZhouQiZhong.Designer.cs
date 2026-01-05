@@ -134,6 +134,9 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.button8 = new System.Windows.Forms.Button();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.chk3fen = new System.Windows.Forms.CheckBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -175,6 +178,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -204,14 +208,14 @@
             this.txtFIlePath.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.txtFIlePath.Location = new System.Drawing.Point(184, 22);
             this.txtFIlePath.Name = "txtFIlePath";
-            this.txtFIlePath.Size = new System.Drawing.Size(853, 32);
+            this.txtFIlePath.Size = new System.Drawing.Size(737, 32);
             this.txtFIlePath.TabIndex = 2;
             this.txtFIlePath.TextChanged += new System.EventHandler(this.txtFIlePath_TextChanged);
             // 
             // btnSelectFile
             // 
             this.btnSelectFile.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnSelectFile.Location = new System.Drawing.Point(1083, 23);
+            this.btnSelectFile.Location = new System.Drawing.Point(960, 23);
             this.btnSelectFile.Name = "btnSelectFile";
             this.btnSelectFile.Size = new System.Drawing.Size(116, 31);
             this.btnSelectFile.TabIndex = 3;
@@ -1582,6 +1586,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label16);
+            this.tabPage1.Controls.Add(this.numericUpDown4);
             this.tabPage1.Controls.Add(this.txtResult);
             this.tabPage1.Controls.Add(this.button7);
             this.tabPage1.Controls.Add(this.button6);
@@ -1600,26 +1606,26 @@
             this.txtResult.Location = new System.Drawing.Point(106, 455);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(718, 107);
+            this.txtResult.Size = new System.Drawing.Size(718, 217);
             this.txtResult.TabIndex = 5;
             // 
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button7.Location = new System.Drawing.Point(418, 192);
+            this.button7.Location = new System.Drawing.Point(624, 167);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(200, 31);
+            this.button7.Size = new System.Drawing.Size(200, 88);
             this.button7.TabIndex = 4;
-            this.button7.Text = "修改记录保留350条";
+            this.button7.Text = "修改保留记录";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button6.Location = new System.Drawing.Point(177, 192);
+            this.button6.Location = new System.Drawing.Point(106, 167);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(181, 31);
+            this.button6.Size = new System.Drawing.Size(181, 88);
             this.button6.TabIndex = 4;
             this.button6.Text = "开始同步";
             this.button6.UseVisualStyleBackColor = true;
@@ -1628,7 +1634,7 @@
             // btnSelectFile2
             // 
             this.btnSelectFile2.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnSelectFile2.Location = new System.Drawing.Point(868, 66);
+            this.btnSelectFile2.Location = new System.Drawing.Point(1204, 66);
             this.btnSelectFile2.Name = "btnSelectFile2";
             this.btnSelectFile2.Size = new System.Drawing.Size(181, 31);
             this.btnSelectFile2.TabIndex = 4;
@@ -1640,7 +1646,7 @@
             // 
             this.txtDownLoadFilePath.Location = new System.Drawing.Point(238, 61);
             this.txtDownLoadFilePath.Name = "txtDownLoadFilePath";
-            this.txtDownLoadFilePath.Size = new System.Drawing.Size(586, 36);
+            this.txtDownLoadFilePath.Size = new System.Drawing.Size(917, 36);
             this.txtDownLoadFilePath.TabIndex = 2;
             // 
             // label15
@@ -1677,12 +1683,56 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button4_Click_1);
             // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.numericUpDown4.Location = new System.Drawing.Point(400, 195);
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            1500,
+            0,
+            0,
+            0});
+            this.numericUpDown4.Minimum = new decimal(new int[] {
+            350,
+            0,
+            0,
+            0});
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(120, 36);
+            this.numericUpDown4.TabIndex = 6;
+            this.numericUpDown4.Value = new decimal(new int[] {
+            350,
+            0,
+            0,
+            0});
+            // 
+            // chk3fen
+            // 
+            this.chk3fen.AutoSize = true;
+            this.chk3fen.Location = new System.Drawing.Point(1086, 38);
+            this.chk3fen.Name = "chk3fen";
+            this.chk3fen.Size = new System.Drawing.Size(54, 16);
+            this.chk3fen.TabIndex = 7;
+            this.chk3fen.Text = "3分彩";
+            this.chk3fen.UseVisualStyleBackColor = true;
+            this.chk3fen.CheckedChanged += new System.EventHandler(this.chk3fen_CheckedChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(113, 408);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(123, 30);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "操作信息：";
+            // 
             // Hou3Select350YiLouSetFormZhouQiZhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1431, 918);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.chk3fen);
             this.Controls.Add(this.chkRefersh);
             this.Controls.Add(this.btnSelectFile);
             this.Controls.Add(this.txtFIlePath);
@@ -1737,6 +1787,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1849,6 +1900,9 @@
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.CheckBox chk3fen;
+        private System.Windows.Forms.Label label16;
     }
 }
 
