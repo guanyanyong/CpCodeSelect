@@ -306,7 +306,7 @@ namespace CpCodeSelect
                     using (SoundPlayer player = new SoundPlayer(".\\data\\yanhua.wav")) // 替换为你的音乐文件路径
                     {
                         // 播放音乐
-                        player.Play();
+                        //player.Play();
                     }
                 }
 

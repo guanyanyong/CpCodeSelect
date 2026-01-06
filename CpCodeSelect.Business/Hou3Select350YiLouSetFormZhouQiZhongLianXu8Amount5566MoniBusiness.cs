@@ -152,7 +152,7 @@ namespace CpCodeSelect.Business
         /// <param name="model"></param>
         public void CalcCode(Code code)
         {
-            var record = model350List[3];
+            //var record = model350List[3];
             List<PositionNumber> list = new List<PositionNumber>();
 
             if (IsOriginBeginStatus())

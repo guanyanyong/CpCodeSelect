@@ -21,6 +21,13 @@ namespace CpCodeSelect.Business
         public static Object lockObj = new Object();
         public static List<Hou3Select350_ZhouQiZhong> model350List = new List<Hou3Select350_ZhouQiZhong>();
         public static string leftNumberCountStr = ConfigurationManager.AppSettings["LeftNumberCount"];
+
+        public static void InitData()
+        {
+            AllCode = new List<Code>();
+            model350List= new List<Hou3Select350_ZhouQiZhong>();
+            Hou2NumberCount = new Dictionary<string, int>();
+        }
         /// <summary>
         /// 初始化号码
         /// </summary>

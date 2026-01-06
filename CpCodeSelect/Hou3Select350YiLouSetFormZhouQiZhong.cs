@@ -362,7 +362,7 @@ namespace CpCodeSelect
                     using (SoundPlayer player = new SoundPlayer(".\\data\\yanhua.wav")) // 替换为你的音乐文件路径
                     {
                         // 播放音乐
-                        player.Play();
+                        //player.Play();
                     }
                 }
 
@@ -460,6 +460,7 @@ namespace CpCodeSelect
             {
                 boFangYanhuaCount = 12;
             }
+            Hou3Select350YiLouSetFormZhouQiZhongBusiness.InitData();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -1052,7 +1053,8 @@ namespace CpCodeSelect
 
         private void btnSelectConditonEnough_Click(object sender, EventArgs e)
         {
-            var list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == 1 && p.IsZhouQiZhongHou).ToList();
+            var guaCount = numericUpDown3.Value;
+            var list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
             List<Hou3Select350_ZhouQiZhong> recordList = new List<Hou3Select350_ZhouQiZhong>();
 
             if (list.Count > 0)
