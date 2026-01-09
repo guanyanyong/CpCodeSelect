@@ -48,6 +48,69 @@ namespace CpCodeSelect.Util
             return firstLineStr;
 
         }
+
+
+        public static string ReadFileNumberRecord(string filePath, int lineNumber=1, int maxReadNumber = 100)
+        {
+            var firstLineStr = string.Empty;
+            
+            int readCount = 0; //读的总行数
+            int readValidCount = 0; //读的有效行数
+            try
+            {
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    if (reader != null)
+                    {
+                        
+                        firstLineStr = reader.ReadLine();
+                        while (true)
+                        {
+                            if (string.IsNullOrEmpty(firstLineStr))
+                            {
+                                firstLineStr = reader.ReadLine();
+                                readCount++;
+                                if (readCount >= maxReadNumber)
+                                    break;
+                            }
+                            else
+                            {
+                                readValidCount++;
+                                if(readValidCount == lineNumber)
+                                {
+                                    //如果读到的是指定的行号，则返回
+                                   break;
+                                }
+                                else
+                                {
+                                    //如果没有读到指定的行号,则继续读取下一行
+                                    firstLineStr = reader.ReadLine();
+                                }
+                                if (readValidCount >= maxReadNumber)
+                                    break;
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (IOException ex)
+            {
+                if (TryTime > 4)
+                {
+                    TryTime = 1;
+                    throw ex;
+                }
+                else
+                {
+                    TryTime++;
+                    return ReadFileFirstRecord(filePath, maxReadNumber);
+                }
+            }
+
+            return firstLineStr;
+
+        }
         /// <summary>
         /// 读取文件,返回所有的文件列表
         /// </summary>

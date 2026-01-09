@@ -77,6 +77,12 @@
     <Compile Include="Hou3Select270YiLouSetFormZhouQiZhong.Designer.cs">
       <DependentUpon>Hou3Select270YiLouSetFormZhouQiZhong.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hou3Select350YiLouSetFormDuoZhouQiZhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hou3Select350YiLouSetFormDuoZhouQiZhong.Designer.cs">
+      <DependentUpon>Hou3Select350YiLouSetFormDuoZhouQiZhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hou3Select350YiLouSetFormZhouQiZhong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,12 @@
     </Compile>
     <Compile Include="MoniRun270ZhouQiZhongLianXu9.Designer.cs">
       <DependentUpon>MoniRun270ZhouQiZhongLianXu9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MoniRunZhouQiZhongLianXu3ge1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MoniRunZhouQiZhongLianXu3ge1.Designer.cs">
+      <DependentUpon>MoniRunZhouQiZhongLianXu3ge1.cs</DependentUpon>
     </Compile>
     <Compile Include="MoniRunZhouQiZhongLianXu3.cs">
       <SubType>Form</SubType>
@@ -253,6 +265,9 @@
     <EmbeddedResource Include="Hou3Select270YiLouSetFormZhouQiZhong.resx">
       <DependentUpon>Hou3Select270YiLouSetFormZhouQiZhong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Hou3Select350YiLouSetFormDuoZhouQiZhong.resx">
+      <DependentUpon>Hou3Select350YiLouSetFormDuoZhouQiZhong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hou3Select350YiLouSetFormZhouQiZhong.resx">
       <DependentUpon>Hou3Select350YiLouSetFormZhouQiZhong.cs</DependentUpon>
     </EmbeddedResource>
@@ -279,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MoniRun270ZhouQiZhongLianXu9.resx">
       <DependentUpon>MoniRun270ZhouQiZhongLianXu9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MoniRunZhouQiZhongLianXu3ge1.resx">
+      <DependentUpon>MoniRunZhouQiZhongLianXu3ge1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MoniRunZhouQiZhongLianXu3.resx">
       <DependentUpon>MoniRunZhouQiZhongLianXu3.cs</DependentUpon>

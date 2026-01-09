@@ -148,7 +148,10 @@ namespace CpCodeSelect.Business
         public void CalcCode(Code code)
         {
             List<PositionNumber> list = new List<PositionNumber>();
-
+            if(this.model350List==null || model350List.Count == 0)
+            {
+                model350List = Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List;
+            }
             if (IsOriginBeginStatus())
             {
                 //如果是初始状态,肯定不是执行中 开始执行
@@ -243,6 +246,7 @@ namespace CpCodeSelect.Business
             Dictionary<int, int> keyValuePairs = new Dictionary<int, int>();
             for (int i = 0; keyValuePairs.Count < calcTime; i++)
             {
+                if (i >= 10) break;
                 int index = GetThreadSafeSeed(totalCount - 1);
                 if (keyValuePairs.ContainsKey(index))
                 {
@@ -252,13 +256,13 @@ namespace CpCodeSelect.Business
                 else keyValuePairs.Add(index, 1);
                 var zhouQiZhongRecord = list[index];
                 var klinLIst = zhouQiZhongRecord.KLineList;
-                if (KLine350Calc.KLineIsEnough(klinLIst).Result)
+                var result = KLine350Calc.KLineIsEnough(klinLIst);
+                if (result.Result)
                 {
                     foundRecord = true;
                     record = zhouQiZhongRecord;
                     break;
                 }
-                if (i >= 10) break;
             }
             // 没有找到合适的记录,本期不投注
             if (!foundRecord) return;
@@ -297,6 +301,7 @@ namespace CpCodeSelect.Business
 
             for (int i = 0; keyValuePairs.Count < calcTime; i++)
             {
+                if (i >= 10) break;
                 int index = GetThreadSafeSeed(totalCount - 1);
                 if (keyValuePairs.ContainsKey(index))
                 {
@@ -312,7 +317,6 @@ namespace CpCodeSelect.Business
                     record = zhouQiZhongRecord;
                     break;
                 }
-                if (i >= 10) break;
             }
             // 没有找到合适的记录,本期不投注
             if (!foundRecord) return;

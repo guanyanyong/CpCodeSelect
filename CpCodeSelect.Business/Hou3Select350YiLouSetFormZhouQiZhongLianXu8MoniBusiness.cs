@@ -50,18 +50,18 @@ namespace CpCodeSelect.Business
         /// <summary>
         /// 每轮的投注矩阵,金额
         /// </summary>
-        //private decimal[,] LunAmountMatrix = {
-        //            { 56.7M, 88.55M,138.6M, 217M,339.5M, 530.95M,830.9M, 1299.9M},
-        //        };
-        //private decimal[,] ZhongJiangAmountMatrix = {
-        //            { 157.14M, 245.41M ,384.12M, 601.4M,940.9M, 1471.49M ,2302.78M, 3602.58M}
-        //        };
         private decimal[,] LunAmountMatrix = {
-                    { 56.7M, 88.55M,138.6M, 217M,0M, 0M,0M, 0M},
+                    { 56.7M, 88.55M,138.6M, 217M,339.5M, 530.95M,830.9M, 1299.9M},
                 };
         private decimal[,] ZhongJiangAmountMatrix = {
-                    { 157.14M, 245.41M ,384.12M, 601.4M,0M, 0M,0M, 0M}
+                    { 157.14M, 245.41M ,384.12M, 601.4M,940.9M, 1471.49M ,2302.78M, 3602.58M}
                 };
+        //private decimal[,] LunAmountMatrix = {
+        //            { 56.7M, 88.55M,138.6M, 217M,0M, 0M,0M, 0M},
+        //        };
+        //private decimal[,] ZhongJiangAmountMatrix = {
+        //            { 157.14M, 245.41M ,384.12M, 601.4M,0M, 0M,0M, 0M}
+        //        };
         /// <summary>
         /// 总金额
         /// </summary>
@@ -149,6 +149,10 @@ namespace CpCodeSelect.Business
         public void CalcCode(Code code)
         {
             List<PositionNumber> list = new List<PositionNumber>();
+            if (this.model350List == null || model350List.Count == 0)
+            {
+                model350List = Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List;
+            }
 
             if (IsOriginBeginStatus())
             {
@@ -241,6 +245,11 @@ namespace CpCodeSelect.Business
 
             for (int i = 0; keyValuePairs.Count < calcTime; i++)
             {
+                if (i >= 10)
+                {
+                    foundRecord = false;
+                    break;
+                }
                 int index = GetThreadSafeSeed(totalCount - 1);
                 if (keyValuePairs.ContainsKey(index))
                 {
@@ -254,11 +263,6 @@ namespace CpCodeSelect.Business
                 {
                     foundRecord = true;
                     record = zhouQiZhongRecord;
-                    break;
-                }
-                if (i >= 10)
-                {
-                    foundRecord = false;
                     break;
                 }
             }

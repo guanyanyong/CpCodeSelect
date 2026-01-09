@@ -13,15 +13,15 @@ using System.Windows.Forms;
 
 namespace CpCodeSelect
 {
-    public partial class MoniRunZhouQiZhong : Form
+    public partial class MoniRunZhouQiZhongLianXu3ge1 : Form
     {
-        private Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness moniBusiness;
+        private Hou3Select350YiLouSetFormZhouQiZhongLianXu3ge1MoniBusiness moniBusiness;
         Code beforeCode = null;
         Code currentCode = null;
-        public MoniRunZhouQiZhong()
+        public MoniRunZhouQiZhongLianXu3ge1()
         {
             InitializeComponent();
-            moniBusiness=new Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List);
+            moniBusiness=new Hou3Select350YiLouSetFormZhouQiZhongLianXu3ge1MoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List);
             dataGridView1.DataSource = moniBusiness.yilouStatisticList;
         }
         public void Run(Code code)
@@ -60,7 +60,7 @@ namespace CpCodeSelect
             listBoxExeMsg.TopIndex = 0; // 自动滚动到底部
             //listBoxExeMsg.TopIndex = listBoxExeMsg.Items.Count - 1; // 自动滚动到底部
             SetFormTxtValue();
-            using (var writer = new StreamWriter("moni4-2.txt", true))
+            using (var writer = new StreamWriter("moni8期.txt", true))
             {
                 writer.WriteLine(message); 
                 writer.Flush();

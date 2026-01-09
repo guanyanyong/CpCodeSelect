@@ -331,6 +331,7 @@ namespace CpCodeSelect.Util
                 }
             }
             //4 70期内是否有在理论周期内开出8个以上的。
+            bool liankai8 = false;
             for (var i = count; i > count - 70; i--)
             {
                 int lianKaiCount = 0;
@@ -358,6 +359,8 @@ namespace CpCodeSelect.Util
                                     {
                                         checkResult.Message = "70期内存在理论周期内开出8个以上";
                                     }
+                                    liankai8 = true;
+                                    break;
                                 }
                             }
                         }
@@ -367,6 +370,10 @@ namespace CpCodeSelect.Util
                             break;
                         }
                     }
+                }
+                if(liankai8)
+                {
+                    break;
                 }
             }
 

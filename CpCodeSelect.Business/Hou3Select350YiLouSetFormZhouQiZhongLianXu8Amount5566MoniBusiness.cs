@@ -154,7 +154,10 @@ namespace CpCodeSelect.Business
         {
             //var record = model350List[3];
             List<PositionNumber> list = new List<PositionNumber>();
-
+            if (this.model350List == null || model350List.Count == 0)
+            {
+                model350List = Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List;
+            }
             if (IsOriginBeginStatus())
             {
                 //如果是初始状态,肯定不是执行中 开始执行
@@ -245,6 +248,11 @@ namespace CpCodeSelect.Business
 
             for (int i = 0; keyValuePairs.Count < calcTime; i++)
             {
+                if (i >= 10)
+                {
+                    foundRecord = false;
+                    break;
+                }
                 int index = GetThreadSafeSeed(totalCount - 1);
                 if (keyValuePairs.ContainsKey(index))
                 {
@@ -258,11 +266,6 @@ namespace CpCodeSelect.Business
                 {
                     foundRecord = true;
                     record = zhouQiZhongRecord;
-                    break;
-                }
-                if (i >= 10)
-                {
-                    foundRecord = false;
                     break;
                 }
             }

@@ -21,7 +21,7 @@ namespace CpCodeSelect
         public MoniRunZhouQiZhongLianXu3()
         {
             InitializeComponent();
-            moniBusiness=new Hou3Select350YiLouSetFormZhouQiZhongLianXu3MoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List);
+            moniBusiness=new Hou3Select350YiLouSetFormZhouQiZhongLianXu3MoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List);
             dataGridView1.DataSource = moniBusiness.yilouStatisticList;
         }
         public void Run(Code code)
@@ -32,7 +32,7 @@ namespace CpCodeSelect
                 beforeCode = code;
                 //当上一期期号和当前期号不一样时，才进行计算
                 //这里需要跑10期后再进行计算
-                if (Hou3Select350YiLouSetFormZhouQiZhongBusiness.AllCode.Count > 280)
+                if (Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.AllCode.Count > 1620)
                 {
                     moniBusiness.CalcCode(code);
                     SetFormTxtValue();

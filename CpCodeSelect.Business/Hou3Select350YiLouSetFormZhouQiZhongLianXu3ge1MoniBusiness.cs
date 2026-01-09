@@ -13,7 +13,7 @@ namespace CpCodeSelect.Business
     /// <summary>
     /// 模拟执行4个2轮的确认点买入
     /// </summary>
-    public class Hou3Select350YiLouSetFormZhouQiZhongLianXu3MoniBusiness
+    public class Hou3Select350YiLouSetFormZhouQiZhongLianXu3ge1MoniBusiness
     {
         public delegate void LogDelegate(string message);
         private LogDelegate _logMethod;
@@ -23,7 +23,7 @@ namespace CpCodeSelect.Business
         public List<YilouStatistic> yilouStatisticList = new List<YilouStatistic>();
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
-        public Hou3Select350YiLouSetFormZhouQiZhongLianXu3MoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhong> model350List)
+        public Hou3Select350YiLouSetFormZhouQiZhongLianXu3ge1MoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhong> model350List)
         {
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
             this.model350List = model350List;
@@ -57,10 +57,10 @@ namespace CpCodeSelect.Business
         //            { 157.14M, 245.41M ,384.12M, 601.4M,940.9M, 1471.49M ,2302.78M, 3602.58M}
         //        };
         private decimal[,] LunAmountMatrix = {
-                    { 56.7M, 88.55M,138.6M, 217M,0M, 0M,0M, 0M},
+                    { 56.7M, 56.7M,56.7M, 217M,0M, 0M,0M, 0M},
                 };
         private decimal[,] ZhongJiangAmountMatrix = {
-                    { 157.14M, 245.41M ,384.12M, 601.4M,0M, 0M,0M, 0M}
+                    { 157.14M, 157.14M,157.14M, 601.4M,0M, 0M,0M, 0M}
                 };
         /// <summary>
         /// 总金额
