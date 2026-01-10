@@ -1225,7 +1225,7 @@ namespace CpCodeSelect
             }
             catch (Exception ex)
             {
-                txtResult.Text = "$\"发生错误: {ex.Message}";
+                txtResult.Text = $"发生错误: {ex.Message}";
             }
         }
 
