@@ -98,7 +98,7 @@ namespace CpCodeSelect.Business
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= 10 && model.ZhouQiZhongHouGua <= guaCount)
+                    if (codeDecimal - currentDecimal >= 10 && model.ZhouQiZhongHouGua <= guaCount && model.GuaCount<=6)
                     {
                         removeList.Add(model);
                     }
@@ -224,6 +224,7 @@ namespace CpCodeSelect.Business
                         model350.CodeQiHao = code.CodeQiHao;
                         model350.NeedZhong = true;
                         model350.KLineList = new List<KLine>();
+                        model350.YiLouKline350 = new List<YiLouKline350>();
                         KLine350Calc.CalcKLineHistoryList(model350, AllCode, 100);
                         model350List.Add(model350);
                     }

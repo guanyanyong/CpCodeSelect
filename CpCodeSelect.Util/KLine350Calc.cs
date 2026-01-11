@@ -15,32 +15,143 @@ namespace CpCodeSelect.Util
         {
             var kline = new KLine();
             var hou3Str = code.GetHou3String();
+
+            //遗漏K的逻辑
+            YiLouKline350 lastYiLouKLine350 = null;
+            if (model.YiLouKline350 != null && model.YiLouKline350.Count > 0)
+            {
+                lastYiLouKLine350 = model.YiLouKline350.LastOrDefault();
+            }
+            YiLouKline350 newYiLouKline350 = null;
+            var isZhong = false;
+
             if (model.KLineList.Count == 0)
             {
+                // 第一次执行
+                newYiLouKline350 = new YiLouKline350();
+
                 //判断是否中奖
                 if (model.Number350.Contains(hou3Str))
                 {
                     //中了 K值加1.857
                     kline.KValue = 1.857;
+
+                    //遗漏K的逻辑
+                    //中了 判断最后一个K线的遗漏值是否在2个以内,是的话表示在周期内中
+                    if (model.ZhongBeforeGua <= 2)
+                    {
+                        newYiLouKline350.KValue = 0.3786;
+
+                        if (lastYiLouKLine350 != null)
+                        {
+                            newYiLouKline350.YiLouZhongCount = lastYiLouKLine350.YiLouZhongCount + 1;
+                        }
+                        else
+                        {
+                            newYiLouKline350.YiLouZhongCount = 1;
+                        }
+
+                        newYiLouKline350.YiLouGuaCount = 0;
+                    }
+                    else
+                    {
+                        //中了 之前的遗漏值大于2 说明不在周期内中
+                        newYiLouKline350.KValue = -1.0;
+
+                        if (lastYiLouKLine350 != null)
+                        {
+                            newYiLouKline350.YiLouGuaCount = lastYiLouKLine350.YiLouGuaCount + 1;
+                        }
+                        else
+                        {
+                            newYiLouKline350.YiLouGuaCount = 1;
+                        }
+                        newYiLouKline350.YiLouZhongCount = 0;
+                    }
+
+                    isZhong = true;
+
                 }
                 else
                 {
                     //没中 K值减1.0
                     kline.KValue = -1.0;
+
+                    //遗漏K的逻辑 继续遗漏中 更新最后遗漏号码的遗漏值
+                    //kline.KValue = -1.0;
+                    newYiLouKline350.CurrentGuaCount = model.GuaCount;
+                    isZhong = false;
                 }
             }
             else
             {
-                //判断是否中奖
+                //不是第一次执行 判断是否中奖
                 if (model.Number350.Contains(hou3Str))
                 {
                     //中了 K值加1.857
                     kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue + 1.857;
+
+                    //处理遗漏K的逻辑
+                    newYiLouKline350 = new YiLouKline350();
+                    //中了 K值加0.3786
+                    if (model.ZhongBeforeGua <= 2)
+                    {
+                        if (model.YiLouKline350.Count >= 1)
+                        {
+                            newYiLouKline350.KValue = model.YiLouKline350[model.YiLouKline350.Count - 1].KValue + 0.3786;
+                        }
+                        else
+                        {
+                            newYiLouKline350.KValue = 0.3786;
+                        }
+
+
+                        if (lastYiLouKLine350 != null)
+                        {
+                            newYiLouKline350.YiLouZhongCount = lastYiLouKLine350.YiLouZhongCount + 1;
+                        }
+                        else
+                        {
+                            newYiLouKline350.YiLouZhongCount = 1;
+                        }
+
+                        newYiLouKline350.YiLouGuaCount = 0;
+                    }
+                    else
+                    {
+                        //中了 之前的遗漏值大于2 说明不在周期内中
+                        if (model.YiLouKline350.Count >= 1)
+                        {
+                            newYiLouKline350.KValue = model.YiLouKline350[model.YiLouKline350.Count - 1].KValue - 1.0;
+                        }
+                        else
+                        {
+                            newYiLouKline350.KValue = -1;
+                        }
+
+
+                        if (lastYiLouKLine350 != null)
+                        {
+                            newYiLouKline350.YiLouGuaCount = lastYiLouKLine350.YiLouGuaCount + 1;
+                        }
+                        else
+                        {
+                            newYiLouKline350.YiLouGuaCount = 1;
+                        }
+                        newYiLouKline350.YiLouZhongCount = 0;
+                    }
+
+                    isZhong = true;
                 }
                 else
                 {
                     //没中 K值减1.0
                     kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue - 1.0;
+
+                    //处理遗漏K逻辑 K值减1.0
+                    if (lastYiLouKLine350 != null)
+                        lastYiLouKLine350.CurrentGuaCount = model.GuaCount;
+                    isZhong = false;
                 }
             }
 
@@ -59,13 +170,43 @@ namespace CpCodeSelect.Util
                 };
             }
             kline.CurrentGuaCount = model.GuaCount;
-            kline.currentZhongCount = model.ZhongGount;
+            kline.CurrentZhongCount = model.ZhongGount;
 
             kline.Code350Code = model.Number350;
             kline.CodeQiHao = code.CodeQiHao;
             kline.CodeNumber = code.CodeNumber;
             //把当前期号和号码保存到K线中
             model.KLineList.Add(kline);
+
+
+            //处理遗漏K线逻辑
+            //如果中了 把新生成的遗漏K线添加到集合中
+            if (isZhong)
+            {
+                if (model.YiLouKline350.Count >= 20)
+                {
+                    //超过20期开始计算布林带
+                    var result = BollingerBandsSimple.CalculateBollingerBands(
+                        prices: model.YiLouKline350.Select(p => p.KValue).ToArray(),
+                        period: 20,
+                        stdDevMultiplier: 2.0);
+                    newYiLouKline350.Bolling = new Bolling
+                    {
+                        MiddleValue = result.middle,
+                        BollUpperValue = result.upper,
+                        BollLowerValue = result.lower,
+                    };
+                }
+                newYiLouKline350.CurrentGuaCount = model.GuaCount;
+                newYiLouKline350.CurrentZhongCount = model.ZhongGount;
+
+                newYiLouKline350.Code350Code = model.Number350;
+                newYiLouKline350.CodeQiHao = code.CodeQiHao;
+                newYiLouKline350.CodeNumber = code.CodeNumber;
+
+                //如果中奖了 添加新的记录
+                model.YiLouKline350.Add(newYiLouKline350);
+            }
         }
 
         /// <summary>
@@ -78,23 +219,74 @@ namespace CpCodeSelect.Util
         {
             if (number < 100) number = 100;
             KLine beforeKLine = null;
+
+            //遗漏K的逻辑
+            YiLouKline350 lastKLine350 = null;
+            
+            YiLouKline350 newYiLouKline350 = null;
+            var isZhong = false;
+
             var runCount = number;
             for (runCount = 100; runCount > 0; runCount--)
             {
+                if (model.YiLouKline350 != null && model.YiLouKline350.Count > 0)
+                {
+                    lastKLine350 = model.YiLouKline350.LastOrDefault();
+                }
                 var kline = new KLine();
                 var code = AllCode[runCount - 1];
                 var hou3Str = code.GetHou3String();
 
                 if (beforeKLine == null)
                 {
+                    newYiLouKline350 = new YiLouKline350();
                     //第一次执行
                     //判断是否中奖
                     if (model.Number350.Contains(hou3Str))
                     {
                         //中了 K值加1.857
                         kline.KValue = 1.857;
+
+                        model.ZhongGount++;
+                        model.NeedZhong = false;
+                        model.Zhong3BeforeGua = model.Zhong2BeforeGua;
+                        model.Zhong2BeforeGua = model.ZhongBeforeGua;
+                        model.ZhongBeforeGua = model.GuaCount;
+
                         model.GuaCount = 0;
-                        model.ZhongGount = 1;
+
+                        //遗漏K的逻辑
+                        //中了 判断最后一个K线的遗漏值是否在2个以内,是的话表示在周期内中
+                        if (model.ZhongBeforeGua <= 2)
+                        {
+                            newYiLouKline350.KValue = 0.3786;
+
+                            if (lastKLine350 != null)
+                            {
+                                newYiLouKline350.YiLouZhongCount = lastKLine350.YiLouZhongCount + 1;
+                            }
+                            else
+                            {
+                                newYiLouKline350.YiLouZhongCount =  1;
+                            }
+
+                            newYiLouKline350.YiLouGuaCount = 0;
+                        }
+                        else
+                        {
+                            //中了 之前的遗漏值大于2 说明不在周期内中
+                            newYiLouKline350.KValue = -1.0;
+                            if (lastKLine350 != null)
+                            {
+                                newYiLouKline350.YiLouGuaCount = lastKLine350.YiLouGuaCount + 1;
+                            }
+                            else
+                            {
+                               newYiLouKline350.YiLouGuaCount = 1;
+                            }
+                            newYiLouKline350.YiLouZhongCount = 0;
+                        }
+                        isZhong = true;
                     }
                     else
                     {
@@ -102,19 +294,79 @@ namespace CpCodeSelect.Util
                         kline.KValue = -1.0;
                         model.GuaCount = 1;
                         model.ZhongGount = 0;
+
+                        //遗漏K的逻辑 继续遗漏中 更新最后遗漏号码的遗漏值
+                        //kline.KValue = -1.0;
+                        newYiLouKline350.CurrentGuaCount = model.GuaCount;
+                        isZhong = false;
                     }
                 }
                 else
                 {
-                    //判断是否中奖
+                    //不是第一次执行 判断是否中奖
                     if (model.Number350.Contains(hou3Str))
                     {
                         //中了 K值加1.857
                         kline.KValue = beforeKLine.KValue + 1.857;
 
+                        model.ZhongGount++;
+                        model.NeedZhong = false;
+                        model.Zhong3BeforeGua = model.Zhong2BeforeGua;
+                        model.Zhong2BeforeGua = model.ZhongBeforeGua;
+                        model.ZhongBeforeGua = model.GuaCount;
 
                         model.GuaCount = 0;
-                        model.ZhongGount++;
+
+
+                        //处理遗漏K的逻辑
+                        newYiLouKline350 = new YiLouKline350();
+                        //中了 K值加0.3786
+                        if (model.ZhongBeforeGua <= 2)
+                        {
+                            if (model.YiLouKline350.Count >= 1)
+                            {
+                                newYiLouKline350.KValue = model.YiLouKline350[model.YiLouKline350.Count - 1].KValue + 0.3786;
+                            }
+                            else
+                            {
+                                newYiLouKline350.KValue = 0.3786;
+                            }
+
+                            if (lastKLine350 != null)
+                            {
+                                newYiLouKline350.YiLouZhongCount = lastKLine350.YiLouZhongCount + 1;
+                            }
+                            else
+                            {
+                                newYiLouKline350.YiLouZhongCount = 1;
+                            }
+
+                            newYiLouKline350.YiLouGuaCount = 0;
+                        }
+                        else
+                        {
+                            //中了 之前的遗漏值大于2 说明不在周期内中
+                            if (model.YiLouKline350.Count >= 1)
+                            {
+                                newYiLouKline350.KValue = model.YiLouKline350[model.YiLouKline350.Count - 1].KValue - 1.0;
+                            }
+                            else
+                            {
+                                newYiLouKline350.KValue = -1.0;
+                            }
+
+                            if (lastKLine350 != null)
+                            {
+                                newYiLouKline350.YiLouGuaCount = lastKLine350.YiLouGuaCount + 1;
+                            }
+                            else
+                            {
+                                newYiLouKline350.YiLouGuaCount = 1;
+                            }
+                            newYiLouKline350.YiLouZhongCount = 0;
+                        }
+
+                        isZhong = true;
                     }
                     else
                     {
@@ -124,6 +376,11 @@ namespace CpCodeSelect.Util
 
                         model.GuaCount++;
                         model.ZhongGount = 0;
+
+                        //处理遗漏K逻辑 遗漏数加1
+                        if (lastKLine350 != null)
+                            lastKLine350.CurrentGuaCount = model.GuaCount;
+                        isZhong = false;
                     }
                 }
                 if (Math.Abs(runCount - number) > 20)
@@ -153,9 +410,39 @@ namespace CpCodeSelect.Util
                 kline.CodeQiHao = code.CodeQiHao;
                 kline.CodeNumber = code.CodeNumber;
                 kline.CurrentGuaCount = model.GuaCount;
-                kline.currentZhongCount = model.ZhongGount;
+                kline.CurrentZhongCount = model.ZhongGount;
 
                 beforeKLine = kline;
+
+
+                //处理遗漏K线逻辑
+                //如果中了 把新生成的遗漏K线添加到集合中
+                if (isZhong)
+                {
+                    if (model.YiLouKline350 != null && model.YiLouKline350.Count > 0 && model.YiLouKline350.Count >= 20)
+                    {
+                        //超过20期开始计算布林带
+                        var result = BollingerBandsSimple.CalculateBollingerBands(
+                            prices: model.YiLouKline350.Select(p => p.KValue).ToArray(),
+                            period: 20,
+                            stdDevMultiplier: 2.0);
+                        newYiLouKline350.Bolling = new Bolling
+                        {
+                            MiddleValue = result.middle,
+                            BollUpperValue = result.upper,
+                            BollLowerValue = result.lower,
+                        };
+                    }
+                    newYiLouKline350.CurrentGuaCount = model.GuaCount;
+                    newYiLouKline350.CurrentZhongCount = model.ZhongGount;
+
+                    newYiLouKline350.Code350Code = model.Number350;
+                    newYiLouKline350.CodeQiHao = code.CodeQiHao;
+                    newYiLouKline350.CodeNumber = code.CodeNumber;
+
+                    //如果中奖了 添加新的记录
+                    model.YiLouKline350.Add(newYiLouKline350);
+                }
             }
         }
         /// <summary>
@@ -188,34 +475,34 @@ namespace CpCodeSelect.Util
                     checkResult.Result = false;
                     if (!string.IsNullOrEmpty(checkResult.Message))
                     {
-                        checkResult.Message+= Environment.NewLine + "\r\n挂2期后,K线到中下轨";
+                        checkResult.Message += Environment.NewLine + "\r\n挂2期后,K线到中下轨";
                     }
                     else
                     {
 
-                       checkResult.Message = "挂2期后,K线到中下轨";
+                        checkResult.Message = "挂2期后,K线到中下轨";
                     }
                 }
             }
 
-            //0.2 最近5期至少一期不在中轨上
-            for (var i = count; i > count - 5; i--)
-            {
-                var kline = kLineList[i - 1];
-                if (!kline.IsOverMiddle)
-                {
-                    checkResult.Result = false;
-                    if (!string.IsNullOrEmpty(checkResult.Message))
-                    {
-                        checkResult.Message += Environment.NewLine + "\n\r最近5期至少一期不在中轨上";
-                    }
-                    else
-                    {
-                        checkResult.Message = "最近5期至少一期不在中轨上";
-                    }
-                    break;
-                }
-            }
+            ////0.2 最近5期至少一期不在中轨上
+            //for (var i = count; i > count - 5; i--)
+            //{
+            //    var kline = kLineList[i - 1];
+            //    if (!kline.IsOverMiddle)
+            //    {
+            //        checkResult.Result = false;
+            //        if (!string.IsNullOrEmpty(checkResult.Message))
+            //        {
+            //            checkResult.Message += Environment.NewLine + "\n\r最近5期至少一期不在中轨上";
+            //        }
+            //        else
+            //        {
+            //            checkResult.Message = "最近5期至少一期不在中轨上";
+            //        }
+            //        break;
+            //    }
+            //}
             //1 最近20期内是否有10个在中轨下
             for (var i = count; i > count - 20; i--)
             {
@@ -371,7 +658,7 @@ namespace CpCodeSelect.Util
                         }
                     }
                 }
-                if(liankai8)
+                if (liankai8)
                 {
                     break;
                 }

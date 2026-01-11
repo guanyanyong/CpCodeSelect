@@ -1084,10 +1084,21 @@ namespace CpCodeSelect
             //batchResult = DuozhouqiStringSelection.GetBatchResults(hou3List);
             //batchResult = LayeredStringSelection.GetBatchResults(hou3List);
             list = new StringCollectionProcessor.CollectionGenerator().GenerateMultipleCollectionsE(hou3List);
+            
             if (list!=null && list.Count > 0)
             {
                 txtNum2.Text = $"测试生成350注数据成功,总数为:{list.Count}";
                 txtNum3.Text = string.Join(" ", list[0].CollectionE.ToList().OrderBy(p => p).ToList());
+
+                Hou3Select350_ZhouQiZhong model350 = new Hou3Select350_ZhouQiZhong();
+                model350.Number350 = list[0].CollectionE.ToList();
+                model350.CodeNumber = Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.code.CodeNumber;
+                model350.CodeQiHao = Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.code.CodeQiHao;
+                model350.NeedZhong = true;
+                model350.KLineList = new List<KLine>();
+                model350.YiLouKline350 = new List<YiLouKline350>();
+
+                KLine350Calc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.AllCode, 100);
             }
             else
             {
@@ -1123,6 +1134,7 @@ namespace CpCodeSelect
             model350.CodeQiHao = code.CodeQiHao;
             model350.NeedZhong = true;
             model350.KLineList = new List<KLine>();
+            model350.YiLouKline350 = new List<YiLouKline350>();
             KLine350Calc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.AllCode, 100);
             var result = KLine350Calc.KLineIsEnough(model350.KLineList);
             if (result.Result)

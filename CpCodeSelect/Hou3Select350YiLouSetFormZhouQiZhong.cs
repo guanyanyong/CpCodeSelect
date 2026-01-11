@@ -1097,6 +1097,7 @@ namespace CpCodeSelect
             model350.CodeQiHao = code.CodeQiHao;
             model350.NeedZhong = true;
             model350.KLineList = new List<KLine>();
+            model350.YiLouKline350 = new List<YiLouKline350>();
             KLine350Calc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormZhouQiZhongBusiness.AllCode, 100);
             var result = KLine350Calc.KLineIsEnough(model350.KLineList);
             if (result.Result)

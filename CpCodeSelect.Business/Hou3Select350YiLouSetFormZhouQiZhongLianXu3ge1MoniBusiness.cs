@@ -232,7 +232,7 @@ namespace CpCodeSelect.Business
         public void Select350AndStartCalc(Code code)
         {
             //list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.
-            var list = model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == 1 && p.IsZhouQiZhongHou).ToList();
+            var list = model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == 0 && p.IsZhouQiZhongHou).ToList();
             Hou3Select350_ZhouQiZhong record = null;
             if (list.Count == 0) return;
             //最多查找5次,如果5次没有找到合适的记录就不投注

@@ -44,6 +44,7 @@
     <Compile Include="Code.cs" />
     <Compile Include="ExModel\Bolling.cs" />
     <Compile Include="ExModel\CheckResult.cs" />
+    <Compile Include="ExModel\YiLouKline350.cs" />
     <Compile Include="ExModel\KLine.cs" />
     <Compile Include="ExModel\YiLouSetExModel.cs" />
     <Compile Include="ExModel\YilouStatistic.cs" />
