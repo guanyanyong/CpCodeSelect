@@ -42,6 +42,7 @@
             this.TotalInfo = new System.Windows.Forms.TabPage();
             this.chkBeginMoni = new System.Windows.Forms.CheckBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -139,7 +140,8 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.chk3fen = new System.Windows.Forms.CheckBox();
-            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -298,6 +300,8 @@
             // 
             this.TotalInfo.Controls.Add(this.chkBeginMoni);
             this.TotalInfo.Controls.Add(this.button5);
+            this.TotalInfo.Controls.Add(this.button12);
+            this.TotalInfo.Controls.Add(this.button11);
             this.TotalInfo.Controls.Add(this.button10);
             this.TotalInfo.Controls.Add(this.button8);
             this.TotalInfo.Controls.Add(this.button4);
@@ -338,6 +342,16 @@
             this.button5.Text = "模拟运行8*1-5566";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(1018, 64);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(168, 38);
+            this.button10.TabIndex = 7;
+            this.button10.Text = "模拟运行3*1-2";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button8
             // 
@@ -1754,15 +1768,25 @@
             this.chk3fen.UseVisualStyleBackColor = true;
             this.chk3fen.CheckedChanged += new System.EventHandler(this.chk3fen_CheckedChanged);
             // 
-            // button10
+            // button11
             // 
-            this.button10.Location = new System.Drawing.Point(1018, 64);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(168, 38);
-            this.button10.TabIndex = 7;
-            this.button10.Text = "模拟运行3*1-2";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.button11.Location = new System.Drawing.Point(761, 12);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(168, 38);
+            this.button11.TabIndex = 7;
+            this.button11.Text = "模拟运行3*3";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(946, 12);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(168, 38);
+            this.button12.TabIndex = 7;
+            this.button12.Text = "模拟运行3*3-0";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // Hou3Select350YiLouSetFormDuoZhouQiZhong
             // 
@@ -1944,6 +1968,8 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.CheckBox chkBeginMoni;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
     }
 }
 

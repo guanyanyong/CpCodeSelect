@@ -45,6 +45,7 @@ namespace CpCodeSelect
         public StatisticForm statisticForm = new StatisticForm();
         public List<Hou2Select50_ZhouQiZhong> modelList = new List<Hou2Select50_ZhouQiZhong>();
         private int boFangYanhuaCount = 12;
+        private int defaultLeftNumber = 350;
         private string apiUri = "http://127.0.0.1:5000/";
         private string DataSource = "rexguan-hp2024-01";
         private MoniRunZhouQiZhong moniRunZhouQiZhong = new MoniRunZhouQiZhong();
@@ -52,6 +53,9 @@ namespace CpCodeSelect
         private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
         private MoniRunZhouQiZhongLianXu3ge1 moniRunZhouQiZhongLianXu3ge1 = new MoniRunZhouQiZhongLianXu3ge1();
         private MoniRunZhouQiZhongLianXu8Amount5566 moniRunZhouQiZhongLianXu8Amount5566 = new MoniRunZhouQiZhongLianXu8Amount5566();
+        private MoniRunZhouQiZhong3ge3 moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong3ge3();
+        
+        private MoniRunZhouQiZhong3ge3yilou0 moniRunZhouQiZhong3Ge3Yilou0= new MoniRunZhouQiZhong3ge3yilou0();  
         public Hou3Select350YiLouSetFormDuoZhouQiZhong()
         {
             InitializeComponent();
@@ -229,6 +233,8 @@ namespace CpCodeSelect
                 moniRunZhouQiZhongLianXu8Amount5566.Run(code);
                 moniRunZhouQiZhongLianXu3.Run(code);
                 moniRunZhouQiZhongLianXu3ge1.Run(code);
+                moniRunZhouQiZhong3Ge3.Run(code);
+                moniRunZhouQiZhong3Ge3Yilou0.Run(code);
             }
             //把记录添加到界面上 异步方式
             //AddRecordToPage(code);
@@ -486,6 +492,7 @@ namespace CpCodeSelect
 
             var path3fen = ConfigurationManager.AppSettings["3FenCaiFilePath"];
             var is3fen = ConfigurationManager.AppSettings["Is3fen"];
+            var defaultLeftNumberStr = ConfigurationManager.AppSettings["DefaultLeftNumber"];
             if (!string.IsNullOrEmpty(is3fen))
             {
                 if (is3fen == "1")
@@ -506,6 +513,14 @@ namespace CpCodeSelect
                         filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt"; ;
                     }
                 }
+            }
+            if (!string.IsNullOrEmpty(defaultLeftNumberStr))
+            {
+                numericUpDown4.Value = Convert.ToDecimal(defaultLeftNumberStr);
+            }
+            else
+            {
+                numericUpDown4.Value = 350;
             }
         }
         private void InitData()
@@ -1330,6 +1345,16 @@ namespace CpCodeSelect
         private void button10_Click(object sender, EventArgs e)
         {
             moniRunZhouQiZhongLianXu3ge1.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            moniRunZhouQiZhong3Ge3.Show();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            moniRunZhouQiZhong3Ge3Yilou0.Show();
         }
     }
 }
