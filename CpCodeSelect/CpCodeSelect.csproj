@@ -77,6 +77,12 @@
     <Compile Include="Hou3Select270YiLouSetFormZhouQiZhong.Designer.cs">
       <DependentUpon>Hou3Select270YiLouSetFormZhouQiZhong.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hou2Select35YiLouSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hou2Select35YiLouSetForm.Designer.cs">
+      <DependentUpon>Hou2Select35YiLouSetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hou3Select350YiLouSetFormDuoZhouQiZhong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,18 @@
     </Compile>
     <Compile Include="Hou2Select50_20Form.Designer.cs">
       <DependentUpon>Hou2Select50_20Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moni2D35\MoniRun2D35zhuLianXu8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moni2D35\MoniRun2D35zhuLianXu8.Designer.cs">
+      <DependentUpon>MoniRun2D35zhuLianXu8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moni2D35\MoniRun2D35zhuLianXu6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moni2D35\MoniRun2D35zhuLianXu6.Designer.cs">
+      <DependentUpon>MoniRun2D35zhuLianXu6.cs</DependentUpon>
     </Compile>
     <Compile Include="MoniRun270ZhouQiZhong.cs">
       <SubType>Form</SubType>
@@ -277,6 +295,9 @@
     <EmbeddedResource Include="Hou3Select270YiLouSetFormZhouQiZhong.resx">
       <DependentUpon>Hou3Select270YiLouSetFormZhouQiZhong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Hou2Select35YiLouSetForm.resx">
+      <DependentUpon>Hou2Select35YiLouSetForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hou3Select350YiLouSetFormDuoZhouQiZhong.resx">
       <DependentUpon>Hou3Select350YiLouSetFormDuoZhouQiZhong.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +321,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Hou2Select50_20Form.resx">
       <DependentUpon>Hou2Select50_20Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moni2D35\MoniRun2D35zhuLianXu8.resx">
+      <DependentUpon>MoniRun2D35zhuLianXu8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moni2D35\MoniRun2D35zhuLianXu6.resx">
+      <DependentUpon>MoniRun2D35zhuLianXu6.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MoniRun270ZhouQiZhong.resx">
       <DependentUpon>MoniRun270ZhouQiZhong.cs</DependentUpon>

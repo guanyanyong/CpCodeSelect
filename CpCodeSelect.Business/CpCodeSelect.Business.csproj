@@ -43,13 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
+    <Compile Include="Hou2Select35YiLouSetFormLianXu6MoniBusiness.cs" />
     <Compile Include="Hou3Select270YiLouSetFormZhouQiZhongBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormDuoZhouQiZhong3ge3Yilou0MoniBusiness.cs" />
+    <Compile Include="Hou2Select35YiLouSetBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormZhouQiZhongLianXu3ge1MoniBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormZhouQiZhongLianXu8Amount5566MoniBusiness.cs" />
     <Compile Include="Hou3Select270YiLouSetFormZhouQiZhongLianXu9MoniBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormZhouQiZhongLianXu3MoniBusiness.cs" />
+    <Compile Include="Hou2Select35YiLouSetFormLianXu8MoniBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness.cs" />
     <Compile Include="Hou3Select270YiLouSetFormZhouQiZhongMoniBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness.cs" />

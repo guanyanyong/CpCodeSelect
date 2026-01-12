@@ -13,15 +13,15 @@ using System.Windows.Forms;
 
 namespace CpCodeSelect
 {
-    public partial class MoniRunZhouQiZhong3ge3 : Form
+    public partial class MoniRun2D35zhuLianXu6 : Form
     {
-        private Hou3Select350YiLouSetFormDuoZhouQiZhong3ge3MoniBusiness moniBusiness;
+        private Hou2Select35YiLouSetFormLianXu6MoniBusiness moniBusiness;
         Code beforeCode = null;
         Code currentCode = null;
-        public MoniRunZhouQiZhong3ge3()
+        public MoniRun2D35zhuLianXu6()
         {
             InitializeComponent();
-            moniBusiness=new Hou3Select350YiLouSetFormDuoZhouQiZhong3ge3MoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List);
+            moniBusiness=new Hou2Select35YiLouSetFormLianXu6MoniBusiness(CustomLogMethod, Hou2Select35YiLouSetBusiness.model35List);
             dataGridView1.DataSource = moniBusiness.yilouStatisticList;
         }
         public void Run(Code code)
@@ -32,7 +32,7 @@ namespace CpCodeSelect
                 beforeCode = code;
                 //当上一期期号和当前期号不一样时，才进行计算
                 //这里需要跑10期后再进行计算
-                if (Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.AllCode.Count > 1620)
+                if (Hou2Select35YiLouSetBusiness.AllCode.Count > 280)
                 {
                     moniBusiness.CalcCode(code);
                     SetFormTxtValue();
@@ -60,7 +60,7 @@ namespace CpCodeSelect
             listBoxExeMsg.TopIndex = 0; // 自动滚动到底部
             //listBoxExeMsg.TopIndex = listBoxExeMsg.Items.Count - 1; // 自动滚动到底部
             SetFormTxtValue();
-            using (var writer = new StreamWriter("moni3-3yilou1.txt", true))
+            using (var writer = new StreamWriter("moni8期.txt", true))
             {
                 writer.WriteLine(message); 
                 writer.Flush();
@@ -80,12 +80,12 @@ namespace CpCodeSelect
 
         private void btnBefore350Code_Click(object sender, EventArgs e)
         {
-            txt350Code.Text = string.Join(" ", moniBusiness.before350List);
+            txt350Code.Text = string.Join(" ", moniBusiness.before35List);
         }
 
         private void btnCurrent350Code_Click(object sender, EventArgs e)
         {
-            txt350Code.Text = string.Join(" ", moniBusiness.current350List);
+            txt350Code.Text = string.Join(" ", moniBusiness.current35List);
 
         }
 

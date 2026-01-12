@@ -51,6 +51,7 @@
     <Compile Include="Five1MaModel.cs" />
     <Compile Include="Hou2Select50YiLouSetForm3guashang25zhuModel.cs" />
     <Compile Include="Hou2Select50YiLouSetForm3guashangModel.cs" />
+    <Compile Include="Hou2Select35Model.cs" />
     <Compile Include="Hou3Select270_ZhouQiZhong.cs" />
     <Compile Include="Hou3Select350_ZhouQiZhong.cs" />
     <Compile Include="Hou2Select50_ZhouQiZhong.cs" />
