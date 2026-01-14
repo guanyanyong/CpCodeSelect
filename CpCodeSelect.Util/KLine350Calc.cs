@@ -52,6 +52,7 @@ namespace CpCodeSelect.Util
                         }
 
                         newYiLouKline350.YiLouGuaCount = 0;
+                        newYiLouKline350.IsZhong = true;
                     }
                     else
                     {
@@ -116,6 +117,7 @@ namespace CpCodeSelect.Util
                         }
 
                         newYiLouKline350.YiLouGuaCount = 0;
+                        newYiLouKline350.IsZhong = true;
                     }
                     else
                     {
@@ -175,6 +177,7 @@ namespace CpCodeSelect.Util
             kline.Code350Code = model.Number350;
             kline.CodeQiHao = code.CodeQiHao;
             kline.CodeNumber = code.CodeNumber;
+            kline.IsZhong = isZhong;
             //把当前期号和号码保存到K线中
             model.KLineList.Add(kline);
 
@@ -227,7 +230,7 @@ namespace CpCodeSelect.Util
             var isZhong = false;
 
             var runCount = number;
-            for (runCount = 100; runCount > 0; runCount--)
+            for (; runCount > 0; runCount--)
             {
                 if (model.YiLouKline350 != null && model.YiLouKline350.Count > 0)
                 {
@@ -271,6 +274,7 @@ namespace CpCodeSelect.Util
                             }
 
                             newYiLouKline350.YiLouGuaCount = 0;
+                            newYiLouKline350.IsZhong = true;
                         }
                         else
                         {
@@ -342,6 +346,7 @@ namespace CpCodeSelect.Util
                             }
 
                             newYiLouKline350.YiLouGuaCount = 0;
+                            newYiLouKline350.IsZhong = true;
                         }
                         else
                         {
@@ -411,7 +416,7 @@ namespace CpCodeSelect.Util
                 kline.CodeNumber = code.CodeNumber;
                 kline.CurrentGuaCount = model.GuaCount;
                 kline.CurrentZhongCount = model.ZhongGount;
-
+                kline.IsZhong = isZhong;
                 beforeKLine = kline;
 
 

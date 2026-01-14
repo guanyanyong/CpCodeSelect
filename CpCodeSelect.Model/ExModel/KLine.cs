@@ -11,7 +11,7 @@ namespace CpCodeSelect.Model.ExModel
         public string CodeQiHao { get; set; }
         public string CodeNumber { get; set; }
         public List<string> Code350Code { get; set; }
-
+        public bool IsZhong { get; set;  }
         public double KValue { get;set; }
         public Bolling Bolling { get;set;  }
         /// <summary>

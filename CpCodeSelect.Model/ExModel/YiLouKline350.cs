@@ -47,5 +47,7 @@ namespace CpCodeSelect.Model.ExModel
         /// 遗漏中次数
         /// </summary>
         public int YiLouZhongCount { get; set; }
+
+        public bool IsZhong { get; set; } = false;
     }
 }

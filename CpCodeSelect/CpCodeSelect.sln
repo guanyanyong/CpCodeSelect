@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpCodeSelect.DA", "..\CpCod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpCodeSelect.Business", "..\CpCodeSelect.Business\CpCodeSelect.Business.csproj", "{BC3A2293-15FE-433D-B066-ABC6AD67C546}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CpCodeSelect.Control", "..\CpCodeSelect.Control\CpCodeSelect.Control.csproj", "{273F755C-8B1E-40C1-B936-7A07D5B50B6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BC3A2293-15FE-433D-B066-ABC6AD67C546}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC3A2293-15FE-433D-B066-ABC6AD67C546}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC3A2293-15FE-433D-B066-ABC6AD67C546}.Release|Any CPU.Build.0 = Release|Any CPU
+		{273F755C-8B1E-40C1-B936-7A07D5B50B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{273F755C-8B1E-40C1-B936-7A07D5B50B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{273F755C-8B1E-40C1-B936-7A07D5B50B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{273F755C-8B1E-40C1-B936-7A07D5B50B6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

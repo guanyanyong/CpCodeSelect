@@ -430,6 +430,10 @@
       <Project>{bc3a2293-15fe-433d-b066-abc6ad67c546}</Project>
       <Name>CpCodeSelect.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CpCodeSelect.Control\CpCodeSelect.Control.csproj">
+      <Project>{273F755C-8B1E-40C1-B936-7A07D5B50B6A}</Project>
+      <Name>CpCodeSelect.Control</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CpCodeSelect.Model\CpCodeSelect.Model.csproj">
       <Project>{e5d706a9-f866-478b-b1b0-228179e2fb3b}</Project>
       <Name>CpCodeSelect.Model</Name>

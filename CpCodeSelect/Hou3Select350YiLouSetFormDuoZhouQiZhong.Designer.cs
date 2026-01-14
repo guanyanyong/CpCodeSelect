@@ -42,6 +42,8 @@
             this.TotalInfo = new System.Windows.Forms.TabPage();
             this.chkBeginMoni = new System.Windows.Forms.CheckBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -126,7 +128,7 @@
             this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.paramSet = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
             this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.txtResult = new System.Windows.Forms.TextBox();
@@ -135,13 +137,30 @@
             this.btnSelectFile2 = new System.Windows.Forms.Button();
             this.txtDownLoadFilePath = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.KLine = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnKLinLoad = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.chk3fen = new System.Windows.Forms.CheckBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
+            this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
+            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -182,14 +201,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.tabPage1.SuspendLayout();
+            this.paramSet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            this.KLine.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button1.Location = new System.Drawing.Point(1032, 12);
+            this.button1.Location = new System.Drawing.Point(1018, 26);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(161, 63);
             this.button1.TabIndex = 0;
@@ -201,7 +230,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(43, 22);
+            this.label1.Location = new System.Drawing.Point(29, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 25);
             this.label1.TabIndex = 1;
@@ -211,7 +240,7 @@
             // txtFIlePath
             // 
             this.txtFIlePath.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.txtFIlePath.Location = new System.Drawing.Point(184, 22);
+            this.txtFIlePath.Location = new System.Drawing.Point(170, 36);
             this.txtFIlePath.Name = "txtFIlePath";
             this.txtFIlePath.Size = new System.Drawing.Size(665, 32);
             this.txtFIlePath.TabIndex = 2;
@@ -220,7 +249,7 @@
             // btnSelectFile
             // 
             this.btnSelectFile.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnSelectFile.Location = new System.Drawing.Point(882, 23);
+            this.btnSelectFile.Location = new System.Drawing.Point(868, 37);
             this.btnSelectFile.Name = "btnSelectFile";
             this.btnSelectFile.Size = new System.Drawing.Size(116, 31);
             this.btnSelectFile.TabIndex = 3;
@@ -233,7 +262,7 @@
             this.labelError.AutoSize = true;
             this.labelError.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(179, 73);
+            this.labelError.Location = new System.Drawing.Point(165, 87);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(126, 25);
             this.labelError.TabIndex = 1;
@@ -252,7 +281,7 @@
             // btnRestart
             // 
             this.btnRestart.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnRestart.Location = new System.Drawing.Point(1032, 88);
+            this.btnRestart.Location = new System.Drawing.Point(1018, 102);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(161, 31);
             this.btnRestart.TabIndex = 0;
@@ -262,7 +291,6 @@
             // 
             // listBoxHistory
             // 
-            this.listBoxHistory.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listBoxHistory.Font = new System.Drawing.Font("微软雅黑", 14F);
             this.listBoxHistory.FormattingEnabled = true;
             this.listBoxHistory.ItemHeight = 25;
@@ -276,7 +304,7 @@
             // chkRefersh
             // 
             this.chkRefersh.AutoSize = true;
-            this.chkRefersh.Location = new System.Drawing.Point(882, 103);
+            this.chkRefersh.Location = new System.Drawing.Point(868, 117);
             this.chkRefersh.Name = "chkRefersh";
             this.chkRefersh.Size = new System.Drawing.Size(120, 16);
             this.chkRefersh.TabIndex = 7;
@@ -288,12 +316,14 @@
             this.tabControl1.Controls.Add(this.TotalInfo);
             this.tabControl1.Controls.Add(this.SetSearch);
             this.tabControl1.Controls.Add(this.ResultPage);
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.KLine);
+            this.tabControl1.Controls.Add(this.paramSet);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.tabControl1.Location = new System.Drawing.Point(3, 128);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1203, 551);
+            this.tabControl1.Size = new System.Drawing.Size(1474, 726);
             this.tabControl1.TabIndex = 8;
             // 
             // TotalInfo
@@ -315,7 +345,7 @@
             this.TotalInfo.Location = new System.Drawing.Point(4, 37);
             this.TotalInfo.Name = "TotalInfo";
             this.TotalInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.TotalInfo.Size = new System.Drawing.Size(1195, 510);
+            this.TotalInfo.Size = new System.Drawing.Size(1466, 685);
             this.TotalInfo.TabIndex = 0;
             this.TotalInfo.Text = "总体信息";
             this.TotalInfo.UseVisualStyleBackColor = true;
@@ -342,6 +372,26 @@
             this.button5.Text = "模拟运行8*1-5566";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(946, 12);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(168, 38);
+            this.button12.TabIndex = 7;
+            this.button12.Text = "模拟运行3*3-0";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(761, 12);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(168, 38);
+            this.button11.TabIndex = 7;
+            this.button11.Text = "模拟运行3*3";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
@@ -464,7 +514,7 @@
             this.SetSearch.Controls.Add(this.label7);
             this.SetSearch.Location = new System.Drawing.Point(4, 37);
             this.SetSearch.Name = "SetSearch";
-            this.SetSearch.Size = new System.Drawing.Size(1195, 510);
+            this.SetSearch.Size = new System.Drawing.Size(1466, 685);
             this.SetSearch.TabIndex = 2;
             this.SetSearch.Text = "搜索设置";
             this.SetSearch.UseVisualStyleBackColor = true;
@@ -1295,7 +1345,7 @@
             this.ResultPage.Location = new System.Drawing.Point(4, 37);
             this.ResultPage.Name = "ResultPage";
             this.ResultPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ResultPage.Size = new System.Drawing.Size(1195, 510);
+            this.ResultPage.Size = new System.Drawing.Size(1466, 685);
             this.ResultPage.TabIndex = 1;
             this.ResultPage.Text = "显示信息";
             this.ResultPage.UseVisualStyleBackColor = true;
@@ -1636,22 +1686,22 @@
             this.GuaCount.MinimumWidth = 60;
             this.GuaCount.Name = "GuaCount";
             // 
-            // tabPage1
+            // paramSet
             // 
-            this.tabPage1.Controls.Add(this.label16);
-            this.tabPage1.Controls.Add(this.numericUpDown4);
-            this.tabPage1.Controls.Add(this.txtResult);
-            this.tabPage1.Controls.Add(this.button7);
-            this.tabPage1.Controls.Add(this.button6);
-            this.tabPage1.Controls.Add(this.btnSelectFile2);
-            this.tabPage1.Controls.Add(this.txtDownLoadFilePath);
-            this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Location = new System.Drawing.Point(4, 37);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1195, 510);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "参数设置";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.paramSet.Controls.Add(this.label16);
+            this.paramSet.Controls.Add(this.numericUpDown4);
+            this.paramSet.Controls.Add(this.txtResult);
+            this.paramSet.Controls.Add(this.button7);
+            this.paramSet.Controls.Add(this.button6);
+            this.paramSet.Controls.Add(this.btnSelectFile2);
+            this.paramSet.Controls.Add(this.txtDownLoadFilePath);
+            this.paramSet.Controls.Add(this.label15);
+            this.paramSet.Location = new System.Drawing.Point(4, 37);
+            this.paramSet.Name = "paramSet";
+            this.paramSet.Size = new System.Drawing.Size(1466, 685);
+            this.paramSet.TabIndex = 3;
+            this.paramSet.Text = "参数设置";
+            this.paramSet.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -1742,6 +1792,130 @@
             this.label15.TabIndex = 0;
             this.label15.Text = "文件路径";
             // 
+            // KLine
+            // 
+            this.KLine.Controls.Add(this.panel7);
+            this.KLine.Controls.Add(this.panel6);
+            this.KLine.Location = new System.Drawing.Point(4, 37);
+            this.KLine.Name = "KLine";
+            this.KLine.Size = new System.Drawing.Size(1466, 685);
+            this.KLine.TabIndex = 5;
+            this.KLine.Text = "遗漏K&频率K";
+            this.KLine.UseVisualStyleBackColor = true;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.tabControl2);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 100);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1466, 585);
+            this.panel7.TabIndex = 15;
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl2.Location = new System.Drawing.Point(0, 0);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(1466, 585);
+            this.tabControl2.TabIndex = 13;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.lotteryKLine);
+            this.tabPage4.Location = new System.Drawing.Point(4, 37);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1458, 544);
+            this.tabPage4.TabIndex = 0;
+            this.tabPage4.Text = "K线走势";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.yiLouLotteryKLine);
+            this.tabPage5.Location = new System.Drawing.Point(4, 37);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(1458, 544);
+            this.tabPage5.TabIndex = 1;
+            this.tabPage5.Text = "遗漏K走势";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.numericUpDown5);
+            this.panel6.Controls.Add(this.label17);
+            this.panel6.Controls.Add(this.textBox2);
+            this.panel6.Controls.Add(this.btnKLinLoad);
+            this.panel6.Controls.Add(this.checkBox1);
+            this.panel6.Controls.Add(this.textBox3);
+            this.panel6.Controls.Add(this.label20);
+            this.panel6.Controls.Add(this.label19);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1466, 100);
+            this.panel6.TabIndex = 14;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(600, 19);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(446, 57);
+            this.textBox2.TabIndex = 11;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // btnKLinLoad
+            // 
+            this.btnKLinLoad.Location = new System.Drawing.Point(23, 25);
+            this.btnKLinLoad.Name = "btnKLinLoad";
+            this.btnKLinLoad.Size = new System.Drawing.Size(135, 38);
+            this.btnKLinLoad.TabIndex = 7;
+            this.btnKLinLoad.Text = "数据加载";
+            this.btnKLinLoad.UseVisualStyleBackColor = true;
+            this.btnKLinLoad.Click += new System.EventHandler(this.button13_Click_1);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(1055, 29);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(120, 34);
+            this.checkBox1.TabIndex = 12;
+            this.checkBox1.Text = "自动生成";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(274, 9);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(244, 51);
+            this.textBox3.TabIndex = 8;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(167, 25);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(101, 30);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "操作信息";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(532, 25);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(62, 30);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "号码:";
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -1760,7 +1934,7 @@
             // chk3fen
             // 
             this.chk3fen.AutoSize = true;
-            this.chk3fen.Location = new System.Drawing.Point(882, 69);
+            this.chk3fen.Location = new System.Drawing.Point(868, 83);
             this.chk3fen.Name = "chk3fen";
             this.chk3fen.Size = new System.Drawing.Size(54, 16);
             this.chk3fen.TabIndex = 7;
@@ -1768,40 +1942,96 @@
             this.chk3fen.UseVisualStyleBackColor = true;
             this.chk3fen.CheckedChanged += new System.EventHandler(this.chk3fen_CheckedChanged);
             // 
-            // button11
+            // panel2
             // 
-            this.button11.Location = new System.Drawing.Point(761, 12);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(168, 38);
-            this.button11.TabIndex = 7;
-            this.button11.Text = "模拟运行3*3";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.panel2.Controls.Add(this.btnSelectFile);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnRestart);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.labelError);
+            this.panel2.Controls.Add(this.chk3fen);
+            this.panel2.Controls.Add(this.txtFIlePath);
+            this.panel2.Controls.Add(this.chkRefersh);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1474, 180);
+            this.panel2.TabIndex = 9;
             // 
-            // button12
+            // panel3
             // 
-            this.button12.Location = new System.Drawing.Point(946, 12);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(168, 38);
-            this.button12.TabIndex = 7;
-            this.button12.Text = "模拟运行3*3-0";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.panel2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1474, 906);
+            this.panel3.TabIndex = 10;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.tabControl1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 180);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1474, 726);
+            this.panel4.TabIndex = 10;
+            // 
+            // lotteryKLine
+            // 
+            this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lotteryKLine.Location = new System.Drawing.Point(3, 3);
+            this.lotteryKLine.Name = "lotteryKLine";
+            this.lotteryKLine.Size = new System.Drawing.Size(1452, 538);
+            this.lotteryKLine.TabIndex = 0;
+            // 
+            // yiLouLotteryKLine
+            // 
+            this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
+            this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
+            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1452, 538);
+            this.yiLouLotteryKLine.TabIndex = 0;
+            // 
+            // numericUpDown5
+            // 
+            this.numericUpDown5.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.numericUpDown5.Location = new System.Drawing.Point(1288, 30);
+            this.numericUpDown5.Maximum = new decimal(new int[] {
+            800,
+            0,
+            0,
+            0});
+            this.numericUpDown5.Minimum = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
+            this.numericUpDown5.Name = "numericUpDown5";
+            this.numericUpDown5.Size = new System.Drawing.Size(120, 36);
+            this.numericUpDown5.TabIndex = 14;
+            this.numericUpDown5.Value = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.label17.Location = new System.Drawing.Point(1181, 30);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(101, 30);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "显示期数";
             // 
             // Hou3Select350YiLouSetFormDuoZhouQiZhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1206, 687);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.chk3fen);
-            this.Controls.Add(this.chkRefersh);
-            this.Controls.Add(this.btnSelectFile);
-            this.Controls.Add(this.txtFIlePath);
-            this.Controls.Add(this.labelError);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnRestart);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1474, 906);
+            this.Controls.Add(this.panel3);
             this.Name = "Hou3Select350YiLouSetFormDuoZhouQiZhong";
             this.Text = "350注遗漏搜索";
             this.tabControl1.ResumeLayout(false);
@@ -1847,11 +2077,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.paramSet.ResumeLayout(false);
+            this.paramSet.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            this.KLine.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1954,7 +2195,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnTestCode;
         private System.Windows.Forms.Button btnSelectConditonEnough;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage paramSet;
         private System.Windows.Forms.TextBox txtDownLoadFilePath;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnSelectFile2;
@@ -1970,6 +2211,25 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.TabPage KLine;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btnKLinLoad;
+        private Control.LotteryKLineControl lotteryKLine;
+        private Control.LotteryKLineControl yiLouLotteryKLine;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.NumericUpDown numericUpDown5;
+        private System.Windows.Forms.Label label17;
     }
 }
 

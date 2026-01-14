@@ -56,6 +56,7 @@
     <Compile Include="Hou3Select350_ZhouQiZhong.cs" />
     <Compile Include="Hou2Select50_ZhouQiZhong.cs" />
     <Compile Include="Kill3Model.cs" />
+    <Compile Include="LotteryData.cs" />
     <Compile Include="PositionDragonTiger.cs" />
     <Compile Include="PositionNumber.cs" />
     <Compile Include="PositionType.cs" />
