@@ -45,6 +45,8 @@
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="Hou2Select35YiLouSetFormLianXu6MoniBusiness.cs" />
     <Compile Include="Hou3Select270YiLouSetFormZhouQiZhongBusiness.cs" />
+    <Compile Include="Hou3Select350YiLouSetFormDuoZhouQiZhong8ge1YiLou1MoniBusiness.cs" />
+    <Compile Include="Hou3Select350YiLouSetFormDuoZhouQiZhong8ge1YiLou0MoniBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormDuoZhouQiZhong3ge3Yilou0MoniBusiness.cs" />
     <Compile Include="Hou2Select35YiLouSetBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.cs" />

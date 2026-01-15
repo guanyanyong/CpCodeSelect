@@ -57,6 +57,8 @@ namespace CpCodeSelect
         private MoniRunZhouQiZhong3ge3 moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong3ge3();
 
         private MoniRunZhouQiZhong3ge3yilou0 moniRunZhouQiZhong3Ge3Yilou0 = new MoniRunZhouQiZhong3ge3yilou0();
+        private MoniRunZhouQiZhong8ge1YiLou0 moniRunZhouQiZhong8Ge1YiLou0 = new MoniRunZhouQiZhong8ge1YiLou0();
+        private MoniRunZhouQiZhong8ge1YiLou1 moniRunZhouQiZhong8Ge1YiLou1 = new MoniRunZhouQiZhong8ge1YiLou1();
 
         private Hou3Select350_ZhouQiZhong currentCalcKLineDate = null;
         public Hou3Select350YiLouSetFormDuoZhouQiZhong()
@@ -238,6 +240,8 @@ namespace CpCodeSelect
                 moniRunZhouQiZhongLianXu3ge1.Run(code);
                 moniRunZhouQiZhong3Ge3.Run(code);
                 moniRunZhouQiZhong3Ge3Yilou0.Run(code);
+                moniRunZhouQiZhong8Ge1YiLou0.Run(code);
+                moniRunZhouQiZhong8Ge1YiLou1.Run(code);
             }
             //把记录添加到界面上 异步方式
             //AddRecordToPage(code);
@@ -1566,6 +1570,16 @@ namespace CpCodeSelect
         {
             currentCalcKLineDate = null;
             DataLoadKLine();
+        }
+
+        private void btnMoni8ge1_Click(object sender, EventArgs e)
+        {
+            moniRunZhouQiZhong8Ge1YiLou0.Show();
+        }
+
+        private void btnMoni8ge1yilou1_Click(object sender, EventArgs e)
+        {
+            moniRunZhouQiZhong8Ge1YiLou1.Show();
         }
     }
 }
