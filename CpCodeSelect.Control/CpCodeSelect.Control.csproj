@@ -55,6 +55,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HistoryDataSet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HistoryDataSet.Designer.cs">
+      <DependentUpon>HistoryDataSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="LotteryKLineControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -62,6 +68,9 @@
       <DependentUpon>LotteryKLineControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="HistoryDataSet.resx">
+      <DependentUpon>HistoryDataSet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

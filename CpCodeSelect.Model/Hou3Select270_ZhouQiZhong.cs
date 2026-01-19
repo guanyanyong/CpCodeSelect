@@ -8,36 +8,13 @@ using System.Threading.Tasks;
 
 namespace CpCodeSelect.Model
 {
-    public class Hou3Select270_ZhouQiZhong
+    public class Hou3Select270_ZhouQiZhong : BaseCodeInfo
     {
         public static int ShowNumber = 6;
         /// <summary>
         /// 350个号码
         /// </summary>
         public List<string> Number270 { get; set; }
-
-        /// <summary>
-        /// 是否需要中 初始需要
-        /// </summary>
-        public bool NeedZhong { get; set; } = true;
-
-        /// <summary>
-        /// 对应的期号
-        /// </summary>
-        public string CodeQiHao { get; set; }
-        /// <summary>
-        /// 对应的期号号码
-        /// </summary>
-        public string CodeNumber { get; set; }
-        /// <summary>
-        /// 当前连挂次数
-        /// </summary>
-
-        public int GuaCount { get; set; } = 0;
-        /// <summary>
-        /// 当前连中次数
-        /// </summary>
-        public int ZhongGount { get; set; } = 0;
         /// <summary>
         /// 中之前挂的次数
         /// </summary>

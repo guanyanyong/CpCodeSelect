@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseCodeInfo.cs" />
     <Compile Include="Code.cs" />
     <Compile Include="ExModel\Bolling.cs" />
     <Compile Include="ExModel\CheckResult.cs" />

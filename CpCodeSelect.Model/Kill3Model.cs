@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CpCodeSelect.Model
 {
-    public class Kill3Model
+    public class Kill3Model : BaseCodeInfo
     {
         public string Name { get; set; }
         /// <summary>
@@ -18,10 +18,6 @@ namespace CpCodeSelect.Model
         /// 是否连挂
         /// </summary>
         public bool IsLianGua { get; set; }
-        /// <summary>
-        /// 连挂次数
-        /// </summary>
-        public int GuaCount { get; set; }
         /// <summary>
         /// 挂后中几个
         /// </summary>

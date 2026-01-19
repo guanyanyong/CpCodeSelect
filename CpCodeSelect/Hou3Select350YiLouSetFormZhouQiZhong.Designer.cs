@@ -228,11 +228,10 @@
             this.labelError.AutoSize = true;
             this.labelError.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(179, 73);
+            this.labelError.Location = new System.Drawing.Point(43, 69);
             this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(126, 25);
+            this.labelError.Size = new System.Drawing.Size(0, 25);
             this.labelError.TabIndex = 1;
-            this.labelError.Text = "显示错误信息";
             // 
             // label3
             // 
