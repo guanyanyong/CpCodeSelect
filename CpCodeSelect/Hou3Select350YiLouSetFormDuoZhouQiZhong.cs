@@ -50,7 +50,7 @@ namespace CpCodeSelect
         private string apiUri = "http://127.0.0.1:5000/";
         private string DataSource = "rexguan-hp2024-01";
         private MoniRunZhouQiZhong moniRunZhouQiZhong = new MoniRunZhouQiZhong();
-        private MoniRunZhouQiZhongLianXu8 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongLianXu8();
+        private MoniRunZhouQiZhongLianXu8 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongLianXu8(new Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness());
         private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
         private MoniRunZhouQiZhongLianXu3ge1 moniRunZhouQiZhongLianXu3ge1 = new MoniRunZhouQiZhongLianXu3ge1();
         private MoniRunZhouQiZhongLianXu8Amount5566 moniRunZhouQiZhongLianXu8Amount5566 = new MoniRunZhouQiZhongLianXu8Amount5566();
@@ -564,6 +564,7 @@ namespace CpCodeSelect
             {
                 boFangYanhuaCount = 12;
             }
+            Hou3Select350YiLouSetFormZhouQiZhongBusiness.InitData();
             Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.InitData();
         }
 

@@ -329,7 +329,7 @@
             this.button8.TabIndex = 7;
             this.button8.Text = "模拟运行3*1";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button4_Click_1);
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button4
             // 
@@ -1740,7 +1740,7 @@
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.button1);
             this.Name = "Hou3Select350YiLouSetFormZhouQiZhong";
-            this.Text = "350注遗漏搜索";
+            this.Text = "350注半上升遗漏搜索";
             this.tabControl1.ResumeLayout(false);
             this.TotalInfo.ResumeLayout(false);
             this.TotalInfo.PerformLayout();

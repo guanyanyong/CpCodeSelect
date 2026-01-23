@@ -18,51 +18,55 @@ namespace CpCodeSelect
         private Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness moniBusiness;
         Code beforeCode = null;
         Code currentCode = null;
-        public MoniRunZhouQiZhongLianXu8()
+        public MoniRunZhouQiZhongLianXu8(Hou3Select350YiLouSetFormZhongParentBusiness business)
         {
             InitializeComponent();
-            moniBusiness=new Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List);
+            moniBusiness = new Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List, business);
             dataGridView1.DataSource = moniBusiness.yilouStatisticList;
         }
         public void Run(Code code)
         {
             currentCode = code;
-            if (beforeCode ==null || beforeCode.CodeQiHao != code.CodeQiHao)
+            if (beforeCode == null || beforeCode.CodeQiHao != code.CodeQiHao)
             {
                 beforeCode = code;
                 //当上一期期号和当前期号不一样时，才进行计算
                 //这里需要跑10期后再进行计算
-                if (Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.AllCode.Count > 280)
+                if (Hou3Select350YiLouSetFormZhouQiZhongBusiness.AllCode.Count > 280)
                 {
                     moniBusiness.CalcCode(code);
                     SetFormTxtValue();
                 }
             }
         }
+        public void AllDataInit()
+        {
+            moniBusiness.AllDataInit();
+        }
         public void SetFormTxtValue()
         {
-            txtCurrentLun.Text= moniBusiness.CurrentLun.ToString();
-            txtCurrentAmount.Text= moniBusiness.CurrentAmount.ToString();
+            txtCurrentLun.Text = moniBusiness.CurrentLun.ToString();
+            txtCurrentAmount.Text = moniBusiness.CurrentAmount.ToString();
             txtCurrentQi.Text = moniBusiness.CurrentaQi.ToString();
             txtTotalGuaCi.Text = moniBusiness.TotalGua.ToString();
             txtTotalZhongCi.Text = moniBusiness.TotalZhong.ToString();
             int zhongjiangCount = 0;
-            if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu+1;
+            if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu + 1;
 
-            txtTotalAmount.Text=moniBusiness.TotalResult.ToString("0.00");
+            txtTotalAmount.Text = moniBusiness.TotalResult.ToString("0.00");
 
-            txtLiushui.Text=moniBusiness.TotalLiuShui.ToString("0.00");
+            txtLiushui.Text = moniBusiness.TotalLiuShui.ToString("0.00");
         }
         public void CustomLogMethod(string message)
         {
             //最新消息排在最上面
-            listBoxExeMsg.Items.Insert(0,message);
+            listBoxExeMsg.Items.Insert(0, message);
             listBoxExeMsg.TopIndex = 0; // 自动滚动到底部
             //listBoxExeMsg.TopIndex = listBoxExeMsg.Items.Count - 1; // 自动滚动到底部
             SetFormTxtValue();
             using (var writer = new StreamWriter("moni8期.txt", true))
             {
-                writer.WriteLine(message); 
+                writer.WriteLine(message);
                 writer.Flush();
             }
         }

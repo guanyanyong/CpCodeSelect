@@ -1,4 +1,5 @@
-﻿using CpCodeSelect.Model;
+﻿using CpCodeSelect.Business;
+using CpCodeSelect.Model;
 using CpCodeSelect.Model.ExModel;
 using CpCodeSelect.Util;
 using System;
@@ -6,27 +7,33 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using static CpCodeSelect.Model.Zu6Kill1Model;
 
-namespace CpCodeSelect.Business
+namespace CpCodeSelect
 {
-    public class Hou3Select350YiLouSetFormZhouQiZhongBusiness : Hou3Select350YiLouSetFormZhongParentBusiness
+    public class Hou3Select350YiLouSetFormZhongParentBusiness
     {
-        
-        public static new void InitData()
+        public static List<Code> AllCode = new List<Code>();
+        public static Dictionary<string, int> Hou2NumberCount = new Dictionary<string, int>();
+        public static Code code = null;
+        public static Object lockObj = new Object();
+        public static List<Hou3Select350_ZhouQiZhong> model350List = new List<Hou3Select350_ZhouQiZhong>();
+        public static string leftNumberCountStr = ConfigurationManager.AppSettings["LeftNumberCount"];
+        public static List<Hou3Select350_ZhouQiZhong> currentNeedCalcList = new List<Hou3Select350_ZhouQiZhong>();
+
+        public static void InitData()
         {
             AllCode = new List<Code>();
-            model350List= new List<Hou3Select350_ZhouQiZhong>();
+            model350List = new List<Hou3Select350_ZhouQiZhong>();
             Hou2NumberCount = new Dictionary<string, int>();
         }
+
         /// <summary>
         /// 初始化号码
         /// </summary>
         /// <param name="code"></param>
-        public static new void InitCode(Code code)
+        public static void InitCode(Code code)
         {
             code.Wan = new PositionNumber
             {
@@ -62,19 +69,20 @@ namespace CpCodeSelect.Business
 
             // 生成新的350码
             //GenerateCode(code);
-            if (AllCode != null && AllCode.Count > 270)
+            if (AllCode != null && AllCode.Count > 1620)
             {
                 Generate350Code(code);
                 //删除超过3000条的记录 如果没有4挂的就删除
                 RemoveOldModel(code, 1);
             }
-            Hou3Select350YiLouSetFormZhouQiZhongBusiness.code = code;
+            Hou3Select350YiLouSetFormZhongParentBusiness.code = code;
         }
+
         /// <summary>
         ///  删除小于指定挂数的旧记录
         /// </summary>
         /// <param name="guaCount"></param>
-        public static new void RemoveOldModel(Code code, int guaCount = 1)
+        public static void RemoveOldModel(Code code, int guaCount = 1)
         {
             var codeDecimal = Convert.ToDecimal(code.CodeQiHao);
             List<Hou3Select350_ZhouQiZhong> removeList = new List<Hou3Select350_ZhouQiZhong>();
@@ -92,7 +100,7 @@ namespace CpCodeSelect.Business
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= 10 && model.ZhouQiZhongHouGua <= guaCount && model.GuaCount<=6)
+                    if (codeDecimal - currentDecimal >= 10 && model.ZhouQiZhongHouGua <= guaCount && model.GuaCount <= 6)
                     {
                         removeList.Add(model);
                     }
@@ -126,7 +134,7 @@ namespace CpCodeSelect.Business
                 removeList.Clear();
             }
         }
-        public static new void CalcExist350Code(Code code)
+        public static void CalcExist350Code(Code code)
         {
             var hou3 = code.GetHou3String();
             foreach (var model in model350List)
@@ -185,7 +193,7 @@ namespace CpCodeSelect.Business
             }
         }
 
-        public static new void Generate350Code(Code code)
+        public static void Generate350Code(Code code)
         {
 
             if (AllCode != null && AllCode.Count > 270)
@@ -238,7 +246,7 @@ namespace CpCodeSelect.Business
         /// <param name="number"></param>
         /// <param name="AllCode"></param>
         /// <returns></returns>
-        public static new List<string> GenerateHou3NumbereFromCode(int number)
+        public static List<string> GenerateHou3NumbereFromCode(int number)
         {
 
             List<string> Hou3NumberCount = new List<string>();
@@ -254,6 +262,9 @@ namespace CpCodeSelect.Business
             }
             return Hou3NumberCount.ToList();
         }
+
+
+
 
     }
 }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BollingerBandsSimple.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="ClassHelper.cs" />
     <Compile Include="DataGenerate\DuozhouqiStringSelection.cs" />
     <Compile Include="DataGenerate\LayeredStringSelection.cs" />
     <Compile Include="DataGenerate\StringSelection.cs" />
@@ -54,6 +55,9 @@
     <Compile Include="KLine270Calc.cs" />
     <Compile Include="KLine350Calc.cs" />
     <Compile Include="KLineCalc.cs" />
+    <Compile Include="KLineCondition\KLineBuyInterface.cs" />
+    <Compile Include="KLineCondition\KLineParent.cs" />
+    <Compile Include="KLineCondition\KLineNotBuyInterface.cs" />
     <Compile Include="MultiThreadedNumberSelectFor270Hou3.cs" />
     <Compile Include="MultiThreadedNumberSelectFor350Hou3.cs" />
     <Compile Include="MultiThreadedNumberSelectForYiLou.cs" />

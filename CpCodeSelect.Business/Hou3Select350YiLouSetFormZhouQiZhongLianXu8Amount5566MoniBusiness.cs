@@ -118,6 +118,18 @@ namespace CpCodeSelect.Business
         /// </summary>
         public int TotalZhong { get; set; } = 0;
         public int TotalGua { get; set; } = 0;
+        public void AllDataInit()
+        {
+            InitData();
+            ListInit();
+        }
+        public void ListInit()
+        {
+            model350List = new List<Hou3Select350_ZhouQiZhong>();
+            current350List = new List<string>();
+            before350List = new List<string>();
+            yilouStatisticList = new List<YilouStatistic>();
+        }
         /// <summary>
         /// 初始化数据
         /// </summary>

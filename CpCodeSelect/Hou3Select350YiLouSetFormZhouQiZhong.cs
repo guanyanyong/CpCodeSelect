@@ -45,7 +45,7 @@ namespace CpCodeSelect
         private string apiUri = "http://127.0.0.1:5000/";
         private string DataSource = "rexguan-hp2024-01";
         private MoniRunZhouQiZhong moniRunZhouQiZhong = new MoniRunZhouQiZhong();
-        private MoniRunZhouQiZhongLianXu8 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongLianXu8();
+        private MoniRunZhouQiZhongLianXu8 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongLianXu8(new Hou3Select350YiLouSetFormZhouQiZhongBusiness());
         private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
         private MoniRunZhouQiZhongLianXu8Amount5566 moniRunZhouQiZhongLianXu8Amount5566 = new MoniRunZhouQiZhongLianXu8Amount5566();
         public Hou3Select350YiLouSetFormZhouQiZhong()
@@ -55,6 +55,7 @@ namespace CpCodeSelect
             txtFIlePath.Text = filePath;
             txtDownLoadFilePath.Text = filePath;
             moniKill3.Hide();
+            button1.Focus();
         }
 
         public void AddStatisticToDic(int number, StatisticModel model)
@@ -518,6 +519,7 @@ namespace CpCodeSelect
                 boFangYanhuaCount = 12;
             }
             Hou3Select350YiLouSetFormZhouQiZhongBusiness.InitData();
+            Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.InitData();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -667,8 +669,12 @@ namespace CpCodeSelect
         {
             Init();
             StartExec();
-        }
 
+        }
+        public void MoniFormInit()
+        {
+            moniRunZhouQiZhongLianXu8.AllDataInit();
+        }
         private void btnReset_Click(object sender, EventArgs e)
         {
             Init();
@@ -1079,7 +1085,7 @@ namespace CpCodeSelect
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            moniRunZhouQiZhongLianXu3.Show();
+            moniRunZhouQiZhongLianXu8.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -1264,6 +1270,11 @@ namespace CpCodeSelect
 
             txtFIlePath.Text = filePath;
             txtDownLoadFilePath.Text = filePath;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            moniRunZhouQiZhongLianXu3.Show();
         }
     }
 }

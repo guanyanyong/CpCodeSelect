@@ -42,6 +42,8 @@
             this.TotalInfo = new System.Windows.Forms.TabPage();
             this.chkBeginMoni = new System.Windows.Forms.CheckBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.btnMoni8ge1yilou1 = new System.Windows.Forms.Button();
+            this.btnMoni8ge1yilou0 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -161,8 +163,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnMoni8ge1yilou0 = new System.Windows.Forms.Button();
-            this.btnMoni8ge1yilou1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.SetSearch.SuspendLayout();
@@ -376,6 +376,26 @@
             this.button5.Text = "模拟8*1-5566";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // btnMoni8ge1yilou1
+            // 
+            this.btnMoni8ge1yilou1.Location = new System.Drawing.Point(1146, 12);
+            this.btnMoni8ge1yilou1.Name = "btnMoni8ge1yilou1";
+            this.btnMoni8ge1yilou1.Size = new System.Drawing.Size(126, 38);
+            this.btnMoni8ge1yilou1.TabIndex = 7;
+            this.btnMoni8ge1yilou1.Text = "模拟8*1-1";
+            this.btnMoni8ge1yilou1.UseVisualStyleBackColor = true;
+            this.btnMoni8ge1yilou1.Click += new System.EventHandler(this.btnMoni8ge1yilou1_Click);
+            // 
+            // btnMoni8ge1yilou0
+            // 
+            this.btnMoni8ge1yilou0.Location = new System.Drawing.Point(1014, 12);
+            this.btnMoni8ge1yilou0.Name = "btnMoni8ge1yilou0";
+            this.btnMoni8ge1yilou0.Size = new System.Drawing.Size(126, 38);
+            this.btnMoni8ge1yilou0.TabIndex = 7;
+            this.btnMoni8ge1yilou0.Text = "模拟8*1-0";
+            this.btnMoni8ge1yilou0.UseVisualStyleBackColor = true;
+            this.btnMoni8ge1yilou0.Click += new System.EventHandler(this.btnMoni8ge1_Click);
             // 
             // button12
             // 
@@ -2032,26 +2052,6 @@
             this.panel4.Size = new System.Drawing.Size(1474, 726);
             this.panel4.TabIndex = 10;
             // 
-            // btnMoni8ge1yilou0
-            // 
-            this.btnMoni8ge1yilou0.Location = new System.Drawing.Point(1014, 12);
-            this.btnMoni8ge1yilou0.Name = "btnMoni8ge1yilou0";
-            this.btnMoni8ge1yilou0.Size = new System.Drawing.Size(126, 38);
-            this.btnMoni8ge1yilou0.TabIndex = 7;
-            this.btnMoni8ge1yilou0.Text = "模拟8*1-0";
-            this.btnMoni8ge1yilou0.UseVisualStyleBackColor = true;
-            this.btnMoni8ge1yilou0.Click += new System.EventHandler(this.btnMoni8ge1_Click);
-            // 
-            // btnMoni8ge1yilou1
-            // 
-            this.btnMoni8ge1yilou1.Location = new System.Drawing.Point(1146, 12);
-            this.btnMoni8ge1yilou1.Name = "btnMoni8ge1yilou1";
-            this.btnMoni8ge1yilou1.Size = new System.Drawing.Size(126, 38);
-            this.btnMoni8ge1yilou1.TabIndex = 7;
-            this.btnMoni8ge1yilou1.Text = "模拟8*1-1";
-            this.btnMoni8ge1yilou1.UseVisualStyleBackColor = true;
-            this.btnMoni8ge1yilou1.Click += new System.EventHandler(this.btnMoni8ge1yilou1_Click);
-            // 
             // Hou3Select350YiLouSetFormDuoZhouQiZhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2059,7 +2059,7 @@
             this.ClientSize = new System.Drawing.Size(1474, 906);
             this.Controls.Add(this.panel3);
             this.Name = "Hou3Select350YiLouSetFormDuoZhouQiZhong";
-            this.Text = "350注遗漏搜索";
+            this.Text = "350注全上升遗漏搜索";
             this.tabControl1.ResumeLayout(false);
             this.TotalInfo.ResumeLayout(false);
             this.TotalInfo.PerformLayout();

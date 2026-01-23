@@ -23,8 +23,10 @@ namespace CpCodeSelect.Business
         public List<YilouStatistic> yilouStatisticList = new List<YilouStatistic>();
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
-        public Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhong> model350List)
+        private Hou3Select350YiLouSetFormZhongParentBusiness business = null;
+        public Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhong> model350List, Hou3Select350YiLouSetFormZhongParentBusiness business)
         {
+            this.business = business;
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
             this.model350List = model350List;
 
@@ -114,6 +116,20 @@ namespace CpCodeSelect.Business
         /// </summary>
         public int TotalZhong { get; set; } = 0;
         public int TotalGua { get; set; } = 0;
+
+        public void AllDataInit()
+        {
+            InitData();
+            ListInit();
+        }
+        public void ListInit()
+        {
+            model350List = new List<Hou3Select350_ZhouQiZhong>();
+            current350List = new List<string>();
+            before350List = new List<string>();
+            yilouStatisticList = new List<YilouStatistic>();
+        }
+
         /// <summary>
         /// 初始化数据
         /// </summary>
@@ -151,7 +167,15 @@ namespace CpCodeSelect.Business
             List<PositionNumber> list = new List<PositionNumber>();
             if (this.model350List == null || model350List.Count == 0)
             {
-                model350List = Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List;
+                var obj= ClassHelper.GetParentStaticField(business, "model350List");
+                if(obj!=null && obj is List<Hou3Select350_ZhouQiZhong>)
+                {
+                    model350List = obj as List<Hou3Select350_ZhouQiZhong>;
+                }
+                else
+                {
+                    return;
+                }
             }
 
             if (IsOriginBeginStatus())
@@ -234,7 +258,7 @@ namespace CpCodeSelect.Business
         public void Select350AndStartCalc(Code code)
         {
             //list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.
-            var list = model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == 1 && p.IsZhouQiZhongHou).ToList();
+            var list = model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == 0 && p.IsZhouQiZhongHou).ToList();
             Hou3Select350_ZhouQiZhong record = null;
             if (list.Count == 0) return;
             //最多查找5次,如果5次没有找到合适的记录就不投注
@@ -260,10 +284,12 @@ namespace CpCodeSelect.Business
                 else keyValuePairs.Add(index, 1);
                 var zhouQiZhongRecord = list[index];
                 var klinLIst = zhouQiZhongRecord.KLineList;
-                if (KLine350Calc.KLineIsEnough(klinLIst).Result)
+                var checkResult = KLine350Calc.KLineIsEnoughAddBuLinTopGui(klinLIst);
+                if (checkResult.Result)
                 {
                     foundRecord = true;
                     record = zhouQiZhongRecord;
+                    LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前选择的K值是{checkResult.KValue},布林上轨是{checkResult.Bolling.BollUpperValue}");
                     break;
                 }
             }

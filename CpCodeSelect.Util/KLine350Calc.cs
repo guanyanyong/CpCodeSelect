@@ -450,6 +450,60 @@ namespace CpCodeSelect.Util
                 }
             }
         }
+        
+        public static CheckResult KLineIsEnoughAddBuLinTopGui(List<KLine> kLineList)
+        {
+            var checkResult = KLineIsEnough(kLineList);
+            if (checkResult.Result)
+            {
+                var kLine = kLineList.Last();
+                //再加一个布林上轨的判断
+                if(kLine.Bolling != null && (kLine.KValue + 1.857 )>= kLine.Bolling.BollUpperValue)
+                {
+                    checkResult.Result = false;
+                    checkResult.Message = "将要接近布林上轨";
+                }
+                else
+                {
+                    if(kLine!=null && kLine.Bolling != null)
+                    {
+                        checkResult.KValue = kLine.KValue;
+                        checkResult.Bolling=kLine.Bolling;
+                    }
+                }
+            }
+
+            if (checkResult.Result)
+            {
+
+                //判断上轨是不是下降
+                var kLine = kLineList[kLineList.Count - 1];
+                var kLinePre1 = kLineList[kLineList.Count-2];
+                var kLinePre2 = kLineList[kLineList.Count - 3];
+                var kLinePre3 = kLineList[kLineList.Count - 4];
+                var KLinePre4 = kLineList[kLineList.Count - 5];
+                var KLinePre5 = kLineList[kLineList.Count - 6];
+                var KLinePre6 = kLineList[kLineList.Count - 7];
+                var KLinePre7 = kLineList[kLineList.Count - 8];
+                var KLinePre8 = kLineList[kLineList.Count - 9];
+                var count = 0;
+                if (kLine.Bolling.BollUpperValue <= kLinePre1.Bolling.BollUpperValue) count++;
+                if( kLinePre1.Bolling.BollUpperValue <= kLinePre2.Bolling.BollUpperValue) count++;
+                if( kLinePre2.Bolling.BollUpperValue <= kLinePre3.Bolling.BollUpperValue) count++;
+                if (kLinePre3.Bolling.BollUpperValue <= KLinePre4.Bolling.BollUpperValue) count++;
+                if (KLinePre4.Bolling.BollUpperValue <= KLinePre5.Bolling.BollUpperValue) count++;
+                //if( KLinePre5.Bolling.BollUpperValue <= KLinePre6.Bolling.BollUpperValue) count++;
+                //if( KLinePre6.Bolling.BollUpperValue <= KLinePre7.Bolling.BollUpperValue) count++;
+                //if( KLinePre7.Bolling.BollUpperValue <= KLinePre8.Bolling.BollUpperValue) count++;
+                //再加一个布林上轨的判断 是否是最近5期有1期下降
+                if (count>=1)
+                {
+                    checkResult.Result = false;
+                    checkResult.Message = "布林上轨最近5期有1期下降";
+                }
+            }
+            return checkResult;
+        }
         /// <summary>
         /// 判断K线数据是否满足条件
         /// </summary>

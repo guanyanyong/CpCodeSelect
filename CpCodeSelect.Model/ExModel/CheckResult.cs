@@ -10,5 +10,7 @@ namespace CpCodeSelect.Model.ExModel
     {
         public bool Result { get; set; } 
         public string Message { get; set; }
+        public double KValue { get; set; }
+        public Bolling Bolling { get; set; }
     }
 }
