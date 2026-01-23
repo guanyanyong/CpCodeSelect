@@ -131,58 +131,71 @@ namespace CpCodeSelect.Business
             var hou3 = code.GetHou3String();
             foreach (var model in model350List)
             {
-                if (model.Number350.Contains(hou3))
+                CalcCode(code, model, hou3);
+            }
+            if (currentNeedCalcList != null)
+            {
+                foreach (var model in currentNeedCalcList)
                 {
-                    //中了
-                    model.ZhongGount++;
-                    model.NeedZhong = false;
-                    model.Zhong3BeforeGua = model.Zhong2BeforeGua;
-                    model.Zhong2BeforeGua = model.ZhongBeforeGua;
-                    model.ZhongBeforeGua = model.GuaCount;
+                    CalcCode(code, model, hou3);
+                }
+            }
+        }
 
-                    model.GuaCount = 0;
 
-                    // 判断是否在中后周期内
-                    if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
-                    {
+        private static void CalcCode(Code code, Hou3Select350_ZhouQiZhong model, string hou3)
+        {
+            if (model.Number350.Contains(hou3))
+            {
+                //中了
+                model.ZhongGount++;
+                model.NeedZhong = false;
+                model.Zhong3BeforeGua = model.Zhong2BeforeGua;
+                model.Zhong2BeforeGua = model.ZhongBeforeGua;
+                model.ZhongBeforeGua = model.GuaCount;
 
-                        model.IsZhouQiZhongHou = true;
-                    }
-                    else
-                    {
-                        model.IsZhouQiZhongHou = false;
-                    }
+                model.GuaCount = 0;
 
-                    //判断是否周期内挂
-                    if (model.Zhong3BeforeGua >= 2 && model.Zhong2BeforeGua <= 1 && model.ZhongBeforeGua >= 2)
-                    {
-                        model.ZhouQiZhongHouGua++;
-                    }
+                // 判断是否在中后周期内
+                if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
+                {
 
-                    if (model.Zhong2BeforeGua <= 1 && model.ZhongBeforeGua <= 1)
-                    {
-                        model.ZhouQiZhongHouGua = 0;
-                    }
+                    model.IsZhouQiZhongHou = true;
                 }
                 else
                 {
-                    //挂了
-                    model.GuaCount++;
-                    model.ZhongGount = 0;
-                    if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
-                    {
-                        model.IsZhouQiZhongHou = true;
-                    }
-                    if (model.GuaCount >= 2)
-                    {
-                        //挂超过2次后就不是周期内
-                        model.IsZhouQiZhongHou = false;
-                    }
+                    model.IsZhouQiZhongHou = false;
                 }
 
-                //计算当前期的K线
-                KLine350Calc.CalcKlineCurrent(model, code);
+                //判断是否周期内挂
+                if (model.Zhong3BeforeGua >= 2 && model.Zhong2BeforeGua <= 1 && model.ZhongBeforeGua >= 2)
+                {
+                    model.ZhouQiZhongHouGua++;
+                }
+
+                if (model.Zhong2BeforeGua <= 1 && model.ZhongBeforeGua <= 1)
+                {
+                    model.ZhouQiZhongHouGua = 0;
+                }
             }
+            else
+            {
+                //挂了
+                model.GuaCount++;
+                model.ZhongGount = 0;
+                if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
+                {
+                    model.IsZhouQiZhongHou = true;
+                }
+                if (model.GuaCount >= 2)
+                {
+                    //挂超过2次后就不是周期内
+                    model.IsZhouQiZhongHou = false;
+                }
+            }
+
+            //计算当前期的K线
+            KLine350Calc.CalcKlineCurrent(model, code);
         }
 
         public static new void Generate350Code(Code code)

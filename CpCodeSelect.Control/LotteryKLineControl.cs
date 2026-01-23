@@ -85,7 +85,8 @@ namespace CpCodeSelect.Control
             plotArea = new Rectangle(
                 margin,
                 margin,
-                this.Width - 2 * margin,
+                //this.Width - 2 * margin,
+                this.Width - 100,
                 this.Height - 2 * margin
             );
 
@@ -460,7 +461,7 @@ namespace CpCodeSelect.Control
 
             // 计算当前X坐标对应的期数
             int index = GetDataIndexFromX(crosshairPoint.X);
-            if (index >= 0 && index < dataList.Count)
+            if (index >= 0 && index <= dataList.Count)
             {
                 var data = dataList[index];
                 // 获取当前数据的Y值（K值对应的Y坐标）
@@ -468,18 +469,21 @@ namespace CpCodeSelect.Control
                 int kValueY = ConvertValueToY(data.KValue, minValue, maxValue);
 
                 // 分别显示信息的每一行
-                string periodText = $"期号: {data.Index + 1}";
+                string periodText = $"期号: {data.Index}";
                 string kValueText = $"K值: {data.KValue:F2}";
                 string winText = $"中奖: {(data.IsWin ? "是" : "否")}";
                 string periodNumberText = $"开奖期号: {data.PeriodNumber}";
                 string winningNumbersText = $"开奖号: {data.WinningNumbers}";
+                string upperBollingText = $"布林上轨: {data.UpperBand:F2}";
+                string middleBollingText = $"布林中轨: {data.MiddleBand:F2}";
+                string lowerBollingText = $"布林下轨: {data.LowerBand:F2}";
 
                 // 测量字体高度以确定行间距
                 SizeF textSize = g.MeasureString("Ay", crosshairInfoFont);
                 int lineHeight = (int)textSize.Height + 2;
 
                 // 在左上角绘制信息背景（现在有5行文本）
-                int infoBoxHeight = 5 + lineHeight * 3 + 5; // 上边距 + 5行文本 + 下边距
+                int infoBoxHeight = 5 + lineHeight * 6 + 5; // 上边距 + 5行文本 + 下边距
                 g.FillRectangle(Brushes.LightYellow, new Rectangle(5, 5, 180, infoBoxHeight));
                 g.DrawRectangle(Pens.Black, new Rectangle(5, 5, 180, infoBoxHeight));
 
@@ -487,6 +491,9 @@ namespace CpCodeSelect.Control
                 g.DrawString(periodText, crosshairInfoFont, crosshairInfoBrush, new Point(10, 10));
                 g.DrawString(winningNumbersText, crosshairInfoFont, crosshairInfoBrush, new Point(10, 10 + lineHeight));
                 g.DrawString(kValueText, crosshairInfoFont, crosshairInfoBrush, new Point(10, 10 + lineHeight*2));
+                g.DrawString(upperBollingText, crosshairInfoFont, crosshairInfoBrush, new Point(10, 10 + lineHeight * 3));
+                g.DrawString(middleBollingText, crosshairInfoFont, crosshairInfoBrush, new Point(10, 10 + lineHeight * 4));
+                g.DrawString(lowerBollingText, crosshairInfoFont, crosshairInfoBrush, new Point(10, 10 + lineHeight * 5));
                 //g.DrawString(winText, crosshairInfoFont, crosshairInfoBrush, new Point(10, 10 + lineHeight * 2));
                 //g.DrawString(periodNumberText, crosshairInfoFont, crosshairInfoBrush, new Point(10, 10 + lineHeight * 3));
             }
@@ -494,11 +501,34 @@ namespace CpCodeSelect.Control
 
         private int GetDataIndexFromX(int mouseX)
         {
-            if (dataList == null || dataList.Count == 0 || !plotArea.Contains(mouseX, plotArea.Top)) return -1;
+            //if (dataList == null || dataList.Count == 0 || !plotArea.Contains(mouseX, plotArea.Top)) return -1;
 
+            //// 计算鼠标X坐标在数据范围内的索引
+            //double relativePosition = (double)(mouseX - plotArea.Left) / plotArea.Width;
+            //int index = (int)(relativePosition * (dataList.Count - 1));
+
+            //// 确保索引有效
+            //index = Math.Max(0, Math.Min(index, dataList.Count - 1));
+            //return index;
+            if (dataList == null || dataList.Count == 0) return -1;
+
+            // 检查鼠标X坐标:如果在绘图区域左侧外，则显示第一个数据；如果在右侧外，则显示最后一个数据
+            if (mouseX < plotArea.Left)
+            {
+                return 0; // 最左侧显示第一期数据
+            }
+            else if (mouseX > plotArea.Right)
+            {
+                return dataList.Count - 1; // 最右侧显示最后一期数据
+            }
             // 计算鼠标X坐标在数据范围内的索引
             double relativePosition = (double)(mouseX - plotArea.Left) / plotArea.Width;
-            int index = (int)(relativePosition * (dataList.Count - 1));
+
+            // 确保relativePosition在合理范围内
+            relativePosition = Math.Max(0.0, Math.Min(1.0, relativePosition));
+
+            // 计算索引，使用四舍五入而不是强制截断，使交互更准确
+            int index = (int)Math.Round(relativePosition * (dataList.Count - 1));
 
             // 确保索引有效
             index = Math.Max(0, Math.Min(index, dataList.Count - 1));

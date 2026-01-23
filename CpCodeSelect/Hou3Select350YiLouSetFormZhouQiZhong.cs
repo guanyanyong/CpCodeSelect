@@ -249,6 +249,12 @@ namespace CpCodeSelect
             //moniKill3_2.Run(code);
             //moniKill3_3.Run(code);
 
+            //执行绘图的逻辑
+            if (currentCalcKLineDate != null)
+            {
+                DataLoadKLine();
+            }
+
         }
         private void InitCode(Code code)
         {
@@ -1371,7 +1377,7 @@ namespace CpCodeSelect
             }
             else
             {
-                //出现新的一起号码刷新数据
+                //出现新的一期号码刷新数据
                 GenerateKLine(currentCalcKLineDate);
                 GenerateYiLouKLine(currentCalcKLineDate);
             }
