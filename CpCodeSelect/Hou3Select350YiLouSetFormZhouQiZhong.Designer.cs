@@ -40,14 +40,16 @@
             this.chkRefersh = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TotalInfo = new System.Windows.Forms.TabPage();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.lblMaxGua = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.lblTotalNumber = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.SetSearch = new System.Windows.Forms.TabPage();
             this.txtNum3 = new System.Windows.Forms.TextBox();
             this.txtNum2 = new System.Windows.Forms.TextBox();
@@ -92,29 +94,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.ResultPage = new System.Windows.Forms.TabPage();
-            this.lblMaxGua2 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblResultCount = new System.Windows.Forms.Label();
-            this.lblTotalNumber2 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblError = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.txt50Number = new System.Windows.Forms.TextBox();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnCopy = new System.Windows.Forms.Button();
-            this.btnStopAuto = new System.Windows.Forms.Button();
-            this.btnStartAuto = new System.Windows.Forms.Button();
-            this.btnSelectConditonEnough = new System.Windows.Forms.Button();
-            this.btnSelect = new System.Windows.Forms.Button();
-            this.numericUpDownAutoClick = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ZhouQiZhongHouGua = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsZhouQiZhongHou = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -123,24 +104,37 @@
             this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paramSet = new System.Windows.Forms.TabPage();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.txtResult = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.btnSelectFile2 = new System.Windows.Forms.Button();
-            this.txtDownLoadFilePath = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.chk3fen = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblMaxGua2 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblResultCount = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.lblTotalNumber2 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.numericUpDownAutoClick = new System.Windows.Forms.NumericUpDown();
+            this.lblError = new System.Windows.Forms.Label();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.btnSelectConditonEnough = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnStartAuto = new System.Windows.Forms.Button();
+            this.btnCopy = new System.Windows.Forms.Button();
+            this.btnStopAuto = new System.Windows.Forms.Button();
             this.kLine = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -149,19 +143,29 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.paramSet = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.txtDownLoadFilePath = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.btnSelectFile2 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.chk3fen = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SetSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num14E)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num13E)).BeginInit();
@@ -195,28 +199,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.num1B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCondition)).BeginInit();
             this.ResultPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoClick)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.paramSet.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoClick)).BeginInit();
             this.kLine.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
+            this.paramSet.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -284,9 +286,9 @@
             // btnRestart
             // 
             this.btnRestart.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnRestart.Location = new System.Drawing.Point(1009, 83);
+            this.btnRestart.Location = new System.Drawing.Point(1009, 76);
             this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(161, 31);
+            this.btnRestart.Size = new System.Drawing.Size(161, 38);
             this.btnRestart.TabIndex = 0;
             this.btnRestart.Text = "重新开始";
             this.btnRestart.UseVisualStyleBackColor = true;
@@ -345,6 +347,41 @@
             this.TotalInfo.UseVisualStyleBackColor = true;
             this.TotalInfo.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.listBoxHistory);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(3, 136);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1455, 385);
+            this.panel8.TabIndex = 9;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.button12);
+            this.panel7.Controls.Add(this.button11);
+            this.panel7.Controls.Add(this.label4);
+            this.panel7.Controls.Add(this.button5);
+            this.panel7.Controls.Add(this.label3);
+            this.panel7.Controls.Add(this.button8);
+            this.panel7.Controls.Add(this.label6);
+            this.panel7.Controls.Add(this.button4);
+            this.panel7.Controls.Add(this.button3);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.Location = new System.Drawing.Point(3, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1455, 133);
+            this.panel7.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(128, 30);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "走势总数量:";
+            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(639, 63);
@@ -364,6 +401,15 @@
             this.button8.Text = "模拟运行3*1";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(254, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(106, 30);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "最大遗漏:";
             // 
             // button4
             // 
@@ -393,15 +439,6 @@
             this.lblMaxGua.Size = new System.Drawing.Size(0, 30);
             this.lblMaxGua.TabIndex = 6;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(254, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 30);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "最大遗漏:";
-            // 
             // lblTotalNumber
             // 
             this.lblTotalNumber.AutoSize = true;
@@ -409,15 +446,6 @@
             this.lblTotalNumber.Name = "lblTotalNumber";
             this.lblTotalNumber.Size = new System.Drawing.Size(0, 30);
             this.lblTotalNumber.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 30);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "走势总数量:";
             // 
             // SetSearch
             // 
@@ -1269,81 +1297,15 @@
             this.ResultPage.Text = "显示信息";
             this.ResultPage.UseVisualStyleBackColor = true;
             // 
-            // lblMaxGua2
+            // panel10
             // 
-            this.lblMaxGua2.AutoSize = true;
-            this.lblMaxGua2.ForeColor = System.Drawing.Color.Red;
-            this.lblMaxGua2.Location = new System.Drawing.Point(401, 84);
-            this.lblMaxGua2.Name = "lblMaxGua2";
-            this.lblMaxGua2.Size = new System.Drawing.Size(26, 30);
-            this.lblMaxGua2.TabIndex = 7;
-            this.lblMaxGua2.Text = "0";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(289, 122);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 30);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "结果数:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(289, 84);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(106, 30);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "最大遗漏:";
-            // 
-            // lblResultCount
-            // 
-            this.lblResultCount.AutoSize = true;
-            this.lblResultCount.ForeColor = System.Drawing.Color.Red;
-            this.lblResultCount.Location = new System.Drawing.Point(379, 122);
-            this.lblResultCount.Name = "lblResultCount";
-            this.lblResultCount.Size = new System.Drawing.Size(26, 30);
-            this.lblResultCount.TabIndex = 9;
-            this.lblResultCount.Text = "0";
-            // 
-            // lblTotalNumber2
-            // 
-            this.lblTotalNumber2.AutoSize = true;
-            this.lblTotalNumber2.ForeColor = System.Drawing.Color.Red;
-            this.lblTotalNumber2.Location = new System.Drawing.Point(574, 84);
-            this.lblTotalNumber2.Name = "lblTotalNumber2";
-            this.lblTotalNumber2.Size = new System.Drawing.Size(26, 30);
-            this.lblTotalNumber2.TabIndex = 9;
-            this.lblTotalNumber2.Text = "0";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(462, 84);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(106, 30);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "走势总量:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(655, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 30);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "显示信息:";
-            // 
-            // lblError
-            // 
-            this.lblError.AutoSize = true;
-            this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(767, 9);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(145, 30);
-            this.lblError.TabIndex = 5;
-            this.lblError.Text = "显示操作信息";
+            this.panel10.Controls.Add(this.txt50Number);
+            this.panel10.Controls.Add(this.dataGridView1);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(3, 170);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(1455, 351);
+            this.panel10.TabIndex = 12;
             // 
             // txt50Number
             // 
@@ -1354,190 +1316,6 @@
             this.txt50Number.Name = "txt50Number";
             this.txt50Number.Size = new System.Drawing.Size(292, 351);
             this.txt50Number.TabIndex = 4;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.btnClear.Location = new System.Drawing.Point(1115, 19);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(77, 84);
-            this.btnClear.TabIndex = 3;
-            this.btnClear.Text = "清除";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnCopy
-            // 
-            this.btnCopy.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.btnCopy.Location = new System.Drawing.Point(1014, 10);
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(77, 102);
-            this.btnCopy.TabIndex = 3;
-            this.btnCopy.Text = "拷贝数值";
-            this.btnCopy.UseVisualStyleBackColor = true;
-            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
-            // 
-            // btnStopAuto
-            // 
-            this.btnStopAuto.Enabled = false;
-            this.btnStopAuto.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnStopAuto.Location = new System.Drawing.Point(467, 12);
-            this.btnStopAuto.Name = "btnStopAuto";
-            this.btnStopAuto.Size = new System.Drawing.Size(144, 69);
-            this.btnStopAuto.TabIndex = 3;
-            this.btnStopAuto.Text = "结束自动";
-            this.btnStopAuto.UseVisualStyleBackColor = true;
-            this.btnStopAuto.Click += new System.EventHandler(this.btnStopAuto_Click);
-            // 
-            // btnStartAuto
-            // 
-            this.btnStartAuto.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnStartAuto.Location = new System.Drawing.Point(285, 9);
-            this.btnStartAuto.Name = "btnStartAuto";
-            this.btnStartAuto.Size = new System.Drawing.Size(168, 72);
-            this.btnStartAuto.TabIndex = 3;
-            this.btnStartAuto.Text = "开始自动";
-            this.btnStartAuto.UseVisualStyleBackColor = true;
-            this.btnStartAuto.Click += new System.EventHandler(this.btnStartAuto_Click);
-            // 
-            // btnSelectConditonEnough
-            // 
-            this.btnSelectConditonEnough.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnSelectConditonEnough.Location = new System.Drawing.Point(786, 107);
-            this.btnSelectConditonEnough.Name = "btnSelectConditonEnough";
-            this.btnSelectConditonEnough.Size = new System.Drawing.Size(97, 58);
-            this.btnSelectConditonEnough.TabIndex = 3;
-            this.btnSelectConditonEnough.Text = "搜索2";
-            this.btnSelectConditonEnough.UseVisualStyleBackColor = true;
-            this.btnSelectConditonEnough.Click += new System.EventHandler(this.btnSelectConditonEnough_Click);
-            // 
-            // btnSelect
-            // 
-            this.btnSelect.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnSelect.Location = new System.Drawing.Point(660, 107);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(85, 58);
-            this.btnSelect.TabIndex = 3;
-            this.btnSelect.Text = "搜索1";
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
-            // numericUpDownAutoClick
-            // 
-            this.numericUpDownAutoClick.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numericUpDownAutoClick.Location = new System.Drawing.Point(917, 67);
-            this.numericUpDownAutoClick.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numericUpDownAutoClick.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.numericUpDownAutoClick.Name = "numericUpDownAutoClick";
-            this.numericUpDownAutoClick.Size = new System.Drawing.Size(79, 36);
-            this.numericUpDownAutoClick.TabIndex = 2;
-            this.numericUpDownAutoClick.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numericUpDown3.Location = new System.Drawing.Point(151, 112);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 36);
-            this.numericUpDown3.TabIndex = 2;
-            this.numericUpDown3.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numericUpDown2.Location = new System.Drawing.Point(149, 65);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 36);
-            this.numericUpDown2.TabIndex = 2;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numericUpDown1.Location = new System.Drawing.Point(148, 17);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 36);
-            this.numericUpDown1.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label5.Location = new System.Drawing.Point(655, 67);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(255, 30);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "自动点击间隔时间单位秒";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label14.Location = new System.Drawing.Point(44, 112);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 30);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "挂数";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label13.Location = new System.Drawing.Point(42, 65);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(101, 30);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "周期挂止";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label2.Location = new System.Drawing.Point(41, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 30);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "周期挂始";
             // 
             // dataGridView1
             // 
@@ -1607,147 +1385,295 @@
             this.GuaCount.MinimumWidth = 60;
             this.GuaCount.Name = "GuaCount";
             // 
-            // paramSet
+            // panel9
             // 
-            this.paramSet.Controls.Add(this.panel6);
-            this.paramSet.Controls.Add(this.panel5);
-            this.paramSet.Location = new System.Drawing.Point(4, 37);
-            this.paramSet.Name = "paramSet";
-            this.paramSet.Size = new System.Drawing.Size(1461, 524);
-            this.paramSet.TabIndex = 3;
-            this.paramSet.Text = "参数设置";
-            this.paramSet.UseVisualStyleBackColor = true;
+            this.panel9.Controls.Add(this.label2);
+            this.panel9.Controls.Add(this.lblMaxGua2);
+            this.panel9.Controls.Add(this.label13);
+            this.panel9.Controls.Add(this.label9);
+            this.panel9.Controls.Add(this.label14);
+            this.panel9.Controls.Add(this.label10);
+            this.panel9.Controls.Add(this.label5);
+            this.panel9.Controls.Add(this.lblResultCount);
+            this.panel9.Controls.Add(this.numericUpDown1);
+            this.panel9.Controls.Add(this.lblTotalNumber2);
+            this.panel9.Controls.Add(this.numericUpDown2);
+            this.panel9.Controls.Add(this.label12);
+            this.panel9.Controls.Add(this.numericUpDown3);
+            this.panel9.Controls.Add(this.label8);
+            this.panel9.Controls.Add(this.numericUpDownAutoClick);
+            this.panel9.Controls.Add(this.lblError);
+            this.panel9.Controls.Add(this.btnSelect);
+            this.panel9.Controls.Add(this.btnSelectConditonEnough);
+            this.panel9.Controls.Add(this.btnClear);
+            this.panel9.Controls.Add(this.btnStartAuto);
+            this.panel9.Controls.Add(this.btnCopy);
+            this.panel9.Controls.Add(this.btnStopAuto);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Location = new System.Drawing.Point(3, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1455, 167);
+            this.panel9.TabIndex = 11;
             // 
-            // numericUpDown4
+            // label2
             // 
-            this.numericUpDown4.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numericUpDown4.Location = new System.Drawing.Point(326, 101);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
-            1500,
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.label2.Location = new System.Drawing.Point(41, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 30);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "周期挂始";
+            // 
+            // lblMaxGua2
+            // 
+            this.lblMaxGua2.AutoSize = true;
+            this.lblMaxGua2.ForeColor = System.Drawing.Color.Red;
+            this.lblMaxGua2.Location = new System.Drawing.Point(401, 84);
+            this.lblMaxGua2.Name = "lblMaxGua2";
+            this.lblMaxGua2.Size = new System.Drawing.Size(26, 30);
+            this.lblMaxGua2.TabIndex = 7;
+            this.lblMaxGua2.Text = "0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.label13.Location = new System.Drawing.Point(42, 65);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(101, 30);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "周期挂止";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(289, 122);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 30);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "结果数:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.label14.Location = new System.Drawing.Point(44, 112);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(57, 30);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "挂数";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(289, 84);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(106, 30);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "最大遗漏:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.label5.Location = new System.Drawing.Point(655, 67);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(255, 30);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "自动点击间隔时间单位秒";
+            // 
+            // lblResultCount
+            // 
+            this.lblResultCount.AutoSize = true;
+            this.lblResultCount.ForeColor = System.Drawing.Color.Red;
+            this.lblResultCount.Location = new System.Drawing.Point(379, 122);
+            this.lblResultCount.Name = "lblResultCount";
+            this.lblResultCount.Size = new System.Drawing.Size(26, 30);
+            this.lblResultCount.TabIndex = 9;
+            this.lblResultCount.Text = "0";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.numericUpDown1.Location = new System.Drawing.Point(148, 17);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            25,
             0,
             0,
             0});
-            this.numericUpDown4.Minimum = new decimal(new int[] {
-            350,
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 36);
+            this.numericUpDown1.TabIndex = 2;
+            // 
+            // lblTotalNumber2
+            // 
+            this.lblTotalNumber2.AutoSize = true;
+            this.lblTotalNumber2.ForeColor = System.Drawing.Color.Red;
+            this.lblTotalNumber2.Location = new System.Drawing.Point(574, 84);
+            this.lblTotalNumber2.Name = "lblTotalNumber2";
+            this.lblTotalNumber2.Size = new System.Drawing.Size(26, 30);
+            this.lblTotalNumber2.TabIndex = 9;
+            this.lblTotalNumber2.Text = "0";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.numericUpDown2.Location = new System.Drawing.Point(149, 65);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            15,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 36);
-            this.numericUpDown4.TabIndex = 6;
-            this.numericUpDown4.Value = new decimal(new int[] {
-            350,
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(120, 36);
+            this.numericUpDown2.TabIndex = 2;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(462, 84);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(106, 30);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "走势总量:";
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.numericUpDown3.Location = new System.Drawing.Point(151, 112);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(120, 36);
+            this.numericUpDown3.TabIndex = 2;
+            this.numericUpDown3.Value = new decimal(new int[] {
+            1,
             0,
             0,
             0});
             // 
-            // txtResult
+            // label8
             // 
-            this.txtResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtResult.Location = new System.Drawing.Point(0, 0);
-            this.txtResult.Multiline = true;
-            this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(1461, 283);
-            this.txtResult.TabIndex = 5;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(655, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(106, 30);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "显示信息:";
             // 
-            // button7
+            // numericUpDownAutoClick
             // 
-            this.button7.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button7.Location = new System.Drawing.Point(550, 73);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(200, 88);
-            this.button7.TabIndex = 4;
-            this.button7.Text = "修改保留记录";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.numericUpDownAutoClick.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.numericUpDownAutoClick.Location = new System.Drawing.Point(917, 67);
+            this.numericUpDownAutoClick.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numericUpDownAutoClick.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDownAutoClick.Name = "numericUpDownAutoClick";
+            this.numericUpDownAutoClick.Size = new System.Drawing.Size(79, 36);
+            this.numericUpDownAutoClick.TabIndex = 2;
+            this.numericUpDownAutoClick.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
-            // button6
+            // lblError
             // 
-            this.button6.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button6.Location = new System.Drawing.Point(32, 73);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(181, 88);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "开始同步";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.lblError.AutoSize = true;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(767, 9);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(145, 30);
+            this.lblError.TabIndex = 5;
+            this.lblError.Text = "显示操作信息";
             // 
-            // btnSelectFile2
+            // btnSelect
             // 
-            this.btnSelectFile2.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnSelectFile2.Location = new System.Drawing.Point(762, 75);
-            this.btnSelectFile2.Name = "btnSelectFile2";
-            this.btnSelectFile2.Size = new System.Drawing.Size(181, 31);
-            this.btnSelectFile2.TabIndex = 4;
-            this.btnSelectFile2.Text = "设置下载文件路径";
-            this.btnSelectFile2.UseVisualStyleBackColor = true;
-            this.btnSelectFile2.Click += new System.EventHandler(this.btnSelectFile2_Click);
+            this.btnSelect.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.btnSelect.Location = new System.Drawing.Point(660, 107);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(85, 58);
+            this.btnSelect.TabIndex = 3;
+            this.btnSelect.Text = "搜索1";
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
-            // txtDownLoadFilePath
+            // btnSelectConditonEnough
             // 
-            this.txtDownLoadFilePath.Location = new System.Drawing.Point(164, 24);
-            this.txtDownLoadFilePath.Name = "txtDownLoadFilePath";
-            this.txtDownLoadFilePath.Size = new System.Drawing.Size(779, 36);
-            this.txtDownLoadFilePath.TabIndex = 2;
+            this.btnSelectConditonEnough.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.btnSelectConditonEnough.Location = new System.Drawing.Point(786, 107);
+            this.btnSelectConditonEnough.Name = "btnSelectConditonEnough";
+            this.btnSelectConditonEnough.Size = new System.Drawing.Size(97, 58);
+            this.btnSelectConditonEnough.TabIndex = 3;
+            this.btnSelectConditonEnough.Text = "搜索2";
+            this.btnSelectConditonEnough.UseVisualStyleBackColor = true;
+            this.btnSelectConditonEnough.Click += new System.EventHandler(this.btnSelectConditonEnough_Click);
             // 
-            // label15
+            // btnClear
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(27, 27);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(101, 30);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "文件路径";
+            this.btnClear.Font = new System.Drawing.Font("微软雅黑", 18F);
+            this.btnClear.Location = new System.Drawing.Point(1115, 19);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(77, 84);
+            this.btnClear.TabIndex = 3;
+            this.btnClear.Text = "清除";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // contextMenuStrip1
+            // btnStartAuto
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.btnStartAuto.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.btnStartAuto.Location = new System.Drawing.Point(285, 9);
+            this.btnStartAuto.Name = "btnStartAuto";
+            this.btnStartAuto.Size = new System.Drawing.Size(168, 72);
+            this.btnStartAuto.TabIndex = 3;
+            this.btnStartAuto.Text = "开始自动";
+            this.btnStartAuto.UseVisualStyleBackColor = true;
+            this.btnStartAuto.Click += new System.EventHandler(this.btnStartAuto_Click);
             // 
-            // contextMenuStrip2
+            // btnCopy
             // 
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            this.btnCopy.Font = new System.Drawing.Font("微软雅黑", 18F);
+            this.btnCopy.Location = new System.Drawing.Point(1014, 10);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(77, 102);
+            this.btnCopy.TabIndex = 3;
+            this.btnCopy.Text = "拷贝数值";
+            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
-            // contextMenuStrip3
+            // btnStopAuto
             // 
-            this.contextMenuStrip3.Name = "contextMenuStrip3";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
-            // 
-            // chk3fen
-            // 
-            this.chk3fen.AutoSize = true;
-            this.chk3fen.Location = new System.Drawing.Point(859, 64);
-            this.chk3fen.Name = "chk3fen";
-            this.chk3fen.Size = new System.Drawing.Size(54, 16);
-            this.chk3fen.TabIndex = 7;
-            this.chk3fen.Text = "3分彩";
-            this.chk3fen.UseVisualStyleBackColor = true;
-            this.chk3fen.CheckedChanged += new System.EventHandler(this.chk3fen_CheckedChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.chk3fen);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btnRestart);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtFIlePath);
-            this.panel1.Controls.Add(this.btnSelectFile);
-            this.panel1.Controls.Add(this.chkRefersh);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1469, 122);
-            this.panel1.TabIndex = 9;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.tabControl1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 122);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1469, 565);
-            this.panel2.TabIndex = 10;
+            this.btnStopAuto.Enabled = false;
+            this.btnStopAuto.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.btnStopAuto.Location = new System.Drawing.Point(467, 12);
+            this.btnStopAuto.Name = "btnStopAuto";
+            this.btnStopAuto.Size = new System.Drawing.Size(144, 69);
+            this.btnStopAuto.TabIndex = 3;
+            this.btnStopAuto.Text = "结束自动";
+            this.btnStopAuto.UseVisualStyleBackColor = true;
+            this.btnStopAuto.Click += new System.EventHandler(this.btnStopAuto_Click);
             // 
             // kLine
             // 
@@ -1759,6 +1685,66 @@
             this.kLine.TabIndex = 4;
             this.kLine.Text = "K线";
             this.kLine.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.tabControl2);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 117);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1461, 407);
+            this.panel4.TabIndex = 1;
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl2.Location = new System.Drawing.Point(0, 0);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(1461, 407);
+            this.tabControl2.TabIndex = 14;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.lotteryKLine);
+            this.tabPage4.Location = new System.Drawing.Point(4, 37);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1453, 366);
+            this.tabPage4.TabIndex = 0;
+            this.tabPage4.Text = "K线走势";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // lotteryKLine
+            // 
+            this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lotteryKLine.Location = new System.Drawing.Point(3, 3);
+            this.lotteryKLine.Name = "lotteryKLine";
+            this.lotteryKLine.Size = new System.Drawing.Size(1447, 360);
+            this.lotteryKLine.TabIndex = 0;
+            this.lotteryKLine.TopMessage = "";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.yiLouLotteryKLine);
+            this.tabPage5.Location = new System.Drawing.Point(4, 37);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(1453, 366);
+            this.tabPage5.TabIndex = 1;
+            this.tabPage5.Text = "遗漏K走势";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // yiLouLotteryKLine
+            // 
+            this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
+            this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
+            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1447, 360);
+            this.yiLouLotteryKLine.TabIndex = 0;
+            this.yiLouLotteryKLine.TopMessage = "";
             // 
             // panel3
             // 
@@ -1775,15 +1761,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1461, 117);
             this.panel3.TabIndex = 0;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.tabControl2);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 117);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1461, 407);
-            this.panel4.TabIndex = 1;
             // 
             // numericUpDown5
             // 
@@ -1872,56 +1849,34 @@
             this.label19.TabIndex = 18;
             this.label19.Text = "号码:";
             // 
-            // tabControl2
+            // paramSet
             // 
-            this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Controls.Add(this.tabPage5);
-            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl2.Location = new System.Drawing.Point(0, 0);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1461, 407);
-            this.tabControl2.TabIndex = 14;
+            this.paramSet.Controls.Add(this.panel6);
+            this.paramSet.Controls.Add(this.panel5);
+            this.paramSet.Location = new System.Drawing.Point(4, 37);
+            this.paramSet.Name = "paramSet";
+            this.paramSet.Size = new System.Drawing.Size(1461, 524);
+            this.paramSet.TabIndex = 3;
+            this.paramSet.Text = "参数设置";
+            this.paramSet.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
+            // panel6
             // 
-            this.tabPage4.Controls.Add(this.lotteryKLine);
-            this.tabPage4.Location = new System.Drawing.Point(4, 37);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1453, 366);
-            this.tabPage4.TabIndex = 0;
-            this.tabPage4.Text = "K线走势";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.panel6.Controls.Add(this.txtResult);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 241);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1461, 283);
+            this.panel6.TabIndex = 9;
             // 
-            // lotteryKLine
+            // txtResult
             // 
-            this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lotteryKLine.Location = new System.Drawing.Point(3, 3);
-            this.lotteryKLine.Name = "lotteryKLine";
-            this.lotteryKLine.Size = new System.Drawing.Size(1447, 360);
-            this.lotteryKLine.TabIndex = 0;
-            this.lotteryKLine.TopMessage = "";
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.yiLouLotteryKLine);
-            this.tabPage5.Location = new System.Drawing.Point(4, 37);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1458, 544);
-            this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "遗漏K走势";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // yiLouLotteryKLine
-            // 
-            this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
-            this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
-            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1452, 538);
-            this.yiLouLotteryKLine.TabIndex = 0;
-            this.yiLouLotteryKLine.TopMessage = "";
+            this.txtResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtResult.Location = new System.Drawing.Point(0, 0);
+            this.txtResult.Multiline = true;
+            this.txtResult.Name = "txtResult";
+            this.txtResult.Size = new System.Drawing.Size(1461, 283);
+            this.txtResult.TabIndex = 5;
             // 
             // panel5
             // 
@@ -1937,78 +1892,147 @@
             this.panel5.Size = new System.Drawing.Size(1461, 241);
             this.panel5.TabIndex = 8;
             // 
-            // panel6
+            // txtDownLoadFilePath
             // 
-            this.panel6.Controls.Add(this.txtResult);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 241);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1461, 283);
-            this.panel6.TabIndex = 9;
+            this.txtDownLoadFilePath.Location = new System.Drawing.Point(164, 24);
+            this.txtDownLoadFilePath.Name = "txtDownLoadFilePath";
+            this.txtDownLoadFilePath.Size = new System.Drawing.Size(779, 36);
+            this.txtDownLoadFilePath.TabIndex = 2;
             // 
-            // panel7
+            // label15
             // 
-            this.panel7.Controls.Add(this.label4);
-            this.panel7.Controls.Add(this.button5);
-            this.panel7.Controls.Add(this.label3);
-            this.panel7.Controls.Add(this.button8);
-            this.panel7.Controls.Add(this.label6);
-            this.panel7.Controls.Add(this.button4);
-            this.panel7.Controls.Add(this.button3);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(3, 3);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1455, 133);
-            this.panel7.TabIndex = 8;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(27, 27);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(101, 30);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "文件路径";
             // 
-            // panel8
+            // numericUpDown4
             // 
-            this.panel8.Controls.Add(this.listBoxHistory);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, 136);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1455, 385);
-            this.panel8.TabIndex = 9;
+            this.numericUpDown4.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.numericUpDown4.Location = new System.Drawing.Point(326, 101);
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            1500,
+            0,
+            0,
+            0});
+            this.numericUpDown4.Minimum = new decimal(new int[] {
+            350,
+            0,
+            0,
+            0});
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(120, 36);
+            this.numericUpDown4.TabIndex = 6;
+            this.numericUpDown4.Value = new decimal(new int[] {
+            350,
+            0,
+            0,
+            0});
             // 
-            // panel9
+            // btnSelectFile2
             // 
-            this.panel9.Controls.Add(this.label2);
-            this.panel9.Controls.Add(this.lblMaxGua2);
-            this.panel9.Controls.Add(this.label13);
-            this.panel9.Controls.Add(this.label9);
-            this.panel9.Controls.Add(this.label14);
-            this.panel9.Controls.Add(this.label10);
-            this.panel9.Controls.Add(this.label5);
-            this.panel9.Controls.Add(this.lblResultCount);
-            this.panel9.Controls.Add(this.numericUpDown1);
-            this.panel9.Controls.Add(this.lblTotalNumber2);
-            this.panel9.Controls.Add(this.numericUpDown2);
-            this.panel9.Controls.Add(this.label12);
-            this.panel9.Controls.Add(this.numericUpDown3);
-            this.panel9.Controls.Add(this.label8);
-            this.panel9.Controls.Add(this.numericUpDownAutoClick);
-            this.panel9.Controls.Add(this.lblError);
-            this.panel9.Controls.Add(this.btnSelect);
-            this.panel9.Controls.Add(this.btnSelectConditonEnough);
-            this.panel9.Controls.Add(this.btnClear);
-            this.panel9.Controls.Add(this.btnStartAuto);
-            this.panel9.Controls.Add(this.btnCopy);
-            this.panel9.Controls.Add(this.btnStopAuto);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(3, 3);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1455, 167);
-            this.panel9.TabIndex = 11;
+            this.btnSelectFile2.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnSelectFile2.Location = new System.Drawing.Point(762, 75);
+            this.btnSelectFile2.Name = "btnSelectFile2";
+            this.btnSelectFile2.Size = new System.Drawing.Size(181, 31);
+            this.btnSelectFile2.TabIndex = 4;
+            this.btnSelectFile2.Text = "设置下载文件路径";
+            this.btnSelectFile2.UseVisualStyleBackColor = true;
+            this.btnSelectFile2.Click += new System.EventHandler(this.btnSelectFile2_Click);
             // 
-            // panel10
+            // button6
             // 
-            this.panel10.Controls.Add(this.txt50Number);
-            this.panel10.Controls.Add(this.dataGridView1);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(3, 170);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1455, 351);
-            this.panel10.TabIndex = 12;
+            this.button6.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.button6.Location = new System.Drawing.Point(32, 73);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(181, 88);
+            this.button6.TabIndex = 4;
+            this.button6.Text = "开始同步";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.button7.Location = new System.Drawing.Point(550, 73);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(200, 88);
+            this.button7.TabIndex = 4;
+            this.button7.Text = "修改保留记录";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
+            // 
+            // chk3fen
+            // 
+            this.chk3fen.AutoSize = true;
+            this.chk3fen.Location = new System.Drawing.Point(859, 64);
+            this.chk3fen.Name = "chk3fen";
+            this.chk3fen.Size = new System.Drawing.Size(54, 16);
+            this.chk3fen.TabIndex = 7;
+            this.chk3fen.Text = "3分彩";
+            this.chk3fen.UseVisualStyleBackColor = true;
+            this.chk3fen.CheckedChanged += new System.EventHandler(this.chk3fen_CheckedChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.chk3fen);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnRestart);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtFIlePath);
+            this.panel1.Controls.Add(this.btnSelectFile);
+            this.panel1.Controls.Add(this.chkRefersh);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1469, 122);
+            this.panel1.TabIndex = 9;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.tabControl1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 122);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1469, 565);
+            this.panel2.TabIndex = 10;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(897, 19);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(126, 38);
+            this.button12.TabIndex = 8;
+            this.button12.Text = "模拟3*3-0";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(639, 19);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(106, 38);
+            this.button11.TabIndex = 9;
+            this.button11.Text = "模拟3*3";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // Hou3Select350YiLouSetFormZhouQiZhong
             // 
@@ -2023,6 +2047,9 @@
             this.tabControl1.ResumeLayout(false);
             this.TotalInfo.ResumeLayout(false);
             this.TotalInfo.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.SetSearch.ResumeLayout(false);
             this.SetSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num14E)).EndInit();
@@ -2057,35 +2084,32 @@
             ((System.ComponentModel.ISupportInitialize)(this.num1B)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCondition)).EndInit();
             this.ResultPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoClick)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoClick)).EndInit();
+            this.kLine.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             this.paramSet.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.kLine.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            this.tabControl2.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2224,6 +2248,8 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button11;
     }
 }
 

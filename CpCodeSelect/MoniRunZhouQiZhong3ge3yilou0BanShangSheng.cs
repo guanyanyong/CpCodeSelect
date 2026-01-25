@@ -7,81 +7,63 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CpCodeSelect
 {
-    public partial class MoniRunZhouQiZhongLianXu8 : Form
+    public partial class MoniRunZhouQiZhong3ge3yilou0BanShangSheng : Form
     {
-        private Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness moniBusiness;
+        private Hou3Select350YiLouSetFormDuoZhouQiZhong3ge3BanShangShengMoniBusiness moniBusiness;
         Code beforeCode = null;
         Code currentCode = null;
-        public static readonly object LockPlayObj = new object();
-        public MoniRunZhouQiZhongLianXu8(Hou3Select350YiLouSetFormZhongParentBusiness business)
+        public MoniRunZhouQiZhong3ge3yilou0BanShangSheng()
         {
             InitializeComponent();
-            moniBusiness = new Hou3Select350YiLouSetFormZhouQiZhongLianXu8MoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List, business);
+            moniBusiness=new Hou3Select350YiLouSetFormDuoZhouQiZhong3ge3BanShangShengMoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List);
             dataGridView1.DataSource = moniBusiness.yilouStatisticList;
         }
         public void Run(Code code)
         {
             currentCode = code;
-            if (beforeCode == null || beforeCode.CodeQiHao != code.CodeQiHao)
+            if (beforeCode ==null || beforeCode.CodeQiHao != code.CodeQiHao)
             {
                 beforeCode = code;
                 //当上一期期号和当前期号不一样时，才进行计算
                 //这里需要跑10期后再进行计算
-                if (Hou3Select350YiLouSetFormZhouQiZhongBusiness.AllCode.Count > 280)
+                if (Hou3Select350YiLouSetFormZhouQiZhongBusiness.AllCode.Count > 270)
                 {
                     moniBusiness.CalcCode(code);
                     SetFormTxtValue();
                 }
             }
         }
-        public void AllDataInit()
-        {
-            moniBusiness.AllDataInit();
-        }
         public void SetFormTxtValue()
         {
-            txtCurrentLun.Text = moniBusiness.CurrentLun.ToString();
-            txtCurrentAmount.Text = moniBusiness.CurrentAmount.ToString();
+            txtCurrentLun.Text= moniBusiness.CurrentLun.ToString();
+            txtCurrentAmount.Text= moniBusiness.CurrentAmount.ToString();
             txtCurrentQi.Text = moniBusiness.CurrentaQi.ToString();
             txtTotalGuaCi.Text = moniBusiness.TotalGua.ToString();
             txtTotalZhongCi.Text = moniBusiness.TotalZhong.ToString();
             int zhongjiangCount = 0;
-            if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu + 1;
+            if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu+1;
 
-            txtTotalAmount.Text = moniBusiness.TotalResult.ToString("0.00");
+            txtTotalAmount.Text=moniBusiness.TotalResult.ToString("0.00");
 
-            txtLiushui.Text = moniBusiness.TotalLiuShui.ToString("0.00");
+            txtLiushui.Text=moniBusiness.TotalLiuShui.ToString("0.00");
         }
-        public void CustomLogMethod(string message, bool needPlay=false)
+        public void CustomLogMethod(string message)
         {
             //最新消息排在最上面
-            listBoxExeMsg.Items.Insert(0, message);
+            listBoxExeMsg.Items.Insert(0,message);
             listBoxExeMsg.TopIndex = 0; // 自动滚动到底部
             //listBoxExeMsg.TopIndex = listBoxExeMsg.Items.Count - 1; // 自动滚动到底部
             SetFormTxtValue();
-            using (var writer = new StreamWriter("moni8期.txt", true))
+            using (var writer = new StreamWriter("moni3-3yilou0.txt", true))
             {
-                writer.WriteLine(message);
+                writer.WriteLine(message); 
                 writer.Flush();
-            }
-            if (needPlay)
-            {
-                lock (LockPlayObj)
-                {
-
-                    using (SoundPlayer player = new SoundPlayer(".\\data\\yanhua.wav")) // 替换为你的音乐文件路径
-                    {
-                        // 播放音乐
-                        player.Play();
-                    }
-                }
             }
         }
 

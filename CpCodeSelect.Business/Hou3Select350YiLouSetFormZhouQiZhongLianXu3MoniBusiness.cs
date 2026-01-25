@@ -151,7 +151,7 @@ namespace CpCodeSelect.Business
             List<PositionNumber> list = new List<PositionNumber>();
             if (this.model350List == null || model350List.Count == 0)
             {
-                model350List = Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List;
+                model350List = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List;
             }
             if (IsOriginBeginStatus())
             {

@@ -48,7 +48,8 @@ namespace CpCodeSelect
         private MoniRunZhouQiZhongLianXu8 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongLianXu8(new Hou3Select350YiLouSetFormZhouQiZhongBusiness());
         private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
         private MoniRunZhouQiZhongLianXu8Amount5566 moniRunZhouQiZhongLianXu8Amount5566 = new MoniRunZhouQiZhongLianXu8Amount5566();
-
+        private MoniRunZhouQiZhong3ge3yilou0BanShangSheng sangesanyilou0 = new MoniRunZhouQiZhong3ge3yilou0BanShangSheng();
+        private MoniRunZhouQiZhong3ge3BanShangSheng moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong3ge3BanShangSheng();
         private Hou3Select350_ZhouQiZhong currentCalcKLineDate = null;
         public Hou3Select350YiLouSetFormZhouQiZhong()
         {
@@ -238,6 +239,8 @@ namespace CpCodeSelect
             moniRunZhouQiZhongLianXu8.Run(code);
             moniRunZhouQiZhongLianXu8Amount5566.Run(code);
             moniRunZhouQiZhongLianXu3.Run(code);
+            sangesanyilou0.Run(code);
+            moniRunZhouQiZhong3Ge3.Run(code);
 
             //把记录添加到界面上 异步方式
             //AddRecordToPage(code);
@@ -1468,6 +1471,16 @@ namespace CpCodeSelect
 
                 yiLouLotteryKLine.TopMessage = $"遗漏K线【遗漏范围:0-2 当前遗漏{data.GuaCount} 概率:0.7253750】";
             }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            moniRunZhouQiZhong3Ge3.Show();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            sangesanyilou0.Show();
         }
     }
 }

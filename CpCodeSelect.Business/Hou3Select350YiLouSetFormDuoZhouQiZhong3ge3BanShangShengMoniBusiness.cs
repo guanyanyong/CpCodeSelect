@@ -13,7 +13,7 @@ namespace CpCodeSelect.Business
     /// <summary>
     /// 模拟执行3个3轮的确认点买入
     /// </summary>
-    public class Hou3Select350YiLouSetFormDuoZhouQiZhong3ge3MoniBusiness
+    public class Hou3Select350YiLouSetFormDuoZhouQiZhong3ge3BanShangShengMoniBusiness
     { 
         public delegate void LogDelegate(string message);
         private LogDelegate _logMethod;
@@ -23,7 +23,7 @@ namespace CpCodeSelect.Business
         public List<YilouStatistic> yilouStatisticList = new List<YilouStatistic>();
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
-        public Hou3Select350YiLouSetFormDuoZhouQiZhong3ge3MoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhong> model350List)
+        public Hou3Select350YiLouSetFormDuoZhouQiZhong3ge3BanShangShengMoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhong> model350List)
         {
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
             this.model350List = model350List;
@@ -148,7 +148,7 @@ namespace CpCodeSelect.Business
             List<PositionNumber> list = new List<PositionNumber>();
             if (this.model350List == null || model350List.Count == 0)
             {
-                model350List = Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List;
+                model350List = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List;
             }
             if (IsOriginBeginStatus())
             {
