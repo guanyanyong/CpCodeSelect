@@ -44,3 +44,7 @@
 /CpCodeSelect.Control/bin/Debug/CpCodeSelect.Control.pdb
 /CpCodeSelect.Control/bin/Debug/CpCodeSelect.Model.dll
 /CpCodeSelect.Control/bin/Debug/CpCodeSelect.Model.pdb
+/CpCodeSelect.Control/bin/Release
+/CpCodeSelect.Control/obj/Release
+/CpCodeSelect.DA/obj/Debug/CpCodeSelect.DA.csproj.AssemblyReference.cache
+/CpCodeSelect.Model/obj/Debug/CpCodeSelect.Model.csproj.AssemblyReference.cache
