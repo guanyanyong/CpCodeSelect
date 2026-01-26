@@ -114,7 +114,9 @@ namespace CpCodeSelect.Business
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= (numberCount/50 + 10))
+                    var number = codeDecimal - currentDecimal;
+                    if (number > 1440) number = number - (10000 - 1440);
+                    if (number >= (numberCount/50 + 10))
                     {
                         removeList.Add(model);
                     }

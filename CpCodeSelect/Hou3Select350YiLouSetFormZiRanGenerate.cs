@@ -36,6 +36,7 @@ namespace CpCodeSelect
         private bool firstTime = true;//是否第一次执行
         private Object lockObj = new Object();
         private Object LockPlayObj = new object();
+        private int leftNumber = 350;
         public MoniRunKill3 moniKill3 = new MoniRunKill3();
         public MoniRunKill3_2 moniKill3_2 = new MoniRunKill3_2();
         public MoniRunKill3_3 moniKill3_3 = new MoniRunKill3_3();
@@ -501,6 +502,7 @@ namespace CpCodeSelect
 
             var path3fen = ConfigurationManager.AppSettings["3FenCaiFilePath"];
             var is3fen = ConfigurationManager.AppSettings["Is3fen"];
+            var defaultLeftNumberStr=ConfigurationManager.AppSettings["DefaultLeftNumber"];
             if (!string.IsNullOrEmpty(is3fen))
             {
                 if (is3fen == "1")
@@ -521,6 +523,11 @@ namespace CpCodeSelect
                         filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt"; ;
                     }
                 }
+            }
+            if (!string.IsNullOrEmpty(defaultLeftNumberStr))
+            {
+                leftNumber= Convert.ToInt32(defaultLeftNumberStr);
+                numericUpDown4.Value = leftNumber;
             }
         }
         private void InitData()
