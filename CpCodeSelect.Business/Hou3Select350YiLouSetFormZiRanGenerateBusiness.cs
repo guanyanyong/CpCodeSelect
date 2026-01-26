@@ -13,7 +13,7 @@ using static CpCodeSelect.Model.Zu6Kill1Model;
 
 namespace CpCodeSelect.Business
 {
-    public class Hou3Select350YiLouSetFormZhouQiZhongBusiness : Hou3Select350YiLouSetFormZhongParentBusiness
+    public class Hou3Select350YiLouSetFormZiRanGenerateBusiness : Hou3Select350YiLouSetFormZhongParentBusiness
     { 
         
         public static new void InitData()
@@ -216,8 +216,8 @@ namespace CpCodeSelect.Business
 
                 */
 
-                var hou3List = Hou3Select350YiLouSetFormZhouQiZhongBusiness.GenerateHou3NumbereFromCode(270);
-                var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
+                var hou3List = GenerateHou3NumbereFromCode(270);
+                var numerList = MultiThreadedNumberSelectFor350Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 50);
                 foreach (var number in numerList)
                 {
                     if (number.Count > 0)

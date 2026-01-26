@@ -24,11 +24,11 @@ namespace CpCodeSelect.Model.ExModel
             }
         }
         /// <summary>
-        /// 当前连中次数
+        /// 当前连挂次数
         /// </summary>
         public int CurrentGuaCount { get; set;  }
         /// <summary>
-        /// 当前连挂次数
+        /// 当前连中次数
         /// </summary>
         public int CurrentZhongCount { get; set;  }
         /// <summary>
