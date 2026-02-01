@@ -2066,7 +2066,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelError);
             this.Name = "Hou3Select350YiLouSetFormZiRanGenerate";
-            this.Text = "350注自然选号遗漏搜索";
+            this.Text = "350注自然选号遗漏搜索200记录";
             this.tabControl1.ResumeLayout(false);
             this.TotalInfo.ResumeLayout(false);
             this.TotalInfo.PerformLayout();

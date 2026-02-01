@@ -1526,7 +1526,7 @@ namespace CpCodeSelect
                 {
                     if (record.KLineList.Count >= 250)
                     {
-                        var recordSubList = record.KLineList.GetRange(record.KLineList.Count - 250, 250);
+                        var recordSubList = record.KLineList.GetRange(record.KLineList.Count - 200, 200);
                         var maxGuaCount = recordSubList.Max(p => p.CurrentGuaCount);
                         if (maxGuaCount <= guaCount)
                         {

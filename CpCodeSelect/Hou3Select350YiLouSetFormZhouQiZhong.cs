@@ -614,7 +614,7 @@ namespace CpCodeSelect
         /// </summary>
         private void StartExec()
         {
-            if (DateTime.Now >= Convert.ToDateTime("2026-01-31"))
+            if (DateTime.Now >= Convert.ToDateTime("2026-02-28"))
             {
                 //MessageBox.Show("软件试用期已过期，请联系作者购买正式版");
                 return;
@@ -1501,7 +1501,7 @@ namespace CpCodeSelect
         private void btnYiLou_Click(object sender, EventArgs e)
         {
             var guaCount = numericUpDown3.Value;
-            var list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
+            //var list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
             var getEnoughRecordList = new List<Hou3Select350_ZhouQiZhong>();
             if (Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.Count >= 350)
             {
@@ -1509,7 +1509,7 @@ namespace CpCodeSelect
                 {
                     if (record.KLineList.Count >= 250)
                     {
-                        var recordSubList = record.KLineList.GetRange(record.KLineList.Count - 300, 300);
+                        var recordSubList = record.KLineList.GetRange(record.KLineList.Count - 250, 250);
                         var maxGuaCount = recordSubList.Max(p => p.CurrentGuaCount);
                         if (maxGuaCount <= guaCount)
                         {
@@ -1538,7 +1538,7 @@ namespace CpCodeSelect
             //        }
             //    }
             //}
-
+            getEnoughRecordList= getEnoughRecordList.OrderByDescending(p => p.IsZhouQiZhongHou).ThenBy(p => p.ZhouQiZhongHouGua).ThenBy(p=>p.GuaCount).ToList();
 
             SetDataSource(getEnoughRecordList);
         }
