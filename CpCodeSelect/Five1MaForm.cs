@@ -316,7 +316,7 @@ namespace CpCodeSelect
         /// </summary>
         private void StartExec()
         {
-            if (DateTime.Now >= Convert.ToDateTime("2025-10-22"))
+            if (DateTime.Now >= Convert.ToDateTime("2026-10-22"))
             {
                 //MessageBox.Show("软件试用期已过期，请联系作者购买正式版");
                 return;

@@ -68,7 +68,7 @@ namespace CpCodeSelect.Business
                 //删除超过3000条的记录 如果没有4挂的就删除
                 RemoveOldModel(code, 1);
             }
-            Hou3Select350YiLouSetFormZhouQiZhongBusiness.code = code;
+            Hou3Select350YiLouSetFormZiRanGenerateBusiness.code = code;
         }
         /// <summary>
         ///  删除小于指定挂数的旧记录

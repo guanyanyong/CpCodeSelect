@@ -1,5 +1,4 @@
-﻿using CpCodeSelect.Business;
-using CpCodeSelect.Model;
+﻿using CpCodeSelect.Model;
 using CpCodeSelect.Model.ExModel;
 using CpCodeSelect.Util;
 using System;
@@ -7,33 +6,27 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static CpCodeSelect.Model.Zu6Kill1Model;
 
-namespace CpCodeSelect
+namespace CpCodeSelect.Business
 {
-    public class Hou3Select350YiLouSetFormZhongParentBusiness
-    {
-        public static List<Code> AllCode = new List<Code>();
-        public static Dictionary<string, int> Hou2NumberCount = new Dictionary<string, int>();
-        public static Code code = null;
-        public static Object lockObj = new Object();
-        public static List<Hou3Select350_ZhouQiZhong> model350List = new List<Hou3Select350_ZhouQiZhong>();
-        public static string leftNumberCountStr = ConfigurationManager.AppSettings["LeftNumberCount"];
-        public static List<Hou3Select350_ZhouQiZhong> currentNeedCalcList = new List<Hou3Select350_ZhouQiZhong>();
-
-        public static void InitData()
+    public class Hou3Select350YiLouSetFormXiaJiangXiaoFanTanBusiness : Hou3Select350YiLouSetFormZhongParentBusiness
+    { 
+        
+        public static new void InitData()
         {
             AllCode = new List<Code>();
-            model350List = new List<Hou3Select350_ZhouQiZhong>();
+            model350List= new List<Hou3Select350_ZhouQiZhong>();
             Hou2NumberCount = new Dictionary<string, int>();
         }
-
         /// <summary>
         /// 初始化号码
         /// </summary>
         /// <param name="code"></param>
-        public static void InitCode(Code code)
+        public static new void InitCode(Code code)
         {
             code.Wan = new PositionNumber
             {
@@ -69,20 +62,19 @@ namespace CpCodeSelect
 
             // 生成新的350码
             //GenerateCode(code);
-            //if (AllCode != null && AllCode.Count > 1620)
-            //{
-            //    Generate350Code(code);
-            //    //删除超过3000条的记录 如果没有4挂的就删除
-            //    RemoveOldModel(code, 1);
-            //}
-            Hou3Select350YiLouSetFormZhongParentBusiness.code = code;
+            if (AllCode != null && AllCode.Count > 270)
+            {
+                //Generate350Code(code);
+                //删除超过3000条的记录 如果没有4挂的就删除
+                //RemoveOldModel(code, 1);
+            }
+            Hou3Select350YiLouSetFormXiaJiangXiaoFanTanBusiness.code = code;
         }
-
         /// <summary>
         ///  删除小于指定挂数的旧记录
         /// </summary>
         /// <param name="guaCount"></param>
-        public static void RemoveOldModel(Code code, int guaCount = 1)
+        public static new void RemoveOldModel(Code code, int guaCount = 1)
         {
             var codeDecimal = Convert.ToDecimal(code.CodeQiHao);
             List<Hou3Select350_ZhouQiZhong> removeList = new List<Hou3Select350_ZhouQiZhong>();
@@ -100,7 +92,7 @@ namespace CpCodeSelect
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= 10 && model.ZhouQiZhongHouGua <= guaCount && model.GuaCount <= 6)
+                    if (codeDecimal - currentDecimal >= 10 && model.ZhouQiZhongHouGua <= guaCount && model.GuaCount<=6)
                     {
                         removeList.Add(model);
                     }
@@ -122,7 +114,9 @@ namespace CpCodeSelect
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= 30)
+                    var number = codeDecimal - currentDecimal;
+                    if (number > 1440) number = number - (10000 - 1440);
+                    if (number >= (numberCount/50 + 10))
                     {
                         removeList.Add(model);
                     }
@@ -134,66 +128,79 @@ namespace CpCodeSelect
                 removeList.Clear();
             }
         }
-        public static void CalcExist350Code(Code code)
+        public static new void CalcExist350Code(Code code)
         {
             var hou3 = code.GetHou3String();
             foreach (var model in model350List)
             {
-                if (model.Number350.Contains(hou3))
+                CalcCode(code, model, hou3);
+            }
+            if (currentNeedCalcList != null)
+            {
+                foreach (var model in currentNeedCalcList)
                 {
-                    //中了
-                    model.ZhongGount++;
-                    model.NeedZhong = false;
-                    model.Zhong3BeforeGua = model.Zhong2BeforeGua;
-                    model.Zhong2BeforeGua = model.ZhongBeforeGua;
-                    model.ZhongBeforeGua = model.GuaCount;
-
-                    model.GuaCount = 0;
-
-                    // 判断是否在中后周期内
-                    if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
-                    {
-
-                        model.IsZhouQiZhongHou = true;
-                    }
-                    else
-                    {
-                        model.IsZhouQiZhongHou = false;
-                    }
-
-                    //判断是否周期内挂
-                    if (model.Zhong3BeforeGua >= 2 && model.Zhong2BeforeGua <= 1 && model.ZhongBeforeGua >= 2)
-                    {
-                        model.ZhouQiZhongHouGua++;
-                    }
-
-                    if (model.Zhong2BeforeGua <= 1 && model.ZhongBeforeGua <= 1)
-                    {
-                        model.ZhouQiZhongHouGua = 0;
-                    }
+                    CalcCode(code, model, hou3);
                 }
-                else
-                {
-                    //挂了
-                    model.GuaCount++;
-                    model.ZhongGount = 0;
-                    if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
-                    {
-                        model.IsZhouQiZhongHou = true;
-                    }
-                    if (model.GuaCount >= 2)
-                    {
-                        //挂超过2次后就不是周期内
-                        model.IsZhouQiZhongHou = false;
-                    }
-                }
-
-                //计算当前期的K线
-                KLine350Calc.CalcKlineCurrent(model, code);
             }
         }
 
-        public static void Generate350Code(Code code)
+
+        private static void CalcCode(Code code, Hou3Select350_ZhouQiZhong model, string hou3)
+        {
+            if (model.Number350.Contains(hou3))
+            {
+                //中了
+                model.ZhongGount++;
+                model.NeedZhong = false;
+                model.Zhong3BeforeGua = model.Zhong2BeforeGua;
+                model.Zhong2BeforeGua = model.ZhongBeforeGua;
+                model.ZhongBeforeGua = model.GuaCount;
+
+                model.GuaCount = 0;
+
+                // 判断是否在中后周期内
+                if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
+                {
+
+                    model.IsZhouQiZhongHou = true;
+                }
+                else
+                {
+                    model.IsZhouQiZhongHou = false;
+                }
+
+                //判断是否周期内挂
+                if (model.Zhong3BeforeGua >= 2 && model.Zhong2BeforeGua <= 1 && model.ZhongBeforeGua >= 2)
+                {
+                    model.ZhouQiZhongHouGua++;
+                }
+
+                if (model.Zhong2BeforeGua <= 1 && model.ZhongBeforeGua <= 1)
+                {
+                    model.ZhouQiZhongHouGua = 0;
+                }
+            }
+            else
+            {
+                //挂了
+                model.GuaCount++;
+                model.ZhongGount = 0;
+                if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
+                {
+                    model.IsZhouQiZhongHou = true;
+                }
+                if (model.GuaCount >= 2)
+                {
+                    //挂超过2次后就不是周期内
+                    model.IsZhouQiZhongHou = false;
+                }
+            }
+
+            //计算当前期的K线
+            //KLine350Calc.CalcKlineCurrent(model, code);
+        }
+
+        public static new void Generate350Code(Code code)
         {
 
             if (AllCode != null && AllCode.Count > 270)
@@ -211,8 +218,8 @@ namespace CpCodeSelect
 
                 */
 
-                var hou3List = Hou3Select350YiLouSetFormZhouQiZhongBusiness.GenerateHou3NumbereFromCode(270);
-                var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
+                var hou3List = GenerateHou3NumbereFromCode(270);
+                var numerList = MultiThreadedNumberSelectFor350Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 50);
                 foreach (var number in numerList)
                 {
                     if (number.Count > 0)
@@ -246,7 +253,7 @@ namespace CpCodeSelect
         /// <param name="number"></param>
         /// <param name="AllCode"></param>
         /// <returns></returns>
-        public static List<string> GenerateHou3NumbereFromCode(int number)
+        public static new List<string> GenerateHou3NumbereFromCode(int number)
         {
 
             List<string> Hou3NumberCount = new List<string>();
@@ -262,9 +269,6 @@ namespace CpCodeSelect
             }
             return Hou3NumberCount.ToList();
         }
-
-
-
 
     }
 }

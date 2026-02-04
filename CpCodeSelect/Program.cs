@@ -79,6 +79,9 @@ namespace CpCodeSelect
             }else if(str== "Hou3Select350YiLouSetFormZiRanGenerate")
             {
                 Application.Run(new Hou3Select350YiLouSetFormZiRanGenerate());
+            }else if(str== "Hou3Select350YiLouSetFormXiaJiangXiaoFanTan")
+            {
+                Application.Run(new Hou3Select350YiLouSetFormXiaJiangXiaoFanTan());
             }
         }
     }

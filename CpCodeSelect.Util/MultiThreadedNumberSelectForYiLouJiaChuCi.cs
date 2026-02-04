@@ -11,7 +11,7 @@ namespace CpCodeSelect.Util
     /// <summary>
     /// 2星
     /// </summary>
-    public class MultiThreadedNumberSelectForYiLou
+    public class MultiThreadedNumberSelectForYiLouJiaChuCi
     {
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
