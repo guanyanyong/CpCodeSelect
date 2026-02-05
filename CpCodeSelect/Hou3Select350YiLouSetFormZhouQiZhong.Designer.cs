@@ -99,6 +99,14 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.txt50Number = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ZhouQiZhongHouGua = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsZhouQiZhongHou = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Numer50 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.CodeQiHao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.lblMaxGua2 = new System.Windows.Forms.Label();
@@ -117,6 +125,7 @@
             this.numericUpDownAutoClick = new System.Windows.Forms.NumericUpDown();
             this.lblError = new System.Windows.Forms.Label();
             this.btnSelect = new System.Windows.Forms.Button();
+            this.btnYiLou = new System.Windows.Forms.Button();
             this.btnSelectConditonEnough = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnStartAuto = new System.Windows.Forms.Button();
@@ -153,17 +162,9 @@
             this.chk3fen = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnYiLou = new System.Windows.Forms.Button();
             this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
             this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
-            this.ZhouQiZhongHouGua = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsZhouQiZhongHou = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Numer50 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.CodeQiHao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnQuShiDuanSearch = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -1359,6 +1360,62 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // ZhouQiZhongHouGua
+            // 
+            this.ZhouQiZhongHouGua.DataPropertyName = "ZhouQiZhongHouGua";
+            this.ZhouQiZhongHouGua.HeaderText = "周期中后挂";
+            this.ZhouQiZhongHouGua.Name = "ZhouQiZhongHouGua";
+            this.ZhouQiZhongHouGua.Width = 150;
+            // 
+            // IsZhouQiZhongHou
+            // 
+            this.IsZhouQiZhongHou.DataPropertyName = "IsZhouQiZhongHou";
+            this.IsZhouQiZhongHou.HeaderText = "是否可上";
+            this.IsZhouQiZhongHou.Name = "IsZhouQiZhongHou";
+            this.IsZhouQiZhongHou.Width = 120;
+            // 
+            // Numer50
+            // 
+            this.Numer50.DataPropertyName = "Numer50";
+            this.Numer50.HeaderText = "号码";
+            this.Numer50.Name = "Numer50";
+            this.Numer50.Text = "查号";
+            this.Numer50.UseColumnTextForButtonValue = true;
+            // 
+            // CodeQiHao
+            // 
+            this.CodeQiHao.DataPropertyName = "CodeQiHao";
+            this.CodeQiHao.HeaderText = "期号";
+            this.CodeQiHao.Name = "CodeQiHao";
+            // 
+            // CodeNumber
+            // 
+            this.CodeNumber.DataPropertyName = "CodeNumber";
+            this.CodeNumber.HeaderText = "开奖号";
+            this.CodeNumber.MinimumWidth = 120;
+            this.CodeNumber.Name = "CodeNumber";
+            this.CodeNumber.Width = 150;
+            // 
+            // ZhongGount
+            // 
+            this.ZhongGount.DataPropertyName = "ZhongGount";
+            this.ZhongGount.HeaderText = "连中";
+            this.ZhongGount.Name = "ZhongGount";
+            // 
+            // GuaCount
+            // 
+            this.GuaCount.DataPropertyName = "GuaCount";
+            this.GuaCount.HeaderText = "挂数";
+            this.GuaCount.MinimumWidth = 60;
+            this.GuaCount.Name = "GuaCount";
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "删除";
+            this.Delete.Name = "Delete";
+            this.Delete.Text = "删除";
+            this.Delete.UseColumnTextForButtonValue = true;
+            // 
             // panel9
             // 
             this.panel9.Controls.Add(this.label2);
@@ -1378,6 +1435,7 @@
             this.panel9.Controls.Add(this.numericUpDownAutoClick);
             this.panel9.Controls.Add(this.lblError);
             this.panel9.Controls.Add(this.btnSelect);
+            this.panel9.Controls.Add(this.btnQuShiDuanSearch);
             this.panel9.Controls.Add(this.btnYiLou);
             this.panel9.Controls.Add(this.btnSelectConditonEnough);
             this.panel9.Controls.Add(this.btnClear);
@@ -1593,6 +1651,17 @@
             this.btnSelect.Text = "搜索1";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // btnYiLou
+            // 
+            this.btnYiLou.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.btnYiLou.Location = new System.Drawing.Point(917, 109);
+            this.btnYiLou.Name = "btnYiLou";
+            this.btnYiLou.Size = new System.Drawing.Size(155, 58);
+            this.btnYiLou.TabIndex = 3;
+            this.btnYiLou.Text = "最大遗漏搜索";
+            this.btnYiLou.UseVisualStyleBackColor = true;
+            this.btnYiLou.Click += new System.EventHandler(this.btnYiLou_Click);
             // 
             // btnSelectConditonEnough
             // 
@@ -1971,17 +2040,6 @@
             this.panel2.Size = new System.Drawing.Size(1469, 565);
             this.panel2.TabIndex = 10;
             // 
-            // btnYiLou
-            // 
-            this.btnYiLou.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnYiLou.Location = new System.Drawing.Point(917, 109);
-            this.btnYiLou.Name = "btnYiLou";
-            this.btnYiLou.Size = new System.Drawing.Size(155, 58);
-            this.btnYiLou.TabIndex = 3;
-            this.btnYiLou.Text = "最大遗漏搜索";
-            this.btnYiLou.UseVisualStyleBackColor = true;
-            this.btnYiLou.Click += new System.EventHandler(this.btnYiLou_Click);
-            // 
             // lotteryKLine
             // 
             this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1996,65 +2054,20 @@
             this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
             this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
             this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
-            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1447, 375);
+            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1447, 360);
             this.yiLouLotteryKLine.TabIndex = 0;
             this.yiLouLotteryKLine.TopMessage = "";
             // 
-            // ZhouQiZhongHouGua
+            // btnQuShiDuanSearch
             // 
-            this.ZhouQiZhongHouGua.DataPropertyName = "ZhouQiZhongHouGua";
-            this.ZhouQiZhongHouGua.HeaderText = "周期中后挂";
-            this.ZhouQiZhongHouGua.Name = "ZhouQiZhongHouGua";
-            this.ZhouQiZhongHouGua.Width = 150;
-            // 
-            // IsZhouQiZhongHou
-            // 
-            this.IsZhouQiZhongHou.DataPropertyName = "IsZhouQiZhongHou";
-            this.IsZhouQiZhongHou.HeaderText = "是否可上";
-            this.IsZhouQiZhongHou.Name = "IsZhouQiZhongHou";
-            this.IsZhouQiZhongHou.Width = 120;
-            // 
-            // Numer50
-            // 
-            this.Numer50.DataPropertyName = "Numer50";
-            this.Numer50.HeaderText = "号码";
-            this.Numer50.Name = "Numer50";
-            this.Numer50.Text = "查号";
-            this.Numer50.UseColumnTextForButtonValue = true;
-            // 
-            // CodeQiHao
-            // 
-            this.CodeQiHao.DataPropertyName = "CodeQiHao";
-            this.CodeQiHao.HeaderText = "期号";
-            this.CodeQiHao.Name = "CodeQiHao";
-            // 
-            // CodeNumber
-            // 
-            this.CodeNumber.DataPropertyName = "CodeNumber";
-            this.CodeNumber.HeaderText = "开奖号";
-            this.CodeNumber.MinimumWidth = 120;
-            this.CodeNumber.Name = "CodeNumber";
-            this.CodeNumber.Width = 150;
-            // 
-            // ZhongGount
-            // 
-            this.ZhongGount.DataPropertyName = "ZhongGount";
-            this.ZhongGount.HeaderText = "连中";
-            this.ZhongGount.Name = "ZhongGount";
-            // 
-            // GuaCount
-            // 
-            this.GuaCount.DataPropertyName = "GuaCount";
-            this.GuaCount.HeaderText = "挂数";
-            this.GuaCount.MinimumWidth = 60;
-            this.GuaCount.Name = "GuaCount";
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "删除";
-            this.Delete.Name = "Delete";
-            this.Delete.Text = "删除";
-            this.Delete.UseColumnTextForButtonValue = true;
+            this.btnQuShiDuanSearch.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.btnQuShiDuanSearch.Location = new System.Drawing.Point(1225, 23);
+            this.btnQuShiDuanSearch.Name = "btnQuShiDuanSearch";
+            this.btnQuShiDuanSearch.Size = new System.Drawing.Size(155, 72);
+            this.btnQuShiDuanSearch.TabIndex = 3;
+            this.btnQuShiDuanSearch.Text = "趋势段搜索";
+            this.btnQuShiDuanSearch.UseVisualStyleBackColor = true;
+            this.btnQuShiDuanSearch.Click += new System.EventHandler(this.btnQuShiDuanSearch_Click);
             // 
             // Hou3Select350YiLouSetFormZhouQiZhong
             // 
@@ -2274,6 +2287,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ZhongGount;
         private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.Button btnQuShiDuanSearch;
     }
 }
 

@@ -28,6 +28,7 @@ namespace CpCodeSelect
         public Dictionary<int, List<StatisticModel>> StatisticDic = new Dictionary<int, List<StatisticModel>>();
         private string filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt";
         private string feilePath3fen = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TX3FC.txt";
+        private int defaultLeftNumber = 350;
         private FileSystemWatcher fileWatcher;
         private System.Windows.Forms.Timer showErrorTexttimer;
         //private Timer addTextTimer;
@@ -68,7 +69,7 @@ namespace CpCodeSelect
                 var tabPage = tabControl1.TabPages[i];
                 if (tabPage.Name == "SetSearch")
                 {
-                    //tabPage.Parent = null;
+                    tabPage.Parent = null;
                     break;
                 }
             }
@@ -499,6 +500,7 @@ namespace CpCodeSelect
                 filePath = path;
             }
 
+            var defaultLeftNumberStr = ConfigurationManager.AppSettings["DefaultLeftNumber"];
             var path3fen = ConfigurationManager.AppSettings["3FenCaiFilePath"];
             var is3fen = ConfigurationManager.AppSettings["Is3fen"];
             if (!string.IsNullOrEmpty(is3fen))
@@ -521,6 +523,15 @@ namespace CpCodeSelect
                         filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt"; ;
                     }
                 }
+            }
+
+            if (!string.IsNullOrEmpty(defaultLeftNumberStr))
+            {
+                numericUpDown4.Value = Convert.ToDecimal(defaultLeftNumberStr);
+            }
+            else
+            {
+                numericUpDown4.Value = 350;
             }
         }
         private void InitData()
@@ -614,7 +625,7 @@ namespace CpCodeSelect
         /// </summary>
         private void StartExec()
         {
-            if (DateTime.Now >= Convert.ToDateTime("2026-02-28"))
+            if (DateTime.Now >= Convert.ToDateTime("2026-03-31"))
             {
                 //MessageBox.Show("软件试用期已过期，请联系作者购买正式版");
                 return;
@@ -1142,6 +1153,7 @@ namespace CpCodeSelect
             model350.NeedZhong = true;
             model350.KLineList = new List<KLine>();
             model350.YiLouKline350 = new List<YiLouKline350>();
+            model350.YiLouTuLineList = new List<KLine>();
             KLine350Calc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormZhouQiZhongBusiness.AllCode, 100);
             var result = KLine350Calc.KLineIsEnough(model350.KLineList);
             if (result.Result)
@@ -1370,6 +1382,7 @@ namespace CpCodeSelect
                         model350.NeedZhong = true;
                         model350.KLineList = new List<KLine>();
                         model350.YiLouKline350 = new List<YiLouKline350>();
+                        model350.YiLouTuLineList = new List<KLine>();
 
                         KLine350Calc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormZhouQiZhongBusiness.AllCode, (int)numericUpDown5.Value + 21);
 
@@ -1509,7 +1522,7 @@ namespace CpCodeSelect
                 {
                     if (record.KLineList.Count >= 250)
                     {
-                        var recordSubList = record.KLineList.GetRange(record.KLineList.Count - 250, 250);
+                        var recordSubList = record.KLineList.GetRange(record.KLineList.Count - 240, 240);
                         var maxGuaCount = recordSubList.Max(p => p.CurrentGuaCount);
                         if (maxGuaCount <= guaCount)
                         {
@@ -1539,6 +1552,56 @@ namespace CpCodeSelect
             //    }
             //}
             getEnoughRecordList= getEnoughRecordList.OrderByDescending(p => p.IsZhouQiZhongHou).ThenBy(p => p.ZhouQiZhongHouGua).ThenBy(p=>p.GuaCount).ToList();
+
+            SetDataSource(getEnoughRecordList);
+        }
+
+        private void btnQuShiDuanSearch_Click(object sender, EventArgs e)
+        {
+            var guaCount = numericUpDown3.Value;
+            //var list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
+            var getEnoughRecordList = new List<Hou3Select350_ZhouQiZhong>();
+            if (Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.Count >= 350)
+            {
+                foreach (var record in Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List)
+                {
+                    if (record.YiLouTuLineList.Count >= 10)
+                    {
+                        var recordSubList = record.YiLouTuLineList.GetRange(record.YiLouTuLineList.Count - 3, 3);
+                        var yiLouTuLineList = record.YiLouTuLineList[3];
+                        //往前的第5个遗漏大于1
+                        if (yiLouTuLineList.CurrentGuaCount > 2)
+                        {
+                            var maxGuaCount = recordSubList.Max(p => p.CurrentGuaCount);
+                            if (maxGuaCount <= 1)
+                            {
+                                getEnoughRecordList.Add(record);
+                            }
+                        }
+                    }
+                }
+            }
+
+            //List<Hou3Select350_ZhouQiZhong> recordList = new List<Hou3Select350_ZhouQiZhong>();
+
+            //if (list.Count > 0)
+            //{
+
+            //    //最多查找5次,如果5次没有找到合适的记录就不投注
+            //    bool foundRecord = false;
+            //    for (int i = 0; i < list.Count; i++)
+            //    {
+
+            //        var zhouQiZhongRecord = list[i];
+            //        var klinLIst = zhouQiZhongRecord.KLineList;
+            //        if (KLine350Calc.KLineIsEnough(klinLIst).Result)
+            //        {
+            //            foundRecord = true;
+            //            recordList.Add(zhouQiZhongRecord);
+            //        }
+            //    }
+            //}
+            getEnoughRecordList = getEnoughRecordList.OrderByDescending(p => p.IsZhouQiZhongHou).ThenBy(p => p.ZhouQiZhongHouGua).ThenBy(p => p.GuaCount).ToList();
 
             SetDataSource(getEnoughRecordList);
         }

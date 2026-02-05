@@ -40,6 +40,7 @@ namespace CpCodeSelect.Model
         /// </summary>
 
         public List<KLine> KLineList { get; set; }
+        public List<KLine> YiLouTuLineList { get; set; }
         public List<YiLouKline350> YiLouKline350 { get; set; }
 
         /// <summary>

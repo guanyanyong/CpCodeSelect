@@ -216,14 +216,14 @@ namespace CpCodeSelect.Business
                     {
                         //执行中，未中出
                         GuaCount++;
-                        if (GuaCount <= 8)
+                        if (GuaCount <= 6)
                         {
                             //挂8以内说明挂了1次
                             IsRunning = true;
                             CurrentaQi = GuaCount;
                             StartCalc(code);
                         }
-                        else if (GuaCount == 9)
+                        else if (GuaCount == 7)
                         {
                             //挂9说明挂了8次,结束
                             IsRunning = false;
@@ -240,7 +240,7 @@ namespace CpCodeSelect.Business
 
                             before350List = current350List;
 
-                            yilouStatisticList[8].TotalCount = yilouStatisticList[8].TotalCount + 1;
+                            yilouStatisticList[6].TotalCount = yilouStatisticList[6].TotalCount + 1;
                         }
                     }
                 }
@@ -258,7 +258,7 @@ namespace CpCodeSelect.Business
         /// </summary>
         public void Select350AndStartCalc(Code code)
         {
-            //list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.
+            /* 原始的逻辑
             var list = model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == 0 && p.IsZhouQiZhongHou).ToList();
             Hou3Select350_ZhouQiZhong record = null;
             if (list.Count == 0) return;
@@ -294,13 +294,41 @@ namespace CpCodeSelect.Business
                     break;
                 }
             }
+            */
+            //2026-02-04 修改设置的逻辑为获取形成趋势段的号码进行投注
+            bool foundRecord = false; 
+            Hou3Select350_ZhouQiZhong select350 = null;
+            if (Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.Count >= 350)
+            {
+                foreach (var record in Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List)
+                {
+                    if (record.YiLouTuLineList.Count >= 10)
+                    {
+                        var recordSubList = record.YiLouTuLineList.GetRange(record.YiLouTuLineList.Count - 3, 3);
+                        var yiLouTuLineList = record.YiLouTuLineList[3];
+                        //往前的第5个遗漏大于1
+                        if (yiLouTuLineList.CurrentGuaCount > 2)
+                        {
+                            var maxGuaCount = recordSubList.Max(p => p.CurrentGuaCount);
+                            if (maxGuaCount <= 1)
+                            {
+                                foundRecord=true;
+                                select350 = record;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+
             // 没有找到合适的记录,本期不投注
             if (!foundRecord) return;
 
-            if (record != null && record.Number350.Count > 0)
+            if (select350 != null && select350.Number350.Count > 0)
             {
                 IsRunning = true;
-                current350List = record.Number350;
+                current350List = select350.Number350;
                 //初始状态
                 //第一期投注
                 CurrentLun = 1;

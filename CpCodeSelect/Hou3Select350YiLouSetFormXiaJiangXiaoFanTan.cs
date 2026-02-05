@@ -1237,6 +1237,7 @@ namespace CpCodeSelect
             model350.NeedZhong = true;
             model350.KLineList = new List<KLine>();
             model350.YiLouKline350 = new List<YiLouKline350>();
+            model350.YiLouTuLineList = new List<KLine>();
             KLine350Calc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormXiaJiangXiaoFanTanBusiness.AllCode, 100);
             var result = KLine350Calc.KLineIsEnough(model350.KLineList);
             if (result.Result)
@@ -1465,6 +1466,7 @@ namespace CpCodeSelect
                         model350.NeedZhong = true;
                         model350.KLineList = new List<KLine>();
                         model350.YiLouKline350 = new List<YiLouKline350>();
+                        model350.YiLouTuLineList = new List<KLine>();
 
                         KLine350Calc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormXiaJiangXiaoFanTanBusiness.AllCode, (int)numericUpDown5.Value + 21);
 

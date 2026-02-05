@@ -231,6 +231,8 @@ namespace CpCodeSelect.Business
                         model350.NeedZhong = true;
                         model350.KLineList = new List<KLine>();
                         model350.YiLouKline350 = new List<YiLouKline350>();
+                        model350.YiLouTuLineList = new List<KLine>();
+                        model350.YiLouTuLineList=new List<KLine>();
                         KLine350Calc.CalcKLineHistoryList(model350, AllCode, 100);
                         model350List.Add(model350);
                     }

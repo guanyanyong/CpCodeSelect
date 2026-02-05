@@ -25,6 +25,8 @@ namespace CpCodeSelect.Util
             YiLouKline350 newYiLouKline350 = null;
             var isZhong = false;
 
+            //遗漏图的逻辑
+            KLine yiLouTuKLine = null;
             if (model.KLineList.Count == 0)
             {
                 // 第一次执行
@@ -33,6 +35,7 @@ namespace CpCodeSelect.Util
                 //判断是否中奖
                 if (model.Number350.Contains(hou3Str))
                 {
+                    yiLouTuKLine=new KLine();
                     //中了 K值加1.857
                     kline.KValue = 1.857;
 
@@ -70,6 +73,9 @@ namespace CpCodeSelect.Util
                         newYiLouKline350.YiLouZhongCount = 0;
                     }
 
+                    //遗漏图的逻辑
+                    yiLouTuKLine.IsZhong = true;
+                    yiLouTuKLine.CurrentGuaCount = 0;
                     isZhong = true;
 
                 }
@@ -89,6 +95,7 @@ namespace CpCodeSelect.Util
                 //不是第一次执行 判断是否中奖
                 if (model.Number350.Contains(hou3Str))
                 {
+                    yiLouTuKLine = new KLine();
                     //中了 K值加1.857
                     kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue + 1.857;
 
@@ -142,6 +149,11 @@ namespace CpCodeSelect.Util
                         }
                         newYiLouKline350.YiLouZhongCount = 0;
                     }
+
+
+                    //遗漏图的逻辑
+                    yiLouTuKLine.IsZhong = true;
+                    yiLouTuKLine.CurrentGuaCount = model.ZhongBeforeGua;
 
                     isZhong = true;
                 }
@@ -210,6 +222,17 @@ namespace CpCodeSelect.Util
                 //如果中奖了 添加新的记录
                 model.YiLouKline350.Add(newYiLouKline350);
             }
+
+            //处理遗漏图的逻辑
+            if (isZhong)
+            {
+                //遗漏图的逻辑
+                yiLouTuKLine.Code350Code = model.Number350;
+                yiLouTuKLine.CodeQiHao = code.CodeQiHao;
+                yiLouTuKLine.CodeNumber = code.CodeNumber;
+                yiLouTuKLine.CurrentGuaCount = model.ZhongBeforeGua;
+                model.YiLouTuLineList.Add(yiLouTuKLine);
+            }
         }
 
         /// <summary>
@@ -229,6 +252,10 @@ namespace CpCodeSelect.Util
             YiLouKline350 newYiLouKline350 = null;
             var isZhong = false;
 
+
+            //遗漏图的逻辑
+            KLine yiLouTuKLine = null;
+
             var runCount = number;
             for (; runCount > 0; runCount--)
             {
@@ -247,6 +274,7 @@ namespace CpCodeSelect.Util
                     //判断是否中奖
                     if (model.Number350.Contains(hou3Str))
                     {
+                        yiLouTuKLine = new KLine();
                         //中了 K值加1.857
                         kline.KValue = 1.857;
 
@@ -290,6 +318,11 @@ namespace CpCodeSelect.Util
                             }
                             newYiLouKline350.YiLouZhongCount = 0;
                         }
+
+                        //遗漏图的逻辑
+                        yiLouTuKLine.IsZhong = true;
+                        yiLouTuKLine.CurrentGuaCount = 0;
+
                         isZhong = true;
                     }
                     else
@@ -310,6 +343,7 @@ namespace CpCodeSelect.Util
                     //不是第一次执行 判断是否中奖
                     if (model.Number350.Contains(hou3Str))
                     {
+                        yiLouTuKLine = new KLine();
                         //中了 K值加1.857
                         kline.KValue = beforeKLine.KValue + 1.857;
 
@@ -371,6 +405,9 @@ namespace CpCodeSelect.Util
                             newYiLouKline350.YiLouZhongCount = 0;
                         }
 
+                        //遗漏图的逻辑
+                        yiLouTuKLine.IsZhong = true;
+                        yiLouTuKLine.CurrentGuaCount = model.ZhongBeforeGua;
                         isZhong = true;
                     }
                     else
@@ -447,6 +484,16 @@ namespace CpCodeSelect.Util
 
                     //如果中奖了 添加新的记录
                     model.YiLouKline350.Add(newYiLouKline350);
+                }
+                //处理遗漏图的逻辑
+                if (isZhong)
+                {
+                    //遗漏图的逻辑
+                    yiLouTuKLine.Code350Code = model.Number350;
+                    yiLouTuKLine.CodeQiHao = code.CodeQiHao;
+                    yiLouTuKLine.CodeNumber = code.CodeNumber;
+                    yiLouTuKLine.CurrentGuaCount=model.ZhongBeforeGua;
+                    model.YiLouTuLineList.Add(yiLouTuKLine);
                 }
             }
         }
