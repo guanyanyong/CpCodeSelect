@@ -23,10 +23,12 @@ using CpCodeSelect.Model.ExModel;
 
 namespace CpCodeSelect
 {
-    public partial class Hou3Select270YiLouSetFormZhouQiZhong : Form
+    public partial class Hou3Select350YiLouSetFormScoreAndChuShou : Form
     {
         public Dictionary<int, List<StatisticModel>> StatisticDic = new Dictionary<int, List<StatisticModel>>();
         private string filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt";
+        private string feilePath3fen = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TX3FC.txt";
+        private int defaultLeftNumber = 350;
         private FileSystemWatcher fileWatcher;
         private System.Windows.Forms.Timer showErrorTexttimer;
         //private Timer addTextTimer;
@@ -35,19 +37,42 @@ namespace CpCodeSelect
         private bool firstTime = true;//是否第一次执行
         private Object lockObj = new Object();
         private Object LockPlayObj = new object();
+        public MoniRunKill3 moniKill3 = new MoniRunKill3();
+        public MoniRunKill3_2 moniKill3_2 = new MoniRunKill3_2();
+        public MoniRunKill3_3 moniKill3_3 = new MoniRunKill3_3();
+        public StatisticForm statisticForm = new StatisticForm();
         public List<Hou2Select50_ZhouQiZhong> modelList = new List<Hou2Select50_ZhouQiZhong>();
         private int boFangYanhuaCount = 12;
         private string apiUri = "http://127.0.0.1:5000/";
         private string DataSource = "rexguan-hp2024-01";
         private MoniRunZhouQiZhong moniRunZhouQiZhong = new MoniRunZhouQiZhong();
-        private MoniRun270ZhouQiZhongLianXu9 moniRun270ZhouQiZhongLianXu9 = new MoniRun270ZhouQiZhongLianXu9();
+        private MoniRunZhouQiZhongLianXu8 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongLianXu8(new Hou3Select350YiLouSetFormScoreAndChuShouBusiness());
+        private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
         private MoniRunZhouQiZhongLianXu8Amount5566 moniRunZhouQiZhongLianXu8Amount5566 = new MoniRunZhouQiZhongLianXu8Amount5566();
-        public Hou3Select270YiLouSetFormZhouQiZhong()
+        private MoniRunZhouQiZhong3ge3yilou0BanShangSheng sangesanyilou0 = new MoniRunZhouQiZhong3ge3yilou0BanShangSheng();
+        private MoniRunZhouQiZhong3ge3BanShangSheng moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong3ge3BanShangSheng();
+        private Hou3Select350_ZhouQiZhong currentCalcKLineDate = null;
+        public Hou3Select350YiLouSetFormScoreAndChuShou()
         {
             InitializeComponent();
             Init();
             txtFIlePath.Text = filePath;
             txtDownLoadFilePath.Text = filePath;
+            moniKill3.Hide();
+            button1.Focus();
+            TabControlInit();
+        }
+        private void TabControlInit()
+        {
+            for (int i = 0; i < tabControl1.TabPages.Count; i++)
+            {
+                var tabPage = tabControl1.TabPages[i];
+                if (tabPage.Name == "SetSearch")
+                {
+                    tabPage.Parent = null;
+                    break;
+                }
+            }
         }
 
         public void AddStatisticToDic(int number, StatisticModel model)
@@ -123,6 +148,54 @@ namespace CpCodeSelect
                 }
             }
         }
+
+        /// <summary>
+        /// 读取第一行并执行.如果执行的是第一行则返回true,否则返回false
+        /// </summary>
+        /// <param name="number"></param>
+        public bool ReadFirstLineAndCheck(int number = 1)
+        {
+            var record = number;
+            var firstRecord = FileUtil.ReadFileFirstRecord(filePath, 1);
+            var code = FileAnalysis.GetCodeByStr(firstRecord);
+            if (code != null)
+            {
+                var codeDecimal = Convert.ToDecimal(code.CodeQiHao);
+                var codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
+
+                //如果期号相差不为1,则继续读取下一期号码
+                while (codeDecimal - codeBeforeDecimal != 1 && codeDecimal != codeBeforeDecimal)
+                {
+                    record++;
+                    firstRecord = FileUtil.ReadFileNumberRecord(filePath, record);
+                    code = FileAnalysis.GetCodeByStr(firstRecord);
+
+
+                    codeDecimal = Convert.ToDecimal(code.CodeQiHao);
+                    codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
+                }
+
+                if (lastCode == null || lastCode.CodeQiHao != code.CodeQiHao)
+                {
+
+
+                    if (codeDecimal - codeBeforeDecimal == 1)
+                    {
+                        // 如果期号相差为1，说明是最新号码
+                        code.PreCode = lastCode;
+                        currentCode = code;
+
+                        lastCode = currentCode;
+                        AddRecord($"检测到新号码: 期号={currentCode.CodeQiHao}, 号码={currentCode.CodeNumber}");
+                        //在这里可以添加对号码的分析处理逻辑
+                        AnalySisCode(currentCode);
+                    }
+
+                }
+
+            }
+            return record == 1;
+        }
         /// <summary>
         /// 第一次执行,读取全部的号码
         /// 并依次分析万千百十个位的大小单双统计情况
@@ -157,15 +230,18 @@ namespace CpCodeSelect
             //code.NumberCondition = string.Empty;
             InitCode(code);
             //NumberConditionSet(code);
-            Hou3Select270YiLouSetFormZhouQiZhongBusiness.InitCode(code);
+            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.InitCode(code);
             InitOfferNumber();
             GenerateOfferNumber();
             SetForm();
             //AddToLogFileZu6Kill1(code, "Hou2Select50.txt");
             AddToLogFileHou2Select50Auto(code);
             moniRunZhouQiZhong.Run(code);
-            moniRun270ZhouQiZhongLianXu9.Run(code);
+            moniRunZhouQiZhongLianXu8.Run(code);
             moniRunZhouQiZhongLianXu8Amount5566.Run(code);
+            moniRunZhouQiZhongLianXu3.Run(code);
+            sangesanyilou0.Run(code);
+            moniRunZhouQiZhong3Ge3.Run(code);
 
             //把记录添加到界面上 异步方式
             //AddRecordToPage(code);
@@ -176,6 +252,12 @@ namespace CpCodeSelect
             //moniKill3.Run(code);
             //moniKill3_2.Run(code);
             //moniKill3_3.Run(code);
+
+            //执行绘图的逻辑
+            if (currentCalcKLineDate != null)
+            {
+                DataLoadKLine();
+            }
 
         }
         private void InitCode(Code code)
@@ -203,13 +285,61 @@ namespace CpCodeSelect
             sb.Append(num1B.Value.ToString() + "+" + num1E.Value.ToString() + ",");
             code.NumberCondition = sb.ToString();
         }
+
+        private async void AddRecordToPage(Code code)
+        {
+            var needAddList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.GuaCount >= boFangYanhuaCount).OrderByDescending(p => p.GuaCount).ToList();
+            List<YiLouSetExModel> exModelList = new List<YiLouSetExModel>();
+            if (needAddList.Count > 0)
+            {
+                foreach (var model in needAddList)
+                {
+                    YiLouSetExModel exModel = new YiLouSetExModel();
+                    exModel.当前期号 = code.CodeQiHao;
+                    exModel.当前开奖号 = code.CodeNumber;
+                    exModel.遗漏数 = model.GuaCount;
+                    exModel.期号 = model.CodeQiHao;
+                    exModel.开奖号 = model.CodeNumber;
+                    exModel.五十码 = string.Join(" ", model.Number350);
+                    exModel.数据来源 = DataSource;
+                    exModelList.Add(exModel);
+                }
+                var data = new { data = exModelList };
+                // 将对象序列化为JSON字符串
+                string jsonString = JsonConvert.SerializeObject(data);
+
+                // 设置请求内容
+                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+                // 创建HttpClient（在实际应用中，建议使用IHttpClientFactory以避免资源耗尽）
+                using (var httpClient = new HttpClient())
+                {
+                    try
+                    {
+                        // 发送POST请求
+                        HttpResponseMessage response = await httpClient.PostAsync(apiUri + @"api/receive_batch_data", content);
+
+                        // 确保请求成功（状态码为2xx）
+                        response.EnsureSuccessStatusCode();
+
+                        // 读取响应内容
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        Console.WriteLine($"服务器响应: {responseBody}");
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        Console.WriteLine($"请求失败: {ex.Message}");
+                    }
+                }
+            }
+        }
         public void SetForm()
         {
-            if (Hou3Select270YiLouSetFormZhouQiZhongBusiness.model270List.Where(p => p.NeedZhong == false).ToList().Count > 0)
+            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false).ToList().Count > 0)
             {
 
-                lblMaxGua.Text = Hou3Select270YiLouSetFormZhouQiZhongBusiness.model270List.Where(p => p.NeedZhong == false).Max(p => p.GuaCount).ToString();
-                lblTotalNumber.Text = Hou3Select270YiLouSetFormZhouQiZhongBusiness.model270List.Count.ToString();
+                lblMaxGua.Text = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Max(p => p.GuaCount).ToString();
+                lblTotalNumber.Text = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count.ToString();
 
             }
             else
@@ -268,7 +398,7 @@ namespace CpCodeSelect
         private void AddToLogFileHou2Select50Auto(Code code)
         {
             bool needPlay = false;
-            if (Hou3Select270YiLouSetFormZhouQiZhongBusiness.model270List.Count > 500)
+            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count > 500)
             {
 
                 bool needFlush = false;
@@ -276,13 +406,13 @@ namespace CpCodeSelect
                 string fileName = "Hou2Select50YiLouSet.txt";
                 using (var writer = new StreamWriter(fileName, true))
                 {
-                    var maxNumber = Hou3Select270YiLouSetFormZhouQiZhongBusiness.model270List.Where(p => p.NeedZhong == false).Max(p => p.GuaCount);
+                    var maxNumber = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false).Max(p => p.GuaCount);
                     if (maxNumber >= boFangYanhuaCount)
                     {
                         needFlush = true;
-                        Hou3Select270YiLouSetFormZhouQiZhongBusiness.model270List.Where(p => p.GuaCount == maxNumber).ToList().ForEach(recode =>
+                        Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.GuaCount == maxNumber).ToList().ForEach(recode =>
                         {
-                            writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}，号码：{string.Join(" ", recode.Number270)}");
+                            writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}，号码：{string.Join(" ", recode.Number350)}");
                             //writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}");
                         });
                     }
@@ -326,12 +456,21 @@ namespace CpCodeSelect
                     //如果是第一次执行,需要读取全部的号码
                     ReadAllLine();
                     firstTime = false;
-                    ReadFirstLine();
+                    ReadFirstLineExec();
                 }
                 else
                 {
-                    ReadFirstLine();
+                    ReadFirstLineExec();
                 }
+            }
+        }
+        private void ReadFirstLineExec()
+        {
+            bool firstRunResult = false;
+            firstRunResult = ReadFirstLineAndCheck();
+            while (!firstRunResult)
+            {
+                firstRunResult = ReadFirstLineAndCheck();
             }
         }
 
@@ -360,6 +499,40 @@ namespace CpCodeSelect
             {
                 filePath = path;
             }
+
+            var defaultLeftNumberStr = ConfigurationManager.AppSettings["DefaultLeftNumber"];
+            var path3fen = ConfigurationManager.AppSettings["3FenCaiFilePath"];
+            var is3fen = ConfigurationManager.AppSettings["Is3fen"];
+            if (!string.IsNullOrEmpty(is3fen))
+            {
+                if (is3fen == "1")
+                {
+                    chk3fen.Checked = true;
+                    filePath = path3fen;
+                    if (string.IsNullOrEmpty(filePath))
+                    {
+                        filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TX3FC.txt"; ;
+                    }
+                }
+                else
+                {
+                    chk3fen.Checked = false;
+                    filePath = path;
+                    if (string.IsNullOrEmpty(filePath))
+                    {
+                        filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt"; ;
+                    }
+                }
+            }
+
+            if (!string.IsNullOrEmpty(defaultLeftNumberStr))
+            {
+                numericUpDown4.Value = Convert.ToDecimal(defaultLeftNumberStr);
+            }
+            else
+            {
+                numericUpDown4.Value = 350;
+            }
         }
         private void InitData()
         {
@@ -380,6 +553,8 @@ namespace CpCodeSelect
             {
                 boFangYanhuaCount = 12;
             }
+            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.InitData();
+            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.InitData();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -522,14 +697,19 @@ namespace CpCodeSelect
 
         private void button3_Click(object sender, EventArgs e)
         {
+            moniKill3.Show();
         }
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
             Init();
             StartExec();
-        }
 
+        }
+        public void MoniFormInit()
+        {
+            moniRunZhouQiZhongLianXu8.AllDataInit();
+        }
         private void btnReset_Click(object sender, EventArgs e)
         {
             Init();
@@ -537,14 +717,18 @@ namespace CpCodeSelect
 
         private void btnMoni2_Click(object sender, EventArgs e)
         {
+            moniKill3_2.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            moniKill3_3.Show();
         }
 
         private void btnStatistic_Click(object sender, EventArgs e)
         {
+            statisticForm.SetStatistic(this.StatisticDic);
+            statisticForm.Show();
         }
 
         private void txtFIlePath_TextChanged(object sender, EventArgs e)
@@ -566,10 +750,10 @@ namespace CpCodeSelect
                 // 可以获取当前行的数据
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 // ... 执行你的业务逻辑，例如根据row.Cells["SomeColumn"].Value进行不同操作
-                if (row.DataBoundItem is Hou3Select270_ZhouQiZhong)
+                if (row.DataBoundItem is Hou3Select350_ZhouQiZhong)
                 {
-                    var model = row.DataBoundItem as Hou3Select270_ZhouQiZhong;
-                    txt50Number.Text = string.Join(" ", model.Number270);
+                    var model = row.DataBoundItem as Hou3Select350_ZhouQiZhong;
+                    txt50Number.Text = string.Join(" ", model.Number350);
                     var numberText = txt50Number.Text;
                     try
                     {
@@ -582,8 +766,22 @@ namespace CpCodeSelect
                     }
                     finally
                     {
-
+                        textBox2.Text = numberText;
+                        btnKLinLoad_Click(this, EventArgs.Empty);
                     }
+                }
+            }
+            else if (e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
+            {
+                lblError.Text = "";
+                // 可以获取当前行的数据
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                // ... 执行你的业务逻辑，例如根据row.Cells["SomeColumn"].Value进行不同操作
+                if (row.DataBoundItem is Hou3Select350_ZhouQiZhong)
+                {
+                    var model = row.DataBoundItem as Hou3Select350_ZhouQiZhong;
+                    Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Remove(model);
+                    btnYiLou_Click(this,EventArgs.Empty);
                 }
             }
         }
@@ -616,16 +814,16 @@ namespace CpCodeSelect
         private void BtnSelectClick()
         {
             var number = numericUpDown1.Value;
-            var list = Hou3Select270YiLouSetFormZhouQiZhongBusiness.model270List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua >= number).OrderByDescending(p => p.ZhouQiZhongHouGua).ThenByDescending(p => p.IsZhouQiZhongHou).ToList();
+            var list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua >= number).OrderByDescending(p => p.ZhouQiZhongHouGua).ThenByDescending(p => p.IsZhouQiZhongHou).ToList();
             var number2 = numericUpDown2.Value;
             var guaCount = numericUpDown3.Value;
             if (number2 >= 0 && number <= number2)
             {
-                list = Hou3Select270YiLouSetFormZhouQiZhongBusiness.model270List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua >= number && p.ZhouQiZhongHouGua <= number2).OrderByDescending(p => p.ZhouQiZhongHouGua).ThenByDescending(p => p.IsZhouQiZhongHou).ToList();
+                list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua >= number && p.ZhouQiZhongHouGua <= number2).OrderByDescending(p => p.ZhouQiZhongHouGua).ThenByDescending(p => p.IsZhouQiZhongHou).ToList();
             }
             if (guaCount > -1)
             {
-                list = list.Where(p => p.GuaCount >= guaCount).ToList().OrderByDescending(p => p.ZhouQiZhongHouGua).ThenByDescending(p => p.IsZhouQiZhongHou).ToList(); ;
+                list = list.Where(p => p.GuaCount == guaCount).ToList().OrderByDescending(p => p.ZhouQiZhongHouGua).ThenByDescending(p => p.IsZhouQiZhongHou).ToList(); ;
             }
             /*
             dataGridView1.DataSource = list;
@@ -645,7 +843,7 @@ namespace CpCodeSelect
             SetDataSource(list);
 
         }
-        private void SetDataSource(List<Hou3Select270_ZhouQiZhong> list)
+        private void SetDataSource(List<Hou3Select350_ZhouQiZhong> list)
         {
             dataGridView1.DataSource = list;
             lblResultCount.Text = list.Count.ToString();
@@ -711,7 +909,7 @@ namespace CpCodeSelect
             {
                 var takeCodeList = new List<string>();
                 var excludeAllList = new List<string>();
-                var AllCode = Hou3Select270YiLouSetFormZhouQiZhongBusiness.AllCode;
+                var AllCode = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode;
                 var LeftCode = AllCode;
                 txtNum1.Text = "";
                 Cacl(num14B, num14E, ref LeftCode, ref excludeAllList, ref takeCodeList);
@@ -919,8 +1117,9 @@ namespace CpCodeSelect
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            var hou3List = Hou3Select270YiLouSetFormZhouQiZhongBusiness.GenerateHou3NumbereFromCode(270);
+            var hou3List = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
             var list = Generate350Code.Generate(hou3List);
+
             txtNum2.Text = "测试生成350注数据成功";
             txtNum3.Text = string.Join(" ", list.OrderBy(p => p).ToList());
             //txtNum2.Update();
@@ -935,7 +1134,7 @@ namespace CpCodeSelect
 
         private void button4_Click_1(object sender, EventArgs e)
         {
-            moniRun270ZhouQiZhongLianXu9.Show();
+            moniRunZhouQiZhongLianXu8.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -947,7 +1146,7 @@ namespace CpCodeSelect
         {
             var list = txtNum3.Text.Split(' ').ToList();
             Hou3Select350_ZhouQiZhong model350 = new Hou3Select350_ZhouQiZhong();
-            Code code = Hou3Select270YiLouSetFormZhouQiZhongBusiness.code;
+            Code code = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code;
             model350.Number350 = list;
             model350.CodeNumber = code.CodeNumber;
             model350.CodeQiHao = code.CodeQiHao;
@@ -955,7 +1154,7 @@ namespace CpCodeSelect
             model350.KLineList = new List<KLine>();
             model350.YiLouKline350 = new List<YiLouKline350>();
             model350.YiLouTuLineList = new List<KLine>();
-            KLine350Calc.CalcKLineHistoryList(model350, Hou3Select270YiLouSetFormZhouQiZhongBusiness.AllCode, 100);
+            KLine350Calc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode, 100);
             var result = KLine350Calc.KLineIsEnough(model350.KLineList);
             if (result.Result)
             {
@@ -969,22 +1168,23 @@ namespace CpCodeSelect
 
         private void btnSelectConditonEnough_Click(object sender, EventArgs e)
         {
-            var list = Hou3Select270YiLouSetFormZhouQiZhongBusiness.model270List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == 1 && p.IsZhouQiZhongHou).ToList();
-            List<Hou3Select270_ZhouQiZhong> recordList = new List<Hou3Select270_ZhouQiZhong>();
+            var guaCount = numericUpDown3.Value;
+            var list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
+            List<Hou3Select350_ZhouQiZhong> recordList = new List<Hou3Select350_ZhouQiZhong>();
 
             if (list.Count > 0)
             {
 
                 //最多查找5次,如果5次没有找到合适的记录就不投注
-                //bool foundRecord = false;
+                bool foundRecord = false;
                 for (int i = 0; i < list.Count; i++)
                 {
 
                     var zhouQiZhongRecord = list[i];
                     var klinLIst = zhouQiZhongRecord.KLineList;
-                    if (KLine270Calc.KLineIsEnough(klinLIst).Result)
+                    if (KLine350Calc.KLineIsEnough(klinLIst).Result)
                     {
-                        //foundRecord = true;
+                        foundRecord = true;
                         recordList.Add(zhouQiZhongRecord);
                     }
                 }
@@ -993,6 +1193,7 @@ namespace CpCodeSelect
 
             SetDataSource(recordList);
         }
+
 
         private void btnSelectFile2_Click(object sender, EventArgs e)
         {
@@ -1018,17 +1219,32 @@ namespace CpCodeSelect
                 string serverUrl = ConfigurationManager.AppSettings["txtFileNameSerever"];
                 if (string.IsNullOrEmpty(serverUrl)) serverUrl = "http://111.229.194.107:8099/";
                 string url1 = $"{serverUrl}/api/download-source-file";
+                bool is3fen = chk3fen.Checked;
                 string postData1 = "{\"file_name\":\"txffc_file\", \"download_name\":\"downloaded_example.txt\"}";
+                if (is3fen)
+                {
+                    postData1 = "{\"file_name\":\"tx3fc_file\", \"download_name\":\"downloaded_example.txt\"}";
+                }
                 string savePath1 = txtDownLoadFilePath.Text;
                 if (string.IsNullOrEmpty(savePath1))
                 {
                     savePath1 = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt";
                 }
+                if (is3fen)
+                {
+                    savePath1 = ConfigurationManager.AppSettings["3FenCaiFilePath"];
+                    if (string.IsNullOrEmpty(savePath1))
+                    {
+                        savePath1 = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TX3FC.txt";
+                    }
+                }
 
                 bool success1 = await downloader.DownloadFileByPostAsync(url1, postData1, savePath1);
                 if (success1)
                 {
-                    txtResult.Text = "同步成功";
+                    var lines = File.ReadAllLines(txtDownLoadFilePath.Text);
+
+                    txtResult.Text = $"同步{lines.Length}条记录成功";
                 }
                 else
                 {
@@ -1045,7 +1261,7 @@ namespace CpCodeSelect
         {
             try
             {
-                int linesToKeep = 350;
+                int linesToKeep = (int)numericUpDown4.Value;
                 // 读取文件的所有行
                 var lines = File.ReadAllLines(txtDownLoadFilePath.Text);
 
@@ -1054,20 +1270,340 @@ namespace CpCodeSelect
                 {
                     txtResult.Text = $"文件只有 {lines.Length} 行，小于等于 {linesToKeep} 行，无需处理。";
                 }
+                else
+                {
 
-                // 只取前N行
-                var firstLines = lines.Take(linesToKeep).ToArray();
 
-                // 写回文件（覆盖原文件）
-                File.WriteAllLines(filePath, firstLines);
+                    // 只取前N行
+                    var firstLines = lines.Take(linesToKeep).ToArray();
 
-                txtResult.Text = $"已成功保留前 {linesToKeep} 行，删除了 {lines.Length - linesToKeep} 行。";
+                    // 写回文件（覆盖原文件）
+                    File.WriteAllLines(filePath, firstLines);
+
+                    txtResult.Text = $"已成功保留前 {linesToKeep} 行，删除了 {lines.Length - linesToKeep} 行。";
+                }
             }
             catch (Exception ex)
             {
                 txtResult.Text = $"处理文件时出错: {ex.Message}";
 
             }
+        }
+
+        private void chk3fen_CheckedChanged(object sender, EventArgs e)
+        {
+            var path = ConfigurationManager.AppSettings["FilePath"];
+            if (!string.IsNullOrEmpty(path))
+            {
+                filePath = path;
+            }
+
+            var path3fen = ConfigurationManager.AppSettings["3FenCaiFilePath"];
+            var is3fen = ConfigurationManager.AppSettings["Is3fen"];
+
+            var is3Checked = chk3fen.Checked;
+            if (is3Checked)
+            {
+                filePath = path3fen;
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TX3FC.txt"; ;
+                }
+            }
+            else
+            {
+                filePath = path;
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt"; ;
+                }
+            }
+
+            txtFIlePath.Text = filePath;
+            txtDownLoadFilePath.Text = filePath;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            moniRunZhouQiZhongLianXu3.Show();
+        }
+
+        private void btnKLinLoad_Click(object sender, EventArgs e)
+        {
+            currentCalcKLineDate = null;
+            DataLoadKLine();
+        }
+
+        /// <summary>
+        /// 加载K线
+        /// </summary>
+        private void DataLoadKLine()
+        {
+            if (currentCalcKLineDate == null)
+            {
+                //点击按钮 需要重新生成新的加载
+                if (checkBox1.Checked)
+                {
+                    //自动加载最新数据
+                    var modelList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List;
+                    if (modelList != null && modelList.Count > 0)
+                    {
+                        foreach (var record in modelList)
+                        {
+                            var data = record;
+
+
+                            RemoveRecord(currentCalcKLineDate);
+                            currentCalcKLineDate = data;
+                            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.currentNeedCalcList.Add(currentCalcKLineDate);
+                            if (data.KLineList.Count > 30)
+                            {
+                                GenerateKLine(data);
+                                break;
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        txtNum2.Text = "加载数据失败";
+                    }
+                }
+                else
+                {
+                    var txtNumber = textBox2.Text;
+                    if (!string.IsNullOrEmpty(txtNumber))
+                    {
+                        Hou3Select350_ZhouQiZhong model350 = new Hou3Select350_ZhouQiZhong();
+                        model350.Number350 = txtNumber.Split(' ').ToList();
+                        model350.CodeNumber = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code.CodeNumber;
+                        model350.CodeQiHao = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code.CodeQiHao;
+                        model350.NeedZhong = true;
+                        model350.KLineList = new List<KLine>();
+                        model350.YiLouKline350 = new List<YiLouKline350>();
+                        model350.YiLouTuLineList = new List<KLine>();
+
+                        KLine350Calc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode, (int)numericUpDown5.Value + 21);
+
+
+                        RemoveRecord(currentCalcKLineDate);
+                        currentCalcKLineDate = model350;
+                        Hou3Select350YiLouSetFormScoreAndChuShouBusiness.currentNeedCalcList.Add(currentCalcKLineDate);
+                        if (model350.KLineList.Count > 30)
+                        {
+                            GenerateKLine(model350);
+                        }
+                        if (model350.YiLouKline350.Count > 30)
+                        {
+                            GenerateYiLouKLine(model350);
+                        }
+                    }
+                    else
+                    {
+                        textBox3.Text = "没有有效的号码";
+                    }
+                }
+            }
+            else
+            {
+                //出现新的一期号码刷新数据
+                GenerateKLine(currentCalcKLineDate);
+                GenerateYiLouKLine(currentCalcKLineDate);
+            }
+
+        }
+
+        private void RemoveRecord(Hou3Select350_ZhouQiZhong record)
+        {
+            if (record != null)
+            {
+                Hou3Select350YiLouSetFormScoreAndChuShouBusiness.currentNeedCalcList.Remove(currentCalcKLineDate);
+            }
+
+        }
+
+
+        private void GenerateKLine(Hou3Select350_ZhouQiZhong data)
+        {
+            if (data.KLineList != null && data.KLineList.Count > 30)
+            {
+                var kline = data.KLineList[0];
+                txtNum2.Text = $"加载数据成功,期号:{data.CodeQiHao},号码:{string.Join(" ", data.Number350)},K线日期:{kline.CodeQiHao}";
+
+                textBox2.Text = string.Join(" ", data.Number350);
+
+                var KlinList = new List<LotteryData>();
+                int count = 0;
+                foreach (var k in data.KLineList)
+                {
+                    count++;
+                    if (count <= 20) continue;
+                    if (k.Bolling != null)
+                    {
+                        LotteryData lotteryData = new LotteryData();
+                        lotteryData.KValue = k.KValue;
+                        lotteryData.WinHeightFactor = 1.857;
+                        lotteryData.LostHeightFactor = 1;
+                        lotteryData.LowerBand = k.Bolling.BollLowerValue;
+                        lotteryData.UpperBand = k.Bolling.BollUpperValue;
+                        lotteryData.MiddleBand = k.Bolling.MiddleValue;
+                        lotteryData.IsWin = k.IsZhong;
+                        lotteryData.Index = k.CodeQiHao;
+                        lotteryData.PeriodNumber = k.CodeQiHao;
+                        lotteryData.WinningNumbers = k.CodeNumber;
+                        KlinList.Add(lotteryData);
+                    }
+                }
+                //lotteryKLineControl1.SetData(KlinList);
+                lotteryKLine.SetData(KlinList);
+                lotteryKLine.TopMessage = $"频率K线【周期1 理论周期:2.857 当前遗漏{data.GuaCount}】";
+            }
+        }
+
+
+        private void GenerateYiLouKLine(Hou3Select350_ZhouQiZhong data)
+        {
+            if (data.YiLouKline350 != null && data.YiLouKline350.Count > 30)
+            {
+                var kline = data.YiLouKline350[0];
+                //txtNum2.Text = $"加载数据成功,期号:{data.CodeQiHao},号码:{string.Join(" ", data.Number350)},K线日期:{kline.CodeQiHao}";
+
+                textBox2.Text = string.Join(" ", data.Number350);
+
+                var KlinList = new List<LotteryData>();
+                int count = 0;
+                foreach (var k in data.YiLouKline350)
+                {
+                    count++;
+                    if (count <= 20) continue;
+                    if (k.Bolling != null)
+                    {
+                        LotteryData lotteryData = new LotteryData();
+                        lotteryData.KValue = k.KValue;
+                        lotteryData.WinHeightFactor = 1.857;
+                        lotteryData.LostHeightFactor = 1;
+                        lotteryData.LowerBand = k.Bolling.BollLowerValue;
+                        lotteryData.UpperBand = k.Bolling.BollUpperValue;
+                        lotteryData.MiddleBand = k.Bolling.MiddleValue;
+                        lotteryData.IsWin = k.IsZhong;
+                        lotteryData.Index = k.CodeQiHao;
+                        lotteryData.PeriodNumber = k.CodeQiHao;
+                        lotteryData.WinningNumbers = k.CodeNumber;
+                        KlinList.Add(lotteryData);
+                    }
+                }
+                //lotteryKLineControl1.SetData(KlinList);
+                yiLouLotteryKLine.SetData(KlinList);
+
+                yiLouLotteryKLine.TopMessage = $"遗漏K线【遗漏范围:0-2 当前遗漏{data.GuaCount} 概率:0.7253750】";
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            moniRunZhouQiZhong3Ge3.Show();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            sangesanyilou0.Show();
+        }
+
+
+        private void btnYiLou_Click(object sender, EventArgs e)
+        {
+            var guaCount = numericUpDown3.Value;
+            //var list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
+            var getEnoughRecordList = new List<Hou3Select350_ZhouQiZhong>();
+            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 350)
+            {
+                foreach (var record in Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List)
+                {
+                    if (record.KLineList.Count >= 250)
+                    {
+                        var recordSubList = record.KLineList.GetRange(record.KLineList.Count - 240, 240);
+                        var maxGuaCount = recordSubList.Max(p => p.CurrentGuaCount);
+                        if (maxGuaCount <= guaCount)
+                        {
+                            getEnoughRecordList.Add(record);
+                        }
+                    }
+                }
+            }
+
+            //List<Hou3Select350_ZhouQiZhong> recordList = new List<Hou3Select350_ZhouQiZhong>();
+
+            //if (list.Count > 0)
+            //{
+
+            //    //最多查找5次,如果5次没有找到合适的记录就不投注
+            //    bool foundRecord = false;
+            //    for (int i = 0; i < list.Count; i++)
+            //    {
+
+            //        var zhouQiZhongRecord = list[i];
+            //        var klinLIst = zhouQiZhongRecord.KLineList;
+            //        if (KLine350Calc.KLineIsEnough(klinLIst).Result)
+            //        {
+            //            foundRecord = true;
+            //            recordList.Add(zhouQiZhongRecord);
+            //        }
+            //    }
+            //}
+            getEnoughRecordList= getEnoughRecordList.OrderByDescending(p => p.IsZhouQiZhongHou).ThenBy(p => p.ZhouQiZhongHouGua).ThenBy(p=>p.GuaCount).ToList();
+
+            SetDataSource(getEnoughRecordList);
+        }
+
+        private void btnQuShiDuanSearch_Click(object sender, EventArgs e)
+        {
+            var guaCount = numericUpDown3.Value;
+            //var list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
+            var getEnoughRecordList = new List<Hou3Select350_ZhouQiZhong>();
+            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 350)
+            {
+                foreach (var record in Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List)
+                {
+                    if (record.YiLouTuLineList.Count >= 10)
+                    {
+                        var recordSubList = record.YiLouTuLineList.GetRange(record.YiLouTuLineList.Count - 3, 3);
+                        var yiLouTuLineList = record.YiLouTuLineList[3];
+                        //往前的第5个遗漏大于1
+                        if (yiLouTuLineList.CurrentGuaCount > 2)
+                        {
+                            var maxGuaCount = recordSubList.Max(p => p.CurrentGuaCount);
+                            if (maxGuaCount <= 1)
+                            {
+                                getEnoughRecordList.Add(record);
+                            }
+                        }
+                    }
+                }
+            }
+
+            //List<Hou3Select350_ZhouQiZhong> recordList = new List<Hou3Select350_ZhouQiZhong>();
+
+            //if (list.Count > 0)
+            //{
+
+            //    //最多查找5次,如果5次没有找到合适的记录就不投注
+            //    bool foundRecord = false;
+            //    for (int i = 0; i < list.Count; i++)
+            //    {
+
+            //        var zhouQiZhongRecord = list[i];
+            //        var klinLIst = zhouQiZhongRecord.KLineList;
+            //        if (KLine350Calc.KLineIsEnough(klinLIst).Result)
+            //        {
+            //            foundRecord = true;
+            //            recordList.Add(zhouQiZhongRecord);
+            //        }
+            //    }
+            //}
+            getEnoughRecordList = getEnoughRecordList.OrderByDescending(p => p.IsZhouQiZhongHou).ThenBy(p => p.ZhouQiZhongHouGua).ThenBy(p => p.GuaCount).ToList();
+
+            SetDataSource(getEnoughRecordList);
         }
     }
 }

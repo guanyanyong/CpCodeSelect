@@ -95,6 +95,12 @@
     <Compile Include="Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.Designer.cs">
       <DependentUpon>Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hou3Select350YiLouSetFormScoreAndChuShou.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hou3Select350YiLouSetFormScoreAndChuShou.Designer.cs">
+      <DependentUpon>Hou3Select350YiLouSetFormScoreAndChuShou.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hou3Select350YiLouSetFormZiRanGenerate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -345,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.resx">
       <DependentUpon>Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hou3Select350YiLouSetFormScoreAndChuShou.resx">
+      <DependentUpon>Hou3Select350YiLouSetFormScoreAndChuShou.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hou3Select350YiLouSetFormZiRanGenerate.resx">
       <DependentUpon>Hou3Select350YiLouSetFormZiRanGenerate.cs</DependentUpon>
