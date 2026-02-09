@@ -2,6 +2,7 @@
 using CpCodeSelect.Model.ExModel;
 using CpCodeSelect.Model.Score;
 using CpCodeSelect.Util;
+using CpCodeSelect.Util.Scorer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -187,11 +188,11 @@ namespace CpCodeSelect.Business.Score.Moni
                         //执行中,中出
                         TotalZhong++;
                         var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 2, 0];
-                        int zhongjiangqi = (CurrentLun - 1) * 1 ;
+                        int zhongjiangqi = (CurrentLun - 1) * 1;
                         yilouStatisticList[CurrentLun - 1].TotalCount = yilouStatisticList[CurrentLun - 1].TotalCount + 1;
                         TotalResult = TotalResult + zhongjiangAmount;
                         //LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
-                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun-1}轮已中出,中奖金额:{zhongjiangAmount}，总额【{TotalResult}】。");
+                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun - 1}轮已中出,中奖金额:{zhongjiangAmount}，总额【{TotalResult}】。");
                         LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-总中奖次数{TotalZhong}，总额【{TotalResult}】。总挂次数{TotalGua}");
 
                         LunInit();
@@ -267,12 +268,25 @@ namespace CpCodeSelect.Business.Score.Moni
             List<Hou3Select350_ZhouQiZhongScore> getEnoughRecordList = new List<Hou3Select350_ZhouQiZhongScore>();
 
             getEnoughRecordList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.
-                Where(p => p.IsChuShou && p.Score >= 80 && p.ShouNumber == 1).ToList();
+                Where(p => p.IsChuShou && p.Score >= 70 && p.ShouNumber == 1).ToList();
             if (getEnoughRecordList.Count <= 0) return;
+            var kLineIsEnoughList =  new List<Hou3Select350_ZhouQiZhongScore>();
+            foreach (var record in getEnoughRecordList)
+            {
+
+                var result = KLine350ScoreCalc.KLineIsEnough(record.KLineList);
+                if (result.Result)
+                {
+                    kLineIsEnoughList.Add(record);
+                }
+            }
+            if (kLineIsEnoughList.Count <= 0) return;
             Random random = new Random(GetThreadSafeSeed());
-            int num = getEnoughRecordList.Count - 1;
+            int num = kLineIsEnoughList.Count - 1;
             if (num < 0) num = 0;
-            var getEnoughRecord = getEnoughRecordList[random.Next(0, num)];
+
+            var index = random.Next(0, num);
+            var getEnoughRecord = kLineIsEnoughList[index];
             if (getEnoughRecord.Number350.Count > 0)
             {
                 IsRunning = true;
@@ -300,17 +314,26 @@ namespace CpCodeSelect.Business.Score.Moni
             if (CurrentLun == 0 || CurrentLun >= 9) CurrentLun = 1;
 
             List<Hou3Select350_ZhouQiZhongScore> getEnoughRecordList = new List<Hou3Select350_ZhouQiZhongScore>();
-
-             getEnoughRecordList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.
-                Where(p => p.IsChuShou && p.Score >= 80 && p.ShouNumber == CurrentLun).ToList();
-            if (getEnoughRecordList.Count <= 0)
+            getEnoughRecordList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.
+                Where(p => p.IsChuShou && p.Score >= 70 && p.ShouNumber == CurrentLun).ToList();
+            if (getEnoughRecordList.Count <= 0) return;
+            var kLineIsEnoughList = new List<Hou3Select350_ZhouQiZhongScore>();
+            foreach (var record in getEnoughRecordList)
             {
-                return;
+
+                var result = KLine350ScoreCalc.KLineIsEnough(record.KLineList);
+                if (result.Result)
+                {
+                    kLineIsEnoughList.Add(record);
+                }
             }
-            Random random = new Random();
-            int num = getEnoughRecordList.Count - 1;
+            if (kLineIsEnoughList.Count <= 0) return;
+            Random random = new Random(GetThreadSafeSeed());
+            int num = kLineIsEnoughList.Count - 1;
             if (num < 0) num = 0;
-            var getEnoughRecord = getEnoughRecordList[random.Next(0, num)];
+
+            var index = random.Next(0, num);
+            var getEnoughRecord = kLineIsEnoughList[index];
             if (getEnoughRecord.Number350.Count > 0)
             {
                 current350List = getEnoughRecord.Number350;

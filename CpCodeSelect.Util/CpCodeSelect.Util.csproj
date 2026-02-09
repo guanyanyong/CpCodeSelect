@@ -74,6 +74,7 @@
     <Compile Include="NumberSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scorer\BaseScoreRule.cs" />
+    <Compile Include="Scorer\KLine350ScoreCalc.cs" />
     <Compile Include="Scorer\Rules\ScoreRules.cs" />
     <Compile Include="Scorer\ScorerUtil.cs" />
     <Compile Include="ThreadSafeRandom.cs" />

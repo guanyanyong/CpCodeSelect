@@ -2,6 +2,7 @@
 using CpCodeSelect.Model.ExModel;
 using CpCodeSelect.Model.Score;
 using CpCodeSelect.Util;
+using CpCodeSelect.Util.Scorer;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -115,11 +116,13 @@ namespace CpCodeSelect.Business.Score
 
             //超过30期就删除
             {
+                var overNumberDelete = (numberCount / 50 + 10);
+                if(overNumberDelete<30) overNumberDelete = 30;
                 for (int i = 0; i < model350List.Count; i++)
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= (numberCount/50 + 10))
+                    if (codeDecimal - currentDecimal >= overNumberDelete)
                     {
                         removeList.Add(model);
                     }
@@ -207,7 +210,7 @@ namespace CpCodeSelect.Business.Score
             }
 
             //计算当前期的K线
-            KLine350Calc.CalcKlineCurrent(model, code);
+            KLine350ScoreCalc.CalcKlineCurrent(model, code);
         }
 
         public static new void Generate350Code(Code code)
@@ -229,7 +232,8 @@ namespace CpCodeSelect.Business.Score
                 */
 
                 var hou3List = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
-                var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
+                //var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
+                var numerList = MultiThreadedNumberSelectFor350Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 50);
                 foreach (var number in numerList)
                 {
                     if (number.Count > 0)
@@ -246,7 +250,7 @@ namespace CpCodeSelect.Business.Score
                         model350.ScoreDateList = new List<LotteryScoreData>();
                         model350.YiLouKline350 = new List<YiLouKline350>();
                         model350.YiLouTuLineList = new List<KLine>();
-                        KLine350Calc.CalcKLineHistoryList(model350, AllCode, 100);
+                        KLine350ScoreCalc.CalcKLineHistoryList(model350, AllCode, 100);
                         model350List.Add(model350);
                     }
                 }

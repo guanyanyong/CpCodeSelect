@@ -11,9 +11,9 @@ using CpCodeSelect.Util.Scorer;
 using CpCodeSelect.Util.Config;
 using System.Threading;
 
-namespace CpCodeSelect.Util
+namespace CpCodeSelect.Util.Scorer
 {
-    public class KLine350Calc
+    public class KLine350ScoreCalc
     {
         public static void CalcKlineCurrent(Hou3Select350_ZhouQiZhongScore scoreModel, Code code)
         {
@@ -57,6 +57,8 @@ namespace CpCodeSelect.Util
             //遗漏图的逻辑
             KLine yiLouTuKLine = null;
 
+            //评分逻辑
+            LotteryScoreData scoreData = null;
 
             if (model.KLineList.Count == 0)
             {
@@ -122,6 +124,20 @@ namespace CpCodeSelect.Util
                     newYiLouKline350.CurrentGuaCount = model.GuaCount;
                     isZhong = false;
 
+
+                    //评分的逻辑
+                    //scoreData = new LotteryScoreData();
+                    //scoreData.IsZhongJiang = false;
+                    //scoreData.YiLouValue = model.GuaCount;
+                    //scoreData.LianXuZhongJiangCount = model.ZhongGount;
+                    //scoreData.KValue = kline.KValue;
+                    //scoreData.BollingerBands = kline.Bolling;
+
+                    //scoreData.Number350 = model.Number350;
+                    //scoreData.QiHao = code.CodeQiHao;
+                    //scoreData.Number = code.CodeNumber;
+
+                    //CalcScore(scoreData, model);
                 }
             }
             else
@@ -192,6 +208,19 @@ namespace CpCodeSelect.Util
                     isZhong = true;
 
 
+                    //评分的逻辑
+                    //scoreData = new LotteryScoreData();
+                    //scoreData.IsZhongJiang = true;
+                    //scoreData.YiLouValue = model.GuaCount;
+                    //scoreData.LianXuZhongJiangCount = model.ZhongGount;
+                    //scoreData.KValue = kline.KValue;
+                    //scoreData.BollingerBands = kline.Bolling;
+
+                    //scoreData.Number350 = model.Number350;
+                    //scoreData.QiHao = code.CodeQiHao;
+                    //scoreData.Number = code.CodeNumber;
+
+                    //CalcScore(scoreData, model);
                 }
                 else
                 {
@@ -203,6 +232,19 @@ namespace CpCodeSelect.Util
                         lastYiLouKLine350.CurrentGuaCount = model.GuaCount;
                     isZhong = false;
 
+                    //评分的逻辑
+                    //scoreData = new LotteryScoreData();
+                    //scoreData.IsZhongJiang = false;
+                    //scoreData.YiLouValue = model.GuaCount;
+                    //scoreData.LianXuZhongJiangCount = model.ZhongGount;
+                    //scoreData.KValue = kline.KValue;
+                    //scoreData.BollingerBands = kline.Bolling;
+
+                    //scoreData.Number350 = model.Number350;
+                    //scoreData.QiHao = code.CodeQiHao;
+                    //scoreData.Number = code.CodeNumber;
+
+                    //CalcScore(scoreData, model);
                 }
             }
 
@@ -271,6 +313,26 @@ namespace CpCodeSelect.Util
                 model.YiLouTuLineList.Add(yiLouTuKLine);
             }
 
+            //处理评分逻辑
+            //评分的逻辑
+            //进行评分,之后加入列表
+            //评分的逻辑
+            scoreData = new LotteryScoreData();
+            scoreData.IsZhongJiang = isZhong;
+            scoreData.YiLouValue = model.GuaCount;
+            scoreData.LianXuZhongJiangCount = model.ZhongGount;
+            scoreData.KValue = kline.KValue;
+            scoreData.BollingerBands = kline.Bolling;
+
+            scoreData.Number350 = model.Number350;
+            scoreData.QiHao = code.CodeQiHao;
+            scoreData.Number = code.CodeNumber;
+            model.ScoreDateList.Add(scoreData);
+
+            CalcScore(scoreData, model);
+            model.Score = scoreData.Score;
+            model.IsChuShou = scoreData.IsChuShou;
+            model.ShouNumber = scoreData.HandNumber;
 
             return model;
         }

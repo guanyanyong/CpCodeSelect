@@ -23,6 +23,7 @@ using CpCodeSelect.Model.ExModel;
 using CpCodeSelect.Business.Score;
 using CpCodeSelect.Model.Score;
 using CpCodeSelect.Score.Moni;
+using CpCodeSelect.Util.Scorer;
 
 namespace CpCodeSelect.Score
 {
@@ -1172,8 +1173,8 @@ namespace CpCodeSelect.Score
             model350.YiLouKline350 = new List<YiLouKline350>();
             model350.YiLouTuLineList = new List<KLine>();
             model350.ScoreDateList = new List<LotteryScoreData>();
-            KLine350Calc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode, 100);
-            var result = KLine350Calc.KLineIsEnough(model350.KLineList);
+            KLine350ScoreCalc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode, 100);
+            var result = KLine350ScoreCalc.KLineIsEnough(model350.KLineList);
             if (result.Result)
             {
                 txtNum2.Text = "满足条件";
@@ -1200,7 +1201,7 @@ namespace CpCodeSelect.Score
 
                     var zhouQiZhongRecord = list[i];
                     var klinLIst = zhouQiZhongRecord.KLineList;
-                    if (KLine350Calc.KLineIsEnough(klinLIst).Result)
+                    if (KLine350ScoreCalc.KLineIsEnough(klinLIst).Result)
                     {
                         foundRecord = true;
                         recordList.Add(zhouQiZhongRecord);
@@ -1402,8 +1403,7 @@ namespace CpCodeSelect.Score
                         model350.YiLouKline350 = new List<YiLouKline350>();
                         model350.YiLouTuLineList = new List<KLine>();
 
-                        KLine350Calc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode, (int)numericUpDown5.Value + 21);
-
+                        KLine350ScoreCalc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode, (int)numericUpDown5.Value + 21);
 
                         RemoveRecord(currentCalcKLineDate);
                         currentCalcKLineDate = model350;
@@ -1562,7 +1562,7 @@ namespace CpCodeSelect.Score
 
             //        var zhouQiZhongRecord = list[i];
             //        var klinLIst = zhouQiZhongRecord.KLineList;
-            //        if (KLine350Calc.KLineIsEnough(klinLIst).Result)
+            //        if (KLine350ScoreCalc.KLineIsEnough(klinLIst).Result)
             //        {
             //            foundRecord = true;
             //            recordList.Add(zhouQiZhongRecord);
@@ -1612,7 +1612,7 @@ namespace CpCodeSelect.Score
 
             //        var zhouQiZhongRecord = list[i];
             //        var klinLIst = zhouQiZhongRecord.KLineList;
-            //        if (KLine350Calc.KLineIsEnough(klinLIst).Result)
+            //        if (KLine350ScoreCalc.KLineIsEnough(klinLIst).Result)
             //        {
             //            foundRecord = true;
             //            recordList.Add(zhouQiZhongRecord);
@@ -1657,7 +1657,7 @@ namespace CpCodeSelect.Score
 
             //        var zhouQiZhongRecord = list[i];
             //        var klinLIst = zhouQiZhongRecord.KLineList;
-            //        if (KLine350Calc.KLineIsEnough(klinLIst).Result)
+            //        if (KLine350ScoreCalc.KLineIsEnough(klinLIst).Result)
             //        {
             //            foundRecord = true;
             //            recordList.Add(zhouQiZhongRecord);
