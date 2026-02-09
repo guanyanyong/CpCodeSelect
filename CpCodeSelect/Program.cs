@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CpCodeSelect.Score;
+using System;
 using System.Configuration;
 using System.Windows.Forms;
 
@@ -82,6 +83,9 @@ namespace CpCodeSelect
             }else if(str== "Hou3Select350YiLouSetFormXiaJiangXiaoFanTan")
             {
                 Application.Run(new Hou3Select350YiLouSetFormXiaJiangXiaoFanTan());
+            }else if(str== "Hou3Select350YiLouSetFormScoreAndChuShou")
+            {
+                Application.Run(new Hou3Select350YiLouSetFormScoreAndChuShou());
             }
         }
     }

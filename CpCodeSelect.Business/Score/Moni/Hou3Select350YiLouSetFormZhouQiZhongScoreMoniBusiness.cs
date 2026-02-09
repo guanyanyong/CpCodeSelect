@@ -1,5 +1,6 @@
 ﻿using CpCodeSelect.Model;
 using CpCodeSelect.Model.ExModel;
+using CpCodeSelect.Model.Score;
 using CpCodeSelect.Util;
 using System;
 using System.Collections.Generic;
@@ -8,22 +9,22 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CpCodeSelect.Business
+namespace CpCodeSelect.Business.Score.Moni
 {
     /// <summary>
     /// 模拟执行4个2轮的确认点买入
     /// </summary>
-    public class Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness
+    public class Hou3Select350YiLouSetFormZhouQiZhongScoreMoniBusiness
     {
         public delegate void LogDelegate(string message);
         private LogDelegate _logMethod;
-        private List<Hou3Select350_ZhouQiZhong> model350List = new List<Hou3Select350_ZhouQiZhong>();
+        private List<Hou3Select350_ZhouQiZhongScore> model350List = new List<Hou3Select350_ZhouQiZhongScore>();
         public List<string> current350List = new List<string>();
         public List<string> before350List = new List<string>();
         public List<YilouStatistic> yilouStatisticList = new List<YilouStatistic>();
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
-        public Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhong> model350List)
+        public Hou3Select350YiLouSetFormZhouQiZhongScoreMoniBusiness(LogDelegate logMethod, List<Hou3Select350_ZhouQiZhongScore> model350List)
         { 
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
             this.model350List = model350List;
@@ -150,7 +151,7 @@ namespace CpCodeSelect.Business
             List<PositionNumber> list = new List<PositionNumber>();
             if(this.model350List==null || model350List.Count == 0)
             {
-                model350List = Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List;
+                model350List = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List;
             }
             if (IsOriginBeginStatus())
             {
@@ -235,42 +236,30 @@ namespace CpCodeSelect.Business
         public void Select350AndStartCalc(Code code)
         {
             //list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.
-            var list = model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == 1 && p.IsZhouQiZhongHou).ToList();
-            Hou3Select350_ZhouQiZhong record = null;
-
-            if (list.Count == 0) return;
-            //最多查找5次,如果5次没有找到合适的记录就不投注
-            int calcTime = 5;
-            var totalCount = list.Count;
-            if (list.Count > 5) calcTime = list.Count;
-            bool foundRecord = false;
-            Dictionary<int, int> keyValuePairs = new Dictionary<int, int>();
-            for (int i = 0; keyValuePairs.Count < calcTime; i++)
+            if (CurrentLun == 0) CurrentLun = 1;
+            Hou3Select350_ZhouQiZhongScore getEnoughRecord = null;
+            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 350)
             {
-                if (i >= 10) break;
-                int index = GetThreadSafeSeed(totalCount - 1);
-                if (keyValuePairs.ContainsKey(index))
+                foreach (var currentRecord in Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List)
                 {
-                    keyValuePairs[index] = keyValuePairs[index] + 1;
-                    continue;
-                }
-                else keyValuePairs.Add(index, 1);
-                var zhouQiZhongRecord = list[index];
-                var klinLIst = zhouQiZhongRecord.KLineList;
-                var result = KLine350Calc.KLineIsEnough(klinLIst);
-                if (result.Result)
-                {
-                    foundRecord = true;
-                    record = zhouQiZhongRecord;
-                    break;
+                    var lastScoreDate = currentRecord.ScoreDateList.LastOrDefault();
+                    if (lastScoreDate != null)
+                    {
+                        if (lastScoreDate.Score >= 150)
+                        {
+                            getEnoughRecord = currentRecord;
+                            break;
+                        }
+                    }
                 }
             }
-            // 没有找到合适的记录,本期不投注
-            if (!foundRecord) return;
-            if (record != null && record.Number350.Count > 0)
+            if (getEnoughRecord == null) return;
+
+            //最多查找5次,如果5次没有找到合适的记录就不投注
+            if (getEnoughRecord.Number350.Count > 0)
             {
                 IsRunning = true;
-                current350List = record.Number350;
+                current350List = getEnoughRecord.Number350;
                 //初始状态
                 //第一期投注
                 CurrentLun = 1;
@@ -290,40 +279,28 @@ namespace CpCodeSelect.Business
         public void Select350AndGoonCalc(Code code)
         {
             if (CurrentLun == 0) CurrentLun = 1;
-            var list = model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == 1 && p.IsZhouQiZhongHou).ToList();
-            Hou3Select350_ZhouQiZhong record = null;
-            if (list.Count == 0) return;
-            //最多查找5次,如果5次没有找到合适的记录就不投注
-            int calcTime = 5;
-            var totalCount = list.Count;
-            if (list.Count > 5) calcTime = list.Count;
-            bool foundRecord = false;
-            Dictionary<int, int> keyValuePairs = new Dictionary<int, int>();
-
-            for (int i = 0; keyValuePairs.Count < calcTime; i++)
+            Hou3Select350_ZhouQiZhongScore getEnoughRecord = null;
+            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 350)
             {
-                if (i >= 10) break;
-                int index = GetThreadSafeSeed(totalCount - 1);
-                if (keyValuePairs.ContainsKey(index))
+                foreach (var currentRecord in Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List)
                 {
-                    keyValuePairs[index] = keyValuePairs[index] + 1;
-                    continue;
-                }
-                else keyValuePairs.Add(index, 1);
-                var zhouQiZhongRecord = list[index];
-                var klinLIst = zhouQiZhongRecord.KLineList;
-                if (KLine350Calc.KLineIsEnough(klinLIst).Result)
-                {
-                    foundRecord = true;
-                    record = zhouQiZhongRecord;
-                    break;
+                    var lastScoreDate = currentRecord.ScoreDateList.LastOrDefault();
+                    if (lastScoreDate != null)
+                    {
+                        if (lastScoreDate.Score >=150)
+                        {
+                            getEnoughRecord = currentRecord;
+                            break;
+                        }
+                    }
                 }
             }
-            // 没有找到合适的记录,本期不投注
-            if (!foundRecord) return;
-            if (record != null && record.Number350.Count > 0)
+            if (getEnoughRecord == null) return;
+
+            //最多查找5次,如果5次没有找到合适的记录就不投注
+            if (getEnoughRecord.Number350.Count > 0)
             {
-                current350List = record.Number350;
+                current350List = getEnoughRecord.Number350;
 
                 IsRunning = true;
                 CurrentaQi = 1;

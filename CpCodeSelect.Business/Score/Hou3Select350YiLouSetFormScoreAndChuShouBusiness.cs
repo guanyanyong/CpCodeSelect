@@ -1,5 +1,6 @@
 ﻿using CpCodeSelect.Model;
 using CpCodeSelect.Model.ExModel;
+using CpCodeSelect.Model.Score;
 using CpCodeSelect.Util;
 using System;
 using System.Collections.Generic;
@@ -11,15 +12,19 @@ using System.Text;
 using System.Threading.Tasks;
 using static CpCodeSelect.Model.Zu6Kill1Model;
 
-namespace CpCodeSelect.Business
+namespace CpCodeSelect.Business.Score
 {
     public class Hou3Select350YiLouSetFormScoreAndChuShouBusiness : Hou3Select350YiLouSetFormZhongParentBusiness
-    { 
-        
+    {
+        /// <summary>
+        /// 评分对象列表
+        /// </summary>
+        public new static List<Hou3Select350_ZhouQiZhongScore> model350List = new List<Hou3Select350_ZhouQiZhongScore>();
+        public new static List<Hou3Select350_ZhouQiZhongScore> currentNeedCalcList = new List<Hou3Select350_ZhouQiZhongScore>();
         public static new void InitData()
         {
             AllCode = new List<Code>();
-            model350List= new List<Hou3Select350_ZhouQiZhong>();
+            model350List= new List<Hou3Select350_ZhouQiZhongScore>();
             Hou2NumberCount = new Dictionary<string, int>();
         }
         /// <summary>
@@ -68,7 +73,7 @@ namespace CpCodeSelect.Business
                 //删除超过3000条的记录 如果没有4挂的就删除
                 RemoveOldModel(code, 1);
             }
-            Hou3Select350YiLouSetFormZhouQiZhongBusiness.code = code;
+            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code = code;
         }
         /// <summary>
         ///  删除小于指定挂数的旧记录
@@ -77,7 +82,7 @@ namespace CpCodeSelect.Business
         public static new void RemoveOldModel(Code code, int guaCount = 1)
         {
             var codeDecimal = Convert.ToDecimal(code.CodeQiHao);
-            List<Hou3Select350_ZhouQiZhong> removeList = new List<Hou3Select350_ZhouQiZhong>();
+            List<Hou3Select350_ZhouQiZhongScore> removeList = new List<Hou3Select350_ZhouQiZhongScore>();
             int count = 0;
             int numberCount = 1000;
             if (!int.TryParse(leftNumberCountStr, out numberCount))
@@ -147,13 +152,16 @@ namespace CpCodeSelect.Business
         }
 
 
-        private static void CalcCode(Code code, Hou3Select350_ZhouQiZhong model, string hou3)
+        private static void CalcCode(Code code, Hou3Select350_ZhouQiZhongScore model, string hou3)
         {
+            if(model!=null && model.ScoreDateList == null)
+            {
+                model.ScoreDateList= new List<LotteryScoreData>();
+            }
             if (model.Number350.Contains(hou3))
             {
                 //中了
                 model.ZhongGount++;
-                model.NeedZhong = false;
                 model.Zhong3BeforeGua = model.Zhong2BeforeGua;
                 model.Zhong2BeforeGua = model.ZhongBeforeGua;
                 model.ZhongBeforeGua = model.GuaCount;
@@ -220,7 +228,7 @@ namespace CpCodeSelect.Business
 
                 */
 
-                var hou3List = Hou3Select350YiLouSetFormZhouQiZhongBusiness.GenerateHou3NumbereFromCode(270);
+                var hou3List = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
                 var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
                 foreach (var number in numerList)
                 {
@@ -229,12 +237,13 @@ namespace CpCodeSelect.Business
                         var list = number.OrderBy(p => p).ToList();
 
 
-                        Hou3Select350_ZhouQiZhong model350 = new Hou3Select350_ZhouQiZhong();
+                        Hou3Select350_ZhouQiZhongScore model350 = new Hou3Select350_ZhouQiZhongScore();
                         model350.Number350 = list;
                         model350.CodeNumber = code.CodeNumber;
                         model350.CodeQiHao = code.CodeQiHao;
                         model350.NeedZhong = true;
                         model350.KLineList = new List<KLine>();
+                        model350.ScoreDateList = new List<LotteryScoreData>();
                         model350.YiLouKline350 = new List<YiLouKline350>();
                         model350.YiLouTuLineList = new List<KLine>();
                         KLine350Calc.CalcKLineHistoryList(model350, AllCode, 100);

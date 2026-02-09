@@ -1,4 +1,6 @@
 ﻿using CpCodeSelect.Business;
+using CpCodeSelect.Business.Score;
+using CpCodeSelect.Business.Score.Moni;
 using CpCodeSelect.Model;
 using System;
 using System.Collections.Generic;
@@ -11,17 +13,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CpCodeSelect
+namespace CpCodeSelect.Score.Moni
 {
-    public partial class MoniRunZhouQiZhong : Form
+    public partial class MoniRunZhouQiZhongScore : Form
     {
-        private Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness moniBusiness;
+        private Hou3Select350YiLouSetFormZhouQiZhongScoreMoniBusiness moniBusiness;
         Code beforeCode = null;
         Code currentCode = null;
-        public MoniRunZhouQiZhong()
+        public MoniRunZhouQiZhongScore()
         {
             InitializeComponent(); 
-            moniBusiness=new Hou3Select350YiLouSetFormZhouQiZhongMoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.model350List);
+            moniBusiness=new Hou3Select350YiLouSetFormZhouQiZhongScoreMoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List);
             dataGridView1.DataSource = moniBusiness.yilouStatisticList;
         }
         public void Run(Code code)
@@ -32,10 +34,12 @@ namespace CpCodeSelect
                 beforeCode = code;
                 //当上一期期号和当前期号不一样时，才进行计算
                 //这里需要跑10期后再进行计算
-                if (Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.AllCode.Count > 1620)
+                if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode.Count >= 270)
                 {
                     moniBusiness.CalcCode(code);
                     SetFormTxtValue();
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = moniBusiness.yilouStatisticList;
                 }
             }
         }

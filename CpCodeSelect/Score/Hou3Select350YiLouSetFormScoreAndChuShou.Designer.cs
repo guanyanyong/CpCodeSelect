@@ -1,4 +1,4 @@
-﻿namespace CpCodeSelect
+﻿namespace CpCodeSelect.Score
 {
     partial class Hou3Select350YiLouSetFormScoreAndChuShou
     {
@@ -125,6 +125,7 @@
             this.numericUpDownAutoClick = new System.Windows.Forms.NumericUpDown();
             this.lblError = new System.Windows.Forms.Label();
             this.btnSelect = new System.Windows.Forms.Button();
+            this.btnQuShiDuanSearch = new System.Windows.Forms.Button();
             this.btnYiLou = new System.Windows.Forms.Button();
             this.btnSelectConditonEnough = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
@@ -135,7 +136,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
             this.panel3 = new System.Windows.Forms.Panel();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
@@ -162,9 +165,7 @@
             this.chk3fen = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
-            this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
-            this.btnQuShiDuanSearch = new System.Windows.Forms.Button();
+            this.btnScore = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -1435,6 +1436,7 @@
             this.panel9.Controls.Add(this.numericUpDownAutoClick);
             this.panel9.Controls.Add(this.lblError);
             this.panel9.Controls.Add(this.btnSelect);
+            this.panel9.Controls.Add(this.btnScore);
             this.panel9.Controls.Add(this.btnQuShiDuanSearch);
             this.panel9.Controls.Add(this.btnYiLou);
             this.panel9.Controls.Add(this.btnSelectConditonEnough);
@@ -1652,6 +1654,17 @@
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
+            // btnQuShiDuanSearch
+            // 
+            this.btnQuShiDuanSearch.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.btnQuShiDuanSearch.Location = new System.Drawing.Point(1225, 12);
+            this.btnQuShiDuanSearch.Name = "btnQuShiDuanSearch";
+            this.btnQuShiDuanSearch.Size = new System.Drawing.Size(155, 72);
+            this.btnQuShiDuanSearch.TabIndex = 3;
+            this.btnQuShiDuanSearch.Text = "趋势段搜索";
+            this.btnQuShiDuanSearch.UseVisualStyleBackColor = true;
+            this.btnQuShiDuanSearch.Click += new System.EventHandler(this.btnQuShiDuanSearch_Click);
+            // 
             // btnYiLou
             // 
             this.btnYiLou.Font = new System.Drawing.Font("微软雅黑", 16F);
@@ -1761,6 +1774,15 @@
             this.tabPage4.Text = "K线走势";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // lotteryKLine
+            // 
+            this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lotteryKLine.Location = new System.Drawing.Point(3, 3);
+            this.lotteryKLine.Name = "lotteryKLine";
+            this.lotteryKLine.Size = new System.Drawing.Size(1447, 360);
+            this.lotteryKLine.TabIndex = 0;
+            this.lotteryKLine.TopMessage = "";
+            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.yiLouLotteryKLine);
@@ -1771,6 +1793,15 @@
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "遗漏K走势";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // yiLouLotteryKLine
+            // 
+            this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
+            this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
+            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1447, 360);
+            this.yiLouLotteryKLine.TabIndex = 0;
+            this.yiLouLotteryKLine.TopMessage = "";
             // 
             // panel3
             // 
@@ -2040,36 +2071,18 @@
             this.panel2.Size = new System.Drawing.Size(1469, 565);
             this.panel2.TabIndex = 10;
             // 
-            // lotteryKLine
+            // btnScore
             // 
-            this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lotteryKLine.Location = new System.Drawing.Point(3, 3);
-            this.lotteryKLine.Name = "lotteryKLine";
-            this.lotteryKLine.Size = new System.Drawing.Size(1447, 360);
-            this.lotteryKLine.TabIndex = 0;
-            this.lotteryKLine.TopMessage = "";
+            this.btnScore.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.btnScore.Location = new System.Drawing.Point(1225, 95);
+            this.btnScore.Name = "btnScore";
+            this.btnScore.Size = new System.Drawing.Size(155, 57);
+            this.btnScore.TabIndex = 3;
+            this.btnScore.Text = "评分搜索";
+            this.btnScore.UseVisualStyleBackColor = true;
+            this.btnScore.Click += new System.EventHandler(this.btnScore_Click);
             // 
-            // yiLouLotteryKLine
-            // 
-            this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
-            this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
-            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1447, 360);
-            this.yiLouLotteryKLine.TabIndex = 0;
-            this.yiLouLotteryKLine.TopMessage = "";
-            // 
-            // btnQuShiDuanSearch
-            // 
-            this.btnQuShiDuanSearch.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnQuShiDuanSearch.Location = new System.Drawing.Point(1225, 23);
-            this.btnQuShiDuanSearch.Name = "btnQuShiDuanSearch";
-            this.btnQuShiDuanSearch.Size = new System.Drawing.Size(155, 72);
-            this.btnQuShiDuanSearch.TabIndex = 3;
-            this.btnQuShiDuanSearch.Text = "趋势段搜索";
-            this.btnQuShiDuanSearch.UseVisualStyleBackColor = true;
-            this.btnQuShiDuanSearch.Click += new System.EventHandler(this.btnQuShiDuanSearch_Click);
-            // 
-            // Hou3Select350YiLouSetFormZhouQiZhong
+            // Hou3Select350YiLouSetFormScoreAndChuShou
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -2077,7 +2090,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelError);
-            this.Name = "Hou3Select350YiLouSetFormZhouQiZhong";
+            this.Name = "Hou3Select350YiLouSetFormScoreAndChuShou";
             this.Text = "350注半上升遗漏搜索";
             this.tabControl1.ResumeLayout(false);
             this.TotalInfo.ResumeLayout(false);
@@ -2288,6 +2301,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.Button btnQuShiDuanSearch;
+        private System.Windows.Forms.Button btnScore;
     }
 }
 

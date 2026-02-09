@@ -53,7 +53,9 @@
     <Compile Include="Hou3Select350YiLouSetFormDuoZhouQiZhongBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormZhongParentBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormXiaJiangXiaoFanTanBusiness.cs" />
-    <Compile Include="Hou3Select350YiLouSetFormScoreAndChuShouBusiness.cs" />
+    <Compile Include="Score\Moni\Hou3Select350YiLouSetFormZhouQiZhongScore8ge1MoniBusiness.cs" />
+    <Compile Include="Score\Moni\Hou3Select350YiLouSetFormZhouQiZhongScoreMoniBusiness.cs" />
+    <Compile Include="Score\Hou3Select350YiLouSetFormScoreAndChuShouBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormZhouQiZhongXiaJiangXiaoFanTanLianXu6MoniBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormZiRanGenerateBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormZhouQiZhongLianXu3ge1MoniBusiness.cs" />

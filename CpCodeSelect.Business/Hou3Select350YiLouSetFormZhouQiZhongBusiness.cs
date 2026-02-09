@@ -203,7 +203,7 @@ namespace CpCodeSelect.Business
 
             if (AllCode != null && AllCode.Count > 270)
             {
-                int count = 0;
+                //int count = 0;
                 //while (true)
                 //{
                 var takeCodeList = new List<string>();

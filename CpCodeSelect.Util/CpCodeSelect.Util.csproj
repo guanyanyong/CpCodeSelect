@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\CpCodeSelect\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,6 +47,7 @@
     <Compile Include="BollingerBandsSimple.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="ClassHelper.cs" />
+    <Compile Include="Config\AppConfig.cs" />
     <Compile Include="DataGenerate\DuozhouqiStringSelection.cs" />
     <Compile Include="DataGenerate\LayeredStringSelection.cs" />
     <Compile Include="DataGenerate\StringSelection.cs" />
@@ -69,6 +73,9 @@
     <Compile Include="NumberSelectForYiLou.cs" />
     <Compile Include="NumberSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scorer\BaseScoreRule.cs" />
+    <Compile Include="Scorer\Rules\ScoreRules.cs" />
+    <Compile Include="Scorer\ScorerUtil.cs" />
     <Compile Include="ThreadSafeRandom.cs" />
     <Compile Include="YiLouKLine\YiLouKLine350Calc.cs" />
   </ItemGroup>
@@ -77,6 +84,9 @@
       <Project>{e5d706a9-f866-478b-b1b0-228179e2fb3b}</Project>
       <Name>CpCodeSelect.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

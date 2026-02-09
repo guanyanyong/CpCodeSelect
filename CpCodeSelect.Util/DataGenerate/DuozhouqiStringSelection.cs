@@ -33,7 +33,7 @@ namespace CpCodeSelect.Util.DataGenerate
             });
 
         // 全局种子计数器（用于需要新Random实例的场景）
-        private static int globalSeedCounter = 0;
+        //private static int globalSeedCounter = 0;
 
         #endregion
 

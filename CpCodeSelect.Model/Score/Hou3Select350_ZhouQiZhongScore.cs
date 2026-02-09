@@ -1,5 +1,4 @@
 ﻿using CpCodeSelect.Model.ExModel;
-using CpCodeSelect.Model.Score;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +6,15 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CpCodeSelect.Model
+namespace CpCodeSelect.Model.Score
 {
-    public class Hou3Select350_ZhouQiZhong : BaseCodeInfo
+    public class Hou3Select350_ZhouQiZhongScore: BaseCodeInfo
     {
-        public int Score { get; set; } = 0;
         public bool IsChuShou { get; set; } = false;
+        public int Score { get; set; } = 0;
+        /// <summary>
+        /// 出手次数
+        /// </summary>
         public int ShouNumber { get; set; } = -1;
         public static int ShowNumber = 6;
         /// <summary>
@@ -40,16 +42,15 @@ namespace CpCodeSelect.Model
         /// </summary>
         public int ZhouQiZhongHouGua { get; set; } = 0;
         /// <summary>
-        /// K线列表
-        /// </summary>
-
-        public List<KLine> KLineList { get; set; }
-        public List<KLine> YiLouTuLineList { get; set; }
-        public List<YiLouKline350> YiLouKline350 { get; set; }
-        /// <summary>
         /// 评分数据列表
         /// </summary>
         public List<LotteryScoreData> ScoreDateList { get; set; }
+        /// <summary>
+        /// K线列表
+        /// </summary>
+        public List<KLine> KLineList { get; set; }
+        public List<KLine> YiLouTuLineList { get; set; }
+        public List<YiLouKline350> YiLouKline350 { get; set; }
 
         /// <summary>
         /// 是否需要显示
