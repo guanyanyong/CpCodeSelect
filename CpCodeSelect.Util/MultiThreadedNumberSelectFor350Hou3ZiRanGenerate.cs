@@ -31,7 +31,7 @@ namespace CpCodeSelect.Util
             //try
             //{
                 // 使用 Parallel.For 进行并行处理
-                Parallel.For(0, groupCount, new ParallelOptions { MaxDegreeOfParallelism = 10 }, i =>
+                Parallel.For(0, groupCount, new ParallelOptions { MaxDegreeOfParallelism = 1 }, i =>
                 {
                     // 为每个线程创建独立的 Random 实例，避免线程安全问题
                     var localRandom = new Random(GetThreadSafeSeed());

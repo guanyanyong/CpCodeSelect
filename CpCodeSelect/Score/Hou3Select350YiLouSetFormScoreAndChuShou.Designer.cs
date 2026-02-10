@@ -125,6 +125,7 @@
             this.numericUpDownAutoClick = new System.Windows.Forms.NumericUpDown();
             this.lblError = new System.Windows.Forms.Label();
             this.btnSelect = new System.Windows.Forms.Button();
+            this.btnScore = new System.Windows.Forms.Button();
             this.btnQuShiDuanSearch = new System.Windows.Forms.Button();
             this.btnYiLou = new System.Windows.Forms.Button();
             this.btnSelectConditonEnough = new System.Windows.Forms.Button();
@@ -165,7 +166,6 @@
             this.chk3fen = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnScore = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -1654,6 +1654,17 @@
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
+            // btnScore
+            // 
+            this.btnScore.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.btnScore.Location = new System.Drawing.Point(1225, 95);
+            this.btnScore.Name = "btnScore";
+            this.btnScore.Size = new System.Drawing.Size(155, 57);
+            this.btnScore.TabIndex = 3;
+            this.btnScore.Text = "评分搜索";
+            this.btnScore.UseVisualStyleBackColor = true;
+            this.btnScore.Click += new System.EventHandler(this.btnScore_Click);
+            // 
             // btnQuShiDuanSearch
             // 
             this.btnQuShiDuanSearch.Font = new System.Drawing.Font("微软雅黑", 16F);
@@ -1970,7 +1981,7 @@
             this.numericUpDown4.Font = new System.Drawing.Font("微软雅黑", 16F);
             this.numericUpDown4.Location = new System.Drawing.Point(326, 101);
             this.numericUpDown4.Maximum = new decimal(new int[] {
-            1500,
+            2000,
             0,
             0,
             0});
@@ -2070,17 +2081,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1469, 565);
             this.panel2.TabIndex = 10;
-            // 
-            // btnScore
-            // 
-            this.btnScore.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnScore.Location = new System.Drawing.Point(1225, 95);
-            this.btnScore.Name = "btnScore";
-            this.btnScore.Size = new System.Drawing.Size(155, 57);
-            this.btnScore.TabIndex = 3;
-            this.btnScore.Text = "评分搜索";
-            this.btnScore.UseVisualStyleBackColor = true;
-            this.btnScore.Click += new System.EventHandler(this.btnScore_Click);
             // 
             // Hou3Select350YiLouSetFormScoreAndChuShou
             // 

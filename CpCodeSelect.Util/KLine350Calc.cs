@@ -622,22 +622,22 @@ namespace CpCodeSelect.Util
                 //进行评分,之后加入列表
 
                 //评分的逻辑
-                scoreData = new LotteryScoreData();
-                scoreData.IsZhongJiang = isZhong;
-                scoreData.YiLouValue = model.GuaCount;
-                scoreData.LianXuZhongJiangCount = model.ZhongGount;
-                scoreData.KValue = kline.KValue;
-                scoreData.BollingerBands = kline.Bolling;
+                //scoreData = new LotteryScoreData();
+                //scoreData.IsZhongJiang = isZhong;
+                //scoreData.YiLouValue = model.GuaCount;
+                //scoreData.LianXuZhongJiangCount = model.ZhongGount;
+                //scoreData.KValue = kline.KValue;
+                //scoreData.BollingerBands = kline.Bolling;
 
-                scoreData.Number350 = model.Number350;
-                scoreData.QiHao = code.CodeQiHao;
-                scoreData.Number = code.CodeNumber;
+                //scoreData.Number350 = model.Number350;
+                //scoreData.QiHao = code.CodeQiHao;
+                //scoreData.Number = code.CodeNumber;
 
-                model.ScoreDateList.Add(scoreData);
-                CalcScore(scoreData, model);
-                model.Score = scoreData.Score;
-                model.IsChuShou = scoreData.IsChuShou;
-                model.ShouNumber = scoreData.HandNumber;
+                //model.ScoreDateList.Add(scoreData);
+                //CalcScore(scoreData, model);
+                //model.Score = scoreData.Score;
+                //model.IsChuShou = scoreData.IsChuShou;
+                //model.ShouNumber = scoreData.HandNumber;
 
             }
             return model;

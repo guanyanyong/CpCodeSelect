@@ -212,7 +212,7 @@ namespace CpCodeSelect.Score
         /// </summary>
         public void ReadAllLine()
         {
-            var codeStrList = FileUtil.ReadFileAllRecods(filePath, 1000);
+            var codeStrList = FileUtil.ReadFileAllRecods(filePath, 3000);
             var codeList = FileAnalysis.GetCodeListByCodeListStr(codeStrList);
             if (codeList != null && codeList.Count > 0)
             {

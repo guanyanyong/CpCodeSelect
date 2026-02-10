@@ -70,9 +70,9 @@ namespace CpCodeSelect.Business.Score
             //GenerateCode(code);
             if (AllCode != null && AllCode.Count > 270)
             {
-                Generate350Code(code);
                 //删除超过3000条的记录 如果没有4挂的就删除
                 RemoveOldModel(code, 1);
+                Generate350Code(code);
             }
             Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code = code;
         }
@@ -92,13 +92,13 @@ namespace CpCodeSelect.Business.Score
 
             }
 
-            while (model350List.Count >= numberCount)
+            while (model350List.Count > numberCount)
             {
-                for (int i = 0; i < 50; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= 10 && model.ZhouQiZhongHouGua <= guaCount && model.GuaCount<=6)
+                    if (codeDecimal - currentDecimal >= 10 && model.ShouNumber <= 2 )
                     {
                         removeList.Add(model);
                     }
@@ -122,7 +122,7 @@ namespace CpCodeSelect.Business.Score
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= overNumberDelete)
+                    if (codeDecimal - currentDecimal >= overNumberDelete && model.ShouNumber <= 2)
                     {
                         removeList.Add(model);
                     }
@@ -230,10 +230,18 @@ namespace CpCodeSelect.Business.Score
                 numerList = numerList.OrderBy(item => item).ToList();
 
                 */
+                int numberCount = 1000;
+                if (!int.TryParse(leftNumberCountStr, out numberCount))
+                {
+                    numberCount = 1000;
 
+                }
+
+                if (model350List.Count > numberCount)
+                    return;
                 var hou3List = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
                 //var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
-                var numerList = MultiThreadedNumberSelectFor350Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 50);
+                var numerList = MultiThreadedNumberSelectFor350Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 1);
                 foreach (var number in numerList)
                 {
                     if (number.Count > 0)

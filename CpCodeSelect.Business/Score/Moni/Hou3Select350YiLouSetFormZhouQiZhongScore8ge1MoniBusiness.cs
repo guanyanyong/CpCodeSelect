@@ -218,7 +218,7 @@ namespace CpCodeSelect.Business.Score.Moni
                             LunInit();
                             before350List = current350List;
                             Select350AndStartCalc(code);
-                            yilouStatisticList[9].TotalCount = yilouStatisticList[9].TotalCount + 1;
+                            yilouStatisticList[8].TotalCount = yilouStatisticList[8].TotalCount + 1;
                             return;
                         }
                         before350List = current350List;
@@ -266,7 +266,6 @@ namespace CpCodeSelect.Business.Score.Moni
             //}
             //if (getEnoughRecord == null) return;
             List<Hou3Select350_ZhouQiZhongScore> getEnoughRecordList = new List<Hou3Select350_ZhouQiZhongScore>();
-
             getEnoughRecordList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.
                 Where(p => p.IsChuShou && p.Score >= 70 && p.ShouNumber == 1).ToList();
             if (getEnoughRecordList.Count <= 0) return;
@@ -314,18 +313,21 @@ namespace CpCodeSelect.Business.Score.Moni
             if (CurrentLun == 0 || CurrentLun >= 9) CurrentLun = 1;
 
             List<Hou3Select350_ZhouQiZhongScore> getEnoughRecordList = new List<Hou3Select350_ZhouQiZhongScore>();
+            var shouNumber = CurrentLun;
             getEnoughRecordList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.
-                Where(p => p.IsChuShou && p.Score >= 70 && p.ShouNumber == CurrentLun).ToList();
+                Where(p => p.IsChuShou && p.Score >= 70 && p.ShouNumber == shouNumber).ToList();
             if (getEnoughRecordList.Count <= 0) return;
             var kLineIsEnoughList = new List<Hou3Select350_ZhouQiZhongScore>();
             foreach (var record in getEnoughRecordList)
             {
 
-                var result = KLine350ScoreCalc.KLineIsEnough(record.KLineList);
-                if (result.Result)
-                {
-                    kLineIsEnoughList.Add(record);
-                }
+                //var result = KLine350ScoreCalc.KLineIsEnough(record.KLineList);
+                //if (result.Result)
+                //{
+                //    kLineIsEnoughList.Add(record);
+                //}
+
+                kLineIsEnoughList.Add(record);
             }
             if (kLineIsEnoughList.Count <= 0) return;
             Random random = new Random(GetThreadSafeSeed());
