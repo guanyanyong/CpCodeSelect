@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFIlePath = new System.Windows.Forms.TextBox();
@@ -105,8 +106,11 @@
             this.CodeQiHao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZhongGount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.GuaCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsChuShou = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Score = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShouNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.lblMaxGua2 = new System.Windows.Forms.Label();
@@ -137,9 +141,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
             this.panel3 = new System.Windows.Forms.Panel();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
@@ -166,6 +168,8 @@
             this.chk3fen = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
+            this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -308,7 +312,7 @@
             " "});
             this.listBoxHistory.Location = new System.Drawing.Point(0, 0);
             this.listBoxHistory.Name = "listBoxHistory";
-            this.listBoxHistory.Size = new System.Drawing.Size(1455, 385);
+            this.listBoxHistory.Size = new System.Drawing.Size(1396, 432);
             this.listBoxHistory.TabIndex = 5;
             // 
             // chkRefersh
@@ -333,7 +337,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1469, 565);
+            this.tabControl1.Size = new System.Drawing.Size(1410, 612);
             this.tabControl1.TabIndex = 8;
             // 
             // TotalInfo
@@ -345,7 +349,7 @@
             this.TotalInfo.Location = new System.Drawing.Point(4, 37);
             this.TotalInfo.Name = "TotalInfo";
             this.TotalInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.TotalInfo.Size = new System.Drawing.Size(1461, 524);
+            this.TotalInfo.Size = new System.Drawing.Size(1402, 571);
             this.TotalInfo.TabIndex = 0;
             this.TotalInfo.Text = "总体信息";
             this.TotalInfo.UseVisualStyleBackColor = true;
@@ -357,7 +361,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(3, 136);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1455, 385);
+            this.panel8.Size = new System.Drawing.Size(1396, 432);
             this.panel8.TabIndex = 9;
             // 
             // panel7
@@ -374,7 +378,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(3, 3);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1455, 133);
+            this.panel7.Size = new System.Drawing.Size(1396, 133);
             this.panel7.TabIndex = 8;
             // 
             // button12
@@ -517,7 +521,7 @@
             this.SetSearch.Controls.Add(this.label7);
             this.SetSearch.Location = new System.Drawing.Point(4, 37);
             this.SetSearch.Name = "SetSearch";
-            this.SetSearch.Size = new System.Drawing.Size(1461, 524);
+            this.SetSearch.Size = new System.Drawing.Size(1402, 571);
             this.SetSearch.TabIndex = 2;
             this.SetSearch.Text = "搜索设置";
             this.SetSearch.UseVisualStyleBackColor = true;
@@ -1316,7 +1320,7 @@
             this.ResultPage.Location = new System.Drawing.Point(4, 37);
             this.ResultPage.Name = "ResultPage";
             this.ResultPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ResultPage.Size = new System.Drawing.Size(1461, 524);
+            this.ResultPage.Size = new System.Drawing.Size(1402, 571);
             this.ResultPage.TabIndex = 1;
             this.ResultPage.Text = "显示信息";
             this.ResultPage.UseVisualStyleBackColor = true;
@@ -1328,17 +1332,17 @@
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(3, 170);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1455, 351);
+            this.panel10.Size = new System.Drawing.Size(1396, 398);
             this.panel10.TabIndex = 12;
             // 
             // txt50Number
             // 
             this.txt50Number.Dock = System.Windows.Forms.DockStyle.Right;
             this.txt50Number.Font = new System.Drawing.Font("微软雅黑", 18F);
-            this.txt50Number.Location = new System.Drawing.Point(1163, 0);
+            this.txt50Number.Location = new System.Drawing.Point(1104, 0);
             this.txt50Number.Multiline = true;
             this.txt50Number.Name = "txt50Number";
-            this.txt50Number.Size = new System.Drawing.Size(292, 351);
+            this.txt50Number.Size = new System.Drawing.Size(292, 398);
             this.txt50Number.TabIndex = 4;
             // 
             // dataGridView1
@@ -1351,13 +1355,24 @@
             this.CodeQiHao,
             this.CodeNumber,
             this.ZhongGount,
+            this.Delete,
             this.GuaCount,
-            this.Delete});
+            this.IsChuShou,
+            this.Score,
+            this.ShouNumber});
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("微软雅黑", 16F);
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle30;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1455, 351);
+            this.dataGridView1.Size = new System.Drawing.Size(1396, 398);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -1366,6 +1381,7 @@
             this.ZhouQiZhongHouGua.DataPropertyName = "ZhouQiZhongHouGua";
             this.ZhouQiZhongHouGua.HeaderText = "周期中后挂";
             this.ZhouQiZhongHouGua.Name = "ZhouQiZhongHouGua";
+            this.ZhouQiZhongHouGua.Visible = false;
             this.ZhouQiZhongHouGua.Width = 150;
             // 
             // IsZhouQiZhongHou
@@ -1373,6 +1389,7 @@
             this.IsZhouQiZhongHou.DataPropertyName = "IsZhouQiZhongHou";
             this.IsZhouQiZhongHou.HeaderText = "是否可上";
             this.IsZhouQiZhongHou.Name = "IsZhouQiZhongHou";
+            this.IsZhouQiZhongHou.Visible = false;
             this.IsZhouQiZhongHou.Width = 120;
             // 
             // Numer50
@@ -1391,17 +1408,27 @@
             // 
             // CodeNumber
             // 
+            this.CodeNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.CodeNumber.DataPropertyName = "CodeNumber";
             this.CodeNumber.HeaderText = "开奖号";
             this.CodeNumber.MinimumWidth = 120;
             this.CodeNumber.Name = "CodeNumber";
-            this.CodeNumber.Width = 150;
+            this.CodeNumber.Width = 120;
             // 
             // ZhongGount
             // 
             this.ZhongGount.DataPropertyName = "ZhongGount";
             this.ZhongGount.HeaderText = "连中";
             this.ZhongGount.Name = "ZhongGount";
+            // 
+            // Delete
+            // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Delete.HeaderText = "删除";
+            this.Delete.Name = "Delete";
+            this.Delete.Text = "删除";
+            this.Delete.UseColumnTextForButtonValue = true;
+            this.Delete.Width = 63;
             // 
             // GuaCount
             // 
@@ -1410,12 +1437,25 @@
             this.GuaCount.MinimumWidth = 60;
             this.GuaCount.Name = "GuaCount";
             // 
-            // Delete
+            // IsChuShou
             // 
-            this.Delete.HeaderText = "删除";
-            this.Delete.Name = "Delete";
-            this.Delete.Text = "删除";
-            this.Delete.UseColumnTextForButtonValue = true;
+            this.IsChuShou.DataPropertyName = "IsChuShou";
+            this.IsChuShou.HeaderText = "是否出手";
+            this.IsChuShou.Name = "IsChuShou";
+            this.IsChuShou.Width = 150;
+            // 
+            // Score
+            // 
+            this.Score.DataPropertyName = "Score";
+            this.Score.HeaderText = "评分";
+            this.Score.Name = "Score";
+            // 
+            // ShouNumber
+            // 
+            this.ShouNumber.DataPropertyName = "ShouNumber";
+            this.ShouNumber.HeaderText = "出手次数";
+            this.ShouNumber.Name = "ShouNumber";
+            this.ShouNumber.Width = 150;
             // 
             // panel9
             // 
@@ -1447,7 +1487,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(3, 3);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1455, 167);
+            this.panel9.Size = new System.Drawing.Size(1396, 167);
             this.panel9.TabIndex = 11;
             // 
             // label2
@@ -1521,12 +1561,13 @@
             // lblResultCount
             // 
             this.lblResultCount.AutoSize = true;
-            this.lblResultCount.ForeColor = System.Drawing.Color.Red;
-            this.lblResultCount.Location = new System.Drawing.Point(379, 122);
+            this.lblResultCount.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.lblResultCount.ForeColor = System.Drawing.Color.Black;
+            this.lblResultCount.Location = new System.Drawing.Point(369, 122);
             this.lblResultCount.Name = "lblResultCount";
-            this.lblResultCount.Size = new System.Drawing.Size(26, 30);
+            this.lblResultCount.Size = new System.Drawing.Size(52, 30);
             this.lblResultCount.TabIndex = 9;
-            this.lblResultCount.Text = "0";
+            this.lblResultCount.Text = "405";
             // 
             // numericUpDown1
             // 
@@ -1595,11 +1636,6 @@
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(120, 36);
             this.numericUpDown3.TabIndex = 2;
-            this.numericUpDown3.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label8
             // 
@@ -1749,7 +1785,7 @@
             this.kLine.Controls.Add(this.panel3);
             this.kLine.Location = new System.Drawing.Point(4, 37);
             this.kLine.Name = "kLine";
-            this.kLine.Size = new System.Drawing.Size(1461, 524);
+            this.kLine.Size = new System.Drawing.Size(1402, 571);
             this.kLine.TabIndex = 4;
             this.kLine.Text = "K线";
             this.kLine.UseVisualStyleBackColor = true;
@@ -1760,7 +1796,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 117);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1461, 407);
+            this.panel4.Size = new System.Drawing.Size(1402, 454);
             this.panel4.TabIndex = 1;
             // 
             // tabControl2
@@ -1771,7 +1807,7 @@
             this.tabControl2.Location = new System.Drawing.Point(0, 0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1461, 407);
+            this.tabControl2.Size = new System.Drawing.Size(1402, 454);
             this.tabControl2.TabIndex = 14;
             // 
             // tabPage4
@@ -1780,19 +1816,10 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 37);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1453, 366);
+            this.tabPage4.Size = new System.Drawing.Size(1394, 413);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "K线走势";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // lotteryKLine
-            // 
-            this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lotteryKLine.Location = new System.Drawing.Point(3, 3);
-            this.lotteryKLine.Name = "lotteryKLine";
-            this.lotteryKLine.Size = new System.Drawing.Size(1447, 360);
-            this.lotteryKLine.TabIndex = 0;
-            this.lotteryKLine.TopMessage = "";
             // 
             // tabPage5
             // 
@@ -1800,19 +1827,10 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 37);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1453, 366);
+            this.tabPage5.Size = new System.Drawing.Size(1394, 413);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "遗漏K走势";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // yiLouLotteryKLine
-            // 
-            this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
-            this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
-            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1447, 360);
-            this.yiLouLotteryKLine.TabIndex = 0;
-            this.yiLouLotteryKLine.TopMessage = "";
             // 
             // panel3
             // 
@@ -1827,7 +1845,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1461, 117);
+            this.panel3.Size = new System.Drawing.Size(1402, 117);
             this.panel3.TabIndex = 0;
             // 
             // numericUpDown5
@@ -1923,7 +1941,7 @@
             this.paramSet.Controls.Add(this.panel5);
             this.paramSet.Location = new System.Drawing.Point(4, 37);
             this.paramSet.Name = "paramSet";
-            this.paramSet.Size = new System.Drawing.Size(1461, 524);
+            this.paramSet.Size = new System.Drawing.Size(1402, 571);
             this.paramSet.TabIndex = 3;
             this.paramSet.Text = "参数设置";
             this.paramSet.UseVisualStyleBackColor = true;
@@ -1934,7 +1952,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 241);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1461, 283);
+            this.panel6.Size = new System.Drawing.Size(1402, 330);
             this.panel6.TabIndex = 9;
             // 
             // txtResult
@@ -1943,7 +1961,7 @@
             this.txtResult.Location = new System.Drawing.Point(0, 0);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(1461, 283);
+            this.txtResult.Size = new System.Drawing.Size(1402, 330);
             this.txtResult.TabIndex = 5;
             // 
             // panel5
@@ -1957,7 +1975,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1461, 241);
+            this.panel5.Size = new System.Drawing.Size(1402, 241);
             this.panel5.TabIndex = 8;
             // 
             // txtDownLoadFilePath
@@ -2070,7 +2088,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1469, 122);
+            this.panel1.Size = new System.Drawing.Size(1410, 122);
             this.panel1.TabIndex = 9;
             // 
             // panel2
@@ -2079,19 +2097,37 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 122);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1469, 565);
+            this.panel2.Size = new System.Drawing.Size(1410, 612);
             this.panel2.TabIndex = 10;
+            // 
+            // lotteryKLine
+            // 
+            this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lotteryKLine.Location = new System.Drawing.Point(3, 3);
+            this.lotteryKLine.Name = "lotteryKLine";
+            this.lotteryKLine.Size = new System.Drawing.Size(1388, 407);
+            this.lotteryKLine.TabIndex = 0;
+            this.lotteryKLine.TopMessage = "";
+            // 
+            // yiLouLotteryKLine
+            // 
+            this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
+            this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
+            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1388, 407);
+            this.yiLouLotteryKLine.TabIndex = 0;
+            this.yiLouLotteryKLine.TopMessage = "";
             // 
             // Hou3Select350YiLouSetFormScoreAndChuShou
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1469, 687);
+            this.ClientSize = new System.Drawing.Size(1410, 734);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelError);
             this.Name = "Hou3Select350YiLouSetFormScoreAndChuShou";
-            this.Text = "350注半上升遗漏搜索";
+            this.Text = "350注积分与出手";
             this.tabControl1.ResumeLayout(false);
             this.TotalInfo.ResumeLayout(false);
             this.TotalInfo.PerformLayout();
@@ -2292,16 +2328,19 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button btnYiLou;
+        private System.Windows.Forms.Button btnQuShiDuanSearch;
+        private System.Windows.Forms.Button btnScore;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZhouQiZhongHouGua;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsZhouQiZhongHou;
         private System.Windows.Forms.DataGridViewButtonColumn Numer50;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodeQiHao;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodeNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZhongGount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
-        private System.Windows.Forms.Button btnQuShiDuanSearch;
-        private System.Windows.Forms.Button btnScore;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GuaCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IsChuShou;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Score;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShouNumber;
     }
 }
 

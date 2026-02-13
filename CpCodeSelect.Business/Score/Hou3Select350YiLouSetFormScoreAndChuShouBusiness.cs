@@ -68,10 +68,10 @@ namespace CpCodeSelect.Business.Score
 
             // 生成新的350码
             //GenerateCode(code);
-            if (AllCode != null && AllCode.Count > 270)
+            if (AllCode != null && AllCode.Count > 100)
             {
                 //删除超过3000条的记录 如果没有4挂的就删除
-                RemoveOldModel(code, 1);
+                //RemoveOldModel(code, 1);
                 Generate350Code(code);
             }
             Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code = code;
@@ -122,7 +122,7 @@ namespace CpCodeSelect.Business.Score
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= overNumberDelete && model.ShouNumber <= 2)
+                    if (codeDecimal - currentDecimal >= overNumberDelete && model.ShouNumber < 1)
                     {
                         removeList.Add(model);
                     }
@@ -216,7 +216,7 @@ namespace CpCodeSelect.Business.Score
         public static new void Generate350Code(Code code)
         {
 
-            if (AllCode != null && AllCode.Count > 270)
+            if (AllCode != null && AllCode.Count > 100)
             {
                 int count = 0;
                 //while (true)
@@ -237,7 +237,7 @@ namespace CpCodeSelect.Business.Score
 
                 }
 
-                if (model350List.Count > numberCount)
+                if (model350List.Count >= numberCount)
                     return;
                 var hou3List = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
                 //var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);

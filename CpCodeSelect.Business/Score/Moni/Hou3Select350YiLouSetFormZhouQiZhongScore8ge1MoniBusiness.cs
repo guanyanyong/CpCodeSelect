@@ -218,7 +218,7 @@ namespace CpCodeSelect.Business.Score.Moni
                             LunInit();
                             before350List = current350List;
                             Select350AndStartCalc(code);
-                            yilouStatisticList[8].TotalCount = yilouStatisticList[8].TotalCount + 1;
+                            yilouStatisticList[9].TotalCount = yilouStatisticList[9].TotalCount + 1;
                             return;
                         }
                         before350List = current350List;
@@ -314,6 +314,8 @@ namespace CpCodeSelect.Business.Score.Moni
 
             List<Hou3Select350_ZhouQiZhongScore> getEnoughRecordList = new List<Hou3Select350_ZhouQiZhongScore>();
             var shouNumber = CurrentLun;
+            shouNumber = shouNumber % 4;
+            if (shouNumber == 0) shouNumber = 4;
             getEnoughRecordList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.
                 Where(p => p.IsChuShou && p.Score >= 70 && p.ShouNumber == shouNumber).ToList();
             if (getEnoughRecordList.Count <= 0) return;

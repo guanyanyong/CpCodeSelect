@@ -876,6 +876,7 @@ namespace CpCodeSelect.Score
             dataGridView1.Columns["ZhongBeforeGua"].Visible = false;
             dataGridView1.Columns["Zhong2BeforeGua"].Visible = false;
             dataGridView1.Columns["Zhong3BeforeGua"].Visible = false;
+            dataGridView1.Columns["ZhongGount"].Visible = false;
         }
         private void btnStartAuto_Click(object sender, EventArgs e)
         {
@@ -1629,7 +1630,7 @@ namespace CpCodeSelect.Score
             var guaCount = numericUpDown3.Value;
             //var list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
             var getEnoughRecordList = new List<Hou3Select350_ZhouQiZhongScore>();
-            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 350)
+            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 25)
             {
                 foreach (var record in Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List)
                 {
@@ -1669,7 +1670,7 @@ namespace CpCodeSelect.Score
             {
                 getEnoughRecordList = getEnoughRecordList.Where(p =>p.Score>=80 && p.ShouNumber == guaCount).ToList();
             }
-            getEnoughRecordList = getEnoughRecordList.Where(p=>p.Score>=80).OrderByDescending(p => p.IsChuShou).ThenBy(p => p.ShouNumber).OrderByDescending(p=>p.Score).ToList();
+            getEnoughRecordList = getEnoughRecordList.Where(p=>p.Score>=80&&p.IsChuShou).OrderByDescending(p => p.ShouNumber).ThenByDescending(p=>p.Score).ToList();
 
             SetDataSource(getEnoughRecordList);
         }
