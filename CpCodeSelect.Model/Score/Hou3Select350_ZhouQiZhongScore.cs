@@ -16,6 +16,9 @@ namespace CpCodeSelect.Model.Score
         /// 出手次数
         /// </summary>
         public int ShouNumber { get; set; } = -1;
+        public string ShouNumberStr { get{
+            return string.Format($"第{ ShouNumber.ToString()}次出手");
+            } }
         public static int ShowNumber = 6;
         /// <summary>
         /// 350个号码

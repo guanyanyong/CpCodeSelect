@@ -25,14 +25,14 @@ namespace CpCodeSelect.Business.Score
         public static new void InitData()
         {
             AllCode = new List<Code>();
-            model350List= new List<Hou3Select350_ZhouQiZhongScore>();
+            model350List = new List<Hou3Select350_ZhouQiZhongScore>();
             Hou2NumberCount = new Dictionary<string, int>();
         }
         /// <summary>
         /// 初始化号码
         /// </summary>
         /// <param name="code"></param>
-        public static new void InitCode(Code code)
+        public static new void InitCode(Code code, bool zhongHouDelete = false)
         {
             code.Wan = new PositionNumber
             {
@@ -72,7 +72,12 @@ namespace CpCodeSelect.Business.Score
             {
                 //删除超过3000条的记录 如果没有4挂的就删除
                 //RemoveOldModel(code, 1);
-                Generate350Code(code);
+
+                //如果不是中后删除模式,则需要生成新的号码,如果是中后删除,则不生成新的号码
+                if (!zhongHouDelete)
+                {
+                    Generate350Code(code);
+                }
             }
             Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code = code;
         }
@@ -98,7 +103,7 @@ namespace CpCodeSelect.Business.Score
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= 10 && model.ShouNumber <= 2 )
+                    if (codeDecimal - currentDecimal >= 10 && model.ShouNumber <= 2)
                     {
                         removeList.Add(model);
                     }
@@ -117,7 +122,7 @@ namespace CpCodeSelect.Business.Score
             //超过30期就删除
             {
                 var overNumberDelete = (numberCount / 50 + 10);
-                if(overNumberDelete<30) overNumberDelete = 30;
+                if (overNumberDelete < 30) overNumberDelete = 30;
                 for (int i = 0; i < model350List.Count; i++)
                 {
                     var model = model350List[i];
@@ -157,9 +162,9 @@ namespace CpCodeSelect.Business.Score
 
         private static void CalcCode(Code code, Hou3Select350_ZhouQiZhongScore model, string hou3)
         {
-            if(model!=null && model.ScoreDateList == null)
+            if (model != null && model.ScoreDateList == null)
             {
-                model.ScoreDateList= new List<LotteryScoreData>();
+                model.ScoreDateList = new List<LotteryScoreData>();
             }
             if (model.Number350.Contains(hou3))
             {

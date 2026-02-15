@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CpCodeSelect.Util
@@ -33,9 +34,10 @@ namespace CpCodeSelect.Util
             }
             catch (IOException ex)
             {
-                if (TryTime > 4)
+                if (TryTime > 12)
                 {
                     TryTime = 1;
+                    Thread.Sleep(2000);
                     throw ex;
                 }
                 else
@@ -96,7 +98,7 @@ namespace CpCodeSelect.Util
             }
             catch (IOException ex)
             {
-                if (TryTime > 4)
+                if (TryTime > 8)
                 {
                     TryTime = 1;
                     throw ex;

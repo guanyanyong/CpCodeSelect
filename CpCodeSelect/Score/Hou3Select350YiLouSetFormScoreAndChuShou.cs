@@ -24,6 +24,7 @@ using CpCodeSelect.Business.Score;
 using CpCodeSelect.Model.Score;
 using CpCodeSelect.Score.Moni;
 using CpCodeSelect.Util.Scorer;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CpCodeSelect.Score
 {
@@ -54,14 +55,18 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore8ge1();
         //private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
         private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore8ge1();
-        //private MoniRunZhouQiZhongLianXu8Amount5566 moniRunZhouQiZhongLianXu8Amount5566 = new MoniRunZhouQiZhongLianXu8Amount5566();
-        private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu8Amount5566 = new MoniRunZhouQiZhongScore8ge1();
+        //private moniRunZhouQiZhongScoreAllChuShou moniRunZhouQiZhongScoreAllChuShou = new moniRunZhouQiZhongScoreAllChuShou();
+        private MoniRunZhouQiZhongScoreAllChuShou moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhongScoreAllChuShou();
         //private MoniRunZhouQiZhong3ge3yilou0BanShangSheng sangesanyilou0 = new MoniRunZhouQiZhong3ge3yilou0BanShangSheng();
         private MoniRunZhouQiZhongScore8ge1 sangesanyilou0 = new MoniRunZhouQiZhongScore8ge1();
         //private MoniRunZhouQiZhong3ge3BanShangSheng moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong3ge3BanShangSheng();
         private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhongScore8ge1();
 
         private Hou3Select350_ZhouQiZhongScore currentCalcKLineDate = null;
+
+
+        // 从多少条记录后开始中了就删除记录 
+        int zhongHouDelete = 1500;
         public Hou3Select350YiLouSetFormScoreAndChuShou()
         {
             InitializeComponent();
@@ -217,6 +222,7 @@ namespace CpCodeSelect.Score
             if (codeList != null && codeList.Count > 0)
             {
                 AddRecord("第一次执行,需要从底下最后一条开始执行记录");
+                int recordNumber = 1;
                 for (int i = codeList.Count - 1; i >= 0; i--)
                 {
 
@@ -226,8 +232,16 @@ namespace CpCodeSelect.Score
                     {
                         lastCode = currentCode;
                         AddRecord($"检测到新号码: 期号={currentCode.CodeQiHao}, 号码={currentCode.CodeNumber}");
-                        AnalySisCode(currentCode);
+                        if (recordNumber >= zhongHouDelete)
+                        {
+                            AnalySisCode(currentCode, true);
+                        }
+                        else
+                        {
+                            AnalySisCode(currentCode);
+                        }
                     }
+                    recordNumber++;
                 }
             }
         }
@@ -235,12 +249,12 @@ namespace CpCodeSelect.Score
         /// <summary>
         /// 分析当前号码，设置万千百十个位的大小单双单双属性
         /// </summary>
-        public void AnalySisCode(Code code)
+        public void AnalySisCode(Code code, bool zhongHouDelete = false)
         {
             //code.NumberCondition = string.Empty;
             InitCode(code);
             //NumberConditionSet(code);
-            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.InitCode(code);
+            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.InitCode(code, zhongHouDelete);
             InitOfferNumber();
             GenerateOfferNumber();
             SetForm();
@@ -248,7 +262,7 @@ namespace CpCodeSelect.Score
             AddToLogFileHou2Select50Auto(code);
             //moniRunZhouQiZhong.Run(code);
             moniRunZhouQiZhongLianXu8.Run(code);
-            //moniRunZhouQiZhongLianXu8Amount5566.Run(code);
+            moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
             //moniRunZhouQiZhongLianXu3.Run(code);
             //sangesanyilou0.Run(code);
             //moniRunZhouQiZhong3Ge3.Run(code);
@@ -758,8 +772,19 @@ namespace CpCodeSelect.Score
         {
 
         }
+        // 通用异步方法：10 秒后设置文本框文本
+        private async Task SetTextBoxAfterDelayAsync(string text, int delayMilliseconds)
+        {
+            await Task.Delay(delayMilliseconds);
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+            // 如果当前线程不是 UI 线程，会自动通过 SynchronizationContext 切换回 UI 线程
+            // 但如果此方法是从后台线程调用的，则必须使用 Invoke
+            if (lblError.InvokeRequired)
+                lblError.Invoke(new Action(() => lblError.Text = text));
+            else
+                lblError.Text = text;
+        }
+        private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // 检查点击是否有效（非标题行）且是特定的按钮列
             if (e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex].Name == "Numer50")
@@ -777,6 +802,7 @@ namespace CpCodeSelect.Score
                     {
                         Clipboard.SetText(numberText);
                         lblError.Text = "号码已拷贝";
+
                     }
                     catch
                     {
@@ -786,6 +812,7 @@ namespace CpCodeSelect.Score
                     {
                         textBox2.Text = numberText;
                         btnKLinLoad_Click(this, EventArgs.Empty);
+                        await SetTextBoxAfterDelayAsync(" ", 10000);
                     }
                 }
             }
@@ -877,6 +904,7 @@ namespace CpCodeSelect.Score
             dataGridView1.Columns["Zhong2BeforeGua"].Visible = false;
             dataGridView1.Columns["Zhong3BeforeGua"].Visible = false;
             dataGridView1.Columns["ZhongGount"].Visible = false;
+            dataGridView1.Columns["ShouNumber"].Visible = false;
         }
         private void btnStartAuto_Click(object sender, EventArgs e)
         {
@@ -1158,7 +1186,7 @@ namespace CpCodeSelect.Score
 
         private void button5_Click(object sender, EventArgs e)
         {
-            moniRunZhouQiZhongLianXu8Amount5566.Show();
+            moniRunZhouQiZhongScoreAllChuShou.Show();
         }
 
         private void btnTestCode_Click(object sender, EventArgs e)
@@ -1666,11 +1694,11 @@ namespace CpCodeSelect.Score
             //    }
             //}
             //getEnoughRecordList = getEnoughRecordList.OrderByDescending(p => p.IsZhouQiZhongHou).ThenByDescending(p => p.Score).ThenByDescending(p=>p.IsChuShou).ThenBy(p=>p.ShouNumber).ToList();
-            if(guaCount>0)
+            if (guaCount > 0)
             {
-                getEnoughRecordList = getEnoughRecordList.Where(p =>p.Score>=80 && p.ShouNumber == guaCount).ToList();
+                getEnoughRecordList = getEnoughRecordList.Where(p => p.Score >= 80 && p.ShouNumber == guaCount).ToList();
             }
-            getEnoughRecordList = getEnoughRecordList.Where(p=>p.Score>=80&&p.IsChuShou).OrderByDescending(p => p.ShouNumber).ThenByDescending(p=>p.Score).ToList();
+            getEnoughRecordList = getEnoughRecordList.Where(p => p.Score >= 80 && p.IsChuShou).OrderByDescending(p => p.ShouNumber).ThenByDescending(p => p.Score).ToList();
 
             SetDataSource(getEnoughRecordList);
         }
