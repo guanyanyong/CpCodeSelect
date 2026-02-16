@@ -48,3 +48,6 @@
 /CpCodeSelect.Control/obj/Release
 /CpCodeSelect.DA/obj/Debug/CpCodeSelect.DA.csproj.AssemblyReference.cache
 /CpCodeSelect.Model/obj/Debug/CpCodeSelect.Model.csproj.AssemblyReference.cache
+/CpCodeSelect.Control/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/CpCodeSelect.DA/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/CpCodeSelect.Util/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
