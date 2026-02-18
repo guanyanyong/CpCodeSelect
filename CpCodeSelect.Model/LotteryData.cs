@@ -32,5 +32,18 @@ namespace CpCodeSelect.Model
         public string PeriodNumber { get; set; }
         // 开奖号码
         public string WinningNumbers { get; set; }
+        /// <summary>
+        /// MACD快线（DIF），和的值
+        /// </summary>
+        public double MACD_DIF { get; set; }
+        /// <summary>
+        /// MACD快线慢线（DEA）
+        /// </summary>
+        public double MACD_DEA { get; set; }
+        /// <summary>
+        /// MACD柱状图（Histogram）通常为DIF与DEA的差值乘以2，反映快线和慢线的背离程度
+        /// </summary>
+        public double MACD_Histogram { get; set; }
+
     }
 }

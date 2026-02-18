@@ -28,7 +28,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CpCodeSelect.Score
 {
-    public partial class Hou3Select350YiLouSetFormScoreAndChuShou : Form
+    public partial class Hou3Select350YiLouSetFormMACDIndex : Form
     {
         public Dictionary<int, List<StatisticModel>> StatisticDic = new Dictionary<int, List<StatisticModel>>();
         private string filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt";
@@ -67,7 +67,7 @@ namespace CpCodeSelect.Score
 
         // 从多少条记录后开始中了就删除记录 
         int zhongHouDelete = 1500;
-        public Hou3Select350YiLouSetFormScoreAndChuShou()
+        public Hou3Select350YiLouSetFormMACDIndex()
         {
             InitializeComponent();
             Init();
@@ -254,7 +254,7 @@ namespace CpCodeSelect.Score
             //code.NumberCondition = string.Empty;
             InitCode(code);
             //NumberConditionSet(code);
-            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.InitCode(code, zhongHouDelete);
+            Hou3Select350YiLouSetFormMACDIndexBusiness.InitCode(code, zhongHouDelete);
             InitOfferNumber();
             GenerateOfferNumber();
             SetForm();
@@ -312,7 +312,7 @@ namespace CpCodeSelect.Score
 
         private async void AddRecordToPage(Code code)
         {
-            var needAddList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.GuaCount >= boFangYanhuaCount).OrderByDescending(p => p.GuaCount).ToList();
+            var needAddList = Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Where(p => p.NeedZhong == false && p.GuaCount >= boFangYanhuaCount).OrderByDescending(p => p.GuaCount).ToList();
             List<YiLouSetExModel> exModelList = new List<YiLouSetExModel>();
             if (needAddList.Count > 0)
             {
@@ -359,11 +359,11 @@ namespace CpCodeSelect.Score
         }
         public void SetForm()
         {
-            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.ToList().Count > 0)
+            if (Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.ToList().Count > 0)
             {
 
-                lblMaxGua.Text = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Max(p => p.GuaCount).ToString();
-                lblTotalNumber.Text = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count.ToString();
+                lblMaxGua.Text = Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Max(p => p.GuaCount).ToString();
+                lblTotalNumber.Text = Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Count.ToString();
 
             }
             else
@@ -422,7 +422,7 @@ namespace CpCodeSelect.Score
         private void AddToLogFileHou2Select50Auto(Code code)
         {
             bool needPlay = false;
-            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count > 500)
+            if (Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Count > 500)
             {
 
                 bool needFlush = false;
@@ -430,7 +430,7 @@ namespace CpCodeSelect.Score
                 string fileName = "Hou2Select50YiLouSet.txt";
                 using (var writer = new StreamWriter(fileName, true))
                 {
-                    var list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false).ToList();
+                    var list = Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Where(p => p.NeedZhong == false).ToList();
                     if (list.Count > 0)
                     {
 
@@ -438,7 +438,7 @@ namespace CpCodeSelect.Score
                         if (maxNumber >= boFangYanhuaCount)
                         {
                             needFlush = true;
-                            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.GuaCount == maxNumber).ToList().ForEach(recode =>
+                            Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Where(p => p.GuaCount == maxNumber).ToList().ForEach(recode =>
                             {
                                 writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}，号码：{string.Join(" ", recode.Number350)}");
                                 //writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}");
@@ -585,7 +585,7 @@ namespace CpCodeSelect.Score
             {
                 boFangYanhuaCount = 12;
             }
-            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.InitData();
+            Hou3Select350YiLouSetFormMACDIndexBusiness.InitData();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -824,7 +824,7 @@ namespace CpCodeSelect.Score
                 if (row.DataBoundItem is Hou3Select350_ZhouQiZhongScore)
                 {
                     var model = row.DataBoundItem as Hou3Select350_ZhouQiZhongScore;
-                    Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Remove(model);
+                    Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Remove(model);
                     btnYiLou_Click(this, EventArgs.Empty);
                 }
             }
@@ -858,12 +858,12 @@ namespace CpCodeSelect.Score
         private void BtnSelectClick()
         {
             var number = numericUpDown1.Value;
-            var list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua >= number).OrderByDescending(p => p.ZhouQiZhongHouGua).ThenByDescending(p => p.IsZhouQiZhongHou).ToList();
+            var list = Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua >= number).OrderByDescending(p => p.ZhouQiZhongHouGua).ThenByDescending(p => p.IsZhouQiZhongHou).ToList();
             var number2 = numericUpDown2.Value;
             var guaCount = numericUpDown3.Value;
             if (number2 >= 0 && number <= number2)
             {
-                list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua >= number && p.ZhouQiZhongHouGua <= number2).OrderByDescending(p => p.ZhouQiZhongHouGua).ThenByDescending(p => p.IsZhouQiZhongHou).ToList();
+                list = Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua >= number && p.ZhouQiZhongHouGua <= number2).OrderByDescending(p => p.ZhouQiZhongHouGua).ThenByDescending(p => p.IsZhouQiZhongHou).ToList();
             }
             if (guaCount > -1)
             {
@@ -955,7 +955,7 @@ namespace CpCodeSelect.Score
             {
                 var takeCodeList = new List<string>();
                 var excludeAllList = new List<string>();
-                var AllCode = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode;
+                var AllCode = Hou3Select350YiLouSetFormMACDIndexBusiness.AllCode;
                 var LeftCode = AllCode;
                 txtNum1.Text = "";
                 Cacl(num14B, num14E, ref LeftCode, ref excludeAllList, ref takeCodeList);
@@ -1163,7 +1163,7 @@ namespace CpCodeSelect.Score
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            var hou3List = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
+            var hou3List = Hou3Select350YiLouSetFormMACDIndexBusiness.GenerateHou3NumbereFromCode(270);
             var list = Generate350Code.Generate(hou3List);
 
             txtNum2.Text = "测试生成350注数据成功";
@@ -1192,7 +1192,7 @@ namespace CpCodeSelect.Score
         {
             var list = txtNum3.Text.Split(' ').ToList();
             Hou3Select350_ZhouQiZhong model350 = new Hou3Select350_ZhouQiZhong();
-            Code code = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code;
+            Code code = Hou3Select350YiLouSetFormMACDIndexBusiness.code;
             model350.Number350 = list;
             model350.CodeNumber = code.CodeNumber;
             model350.CodeQiHao = code.CodeQiHao;
@@ -1201,7 +1201,7 @@ namespace CpCodeSelect.Score
             model350.YiLouKline350 = new List<YiLouKline350>();
             model350.YiLouTuLineList = new List<KLine>();
             model350.ScoreDateList = new List<LotteryScoreData>();
-            KLine350ScoreCalc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode, 100);
+            KLine350ScoreCalc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormMACDIndexBusiness.AllCode, 100);
             var result = KLine350ScoreCalc.KLineIsEnough(model350.KLineList);
             if (result.Result)
             {
@@ -1216,7 +1216,7 @@ namespace CpCodeSelect.Score
         private void btnSelectConditonEnough_Click(object sender, EventArgs e)
         {
             var guaCount = numericUpDown3.Value;
-            var list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
+            var list = Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
             List<Hou3Select350_ZhouQiZhongScore> recordList = new List<Hou3Select350_ZhouQiZhongScore>();
 
             if (list.Count > 0)
@@ -1392,7 +1392,7 @@ namespace CpCodeSelect.Score
                 if (checkBox1.Checked)
                 {
                     //自动加载最新数据
-                    var modelList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List;
+                    var modelList = Hou3Select350YiLouSetFormMACDIndexBusiness.model350List;
                     if (modelList != null && modelList.Count > 0)
                     {
                         foreach (var record in modelList)
@@ -1402,7 +1402,7 @@ namespace CpCodeSelect.Score
 
                             RemoveRecord(currentCalcKLineDate);
                             currentCalcKLineDate = data;
-                            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.currentNeedCalcList.Add(currentCalcKLineDate);
+                            Hou3Select350YiLouSetFormMACDIndexBusiness.currentNeedCalcList.Add(currentCalcKLineDate);
                             if (data.KLineList.Count > 30)
                             {
                                 GenerateKLine(data);
@@ -1424,18 +1424,18 @@ namespace CpCodeSelect.Score
                     {
                         Hou3Select350_ZhouQiZhongScore model350 = new Hou3Select350_ZhouQiZhongScore();
                         model350.Number350 = txtNumber.Split(' ').ToList();
-                        model350.CodeNumber = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code.CodeNumber;
-                        model350.CodeQiHao = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code.CodeQiHao;
+                        model350.CodeNumber = Hou3Select350YiLouSetFormMACDIndexBusiness.code.CodeNumber;
+                        model350.CodeQiHao = Hou3Select350YiLouSetFormMACDIndexBusiness.code.CodeQiHao;
                         model350.NeedZhong = true;
                         model350.KLineList = new List<KLine>();
                         model350.YiLouKline350 = new List<YiLouKline350>();
                         model350.YiLouTuLineList = new List<KLine>();
 
-                        KLine350ScoreCalc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode, (int)numericUpDown5.Value + 21);
+                        KLine350ScoreCalc.CalcKLineHistoryList(model350, Hou3Select350YiLouSetFormMACDIndexBusiness.AllCode, (int)numericUpDown5.Value + 21);
 
                         RemoveRecord(currentCalcKLineDate);
                         currentCalcKLineDate = model350;
-                        Hou3Select350YiLouSetFormScoreAndChuShouBusiness.currentNeedCalcList.Add(currentCalcKLineDate);
+                        Hou3Select350YiLouSetFormMACDIndexBusiness.currentNeedCalcList.Add(currentCalcKLineDate);
                         if (model350.KLineList.Count > 30)
                         {
                             GenerateKLine(model350);
@@ -1464,7 +1464,7 @@ namespace CpCodeSelect.Score
         {
             if (record != null)
             {
-                Hou3Select350YiLouSetFormScoreAndChuShouBusiness.currentNeedCalcList.Remove(record);
+                Hou3Select350YiLouSetFormMACDIndexBusiness.currentNeedCalcList.Remove(record);
             }
 
         }
@@ -1574,9 +1574,9 @@ namespace CpCodeSelect.Score
             var guaCount = numericUpDown3.Value;
             //var list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
             var getEnoughRecordList = new List<Hou3Select350_ZhouQiZhongScore>();
-            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 350)
+            if (Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Count >= 350)
             {
-                foreach (var record in Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List)
+                foreach (var record in Hou3Select350YiLouSetFormMACDIndexBusiness.model350List)
                 {
                     if (record.KLineList.Count >= 250)
                     {
@@ -1619,9 +1619,9 @@ namespace CpCodeSelect.Score
             var guaCount = numericUpDown3.Value;
             //var list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
             var getEnoughRecordList = new List<Hou3Select350_ZhouQiZhongScore>();
-            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 350)
+            if (Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Count >= 350)
             {
-                foreach (var record in Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List)
+                foreach (var record in Hou3Select350YiLouSetFormMACDIndexBusiness.model350List)
                 {
                     if (record.YiLouTuLineList.Count >= 10)
                     {
@@ -1666,12 +1666,12 @@ namespace CpCodeSelect.Score
 
         private void btnScore_Click(object sender, EventArgs e)
         {
-            var guaCount = numericUpDown3.Value;
+            //var guaCount = numericUpDown3.Value;
             //var list = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
             var getEnoughRecordList = new List<Hou3Select350_ZhouQiZhongScore>();
-            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 25)
+            if (Hou3Select350YiLouSetFormMACDIndexBusiness.model350List.Count >= 25)
             {
-                foreach (var record in Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List)
+                foreach (var record in Hou3Select350YiLouSetFormMACDIndexBusiness.model350List)
                 {
                     var lastScoreDate = record.ScoreDateList.LastOrDefault();
                     if (lastScoreDate != null)
@@ -1705,10 +1705,7 @@ namespace CpCodeSelect.Score
             //    }
             //}
             //getEnoughRecordList = getEnoughRecordList.OrderByDescending(p => p.IsZhouQiZhongHou).ThenByDescending(p => p.Score).ThenByDescending(p=>p.IsChuShou).ThenBy(p=>p.ShouNumber).ToList();
-            if (guaCount > 0)
-            {
-                getEnoughRecordList = getEnoughRecordList.Where(p => p.Score > 80 && p.ShouNumber == guaCount).ToList();
-            }
+            
             getEnoughRecordList = getEnoughRecordList.Where(p => p.Score > 80 && p.IsChuShou).OrderByDescending(p => p.ShouNumber).ThenByDescending(p => p.Score).ToList();
 
             SetDataSource(getEnoughRecordList);

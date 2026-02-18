@@ -24,6 +24,17 @@ namespace CpCodeSelect.Model.ExModel
                 return KValue >= Bolling.MiddleValue;
             }
         }
+
+        /// <summary>
+        /// MACD是否金叉
+        /// </summary>
+        public bool IsGoldenCross
+        {
+            get
+            {
+                return MACDResult.DIF > MACDResult.DEA;
+            }
+        }
         /// <summary>
         /// 当前连挂次数
         /// </summary>

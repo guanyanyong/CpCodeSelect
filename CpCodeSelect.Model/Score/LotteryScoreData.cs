@@ -17,6 +17,7 @@ namespace CpCodeSelect.Model.Score
         public int YiLouValue { get; set; }
         public double KValue { get; set; }
         public Bolling BollingerBands { get; set; }
+        public MACDResult MACDResult { get; set; }
         public bool IsDaYiLou { get; set; }
         public bool IsQueRenDian { get; set; }
         public bool IsQuShiDuan { get; set; }

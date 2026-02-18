@@ -10,6 +10,7 @@ using CpCodeSelect.Model.Score;
 using CpCodeSelect.Util.Scorer;
 using CpCodeSelect.Util.Config;
 using System.Threading;
+using CpCodeSelect.Util.IndexCalc;
 
 namespace CpCodeSelect.Util.Scorer
 {
@@ -262,6 +263,12 @@ namespace CpCodeSelect.Util.Scorer
                     BollLowerValue = result.lower,
                 };
             }
+            if (model.KLineList.Count >= 150)
+            {
+                //超过150期开始计算MACD指标
+                var macdResult = MACDCalculator.GetLatest(model.KLineList.Select(p => p.KValue).ToList());
+                kline.MACDResult = macdResult;
+            }
             kline.CurrentGuaCount = model.GuaCount;
             kline.CurrentZhongCount = model.ZhongGount;
 
@@ -323,6 +330,7 @@ namespace CpCodeSelect.Util.Scorer
             scoreData.LianXuZhongJiangCount = model.ZhongGount;
             scoreData.KValue = kline.KValue;
             scoreData.BollingerBands = kline.Bolling;
+            scoreData.MACDResult = kline.MACDResult;
 
             scoreData.Number350 = model.Number350;
             scoreData.QiHao = code.CodeQiHao;
@@ -1513,6 +1521,28 @@ namespace CpCodeSelect.Util.Scorer
                 {
                     checkResult.Result = false;
                     checkResult.Message = "布林上轨最近5期有1期下降";
+                }
+            }
+            return checkResult;
+        }
+        public static CheckResult MACDIsEnough(List<KLine> kLineList)
+        {
+            var checkResult = new CheckResult();
+            checkResult.Result = true;
+            var count = kLineList.Count;
+
+            //最近5期MACD白线要在绿线上
+            for (var i = count; i > count - 5; i--)
+            {
+                var kline = kLineList[i - 1];
+                if (kline.MACDResult != null)
+                {
+                    if (!kline.IsGoldenCross)
+                    {
+                        checkResult.Result = false;
+                        checkResult.Message = "最近5期MACD白线要在绿线上";
+                        break;
+                    }
                 }
             }
             return checkResult;

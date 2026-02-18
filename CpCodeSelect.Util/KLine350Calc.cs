@@ -10,6 +10,7 @@ using CpCodeSelect.Model.Score;
 using CpCodeSelect.Util.Scorer;
 using CpCodeSelect.Util.Config;
 using System.Threading;
+using CpCodeSelect.Util.IndexCalc;
 
 namespace CpCodeSelect.Util
 {
@@ -220,6 +221,13 @@ namespace CpCodeSelect.Util
                     BollLowerValue = result.lower,
                 };
             }
+            if (model.KLineList.Count >= 150)
+            {
+                //超过150期开始计算MACD指标
+                var macdResult = MACDCalculator.GetLatest(model.KLineList.Select(p => p.KValue).ToList());
+                kline.MACDResult = macdResult;
+            }
+
             kline.CurrentGuaCount = model.GuaCount;
             kline.CurrentZhongCount = model.ZhongGount;
 
@@ -249,6 +257,13 @@ namespace CpCodeSelect.Util
                         BollLowerValue = result.lower,
                     };
                 }
+                if (model.YiLouKline350.Count >= 150)
+                {
+                    //超过150期开始计算MACD指标
+                    var macdResult = MACDCalculator.GetLatest(model.YiLouKline350.Select(p => p.KValue).ToList());
+                    newYiLouKline350.MACDResult = macdResult;
+                }
+
                 newYiLouKline350.CurrentGuaCount = model.GuaCount;
                 newYiLouKline350.CurrentZhongCount = model.ZhongGount;
 
@@ -565,6 +580,13 @@ namespace CpCodeSelect.Util
                 {
                     //把当前期号和号码保存到K线中
                     model.KLineList.Add(kline);
+                }
+
+                if (model.KLineList.Count >= 150)
+                {
+                    //超过150期开始计算MACD指标
+                    var macdResult = MACDCalculator.GetLatest(model.KLineList.Select(p => p.KValue).ToList());
+                    kline.MACDResult = macdResult;
                 }
 
 

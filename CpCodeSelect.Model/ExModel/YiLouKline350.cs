@@ -14,6 +14,7 @@ namespace CpCodeSelect.Model.ExModel
 
         public double KValue { get;set; }
         public Bolling Bolling { get;set;  }
+        public MACDResult MACDResult { get; set; }
         /// <summary>
         /// 是否在布林中轨之上
         /// </summary>

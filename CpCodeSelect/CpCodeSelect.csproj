@@ -95,6 +95,12 @@
     <Compile Include="Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.Designer.cs">
       <DependentUpon>Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.cs</DependentUpon>
     </Compile>
+    <Compile Include="MACDIndex\Hou3Select350YiLouSetFormMACDIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MACDIndex\Hou3Select350YiLouSetFormMACDIndex.Designer.cs">
+      <DependentUpon>Hou3Select350YiLouSetFormMACDIndex.cs</DependentUpon>
+    </Compile>
     <Compile Include="Score\Moni\MoniRunZhouQiZhongScoreAllChuShou.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -369,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.resx">
       <DependentUpon>Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MACDIndex\Hou3Select350YiLouSetFormMACDIndex.resx">
+      <DependentUpon>Hou3Select350YiLouSetFormMACDIndex.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Score\Moni\MoniRunZhouQiZhongScoreAllChuShou.resx">
       <DependentUpon>MoniRunZhouQiZhongScoreAllChuShou.cs</DependentUpon>
