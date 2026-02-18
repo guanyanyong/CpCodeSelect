@@ -13,7 +13,8 @@ namespace CpCodeSelect.Model.ExModel
         public List<string> Code350Code { get; set; }
         public bool IsZhong { get; set;  }
         public double KValue { get;set; }
-        public Bolling Bolling { get;set;  }
+        public Bolling Bolling { get;set;  } //布林线
+        public MACDResult MACDResult { get; set; } //MACD指标结果
         /// <summary>
         /// 是否在布林中轨之上
         /// </summary>

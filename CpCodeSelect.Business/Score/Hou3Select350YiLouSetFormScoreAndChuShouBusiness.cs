@@ -27,6 +27,12 @@ namespace CpCodeSelect.Business.Score
             AllCode = new List<Code>();
             model350List = new List<Hou3Select350_ZhouQiZhongScore>();
             Hou2NumberCount = new Dictionary<string, int>();
+
+            var RunSkipNumberStr= ConfigurationManager.AppSettings["RunSkipNumber"];
+            if(!string.IsNullOrEmpty(RunSkipNumberStr) && int.TryParse(RunSkipNumberStr, out int runSkipNumber))
+            {
+                RunSkipNumber = runSkipNumber;
+            }
         }
         /// <summary>
         /// 初始化号码
@@ -68,7 +74,7 @@ namespace CpCodeSelect.Business.Score
 
             // 生成新的350码
             //GenerateCode(code);
-            if (AllCode != null && AllCode.Count > 100)
+            if (AllCode != null && AllCode.Count > RunSkipNumber)
             {
                 //删除超过3000条的记录 如果没有4挂的就删除
                 //RemoveOldModel(code, 1);
@@ -221,7 +227,7 @@ namespace CpCodeSelect.Business.Score
         public static new void Generate350Code(Code code)
         {
 
-            if (AllCode != null && AllCode.Count > 100)
+            if (AllCode != null && AllCode.Count > RunSkipNumber)
             {
                 int count = 0;
                 //while (true)

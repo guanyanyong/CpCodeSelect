@@ -30,6 +30,7 @@ namespace CpCodeSelect.Business.Score.Moni
         public decimal MaxResult = 0;
         public decimal MinResult = 0;
 
+
         /// <summary>
         /// 上次出手,本次需要检查是否中奖
         /// </summary>
@@ -170,13 +171,14 @@ namespace CpCodeSelect.Business.Score.Moni
         /// <param name="zhongHouDelete"></param>
         public void CalcCode(Code code, bool zhongHouDelete = false)
         {
+
             List<PositionNumber> list = new List<PositionNumber>();
             if (this.model350List == null || model350List.Count == 0)
             {
                 model350List = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List;
             }
             Select350AndStartCalc(code, zhongHouDelete);
-            
+
         }
 
         /// <summary>
@@ -186,13 +188,13 @@ namespace CpCodeSelect.Business.Score.Moni
         {
             List<Hou3Select350_ZhouQiZhongScore> getEnoughRecordList = new List<Hou3Select350_ZhouQiZhongScore>();
             getEnoughRecordList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.
-                Where(p => p.IsChuShou && p.Score >= 70).ToList();
+                Where(p => p.IsChuShou && p.Score > 80).ToList();
             if (getEnoughRecordList.Count <= 0) return;
             if (CurrentExecuteList.Count > 0)
             {
                 //如果之前存在记录,说明已经执行过了,需要验证之前的记录是否中奖
                 var housanStr = code.GetHou3String();
-                foreach(var record in CurrentExecuteList)
+                foreach (var record in CurrentExecuteList)
                 {
                     if (record.Number350.Contains(housanStr))
                     {
@@ -202,27 +204,25 @@ namespace CpCodeSelect.Business.Score.Moni
                         yilouStatisticList[count].TotalCount = yilouStatisticList[count].TotalCount + 1;
                         //中奖了的话,把未中的统计数减去1
                         //如果第六期中奖了 需要把5-0的都减去1
-                        for (var i= 0;i <= count; i++){
-                            chuShouWeiZhongList[i].TotalCount = chuShouWeiZhongList[i].TotalCount - 1;
-                            if (chuShouWeiZhongList[i].TotalCount < 0)
-                            {
-                                chuShouWeiZhongList[i].TotalCount = 0;
-                            }
-                            LogInfo($"【中奖更新】{i+1}手未中总计{chuShouWeiZhongList[i].TotalCount}");
-                        }
-                        for(var i= record.ShouNumber+1; i <= 8; i++)
+                        chuShouWeiZhongList[count].TotalCount = chuShouWeiZhongList[count].TotalCount - 1;
+                        if (chuShouWeiZhongList[count].TotalCount < 0)
                         {
-                            LogInfo($"【中奖更新】{i}手未中总计{chuShouWeiZhongList[i-1].TotalCount}");
+                            chuShouWeiZhongList[count].TotalCount = 0;
                         }
+                        //for (var i= 0;i <= count; i++){
+                        //    chuShouWeiZhongList[i].TotalCount = chuShouWeiZhongList[i].TotalCount - 1;
+                        //    LogInfo($"【中奖更新】{i+1}手未中总计{chuShouWeiZhongList[i].TotalCount}");
+                        //}
                         TotalResult = TotalResult + zhongjiangAmount;
                         //记录最大金额
-                        if(TotalResult > MaxResult)
+                        if (TotalResult > MaxResult)
                         {
                             MaxResult = TotalResult;
                         }
                         TotalZhong++;
                         LogInfo($"【中奖】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额第{record.ShouNumber}手:{zhongjiangAmount},中奖后金额:{TotalResult},{record.ShouNumber}手未中总计{chuShouWeiZhongList[count].TotalCount}");
-                        if(zhongHouDelete){
+                        if (zhongHouDelete)
+                        {
                             //如果是中后删除,把中了的记录都删除掉
                             var foundRecord = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.CodeNumber == record.CodeNumber && p.CodeQiHao == record.CodeQiHao && p.Number350 == record.Number350).FirstOrDefault();
                             Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Remove(foundRecord);
@@ -230,17 +230,21 @@ namespace CpCodeSelect.Business.Score.Moni
                     }
                     else
                     {
-                        if (record.ShouNumber == 8){
+                        //如果没有中奖,需要把对应的未中统计数减去1
+                        if (record.ShouNumber == 8)
+                        {
                             //如果已经是第8手了,还没有中奖,说明这个号码周期结束了,记录挂的次数
                             TotalGua++;
                             yilouStatisticList[8].TotalCount = yilouStatisticList[8].TotalCount + 1;
 
-                            //爆了的话,把未中奖的统计数减去1
-                            for (var i = 0; i <= 7; i++)
-                            {
-                                chuShouWeiZhongList[i].TotalCount = chuShouWeiZhongList[i].TotalCount - 1;
+                            //爆了的话,把第8手未中奖的统计数减去1
+                            chuShouWeiZhongList[7].TotalCount = chuShouWeiZhongList[7].TotalCount - 1;
 
-                            }
+                            //for (var i = 0; i <= 7; i++)
+                            //{
+                            //    chuShouWeiZhongList[i].TotalCount = chuShouWeiZhongList[i].TotalCount - 1;
+
+                            //}
 
                             if (zhongHouDelete)
                             {
@@ -249,10 +253,29 @@ namespace CpCodeSelect.Business.Score.Moni
                                 Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Remove(foundRecord);
                             }
                         }
+
+                        //else if (record.ShouNumber > 1 && record.ShouNumber < 8)
+                        //{
+                        //    // 如果没有中奖,把对应的手数未中的记录减1
+                        //    // 如果当前是第3手未中,说明之前的第2手没有中奖,需要把2手的未中统计数减去1
+
+                        //    //record.ShouNumber = record.ShouNumber + 1;
+                        //    var count = record.ShouNumber - 2;
+                        //    chuShouWeiZhongList[count].TotalCount = chuShouWeiZhongList[count].TotalCount - 1;
+                        //}
                     }
                 }
+
+                //显示所有的出手未中
+                for (var i = 0; i <= 7; i++)
+                {
+                    //chuShouWeiZhongList[i].TotalCount = chuShouWeiZhongList[i].TotalCount - 1;
+                    LogInfo($"【号码开出后显示】{i + 1}手未中总计{chuShouWeiZhongList[i].TotalCount}");
+                }
+                LogInfo($"【号码开出后显示】【开出总计{TotalZhong}】【爆掉总计{TotalGua}】【总额总计{TotalResult}】【流水总计{TotalLiuShui}】");
+                //InitChuShouWeiZhong();
             }
-            //计算完成后清空旧记录,添加新的记录
+            //计算完成后清空旧记录,添加本轮新的记录
             CurrentExecuteList.Clear();
             //CurrentExecuteList.AddRange(getEnoughRecordList);
             foreach (var record in getEnoughRecordList)
@@ -269,7 +292,7 @@ namespace CpCodeSelect.Business.Score.Moni
             }
 
             //添加投注金额和流水
-            foreach(var record in CurrentExecuteList)
+            foreach (var record in CurrentExecuteList)
             {
                 var count = record.ShouNumber - 1;
                 var touzhuAmount = LunAmountMatrix[count, 0];
@@ -280,9 +303,27 @@ namespace CpCodeSelect.Business.Score.Moni
                     MinResult = TotalResult;
                 }
                 TotalLiuShui += touzhuAmount;
-                //投注了对应期的话,把未中的统计数加上1
+                //投注了对应期的话,把对应未中的统计数加上1
                 chuShouWeiZhongList[count].TotalCount = chuShouWeiZhongList[count].TotalCount + 1;
                 LogInfo($"【投注】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},投注第{record.ShouNumber}手:{touzhuAmount},投注后总金额:{TotalResult},{record.ShouNumber}手未中总计{chuShouWeiZhongList[count].TotalCount}");
+                //因为投注了第3手,说明之前的第2手也未中,需要把第2手的未中统计数减少1
+                if (record.ShouNumber > 1)
+                {
+                    chuShouWeiZhongList[count-1].TotalCount = chuShouWeiZhongList[count-1].TotalCount -1;
+                    if(chuShouWeiZhongList[count - 1].TotalCount < 0)
+                    {
+                        chuShouWeiZhongList[count-1].TotalCount = 0;
+                    }
+                }
+
+            }
+        }
+        private void InitChuShouWeiZhong()
+        {
+            for (var i = 0; i <= 7; i++)
+            {
+                if (chuShouWeiZhongList[i].TotalCount < 0)
+                    chuShouWeiZhongList[i].TotalCount = 0;
             }
         }
     }

@@ -6,12 +6,100 @@ using CpCodeSelect.Util.Scorer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace CpCodeSelect.Business.Score.Moni
 {
+    public class RunAndStop
+    {
+        // 最大盈利数值和最大亏损数值,当盈利超过最大盈利数值或者亏损超过最大亏损数值时停止
+        public decimal WinMaxValue = 3500;
+        public decimal LoseMaxValue = -3500;
+
+        public decimal TotalResult = 0;//当前总金额
+
+        //每轮盈利超过12次 停止30分钟
+        //最多盈利3轮后 
+        public bool IsTotalStop = false;//当前是否总停止
+
+        public int WinTimesStopNum = 12;//单轮盈利超多少次停止
+        public int CurrentWinTime = 0;//当前轮盈利次数
+        public int StopLeftTime = 30;//停止多少次后继续
+        public int CurrentStopLeftTime = 0; //当前剩余停止次数
+
+        public bool IsWinStop = false;//是否盈利停止中
+
+        public int CurrentLun = 0;//当前轮次
+
+        /// <summary>
+        /// 判断数额是否达到停止条件
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckAmountIsStop()
+        {
+            if (TotalResult >= WinMaxValue)
+            {
+                return true;
+            }
+            else if (TotalResult <= LoseMaxValue)
+            {
+                if (CurrentLun <= 3)
+                    return true;
+            }
+            return false;
+        }
+        /// <summary>
+        /// 判断是否可以继续执行
+        /// </summary>
+        /// <returns></returns>
+        public bool CanGoOn()
+        {
+            if (IsTotalStop) return false;
+            if (IsWinStop) return false;
+            return true;
+        }
+        
+        /// <summary>
+        /// 通过中奖与否断是否停止
+        /// </summary>
+        /// <param name="isWin"></param>
+        /// <returns></returns>
+        public bool CheckIsStopByResult(bool isWin)
+        {
+            var result = CheckAmountIsStop();
+            if (result) IsTotalStop = true;
+            return true;
+
+            if (isWin)
+            {
+                //中后,盈利次数+1 如果盈利次数超过设定值,则停止
+                CurrentWinTime++;
+                if (CurrentWinTime >= WinTimesStopNum)
+                {
+                    IsTotalStop = false;
+                    IsWinStop = true;
+                    CurrentStopLeftTime = StopLeftTime;
+                }
+            }
+            else
+            {
+                if (IsWinStop)
+                {
+                    CurrentStopLeftTime--;
+                    if (CurrentStopLeftTime <= 0)
+                    {
+                        IsTotalStop = false;
+                        IsWinStop = false;
+                        CurrentStopLeftTime = 0;
+                    }
+                }
+            }
+        }
+    }
+
     /// <summary>
     /// 模拟执行8个1轮的确认点买入
     /// </summary>
@@ -25,8 +113,10 @@ namespace CpCodeSelect.Business.Score.Moni
         public List<YilouStatistic> yilouStatisticList = new List<YilouStatistic>();
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
+        public decimal MaxResult = 0;
+        public decimal MinResult = 0;
 
-
+        public RunAndStop RunAndStop = new RunAndStop();
 
         /// <summary>
         /// 上次出手,本次需要检查是否中奖
@@ -164,6 +254,9 @@ namespace CpCodeSelect.Business.Score.Moni
         /// <param name="model"></param>
         public void CalcCode(Code code)
         {
+            if(RunAndStop.IsTotalStop) return;
+            if(RunAndStop.IsWinStop) return;
+            
             List<PositionNumber> list = new List<PositionNumber>();
             if (this.model350List == null || model350List.Count == 0)
             {
@@ -191,9 +284,15 @@ namespace CpCodeSelect.Business.Score.Moni
                         int zhongjiangqi = (CurrentLun - 1) * 1;
                         yilouStatisticList[CurrentLun - 1].TotalCount = yilouStatisticList[CurrentLun - 1].TotalCount + 1;
                         TotalResult = TotalResult + zhongjiangAmount;
+                        //记录最大金额
+                        if (TotalResult > MaxResult)
+                        {
+                            MaxResult = TotalResult;
+                        }
+
                         //LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
                         LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun - 1}轮已中出,中奖金额:{zhongjiangAmount}，总额【{TotalResult}】。");
-                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-总中奖次数{TotalZhong}，总额【{TotalResult}】。总挂次数{TotalGua}");
+                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-总中奖次数{TotalZhong}，总额【{TotalResult}】，总流水【{TotalLiuShui}】。总挂次数{TotalGua}");
 
                         LunInit();
                         before350List = current350List;
@@ -214,7 +313,7 @@ namespace CpCodeSelect.Business.Score.Moni
                             //超过总轮次，结束
                             TotalGua++;
                             LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，已超过总轮次{TotalLun}轮，结束本次执行。");
-                            LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-总中奖次数{TotalZhong}，总额【{TotalResult}】。总挂次数{TotalGua}");
+                            LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-总中奖次数{TotalZhong}，总额【{TotalResult}】，【流水总计{TotalLiuShui}】。总挂次数{TotalGua}");
                             LunInit();
                             before350List = current350List;
                             Select350AndStartCalc(code);
@@ -269,7 +368,7 @@ namespace CpCodeSelect.Business.Score.Moni
             getEnoughRecordList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.
                 Where(p => p.IsChuShou && p.Score >= 70 && p.ShouNumber == 1).ToList();
             if (getEnoughRecordList.Count <= 0) return;
-            var kLineIsEnoughList =  new List<Hou3Select350_ZhouQiZhongScore>();
+            var kLineIsEnoughList = new List<Hou3Select350_ZhouQiZhongScore>();
             foreach (var record in getEnoughRecordList)
             {
 
@@ -299,6 +398,11 @@ namespace CpCodeSelect.Business.Score.Moni
                 //设置已经出手需要验证
                 beforeChuShouNeedCheckZhongJiang = true;
                 TotalResult = TotalResult - CurrentAmount;
+                //记录最小金额
+                if (TotalResult < MinResult)
+                {
+                    MinResult = TotalResult;
+                }
                 TotalLiuShui += CurrentAmount;
                 LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentaQi}期,下注金额【{CurrentAmount}】,投注后总额【{TotalResult}】");
                 CurrentLun = 2;
@@ -314,8 +418,8 @@ namespace CpCodeSelect.Business.Score.Moni
 
             List<Hou3Select350_ZhouQiZhongScore> getEnoughRecordList = new List<Hou3Select350_ZhouQiZhongScore>();
             var shouNumber = CurrentLun;
-            shouNumber = shouNumber % 4;
-            if (shouNumber == 0) shouNumber = 4;
+            //shouNumber = shouNumber % 4;
+            //if (shouNumber == 0) shouNumber = 4;
             getEnoughRecordList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.
                 Where(p => p.IsChuShou && p.Score >= 70 && p.ShouNumber == shouNumber).ToList();
             if (getEnoughRecordList.Count <= 0) return;
@@ -347,6 +451,11 @@ namespace CpCodeSelect.Business.Score.Moni
                 GuaCount = 1;
                 CurrentAmount = LunAmountMatrix[CurrentLun - 1, 0];
                 TotalResult = TotalResult - CurrentAmount;
+                //记录最小金额
+                if (TotalResult < MinResult)
+                {
+                    MinResult = TotalResult;
+                }
                 TotalLiuShui += CurrentAmount;
                 LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentaQi}期,下注金额【{CurrentAmount}】,投注后总额【{TotalResult}】");
                 CurrentaQi = 2;
@@ -364,6 +473,11 @@ namespace CpCodeSelect.Business.Score.Moni
         {
             CurrentAmount = LunAmountMatrix[CurrentLun - 1, CurrentaQi - 1];
             TotalResult = TotalResult - CurrentAmount;
+            //记录最小金额
+            if (TotalResult < MinResult)
+            {
+                MinResult = TotalResult;
+            }
             TotalLiuShui += CurrentAmount;
             LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentaQi}期,下注金额【{CurrentAmount}】,投注后总额【{TotalResult}】");
             //CurrentaQi++;

@@ -35,7 +35,7 @@ namespace CpCodeSelect.Score.Moni
                 beforeCode = code;
                 //当上一期期号和当前期号不一样时，才进行计算
                 //这里需要跑10期后再进行计算
-                if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode.Count >= 270)
+                if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.AllCode.Count >= Hou3Select350YiLouSetFormScoreAndChuShouBusiness.RunSkipNumber)
                 {
                     moniBusiness.CalcCode(code, zhongHouDelete);
                     SetFormTxtValue();

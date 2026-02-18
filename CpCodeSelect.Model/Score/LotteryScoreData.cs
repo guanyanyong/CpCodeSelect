@@ -33,6 +33,9 @@ namespace CpCodeSelect.Model.Score
         public bool IsCycleComplete { get; set; }  // 周期是否因为中奖而完成
         public bool IsCycleBurst { get; set; } // 周期是否因为6期不中奖而爆掉
         public int Score { get; set; }
+        /// <summary>
+        /// 当前满足条件的评分规则详情列表，包含规则名称、得分、描述等信息
+        /// </summary>
         public List<ScoreDetail> ScoreDetails { get; set; }
 
 

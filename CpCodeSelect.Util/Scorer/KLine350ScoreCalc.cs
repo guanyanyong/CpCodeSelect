@@ -771,6 +771,7 @@ namespace CpCodeSelect.Util.Scorer
 
                 // 根据评分规则设置是否出手标志
                 // 需要考虑评分>=70且不在趋势段内且K值在中轨上
+                //todo 修改为>=70
                 bool isScoreHighEnough = historyData[i].Score >= 70;
                 bool isNotInTrendSegment = !historyData[i].IsQuShiDuan;
                 bool isKValueAboveMiddle = historyData[i].BollingerBands != null &&
@@ -924,6 +925,7 @@ namespace CpCodeSelect.Util.Scorer
 
                 // 根据评分规则设置是否出手标志
                 // 需要考虑评分>=70且不在趋势段内且K值在中轨上
+                //todo 修改为>=70
                 bool isScoreHighEnough = historyData[i].Score >= 70;
                 bool isNotInTrendSegment = !historyData[i].IsQuShiDuan;
                 bool isKValueAboveMiddle = historyData[i].BollingerBands != null &&
@@ -1061,6 +1063,7 @@ namespace CpCodeSelect.Util.Scorer
             CheckTrendSegment(currentData, model);
 
             // 判断是否出手：根据评分规则，当总评分达到70分且不在趋势段内且K值在中轨之上时可以出手投注
+            //todo 修改为>=70
             bool isScoreHighEnough = currentData.Score >= 70;
             bool isNotInTrendSegment = !currentData.IsQuShiDuan;
             bool isKValueAboveMiddle = currentData.BollingerBands != null &&

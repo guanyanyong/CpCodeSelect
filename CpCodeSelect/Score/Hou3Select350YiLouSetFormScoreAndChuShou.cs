@@ -586,7 +586,6 @@ namespace CpCodeSelect.Score
                 boFangYanhuaCount = 12;
             }
             Hou3Select350YiLouSetFormScoreAndChuShouBusiness.InitData();
-            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.InitData();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -1696,9 +1695,9 @@ namespace CpCodeSelect.Score
             //getEnoughRecordList = getEnoughRecordList.OrderByDescending(p => p.IsZhouQiZhongHou).ThenByDescending(p => p.Score).ThenByDescending(p=>p.IsChuShou).ThenBy(p=>p.ShouNumber).ToList();
             if (guaCount > 0)
             {
-                getEnoughRecordList = getEnoughRecordList.Where(p => p.Score >= 80 && p.ShouNumber == guaCount).ToList();
+                getEnoughRecordList = getEnoughRecordList.Where(p => p.Score > 80 && p.ShouNumber == guaCount).ToList();
             }
-            getEnoughRecordList = getEnoughRecordList.Where(p => p.Score >= 80 && p.IsChuShou).OrderByDescending(p => p.ShouNumber).ThenByDescending(p => p.Score).ToList();
+            getEnoughRecordList = getEnoughRecordList.Where(p => p.Score > 80 && p.IsChuShou).OrderByDescending(p => p.ShouNumber).ThenByDescending(p => p.Score).ToList();
 
             SetDataSource(getEnoughRecordList);
         }

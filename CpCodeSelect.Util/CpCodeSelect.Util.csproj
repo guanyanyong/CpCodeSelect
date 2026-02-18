@@ -58,6 +58,7 @@
     <Compile Include="Generate350CodeYiLouJiaChuCi.cs" />
     <Compile Include="Generate350CodeZiRan.cs" />
     <Compile Include="Generate350Code.cs" />
+    <Compile Include="IndexCalc\MACDCalculator.cs" />
     <Compile Include="KLine270Calc.cs" />
     <Compile Include="KLine350Calc.cs" />
     <Compile Include="KLineCalc.cs" />
