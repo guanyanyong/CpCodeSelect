@@ -45,5 +45,9 @@ namespace CpCodeSelect.Model
         /// </summary>
         public double MACD_Histogram { get; set; }
 
+        public double ADX_ADX { get; set; } // ADX指标值
+        public double ADX_DIPlus { get; set; } // +DI指标值
+        public double ADX_DIMinus { get; set; } // -DI指标值
+
     }
 }

@@ -71,6 +71,18 @@
     <Compile Include="Five1MaForm.Designer.cs">
       <DependentUpon>Five1MaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hou2Selct27Three18\Hou2Selct27Three18SetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hou2Selct27Three18\Hou2Selct27Three18SetForm.Designer.cs">
+      <DependentUpon>Hou2Selct27Three18SetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hou2Selct27Three18\Moni\MoniRun270ZhouQiZhong3ge6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hou2Selct27Three18\Moni\MoniRun270ZhouQiZhong3ge6.Designer.cs">
+      <DependentUpon>MoniRun270ZhouQiZhong3ge6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hou3Select270YiLouSetFormZhouQiZhong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +112,12 @@
     </Compile>
     <Compile Include="MACDIndex\Hou3Select350YiLouSetFormMACDIndex.Designer.cs">
       <DependentUpon>Hou3Select350YiLouSetFormMACDIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MACDIndex\Moni\MoniRunZhouQiZhongMACDLianXu6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MACDIndex\Moni\MoniRunZhouQiZhongMACDLianXu6.Designer.cs">
+      <DependentUpon>MoniRunZhouQiZhongMACDLianXu6.cs</DependentUpon>
     </Compile>
     <Compile Include="Score\Moni\MoniRunZhouQiZhongScoreAllChuShou.cs">
       <SubType>Form</SubType>
@@ -364,6 +382,12 @@
     <EmbeddedResource Include="Five1MaForm.resx">
       <DependentUpon>Five1MaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Hou2Selct27Three18\Hou2Selct27Three18SetForm.resx">
+      <DependentUpon>Hou2Selct27Three18SetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hou2Selct27Three18\Moni\MoniRun270ZhouQiZhong3ge6.resx">
+      <DependentUpon>MoniRun270ZhouQiZhong3ge6.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hou3Select270YiLouSetFormZhouQiZhong.resx">
       <DependentUpon>Hou3Select270YiLouSetFormZhouQiZhong.cs</DependentUpon>
     </EmbeddedResource>
@@ -378,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MACDIndex\Hou3Select350YiLouSetFormMACDIndex.resx">
       <DependentUpon>Hou3Select350YiLouSetFormMACDIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MACDIndex\Moni\MoniRunZhouQiZhongMACDLianXu6.resx">
+      <DependentUpon>MoniRunZhouQiZhongMACDLianXu6.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Score\Moni\MoniRunZhouQiZhongScoreAllChuShou.resx">
       <DependentUpon>MoniRunZhouQiZhongScoreAllChuShou.cs</DependentUpon>

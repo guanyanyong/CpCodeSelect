@@ -20,7 +20,7 @@ namespace CpCodeSelect.Business
         {
             AllCode = new List<Code>();
             model350List= new List<Hou3Select350_ZhouQiZhong>();
-            Hou2NumberCount = new Dictionary<string, int>();
+            Hou3NumberCount = new Dictionary<string, int>();
         }
         /// <summary>
         /// 初始化号码

@@ -227,6 +227,14 @@ namespace CpCodeSelect.Util
                 var macdResult = MACDCalculator.GetLatest(model.KLineList.Select(p => p.KValue).ToList());
                 kline.MACDResult = macdResult;
             }
+            if (model.KLineList.Count >= 150)
+            {
+                var kLineList = model.KLineList;
+                var adxResult = ADXCalculator.GetLatest(kLineList.Select(p => p.ZuiGaoValue).ToList(),
+                    kLineList.Select(p => p.ZuiDiValue).ToList(),
+                    kLineList.Select(p => p.ShouPanValue).ToList());
+                kline.ADXResult = adxResult;
+            }
 
             kline.CurrentGuaCount = model.GuaCount;
             kline.CurrentZhongCount = model.ZhongGount;
@@ -587,6 +595,15 @@ namespace CpCodeSelect.Util
                     //超过150期开始计算MACD指标
                     var macdResult = MACDCalculator.GetLatest(model.KLineList.Select(p => p.KValue).ToList());
                     kline.MACDResult = macdResult;
+                }
+
+                if (model.KLineList.Count >= 150)
+                {
+                    var kLineList = model.KLineList;
+                    var adxResult = ADXCalculator.GetLatest(kLineList.Select(p => p.ZuiGaoValue).ToList(),
+                        kLineList.Select(p => p.ZuiDiValue).ToList(),
+                        kLineList.Select(p => p.ShouPanValue).ToList());
+                    kline.ADXResult = adxResult;
                 }
 
 

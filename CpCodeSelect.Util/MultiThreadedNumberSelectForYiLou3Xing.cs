@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace CpCodeSelect.Util
 {
     /// <summary>
-    /// 3星
+    /// 2星
     /// </summary>
-    public class MultiThreadedNumberSelectForYiLou3Xing
+    public class MultiThreadedNumberSelectForYiLou
     {
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
@@ -207,12 +207,12 @@ namespace CpCodeSelect.Util
         }
 
         /// <summary>
-        /// 生成00-999的所有号码
+        /// 生成00-99的所有号码
         /// </summary>
         private static List<string> GenerateAllNumbers()
         {
-            return Enumerable.Range(0, 1000)
-                            .Select(x => x.ToString("D3"))
+            return Enumerable.Range(0, 100)
+                            .Select(x => x.ToString("D2"))
                             .ToList();
         }
 

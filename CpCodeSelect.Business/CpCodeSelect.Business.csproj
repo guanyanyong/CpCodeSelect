@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
+    <Compile Include="Hou2Selct27Three18\Hou2Selct27Three18SetFormBusiness.cs" />
+    <Compile Include="Hou2Selct27Three18\Moni\MoniRun270ZhouQiZhong3ge6Business.cs" />
     <Compile Include="Hou2Select35YiLouSetFormLianXu6MoniBusiness.cs" />
     <Compile Include="Hou3Select270YiLouSetFormZhouQiZhongBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormDuoZhouQiZhong3ge3BanShangShengMoniBusiness.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="Hou3Select350YiLouSetFormZhongParentBusiness.cs" />
     <Compile Include="Hou3Select350YiLouSetFormXiaJiangXiaoFanTanBusiness.cs" />
     <Compile Include="MACDIndex\Hou3Select350YiLouSetFormMACDIndexBusiness.cs" />
+    <Compile Include="MACDIndex\Moni\Hou3Select350YiLouSetFormMACDLianXu6MoniBusiness.cs" />
     <Compile Include="Score\Moni\MoniRunZhouQiZhongScoreAllChuShouMoniBusiness.cs" />
     <Compile Include="Score\Moni\Hou3Select350YiLouSetFormZhouQiZhongScore8ge1MoniBusiness.cs" />
     <Compile Include="Score\Moni\Hou3Select350YiLouSetFormZhouQiZhongScoreMoniBusiness.cs" />

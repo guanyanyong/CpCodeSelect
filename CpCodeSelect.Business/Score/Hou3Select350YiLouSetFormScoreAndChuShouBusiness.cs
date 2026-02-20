@@ -26,7 +26,7 @@ namespace CpCodeSelect.Business.Score
         {
             AllCode = new List<Code>();
             model350List = new List<Hou3Select350_ZhouQiZhongScore>();
-            Hou2NumberCount = new Dictionary<string, int>();
+            Hou3NumberCount = new Dictionary<string, int>();
 
             var RunSkipNumberStr= ConfigurationManager.AppSettings["RunSkipNumber"];
             if(!string.IsNullOrEmpty(RunSkipNumberStr) && int.TryParse(RunSkipNumberStr, out int runSkipNumber))

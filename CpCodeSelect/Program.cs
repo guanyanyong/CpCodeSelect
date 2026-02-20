@@ -62,30 +62,46 @@ namespace CpCodeSelect
             else if (str == "Hou2Select50YiLouSetForm3guashang25zhu")
             {
                 Application.Run(new Hou2Select50YiLouSetForm3guashang25zhu());
-            }else if(str== "Hou2Select50YiLouSetFormZhouQiZhong")
+            }
+            else if (str == "Hou2Select50YiLouSetFormZhouQiZhong")
             {
                 Application.Run(new Hou2Select50YiLouSetFormZhouQiZhong());
-            }else if(str== "Hou3Select350YiLouSetFormZhouQiZhong")
+            }
+            else if (str == "Hou3Select350YiLouSetFormZhouQiZhong")
             {
                 Application.Run(new Hou3Select350YiLouSetFormZhouQiZhong());
-            }else if(str == "Hou3Select270YiLouSetFormZhouQiZhong")
+            }
+            else if (str == "Hou3Select270YiLouSetFormZhouQiZhong")
             {
                 Application.Run(new Hou3Select270YiLouSetFormZhouQiZhong());
-            }else if(str== "Hou3Select350YiLouSetFormDuoZhouQiZhong")
+            }
+            else if (str == "Hou3Select350YiLouSetFormDuoZhouQiZhong")
             {
                 Application.Run(new Hou3Select350YiLouSetFormDuoZhouQiZhong());
-            }else if(str== "Hou2Select35YiLouSetForm")
+            }
+            else if (str == "Hou2Select35YiLouSetForm")
             {
                 Application.Run(new Hou2Select35YiLouSetForm());
-            }else if(str== "Hou3Select350YiLouSetFormZiRanGenerate")
+            }
+            else if (str == "Hou3Select350YiLouSetFormZiRanGenerate")
             {
                 Application.Run(new Hou3Select350YiLouSetFormZiRanGenerate());
-            }else if(str== "Hou3Select350YiLouSetFormXiaJiangXiaoFanTan")
+            }
+            else if (str == "Hou3Select350YiLouSetFormXiaJiangXiaoFanTan")
             {
                 Application.Run(new Hou3Select350YiLouSetFormXiaJiangXiaoFanTan());
-            }else if(str== "Hou3Select350YiLouSetFormScoreAndChuShou")
+            }
+            else if (str == "Hou3Select350YiLouSetFormScoreAndChuShou")
             {
                 Application.Run(new Hou3Select350YiLouSetFormScoreAndChuShou());
+            }
+            else if (str == "Hou3Select350YiLouSetFormMACDIndex")
+            {
+                Application.Run(new Hou3Select350YiLouSetFormMACDIndex());
+            }
+            else if (str == "Hou2Selct27Three18SetForm")
+            {
+                Application.Run(new Hou2Selct27Three18SetForm());
             }
         }
     }

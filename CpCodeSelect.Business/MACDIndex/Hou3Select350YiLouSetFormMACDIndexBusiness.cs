@@ -26,7 +26,7 @@ namespace CpCodeSelect.Business.Score
         {
             AllCode = new List<Code>();
             model350List = new List<Hou3Select350_ZhouQiZhongScore>();
-            Hou2NumberCount = new Dictionary<string, int>();
+            Hou3NumberCount = new Dictionary<string, int>();
 
             var RunSkipNumberStr= ConfigurationManager.AppSettings["RunSkipNumber"];
             if(!string.IsNullOrEmpty(RunSkipNumberStr) && int.TryParse(RunSkipNumberStr, out int runSkipNumber))
@@ -77,7 +77,7 @@ namespace CpCodeSelect.Business.Score
             if (AllCode != null && AllCode.Count > RunSkipNumber)
             {
                 //删除超过3000条的记录 如果没有4挂的就删除
-                //RemoveOldModel(code, 1);
+                RemoveOldModel(code, 1);
 
                 //如果不是中后删除模式,则需要生成新的号码,如果是中后删除,则不生成新的号码
                 if (!zhongHouDelete)
@@ -105,11 +105,11 @@ namespace CpCodeSelect.Business.Score
 
             while (model350List.Count > numberCount)
             {
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 50; i++)
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= 10 && model.ShouNumber <= 2)
+                    if (codeDecimal - currentDecimal >= 30)
                     {
                         removeList.Add(model);
                     }
@@ -252,7 +252,7 @@ namespace CpCodeSelect.Business.Score
                     return;
                 var hou3List = Hou3Select350YiLouSetFormMACDIndexBusiness.GenerateHou3NumbereFromCode(270);
                 //var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
-                var numerList = MultiThreadedNumberSelectFor350Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 1);
+                var numerList = MultiThreadedNumberSelectFor350Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 50);
                 foreach (var number in numerList)
                 {
                     if (number.Count > 0)

@@ -113,7 +113,7 @@ namespace CpCodeSelect.Util.Scorer
                     isZhong = true;
 
 
-                    
+
                 }
                 else
                 {
@@ -269,6 +269,16 @@ namespace CpCodeSelect.Util.Scorer
                 var macdResult = MACDCalculator.GetLatest(model.KLineList.Select(p => p.KValue).ToList());
                 kline.MACDResult = macdResult;
             }
+
+            if (model.KLineList.Count >= 150)
+            {
+                var kLineList = model.KLineList;
+                var adxResult = ADXCalculator.GetLatest(kLineList.Select(p => p.ZuiGaoValue).ToList(),
+                    kLineList.Select(p => p.ZuiDiValue).ToList(),
+                    kLineList.Select(p => p.ShouPanValue).ToList());
+                kline.ADXResult = adxResult;
+            }
+
             kline.CurrentGuaCount = model.GuaCount;
             kline.CurrentZhongCount = model.ZhongGount;
 
@@ -331,6 +341,8 @@ namespace CpCodeSelect.Util.Scorer
             scoreData.KValue = kline.KValue;
             scoreData.BollingerBands = kline.Bolling;
             scoreData.MACDResult = kline.MACDResult;
+            scoreData.ADXResult = kline.ADXResult;
+
 
             scoreData.Number350 = model.Number350;
             scoreData.QiHao = code.CodeQiHao;
@@ -630,6 +642,8 @@ namespace CpCodeSelect.Util.Scorer
                         BollUpperValue = result.upper,
                         BollLowerValue = result.lower,
                     };
+
+
                 }
                 else
                 {
@@ -754,7 +768,7 @@ namespace CpCodeSelect.Util.Scorer
             var historyData = model.ScoreDateList;
             // 首先重置所有周期相关字段，确保重新计算不会受到之前结果的影响
 
-            for (int i = historyData.Count-2; i < historyData.Count; i++)
+            for (int i = historyData.Count - 2; i < historyData.Count; i++)
             {
                 if (i < 0) i = 0;
                 historyData[i].IsChuShou = false;
@@ -983,7 +997,7 @@ namespace CpCodeSelect.Util.Scorer
             {
                 if (historyData[i].IsChuShou)
                 {
-                    CalculateChuShouCycleAndHandNumber(historyData[i],model);
+                    CalculateChuShouCycleAndHandNumber(historyData[i], model);
                 }
             }
 
@@ -1047,7 +1061,7 @@ namespace CpCodeSelect.Util.Scorer
             {
                 if (historyData[i].IsChuShou)
                 {
-                    CalculateChuShouCycleAndHandNumber(historyData[i],model);
+                    CalculateChuShouCycleAndHandNumber(historyData[i], model);
                 }
             }
         }
@@ -1172,7 +1186,7 @@ namespace CpCodeSelect.Util.Scorer
         /// <param name="currentData"></param>
         private static void CalculateConsecutiveCounts(LotteryScoreData currentData, Hou3Select350_ZhouQiZhong model)
         {
-            if(model.ScoreDateList == null) model.ScoreDateList=new List<LotteryScoreData>();
+            if (model.ScoreDateList == null) model.ScoreDateList = new List<LotteryScoreData>();
             var HistoryData = model.ScoreDateList;
             if (HistoryData.Count == 0)
             {
@@ -1522,6 +1536,73 @@ namespace CpCodeSelect.Util.Scorer
                     checkResult.Result = false;
                     checkResult.Message = "布林上轨最近5期有1期下降";
                 }
+            }
+            return checkResult;
+        }
+
+        public static CheckResult ADXIsEnough(List<KLine> kLineList)
+        {
+            var checkResult = new CheckResult();
+            checkResult.Result = true;
+            var count = kLineList.Count;
+
+            //最近5期MACD白线要在绿线上
+            for (var i = count; i > count - 5; i--)
+            {
+                var kline = kLineList[i - 1];
+                if (kline.ADXResult != null)
+                {
+                    if (!kline.IsADXCross)
+                    {
+                        checkResult.Result = false;
+                        checkResult.Message = "最近5期ADX绿线要在红线上";
+                        break;
+                    }
+
+                    if (!kline.IsADXWhiteOverRed)
+                    {
+                        checkResult.Result = false;
+                        checkResult.Message = "最近5期ADX白线要在红线上";
+                        break;
+                    }
+                }
+            }
+            var countXiaJiang = 0;
+            for (var i = count; i > count - 5; i--)
+            {
+                var kline = kLineList[i - 1];
+                var beforeLine = kLineList[i - 2];
+                if (kline.ADXResult != null && beforeLine.ADXResult!=null)
+                {
+                    if (kline.ADXResult.DIPlusGreen <= beforeLine.ADXResult.DIPlusGreen)
+                    {
+                        countXiaJiang++;
+                    }
+                }
+            }
+            if (countXiaJiang >= 3)
+            {
+                checkResult.Result = false;
+                checkResult.Message = "最近5期ADX绿线有3期下降";
+            }
+
+            var countBaiXiaJiang = 0;
+            for (var i = count; i > count - 5; i--)
+            {
+                var kline = kLineList[i - 1];
+                var beforeLine = kLineList[i - 2];
+                if (kline.ADXResult != null && beforeLine.ADXResult != null)
+                {
+                    if (kline.ADXResult.ADXWhite <= beforeLine.ADXResult.ADXWhite)
+                    {
+                        countBaiXiaJiang++;
+                    }
+                }
+            }
+            if (countBaiXiaJiang >= 3)
+            {
+                checkResult.Result = false;
+                checkResult.Message = "最近5期ADX白线有3期下降";
             }
             return checkResult;
         }

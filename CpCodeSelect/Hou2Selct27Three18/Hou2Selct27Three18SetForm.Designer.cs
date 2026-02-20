@@ -1,6 +1,6 @@
 ﻿namespace CpCodeSelect.Score
 {
-    partial class Hou3Select350YiLouSetFormMACDIndex
+    partial class Hou2Selct27Three18SetForm
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFIlePath = new System.Windows.Forms.TextBox();
@@ -129,10 +129,6 @@
             this.numericUpDownAutoClick = new System.Windows.Forms.NumericUpDown();
             this.lblError = new System.Windows.Forms.Label();
             this.btnSelect = new System.Windows.Forms.Button();
-            this.btnScore = new System.Windows.Forms.Button();
-            this.btnQuShiDuanSearch = new System.Windows.Forms.Button();
-            this.btnYiLou = new System.Windows.Forms.Button();
-            this.btnSelectConditonEnough = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnStartAuto = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
@@ -455,7 +451,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(168, 38);
             this.button3.TabIndex = 7;
-            this.button3.Text = "模拟运行4*2";
+            this.button3.Text = "模拟运行3*6";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
@@ -911,6 +907,11 @@
             // 
             this.numHaoMa.Font = new System.Drawing.Font("微软雅黑", 16F);
             this.numHaoMa.Location = new System.Drawing.Point(387, 53);
+            this.numHaoMa.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numHaoMa.Minimum = new decimal(new int[] {
             1,
             0,
@@ -920,7 +921,7 @@
             this.numHaoMa.Size = new System.Drawing.Size(120, 36);
             this.numHaoMa.TabIndex = 4;
             this.numHaoMa.Value = new decimal(new int[] {
-            50,
+            270,
             0,
             0,
             0});
@@ -1350,14 +1351,14 @@
             this.IsChuShou,
             this.Score,
             this.ShouNumberStr});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 16F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("微软雅黑", 16F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -1466,10 +1467,6 @@
             this.panel9.Controls.Add(this.numericUpDownAutoClick);
             this.panel9.Controls.Add(this.lblError);
             this.panel9.Controls.Add(this.btnSelect);
-            this.panel9.Controls.Add(this.btnScore);
-            this.panel9.Controls.Add(this.btnQuShiDuanSearch);
-            this.panel9.Controls.Add(this.btnYiLou);
-            this.panel9.Controls.Add(this.btnSelectConditonEnough);
             this.panel9.Controls.Add(this.btnClear);
             this.panel9.Controls.Add(this.btnStartAuto);
             this.panel9.Controls.Add(this.btnCopy);
@@ -1679,50 +1676,6 @@
             this.btnSelect.Text = "搜索1";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
-            // 
-            // btnScore
-            // 
-            this.btnScore.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnScore.Location = new System.Drawing.Point(1225, 95);
-            this.btnScore.Name = "btnScore";
-            this.btnScore.Size = new System.Drawing.Size(155, 57);
-            this.btnScore.TabIndex = 3;
-            this.btnScore.Text = "金叉搜索";
-            this.btnScore.UseVisualStyleBackColor = true;
-            this.btnScore.Click += new System.EventHandler(this.btnScore_Click);
-            // 
-            // btnQuShiDuanSearch
-            // 
-            this.btnQuShiDuanSearch.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnQuShiDuanSearch.Location = new System.Drawing.Point(1225, 12);
-            this.btnQuShiDuanSearch.Name = "btnQuShiDuanSearch";
-            this.btnQuShiDuanSearch.Size = new System.Drawing.Size(155, 72);
-            this.btnQuShiDuanSearch.TabIndex = 3;
-            this.btnQuShiDuanSearch.Text = "趋势段搜索";
-            this.btnQuShiDuanSearch.UseVisualStyleBackColor = true;
-            this.btnQuShiDuanSearch.Click += new System.EventHandler(this.btnQuShiDuanSearch_Click);
-            // 
-            // btnYiLou
-            // 
-            this.btnYiLou.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnYiLou.Location = new System.Drawing.Point(917, 109);
-            this.btnYiLou.Name = "btnYiLou";
-            this.btnYiLou.Size = new System.Drawing.Size(155, 58);
-            this.btnYiLou.TabIndex = 3;
-            this.btnYiLou.Text = "最大遗漏搜索";
-            this.btnYiLou.UseVisualStyleBackColor = true;
-            this.btnYiLou.Click += new System.EventHandler(this.btnYiLou_Click);
-            // 
-            // btnSelectConditonEnough
-            // 
-            this.btnSelectConditonEnough.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnSelectConditonEnough.Location = new System.Drawing.Point(786, 107);
-            this.btnSelectConditonEnough.Name = "btnSelectConditonEnough";
-            this.btnSelectConditonEnough.Size = new System.Drawing.Size(97, 58);
-            this.btnSelectConditonEnough.TabIndex = 3;
-            this.btnSelectConditonEnough.Text = "搜索2";
-            this.btnSelectConditonEnough.UseVisualStyleBackColor = true;
-            this.btnSelectConditonEnough.Click += new System.EventHandler(this.btnSelectConditonEnough_Click);
             // 
             // btnClear
             // 
@@ -2108,7 +2061,7 @@
             this.panel2.Size = new System.Drawing.Size(1410, 612);
             this.panel2.TabIndex = 10;
             // 
-            // Hou3Select350YiLouSetFormMACDIndex
+            // Hou2Selct27Three18SetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -2116,8 +2069,8 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelError);
-            this.Name = "Hou3Select350YiLouSetFormMACDIndex";
-            this.Text = "350注积分与出手";
+            this.Name = "Hou2Selct27Three18SetForm";
+            this.Text = "270注3个6总计18期";
             this.tabControl1.ResumeLayout(false);
             this.TotalInfo.ResumeLayout(false);
             this.TotalInfo.PerformLayout();
@@ -2280,7 +2233,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnTestCode;
-        private System.Windows.Forms.Button btnSelectConditonEnough;
         private System.Windows.Forms.TabPage paramSet;
         private System.Windows.Forms.TextBox txtDownLoadFilePath;
         private System.Windows.Forms.Label label15;
@@ -2317,9 +2269,6 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button btnYiLou;
-        private System.Windows.Forms.Button btnQuShiDuanSearch;
-        private System.Windows.Forms.Button btnScore;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZhouQiZhongHouGua;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsZhouQiZhongHou;
         private System.Windows.Forms.DataGridViewButtonColumn Numer50;

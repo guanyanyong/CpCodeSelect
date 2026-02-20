@@ -66,7 +66,7 @@ namespace CpCodeSelect.Util.IndexCalc
         public static MACDResult GetLatest(List<double> prices, int shortPeriod = 12, int longPeriod = 26, int signalPeriod = 9)
         {
             if (prices == null || prices.Count == 0 || prices.Count < 150) return null;
-            if(prices.Count>300) prices = prices.GetRange(prices.Count - 300, 300);
+            //if(prices.Count>300) prices = prices.GetRange(prices.Count - 300, 300);
             var result = Calculate(prices, shortPeriod, longPeriod, signalPeriod);
             if (result.Count == 0) return null;
             int lastIndex = result.Count - 1;
@@ -88,32 +88,54 @@ namespace CpCodeSelect.Util.IndexCalc
         {
             int n = data.Count;
             var ema = new List<double>(n);
-            double multiplier = 2.0 / (period + 1); // 平滑系数
+            double multiplier = 2.0 / (period + 1);
 
-            // 第一个EMA值取前period个数据的简单平均
-            if (n < period)
+            // 1. 前值填充，处理NaN
+            double[] filled = new double[n];
+            double lastValid = double.NaN;
+            for (int i = 0; i < n; i++)
             {
-                // 数据不足，全部填充NaN
+                if (!double.IsNaN(data[i]))
+                {
+                    lastValid = data[i];
+                    filled[i] = data[i];
+                }
+                else
+                {
+                    filled[i] = lastValid; // 若lastValid为NaN，则保留NaN
+                }
+            }
+
+            // 2. 找到第一个有效值的索引
+            int startIdx = 0;
+            while (startIdx < n && double.IsNaN(filled[startIdx]))
+            {
+                startIdx++;
+            }
+
+            // 全部为NaN 或 有效数据不足周期数
+            if (startIdx == n || n - startIdx < period)
+            {
                 for (int i = 0; i < n; i++)
                     ema.Add(double.NaN);
                 return ema;
             }
 
-            // 计算初始SMA
+            // 3. 计算第一个EMA（简单平均）
             double sum = 0;
-            for (int i = 0; i < period; i++)
-                sum += data[i];
+            for (int i = startIdx; i < startIdx + period; i++)
+                sum += filled[i];
             double prevEma = sum / period;
-            ema.Add(prevEma); // 第period个位置对应索引period-1
 
-            // 填充前面的位置为NaN（表示无效）
-            for (int i = 0; i < period - 1; i++)
-                ema.Insert(0, double.NaN); // 注意：从头部插入保持顺序
+            // 填充前面无效区域为NaN（直到第一个EMA所在索引的前一个位置）
+            for (int i = 0; i < startIdx + period - 1; i++)
+                ema.Add(double.NaN);
+            ema.Add(prevEma); // 第一个EMA
 
-            // 计算后续EMA
-            for (int i = period; i < n; i++)
+            // 4. 递推剩余EMA
+            for (int i = startIdx + period; i < n; i++)
             {
-                double currentEma = (data[i] - prevEma) * multiplier + prevEma;
+                double currentEma = (filled[i] - prevEma) * multiplier + prevEma;
                 ema.Add(currentEma);
                 prevEma = currentEma;
             }
