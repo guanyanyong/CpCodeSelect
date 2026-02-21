@@ -125,6 +125,12 @@
     <Compile Include="MACDIndex\Moni\MoniRunZhouQiZhongMACDLianXu6.Designer.cs">
       <DependentUpon>MoniRunZhouQiZhongMACDLianXu6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Score\Moni\MoniRunZhouQiZhongScore3ge5AfterZhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score\Moni\MoniRunZhouQiZhongScore3ge5AfterZhong.Designer.cs">
+      <DependentUpon>MoniRunZhouQiZhongScore3ge5AfterZhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Score\Moni\MoniRunZhouQiZhongScoreAllChuShou.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -414,6 +420,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MACDIndex\Moni\MoniRunZhouQiZhongMACDLianXu6.resx">
       <DependentUpon>MoniRunZhouQiZhongMACDLianXu6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Score\Moni\MoniRunZhouQiZhongScore3ge5AfterZhong.resx">
+      <DependentUpon>MoniRunZhouQiZhongScore3ge5AfterZhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Score\Moni\MoniRunZhouQiZhongScoreAllChuShou.resx">
       <DependentUpon>MoniRunZhouQiZhongScoreAllChuShou.cs</DependentUpon>

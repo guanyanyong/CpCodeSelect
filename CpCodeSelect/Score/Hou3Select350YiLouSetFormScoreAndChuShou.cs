@@ -51,7 +51,7 @@ namespace CpCodeSelect.Score
         private string apiUri = "http://127.0.0.1:5000/";
         private string DataSource = "rexguan-hp2024-01";
         //private MoniRunZhouQiZhongScore moniRunZhouQiZhong = new MoniRunZhouQiZhongScore();
-        private MoniRunZhouQiZhongScore4ge2 moniRunZhouQiZhong = new MoniRunZhouQiZhongScore4ge2();
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhongScore3ge5AfterZhong();
         private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore8ge1();
         //private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
         private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore8ge1();
@@ -260,7 +260,7 @@ namespace CpCodeSelect.Score
             SetForm();
             //AddToLogFileZu6Kill1(code, "Hou2Select50.txt");
             AddToLogFileHou2Select50Auto(code);
-            moniRunZhouQiZhong.Run(code);
+            moniRunZhouQiZhongScore3ge5AfterZhong.Run(code);
             moniRunZhouQiZhongLianXu8.Run(code);
             moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
             //moniRunZhouQiZhongLianXu3.Run(code);
@@ -1175,7 +1175,7 @@ namespace CpCodeSelect.Score
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            moniRunZhouQiZhong.Show();
+            moniRunZhouQiZhongScore3ge5AfterZhong.Show();
         }
 
         private void button4_Click_1(object sender, EventArgs e)
