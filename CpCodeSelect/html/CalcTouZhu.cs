@@ -95,7 +95,7 @@ namespace CpCodeSelect.html
             else
             {
                 TotalZhong++;
-                CurrentPrincipal = CurrentPrincipal + 0.98M * CurrentBetAmount;
+                CurrentPrincipal = CurrentPrincipal + 0.97M * CurrentBetAmount;
                 if (CurrentPrincipal >= MaxPrincipal)
                 {
                     InitialPrincipal = CurrentPrincipal;
