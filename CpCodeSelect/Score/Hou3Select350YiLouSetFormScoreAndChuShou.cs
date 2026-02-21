@@ -25,6 +25,7 @@ using CpCodeSelect.Model.Score;
 using CpCodeSelect.Score.Moni;
 using CpCodeSelect.Util.Scorer;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using CpCodeSelect.html;
 
 namespace CpCodeSelect.Score
 {
@@ -1712,6 +1713,12 @@ namespace CpCodeSelect.Score
             getEnoughRecordList = getEnoughRecordList.Where(p => p.Score > 80 && p.IsChuShou).OrderByDescending(p => p.ShouNumber).ThenByDescending(p => p.Score).ToList();
 
             SetDataSource(getEnoughRecordList);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var zhihuiwo = new zhihuiwo();
+            zhihuiwo.Show();
         }
     }
 }

@@ -135,13 +135,14 @@
     </div>
 
     <script>
-        let clickCount = 0;
+        let clickCount = 1;
         let splitStage = 1; // 当前拆分阶段
         let baseClicks = 5; // 每阶段需要点击的次数
+        let lastBet = 0;
 
         function calculate() {
             let initialPrincipal = parseFloat(document.getElementById('initialPrincipal').value);
-            const currentPrincipal = parseFloat(document.getElementById('currentPrincipal').value);
+            let currentPrincipal = parseFloat(document.getElementById('currentPrincipal').value);
 
             if (isNaN(initialPrincipal) || isNaN(currentPrincipal)) {
                 alert('请输入有效的初始本金和当前本金！');
@@ -154,14 +155,14 @@
 
             // 更新拆分阶段和金额
             let currentSplitAmount;
-            if (splitStage <= 10) {
-                currentSplitAmount = (initialPrincipal * splitStage) / 60;
+            if (splitStage < 10) {
+                currentSplitAmount = (currentPrincipal * splitStage) / 200;
                 if (clickCount % baseClicks === 0) splitStage++;
-            } else if (splitStage <= 30) {
-                currentSplitAmount = (initialPrincipal * splitStage) / 60;
+            } else if (splitStage < 30) {
+                currentSplitAmount = (currentPrincipal * splitStage) / 200;
                 if (clickCount % baseClicks === 0) splitStage += 2;
-            } else if (splitStage <= 60) {
-                currentSplitAmount = (initialPrincipal * splitStage) / 60;
+            } else if (splitStage < 60) {
+                currentSplitAmount = (currentPrincipal * splitStage) / 200;
                 if (clickCount % baseClicks === 0) splitStage += 3;
             } else {
                 document.getElementById('message').textContent = '止损停止计划';
@@ -179,9 +180,12 @@
             document.getElementById('betAccountBalance').textContent = betAccountBalance;
 
             // 计算当期投注金额
-            const currentBetAmount = Math.round(betAccountBalance / 4.68);
+            let currentBetAmount = Math.round(betAccountBalance / 0.156);
             document.getElementById('currentBetAmount').textContent = currentBetAmount;
-
+            lastBet = currentBetAmount;
+            currentPrincipal = currentPrincipal - currentBetAmount * 0.156;
+            console.log('当前本金:', currentPrincipal);
+            document.getElementById('currentPrincipal').textContent = 199.064;
             // 判断盈亏
             if (currentProfitLoss > 0) {
                 // 重置数据

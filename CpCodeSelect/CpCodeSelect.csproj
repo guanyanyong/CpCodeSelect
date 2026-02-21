@@ -113,6 +113,12 @@
     <Compile Include="Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.Designer.cs">
       <DependentUpon>Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.cs</DependentUpon>
     </Compile>
+    <Compile Include="html\zhihuiwo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="html\zhihuiwo.Designer.cs">
+      <DependentUpon>zhihuiwo.cs</DependentUpon>
+    </Compile>
     <Compile Include="MACDIndex\Hou3Select350YiLouSetFormMACDIndex.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -414,6 +420,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.resx">
       <DependentUpon>Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="html\zhihuiwo.resx">
+      <DependentUpon>zhihuiwo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MACDIndex\Hou3Select350YiLouSetFormMACDIndex.resx">
       <DependentUpon>Hou3Select350YiLouSetFormMACDIndex.cs</DependentUpon>
