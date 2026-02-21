@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="BaseBusiness.cs" />
     <Compile Include="Hou2Selct27Three18\Hou2Selct27Three18SetFormBusiness.cs" />
+    <Compile Include="Hou2Selct27Three18\Moni\MoniRun270ZhuLianXu18MoniBusiness.cs" />
     <Compile Include="Hou2Selct27Three18\Moni\MoniRun270ZhouQiZhong3ge6Business.cs" />
     <Compile Include="Hou2Select35YiLouSetFormLianXu6MoniBusiness.cs" />
     <Compile Include="Hou3Select270YiLouSetFormZhouQiZhongBusiness.cs" />

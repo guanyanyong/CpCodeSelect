@@ -55,7 +55,7 @@ namespace CpCodeSelect.Score
         private string DataSource = "rexguan-hp2024-01";
         //private MoniRunZhouQiZhongScore moniRunZhouQiZhong = new MoniRunZhouQiZhongScore();
         private MoniRun270ZhouQiZhong3ge6 moniRun270ZhouQiZhong3ge6 = new MoniRun270ZhouQiZhong3ge6();
-        private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore8ge1();
+        private MoniRun270ZhuLianXu18 moniRunZhouQiZhongLianXu8 = new MoniRun270ZhuLianXu18(new Hou3Select350YiLouSetFormZhongParentBusiness());
         private MoniRunZhouQiZhongMACDLianXu6 moniRunZhouQiZhongLianXu6 = new MoniRunZhouQiZhongMACDLianXu6(new Hou2Selct27Three18SetFormBusiness());
         //private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore8ge1();
         //private moniRunZhouQiZhongScoreAllChuShou moniRunZhouQiZhongScoreAllChuShou = new moniRunZhouQiZhongScoreAllChuShou();
@@ -272,7 +272,7 @@ namespace CpCodeSelect.Score
             //AddToLogFileZu6Kill1(code, "Hou2Select50.txt");
             AddToLogFileHou2Select50Auto(code);
             moniRun270ZhouQiZhong3ge6.Run(code);
-            //moniRunZhouQiZhongLianXu8.Run(code);
+            moniRunZhouQiZhongLianXu8.Run(code);
             //moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
             //moniRunZhouQiZhongLianXu6.Run(code);
             //moniRunZhouQiZhongLianXu3.Run(code);
