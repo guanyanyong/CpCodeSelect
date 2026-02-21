@@ -15,12 +15,12 @@ using System.Windows.Forms;
 
 namespace CpCodeSelect.Score.Moni
 {
-    public partial class MoniRunZhouQiZhongScore : Form
+    public partial class MoniRunZhouQiZhongScore4ge2 : Form
     {
         private Hou3Select350YiLouSetFormZhouQiZhongScoreMoniBusiness moniBusiness;
         Code beforeCode = null;
         Code currentCode = null;
-        public MoniRunZhouQiZhongScore()
+        public MoniRunZhouQiZhongScore4ge2()
         {
             InitializeComponent(); 
             moniBusiness=new Hou3Select350YiLouSetFormZhouQiZhongScoreMoniBusiness(CustomLogMethod, Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List);

@@ -1,6 +1,6 @@
 ﻿namespace CpCodeSelect.Score.Moni
 {
-    partial class MoniRunZhouQiZhongScore
+    partial class MoniRunZhouQiZhongScore4ge2
     {
         /// <summary>
         /// Required designer variable.

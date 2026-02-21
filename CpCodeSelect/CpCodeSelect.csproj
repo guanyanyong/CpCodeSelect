@@ -137,11 +137,11 @@
     <Compile Include="Score\Moni\MoniRunZhouQiZhongScore8ge1.Designer.cs">
       <DependentUpon>MoniRunZhouQiZhongScore8ge1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Score\Moni\MoniRunZhouQiZhongScore.cs">
+    <Compile Include="Score\Moni\MoniRunZhouQiZhongScore4ge2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Score\Moni\MoniRunZhouQiZhongScore.Designer.cs">
-      <DependentUpon>MoniRunZhouQiZhongScore.cs</DependentUpon>
+    <Compile Include="Score\Moni\MoniRunZhouQiZhongScore4ge2.Designer.cs">
+      <DependentUpon>MoniRunZhouQiZhongScore4ge2.cs</DependentUpon>
     </Compile>
     <Compile Include="Score\Hou3Select350YiLouSetFormScoreAndChuShou.cs">
       <SubType>Form</SubType>
@@ -421,8 +421,8 @@
     <EmbeddedResource Include="Score\Moni\MoniRunZhouQiZhongScore8ge1.resx">
       <DependentUpon>MoniRunZhouQiZhongScore8ge1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Score\Moni\MoniRunZhouQiZhongScore.resx">
-      <DependentUpon>MoniRunZhouQiZhongScore.cs</DependentUpon>
+    <EmbeddedResource Include="Score\Moni\MoniRunZhouQiZhongScore4ge2.resx">
+      <DependentUpon>MoniRunZhouQiZhongScore4ge2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Score\Hou3Select350YiLouSetFormScoreAndChuShou.resx">
       <DependentUpon>Hou3Select350YiLouSetFormScoreAndChuShou.cs</DependentUpon>

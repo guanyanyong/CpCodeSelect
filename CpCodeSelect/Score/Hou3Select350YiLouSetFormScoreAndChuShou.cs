@@ -51,7 +51,7 @@ namespace CpCodeSelect.Score
         private string apiUri = "http://127.0.0.1:5000/";
         private string DataSource = "rexguan-hp2024-01";
         //private MoniRunZhouQiZhongScore moniRunZhouQiZhong = new MoniRunZhouQiZhongScore();
-        private MoniRunZhouQiZhongScore moniRunZhouQiZhong = new MoniRunZhouQiZhongScore();
+        private MoniRunZhouQiZhongScore4ge2 moniRunZhouQiZhong = new MoniRunZhouQiZhongScore4ge2();
         private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore8ge1();
         //private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
         private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore8ge1();
