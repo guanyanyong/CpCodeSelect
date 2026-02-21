@@ -580,6 +580,8 @@
     <Content Include="App.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="html\zhihuiwo-1.html" />
+    <Content Include="html\zhihuiwo-1-yuanshi.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CpCodeSelect.Business\CpCodeSelect.Business.csproj">

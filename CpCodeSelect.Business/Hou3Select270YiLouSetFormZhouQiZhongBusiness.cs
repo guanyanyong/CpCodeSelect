@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static CpCodeSelect.Model.Zu6Kill1Model;
 
-namespace CpCodeSelect.Business
+namespace CpCodeSelect.Business 
 {
     public static class Hou3Select270YiLouSetFormZhouQiZhongBusiness
     {

@@ -1,0 +1,224 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盈亏计算工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+            font-size: 14px;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+            button.calculate {
+                background: #007bff;
+                color: #fff;
+            }
+
+                button.calculate:hover {
+                    background: #0056b3;
+                }
+
+            button.copy {
+                background: #28a745;
+                color: #fff;
+            }
+
+                button.copy:hover {
+                    background: #1e7e34;
+                }
+
+            button.reset {
+                background: #dc3545;
+                color: #fff;
+            }
+
+                button.reset:hover {
+                    background: #bd2130;
+                }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+            .result p {
+                margin: 5px 0;
+                font-size: 14px;
+                color: #555;
+            }
+
+        #message {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>盈亏计算工具</h1>
+
+        <!-- 初始本金 -->
+        <label for="initialPrincipal">初始本金</label>
+        <input type="number" id="initialPrincipal" placeholder="输入初始本金">
+
+        <!-- 当前本金 -->
+        <label for="currentPrincipal">当前本金</label>
+        <input type="number" id="currentPrincipal" placeholder="输入当前本金">
+
+        <!-- 操作按钮 -->
+        <button class="calculate" onclick="calculate()">计算</button>
+        <button class="copy" onclick="copyBetAmount()">一键复制当期投注金额</button>
+        <button class="reset" onclick="reset()">重置</button>
+
+        <!-- 结果显示 -->
+        <div class="result">
+            <p>每阶段点击次数: <span id="baseClicks">5</span></p>
+            <p>点击次数: <span id="clickCount">0</span></p>
+            <p>当前拆分阶段: <span id="splitStage">1</span></p>
+            <p>当前盈亏: <span id="currentProfitLoss">-</span></p>
+            <p>拆分金额: <span id="splitAmount">-</span></p>
+            <p>投注账户余额: <span id="betAccountBalance">-</span></p>
+            <p>投注倍数<span id="currentBetAmount">-</span></p>
+        </div>
+
+        <p id="message"></p>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        let splitStage = 1; // 当前拆分阶段
+        let baseClicks = 5; // 每阶段需要点击的次数
+
+        function calculate() {
+            let initialPrincipal = parseFloat(document.getElementById('initialPrincipal').value);
+            const currentPrincipal = parseFloat(document.getElementById('currentPrincipal').value);
+
+            if (isNaN(initialPrincipal) || isNaN(currentPrincipal)) {
+                alert('请输入有效的初始本金和当前本金！');
+                return;
+            }
+
+            // 增加点击次数
+            clickCount++;
+            document.getElementById('clickCount').textContent = clickCount;
+
+            // 更新拆分阶段和金额
+            let currentSplitAmount;
+            if (splitStage <= 10) {
+                currentSplitAmount = (initialPrincipal * splitStage) / 60;
+                if (clickCount % baseClicks === 0) splitStage++;
+            } else if (splitStage <= 30) {
+                currentSplitAmount = (initialPrincipal * splitStage) / 60;
+                if (clickCount % baseClicks === 0) splitStage += 2;
+            } else if (splitStage <= 60) {
+                currentSplitAmount = (initialPrincipal * splitStage) / 60;
+                if (clickCount % baseClicks === 0) splitStage += 3;
+            } else {
+                document.getElementById('message').textContent = '止损停止计划';
+                return;
+            }
+            document.getElementById('splitAmount').textContent = currentSplitAmount.toFixed(2);
+            document.getElementById('splitStage').textContent = splitStage;
+
+            // 计算当前盈亏
+            const currentProfitLoss = currentPrincipal - initialPrincipal;
+            document.getElementById('currentProfitLoss').textContent = currentProfitLoss;
+
+            // 计算投注账户余额
+            const betAccountBalance = currentProfitLoss + currentSplitAmount;
+            document.getElementById('betAccountBalance').textContent = betAccountBalance;
+
+            // 计算当期投注金额
+            const currentBetAmount = Math.round(betAccountBalance / 4.68);
+            document.getElementById('currentBetAmount').textContent = currentBetAmount;
+
+            // 判断盈亏
+            if (currentProfitLoss > 0) {
+                // 重置数据
+                document.getElementById('message').textContent = '本轮已收工，自动重置并重新计算！';
+                document.getElementById('initialPrincipal').value = currentPrincipal;
+                reset(false);
+                setTimeout(() => calculate(), 100); // 重新执行计算
+            }
+        }
+
+        function copyBetAmount() {
+            const currentBetAmount = document.getElementById('currentBetAmount').textContent;
+            if (currentBetAmount === '-') {
+                alert('没有可复制的投注金额！');
+                return;
+            }
+            navigator.clipboard.writeText(currentBetAmount).then(() => {
+                document.getElementById('message').textContent = '投注金额已复制！';
+            });
+        }
+
+        function reset(full = true) {
+            if (full) {
+                document.getElementById('initialPrincipal').value = '';
+                document.getElementById('currentPrincipal').value = '';
+            }
+            document.getElementById('clickCount').textContent = '0';
+            document.getElementById('currentProfitLoss').textContent = '-';
+            document.getElementById('splitAmount').textContent = '-';
+            document.getElementById('betAccountBalance').textContent = '-';
+            document.getElementById('currentBetAmount').textContent = '-';
+            document.getElementById('message').textContent = '';
+            clickCount = 0;
+            splitStage = 2;
+        }
+    </script>
+
+
+</body>
+</html>

@@ -90,6 +90,79 @@ namespace CpCodeSelect.Business.Hou2Selct27Three18
             }
             Hou2Selct27Three18SetFormBusiness.code = code;
         }
+
+        public new static void CalcExist350Code(Code code)
+        {
+            var hou3 = code.GetHou3String();
+            foreach (var model in model350List)
+            {
+                if (model.Number350.Contains(hou3))
+                {
+                    //中了
+                    model.ZhongGount++;
+                    model.NeedZhong = false;
+                    model.Zhong3BeforeGua = model.Zhong2BeforeGua;
+                    model.Zhong2BeforeGua = model.ZhongBeforeGua;
+                    model.ZhongBeforeGua = model.GuaCount;
+
+                    model.GuaCount = 0;
+
+                    // 判断是否在中后周期内
+                    if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
+                    {
+
+                        model.IsZhouQiZhongHou = true;
+                    }
+                    else
+                    {
+                        model.IsZhouQiZhongHou = false;
+                    }
+
+                    //判断是否周期内挂
+                    if (model.Zhong3BeforeGua >= 2 && model.Zhong2BeforeGua <= 1 && model.ZhongBeforeGua >= 2)
+                    {
+                        model.ZhouQiZhongHouGua++;
+                    }
+
+                    if (model.Zhong2BeforeGua <= 1 && model.ZhongBeforeGua <= 1)
+                    {
+                        model.ZhouQiZhongHouGua = 0;
+                    }
+                }
+                else
+                {
+                    //挂了
+                    model.GuaCount++;
+                    model.ZhongGount = 0;
+                    if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
+                    {
+                        model.IsZhouQiZhongHou = true;
+                    }
+                    if (model.GuaCount >= 2)
+                    {
+                        //挂超过2次后就不是周期内
+                        model.IsZhouQiZhongHou = false;
+                    }
+                }
+
+                //计算当前期的K线
+                var record = new Hou3Select270_ZhouQiZhong();
+                record.Number270 = model.Number350;
+                record.CodeNumber = model.CodeNumber;
+                record.CodeQiHao = model.CodeQiHao;
+                record.ZhouQiZhongHouGua = model.ZhouQiZhongHouGua;
+                record.ZhongGount = model.ZhongGount;
+                record.ZhouQiZhongHouGua = model.ZhouQiZhongHouGua;
+                record.IsZhouQiZhongHou = model.IsZhouQiZhongHou;
+                record.KLineList = model.KLineList;
+                record.ZhongGount = model.ZhongGount;
+                record.ZhongBeforeGua = model.ZhongBeforeGua;
+                record.Zhong2BeforeGua = model.Zhong2BeforeGua;
+                record.Zhong3BeforeGua = model.Zhong3BeforeGua;
+                KLine270Calc.CalcKlineCurrent(record, code);
+                model.KLineList = record.KLineList;
+            }
+        }
         /// <summary>
         ///  删除小于指定挂数的旧记录
         /// </summary>
@@ -132,6 +205,7 @@ namespace CpCodeSelect.Business.Hou2Selct27Three18
                     //    model.NeedZhong = false;
                     //}
                 }
+
             }
         }
 
@@ -180,6 +254,16 @@ namespace CpCodeSelect.Business.Hou2Selct27Three18
                                 model.CodeNumber = code.CodeNumber;
                                 model.CodeQiHao = code.CodeQiHao;
                                 model.NeedZhong = true;
+
+                                Hou3Select270_ZhouQiZhong model270 = new Hou3Select270_ZhouQiZhong();
+                                model270.Number270 = list;
+                                model270.CodeNumber = code.CodeNumber;
+                                model270.CodeQiHao = code.CodeQiHao;
+                                model270.NeedZhong = true;
+                                model270.KLineList = new List<KLine>();
+                                KLine270Calc.CalcKLineHistoryList(model270, AllCode, 100);
+                                model.KLineList = model270.KLineList;
+
                                 model350List.Add(model);
                             }
                         }
