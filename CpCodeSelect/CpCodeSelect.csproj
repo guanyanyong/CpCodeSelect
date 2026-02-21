@@ -113,6 +113,7 @@
     <Compile Include="Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.Designer.cs">
       <DependentUpon>Hou3Select350YiLouSetFormXiaJiangXiaoFanTan.cs</DependentUpon>
     </Compile>
+    <Compile Include="html\CalcTouZhu.cs" />
     <Compile Include="html\zhihuiwo.cs">
       <SubType>Form</SubType>
     </Compile>
