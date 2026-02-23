@@ -2,6 +2,7 @@
 using CpCodeSelect.Business.Score;
 using CpCodeSelect.Business.Score.Moni;
 using CpCodeSelect.Model;
+using CpCodeSelect.Util.ZiJinFangAn;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,7 +61,9 @@ namespace CpCodeSelect.Score.Moni
             int zhongjiangCount = 0;
             if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu+1;
 
-            txtTotalAmount.Text=moniBusiness.TotalResult.ToString("0.00");
+            var largeYinKui = (moniBusiness.ZiJinFangAn.LargeTotalPrincipal - ZiJinFangAnV2.MiddleTotalPrincipalInit);
+            var currentYinKui = moniBusiness.ZiJinFangAn.SmallCurrentProfitLoss;
+            txtTotalAmount.Text=(largeYinKui + currentYinKui).ToString();
 
             txtLiushui.Text=moniBusiness.TotalLiuShui.ToString("0.00");
             txtMaxResult.Text = moniBusiness.MaxResult.ToString("0.00");

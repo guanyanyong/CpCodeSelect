@@ -145,7 +145,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// <summary>
         /// 每轮盈利30% 就回收
         /// </summary>
-        public decimal SmallLunEnoughPrincipal = 200M * 1.8M;
+        public decimal SmallLunEnoughPrincipal = 200M * 1.4M;
         /// <summary>
         /// 当前执行轮次-Small-当前余额，初始为200元，每次点击后根据盈亏情况更新
         /// </summary>
@@ -423,7 +423,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                         //中间轮次重置 恢复值为初始值
                         MiddleLunOrigianInit();
                         //SmallLunOrigianInit();
-                        kaiJiangResult.Message = string.Format($"当前轮盈利超过80%,中间轮盈利,退回到第一轮。总盈利:{LargeTotalPrincipal - MiddleTotalPrincipalInit}**********");
+                        kaiJiangResult.Message = string.Format($"当前轮盈利超过40%,中间轮盈利,退回到第一轮。总盈利:{LargeTotalPrincipal - MiddleTotalPrincipalInit}**********");
                     }
                     else
                     {
@@ -431,7 +431,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                         //重新设置当前轮次的相关数值
                         SmallInitialPrincipal = MiddleLunAmount[currentLun - 1];
                         SmallCurrentPrincipal = SmallInitialPrincipal;
-                        kaiJiangResult.Message = string.Format($"当前轮盈利超过80%,但是中间轮未盈利,继续当前第{MiddleCurrentLun}轮。中间轮金额:{MiddleCurrentPrincipalExcludSmall+ currentLunAmount}**********");
+                        kaiJiangResult.Message = string.Format($"当前轮盈利超过40%,但是中间轮未盈利,继续当前第{MiddleCurrentLun}轮。中间轮金额:{MiddleCurrentPrincipalExcludSmall+ currentLunAmount}**********");
                         SmallLunInit();
                     }
 
@@ -543,7 +543,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
             SmallSplitStage = 1; // 当前拆分阶段 
             SmallBaseClicks = 5; // 每阶段需要点击的次数
             SmallMaxPrincipal = SmallInitialPrincipal * 1.05M; // 重置最大本金为初始本金的105%
-            SmallLunEnoughPrincipal = SmallInitialPrincipal * 1.8M;
+            SmallLunEnoughPrincipal = SmallInitialPrincipal * 1.4M;
 
             SmallTotalZhong = 0;  // 中的次数
             SmallTotalGua = 0;   // 挂的次数
@@ -584,7 +584,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
             SmallCurrentMinAmount = SmallInitialPrincipal;//当前轮最小余额数值
             SmallCurrentPrincipal = SmallInitialPrincipal;
             SmallMaxPrincipal = Math.Round(SmallCurrentPrincipal * 1.05M);
-            SmallLunEnoughPrincipal = SmallCurrentPrincipal * 1.8M;
+            SmallLunEnoughPrincipal = SmallCurrentPrincipal * 1.4M;
         }
         /// <summary>
         /// 原始轮初始化
