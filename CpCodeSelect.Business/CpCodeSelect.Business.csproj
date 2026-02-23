@@ -59,6 +59,7 @@
     <Compile Include="MACDIndex\Hou3Select350YiLouSetFormMACDIndexBusiness.cs" />
     <Compile Include="MACDIndex\Moni\Hou3Select350YiLouSetFormMACDLianXu6MoniBusiness.cs" />
     <Compile Include="Score\Moni\Hou3Select350YiLouSetFormZhouQiZhongScore3ge5AfterZhongMoniBusiness.cs" />
+    <Compile Include="Score\Moni\MoniRunZhouQiZhongScoreAllChuShou2MoniBusiness.cs" />
     <Compile Include="Score\Moni\MoniRunZhouQiZhongScoreAllChuShouMoniBusiness.cs" />
     <Compile Include="Score\Moni\Hou3Select350YiLouSetFormZhouQiZhongScore8ge1MoniBusiness.cs" />
     <Compile Include="Score\Moni\Hou3Select350YiLouSetFormZhouQiZhongScoreMoniBusiness.cs" />

@@ -55,7 +55,8 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhongScore3ge5AfterZhong();
         private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore8ge1();
         //private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
-        private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore8ge1();
+        //private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore8ge1();
+        private MoniRunZhouQiZhongScoreAllChuShou2 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScoreAllChuShou2();
         //private moniRunZhouQiZhongScoreAllChuShou moniRunZhouQiZhongScoreAllChuShou = new moniRunZhouQiZhongScoreAllChuShou();
         private MoniRunZhouQiZhongScoreAllChuShou moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhongScoreAllChuShou();
         //private MoniRunZhouQiZhong3ge3yilou0BanShangSheng sangesanyilou0 = new MoniRunZhouQiZhong3ge3yilou0BanShangSheng();
@@ -264,7 +265,7 @@ namespace CpCodeSelect.Score
             moniRunZhouQiZhongScore3ge5AfterZhong.Run(code);
             moniRunZhouQiZhongLianXu8.Run(code);
             moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
-            //moniRunZhouQiZhongLianXu3.Run(code);
+            moniRunZhouQiZhongLianXu3.Run(code);
             //sangesanyilou0.Run(code);
             //moniRunZhouQiZhong3Ge3.Run(code);
 

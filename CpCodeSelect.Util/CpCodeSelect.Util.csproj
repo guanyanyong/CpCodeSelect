@@ -81,6 +81,8 @@
     <Compile Include="Scorer\ScorerUtil.cs" />
     <Compile Include="ThreadSafeRandom.cs" />
     <Compile Include="YiLouKLine\YiLouKLine350Calc.cs" />
+    <Compile Include="ZiJinFangAn\TouZhuResult.cs" />
+    <Compile Include="ZiJinFangAn\ZiJinFangAn.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CpCodeSelect.Model\CpCodeSelect.Model.csproj">

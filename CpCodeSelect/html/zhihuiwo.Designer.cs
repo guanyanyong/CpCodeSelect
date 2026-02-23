@@ -49,13 +49,17 @@
             this.lblCurrentBetAmount = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbZhong = new System.Windows.Forms.RadioButton();
             this.rbNotZhong = new System.Windows.Forms.RadioButton();
+            this.rbZhong = new System.Windows.Forms.RadioButton();
             this.btnResult = new System.Windows.Forms.Button();
             this.lblZhong = new System.Windows.Forms.Label();
             this.lblGua = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.numTestTime = new System.Windows.Forms.NumericUpDown();
+            this.btnTest = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numTestTime)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -272,16 +276,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "是否总奖";
             // 
-            // rbZhong
-            // 
-            this.rbZhong.AutoSize = true;
-            this.rbZhong.Location = new System.Drawing.Point(31, 40);
-            this.rbZhong.Name = "rbZhong";
-            this.rbZhong.Size = new System.Drawing.Size(68, 29);
-            this.rbZhong.TabIndex = 0;
-            this.rbZhong.Text = "中奖";
-            this.rbZhong.UseVisualStyleBackColor = true;
-            // 
             // rbNotZhong
             // 
             this.rbNotZhong.AutoSize = true;
@@ -293,6 +287,16 @@
             this.rbNotZhong.TabStop = true;
             this.rbNotZhong.Text = "未中奖";
             this.rbNotZhong.UseVisualStyleBackColor = true;
+            // 
+            // rbZhong
+            // 
+            this.rbZhong.AutoSize = true;
+            this.rbZhong.Location = new System.Drawing.Point(31, 40);
+            this.rbZhong.Name = "rbZhong";
+            this.rbZhong.Size = new System.Drawing.Size(68, 29);
+            this.rbZhong.TabIndex = 0;
+            this.rbZhong.Text = "中奖";
+            this.rbZhong.UseVisualStyleBackColor = true;
             // 
             // btnResult
             // 
@@ -335,11 +339,56 @@
             this.lblTotal.TabIndex = 8;
             this.lblTotal.Text = "总0个";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.label11.Location = new System.Drawing.Point(353, 422);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(131, 25);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "测试点击次数:";
+            // 
+            // numTestTime
+            // 
+            this.numTestTime.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.numTestTime.Location = new System.Drawing.Point(490, 420);
+            this.numTestTime.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.numTestTime.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numTestTime.Name = "numTestTime";
+            this.numTestTime.Size = new System.Drawing.Size(120, 32);
+            this.numTestTime.TabIndex = 9;
+            this.numTestTime.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // btnTest
+            // 
+            this.btnTest.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnTest.Location = new System.Drawing.Point(640, 406);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(115, 56);
+            this.btnTest.TabIndex = 2;
+            this.btnTest.Text = "开始测试";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // zhihuiwo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 523);
+            this.Controls.Add(this.numTestTime);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblGua);
             this.Controls.Add(this.lblZhong);
@@ -358,17 +407,20 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnResult);
             this.Controls.Add(this.btnCalc);
             this.Controls.Add(this.txtCurrentAmount);
             this.Controls.Add(this.txtInitAmount);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.label1);
             this.Name = "zhihuiwo";
             this.Text = "zhihuiwo";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numTestTime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,5 +455,8 @@
         private System.Windows.Forms.Label lblZhong;
         private System.Windows.Forms.Label lblGua;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown numTestTime;
+        private System.Windows.Forms.Button btnTest;
     }
 }
