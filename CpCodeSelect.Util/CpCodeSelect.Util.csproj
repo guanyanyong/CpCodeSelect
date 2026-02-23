@@ -83,6 +83,7 @@
     <Compile Include="YiLouKLine\YiLouKLine350Calc.cs" />
     <Compile Include="ZiJinFangAn\TouZhuResult.cs" />
     <Compile Include="ZiJinFangAn\ZiJinFangAn.cs" />
+    <Compile Include="ZiJinFangAn\ZiJinFangAnV2.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CpCodeSelect.Model\CpCodeSelect.Model.csproj">

@@ -34,7 +34,7 @@ namespace CpCodeSelect.Business.Score.Moni
         /// <summary>
         /// 资金方案,包含初始本金,当前本金,点击次数,拆分阶段等信息
         /// </summary>
-        public ZiJinFangAn ZiJinFangAn { get; set; }
+        public ZiJinFangAnV2 ZiJinFangAn { get; set; }
         /// <summary>
         /// 是否投注中,是的话需要判断是否中奖
         /// </summary>
@@ -48,7 +48,7 @@ namespace CpCodeSelect.Business.Score.Moni
         {
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
             this.model350List = model350List;
-            ZiJinFangAn = new ZiJinFangAn(2000, 2000);
+            ZiJinFangAn = new ZiJinFangAnV2(2000, 2000);
         }
         public void SetLogMethod(LogDelegate logMethod)
         {
@@ -167,14 +167,14 @@ namespace CpCodeSelect.Business.Score.Moni
                     {
                         LogInfo($"###########################中奖后达到重置要求,重置###########################");
                     }
-                    LogInfo($"【中奖】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖后总金额:{ZiJinFangAn.CurrentPrincipal},本轮重置需要金额{ZiJinFangAn.MaxPrincipal}");
+                    LogInfo($"【中奖】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖后总金额:{ZiJinFangAn.SmallCurrentPrincipal},本轮重置需要金额{ZiJinFangAn.SmallMaxPrincipal}");
 
-                    LogInfo($"点击次数:{ZiJinFangAn.ClickCount},当前拆分阶段{ZiJinFangAn.SplitStage},总点击次数{ZiJinFangAn.AllTotalTime}");
+                    LogInfo($"点击次数:{ZiJinFangAn.SmallClickCount},当前拆分阶段{ZiJinFangAn.SmallSplitStage},总点击次数{ZiJinFangAn.SmallAllTotalTime}");
                 }
                 else
                 {
-                    LogInfo($"【未中奖】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},未中奖后总金额:{ZiJinFangAn.CurrentPrincipal}");
-                    LogInfo($"点击次数:{ZiJinFangAn.ClickCount},当前拆分阶段{ZiJinFangAn.SplitStage},总点击次数{ZiJinFangAn.AllTotalTime}");
+                    LogInfo($"【未中奖】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},未中奖后总金额:{ZiJinFangAn.SmallCurrentPrincipal}");
+                    LogInfo($"点击次数:{ZiJinFangAn.SmallClickCount},当前拆分阶段{ZiJinFangAn.SmallSplitStage},总点击次数{ZiJinFangAn.SmallAllTotalTime}");
                 }
                 //设置后,把当前执行的记录置空,等待下一轮重新赋值
                 IsTouZhuing = false;
@@ -195,9 +195,9 @@ namespace CpCodeSelect.Business.Score.Moni
             if (touZhuResult.Success)
             {
                 IsTouZhuing = true;
-                var currentTouzhu = ZiJinFangAn.CurrentBetAmount * ZiJinFangAn.PerBetAmount;
+                var currentTouzhu = ZiJinFangAn.SmallCurrentBetAmount * ZiJinFangAnV2.SmallPerBetAmount;
                 //投注了对应期的话,把对应未中的统计数加上1
-                LogInfo($"【投注】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},投注金额{currentTouzhu},投注后总金额:{ZiJinFangAn.CurrentPrincipal - currentTouzhu},总流水{ZiJinFangAn.TotalLiuShui}");
+                LogInfo($"【投注】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},投注金额{currentTouzhu},投注后总金额:{ZiJinFangAn.SmallCurrentPrincipal - currentTouzhu},总流水{ZiJinFangAn.SmallTotalLiuShui}");
             }
             else
             {

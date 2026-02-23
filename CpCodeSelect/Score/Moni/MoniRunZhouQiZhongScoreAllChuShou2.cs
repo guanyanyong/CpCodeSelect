@@ -49,8 +49,8 @@ namespace CpCodeSelect.Score.Moni
             txtMaxResult.Text= moniBusiness.CurrentLun.ToString();
             txtCurrentAmount.Text= moniBusiness.CurrentAmount.ToString();
             txtMinResult.Text = moniBusiness.CurrentaQi.ToString();
-            txtTotalGuaCi.Text = moniBusiness.ZiJinFangAn.AllTotalGua.ToString();
-            txtTotalZhongCi.Text = moniBusiness.ZiJinFangAn.AllTotalZhong.ToString();
+            txtTotalGuaCi.Text = moniBusiness.ZiJinFangAn.SmallAllTotalGua.ToString();
+            txtTotalZhongCi.Text = moniBusiness.ZiJinFangAn.SmallAllTotalZhong.ToString();
             int zhongjiangCount = 0;
             if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu+1;
 

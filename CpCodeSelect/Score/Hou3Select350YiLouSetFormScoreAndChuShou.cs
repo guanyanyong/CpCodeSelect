@@ -1718,7 +1718,7 @@ namespace CpCodeSelect.Score
 
         private void button9_Click(object sender, EventArgs e)
         {
-            var zhihuiwo = new zhihuiwo();
+            var zhihuiwo = new zhihuiwoV2();
             zhihuiwo.Show();
         }
     }
