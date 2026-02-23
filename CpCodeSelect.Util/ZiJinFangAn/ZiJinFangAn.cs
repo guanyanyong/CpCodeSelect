@@ -189,7 +189,6 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         public KaiJiangResult KaiJiang(bool isZhong)
         {
             var kaiJiangResult = new KaiJiangResult();
-            kaiJiangResult.Success = true;
             kaiJiangResult.MaxChange = false;
             kaiJiangResult.Success = true;
             kaiJiangResult.Message = "";
@@ -216,6 +215,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
 
             decimal CurrentSplitAmount;
             #region 注释之前的方案
+
             if (SplitStage <= 10)
             {
                 CurrentSplitAmount = (InitialPrincipal * SplitStage) / 300;

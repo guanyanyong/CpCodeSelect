@@ -36,16 +36,14 @@ namespace CpCodeSelect.html
         private ZiJinFangAnV2 ziJinFangAn;
         public zhihuiwoV2()
         {
-            //ziJinFangAn = new ziJinFangAn(2000, 2000);
-            ziJinFangAn = new ZiJinFangAnV2(2000, 2000);
+            //ziJinFangAn = new ziJinFangAn(200, 200);
+            ziJinFangAn = new ZiJinFangAnV2(200, 200);
             InitializeComponent();
             InitForm();
         }
         public void InitForm()
         {
-            // 计算当期投注倍数
-            lblCurrentBetAmount.Text = ziJinFangAn.SmallCurrentBetAmount.ToString();
-
+            
             lblClickCount.Text = "0";
             lblSplitAmount.Text = "0";
             lblSplitStage.Text = "1";
@@ -61,7 +59,27 @@ namespace CpCodeSelect.html
 
         private void btnCalc_Click(object sender, EventArgs e)
         {
-            ziJinFangAn.TouZhu();
+            var result = ziJinFangAn.SmallTouZhu();
+            if (result.NeedInit)
+            {
+                //需要初始化
+                txtInitAmount.Text=ziJinFangAn.SmallInitialPrincipal.ToString();
+                lblTouZhuNeedInit.Text = result.NeedInit.ToString();
+            }
+            if (!string.IsNullOrEmpty(result.Message))
+            {
+                txtTouzhuMessage.Text = result.Message;
+            }
+
+            lblTouZhuNeedInit.Text = result.NeedInit.ToString();
+            lblTouZhuResult.Text = result.Success.ToString();
+
+            ShowForm();
+            //当前期投注倍数
+            lblCurrentBetAmount.Text = ziJinFangAn.SmallCurrentBetAmount.ToString();
+            // 计算下一期投注倍数
+            lblNextBetAmount.Text = ziJinFangAn.SmallCurrentBetAmount.ToString();
+            /*
             lblClickCount.Text = ziJinFangAn.SmallClickCount.ToString();
 
             lblSplitAmount.Text = ziJinFangAn.SmallJiHuaJin.ToString("F2");
@@ -79,68 +97,10 @@ namespace CpCodeSelect.html
 
             // 计算下一期投注倍数 投注时和当前期投注倍数一样
             lblNextBetAmount.Text= ziJinFangAn.SmallCurrentBetAmount.ToString();
-            /*
-            // 增加点击次数
-            ClickCount++;
-            lblClickCount.Text = ClickCount.ToString();
-
-            // 更新拆分阶段和金额
-            decimal currentSplitAmount;
-            if (SplitStage <= 10)
-            {
-                currentSplitAmount = (InitialPrincipal * SplitStage) / 200;
-                if (ClickCount % BaseClicks == 0) SplitStage++;
-            }
-            else if (SplitStage <= 30)
-            {
-                currentSplitAmount = (InitialPrincipal * SplitStage) / 200;
-                if (ClickCount % BaseClicks == 0) SplitStage += 2;
-            }
-            else if (SplitStage <= 60)
-            {
-                currentSplitAmount = (InitialPrincipal * SplitStage) / 200;
-                if (ClickCount % BaseClicks == 0) SplitStage += 3;
-            }
-            else
-            {
-                MessageBox.Show("已达到最大拆分阶段，无法继续拆分。");
-                return;
-            }
-            lblSplitAmount.Text = currentSplitAmount.ToString("F2");
-            lblSplitStage.Text = SplitStage.ToString();
-
-            // 计算当前盈亏
-            var currentProfitLoss = CurrentPrincipal - InitialPrincipal;
-            lblCurrentProfitLoss.Text = currentProfitLoss.ToString("F2");
-
-            // 计算投注账户余额
-            var betAccountBalance = currentProfitLoss / 8.0M + currentSplitAmount;
-            lblBetAccountBalance.Text = betAccountBalance.ToString("F2");
-
-            // 计算当期投注倍数
-            currentBetAmount = Math.Round(betAccountBalance / 0.35M, 0);
-            lblCurrentBetAmount.Text = currentBetAmount.ToString();
             */
 
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            ziJinFangAn.Reset();
-            lblClickCount.Text = "0";
-            lblSplitAmount.Text = "0";
-            lblSplitStage.Text = "1";
-            lblCurrentProfitLoss.Text = "0";
-            lblBetAccountBalance.Text = "0";
-            lblCurrentBetAmount.Text = "0";
-
-            lblTotal.Text = "总计0个";
-            lblZhong.Text = "中0个";
-            lblGua.Text = "挂0个";
-
-            txtInitAmount.Text = ziJinFangAn.SmallInitialPrincipal.ToString();
-            txtCurrentAmount.Text = ziJinFangAn.SmallCurrentPrincipal.ToString();
-        }
 
         private void MaxChangeInit()
         {
@@ -161,29 +121,29 @@ namespace CpCodeSelect.html
 
         private void btnResult_Click(object sender, EventArgs e)
         {
+
+            //当前期投注倍数
+            lblCurrentBetAmount.Text = ziJinFangAn.SmallCurrentBetAmount.ToString();
+
             var isZhong = rbZhong.Checked;
-            var kaiJiangResult = ziJinFangAn.KaiJiang(isZhong);
+
+            Random ran = new Random();
+            var number = ran.Next(0, 99);
+            
+            isZhong = number < 35;
+
+            var kaiJiangResult = ziJinFangAn.SmallKaiJiang(isZhong);
             if (kaiJiangResult.MaxChange)
             {
                 MaxChangeInit();
             }
+            if (!string.IsNullOrEmpty(kaiJiangResult.Message))
+            {
+                txtKaiJiangMessage.Text = kaiJiangResult.Message;
+            }            
+            lblKaiJiangResult.Text = kaiJiangResult.Success.ToString() ;
 
-
-            txtCurrentAmount.Text = ziJinFangAn.SmallCurrentPrincipal.ToString("F2");
-            lblGua.Text = string.Format($"挂{ziJinFangAn.SmallTotalGua}");
-            lblZhong.Text = string.Format($"中{ziJinFangAn.SmallTotalZhong}");
-            txtCurrentAmount.Text = ziJinFangAn.SmallCurrentPrincipal.ToString("F2");
-
-            lblTotal.Text = string.Format($"总计{ziJinFangAn.SmallTotalTime}");
-
-            lblSplitAmount.Text = ziJinFangAn.SmallCurrentSplitAmount.ToString("F2");
-            lblSplitStage.Text = ziJinFangAn.SmallSplitStage.ToString();
-
-            // 计算当前盈亏
-            lblCurrentProfitLoss.Text = ziJinFangAn.SmallCurrentProfitLoss.ToString("F2");
-
-            // 计算投注账户余额
-            lblBetAccountBalance.Text = (ziJinFangAn.SmallBetAccountBalance/4).ToString("F2");
+            ShowForm();
 
             // 计算下一期投注倍数
             lblNextBetAmount.Text = ziJinFangAn.SmallCurrentBetAmount.ToString();
@@ -248,6 +208,42 @@ namespace CpCodeSelect.html
             */
         }
 
+        private void ShowForm()
+        {
+            lblClickCount.Text = ziJinFangAn.SmallClickCount.ToString();
+            txtCurrentAmount.Text = ziJinFangAn.SmallCurrentPrincipal.ToString("F2");
+            lblGua.Text = string.Format($"挂{ziJinFangAn.SmallTotalGua}");
+            lblZhong.Text = string.Format($"中{ziJinFangAn.SmallTotalZhong}");
+
+            // 计算当期投注倍数
+
+            lblTotal.Text = string.Format($"总计{ziJinFangAn.SmallTotalTime}");
+
+            lblSplitAmount.Text = ziJinFangAn.SmallJiHuaJin.ToString("F2");
+            lblSplitStage.Text = ziJinFangAn.SmallSplitStage.ToString();
+
+            // 计算当前盈亏
+            lblCurrentProfitLoss.Text = ziJinFangAn.SmallCurrentProfitLoss.ToString("F2");
+
+            // 计算投注账户余额
+            lblBetAccountBalance.Text = (ziJinFangAn.SmallBetAccountBalance / 4).ToString("F2");
+
+
+            #region Large 设置
+
+            lblLargeTotal.Text = ziJinFangAn.LargeTotalPrincipal.ToString();
+            lblLargeCurrentLun.Text = ziJinFangAn.LargeCurrentLun.ToString();
+            lblLargeTotalLiushui.Text = ziJinFangAn.LargeTotalLiuShui.ToString();
+
+            #endregion
+
+            #region Middle 设置
+            lblMiddleCurrent.Text = (ziJinFangAn.MiddleCurrentPrincipalExcludSmall+ziJinFangAn.SmallCurrentPrincipal).ToString();
+            lblMiddleLun.Text = ziJinFangAn.MiddleCurrentLun.ToString();
+
+            #endregion
+        }
+
         private void txtInitAmount_Leave(object sender, EventArgs e)
         {
             if (!decimal.TryParse(txtInitAmount.Text, out ziJinFangAn.SmallInitialPrincipal))
@@ -258,6 +254,7 @@ namespace CpCodeSelect.html
             else
             {
                 ziJinFangAn.SmallMaxPrincipal = ziJinFangAn.SmallInitialPrincipal * 1.05M;
+                ziJinFangAn.SmallLunEnoughPrincipal = ziJinFangAn.SmallInitialPrincipal * 1.3M;
             }
         }
 
@@ -282,6 +279,65 @@ namespace CpCodeSelect.html
                 btnResult.PerformClick();
                 //Thread.Sleep(500);
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            ResetMiddle();
+        }
+
+        private void ResetMiddle()
+        {
+            ziJinFangAn.MiddleLunOrigianInit();
+
+            lblClickCount.Text = "0";
+            lblSplitAmount.Text = "0";
+            lblSplitStage.Text = "1";
+            lblCurrentProfitLoss.Text = "0";
+            lblBetAccountBalance.Text = "0";
+            lblCurrentBetAmount.Text = "0";
+
+            lblTotal.Text = "总计0个";
+            lblZhong.Text = "中0个";
+            lblGua.Text = "挂0个";
+
+            txtInitAmount.Text = ziJinFangAn.SmallInitialPrincipal.ToString();
+            txtCurrentAmount.Text = ziJinFangAn.SmallCurrentPrincipal.ToString();
+
+            lblMiddleCurrent.Text = "0";
+            lblMiddleLun.Text = "0";
+        }
+
+
+        private void ResetAll()
+        {
+            ziJinFangAn.LargeLunOrigianInit();
+            ResetMiddle();
+
+            lblClickCount.Text = "0";
+            lblSplitAmount.Text = "0";
+            lblSplitStage.Text = "1";
+            lblCurrentProfitLoss.Text = "0";
+            lblBetAccountBalance.Text = "0";
+            lblCurrentBetAmount.Text = "0";
+
+            lblTotal.Text = "总计0个";
+            lblZhong.Text = "中0个";
+            lblGua.Text = "挂0个";
+
+            txtInitAmount.Text = ziJinFangAn.SmallInitialPrincipal.ToString();
+            txtCurrentAmount.Text = ziJinFangAn.SmallCurrentPrincipal.ToString();
+
+            lblLargeTotal.Text = "0";
+            lblLargeCurrentLun.Text = "0";
+            lblLargeTotalLiushui.Text = "0";
+
+        }
+
+        private void btnResetAll_Click(object sender, EventArgs e)
+        {
+            ResetAll();
+
         }
     }
 }

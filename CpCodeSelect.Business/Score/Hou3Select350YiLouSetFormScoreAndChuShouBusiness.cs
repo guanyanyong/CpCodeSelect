@@ -80,10 +80,10 @@ namespace CpCodeSelect.Business.Score
                 //RemoveOldModel(code, 1);
 
                 //如果不是中后删除模式,则需要生成新的号码,如果是中后删除,则不生成新的号码
-                if (!zhongHouDelete)
-                {
+                //if (!zhongHouDelete)
+                //{
                     Generate350Code(code);
-                }
+                //}
             }
             Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code = code;
         }
@@ -252,7 +252,7 @@ namespace CpCodeSelect.Business.Score
                     return;
                 var hou3List = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
                 //var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
-                var numerList = MultiThreadedNumberSelectFor350Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 1);
+                var numerList = MultiThreadedNumberSelectFor350Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 3);
                 foreach (var number in numerList)
                 {
                     if (number.Count > 0)

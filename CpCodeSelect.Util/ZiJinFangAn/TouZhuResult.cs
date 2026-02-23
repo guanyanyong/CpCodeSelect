@@ -10,6 +10,10 @@ namespace CpCodeSelect.Util.ZiJinFangAn
     {
         public bool Success { get; set; }
         public string Message { get; set; }
+        /// <summary>
+        /// 是否需要初始化，当重新下一轮投注时传递为true
+        /// </summary>
+        public bool NeedInit { get; set; }
         public List<string> MessageList { get; set; }
     }
     /// <summary>

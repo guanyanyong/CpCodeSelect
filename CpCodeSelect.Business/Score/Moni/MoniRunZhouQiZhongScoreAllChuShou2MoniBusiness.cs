@@ -48,7 +48,7 @@ namespace CpCodeSelect.Business.Score.Moni
         {
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
             this.model350List = model350List;
-            ZiJinFangAn = new ZiJinFangAnV2(2000, 2000);
+            ZiJinFangAn = new ZiJinFangAnV2();
         }
         public void SetLogMethod(LogDelegate logMethod)
         {
@@ -160,28 +160,34 @@ namespace CpCodeSelect.Business.Score.Moni
                 //如果是投注中的状态,说明需要先计算是否中奖,再进行下一轮的投注
                 var housanStr = code.GetHou3String();
                 var isZhong = currentExecute.Number350.Contains(housanStr);
-                var kaiJiangResult = ZiJinFangAn.KaiJiang(isZhong);
+                var kaiJiangResult = ZiJinFangAn.SmallKaiJiang(isZhong);
                 if (isZhong)
                 {
                     if (kaiJiangResult.MaxChange)
                     {
                         LogInfo($"###########################中奖后达到重置要求,重置###########################");
                     }
+                    if (!string.IsNullOrEmpty(kaiJiangResult.Message))
+                    {
+                        LogInfo($"###########################{kaiJiangResult.Message}###########################");
+                    }
                     LogInfo($"【中奖】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖后总金额:{ZiJinFangAn.SmallCurrentPrincipal},本轮重置需要金额{ZiJinFangAn.SmallMaxPrincipal}");
 
-                    LogInfo($"点击次数:{ZiJinFangAn.SmallClickCount},当前拆分阶段{ZiJinFangAn.SmallSplitStage},总点击次数{ZiJinFangAn.SmallAllTotalTime}");
+                    LogInfo($"【中奖】点击次数:{ZiJinFangAn.SmallClickCount},当前拆分阶段{ZiJinFangAn.SmallSplitStage},总点击次数{ZiJinFangAn.SmallTotalTime}");
+                    LogInfo($"【中奖】当前Middle轮:{ZiJinFangAn.MiddleCurrentLun},当前Middle资金{ZiJinFangAn.MiddleCurrentPrincipalExcludSmall},当前Large资金{ZiJinFangAn.LargeTotalPrincipal}");
                 }
                 else
                 {
                     LogInfo($"【未中奖】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},未中奖后总金额:{ZiJinFangAn.SmallCurrentPrincipal}");
-                    LogInfo($"点击次数:{ZiJinFangAn.SmallClickCount},当前拆分阶段{ZiJinFangAn.SmallSplitStage},总点击次数{ZiJinFangAn.SmallAllTotalTime}");
+                    LogInfo($"【未中奖】点击次数:{ZiJinFangAn.SmallClickCount},当前拆分阶段{ZiJinFangAn.SmallSplitStage},总点击次数{ZiJinFangAn.SmallTotalTime}");
+                    LogInfo($"【未中奖】当前Middle轮:{ZiJinFangAn.MiddleCurrentLun},当前Middle资金{ZiJinFangAn.MiddleCurrentPrincipalExcludSmall}");
                 }
                 //设置后,把当前执行的记录置空,等待下一轮重新赋值
                 IsTouZhuing = false;
             }
             List<Hou3Select350_ZhouQiZhongScore> getEnoughRecordList = new List<Hou3Select350_ZhouQiZhongScore>();
             getEnoughRecordList = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.
-                Where(p => p.IsChuShou && p.Score >= 150).ToList();
+                Where(p => p.IsChuShou && p.Score >= 70).ToList();
             if (getEnoughRecordList.Count <= 0) return;
             //CurrentExecuteList.AddRange(getEnoughRecordList);
             var randomIndex = _threadLocalRandom.Value.Next(0, getEnoughRecordList.Count);
@@ -191,13 +197,15 @@ namespace CpCodeSelect.Business.Score.Moni
             currentExecute = record;
 
             //添加出手记录
-            var touZhuResult = ZiJinFangAn.TouZhu();
+            var touZhuResult = ZiJinFangAn.SmallTouZhu();
             if (touZhuResult.Success)
             {
                 IsTouZhuing = true;
                 var currentTouzhu = ZiJinFangAn.SmallCurrentBetAmount * ZiJinFangAnV2.SmallPerBetAmount;
                 //投注了对应期的话,把对应未中的统计数加上1
-                LogInfo($"【投注】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},投注金额{currentTouzhu},投注后总金额:{ZiJinFangAn.SmallCurrentPrincipal - currentTouzhu},总流水{ZiJinFangAn.SmallTotalLiuShui}");
+                LogInfo($"【投注】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},投注金额{currentTouzhu},投注后总金额:{ZiJinFangAn.SmallCurrentPrincipal - currentTouzhu},总流水{ZiJinFangAn.LargeTotalLiuShui}");
+                LogInfo($"【投注】当前Middle轮:{ZiJinFangAn.MiddleCurrentLun},当前Middle资金{ZiJinFangAn.MiddleCurrentPrincipalExcludSmall}");
+
             }
             else
             {

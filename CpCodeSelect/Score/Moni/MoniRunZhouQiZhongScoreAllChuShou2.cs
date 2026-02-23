@@ -49,8 +49,14 @@ namespace CpCodeSelect.Score.Moni
             txtMaxResult.Text= moniBusiness.CurrentLun.ToString();
             txtCurrentAmount.Text= moniBusiness.CurrentAmount.ToString();
             txtMinResult.Text = moniBusiness.CurrentaQi.ToString();
-            txtTotalGuaCi.Text = moniBusiness.ZiJinFangAn.SmallAllTotalGua.ToString();
-            txtTotalZhongCi.Text = moniBusiness.ZiJinFangAn.SmallAllTotalZhong.ToString();
+            var zhongCount = moniBusiness.ZiJinFangAn.SmallAllTotalZhong;
+            var guaCount = moniBusiness.ZiJinFangAn.SmallAllTotalGua;
+            txtTotalGuaCi.Text = guaCount.ToString();
+            txtTotalZhongCi.Text = zhongCount.ToString();
+            if (guaCount + zhongCount > 0)
+            {
+                txtZhongJiangLv.Text = (zhongCount * 100M / (guaCount + zhongCount) ).ToString("0.00") + "%";
+            }
             int zhongjiangCount = 0;
             if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu+1;
 
@@ -59,6 +65,8 @@ namespace CpCodeSelect.Score.Moni
             txtLiushui.Text=moniBusiness.TotalLiuShui.ToString("0.00");
             txtMaxResult.Text = moniBusiness.MaxResult.ToString("0.00");
             txtMinResult.Text = moniBusiness.MinResult.ToString("0.00");
+
+            txtMaxMiddleLun.Text = moniBusiness.ZiJinFangAn.LargeMaxMiddleLunCount.ToString();
         }
         public void CustomLogMethod(string message)
         {

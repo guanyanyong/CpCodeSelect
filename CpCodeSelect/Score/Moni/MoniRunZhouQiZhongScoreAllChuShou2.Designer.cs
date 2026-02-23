@@ -56,11 +56,15 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtTotalZhongCi = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.YilouCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsZhouQiZhongHou = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.YilouCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsZhouQiZhongHou = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtZhongJiangLv = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtMaxMiddleLun = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -307,6 +311,22 @@
             this.dataGridView1.Size = new System.Drawing.Size(421, 291);
             this.dataGridView1.TabIndex = 15;
             // 
+            // YilouCount
+            // 
+            this.YilouCount.DataPropertyName = "YilouCount";
+            this.YilouCount.HeaderText = "第几期中";
+            this.YilouCount.Name = "YilouCount";
+            this.YilouCount.Width = 150;
+            // 
+            // IsZhouQiZhongHou
+            // 
+            this.IsZhouQiZhongHou.DataPropertyName = "TotalCount";
+            this.IsZhouQiZhongHou.HeaderText = "总数";
+            this.IsZhouQiZhongHou.Name = "IsZhouQiZhongHou";
+            this.IsZhouQiZhongHou.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IsZhouQiZhongHou.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.IsZhouQiZhongHou.Width = 120;
+            // 
             // dataGridView2
             // 
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -353,23 +373,45 @@
             this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn2.Width = 120;
             // 
-            // YilouCount
+            // label10
             // 
-            this.YilouCount.DataPropertyName = "YilouCount";
-            this.YilouCount.HeaderText = "第几期中";
-            this.YilouCount.Name = "YilouCount";
-            this.YilouCount.Width = 150;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label10.Location = new System.Drawing.Point(689, 165);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(94, 21);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "累计中奖率:";
             // 
-            // IsZhouQiZhongHou
+            // txtZhongJiangLv
             // 
-            this.IsZhouQiZhongHou.DataPropertyName = "TotalCount";
-            this.IsZhouQiZhongHou.HeaderText = "总数";
-            this.IsZhouQiZhongHou.Name = "IsZhouQiZhongHou";
-            this.IsZhouQiZhongHou.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IsZhouQiZhongHou.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.IsZhouQiZhongHou.Width = 120;
+            this.txtZhongJiangLv.Enabled = false;
+            this.txtZhongJiangLv.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.txtZhongJiangLv.Location = new System.Drawing.Point(789, 162);
+            this.txtZhongJiangLv.Name = "txtZhongJiangLv";
+            this.txtZhongJiangLv.Size = new System.Drawing.Size(100, 29);
+            this.txtZhongJiangLv.TabIndex = 12;
             // 
-            // MoniRunZhouQiZhongScoreAllChuShou
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label11.Location = new System.Drawing.Point(895, 166);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(110, 21);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "最大中间轮次:";
+            // 
+            // txtMaxMiddleLun
+            // 
+            this.txtMaxMiddleLun.Enabled = false;
+            this.txtMaxMiddleLun.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.txtMaxMiddleLun.Location = new System.Drawing.Point(1011, 162);
+            this.txtMaxMiddleLun.Name = "txtMaxMiddleLun";
+            this.txtMaxMiddleLun.Size = new System.Drawing.Size(100, 29);
+            this.txtMaxMiddleLun.TabIndex = 12;
+            // 
+            // MoniRunZhouQiZhongScoreAllChuShou2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -379,6 +421,8 @@
             this.Controls.Add(this.txtCurrentAmount);
             this.Controls.Add(this.txtMinResult);
             this.Controls.Add(this.txtTotalZhongCi);
+            this.Controls.Add(this.txtMaxMiddleLun);
+            this.Controls.Add(this.txtZhongJiangLv);
             this.Controls.Add(this.txtTotalGuaCi);
             this.Controls.Add(this.txtLiushui);
             this.Controls.Add(this.txtTotalAmount);
@@ -386,6 +430,8 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -397,7 +443,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxExeMsg);
-            this.Name = "MoniRunZhouQiZhongScoreAllChuShou";
+            this.Name = "MoniRunZhouQiZhongScoreAllChuShou2";
             this.Text = "-评分蹲点打";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MoniRunDaXiao_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -436,5 +482,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn YilouCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsZhouQiZhongHou;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtZhongJiangLv;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtMaxMiddleLun;
     }
 }
