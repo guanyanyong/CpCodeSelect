@@ -33,7 +33,8 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// 1轮-200,2轮-300，3轮500，4轮900
         /// 5轮1700，6轮3300，7轮6500，8轮12900
         /// </summary>
-        public decimal LargeTotalPrincipal = 17400M;
+        public decimal LargeTotalPrincipal = 26300M;
+        //public decimal LargeTotalPrincipal = 17400M;
         /// <summary>
         /// 总轮次-Large-总共进行的轮次 共8轮 
         /// </summary>
@@ -62,20 +63,20 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// 1轮-200,2轮-300，3轮500，4轮900
         /// 5轮1700，6轮3300，7轮6500，8轮12900
         /// </summary>
-        //public decimal MiddleTotalPrincipal = 26300M;
-        public decimal MiddleTotalPrincipal = 17400M;
+        public decimal MiddleTotalPrincipal = 26300M;
+        //public decimal MiddleTotalPrincipal = 17400M;
 
         /// <summary>
         /// 中间轮次-Middle-当前剩余本金,不包含Small，初始为26300元，每轮结束后根据盈亏情况更新
         /// </summary>
 
-        //public decimal MiddleCurrentPrincipalExcludSmall = 26300M;
-        public decimal MiddleCurrentPrincipalExcludSmall = 17400M;
+        public decimal MiddleCurrentPrincipalExcludSmall = 26300M;
+        //public decimal MiddleCurrentPrincipalExcludSmall = 17400M;
         /// <summary>
         /// 中间轮次-Middle-总的初始值 常量保持不变,用于判断当前轮是否盈利，固定为26300元
         /// </summary>
-        // public const decimal MiddleTotalPrincipalInit = 26300M;
-        public const decimal MiddleTotalPrincipalInit = 17400M;
+         public const decimal MiddleTotalPrincipalInit = 26300M;
+        //public const decimal MiddleTotalPrincipalInit = 17400M;
         
 
         /// <summary>
@@ -89,12 +90,17 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// <summary>
         /// 中间轮次-Middle-当前循环轮次-每轮的资金矩阵,金额，跟随当前轮次改变，第一轮200，第二轮300，第三轮500，第四轮900，第五轮1700，第六轮3300，第七轮6500，第八轮12900
         /// </summary>
-        //public decimal[] MiddleLunAmount = { 200, 300, 500, 900, 1700, 3300, 6500, 12900 };
-        public decimal[] MiddleLunAmount = { 200, 200, 400, 600, 1000, 1600, 2600, 10800 };
+        public decimal[] MiddleLunAmount = { 200, 300, 500, 900, 1700, 3300, 6500, 12900 };
+        //public decimal[] MiddleLunAmount = { 200, 200, 400, 600, 1000, 1600, 2600, 10800 };
         /// <summary>
         /// 中间轮次-Middle-当前循环轮次-总轮次的流水
         /// </summary>
         public decimal MiddleTotalLiuShui = 0;
+
+        /// <summary>
+        /// 中间轮每轮判断是否回退的盈离率
+        /// </summary>
+        public const decimal MiddleLunEnoughProfitLossRate = 1.5m;
         #endregion
 
         #region 当前执行轮次-Small-相关字段
@@ -145,7 +151,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// <summary>
         /// 每轮盈利30% 就回收
         /// </summary>
-        public decimal SmallLunEnoughPrincipal = 200M * 1.4M;
+        public decimal SmallLunEnoughPrincipal = 200M * MiddleLunEnoughProfitLossRate;
         /// <summary>
         /// 当前执行轮次-Small-当前余额，初始为200元，每次点击后根据盈亏情况更新
         /// </summary>
@@ -401,7 +407,8 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                 SmallTotalZhong++;
                 SmallAllTotalZhong++;
                 SmallCurrentPrincipal = SmallCurrentPrincipal + 0.62M * SmallCurrentBetAmount;
-                //先判断是否超过50%的盈利 ,如果超过50%,说明当前轮次盈利了,
+                //先判断是否超过指定的盈利 ,如果超过指定的盈利,说明当前轮次盈利了,
+                //这里百分比根据参数MiddleLunEnoughProfitLossRate来进行计算
                 if (SmallCurrentPrincipal >= SmallLunEnoughPrincipal)
                 {
                     kaiJiangResult.MaxChange = true;
@@ -423,7 +430,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                         //中间轮次重置 恢复值为初始值
                         MiddleLunOrigianInit();
                         //SmallLunOrigianInit();
-                        kaiJiangResult.Message = string.Format($"当前轮盈利超过40%,中间轮盈利,退回到第一轮。总盈利:{LargeTotalPrincipal - MiddleTotalPrincipalInit}**********");
+                        kaiJiangResult.Message = string.Format($"当前轮盈利超过{(MiddleLunEnoughProfitLossRate-1)*100}%,中间轮盈利,退回到第一轮。总盈利:{LargeTotalPrincipal - MiddleTotalPrincipalInit}**********");
                     }
                     else
                     {
@@ -431,7 +438,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                         //重新设置当前轮次的相关数值
                         SmallInitialPrincipal = MiddleLunAmount[currentLun - 1];
                         SmallCurrentPrincipal = SmallInitialPrincipal;
-                        kaiJiangResult.Message = string.Format($"当前轮盈利超过40%,但是中间轮未盈利,继续当前第{MiddleCurrentLun}轮。中间轮金额:{MiddleCurrentPrincipalExcludSmall+ currentLunAmount}**********");
+                        kaiJiangResult.Message = string.Format($"当前轮盈利超过{(MiddleLunEnoughProfitLossRate - 1) * 100}%,但是中间轮未盈利,继续当前第{MiddleCurrentLun}轮。中间轮金额:{MiddleCurrentPrincipalExcludSmall+ currentLunAmount}**********");
                         SmallLunInit();
                     }
 
@@ -543,7 +550,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
             SmallSplitStage = 1; // 当前拆分阶段 
             SmallBaseClicks = 5; // 每阶段需要点击的次数
             SmallMaxPrincipal = SmallInitialPrincipal * 1.05M; // 重置最大本金为初始本金的105%
-            SmallLunEnoughPrincipal = SmallInitialPrincipal * 1.4M;
+            SmallLunEnoughPrincipal = SmallInitialPrincipal * MiddleLunEnoughProfitLossRate;
 
             SmallTotalZhong = 0;  // 中的次数
             SmallTotalGua = 0;   // 挂的次数
@@ -584,7 +591,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
             SmallCurrentMinAmount = SmallInitialPrincipal;//当前轮最小余额数值
             SmallCurrentPrincipal = SmallInitialPrincipal;
             SmallMaxPrincipal = Math.Round(SmallCurrentPrincipal * 1.05M);
-            SmallLunEnoughPrincipal = SmallCurrentPrincipal * 1.4M;
+            SmallLunEnoughPrincipal = SmallCurrentPrincipal * MiddleLunEnoughProfitLossRate;
         }
         /// <summary>
         /// 原始轮初始化

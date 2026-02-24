@@ -77,7 +77,7 @@ namespace CpCodeSelect.Business.Score
             if (AllCode != null && AllCode.Count > RunSkipNumber)
             {
                 //删除超过3000条的记录 如果没有4挂的就删除
-                //RemoveOldModel(code, 1);
+                RemoveOldModel(code, 1);
 
                 //如果不是中后删除模式,则需要生成新的号码,如果是中后删除,则不生成新的号码
                 //if (!zhongHouDelete)
@@ -109,7 +109,7 @@ namespace CpCodeSelect.Business.Score
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= 10 && model.ShouNumber <= 2)
+                    if (codeDecimal - currentDecimal >= 100 )
                     {
                         removeList.Add(model);
                     }
@@ -124,7 +124,7 @@ namespace CpCodeSelect.Business.Score
                 if (count > 10)
                     break;
             }
-
+            /*
             //超过30期就删除
             {
                 var overNumberDelete = (numberCount / 50 + 10);
@@ -144,6 +144,7 @@ namespace CpCodeSelect.Business.Score
                 }
                 removeList.Clear();
             }
+            */
         }
         /// <summary>
         /// 计算已有号码的中挂情况,同时计算K线数据
