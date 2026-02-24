@@ -144,12 +144,6 @@
     <Compile Include="Number156\Hou3Select156Hot4Dan.Designer.cs">
       <DependentUpon>Hou3Select156Hot4Dan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Number156\Moni\Hou3Select156Hot4DanAllChuShouOld.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Number156\Moni\Hou3Select156Hot4DanAllChuShouOld.Designer.cs">
-      <DependentUpon>Hou3Select156Hot4DanAllChuShouOld.cs</DependentUpon>
-    </Compile>
     <Compile Include="Number156\Moni\MoniRunHou3Select156Hot4DanAllChuShou.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -466,9 +460,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Number156\Hou3Select156Hot4Dan.resx">
       <DependentUpon>Hou3Select156Hot4Dan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Number156\Moni\Hou3Select156Hot4DanAllChuShouOld.resx">
-      <DependentUpon>Hou3Select156Hot4DanAllChuShouOld.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Number156\Moni\MoniRunHou3Select156Hot4DanAllChuShou.resx">
       <DependentUpon>MoniRunHou3Select156Hot4DanAllChuShou.cs</DependentUpon>

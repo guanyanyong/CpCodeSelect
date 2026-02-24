@@ -105,7 +105,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// <summary>
         /// 中间轮每轮判断是否回退的盈离率
         /// </summary>
-        public const decimal MiddleLunEnoughProfitLossRate = 1.9m;
+        public const decimal MiddleLunEnoughProfitLossRate = 1.3m;
         #endregion
 
         #region 当前执行轮次-Small-相关字段
@@ -254,32 +254,25 @@ namespace CpCodeSelect.Util.ZiJinFangAn
             // 更新拆分阶段和金额
             if (SmallSplitStage <= 10)
             {
-                SmallCurrentSplitAmount = (SmallInitialPrincipal * SmallSplitStage) / 300;
+                //SmallCurrentSplitAmount = (SmallInitialPrincipal * SmallSplitStage) / 300;
                 if (SmallClickCount !=0 && SmallClickCount % SmallBaseClicks == 0) SmallSplitStage++;
-                SmallCurrentProfitLossBei = 8M;
+                //SmallCurrentProfitLossBei = 8M;
             }
             else if (SmallSplitStage <= 20)
             {
-                SmallCurrentSplitAmount = (SmallInitialPrincipal * SmallSplitStage) / 300;
+                //SmallCurrentSplitAmount = (SmallInitialPrincipal * SmallSplitStage) / 300;
                 if (SmallClickCount % SmallBaseClicks == 0) SmallSplitStage += 1;
-                SmallCurrentProfitLossBei = 8M;
+                //SmallCurrentProfitLossBei = 8M;
             }
             else if (SmallSplitStage < 30)
             {
-                SmallCurrentSplitAmount = (SmallInitialPrincipal * SmallSplitStage) / 300;
+                //SmallCurrentSplitAmount = (SmallInitialPrincipal * SmallSplitStage) / 300;
                 if (SmallClickCount % SmallBaseClicks == 0) SmallSplitStage += 1;
-                SmallCurrentProfitLossBei = 8M;
+                //SmallCurrentProfitLossBei = 8M;
             }
             if(SmallSplitStage >= 30)
             {
-                //todo 这里可以考虑重置或者其他处理方式，目前先提示无法继续拆分
-                //MessageBox.Show("已达到最大拆分阶段，无法继续拆分。");
-                #region 2026-02-23 注释之前的逻辑 
-                /*
-                touZhuResult.Success = false;
-                touZhuResult.Message = "已达到最大拆分阶段，无法继续拆分。";
-                return touZhuResult;
-                */
+                
                 #endregion
                 //先获取当前轮次  和当前余额
                 var currentLun = MiddleCurrentLun;
@@ -423,12 +416,14 @@ namespace CpCodeSelect.Util.ZiJinFangAn
             kaiJiangResult.Message = "";
             if (!isZhong)
             {
+                //没有中奖,更新Small轮的当前金额
                 SmallCurrentPrincipal = SmallCurrentPrincipal - SmallPerBetAmount * SmallCurrentBetAmount;
                 SmallTotalGua++;
                 SmallAllTotalGua++;
             }
             else
             {
+                //中奖,更新Small轮的当前金额
                 SmallTotalZhong++;
                 SmallAllTotalZhong++;
                 SmallCurrentPrincipal = SmallCurrentPrincipal + SmallPerBetAmountZhong * SmallCurrentBetAmount;
@@ -451,13 +446,15 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                     {
                         //中间轮盈利，说明中间轮次赚钱,需要更新Large轮次的金额，
                         //同时重新从第1轮开始,重置当前执行轮次-Small的相关字段，继续执行
-                        LargeTotalPrincipal += MiddleCurrentPrincipalExcludSmall + MiddleLunAmount[currentLun - 1] - MiddleTotalPrincipalInit;
-                        if(kaiJiangResult.MessageList == null)
+                        if (kaiJiangResult.MessageList == null)
                         {
                             kaiJiangResult.MessageList = new List<string>();
                         }
-                        kaiJiangResult.MessageList.Add(string.Format($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:重置前中间轮盈利{MiddleCurrentPrincipalExcludSmall + SmallCurrentPrincipal -200 - MiddleTotalPrincipalInit}**********"));
-                        kaiJiangResult.MessageList.Add(string.Format($"【中奖】目前资金:{SmallCurrentPrincipal},当前Middle轮:【{MiddleCurrentLun}】,当前Middle资金{MiddleCurrentPrincipalExcludSmall},当前Large资金{LargeTotalPrincipal}"));
+                        kaiJiangResult.MessageList.Add(string.Format($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:重置前中间轮盈利含最小轮{MiddleCurrentPrincipalExcludSmall + SmallCurrentPrincipal - 200 - MiddleTotalPrincipalInit}**********"));
+                        kaiJiangResult.MessageList.Add(string.Format($"【中奖】目前资金:{SmallCurrentPrincipal},当前Middle轮:【{MiddleCurrentLun}】,当前Middle资金不包含Samll{MiddleCurrentPrincipalExcludSmall},当前Large资金{LargeTotalPrincipal}"));
+
+                        LargeTotalPrincipal += MiddleCurrentPrincipalExcludSmall + MiddleLunAmount[currentLun - 1] - MiddleTotalPrincipalInit;
+                        
                         //中间轮次重置 恢复值为初始值
                         MiddleLunOrigianInit();
                         //SmallLunOrigianInit();
@@ -467,10 +464,16 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                     {
                         //Small轮次盈利,但中间轮次不赚钱,需要继续当前轮次
                         //重新设置当前轮次的相关数值
-                        
+                        if (kaiJiangResult.MessageList == null)
+                        {
+                            kaiJiangResult.MessageList = new List<string>();
+                        }
+                        kaiJiangResult.MessageList.Add(string.Format($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:重置前中间轮盈利含最小轮{MiddleCurrentPrincipalExcludSmall + SmallCurrentPrincipal - 200 - MiddleTotalPrincipalInit}**********"));
+                        kaiJiangResult.MessageList.Add(string.Format($"【中奖】目前资金:{SmallCurrentPrincipal},当前Middle轮:【{MiddleCurrentLun}】,当前Middle资金不包含Samll{MiddleCurrentPrincipalExcludSmall},当前Large资金{LargeTotalPrincipal}"));
+
                         SmallInitialPrincipal = MiddleLunAmount[currentLun - 1];
                         SmallCurrentPrincipal = SmallInitialPrincipal;
-                        kaiJiangResult.Message = string.Format($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:当前轮盈利超过{(MiddleLunEnoughProfitLossRate - 1) * 100}%,但是中间轮未盈利,继续当前第{MiddleCurrentLun}轮。中间轮金额:{MiddleCurrentPrincipalExcludSmall+ currentLunAmount}**********");
+                        kaiJiangResult.MessageList.Add($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:当前轮盈利超过{(MiddleLunEnoughProfitLossRate - 1) * 100}%,但是中间轮未盈利,继续当前第{MiddleCurrentLun}轮。中间轮金额:{MiddleCurrentPrincipalExcludSmall+ currentLunAmount}**********");
                         SmallLunInit();
                         
                         /*
@@ -498,51 +501,6 @@ namespace CpCodeSelect.Util.ZiJinFangAn
 
                 SmallTotalTime = SmallTotalGua + SmallTotalZhong;
 
-                //if (SmallSplitStage <= 10)
-                //{
-                //    SmallCurrentSplitAmount = (SmallInitialPrincipal * SmallSplitStage) / 300;
-                //}
-                //else if (SmallSplitStage <= 20)
-                //{
-                //    SmallCurrentSplitAmount = (SmallInitialPrincipal * SmallSplitStage) / 300;
-                //}
-                //else if (SmallSplitStage < 30)
-                //{
-                //    SmallCurrentSplitAmount = (SmallInitialPrincipal * SmallSplitStage) / 300;
-                //}
-                //else
-                //{
-                //    kaiJiangResult.Success = false;
-                //    kaiJiangResult.Message = "已达到最大拆分阶段，无法继续拆分。";
-                //    return kaiJiangResult;
-                //}
-
-                #region 注释之前的方案
-                /*
-                if (SplitStage <= 10)
-                {
-                    CurrentSplitAmount = (InitialPrincipal * SplitStage) / 300;
-                    currentProfitLossBei = 8M;
-                }
-                else if (SplitStage <= 30)
-                {
-                    CurrentSplitAmount = (InitialPrincipal * SplitStage) / 300;
-                    currentProfitLossBei = 8M;
-                }
-                else if (SplitStage <= 60)
-                {
-                    CurrentSplitAmount = (InitialPrincipal * SplitStage) / 600;
-                    currentProfitLossBei = 16M;
-                }
-                else
-                {
-                    kaiJiangResult.Success = false;
-                    kaiJiangResult.Message = "已达到最大拆分阶段，无法继续拆分。";
-                    return kaiJiangResult;
-                }
-                */
-                #endregion
-
                 // 计算当前盈亏
                 SmallCurrentProfitLoss = SmallCurrentPrincipal - SmallInitialPrincipal;
 
@@ -569,7 +527,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                 // 计算投注账户余额
                 SmallBetAccountBalance = SmallCurrentProfitLoss + SmallJiHuaJin;
 
-                // 计算当期投注倍数
+                // 计算投注倍数
                 SmallCurrentBetAmount = Math.Abs(Math.Round(SmallBetAccountBalance / 4m / SmallPerBetAmount, 0));
                 if (SmallCurrentBetAmount == 0) SmallCurrentBetAmount = 1;
 
@@ -666,6 +624,5 @@ namespace CpCodeSelect.Util.ZiJinFangAn
             LargeTotalClickCount = 0;
             MiddleLunOrigianInit();
         }
-        #endregion
     }
 }

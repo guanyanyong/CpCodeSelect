@@ -187,7 +187,7 @@ namespace CpCodeSelect.Business.Number156.Moni
                 {
                     LogInfo($"【未中奖】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},未中奖后总金额:{ZiJinFangAn.SmallCurrentPrincipal}");
                     LogInfo($"【未中奖】点击次数:{ZiJinFangAn.SmallClickCount},当前拆分阶段{ZiJinFangAn.SmallSplitStage},总点击次数{ZiJinFangAn.LargeTotalClickCount}");
-                    LogInfo($"【未中奖】当前Middle轮:【{ZiJinFangAn.MiddleCurrentLun}】,当前Middle资金{ZiJinFangAn.MiddleCurrentPrincipalExcludSmall},当前Large资金{ZiJinFangAn.LargeTotalPrincipal}");
+                    LogInfo($"【未中奖】当前Middle轮:【{ZiJinFangAn.MiddleCurrentLun}】,当前Middle资金不含Small{ZiJinFangAn.MiddleCurrentPrincipalExcludSmall},当前Large资金{ZiJinFangAn.LargeTotalPrincipal}");
                 }
                 //设置后,把当前执行的记录置空,等待下一轮重新赋值
                 IsTouZhuing = false;
@@ -208,7 +208,13 @@ namespace CpCodeSelect.Business.Number156.Moni
                 //投注了对应期的话,把对应未中的统计数加上1
                 LogInfo($"【投注】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},投注金额{currentTouzhu},投注后总金额:{ZiJinFangAn.SmallCurrentPrincipal - currentTouzhu},总流水{ZiJinFangAn.LargeTotalLiuShui}");
                 LogInfo($"【投注】当前Middle轮:{ZiJinFangAn.MiddleCurrentLun},当前Middle资金{ZiJinFangAn.MiddleCurrentPrincipalExcludSmall},当前Large资金{ZiJinFangAn.LargeTotalPrincipal}");
-
+                if(touZhuResult.MessageList!=null && touZhuResult.MessageList.Count > 0)
+                {
+                    foreach (var message in touZhuResult.MessageList)
+                    {
+                        LogInfo($"【投注后返回结果信息】**************{message}******************************");
+                    }
+                }
             }
             else
             {

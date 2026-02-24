@@ -27,7 +27,6 @@ using CpCodeSelect.Util.Scorer;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using CpCodeSelect.html;
 using CpCodeSelect.Business.Number156;
-using CpCodeSelect.Number156.Moni;
 
 namespace CpCodeSelect.Score
 {

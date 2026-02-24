@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CpCodeSelect.Util.Scorer
 {
-    public class ScorerUtil156
+    public class ScorerUtil
     {
 
         // 为评分引擎添加评分规则的方法
