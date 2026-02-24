@@ -128,9 +128,9 @@ namespace CpCodeSelect.html
             var isZhong = rbZhong.Checked;
 
             Random ran = new Random();
-            var number = ran.Next(0, 99);
-            
-            isZhong = number < 35;
+            var number = ran.Next(0, 999);
+
+            isZhong = number < 156;
 
             var kaiJiangResult = ziJinFangAn.SmallKaiJiang(isZhong);
             if (kaiJiangResult.MaxChange)

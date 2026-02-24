@@ -138,6 +138,24 @@
     <Compile Include="MACDIndex\Moni\MoniRunZhouQiZhongMACDLianXu6.Designer.cs">
       <DependentUpon>MoniRunZhouQiZhongMACDLianXu6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Number156\Hou3Select156Hot4Dan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Number156\Hou3Select156Hot4Dan.Designer.cs">
+      <DependentUpon>Hou3Select156Hot4Dan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Number156\Moni\Hou3Select156Hot4DanAllChuShouOld.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Number156\Moni\Hou3Select156Hot4DanAllChuShouOld.Designer.cs">
+      <DependentUpon>Hou3Select156Hot4DanAllChuShouOld.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Number156\Moni\MoniRunHou3Select156Hot4DanAllChuShou.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Number156\Moni\MoniRunHou3Select156Hot4DanAllChuShou.Designer.cs">
+      <DependentUpon>MoniRunHou3Select156Hot4DanAllChuShou.cs</DependentUpon>
+    </Compile>
     <Compile Include="Score\Moni\MoniRunZhouQiZhongScore3ge5AfterZhong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -446,6 +464,15 @@
     <EmbeddedResource Include="MACDIndex\Moni\MoniRunZhouQiZhongMACDLianXu6.resx">
       <DependentUpon>MoniRunZhouQiZhongMACDLianXu6.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Number156\Hou3Select156Hot4Dan.resx">
+      <DependentUpon>Hou3Select156Hot4Dan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Number156\Moni\Hou3Select156Hot4DanAllChuShouOld.resx">
+      <DependentUpon>Hou3Select156Hot4DanAllChuShouOld.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Number156\Moni\MoniRunHou3Select156Hot4DanAllChuShou.resx">
+      <DependentUpon>MoniRunHou3Select156Hot4DanAllChuShou.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Score\Moni\MoniRunZhouQiZhongScore3ge5AfterZhong.resx">
       <DependentUpon>MoniRunZhouQiZhongScore3ge5AfterZhong.cs</DependentUpon>
     </EmbeddedResource>
@@ -655,8 +682,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Number156\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
