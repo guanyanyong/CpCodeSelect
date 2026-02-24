@@ -71,9 +71,9 @@ namespace CpCodeSelect.Business.Score
 
             // 计算已有号码的中挂情况
             //CalcExistCode(code);
-            CalcExist350Code(code);
+            CalcExist156Code(code);
 
-            // 生成新的350码
+            // 生成新的156码
             //GenerateCode(code);
             if (AllCode != null && AllCode.Count > RunSkipNumber)
             {
@@ -151,7 +151,7 @@ namespace CpCodeSelect.Business.Score
         /// 计算已有号码的中挂情况,同时计算K线数据
         /// </summary>
         /// <param name="code"></param>
-        public static new void CalcExist350Code(Code code)
+        public static new void CalcExist156Code(Code code)
         {
             var hou3 = code.GetHou3String();
             foreach (var model in model350List)
@@ -252,9 +252,9 @@ namespace CpCodeSelect.Business.Score
 
                 if (model350List.Count >= numberCount)
                     return;
-                var hou3List = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
+                var hou3List = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
                 //var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
-                var numerList = MultiThreadedNumberSelectFor350Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 3);
+                var numerList = MultiThreadedNumberSelectFor156Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 3);
                 foreach (var number in numerList)
                 {
                     if (number.Count > 0)
@@ -262,17 +262,17 @@ namespace CpCodeSelect.Business.Score
                         var list = number.OrderBy(p => p).ToList();
 
 
-                        Hou3Select156_ZhouQiZhongScore model350 = new Hou3Select156_ZhouQiZhongScore();
-                        model350.Number156 = list;
-                        model350.CodeNumber = code.CodeNumber;
-                        model350.CodeQiHao = code.CodeQiHao;
-                        model350.NeedZhong = true;
-                        model350.KLineList = new List<KLine156>();
-                        model350.ScoreDateList = new List<LotteryScoreData>();
-                        model350.YiLouKline350 = new List<YiLouKline350>();
-                        model350.YiLouTuLineList = new List<KLine156>();
-                        KLine156ScoreCalc.CalcKLineHistoryList(model350, AllCode, 100);
-                        model350List.Add(model350);
+                        Hou3Select156_ZhouQiZhongScore model156 = new Hou3Select156_ZhouQiZhongScore();
+                        model156.Number156 = list;
+                        model156.CodeNumber = code.CodeNumber;
+                        model156.CodeQiHao = code.CodeQiHao;
+                        model156.NeedZhong = true;
+                        model156.KLineList = new List<KLine156>();
+                        model156.ScoreDateList = new List<LotteryScoreData>();
+                        model156.YiLouKline350 = new List<YiLouKline350>();
+                        model156.YiLouTuLineList = new List<KLine156>();
+                        KLine156ScoreCalc.CalcKLineHistoryList(model156, AllCode, 100);
+                        model350List.Add(model156);
                     }
                 }
 

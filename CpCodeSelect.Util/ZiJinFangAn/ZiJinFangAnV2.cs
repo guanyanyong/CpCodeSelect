@@ -105,7 +105,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// <summary>
         /// 中间轮每轮判断是否回退的盈离率
         /// </summary>
-        public const decimal MiddleLunEnoughProfitLossRate = 1.3m;
+        public const decimal MiddleLunEnoughProfitLossRate = 1.9m;
         #endregion
 
         #region 当前执行轮次-Small-相关字段

@@ -71,7 +71,7 @@ namespace CpCodeSelect.Util.Scorer156
                 {
                     yiLouTuKLine = new KLine156();
                     //中了 K值加1.857
-                    kline.KValue = 1.857;
+                    kline.KValue = 5.410256;
 
                     //遗漏K的逻辑
                     //中了 判断最后一个K线的遗漏值是否在2个以内,是的话表示在周期内中
@@ -148,7 +148,7 @@ namespace CpCodeSelect.Util.Scorer156
                 {
                     yiLouTuKLine = new KLine156();
                     //中了 K值加1.857
-                    kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue + 1.857;
+                    kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue + 5.410256;
 
                     //处理遗漏K的逻辑
                     newYiLouKline350 = new YiLouKline350();
@@ -429,7 +429,7 @@ namespace CpCodeSelect.Util.Scorer156
                     {
                         yiLouTuKLine = new KLine156();
                         //中了 K值加1.857
-                        kline.KValue = 1.857;
+                        kline.KValue = 5.410256;
 
                         model.ZhongGount++;
                         model.NeedZhong = false;
@@ -528,7 +528,7 @@ namespace CpCodeSelect.Util.Scorer156
                     {
                         yiLouTuKLine = new KLine156();
                         //中了 K值加1.857
-                        kline.KValue = beforeKLine.KValue + 1.857;
+                        kline.KValue = beforeKLine.KValue + 5.410256;
 
                         model.ZhongGount++;
                         model.NeedZhong = false;

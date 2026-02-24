@@ -102,9 +102,14 @@ namespace CpCodeSelect
             else if (str == "Hou2Selct27Three18SetForm")
             {
                 Application.Run(new Hou2Selct27Three18SetForm());
-            }else if(str == "Hou3Select156Hot4Dan")
+            }
+            else if (str == "Hou3Select156Hot4Dan")
             {
                 Application.Run(new Hou3Select156Hot4Dan());
+            }
+            else if (str == "Hou3Select156YiLouSetFormScoreAndChuShou")
+            {
+                Application.Run(new Hou3Select156YiLouSetFormScoreAndChuShou());
             }
         }
     }

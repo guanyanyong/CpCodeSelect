@@ -58,7 +58,7 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore8ge1();
         //private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
         //private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore8ge1();
-        private MoniRunHou3Select156Hot4DanAllChuShou moniRunZhouQiZhongLianXu3 = new MoniRunHou3Select156Hot4DanAllChuShou();
+        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore156AllChuShou2();
         //private moniRunZhouQiZhongScoreAllChuShou moniRunZhouQiZhongScoreAllChuShou = new moniRunZhouQiZhongScoreAllChuShou();
         private MoniRunZhouQiZhongScoreAllChuShou moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhongScoreAllChuShou();
         //private MoniRunZhouQiZhong3ge3yilou0BanShangSheng sangesanyilou0 = new MoniRunZhouQiZhong3ge3yilou0BanShangSheng();

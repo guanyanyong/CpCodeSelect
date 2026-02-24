@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CpCodeSelect.Util
 {
-    public class MultiThreadedNumberSelectFor350Hou3ZiRanGenerate
+    public class MultiThreadedNumberSelectFor156Hou3ZiRanGenerate
     { 
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
@@ -36,7 +36,7 @@ namespace CpCodeSelect.Util
                     // 为每个线程创建独立的 Random 实例，避免线程安全问题
                     var localRandom = new Random(GetThreadSafeSeed());
                     // 生成一组号码
-                    var group = GenerateSingleGroupFor350(localRandom,codeHou3List);
+                    var group = GenerateSingleGroupFor156(localRandom,codeHou3List);
                     if (group != null && group.Count > 0)
                         results.Add(group);
 
@@ -116,11 +116,11 @@ namespace CpCodeSelect.Util
         /// </summary>
         /// <param name="codeHou3List">原始已存在的Code后3码的列表,这里目前是固定的270</param>
         /// <returns></returns>
-        private static List<string> GenerateSingleGroupFor350(
+        private static List<string> GenerateSingleGroupFor156(
             Random random,
             List<string> codeHou3List)
         {
-            return Generate350CodeZiRan.Generate(codeHou3List,random);
+            return Generate156CodeZiRan.Generate(codeHou3List,random);
         }
         /// <summary>
         /// 生成单组号码（50个）
