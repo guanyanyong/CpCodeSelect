@@ -76,6 +76,9 @@
     <Compile Include="NumberSelectForYiLou.cs" />
     <Compile Include="NumberSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scorer156\BaseScore156Rule.cs" />
+    <Compile Include="Scorer156\KLine156ScoreCalc.cs" />
+    <Compile Include="Scorer156\Rules\ScoreRules.cs" />
     <Compile Include="Scorer156\ScorerUtil156.cs" />
     <Compile Include="Scorer\BaseScoreRule.cs" />
     <Compile Include="Scorer\KLine350ScoreCalc.cs" />
@@ -96,5 +99,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

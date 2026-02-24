@@ -11,14 +11,14 @@ namespace CpCodeSelect.Util.KLines
 {
     public class KLine156Calc
     {
-        public static void CalcKlineCurrent(Hou3Select270_ZhouQiZhong model, Code code)
+        public static void CalcKlineCurrent(Hou3Select156_ZhouQiZhong model, Code code)
         {
-            var kline = new KLine();
+            var kline = new KLine156();
             var hou3Str = code.GetHou3String();
             if (model.KLineList.Count == 0)
             {
                 //判断是否中奖
-                if (model.Number270.Contains(hou3Str))
+                if (model.Number156.Contains(hou3Str))
                 {
                     //中了 K值加1.857
                     kline.KValue = 5.41026;
@@ -32,7 +32,7 @@ namespace CpCodeSelect.Util.KLines
             else
             {
                 //判断是否中奖
-                if (model.Number270.Contains(hou3Str))
+                if (model.Number156.Contains(hou3Str))
                 {
                     //中了 K值加1.857
                     kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue + 5.41026;
@@ -61,7 +61,7 @@ namespace CpCodeSelect.Util.KLines
             kline.CurrentGuaCount = model.GuaCount;
             kline.CurrentZhongCount = model.ZhongGount;
 
-            kline.Code350Code = model.Number270;
+            kline.Code350Code = model.Number156;
             kline.CodeQiHao = code.CodeQiHao;
             kline.CodeNumber = code.CodeNumber;
             //把当前期号和号码保存到K线中
@@ -74,14 +74,14 @@ namespace CpCodeSelect.Util.KLines
         /// <param name="model">需要计算的对象</param>
         /// <param name="AllCode">所有的开奖号</param>
         /// <param name="number">需要往前计算的期数</param>
-        public static void CalcKLineHistoryList(Hou3Select270_ZhouQiZhong model, List<Code> AllCode, int number = 100)
+        public static void CalcKLineHistoryList(Hou3Select156_ZhouQiZhong model, List<Code> AllCode, int number = 100)
         {
             if (number < 100) number = 100;
-            KLine beforeKLine = null;
+            KLine156 beforeKLine = null;
             var runCount = number;
             for (runCount = 100; runCount > 0; runCount--)
             {
-                var kline = new KLine();
+                var kline = new KLine156();
                 var code = AllCode[runCount - 1];
                 var hou3Str = code.GetHou3String();
 
@@ -89,7 +89,7 @@ namespace CpCodeSelect.Util.KLines
                 {
                     //第一次执行
                     //判断是否中奖
-                    if (model.Number270.Contains(hou3Str))
+                    if (model.Number156.Contains(hou3Str))
                     {
                         //中了 K值加5.41026
                         kline.KValue = 5.41026;
@@ -107,7 +107,7 @@ namespace CpCodeSelect.Util.KLines
                 else
                 {
                     //判断是否中奖
-                    if (model.Number270.Contains(hou3Str))
+                    if (model.Number156.Contains(hou3Str))
                     {
                         //中了 K值加1.857
                         kline.KValue = beforeKLine.KValue + 5.41026;
@@ -149,7 +149,7 @@ namespace CpCodeSelect.Util.KLines
                 }
 
 
-                kline.Code350Code = model.Number270;
+                kline.Code350Code = model.Number156;
                 kline.CodeQiHao = code.CodeQiHao;
                 kline.CodeNumber = code.CodeNumber;
                 kline.CurrentGuaCount = model.GuaCount;
@@ -163,7 +163,7 @@ namespace CpCodeSelect.Util.KLines
         /// </summary>
         /// <param name="kLineList"></param>
         /// <returns></returns>
-        public static CheckResult KLineIsEnough(List<KLine> kLineList)
+        public static CheckResult KLineIsEnough(List<KLine156> kLineList)
         {
             var checkResult = new CheckResult();
             checkResult.Result = true;
