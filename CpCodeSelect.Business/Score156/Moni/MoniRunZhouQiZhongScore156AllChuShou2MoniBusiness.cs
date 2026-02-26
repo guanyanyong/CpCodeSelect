@@ -28,7 +28,7 @@ namespace CpCodeSelect.Business.Score.Moni
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
         private List<Hou3Select156_ZhouQiZhongScore> CurrentExecuteList = new List<Hou3Select156_ZhouQiZhongScore>();
-        private Hou3Select156_ZhouQiZhongScore currentExecute = null;
+        public Hou3Select156_ZhouQiZhongScore currentExecute = null;
         public decimal MaxResult = 0;
         public decimal MinResult = 0;
         /// <summary>
@@ -39,7 +39,17 @@ namespace CpCodeSelect.Business.Score.Moni
         /// 是否投注中,是的话需要判断是否中奖
         /// </summary>
         public bool IsTouZhuing { get; set; } = false;
-
+        public void Reset()
+        {
+            ZiJinFangAn = new ZiJinFangAnV2();
+            beforeChuShouNeedCheckZhongJiang = false;
+            currentExecute = null;
+            yilouStatisticList.Clear();
+            chuShouWeiZhongList.Clear();
+            CurrentExecuteList.Clear();
+            MaxResult = 0;
+            MinResult = 0;
+        }
         /// <summary>
         /// 上次出手,本次需要检查是否中奖
         /// </summary>
@@ -63,7 +73,7 @@ namespace CpCodeSelect.Business.Score.Moni
         /// <summary>
         /// 每轮的投注矩阵,金额
         /// </summary>
-        private decimal[] LunAmount = {200, 200, 400, 600, 1000, 1600, 2600, 10800 };
+        private decimal[] LunAmount = { 200, 200, 400, 600, 1000, 1600, 2600, 10800 };
         /// <summary>
         /// 总金额
         /// </summary>
@@ -121,7 +131,8 @@ namespace CpCodeSelect.Business.Score.Moni
             CurrentAmount = 0;
             IsRunning = false;
         }
-        public void LunAdd() {
+        public void LunAdd()
+        {
             CurrentLun++;
 
         }

@@ -3,6 +3,7 @@ using CpCodeSelect.Business.Score;
 using CpCodeSelect.Business.Score.Moni;
 using CpCodeSelect.Model;
 using CpCodeSelect.Util.ZiJinFangAn;
+using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +27,7 @@ namespace CpCodeSelect.Score.Moni
             InitializeComponent(); 
             moniBusiness=new MoniRunZhouQiZhongScore156AllChuShou2MoniBusiness(CustomLogMethod, Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List);
             dataGridView1.DataSource = moniBusiness.yilouStatisticList;
-            dataGridView2.DataSource = moniBusiness.chuShouWeiZhongList;
+            //dataGridView2.DataSource = moniBusiness.chuShouWeiZhongList;
         }
         public void Run(Code code, bool zhongHouDelete = false)
         {
@@ -68,15 +69,17 @@ namespace CpCodeSelect.Score.Moni
             txtTotalAmount.Text=(fangAn.LargeTotalPrincipal 
                 + fangAn.MiddleCurrentPrincipalExcludSmall 
                 + fangAn.SmallCurrentPrincipal 
-                - ZiJinFangAnV2.MiddleTotalPrincipalInit*2
-                - 200
+                - ZiJinFangAnV2.MiddleTotalPrincipalInit*2 -200
                 ).ToString();
+            txtMiddleCurrentlun.Text = fangAn.MiddleCurrentLun.ToString("0.00");
+            txtLargeLun.Text = fangAn.LargeCurrentLun.ToString("0.00");
 
-            txtLiushui.Text=moniBusiness.TotalLiuShui.ToString("0.00");
+            txtLiushui.Text= fangAn.LargeTotalLiuShui.ToString("0.00");
             txtMaxResult.Text = moniBusiness.MaxResult.ToString("0.00");
             txtMinResult.Text = moniBusiness.MinResult.ToString("0.00");
 
             txtMaxMiddleLun.Text = moniBusiness.ZiJinFangAn.LargeMaxMiddleLunCount.ToString();
+           lblTouZhuBei.Text= $"投注{fangAn.SmallCurrentBetAmount.ToString()}倍";
         }
         public void CustomLogMethod(string message)
         {
@@ -110,13 +113,72 @@ namespace CpCodeSelect.Score.Moni
 
         private void btnCurrent350Code_Click(object sender, EventArgs e)
         {
-            //txt350Code.Text = string.Join(" ", moniBusiness.current350List);
+            var fangAn = moniBusiness.ZiJinFangAn;
+            if(moniBusiness.currentExecute!=null)
+            {
+                var codeStr = string.Join(" ", moniBusiness.currentExecute.Number156);
+                txt156Code.Text = string.Join(" ", codeStr);
+                try
+                {
+                    Clipboard.SetText(codeStr);
+                }catch(Exception ex)
+                {
+                    txt156Code.Text = ex.Message + ex.StackTrace;
+                    
+                }
+            }
 
         }
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            //Clipboard.SetText(txt350Code.Text);
+            var codeStr = string.Join(" ", moniBusiness.currentExecute.Number156);
+            Clipboard.SetText(codeStr);
+        }
+
+        private void txtReset_Click(object sender, EventArgs e)
+        {
+            //moniBusiness.ZiJinFangAn.LargeLunOrigianInit();
+            moniBusiness.Reset();
+            RestFormText();
+        }
+        private void RestFormText()
+        {
+            var fangAn = moniBusiness.ZiJinFangAn;
+            txtMaxResult.Text = moniBusiness.CurrentLun.ToString();
+            txtCurrentAmount.Text = moniBusiness.CurrentAmount.ToString();
+            txtMinResult.Text = moniBusiness.CurrentaQi.ToString();
+            var zhongCount = fangAn.SmallAllTotalZhong;
+            var guaCount = fangAn.SmallAllTotalGua;
+            txtTotalGuaCi.Text = guaCount.ToString();
+            txtTotalZhongCi.Text = zhongCount.ToString();
+            if (guaCount + zhongCount > 0)
+            {
+                txtZhongJiangLv.Text = (zhongCount * 100M / (guaCount + zhongCount)).ToString("0.00") + "%";
+            }
+            int zhongjiangCount = 0;
+            if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu + 1;
+
+            //当前所有的钱 减去2被的中间轮的本金 和200块的初始本金就是总盈利
+            txtTotalAmount.Text = "0";
+            txtMiddleCurrentlun.Text = fangAn.MiddleCurrentLun.ToString("0.00");
+            txtLargeLun.Text = fangAn.LargeCurrentLun.ToString("0.00");
+
+            txtLiushui.Text = fangAn.LargeTotalLiuShui.ToString("0.00");
+            txtMaxResult.Text = moniBusiness.MaxResult.ToString("0.00");
+            txtMinResult.Text = moniBusiness.MinResult.ToString("0.00");
+
+            txtMaxMiddleLun.Text = moniBusiness.ZiJinFangAn.LargeMaxMiddleLunCount.ToString();
+
+            txtTotalZhongCi.Text = "0";
+            txtTotalGuaCi.Text = "0";
+            txtMiddleCurrentlun.Text = "1";
+            txtLargeLun.Text = fangAn.LargeCurrentLun.ToString("0.00");
+            txtZhongJiangLv.Text = "";
+
+            lblTouZhuBei.Text = "投注0倍";
+
+            listBoxExeMsg.Items.Clear();
         }
     }
 }

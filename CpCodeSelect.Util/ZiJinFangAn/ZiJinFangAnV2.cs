@@ -36,9 +36,9 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         //public decimal LargeTotalPrincipal = 26300M;
         public decimal LargeTotalPrincipal = 17400M;
         /// <summary>
-        /// 总轮次-Large-总共进行的轮次 共8轮 
+        /// 总轮次-Large-总共进行的轮次 共8轮  修改为最大5轮
         /// </summary>
-        public decimal LargeTotalLun = 8;
+        public decimal LargeTotalLun = 5;
         /// <summary>
         /// 总轮次-Large-当前轮次，初始为1轮，当中间轮次的8轮完后增加，说明爆掉一次
         /// </summary>
@@ -87,7 +87,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// <summary>
         /// 中间轮次-Middle-当前循环轮次-总轮次 共8轮 
         /// </summary>
-        public decimal MiddleTotalLun = 8;
+        public decimal MiddleTotalLun = 4;
         /// <summary>
         /// 中间轮次-Middle-当前循环轮次-当前轮次，初始为1轮，每轮点击达到设定次数后增加，超过8轮后提示无法继续拆分
         /// </summary>
@@ -602,7 +602,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
             SmallInitialPrincipal = MiddleLunAmount[0];
             //把本金从中间轮次的剩余本金中扣除
             MiddleCurrentPrincipalExcludSmall = MiddleTotalPrincipalInit - MiddleLunAmount[0];
-
+            
             SmallLunInit();
         }
 
@@ -622,6 +622,8 @@ namespace CpCodeSelect.Util.ZiJinFangAn
             LargeCurrentLun = 1;
             LargeTotalLiuShui = 0;
             LargeTotalClickCount = 0;
+            SmallAllTotalGua = 0;
+            SmallAllTotalZhong = 0;
             MiddleLunOrigianInit();
         }
     }
