@@ -13,6 +13,7 @@ namespace CpCodeSelect.Util.Config
     public class AppConfig
     {
         public TradingSettings TradingSettings { get; set; }
+        public LunSettings LunSettings { get; set; }
 
         public static AppConfig Current { get; private set; }
 
@@ -30,7 +31,8 @@ namespace CpCodeSelect.Util.Config
                 // 如果配置文件不存在，创建默认配置
                 Current = new AppConfig
                 {
-                    TradingSettings = new TradingSettings { CycleLength = 6 }
+                    TradingSettings = new TradingSettings { CycleLength = 6 },
+                    LunSettings = new LunSettings { MaxMiddleLun=5}
                 };
                 SaveConfig();
                 return;
@@ -45,6 +47,10 @@ namespace CpCodeSelect.Util.Config
                 if (Current.TradingSettings == null)
                 {
                     Current.TradingSettings = new TradingSettings { CycleLength = 6 };
+                }
+                if(Current.LunSettings == null)
+                {
+                    Current.LunSettings = new LunSettings { MaxMiddleLun = 5 };
                 }
 
                 // 验证周期长度是否在合理范围内（必须大于等于3）
@@ -82,5 +88,13 @@ namespace CpCodeSelect.Util.Config
     public class TradingSettings
     {
         public int CycleLength { get; set; } = 6;
+    }
+
+    public class LunSettings
+    {
+        /// <summary>
+        /// 默认5轮 
+        /// </summary>
+        public int MaxMiddleLun { get; set; } = 5;
     }
 }

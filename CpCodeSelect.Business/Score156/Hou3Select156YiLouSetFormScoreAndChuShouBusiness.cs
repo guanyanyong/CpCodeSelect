@@ -69,23 +69,20 @@ namespace CpCodeSelect.Business.Score
             AllCode.Insert(0, code);
             //Hou2_20Numer = Generate20Code();
 
+
+            //先删除记录
+
+            //删除超过3000条的记录 如果没有4挂的就删除
+            RemoveOldModel(code, 1);
+
             // 计算已有号码的中挂情况
             //CalcExistCode(code);
             CalcExist156Code(code);
 
             // 生成新的156码
-            //GenerateCode(code);
-            if (AllCode != null && AllCode.Count > RunSkipNumber)
-            {
-                //删除超过3000条的记录 如果没有4挂的就删除
-                RemoveOldModel(code, 1);
 
-                //如果不是中后删除模式,则需要生成新的号码,如果是中后删除,则不生成新的号码
-                //if (!zhongHouDelete)
-                //{
-                    Generate350Code(code);
-                //}
-            }
+            Generate350Code(code);
+
             Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code = code;
         }
         /// <summary>
@@ -104,13 +101,13 @@ namespace CpCodeSelect.Business.Score
 
             }
 
-            while (model350List.Count > numberCount)
+            while (model350List.Count >= numberCount)
             {
                 for (int i = 0; i < 2; i++)
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= 100 )
+                    if (codeDecimal - currentDecimal >= 150 )
                     {
                         removeList.Add(model);
                     }
@@ -247,14 +244,13 @@ namespace CpCodeSelect.Business.Score
                 if (!int.TryParse(leftNumberCountStr, out numberCount))
                 {
                     numberCount = 1000;
-
                 }
 
                 if (model350List.Count >= numberCount)
                     return;
                 var hou3List = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
                 //var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
-                var numerList = MultiThreadedNumberSelectFor156Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 3);
+                var numerList = MultiThreadedNumberSelectFor156Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 1);
                 foreach (var number in numerList)
                 {
                     if (number.Count > 0)

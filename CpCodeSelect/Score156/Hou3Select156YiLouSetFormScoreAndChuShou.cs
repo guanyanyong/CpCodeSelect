@@ -53,21 +53,27 @@ namespace CpCodeSelect.Score
         private string apiUri = "http://127.0.0.1:5000/";
         private string DataSource = "rexguan-hp2024-01";
         //private MoniRunZhouQiZhongScore moniRunZhouQiZhong = new MoniRunZhouQiZhongScore();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore8ge1();
+        //private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhongScore3ge5AfterZhong();
+        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhongScore156AllChuShou2();
+        //private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore8ge1();
+
+        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore156AllChuShou2();
         //private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
         //private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore8ge1();
         private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore156AllChuShou2();
         //private moniRunZhouQiZhongScoreAllChuShou moniRunZhouQiZhongScoreAllChuShou = new moniRunZhouQiZhongScoreAllChuShou();
-        private MoniRunZhouQiZhongScoreAllChuShou moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhongScoreAllChuShou();
+        //private MoniRunZhouQiZhongScoreAllChuShou moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhongScoreAllChuShou();
+        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhongScore156AllChuShou2();
         //private MoniRunZhouQiZhong3ge3yilou0BanShangSheng sangesanyilou0 = new MoniRunZhouQiZhong3ge3yilou0BanShangSheng();
-        private MoniRunZhouQiZhongScore8ge1 sangesanyilou0 = new MoniRunZhouQiZhongScore8ge1();
+        private MoniRunZhouQiZhongScore156AllChuShou2 sangesanyilou0 = new MoniRunZhouQiZhongScore156AllChuShou2();
         //private MoniRunZhouQiZhong3ge3BanShangSheng moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong3ge3BanShangSheng();
-        private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhongScore8ge1();
+        //private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhongScore8ge1();
+
+        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhongScore156AllChuShou2();
 
         private Hou3Select156_ZhouQiZhongScore currentCalcKLineDate = null;
 
-
+        public static List<Exception> ExceptionList = new List<Exception>();
         // 从多少条记录后开始中了就删除记录 
         int zhongHouDelete = 1500;
         public Hou3Select156YiLouSetFormScoreAndChuShou()
@@ -267,8 +273,8 @@ namespace CpCodeSelect.Score
             moniRunZhouQiZhongLianXu8.Run(code);
             moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
             moniRunZhouQiZhongLianXu3.Run(code);
-            //sangesanyilou0.Run(code);
-            //moniRunZhouQiZhong3Ge3.Run(code);
+            sangesanyilou0.Run(code);
+            moniRunZhouQiZhong3Ge3.Run(code);
 
             //把记录添加到界面上 异步方式
             //AddRecordToPage(code);
@@ -485,17 +491,23 @@ namespace CpCodeSelect.Score
         {
             lock (lockObj)
             {
-                Thread.Sleep(1000); // 等待1000毫秒，确保文件写入完成
-                if (firstTime)
+                Thread.Sleep(3000); // 等待1000毫秒，确保文件写入完成
+                try
                 {
-                    //如果是第一次执行,需要读取全部的号码
-                    ReadAllLine();
-                    firstTime = false;
-                    ReadFirstLineExec();
-                }
-                else
+                    if (firstTime)
+                    {
+                        //如果是第一次执行,需要读取全部的号码
+                        ReadAllLine();
+                        firstTime = false;
+                        ReadFirstLineExec();
+                    }
+                    else
+                    {
+                        ReadFirstLineExec();
+                    }
+                }catch(Exception ex)
                 {
-                    ReadFirstLineExec();
+                    ExceptionList.Add(ex);
                 }
             }
         }

@@ -46,99 +46,27 @@ namespace CpCodeSelect.Util.Scorer156
             var kline = new KLine156();
             var hou3Str = code.GetHou3String();
 
-            //遗漏K的逻辑
-            YiLouKline350 lastYiLouKLine350 = null;
-            if (model.YiLouKline350 != null && model.YiLouKline350.Count > 0)
-            {
-                lastYiLouKLine350 = model.YiLouKline350.LastOrDefault();
-            }
-            YiLouKline350 newYiLouKline350 = null;
             var isZhong = false;
-
-            //遗漏图的逻辑
-            KLine156 yiLouTuKLine = null;
 
             //评分逻辑
             LotteryScoreData scoreData = null;
 
             if (model.KLineList.Count == 0)
             {
-                // 第一次执行
-                newYiLouKline350 = new YiLouKline350();
 
                 //判断是否中奖
                 if (model.Number156.Contains(hou3Str))
                 {
-                    yiLouTuKLine = new KLine156();
                     //中了 K值加1.857
                     kline.KValue = 5.410256;
-
-                    //遗漏K的逻辑
-                    //中了 判断最后一个K线的遗漏值是否在2个以内,是的话表示在周期内中
-                    if (model.ZhongBeforeGua <= 2)
-                    {
-                        newYiLouKline350.KValue = 0.3786;
-
-                        if (lastYiLouKLine350 != null)
-                        {
-                            newYiLouKline350.YiLouZhongCount = lastYiLouKLine350.YiLouZhongCount + 1;
-                        }
-                        else
-                        {
-                            newYiLouKline350.YiLouZhongCount = 1;
-                        }
-
-                        newYiLouKline350.YiLouGuaCount = 0;
-                        newYiLouKline350.IsZhong = true;
-                    }
-                    else
-                    {
-                        //中了 之前的遗漏值大于2 说明不在周期内中
-                        newYiLouKline350.KValue = -1.0;
-
-                        if (lastYiLouKLine350 != null)
-                        {
-                            newYiLouKline350.YiLouGuaCount = lastYiLouKLine350.YiLouGuaCount + 1;
-                        }
-                        else
-                        {
-                            newYiLouKline350.YiLouGuaCount = 1;
-                        }
-                        newYiLouKline350.YiLouZhongCount = 0;
-                    }
-
-                    //遗漏图的逻辑
-                    yiLouTuKLine.IsZhong = true;
-                    yiLouTuKLine.CurrentGuaCount = 0;
+                    
                     isZhong = true;
-
-
-
                 }
                 else
                 {
                     //没中 K值减1.0
                     kline.KValue = -1.0;
-
-                    //遗漏K的逻辑 继续遗漏中 更新最后遗漏号码的遗漏值
-                    //kline.KValue = -1.0;
-                    newYiLouKline350.CurrentGuaCount = model.GuaCount;
                     isZhong = false;
-
-
-                    //评分的逻辑
-                    //scoreData = new LotteryScoreData();
-                    //scoreData.IsZhongJiang = false;
-                    //scoreData.YiLouValue = model.GuaCount;
-                    //scoreData.LianXuZhongJiangCount = model.ZhongGount;
-                    //scoreData.KValue = kline.KValue;
-                    //scoreData.BollingerBands = kline.Bolling;
-
-                    //scoreData.Number350 = model.Number350;
-                    //scoreData.QiHao = code.CodeQiHao;
-                    //scoreData.Number = code.CodeNumber;
-
-                    //CalcScore(scoreData, model);
                 }
             }
             else
@@ -146,106 +74,18 @@ namespace CpCodeSelect.Util.Scorer156
                 //不是第一次执行 判断是否中奖
                 if (model.Number156.Contains(hou3Str))
                 {
-                    yiLouTuKLine = new KLine156();
                     //中了 K值加1.857
                     kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue + 5.410256;
 
-                    //处理遗漏K的逻辑
-                    newYiLouKline350 = new YiLouKline350();
-                    //中了 K值加0.3786
-                    if (model.ZhongBeforeGua <= 2)
-                    {
-                        if (model.YiLouKline350.Count >= 1)
-                        {
-                            newYiLouKline350.KValue = model.YiLouKline350[model.YiLouKline350.Count - 1].KValue + 0.3786;
-                        }
-                        else
-                        {
-                            newYiLouKline350.KValue = 0.3786;
-                        }
-
-
-                        if (lastYiLouKLine350 != null)
-                        {
-                            newYiLouKline350.YiLouZhongCount = lastYiLouKLine350.YiLouZhongCount + 1;
-                        }
-                        else
-                        {
-                            newYiLouKline350.YiLouZhongCount = 1;
-                        }
-
-                        newYiLouKline350.YiLouGuaCount = 0;
-                        newYiLouKline350.IsZhong = true;
-                    }
-                    else
-                    {
-                        //中了 之前的遗漏值大于2 说明不在周期内中
-                        if (model.YiLouKline350.Count >= 1)
-                        {
-                            newYiLouKline350.KValue = model.YiLouKline350[model.YiLouKline350.Count - 1].KValue - 1.0;
-                        }
-                        else
-                        {
-                            newYiLouKline350.KValue = -1;
-                        }
-
-
-                        if (lastYiLouKLine350 != null)
-                        {
-                            newYiLouKline350.YiLouGuaCount = lastYiLouKLine350.YiLouGuaCount + 1;
-                        }
-                        else
-                        {
-                            newYiLouKline350.YiLouGuaCount = 1;
-                        }
-                        newYiLouKline350.YiLouZhongCount = 0;
-                    }
-
-
-                    //遗漏图的逻辑
-                    yiLouTuKLine.IsZhong = true;
-                    yiLouTuKLine.CurrentGuaCount = model.ZhongBeforeGua;
-
                     isZhong = true;
-
-
-                    //评分的逻辑
-                    //scoreData = new LotteryScoreData();
-                    //scoreData.IsZhongJiang = true;
-                    //scoreData.YiLouValue = model.GuaCount;
-                    //scoreData.LianXuZhongJiangCount = model.ZhongGount;
-                    //scoreData.KValue = kline.KValue;
-                    //scoreData.BollingerBands = kline.Bolling;
-
-                    //scoreData.Number350 = model.Number350;
-                    //scoreData.QiHao = code.CodeQiHao;
-                    //scoreData.Number = code.CodeNumber;
-
-                    //CalcScore(scoreData, model);
                 }
                 else
                 {
                     //没中 K值减1.0
                     kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue - 1.0;
 
-                    //处理遗漏K逻辑 K值减1.0
-                    if (lastYiLouKLine350 != null)
-                        lastYiLouKLine350.CurrentGuaCount = model.GuaCount;
                     isZhong = false;
 
-                    //评分的逻辑
-                    //scoreData = new LotteryScoreData();
-                    //scoreData.IsZhongJiang = false;
-                    //scoreData.YiLouValue = model.GuaCount;
-                    //scoreData.LianXuZhongJiangCount = model.ZhongGount;
-                    //scoreData.KValue = kline.KValue;
-                    //scoreData.BollingerBands = kline.Bolling;
-
-                    //scoreData.Number350 = model.Number350;
-                    //scoreData.QiHao = code.CodeQiHao;
-                    //scoreData.Number = code.CodeNumber;
-
-                    //CalcScore(scoreData, model);
                 }
             }
 
@@ -263,22 +103,7 @@ namespace CpCodeSelect.Util.Scorer156
                     BollLowerValue = result.lower,
                 };
             }
-            if (model.KLineList.Count >= 150)
-            {
-                //超过150期开始计算MACD指标
-                var macdResult = MACDCalculator.GetLatest(model.KLineList.Select(p => p.KValue).ToList());
-                kline.MACDResult = macdResult;
-            }
-
-            if (model.KLineList.Count >= 150)
-            {
-                var kLineList = model.KLineList;
-                var adxResult = ADXCalculator.GetLatest(kLineList.Select(p => p.ZuiGaoValue).ToList(),
-                    kLineList.Select(p => p.ZuiDiValue).ToList(),
-                    kLineList.Select(p => p.ShouPanValue).ToList());
-                kline.ADXResult = adxResult;
-            }
-
+            
             kline.CurrentGuaCount = model.GuaCount;
             kline.CurrentZhongCount = model.ZhongGount;
 
@@ -290,46 +115,6 @@ namespace CpCodeSelect.Util.Scorer156
             model.KLineList.Add(kline);
 
 
-            //处理遗漏K线逻辑
-            //如果中了 把新生成的遗漏K线添加到集合中
-            if (isZhong)
-            {
-                if (model.YiLouKline350.Count >= 20)
-                {
-                    //超过20期开始计算布林带
-                    var result = BollingerBandsSimple.CalculateBollingerBands(
-                        prices: model.YiLouKline350.Select(p => p.KValue).ToArray(),
-                        period: 20,
-                        stdDevMultiplier: 2.0);
-                    newYiLouKline350.Bolling = new Bolling
-                    {
-                        MiddleValue = result.middle,
-                        BollUpperValue = result.upper,
-                        BollLowerValue = result.lower,
-                    };
-                }
-                newYiLouKline350.CurrentGuaCount = model.GuaCount;
-                newYiLouKline350.CurrentZhongCount = model.ZhongGount;
-
-                newYiLouKline350.Code350Code = model.Number156;
-                newYiLouKline350.CodeQiHao = code.CodeQiHao;
-                newYiLouKline350.CodeNumber = code.CodeNumber;
-
-                //如果中奖了 添加新的记录
-                model.YiLouKline350.Add(newYiLouKline350);
-            }
-
-            //处理遗漏图的逻辑
-            if (isZhong)
-            {
-                //遗漏图的逻辑
-                yiLouTuKLine.Code350Code = model.Number156;
-                yiLouTuKLine.CodeQiHao = code.CodeQiHao;
-                yiLouTuKLine.CodeNumber = code.CodeNumber;
-                yiLouTuKLine.CurrentGuaCount = model.ZhongBeforeGua;
-                model.YiLouTuLineList.Add(yiLouTuKLine);
-            }
-
             //处理评分逻辑
             //评分的逻辑
             //进行评分,之后加入列表
@@ -340,8 +125,6 @@ namespace CpCodeSelect.Util.Scorer156
             scoreData.LianXuZhongJiangCount = model.ZhongGount;
             scoreData.KValue = kline.KValue;
             scoreData.BollingerBands = kline.Bolling;
-            scoreData.MACDResult = kline.MACDResult;
-            scoreData.ADXResult = kline.ADXResult;
 
 
             scoreData.Number350 = model.Number156;
@@ -394,10 +177,6 @@ namespace CpCodeSelect.Util.Scorer156
             if (number < 100) number = 100;
             KLine156 beforeKLine = null;
 
-            //遗漏K的逻辑
-            YiLouKline350 lastKLine350 = null;
-
-            YiLouKline350 newYiLouKline350 = null;
             var isZhong = false;
 
 
@@ -412,17 +191,13 @@ namespace CpCodeSelect.Util.Scorer156
             var runCount = number;
             for (; runCount > 0; runCount--)
             {
-                if (model.YiLouKline350 != null && model.YiLouKline350.Count > 0)
-                {
-                    lastKLine350 = model.YiLouKline350.LastOrDefault();
-                }
+                
                 var kline = new KLine156();
                 var code = AllCode[runCount - 1];
                 var hou3Str = code.GetHou3String();
 
                 if (beforeKLine == null)
                 {
-                    newYiLouKline350 = new YiLouKline350();
                     //第一次执行
                     //判断是否中奖
                     if (model.Number156.Contains(hou3Str))
@@ -439,59 +214,7 @@ namespace CpCodeSelect.Util.Scorer156
 
                         model.GuaCount = 0;
 
-                        //遗漏K的逻辑
-                        //中了 判断最后一个K线的遗漏值是否在2个以内,是的话表示在周期内中
-                        if (model.ZhongBeforeGua <= 2)
-                        {
-                            newYiLouKline350.KValue = 0.3786;
-
-                            if (lastKLine350 != null)
-                            {
-                                newYiLouKline350.YiLouZhongCount = lastKLine350.YiLouZhongCount + 1;
-                            }
-                            else
-                            {
-                                newYiLouKline350.YiLouZhongCount = 1;
-                            }
-
-                            newYiLouKline350.YiLouGuaCount = 0;
-                            newYiLouKline350.IsZhong = true;
-                        }
-                        else
-                        {
-                            //中了 之前的遗漏值大于2 说明不在周期内中
-                            newYiLouKline350.KValue = -1.0;
-                            if (lastKLine350 != null)
-                            {
-                                newYiLouKline350.YiLouGuaCount = lastKLine350.YiLouGuaCount + 1;
-                            }
-                            else
-                            {
-                                newYiLouKline350.YiLouGuaCount = 1;
-                            }
-                            newYiLouKline350.YiLouZhongCount = 0;
-                        }
-
-                        //遗漏图的逻辑
-                        yiLouTuKLine.IsZhong = true;
-                        yiLouTuKLine.CurrentGuaCount = 0;
-
                         isZhong = true;
-
-
-                        //评分的逻辑
-                        //scoreData = new LotteryScoreData();
-                        //scoreData.IsZhongJiang = true;
-                        //scoreData.YiLouValue = model.GuaCount;
-                        //scoreData.LianXuZhongJiangCount = model.ZhongGount;
-                        //scoreData.KValue = kline.KValue;
-                        //scoreData.BollingerBands = kline.Bolling;
-
-                        //scoreData.Number350 = model.Number350;
-                        //scoreData.QiHao = code.CodeQiHao;
-                        //scoreData.Number = code.CodeNumber;
-
-                        //CalcScore(scoreData, model);
                     }
                     else
                     {
@@ -500,25 +223,7 @@ namespace CpCodeSelect.Util.Scorer156
                         model.GuaCount = 1;
                         model.ZhongGount = 0;
 
-                        //遗漏K的逻辑 继续遗漏中 更新最后遗漏号码的遗漏值
-                        //kline.KValue = -1.0;
-                        newYiLouKline350.CurrentGuaCount = model.GuaCount;
                         isZhong = false;
-
-
-                        //评分的逻辑
-                        //scoreData = new LotteryScoreData();
-                        //scoreData.IsZhongJiang = false;
-                        //scoreData.YiLouValue = model.GuaCount;
-                        //scoreData.LianXuZhongJiangCount = model.ZhongGount;
-                        //scoreData.KValue = kline.KValue;
-                        //scoreData.BollingerBands = kline.Bolling;
-
-                        //scoreData.Number350 = model.Number350;
-                        //scoreData.QiHao = code.CodeQiHao;
-                        //scoreData.Number = code.CodeNumber;
-
-                        //CalcScore(scoreData, model);
                     }
                 }
                 else
@@ -539,74 +244,10 @@ namespace CpCodeSelect.Util.Scorer156
                         model.GuaCount = 0;
 
 
-                        //处理遗漏K的逻辑
-                        newYiLouKline350 = new YiLouKline350();
-                        //中了 K值加0.3786
-                        if (model.ZhongBeforeGua <= 2)
-                        {
-                            if (model.YiLouKline350.Count >= 1)
-                            {
-                                newYiLouKline350.KValue = model.YiLouKline350[model.YiLouKline350.Count - 1].KValue + 0.3786;
-                            }
-                            else
-                            {
-                                newYiLouKline350.KValue = 0.3786;
-                            }
-
-                            if (lastKLine350 != null)
-                            {
-                                newYiLouKline350.YiLouZhongCount = lastKLine350.YiLouZhongCount + 1;
-                            }
-                            else
-                            {
-                                newYiLouKline350.YiLouZhongCount = 1;
-                            }
-
-                            newYiLouKline350.YiLouGuaCount = 0;
-                            newYiLouKline350.IsZhong = true;
-                        }
-                        else
-                        {
-                            //中了 之前的遗漏值大于2 说明不在周期内中
-                            if (model.YiLouKline350.Count >= 1)
-                            {
-                                newYiLouKline350.KValue = model.YiLouKline350[model.YiLouKline350.Count - 1].KValue - 1.0;
-                            }
-                            else
-                            {
-                                newYiLouKline350.KValue = -1.0;
-                            }
-
-                            if (lastKLine350 != null)
-                            {
-                                newYiLouKline350.YiLouGuaCount = lastKLine350.YiLouGuaCount + 1;
-                            }
-                            else
-                            {
-                                newYiLouKline350.YiLouGuaCount = 1;
-                            }
-                            newYiLouKline350.YiLouZhongCount = 0;
-                        }
-
-                        //遗漏图的逻辑
-                        yiLouTuKLine.IsZhong = true;
-                        yiLouTuKLine.CurrentGuaCount = model.ZhongBeforeGua;
+                        
                         isZhong = true;
 
 
-                        //评分的逻辑
-                        //scoreData = new LotteryScoreData();
-                        //scoreData.IsZhongJiang = true;
-                        //scoreData.YiLouValue = model.GuaCount;
-                        //scoreData.LianXuZhongJiangCount = model.ZhongGount;
-                        //scoreData.KValue = kline.KValue;
-                        //scoreData.BollingerBands = kline.Bolling;
-
-                        //scoreData.Number350 = model.Number350;
-                        //scoreData.QiHao = code.CodeQiHao;
-                        //scoreData.Number = code.CodeNumber;
-
-                        //CalcScore(scoreData, model);
 
                     }
                     else
@@ -617,10 +258,7 @@ namespace CpCodeSelect.Util.Scorer156
 
                         model.GuaCount++;
                         model.ZhongGount = 0;
-
-                        //处理遗漏K逻辑 遗漏数加1
-                        if (lastKLine350 != null)
-                            lastKLine350.CurrentGuaCount = model.GuaCount;
+                        
                         isZhong = false;
 
 
@@ -660,48 +298,7 @@ namespace CpCodeSelect.Util.Scorer156
                 kline.IsZhong = isZhong;
                 beforeKLine = kline;
 
-
-                //处理遗漏K线逻辑
-                //如果中了 把新生成的遗漏K线添加到集合中
-                if (isZhong)
-                {
-                    if (model.YiLouKline350 != null && model.YiLouKline350.Count > 0 && model.YiLouKline350.Count >= 20)
-                    {
-                        //超过20期开始计算布林带
-                        var result = BollingerBandsSimple.CalculateBollingerBands(
-                            prices: model.YiLouKline350.Select(p => p.KValue).ToArray(),
-                            period: 20,
-                            stdDevMultiplier: 2.0);
-                        newYiLouKline350.Bolling = new Bolling
-                        {
-                            MiddleValue = result.middle,
-                            BollUpperValue = result.upper,
-                            BollLowerValue = result.lower,
-                        };
-                    }
-                    newYiLouKline350.CurrentGuaCount = model.GuaCount;
-                    newYiLouKline350.CurrentZhongCount = model.ZhongGount;
-
-                    newYiLouKline350.Code350Code = model.Number156;
-                    newYiLouKline350.CodeQiHao = code.CodeQiHao;
-                    newYiLouKline350.CodeNumber = code.CodeNumber;
-
-                    //如果中奖了 添加新的记录
-                    model.YiLouKline350.Add(newYiLouKline350);
-                }
-                //处理遗漏图的逻辑
-                if (isZhong)
-                {
-                    //遗漏图的逻辑
-                    yiLouTuKLine.Code350Code = model.Number156;
-                    yiLouTuKLine.CodeQiHao = code.CodeQiHao;
-                    yiLouTuKLine.CodeNumber = code.CodeNumber;
-                    yiLouTuKLine.CurrentGuaCount = model.ZhongBeforeGua;
-                    model.YiLouTuLineList.Add(yiLouTuKLine);
-                }
-
-                //处理评分逻辑
-
+             
                 //评分的逻辑
                 //进行评分,之后加入列表
 
@@ -917,155 +514,6 @@ namespace CpCodeSelect.Util.Scorer156
                 }
             }
         }
-        private static void RecalculateAllScoresAsyncOld(LotteryScoreData currentData, Hou3Select156_ZhouQiZhong model)
-        {
-            var Scoring156Engine = new Scoring156Engine();
-            ScorerUtil156.InitializeScoringRulesForEngine(Scoring156Engine);
-            var historyData = model.ScoreDateList;
-            // 首先重置所有周期相关字段，确保重新计算不会受到之前结果的影响
-
-            for (int i = 0; i < historyData.Count; i++)
-            {
-                historyData[i].IsChuShou = false;
-                historyData[i].IsChuShouSuccess = false;
-                historyData[i].IsCycleComplete = false;
-                historyData[i].IsCycleBurst = false;
-                historyData[i].CycleNumber = 0;
-                historyData[i].CycleStep = 0;
-                historyData[i].HandNumber = 0;
-                historyData[i].IsPartOfCycle = false;
-            }
-
-            // 第一步：计算每期的评分
-            for (int i = 0; i < historyData.Count; i++)
-            {
-                var historyForScoring = historyData.Take(i).ToList();
-                historyData[i].Score = Scoring156Engine.CalculateTotalScore(
-                    historyData[i],
-                    historyForScoring
-                );
-
-                // 根据评分规则设置是否出手标志
-                // 需要考虑评分>=70且不在趋势段内且K值在中轨上
-                //todo 修改为>=70
-                bool isScoreHighEnough = historyData[i].Score >= 70;
-                bool isNotInTrendSegment = !historyData[i].IsQuShiDuan;
-                bool isKValueAboveMiddle = historyData[i].BollingerBands != null &&
-                    historyData[i].KValue >= historyData[i].BollingerBands.MiddleValue;
-
-                // 检查是否连续出手超过2期，如果是则必须停一期
-                bool canContinueChuShou = true;
-                if (i >= 2)
-                {
-                    // 检查前两期是否都在出手
-                    bool previousTwoAreChuShou = historyData[i - 1].IsChuShou &&
-                                                 historyData[i - 2].IsChuShou;
-
-                    if (previousTwoAreChuShou)
-                    {
-                        // 如果前两期都在出手，则当前期不能出手，必须停一期
-                        canContinueChuShou = false;
-                    }
-                }
-
-                historyData[i].IsChuShou = isScoreHighEnough && isNotInTrendSegment && isKValueAboveMiddle && canContinueChuShou;
-            }
-
-            // 第二步：根据开奖结果确定出手成功性（先只设置出手成功状态）
-            for (int i = 0; i < historyData.Count; i++)
-            {
-                // 检查当前期的前一期（上一期）是否出手
-                if (i > 0 && historyData[i - 1].IsChuShou)
-                {
-                    // 上一期出手，当前期开奖结果决定上一期出手是否成功
-                    historyData[i - 1].IsChuShouSuccess = historyData[i].IsZhongJiang;
-                }
-            }
-
-            // 第三步：按时间顺序重新计算所有出手数据的周期信息
-            // 先重置周期相关状态
-            for (int i = 0; i < historyData.Count; i++)
-            {
-                historyData[i].IsCycleComplete = false;
-                historyData[i].IsCycleBurst = false;
-                historyData[i].IsChuShouSuccess = false;
-            }
-
-            // 第四步：按时间顺序重新计算所有出手数据的周期和步骤信息
-            // 严格按顺序执行，确保每次调用CalculateChuShouCycleAndHandNumber时依赖的数据已经计算好
-            for (int i = 0; i < historyData.Count; i++)
-            {
-                if (historyData[i].IsChuShou)
-                {
-                    CalculateChuShouCycleAndHandNumber(historyData[i], model);
-                }
-            }
-
-            // 第五步：然后计算出手成功性
-            for (int i = 0; i < historyData.Count; i++)
-            {
-                if (i > 0 && historyData[i - 1].IsChuShou)
-                {
-                    historyData[i - 1].IsChuShouSuccess = historyData[i].IsZhongJiang;
-                }
-            }
-
-            // 第六步：标记周期完成和爆掉状态
-            for (int i = 0; i < historyData.Count; i++)
-            {
-                if (i > 0 && historyData[i - 1].IsChuShou)
-                {
-                    // 检查上一期出手是否完成了其所在周期
-                    if (historyData[i].IsZhongJiang) // 如果当前期中奖，则上一期出手所在的周期完成
-                    {
-                        // 标记上一期出手完成其周期
-                        historyData[i - 1].IsCycleComplete = true;
-
-                        // 同时标记同一周期内的所有出手为完成
-                        int currentCycleNumber = historyData[i - 1].CycleNumber;
-                        for (int j = 0; j < historyData.Count; j++)
-                        {
-                            if (historyData[j].IsChuShou &&
-                                historyData[j].CycleNumber == currentCycleNumber)
-                            {
-                                historyData[j].IsCycleComplete = true;
-                                historyData[j].IsCycleBurst = false; // 完成周期，不是爆掉
-                            }
-                        }
-                    }
-                    // 检查周期是否因第N步未中奖而爆掉
-                    else if (historyData[i - 1].CycleStep == GetCycleLength() &&
-                            i < historyData.Count &&
-                            !historyData[i].IsZhongJiang)
-                    {
-                        // 标记上一期出手导致周期爆掉
-                        historyData[i - 1].IsCycleBurst = true;
-
-                        // 同时标记整个周期爆掉
-                        int currentCycleNumber = historyData[i - 1].CycleNumber;
-                        for (int j = 0; j < historyData.Count; j++)
-                        {
-                            if (historyData[j].IsChuShou &&
-                                historyData[j].CycleNumber == currentCycleNumber)
-                            {
-                                historyData[j].IsCycleBurst = true;
-                                historyData[j].IsCycleComplete = false; // 爆掉，不是完成
-                            }
-                        }
-                    }
-                }
-            }
-
-            // 第七步：最后再重新计算一次周期信息，确保一致性
-            for (int i = 0; i < historyData.Count; i++)
-            {
-                if (historyData[i].IsChuShou)
-                {
-                    CalculateChuShouCycleAndHandNumber(historyData[i], model);
-                }
-            }
-        }
-
         /// <summary>
         /// 计算其他指标
         /// </summary>
@@ -1113,7 +561,7 @@ namespace CpCodeSelect.Util.Scorer156
                 currentData.IsChuShou = true;
 
                 // 计算出手周期和手数
-                CalculateChuShouCycleAndHandNumber(currentData, model);
+                //CalculateChuShouCycleAndHandNumber(currentData, model);
             }
             else
             {
@@ -1156,6 +604,7 @@ namespace CpCodeSelect.Util.Scorer156
                     else if (previousData.CycleStep == GetCycleLength()) // 如果上一期出手是第N步（根据配置）
                     {
                         // 如果当前期没有中奖，并且上一期出手是第N步，则周期爆掉
+                        /*
                         if (!currentData.IsZhongJiang)
                         {
                             // 标记整个周期爆掉
@@ -1175,6 +624,7 @@ namespace CpCodeSelect.Util.Scorer156
                                 }
                             }
                         }
+                        */
                     }
                 }
             }

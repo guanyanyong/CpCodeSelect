@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CpCodeSelect.Util.Config;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         #region 构造方法
         public ZiJinFangAnV2()
         {
+            
         }
         /// <summary>
         /// 
@@ -38,7 +41,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// <summary>
         /// 总轮次-Large-总共进行的轮次 共8轮  修改为最大5轮
         /// </summary>
-        public decimal LargeTotalLun = 5;
+        public decimal LargeTotalLun = AppConfig.Current.LunSettings.MaxMiddleLun;
         /// <summary>
         /// 总轮次-Large-当前轮次，初始为1轮，当中间轮次的8轮完后增加，说明爆掉一次
         /// </summary>
@@ -87,7 +90,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// <summary>
         /// 中间轮次-Middle-当前循环轮次-总轮次 共8轮 
         /// </summary>
-        public decimal MiddleTotalLun = 4;
+        public decimal MiddleTotalLun = AppConfig.Current.LunSettings.MaxMiddleLun;
         /// <summary>
         /// 中间轮次-Middle-当前循环轮次-当前轮次，初始为1轮，每轮点击达到设定次数后增加，超过8轮后提示无法继续拆分
         /// </summary>
