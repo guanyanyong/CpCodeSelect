@@ -108,7 +108,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// <summary>
         /// 中间轮每轮判断是否回退的盈离率
         /// </summary>
-        public const decimal MiddleLunEnoughProfitLossRate = 1.9m;
+        public const decimal MiddleLunEnoughProfitLossRate = 1.5m;
         #endregion
 
         #region 当前执行轮次-Small-相关字段
@@ -466,7 +466,16 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                     else
                     {
                         //Small轮次盈利,但中间轮次不赚钱,需要继续当前轮次
+                        //Small轮次盈利,但中间轮次不赚钱,根据亏损金额计算当前跳转的轮次
                         //重新设置当前轮次的相关数值
+                        var middleCurrentTotal = MiddleCurrentPrincipalExcludSmall + MiddleLunAmount[currentLun - 1];
+
+                        var chaE = MiddleTotalPrincipalInit - middleCurrentTotal;
+                        if (chaE <= 0)
+                        {
+                            chaE = 0 - chaE;
+                        }
+                            
                         if (kaiJiangResult.MessageList == null)
                         {
                             kaiJiangResult.MessageList = new List<string>();
@@ -474,9 +483,25 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                         kaiJiangResult.MessageList.Add(string.Format($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:重置前中间轮盈利含最小轮{MiddleCurrentPrincipalExcludSmall + SmallCurrentPrincipal - 200 - MiddleTotalPrincipalInit}**********"));
                         kaiJiangResult.MessageList.Add(string.Format($"【中奖】目前资金:{SmallCurrentPrincipal},当前Middle轮:【{MiddleCurrentLun}】,当前Middle资金不包含Samll{MiddleCurrentPrincipalExcludSmall},当前Large资金{LargeTotalPrincipal}"));
 
-                        SmallInitialPrincipal = MiddleLunAmount[currentLun - 1];
+                        
+                        var nextLun = 1;
+                        if (chaE <= 160) nextLun = 1;
+                        else if (chaE <= 320) nextLun = 2;
+                        else if (chaE <= 640) nextLun = 3;
+                        else if (chaE <= 1120) nextLun = 4;
+                        else if (chaE <= 1920) nextLun = 5;
+                        else if (chaE <= 3200) nextLun = 6;
+                        else if (chaE <= 5280) nextLun = 7;
+                        else nextLun = 8;
+                        if (nextLun <= currentLun) currentLun = nextLun;
+
+                        currentLunAmount = MiddleLunAmount[currentLun - 1];
+                        SmallInitialPrincipal = currentLunAmount;
                         SmallCurrentPrincipal = SmallInitialPrincipal;
-                        kaiJiangResult.MessageList.Add($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:当前轮盈利超过{(MiddleLunEnoughProfitLossRate - 1) * 100}%,但是中间轮未盈利,继续当前第{MiddleCurrentLun}轮。中间轮金额:{MiddleCurrentPrincipalExcludSmall+ currentLunAmount}**********");
+                        MiddleCurrentPrincipalExcludSmall = middleCurrentTotal - currentLunAmount;
+                        kaiJiangResult.MessageList.Add($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:当前轮盈利超过{(MiddleLunEnoughProfitLossRate - 1) * 100}%,但是中间轮未盈利,之前轮为第{MiddleCurrentLun}轮,现在跳转到{nextLun}轮。中间轮金额:{MiddleCurrentPrincipalExcludSmall+ currentLunAmount}**********");
+                        // 添加好之后,重新设置CurrentLun;
+                        MiddleCurrentLun = currentLun;
                         SmallLunInit();
                         
                         /*
