@@ -2,10 +2,12 @@
 using CpCodeSelect.Model.ExModel;
 using CpCodeSelect.Model.Score;
 using CpCodeSelect.Util;
+using CpCodeSelect.Util.Config;
 using CpCodeSelect.Util.Scorer;
 using CpCodeSelect.Util.ZiJinFangAn;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -112,6 +114,26 @@ namespace CpCodeSelect.Business.Score.Moni
         /// </summary>
         public int TotalZhong { get; set; } = 0;
         public int TotalGua { get; set; } = 0;
+
+        public int MaxLianGua = 0;
+        public int CurrentLianGua = 0;
+        public string MaxLianGuaCurrentQiHao;
+        /// <summary>
+        /// 是否需要统计超过NeedCalcMaxGuaCount的挂数的数值,默认开启
+        /// </summary>
+        public int NeedCalcMaxGuaCount = AppConfig.Current.LunSettings.NeedCalcMaxGuaCount;
+        /// <summary>
+        /// 设置的需要统计超过就计算的数值,默认35
+        /// </summary>
+        public int CalcMaxGuaCount = AppConfig.Current.LunSettings.MaxGuaCount;
+        /// <summary>
+        /// 上一次进行记录最大挂数的期号
+        /// </summary>
+        public string LastCalcMaxGuaCountQiHao = string.Empty;
+        /// <summary>
+        /// 当前统计的超过最大挂的次数
+        /// </summary>
+        public int AllCalcMaxGuaSumCount = 0;
         /// <summary>
         /// 初始化数据
         /// </summary>
@@ -174,6 +196,7 @@ namespace CpCodeSelect.Business.Score.Moni
                 var kaiJiangResult = ZiJinFangAn.SmallKaiJiang(isZhong);
                 if (isZhong)
                 {
+                    CurrentLianGua = 0;
                     if (kaiJiangResult.MaxChange)
                     {
                         LogInfo($"###########################中奖后达到重置要求,重置###########################");
@@ -196,17 +219,58 @@ namespace CpCodeSelect.Business.Score.Moni
                 }
                 else
                 {
+
+                    CurrentLianGua++;
                     LogInfo($"【未中奖】[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},未中奖后总金额:{ZiJinFangAn.SmallCurrentPrincipal}");
                     LogInfo($"【未中奖】点击次数:{ZiJinFangAn.SmallClickCount},当前拆分阶段{ZiJinFangAn.SmallSplitStage},总点击次数{ZiJinFangAn.LargeTotalClickCount}");
                     LogInfo($"【未中奖】当前Middle轮:【{ZiJinFangAn.MiddleCurrentLun}】,当前Middle资金不含Small{ZiJinFangAn.MiddleCurrentPrincipalExcludSmall},当前Large资金{ZiJinFangAn.LargeTotalPrincipal}");
                 }
                 //设置后,把当前执行的记录置空,等待下一轮重新赋值
                 IsTouZhuing = false;
+                if (CurrentLianGua > MaxLianGua)
+                {
+                    MaxLianGua = CurrentLianGua;
+                    MaxLianGuaCurrentQiHao = code.CodeQiHao;
+                }
+                if (NeedCalcMaxGuaCount == 1)
+                {
+                    if (CurrentLianGua >= CalcMaxGuaCount)
+                    {
+
+                        var codeDecimal = Convert.ToDecimal(code.CodeQiHao);
+
+                        //如果上一期的统计为空号,或者当前期和上一期的差值超过最大连挂认为是新的一轮最大挂
+                        if (!string.IsNullOrEmpty(LastCalcMaxGuaCountQiHao))
+                        {
+                            var lastCodeDecimal = Convert.ToDecimal(LastCalcMaxGuaCountQiHao);
+
+                            if (Math.Abs(codeDecimal - lastCodeDecimal) > CalcMaxGuaCount)
+                            {
+                                AllCalcMaxGuaSumCount++;
+                                LastCalcMaxGuaCountQiHao = code.CodeQiHao;
+                            }
+                            LogInfo($"**************************【未中奖】连挂超过{CalcMaxGuaCount}期,当前挂的数量{AllCalcMaxGuaSumCount}，当前期号:{code.CodeQiHao}，当前开奖号:{code.CodeNumber}********************************************************");
+
+                        }
+                        else
+                        {
+                            //如果上一期的统计为空号
+                            AllCalcMaxGuaSumCount++;
+                            LastCalcMaxGuaCountQiHao = code.CodeQiHao;
+                            LogInfo($"【未中奖】当前Middle轮:【{ZiJinFangAn.MiddleCurrentLun}】,当前Middle资金不含Small{ZiJinFangAn.MiddleCurrentPrincipalExcludSmall},当前Large资金{ZiJinFangAn.LargeTotalPrincipal}");
+
+                            LogInfo($"**************************【未中奖】连挂超过{CalcMaxGuaCount}期,当前挂的数量{AllCalcMaxGuaSumCount}，当前期号:{code.CodeQiHao}，当前开奖号:{code.CodeNumber}********************************************************");
+                        }
+                    }
+                }
             }
             List<Hou3Select156_ZhouQiZhongScore> getEnoughRecordList = new List<Hou3Select156_ZhouQiZhongScore>();
             getEnoughRecordList = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.
-                Where(p => p.IsChuShou && p.Score >= 70).ToList();
-            if (getEnoughRecordList.Count <= 0) return;
+                Where(p => p.IsChuShou && p.Score >= 80).ToList();
+            if (getEnoughRecordList.Count <= 0)
+            {
+                return;
+            }
             //CurrentExecuteList.AddRange(getEnoughRecordList);
             var randomIndex = _threadLocalRandom.Value.Next(0, getEnoughRecordList.Count);
             randomIndex--;

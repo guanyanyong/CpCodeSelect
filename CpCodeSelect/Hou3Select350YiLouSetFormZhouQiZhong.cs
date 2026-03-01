@@ -527,7 +527,7 @@ namespace CpCodeSelect
 
             if (!string.IsNullOrEmpty(defaultLeftNumberStr))
             {
-                numericUpDown4.Value = Convert.ToDecimal(defaultLeftNumberStr);
+                //numericUpDown4.Value = Convert.ToDecimal(defaultLeftNumberStr);
             }
             else
             {
@@ -625,7 +625,7 @@ namespace CpCodeSelect
         /// </summary>
         private void StartExec()
         {
-            if (DateTime.Now >= Convert.ToDateTime("2026-03-31"))
+            if (DateTime.Now >= Convert.ToDateTime("2026-06-30"))
             {
                 //MessageBox.Show("软件试用期已过期，请联系作者购买正式版");
                 return;

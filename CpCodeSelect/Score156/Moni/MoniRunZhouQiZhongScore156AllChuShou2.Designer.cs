@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.listBoxExeMsg = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnYinChang = new System.Windows.Forms.Button();
@@ -67,6 +67,10 @@
             this.txtReset = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.lblTouZhuBei = new System.Windows.Forms.Label();
+            this.lblMaxLianGua = new System.Windows.Forms.Label();
+            this.lblMaxLianZhong = new System.Windows.Forms.Label();
+            this.lblNameMaxGua = new System.Windows.Forms.Label();
+            this.txtMaxGuaCount = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -284,30 +288,30 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.YilouCount,
             this.IsZhouQiZhongHou});
             this.dataGridView1.Location = new System.Drawing.Point(1421, 527);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(421, 291);
             this.dataGridView1.TabIndex = 15;
@@ -447,13 +451,55 @@
             this.lblTouZhuBei.TabIndex = 11;
             this.lblTouZhuBei.Text = "投注0倍";
             // 
+            // lblMaxLianGua
+            // 
+            this.lblMaxLianGua.AutoSize = true;
+            this.lblMaxLianGua.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.lblMaxLianGua.Location = new System.Drawing.Point(687, 116);
+            this.lblMaxLianGua.Name = "lblMaxLianGua";
+            this.lblMaxLianGua.Size = new System.Drawing.Size(99, 21);
+            this.lblMaxLianGua.TabIndex = 17;
+            this.lblMaxLianGua.Text = "最大连挂1次";
+            // 
+            // lblMaxLianZhong
+            // 
+            this.lblMaxLianZhong.AutoSize = true;
+            this.lblMaxLianZhong.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.lblMaxLianZhong.Location = new System.Drawing.Point(825, 116);
+            this.lblMaxLianZhong.Name = "lblMaxLianZhong";
+            this.lblMaxLianZhong.Size = new System.Drawing.Size(99, 21);
+            this.lblMaxLianZhong.TabIndex = 17;
+            this.lblMaxLianZhong.Text = "最大连中1次";
+            // 
+            // lblNameMaxGua
+            // 
+            this.lblNameMaxGua.AutoSize = true;
+            this.lblNameMaxGua.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.lblNameMaxGua.Location = new System.Drawing.Point(722, 13);
+            this.lblNameMaxGua.Name = "lblNameMaxGua";
+            this.lblNameMaxGua.Size = new System.Drawing.Size(94, 21);
+            this.lblNameMaxGua.TabIndex = 11;
+            this.lblNameMaxGua.Text = "最大挂次数:";
+            // 
+            // txtMaxGuaCount
+            // 
+            this.txtMaxGuaCount.Enabled = false;
+            this.txtMaxGuaCount.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.txtMaxGuaCount.Location = new System.Drawing.Point(838, 10);
+            this.txtMaxGuaCount.Name = "txtMaxGuaCount";
+            this.txtMaxGuaCount.Size = new System.Drawing.Size(100, 29);
+            this.txtMaxGuaCount.TabIndex = 12;
+            // 
             // MoniRunZhouQiZhongScore156AllChuShou2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1877, 941);
+            this.Controls.Add(this.lblMaxLianZhong);
+            this.Controls.Add(this.lblMaxLianGua);
             this.Controls.Add(this.txt156Code);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.txtMaxGuaCount);
             this.Controls.Add(this.txtCurrentAmount);
             this.Controls.Add(this.txtMinResult);
             this.Controls.Add(this.txtTotalZhongCi);
@@ -467,6 +513,7 @@
             this.Controls.Add(this.txtMaxResult);
             this.Controls.Add(this.lblTouZhuBei);
             this.Controls.Add(this.label14);
+            this.Controls.Add(this.lblNameMaxGua);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label9);
@@ -533,5 +580,9 @@
         private System.Windows.Forms.Button txtReset;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblTouZhuBei;
+        private System.Windows.Forms.Label lblMaxLianGua;
+        private System.Windows.Forms.Label lblMaxLianZhong;
+        private System.Windows.Forms.Label lblNameMaxGua;
+        private System.Windows.Forms.TextBox txtMaxGuaCount;
     }
 }

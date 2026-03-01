@@ -71,6 +71,14 @@ namespace CpCodeSelect.Score
 
         private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhongScore156AllChuShou2();
 
+
+        private MoniRunZhouQiZhongScore156AllChuShou2 moni1 = new MoniRunZhouQiZhongScore156AllChuShou2();
+        private MoniRunZhouQiZhongScore156AllChuShou2 moni2 = new MoniRunZhouQiZhongScore156AllChuShou2();
+        private MoniRunZhouQiZhongScore156AllChuShou2 moni3 = new MoniRunZhouQiZhongScore156AllChuShou2();
+        private MoniRunZhouQiZhongScore156AllChuShou2 moni4 = new MoniRunZhouQiZhongScore156AllChuShou2();
+        private MoniRunZhouQiZhongScore156AllChuShou2 moni5 = new MoniRunZhouQiZhongScore156AllChuShou2();
+        private MoniRunZhouQiZhongScore156AllChuShou2 moni6 = new MoniRunZhouQiZhongScore156AllChuShou2();
+
         private Hou3Select156_ZhouQiZhongScore currentCalcKLineDate = null;
 
         public static List<Exception> ExceptionList = new List<Exception>();
@@ -275,6 +283,13 @@ namespace CpCodeSelect.Score
             moniRunZhouQiZhongLianXu3.Run(code);
             sangesanyilou0.Run(code);
             moniRunZhouQiZhong3Ge3.Run(code);
+
+            moni1.Run(code);
+            moni2.Run(code);
+            moni3.Run(code);
+            moni4.Run(code);
+            moni5.Run(code);
+            moni6.Run(code);
 
             //把记录添加到界面上 异步方式
             //AddRecordToPage(code);
@@ -1733,6 +1748,36 @@ namespace CpCodeSelect.Score
         {
             var zhihuiwo = new zhihuiwoV2();
             zhihuiwo.Show();
+        }
+
+        private void btnMoni1_Click(object sender, EventArgs e)
+        {
+            moni1.Show();
+        }
+
+        private void btnMoni2_Click_1(object sender, EventArgs e)
+        {
+            moni2.Show();
+        }
+
+        private void btnMoni3_Click(object sender, EventArgs e)
+        {
+            moni3.Show();
+        }
+
+        private void btnMoni4_Click(object sender, EventArgs e)
+        {
+            moni4.Show();
+        }
+
+        private void btnMoni6_Click(object sender, EventArgs e)
+        {
+            moni6.Show();
+        }
+
+        private void btnMoni5_Click(object sender, EventArgs e)
+        {
+            moni5.Show();
         }
     }
 }

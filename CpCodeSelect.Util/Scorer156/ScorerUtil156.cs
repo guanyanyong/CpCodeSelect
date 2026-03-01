@@ -18,7 +18,7 @@ namespace CpCodeSelect.Util.Scorer156
             engine.AddRule(new KValueBelowMiddleNoBet156Rule());
             engine.AddRule(new TrendSegmentNoBet156Rule());
             engine.AddRule(new ConfirmPointBeforeTrend156Rule());
-            engine.AddRule(new BigGapBetweenZeroOrOneStrong156Rule());
+            //engine.AddRule(new BigGapBetweenZeroOrOneStrong156Rule());
             engine.AddRule(new ThreeTrackSameDirection156Rule());
             engine.AddRule(new TwoTrackSameDirection156Rule());
             engine.AddRule(new TrackOppositeDirection156Rule());

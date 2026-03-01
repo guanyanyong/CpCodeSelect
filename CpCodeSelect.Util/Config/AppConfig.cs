@@ -50,7 +50,7 @@ namespace CpCodeSelect.Util.Config
                 }
                 if(Current.LunSettings == null)
                 {
-                    Current.LunSettings = new LunSettings { MaxMiddleLun = 5 };
+                    Current.LunSettings = new LunSettings { MaxMiddleLun = 5,MaxGuaCount=35,NeedCalcMaxGuaCount=1 };
                 }
 
                 // 验证周期长度是否在合理范围内（必须大于等于3）
@@ -96,5 +96,13 @@ namespace CpCodeSelect.Util.Config
         /// 默认5轮 
         /// </summary>
         public int MaxMiddleLun { get; set; } = 5;
+        /// <summary>
+        /// 需要统计的最大挂数，默认35，超过这个数就需要统计数值
+        /// </summary>
+        public int MaxGuaCount { get; set; } = 35;
+        /// <summary>
+        /// 是否开启超过MaxGuaCount后统计数值，默认开启
+        /// </summary>
+        public int NeedCalcMaxGuaCount { get; set; } = 1;
     }
 }

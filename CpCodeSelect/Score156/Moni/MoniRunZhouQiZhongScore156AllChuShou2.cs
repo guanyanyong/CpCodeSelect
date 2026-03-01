@@ -2,6 +2,7 @@
 using CpCodeSelect.Business.Score;
 using CpCodeSelect.Business.Score.Moni;
 using CpCodeSelect.Model;
+using CpCodeSelect.Util.Config;
 using CpCodeSelect.Util.ZiJinFangAn;
 using Microsoft.Win32.SafeHandles;
 using System;
@@ -27,6 +28,7 @@ namespace CpCodeSelect.Score.Moni
             InitializeComponent(); 
             moniBusiness=new MoniRunZhouQiZhongScore156AllChuShou2MoniBusiness(CustomLogMethod, Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List);
             dataGridView1.DataSource = moniBusiness.yilouStatisticList;
+            lblNameMaxGua.Text = $"最大{AppConfig.Current.LunSettings.MaxGuaCount}挂次数";
             //dataGridView2.DataSource = moniBusiness.chuShouWeiZhongList;
         }
         public void Run(Code code, bool zhongHouDelete = false)
@@ -80,6 +82,10 @@ namespace CpCodeSelect.Score.Moni
 
             txtMaxMiddleLun.Text = moniBusiness.ZiJinFangAn.LargeMaxMiddleLunCount.ToString();
            lblTouZhuBei.Text= $"投注{fangAn.SmallCurrentBetAmount.ToString()}倍";
+
+            lblMaxLianZhong.Text= $"最大连中{fangAn.LargeMaxLianZhongCount}次";
+            lblMaxLianGua.Text= $"最大连挂{fangAn.LargeMaxLianGuaCount}次";
+            txtMaxGuaCount.Text = moniBusiness.AllCalcMaxGuaSumCount.ToString();
         }
         public void CustomLogMethod(string message)
         {
@@ -179,6 +185,10 @@ namespace CpCodeSelect.Score.Moni
             lblTouZhuBei.Text = "投注0倍";
 
             listBoxExeMsg.Items.Clear();
+
+
+            lblMaxLianZhong.Text = $"最大连中0次";
+            lblMaxLianGua.Text = $"最大连挂0次";
         }
     }
 }

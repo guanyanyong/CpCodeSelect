@@ -28,6 +28,12 @@ namespace CpCodeSelect.Util.Scorer
         public abstract string Description { get; }
         public abstract int ScoreValue { get; } // 评分值字段
 
+        /// <summary>
+        /// 判断规则是否生效
+        /// </summary>
+        /// <param name="currentData"></param>
+        /// <param name="historyData"></param>
+        /// <returns></returns>
         public virtual bool IsValid(LotteryScoreData currentData, List<LotteryScoreData> historyData)
         {
             return true;

@@ -63,6 +63,24 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// 总轮次-Large-总点击次数
         /// </summary>
         public decimal LargeTotalClickCount = 0;
+
+        /// <summary>
+        /// 总轮次-Large-最大连挂次数
+        /// </summary>
+        public int LargeMaxLianGuaCount = 0;
+        
+        /// <summary>
+        /// 总轮次-Large-最大连中次数
+        /// </summary>
+        public int LargeMaxLianZhongCount = 0;
+        /// <summary>
+        /// 总轮次-Large-当前连挂次数
+        /// </summary>
+        public int LargeCurrentLianGuaCount = 0;
+        /// <summary>
+        /// 总轮次-Large-当前连中次数
+        /// </summary>
+        public int LargeCurrentLianZhongCount = 0;
         #endregion
 
         #region 中间轮次-Middle-当前循环轮次-相关字段
@@ -108,7 +126,7 @@ namespace CpCodeSelect.Util.ZiJinFangAn
         /// <summary>
         /// 中间轮每轮判断是否回退的盈离率
         /// </summary>
-        public const decimal MiddleLunEnoughProfitLossRate = 1.5m;
+        public const decimal MiddleLunEnoughProfitLossRate = 1.4m;
         #endregion
 
         #region 当前执行轮次-Small-相关字段
@@ -423,9 +441,30 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                 SmallCurrentPrincipal = SmallCurrentPrincipal - SmallPerBetAmount * SmallCurrentBetAmount;
                 SmallTotalGua++;
                 SmallAllTotalGua++;
+
+                //如果挂了,当前连挂次数加1,当前连中次数清零
+                LargeCurrentLianZhongCount = 0;
+                LargeCurrentLianGuaCount++;
+
+                //如果当前连挂次数超过了之前的最大连挂次数,说明当前连挂次数是新的最大连挂次数,更新最大连挂次数
+                if (LargeCurrentLianGuaCount > LargeMaxLianGuaCount)
+                {
+                       LargeMaxLianGuaCount = LargeCurrentLianGuaCount;
+                }
             }
             else
             {
+
+                //中奖,当前连中次数加1,当前连挂次数清零
+                LargeCurrentLianZhongCount ++;
+                LargeCurrentLianGuaCount = 0;
+
+                //如果当前连中次数超过了之前的最大连中次数,说明当前连中次数是新的最大连中次数,更新最大连中次数
+                if (LargeCurrentLianZhongCount > LargeMaxLianZhongCount)
+                {
+                    LargeMaxLianZhongCount = LargeCurrentLianZhongCount;
+                }
+
                 //中奖,更新Small轮的当前金额
                 SmallTotalZhong++;
                 SmallAllTotalZhong++;
@@ -437,14 +476,15 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                     kaiJiangResult.MaxChange = true;
 
                     var currentLun = MiddleCurrentLun;
+                    var currentLunAmount = MiddleLunAmount[currentLun - 1];
+
                     var currentYuE = SmallCurrentPrincipal;
 
-                    var currentLunAmount = MiddleLunAmount[currentLun - 1];
                     var yingLi = currentYuE - currentLunAmount;
-                    //把盈利的钱加到中间轮剩余本金中
+                    //把盈利的钱加到中间轮剩余本金中 后面就是中间轮的剩余金额和本轮本金的总和跟初始本金进行对比,如果超过初始本金,说明中间轮次盈利了,需要更新总轮次的金额,同时重置中间轮次和当前执行轮次-Small的相关字段,继续执行
                     MiddleCurrentPrincipalExcludSmall += yingLi;
 
-                    if (MiddleCurrentPrincipalExcludSmall + MiddleLunAmount[currentLun - 1]
+                    if (MiddleCurrentPrincipalExcludSmall + currentLunAmount
                         > MiddleTotalPrincipalInit)
                     {
                         //中间轮盈利，说明中间轮次赚钱,需要更新Large轮次的金额，
@@ -468,8 +508,8 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                         //Small轮次盈利,但中间轮次不赚钱,需要继续当前轮次
                         //Small轮次盈利,但中间轮次不赚钱,根据亏损金额计算当前跳转的轮次
                         //重新设置当前轮次的相关数值
-                        var middleCurrentTotal = MiddleCurrentPrincipalExcludSmall + MiddleLunAmount[currentLun - 1];
-
+                        var middleCurrentTotal = MiddleCurrentPrincipalExcludSmall + currentLunAmount;
+                        
                         var chaE = MiddleTotalPrincipalInit - middleCurrentTotal;
                         if (chaE <= 0)
                         {
@@ -480,10 +520,11 @@ namespace CpCodeSelect.Util.ZiJinFangAn
                         {
                             kaiJiangResult.MessageList = new List<string>();
                         }
-                        kaiJiangResult.MessageList.Add(string.Format($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:重置前中间轮盈利含最小轮{MiddleCurrentPrincipalExcludSmall + SmallCurrentPrincipal - 200 - MiddleTotalPrincipalInit}**********"));
+                        kaiJiangResult.MessageList.Add(string.Format($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}:重置前中间轮盈利含最小轮{MiddleCurrentPrincipalExcludSmall + middleCurrentTotal - 200 - MiddleTotalPrincipalInit}**********"));
                         kaiJiangResult.MessageList.Add(string.Format($"【中奖】目前资金:{SmallCurrentPrincipal},当前Middle轮:【{MiddleCurrentLun}】,当前Middle资金不包含Samll{MiddleCurrentPrincipalExcludSmall},当前Large资金{LargeTotalPrincipal}"));
+                        kaiJiangResult.MessageList.Add(string.Format($"差额:{chaE}"));
 
-                        
+
                         var nextLun = 1;
                         if (chaE <= 160) nextLun = 1;
                         else if (chaE <= 320) nextLun = 2;
