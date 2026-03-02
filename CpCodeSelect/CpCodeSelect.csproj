@@ -348,6 +348,18 @@
     <Compile Include="MoniRunZhouQiZhong.Designer.cs">
       <DependentUpon>MoniRunZhouQiZhong.cs</DependentUpon>
     </Compile>
+    <Compile Include="WuXingDuDan\Moni\MoniWuXingDuDan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WuXingDuDan\Moni\MoniWuXingDuDan.Designer.cs">
+      <DependentUpon>MoniWuXingDuDan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WuXingDuDan\WuXingDuDanSetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WuXingDuDan\WuXingDuDanSetForm.Designer.cs">
+      <DependentUpon>WuXingDuDanSetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Zu6Kill1ZG2Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -580,6 +592,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MoniRunZhouQiZhong.resx">
       <DependentUpon>MoniRunZhouQiZhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WuXingDuDan\Moni\MoniWuXingDuDan.resx">
+      <DependentUpon>MoniWuXingDuDan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WuXingDuDan\WuXingDuDanSetForm.resx">
+      <DependentUpon>WuXingDuDanSetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Zu6Kill1ZG2Form.resx">
       <DependentUpon>Zu6Kill1ZG2Form.cs</DependentUpon>

@@ -99,6 +99,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Five1MaBusiness.cs" />
     <Compile Include="Hou2Select50_20Business.cs" />
+    <Compile Include="WuXingDuDan\Moni\WuXingDuDanMoniBusiness.cs" />
+    <Compile Include="WuXingDuDan\WuXingDuDanBusiness.cs" />
     <Compile Include="Zu6Kill1ZG2Business.cs" />
     <Compile Include="Zu6Kill1ZGGTBusiness.cs" />
     <Compile Include="Zu6Kill1Business.cs" />

@@ -1,4 +1,5 @@
 ﻿using CpCodeSelect.Score;
+using CpCodeSelect.WuXingDuDan;
 using System;
 using System.Configuration;
 using System.Windows.Forms;
@@ -110,6 +111,9 @@ namespace CpCodeSelect
             else if (str == "Hou3Select156YiLouSetFormScoreAndChuShou")
             {
                 Application.Run(new Hou3Select156YiLouSetFormScoreAndChuShou());
+            }else if(str == "WuXingDuDanSetForm")
+            {
+                Application.Run(new WuXingDuDanSetForm());
             }
         }
     }

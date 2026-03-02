@@ -8,7 +8,13 @@ namespace CpCodeSelect.Model
 {
     public class Code
     {
+        /// <summary>
+        /// 开奖期号
+        /// </summary>
         public string CodeQiHao { get; set; }
+        /// <summary>
+        /// 开奖号
+        /// </summary>
         public string CodeNumber { get; set; }
         /// <summary>
         /// 上一期号码
@@ -67,6 +73,10 @@ namespace CpCodeSelect.Model
         public string GetHou3String()
         {
             return $"{Bai.Number}{Shi.Number}{Ge.Number}";
+        }
+        public string Get5XingString()
+        {
+            return CodeNumber;
         }
     }
 }

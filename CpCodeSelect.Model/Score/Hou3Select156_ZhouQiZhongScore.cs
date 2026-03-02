@@ -25,6 +25,10 @@ namespace CpCodeSelect.Model.Score
         /// </summary>
         public List<string> Number156 { get; set; }
         /// <summary>
+        /// 毒胆号码
+        /// </summary>
+        public string DanNumber { get; set; }
+        /// <summary>
         /// 中之前挂的次数
         /// </summary>
         public int ZhongBeforeGua { get; set; } = 0;

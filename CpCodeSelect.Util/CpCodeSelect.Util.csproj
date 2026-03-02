@@ -64,6 +64,10 @@
     <Compile Include="IndexCalc\MACDCalculator.cs" />
     <Compile Include="KLine270Calc.cs" />
     <Compile Include="KLine350Calc.cs" />
+    <Compile Include="KLine5XingDuDan\BaseScore156Rule.cs" />
+    <Compile Include="KLine5XingDuDan\KLine40951ScoreCalc.cs" />
+    <Compile Include="KLine5XingDuDan\Rules\ScoreRules.cs" />
+    <Compile Include="KLine5XingDuDan\ScorerUtil40951.cs" />
     <Compile Include="KLineCondition\KLineBuyInterface.cs" />
     <Compile Include="KLineCondition\KLineParent.cs" />
     <Compile Include="KLineCondition\KLineNotBuyInterface.cs" />
@@ -90,6 +94,7 @@
     <Compile Include="YiLouKLine\YiLouKLine350Calc.cs" />
     <Compile Include="ZiJinFangAn\TouZhuResult.cs" />
     <Compile Include="ZiJinFangAn\ZiJinFangAn.cs" />
+    <Compile Include="ZiJinFangAn\ZiJinFangAnV40951.cs" />
     <Compile Include="ZiJinFangAn\ZiJinFangAnV2.cs" />
   </ItemGroup>
   <ItemGroup>
