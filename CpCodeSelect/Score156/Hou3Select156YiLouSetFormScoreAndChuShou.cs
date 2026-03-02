@@ -27,6 +27,7 @@ using CpCodeSelect.Util.Scorer;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using CpCodeSelect.html;
 using CpCodeSelect.Util.Scorer156;
+using CpCodeSelect.Score156.Moni;
 
 namespace CpCodeSelect.Score
 {
@@ -78,6 +79,8 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhongScore156AllChuShou2 moni4 = new MoniRunZhouQiZhongScore156AllChuShou2();
         private MoniRunZhouQiZhongScore156AllChuShou2 moni5 = new MoniRunZhouQiZhongScore156AllChuShou2();
         private MoniRunZhouQiZhongScore156AllChuShou2 moni6 = new MoniRunZhouQiZhongScore156AllChuShou2();
+
+        private MoniRunZhouQiZhong156Score35ge1 moni35ge1 = new MoniRunZhouQiZhong156Score35ge1();
 
         private Hou3Select156_ZhouQiZhongScore currentCalcKLineDate = null;
 
@@ -290,6 +293,8 @@ namespace CpCodeSelect.Score
             moni4.Run(code);
             moni5.Run(code);
             moni6.Run(code);
+
+            moni35ge1.Run(code);
 
             //把记录添加到界面上 异步方式
             //AddRecordToPage(code);
@@ -1778,6 +1783,11 @@ namespace CpCodeSelect.Score
         private void btnMoni5_Click(object sender, EventArgs e)
         {
             moni5.Show();
+        }
+
+        private void txt1ge35_Click(object sender, EventArgs e)
+        {
+            moni35ge1.Show();
         }
     }
 }

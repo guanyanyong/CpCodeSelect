@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFIlePath = new System.Windows.Forms.TextBox();
@@ -43,7 +43,13 @@
             this.TotalInfo = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnMoni6 = new System.Windows.Forms.Button();
+            this.btnMoni5 = new System.Windows.Forms.Button();
+            this.btnMoni4 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
+            this.btnMoni2 = new System.Windows.Forms.Button();
+            this.btnMoni3 = new System.Windows.Forms.Button();
+            this.btnMoni1 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
@@ -141,7 +147,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
             this.panel3 = new System.Windows.Forms.Panel();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
@@ -169,14 +177,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnMoni1 = new System.Windows.Forms.Button();
-            this.btnMoni3 = new System.Windows.Forms.Button();
-            this.btnMoni2 = new System.Windows.Forms.Button();
-            this.btnMoni4 = new System.Windows.Forms.Button();
-            this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
-            this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
-            this.btnMoni5 = new System.Windows.Forms.Button();
-            this.btnMoni6 = new System.Windows.Forms.Button();
+            this.txt1ge35 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -379,6 +380,7 @@
             this.panel7.Controls.Add(this.button12);
             this.panel7.Controls.Add(this.btnMoni2);
             this.panel7.Controls.Add(this.btnMoni3);
+            this.panel7.Controls.Add(this.txt1ge35);
             this.panel7.Controls.Add(this.btnMoni1);
             this.panel7.Controls.Add(this.button11);
             this.panel7.Controls.Add(this.label4);
@@ -394,6 +396,36 @@
             this.panel7.Size = new System.Drawing.Size(1396, 133);
             this.panel7.TabIndex = 8;
             // 
+            // btnMoni6
+            // 
+            this.btnMoni6.Location = new System.Drawing.Point(1188, 63);
+            this.btnMoni6.Name = "btnMoni6";
+            this.btnMoni6.Size = new System.Drawing.Size(126, 38);
+            this.btnMoni6.TabIndex = 8;
+            this.btnMoni6.Text = "模拟6";
+            this.btnMoni6.UseVisualStyleBackColor = true;
+            this.btnMoni6.Click += new System.EventHandler(this.btnMoni6_Click);
+            // 
+            // btnMoni5
+            // 
+            this.btnMoni5.Location = new System.Drawing.Point(1188, 19);
+            this.btnMoni5.Name = "btnMoni5";
+            this.btnMoni5.Size = new System.Drawing.Size(126, 38);
+            this.btnMoni5.TabIndex = 8;
+            this.btnMoni5.Text = "模拟5";
+            this.btnMoni5.UseVisualStyleBackColor = true;
+            this.btnMoni5.Click += new System.EventHandler(this.btnMoni5_Click);
+            // 
+            // btnMoni4
+            // 
+            this.btnMoni4.Location = new System.Drawing.Point(1037, 19);
+            this.btnMoni4.Name = "btnMoni4";
+            this.btnMoni4.Size = new System.Drawing.Size(126, 38);
+            this.btnMoni4.TabIndex = 8;
+            this.btnMoni4.Text = "模拟4";
+            this.btnMoni4.UseVisualStyleBackColor = true;
+            this.btnMoni4.Click += new System.EventHandler(this.btnMoni4_Click);
+            // 
             // button12
             // 
             this.button12.Location = new System.Drawing.Point(897, 19);
@@ -403,6 +435,36 @@
             this.button12.Text = "模拟3*3-0";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // btnMoni2
+            // 
+            this.btnMoni2.Location = new System.Drawing.Point(496, 19);
+            this.btnMoni2.Name = "btnMoni2";
+            this.btnMoni2.Size = new System.Drawing.Size(106, 38);
+            this.btnMoni2.TabIndex = 9;
+            this.btnMoni2.Text = "moni2";
+            this.btnMoni2.UseVisualStyleBackColor = true;
+            this.btnMoni2.Click += new System.EventHandler(this.btnMoni2_Click_1);
+            // 
+            // btnMoni3
+            // 
+            this.btnMoni3.Location = new System.Drawing.Point(760, 21);
+            this.btnMoni3.Name = "btnMoni3";
+            this.btnMoni3.Size = new System.Drawing.Size(106, 38);
+            this.btnMoni3.TabIndex = 9;
+            this.btnMoni3.Text = "moni3";
+            this.btnMoni3.UseVisualStyleBackColor = true;
+            this.btnMoni3.Click += new System.EventHandler(this.btnMoni3_Click);
+            // 
+            // btnMoni1
+            // 
+            this.btnMoni1.Location = new System.Drawing.Point(375, 17);
+            this.btnMoni1.Name = "btnMoni1";
+            this.btnMoni1.Size = new System.Drawing.Size(106, 38);
+            this.btnMoni1.TabIndex = 9;
+            this.btnMoni1.Text = "moni1";
+            this.btnMoni1.UseVisualStyleBackColor = true;
+            this.btnMoni1.Click += new System.EventHandler(this.btnMoni1_Click);
             // 
             // button11
             // 
@@ -425,7 +487,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(639, 63);
+            this.button5.Location = new System.Drawing.Point(755, 66);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(252, 38);
             this.button5.TabIndex = 7;
@@ -435,7 +497,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(897, 63);
+            this.button8.Location = new System.Drawing.Point(1013, 66);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(160, 38);
             this.button8.TabIndex = 7;
@@ -454,7 +516,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(453, 63);
+            this.button4.Location = new System.Drawing.Point(569, 66);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(160, 38);
             this.button4.TabIndex = 7;
@@ -464,7 +526,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(259, 63);
+            this.button3.Location = new System.Drawing.Point(375, 66);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(168, 38);
             this.button3.TabIndex = 7;
@@ -1373,14 +1435,14 @@
             this.IsChuShou,
             this.Score,
             this.ShouNumberStr});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 16F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 16F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -1834,6 +1896,15 @@
             this.tabPage4.Text = "K线走势";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // lotteryKLine
+            // 
+            this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lotteryKLine.Location = new System.Drawing.Point(3, 3);
+            this.lotteryKLine.Name = "lotteryKLine";
+            this.lotteryKLine.Size = new System.Drawing.Size(1388, 407);
+            this.lotteryKLine.TabIndex = 0;
+            this.lotteryKLine.TopMessage = "";
+            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.yiLouLotteryKLine);
@@ -1844,6 +1915,15 @@
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "遗漏K走势";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // yiLouLotteryKLine
+            // 
+            this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
+            this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
+            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1388, 407);
+            this.yiLouLotteryKLine.TabIndex = 0;
+            this.yiLouLotteryKLine.TopMessage = "";
             // 
             // panel3
             // 
@@ -2125,83 +2205,15 @@
             this.panel2.Size = new System.Drawing.Size(1410, 612);
             this.panel2.TabIndex = 10;
             // 
-            // btnMoni1
+            // txt1ge35
             // 
-            this.btnMoni1.Location = new System.Drawing.Point(375, 17);
-            this.btnMoni1.Name = "btnMoni1";
-            this.btnMoni1.Size = new System.Drawing.Size(106, 38);
-            this.btnMoni1.TabIndex = 9;
-            this.btnMoni1.Text = "moni1";
-            this.btnMoni1.UseVisualStyleBackColor = true;
-            this.btnMoni1.Click += new System.EventHandler(this.btnMoni1_Click);
-            // 
-            // btnMoni3
-            // 
-            this.btnMoni3.Location = new System.Drawing.Point(760, 21);
-            this.btnMoni3.Name = "btnMoni3";
-            this.btnMoni3.Size = new System.Drawing.Size(106, 38);
-            this.btnMoni3.TabIndex = 9;
-            this.btnMoni3.Text = "moni3";
-            this.btnMoni3.UseVisualStyleBackColor = true;
-            this.btnMoni3.Click += new System.EventHandler(this.btnMoni3_Click);
-            // 
-            // btnMoni2
-            // 
-            this.btnMoni2.Location = new System.Drawing.Point(496, 19);
-            this.btnMoni2.Name = "btnMoni2";
-            this.btnMoni2.Size = new System.Drawing.Size(106, 38);
-            this.btnMoni2.TabIndex = 9;
-            this.btnMoni2.Text = "moni2";
-            this.btnMoni2.UseVisualStyleBackColor = true;
-            this.btnMoni2.Click += new System.EventHandler(this.btnMoni2_Click_1);
-            // 
-            // btnMoni4
-            // 
-            this.btnMoni4.Location = new System.Drawing.Point(1037, 19);
-            this.btnMoni4.Name = "btnMoni4";
-            this.btnMoni4.Size = new System.Drawing.Size(126, 38);
-            this.btnMoni4.TabIndex = 8;
-            this.btnMoni4.Text = "模拟4";
-            this.btnMoni4.UseVisualStyleBackColor = true;
-            this.btnMoni4.Click += new System.EventHandler(this.btnMoni4_Click);
-            // 
-            // lotteryKLine
-            // 
-            this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lotteryKLine.Location = new System.Drawing.Point(3, 3);
-            this.lotteryKLine.Name = "lotteryKLine";
-            this.lotteryKLine.Size = new System.Drawing.Size(1388, 407);
-            this.lotteryKLine.TabIndex = 0;
-            this.lotteryKLine.TopMessage = "";
-            // 
-            // yiLouLotteryKLine
-            // 
-            this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
-            this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
-            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1388, 407);
-            this.yiLouLotteryKLine.TabIndex = 0;
-            this.yiLouLotteryKLine.TopMessage = "";
-            // 
-            // btnMoni5
-            // 
-            this.btnMoni5.Location = new System.Drawing.Point(1188, 19);
-            this.btnMoni5.Name = "btnMoni5";
-            this.btnMoni5.Size = new System.Drawing.Size(126, 38);
-            this.btnMoni5.TabIndex = 8;
-            this.btnMoni5.Text = "模拟5";
-            this.btnMoni5.UseVisualStyleBackColor = true;
-            this.btnMoni5.Click += new System.EventHandler(this.btnMoni5_Click);
-            // 
-            // btnMoni6
-            // 
-            this.btnMoni6.Location = new System.Drawing.Point(1188, 63);
-            this.btnMoni6.Name = "btnMoni6";
-            this.btnMoni6.Size = new System.Drawing.Size(126, 38);
-            this.btnMoni6.TabIndex = 8;
-            this.btnMoni6.Text = "模拟6";
-            this.btnMoni6.UseVisualStyleBackColor = true;
-            this.btnMoni6.Click += new System.EventHandler(this.btnMoni6_Click);
+            this.txt1ge35.Location = new System.Drawing.Point(236, 63);
+            this.txt1ge35.Name = "txt1ge35";
+            this.txt1ge35.Size = new System.Drawing.Size(106, 38);
+            this.txt1ge35.TabIndex = 9;
+            this.txt1ge35.Text = "1ge35";
+            this.txt1ge35.UseVisualStyleBackColor = true;
+            this.txt1ge35.Click += new System.EventHandler(this.txt1ge35_Click);
             // 
             // Hou3Select156YiLouSetFormScoreAndChuShou
             // 
@@ -2433,6 +2445,7 @@
         private System.Windows.Forms.Button btnMoni4;
         private System.Windows.Forms.Button btnMoni6;
         private System.Windows.Forms.Button btnMoni5;
+        private System.Windows.Forms.Button txt1ge35;
     }
 }
 
