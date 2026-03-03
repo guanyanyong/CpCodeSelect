@@ -239,7 +239,8 @@ namespace CpCodeSelect.WuXingDuDan
         /// </summary>
         public void ReadAllLine()
         {
-            var codeStrList = FileUtil.ReadFileAllRecods(filePath, 10000);
+            //todo 这里是20000后续可以更改
+            var codeStrList = FileUtil.ReadFileAllRecods(filePath, 20000);
             var codeList = FileAnalysis.GetCodeListByCodeListStr(codeStrList);
             if (codeList != null && codeList.Count > 0)
             {

@@ -2102,7 +2102,7 @@
             this.numericUpDown4.Font = new System.Drawing.Font("微软雅黑", 16F);
             this.numericUpDown4.Location = new System.Drawing.Point(326, 101);
             this.numericUpDown4.Maximum = new decimal(new int[] {
-            10000,
+            100000,
             0,
             0,
             0});
