@@ -55,32 +55,49 @@ namespace CpCodeSelect.Score
         private string DataSource = "rexguan-hp2024-01";
         //private MoniRunZhouQiZhongScore moniRunZhouQiZhong = new MoniRunZhouQiZhongScore();
         //private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhongScore156AllChuShou2();
+
         //private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore8ge1();
 
-        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore156AllChuShou2();
         //private MoniRunZhouQiZhongLianXu3 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongLianXu3();
         //private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore8ge1();
-        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore156AllChuShou2();
         //private moniRunZhouQiZhongScoreAllChuShou moniRunZhouQiZhongScoreAllChuShou = new moniRunZhouQiZhongScoreAllChuShou();
         //private MoniRunZhouQiZhongScoreAllChuShou moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhongScoreAllChuShou();
-        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhongScore156AllChuShou2();
         //private MoniRunZhouQiZhong3ge3yilou0BanShangSheng sangesanyilou0 = new MoniRunZhouQiZhong3ge3yilou0BanShangSheng();
-        private MoniRunZhouQiZhongScore156AllChuShou2 sangesanyilou0 = new MoniRunZhouQiZhongScore156AllChuShou2();
         //private MoniRunZhouQiZhong3ge3BanShangSheng moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong3ge3BanShangSheng();
         //private MoniRunZhouQiZhongScore8ge1 moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhongScore8ge1();
 
+        /*
+        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhongScore156AllChuShou2();
+        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore156AllChuShou2();
+        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore156AllChuShou2();
+        private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhongScore156AllChuShou2();
+        private MoniRunZhouQiZhongScore156AllChuShou2 sangesanyilou0 = new MoniRunZhouQiZhongScore156AllChuShou2();
         private MoniRunZhouQiZhongScore156AllChuShou2 moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhongScore156AllChuShou2();
-
-
         private MoniRunZhouQiZhongScore156AllChuShou2 moni1 = new MoniRunZhouQiZhongScore156AllChuShou2();
         private MoniRunZhouQiZhongScore156AllChuShou2 moni2 = new MoniRunZhouQiZhongScore156AllChuShou2();
         private MoniRunZhouQiZhongScore156AllChuShou2 moni3 = new MoniRunZhouQiZhongScore156AllChuShou2();
         private MoniRunZhouQiZhongScore156AllChuShou2 moni4 = new MoniRunZhouQiZhongScore156AllChuShou2();
         private MoniRunZhouQiZhongScore156AllChuShou2 moni5 = new MoniRunZhouQiZhongScore156AllChuShou2();
         private MoniRunZhouQiZhongScore156AllChuShou2 moni6 = new MoniRunZhouQiZhongScore156AllChuShou2();
-
+        */
         private MoniRunZhouQiZhong156Score35ge1 moni35ge1 = new MoniRunZhouQiZhong156Score35ge1();
+
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 sangesanyilou0 = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 moni1 = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 moni2 = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 moni3 = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 moni4 = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 moni5 = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 moni6 = new MoniRunZhouQiZhong156Score35ge1();
+
+
+
+
 
         private Hou3Select156_ZhouQiZhongScore currentCalcKLineDate = null;
 
@@ -282,7 +299,8 @@ namespace CpCodeSelect.Score
             AddToLogFileHou2Select50Auto(code);
             moniRunZhouQiZhongScore3ge5AfterZhong.Run(code);
             moniRunZhouQiZhongLianXu8.Run(code);
-            moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
+            //moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
+            moniRunZhouQiZhongScoreAllChuShou.Run(code);
             moniRunZhouQiZhongLianXu3.Run(code);
             sangesanyilou0.Run(code);
             moniRunZhouQiZhong3Ge3.Run(code);

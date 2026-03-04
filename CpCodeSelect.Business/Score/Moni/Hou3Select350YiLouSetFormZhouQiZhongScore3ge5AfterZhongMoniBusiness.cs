@@ -215,7 +215,7 @@ namespace CpCodeSelect.Business.Score.Moni
                         }
                         else if (GuaCount == 5)
                         {
-                            //挂3说明挂了2次,当前轮结束,开始下一轮
+                            //挂5说明挂了2次,当前轮结束,开始下一轮
                             IsRunning = false;
                             CurrentLun++;
                             CurrentaQi = 1;
