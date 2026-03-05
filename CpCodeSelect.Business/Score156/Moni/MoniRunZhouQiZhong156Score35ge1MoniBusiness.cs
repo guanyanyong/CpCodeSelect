@@ -240,6 +240,11 @@ namespace CpCodeSelect.Business.Score.Moni
         /// <param name="zhongHouDelete"></param>
         public void CalcCode(Code code)
         {
+            if (TotalGua >= 1)
+            {
+                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，已挂,不再投注。");
+                return;
+            }
             List<PositionNumber> list = new List<PositionNumber>();
 
             if (IsOriginBeginStatus())
@@ -288,7 +293,7 @@ namespace CpCodeSelect.Business.Score.Moni
                         }
                         else if (GuaCount == 36)
                         {
-                            //挂9说明挂了8次,结束
+                            //挂36说明挂了35次,结束
                             IsRunning = false;
                             CurrentaQi = 1;
                             GuaCount = 1;

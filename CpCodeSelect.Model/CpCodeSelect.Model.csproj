@@ -71,6 +71,7 @@
     <Compile Include="Score\LotteryScoreData.cs" />
     <Compile Include="StatisticModel.cs" />
     <Compile Include="Hou2Select50_20Model .cs" />
+    <Compile Include="TableModel\TestInfoStatistic.cs" />
     <Compile Include="Zu6Kill1Model.cs" />
     <Compile Include="Zu6Kill1ZG2Model.cs" />
     <Compile Include="Zu6Kill1ZGGTModel.cs" />

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFIlePath = new System.Windows.Forms.TextBox();
@@ -49,6 +49,7 @@
             this.button12 = new System.Windows.Forms.Button();
             this.btnMoni2 = new System.Windows.Forms.Button();
             this.btnMoni3 = new System.Windows.Forms.Button();
+            this.btn6ge6a = new System.Windows.Forms.Button();
             this.btn6ge6 = new System.Windows.Forms.Button();
             this.txt1ge35 = new System.Windows.Forms.Button();
             this.btnMoni1 = new System.Windows.Forms.Button();
@@ -179,7 +180,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn6ge6a = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.tabTestInfo = new System.Windows.Forms.TabPage();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnRefesh = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -237,6 +243,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tabTestInfo.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -342,6 +352,7 @@
             this.tabControl1.Controls.Add(this.ResultPage);
             this.tabControl1.Controls.Add(this.kLine);
             this.tabControl1.Controls.Add(this.paramSet);
+            this.tabControl1.Controls.Add(this.tabTestInfo);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("微软雅黑", 16F);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -459,6 +470,16 @@
             this.btnMoni3.Text = "moni3";
             this.btnMoni3.UseVisualStyleBackColor = true;
             this.btnMoni3.Click += new System.EventHandler(this.btnMoni3_Click);
+            // 
+            // btn6ge6a
+            // 
+            this.btn6ge6a.Location = new System.Drawing.Point(263, 17);
+            this.btn6ge6a.Name = "btn6ge6a";
+            this.btn6ge6a.Size = new System.Drawing.Size(106, 38);
+            this.btn6ge6a.TabIndex = 9;
+            this.btn6ge6a.Text = "6个6-2";
+            this.btn6ge6a.UseVisualStyleBackColor = true;
+            this.btn6ge6a.Click += new System.EventHandler(this.btn6ge6a_Click);
             // 
             // btn6ge6
             // 
@@ -1459,14 +1480,14 @@
             this.IsChuShou,
             this.Score,
             this.ShouNumberStr});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 16F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 16F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -2198,6 +2219,7 @@
             this.panel1.Controls.Add(this.chk3fen);
             this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.button10);
             this.panel1.Controls.Add(this.btnRestart);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtFIlePath);
@@ -2229,15 +2251,67 @@
             this.panel2.Size = new System.Drawing.Size(1410, 612);
             this.panel2.TabIndex = 10;
             // 
-            // btn6ge6a
+            // button10
             // 
-            this.btn6ge6a.Location = new System.Drawing.Point(263, 17);
-            this.btn6ge6a.Name = "btn6ge6a";
-            this.btn6ge6a.Size = new System.Drawing.Size(106, 38);
-            this.btn6ge6a.TabIndex = 9;
-            this.btn6ge6a.Text = "6个6-2";
-            this.btn6ge6a.UseVisualStyleBackColor = true;
-            this.btn6ge6a.Click += new System.EventHandler(this.btn6ge6a_Click);
+            this.button10.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.button10.Location = new System.Drawing.Point(665, 76);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(161, 38);
+            this.button10.TabIndex = 0;
+            this.button10.Text = "统计信息";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.btnRestart_Click);
+            // 
+            // tabTestInfo
+            // 
+            this.tabTestInfo.Controls.Add(this.panel12);
+            this.tabTestInfo.Controls.Add(this.panel11);
+            this.tabTestInfo.Location = new System.Drawing.Point(4, 37);
+            this.tabTestInfo.Name = "tabTestInfo";
+            this.tabTestInfo.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTestInfo.Size = new System.Drawing.Size(1402, 571);
+            this.tabTestInfo.TabIndex = 5;
+            this.tabTestInfo.Text = "测试统计信息";
+            this.tabTestInfo.UseVisualStyleBackColor = true;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.btnRefesh);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel11.Location = new System.Drawing.Point(3, 3);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(1396, 109);
+            this.panel11.TabIndex = 0;
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.dataGridView2);
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel12.Location = new System.Drawing.Point(3, 112);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(1396, 456);
+            this.panel12.TabIndex = 1;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.Size = new System.Drawing.Size(1396, 456);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // btnRefesh
+            // 
+            this.btnRefesh.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnRefesh.Location = new System.Drawing.Point(1185, 20);
+            this.btnRefesh.Name = "btnRefesh";
+            this.btnRefesh.Size = new System.Drawing.Size(161, 63);
+            this.btnRefesh.TabIndex = 0;
+            this.btnRefesh.Text = "刷新";
+            this.btnRefesh.UseVisualStyleBackColor = true;
+            this.btnRefesh.Click += new System.EventHandler(this.btnRefesh_Click);
             // 
             // Hou3Select156YiLouSetFormScoreAndChuShou
             // 
@@ -2315,6 +2389,10 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.tabTestInfo.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2472,6 +2550,12 @@
         private System.Windows.Forms.Button txt1ge35;
         private System.Windows.Forms.Button btn6ge6;
         private System.Windows.Forms.Button btn6ge6a;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.TabPage tabTestInfo;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Button btnRefesh;
     }
 }
 

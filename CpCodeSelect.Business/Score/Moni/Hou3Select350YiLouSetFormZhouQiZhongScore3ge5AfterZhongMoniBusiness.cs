@@ -148,6 +148,11 @@ namespace CpCodeSelect.Business.Score.Moni
         /// <param name="model"></param>
         public void CalcCode(Code code)
         {
+            if (TotalGua >= 1)
+            {
+                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，已挂,不再投注。");
+                return;
+            }
             List<PositionNumber> list = new List<PositionNumber>();
             if (this.model350List == null || model350List.Count == 0)
             {

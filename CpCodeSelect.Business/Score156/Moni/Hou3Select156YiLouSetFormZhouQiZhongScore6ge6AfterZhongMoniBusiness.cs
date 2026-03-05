@@ -235,7 +235,7 @@ namespace CpCodeSelect.Business.Score.Moni
                         GuaCount++;
                         if (GuaCount <= 7)
                         {
-                            //挂6说明挂了6次
+                            //挂7说明挂了6次
                             IsRunning = true;
                             CurrentaQi = GuaCount;
                             StartCalc(code);

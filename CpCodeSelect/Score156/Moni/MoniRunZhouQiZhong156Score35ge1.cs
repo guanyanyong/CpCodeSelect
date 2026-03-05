@@ -2,6 +2,8 @@
 using CpCodeSelect.Business.Score;
 using CpCodeSelect.Business.Score.Moni;
 using CpCodeSelect.Model;
+using CpCodeSelect.Model.TableModel;
+using CpCodeSelect.Score;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,8 +20,13 @@ namespace CpCodeSelect.Score156.Moni
     public partial class MoniRunZhouQiZhong156Score35ge1 : Form
     {
         private MoniRunZhouQiZhong156Score35ge1MoniBusiness moniBusiness;
+        private Hou3Select156YiLouSetFormScoreAndChuShou parentForm = null;
         Code beforeCode = null;
         Code currentCode = null;
+        public MoniRunZhouQiZhong156Score35ge1(Hou3Select156YiLouSetFormScoreAndChuShou form):this()
+        {
+            parentForm = form;
+        }
         public MoniRunZhouQiZhong156Score35ge1()
         {
             InitializeComponent();
@@ -119,6 +126,20 @@ namespace CpCodeSelect.Score156.Moni
             listBoxExeMsg.Items.Clear();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = moniBusiness.yilouStatisticList;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TestInfoStatistic model=new TestInfoStatistic();
+            model.Win = (moniBusiness.TotalResult - 17400);
+            model.LiuShui = moniBusiness.TotalLiuShui;
+            model.GuaCount = moniBusiness.TotalGua;
+            parentForm.TestInfoStatisticList.Add(model);
+        }
+
+        private void MoniRunZhouQiZhong156Score35ge1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -26,6 +26,7 @@ using CpCodeSelect.Score.Moni;
 using CpCodeSelect.Util.Scorer;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using CpCodeSelect.html;
+using CpCodeSelect.Model.TableModel;
 
 namespace CpCodeSelect.Score
 {
@@ -48,6 +49,7 @@ namespace CpCodeSelect.Score
         public MoniRunKill3_3 moniKill3_3 = new MoniRunKill3_3();
         public StatisticForm statisticForm = new StatisticForm();
         public List<Hou2Select50_ZhouQiZhong> modelList = new List<Hou2Select50_ZhouQiZhong>();
+        public List<TestInfoStatistic> TestInfoStatisticList = new List<TestInfoStatistic>();
         private int boFangYanhuaCount = 12;
         private string apiUri = "http://127.0.0.1:5000/";
         private string DataSource = "rexguan-hp2024-01";
@@ -67,23 +69,23 @@ namespace CpCodeSelect.Score
         */
 
 
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhongScore3ge5AfterZhong();
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong;
 
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong sangesanyilou0 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongLianXu8;
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongLianXu3;
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongScoreAllChuShou;
+        private MoniRunZhouQiZhongScore3ge5AfterZhong sangesanyilou0;
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhong3Ge3;
 
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moni1 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moni2 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moni3 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moni4 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moni5 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moni6 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moni7 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moni8 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
-        private MoniRunZhouQiZhongScore3ge5AfterZhong moni9 = new MoniRunZhouQiZhongScore3ge5AfterZhong();
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moni1;
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moni2 ;
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moni3;
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moni4 ;
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moni5;
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moni6;
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moni7;
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moni8;
+        private MoniRunZhouQiZhongScore3ge5AfterZhong moni9;
 
 
 
@@ -94,6 +96,7 @@ namespace CpCodeSelect.Score
         int zhongHouDelete = 1500;
         public Hou3Select350YiLouSetFormScoreAndChuShou()
         {
+            InitMoni();
             InitializeComponent();
             Init();
             txtFIlePath.Text = filePath;
@@ -101,6 +104,27 @@ namespace CpCodeSelect.Score
             moniKill3.Hide();
             button1.Focus();
             TabControlInit();
+        }
+
+        public void InitMoni()
+        {
+            moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+
+            moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+            moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+            moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+            sangesanyilou0 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+            moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+
+            moni1 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+            moni2 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+            moni3 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+            moni4 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+            moni5 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+            moni6 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+            moni7 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+            moni8 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
+            moni9 = new MoniRunZhouQiZhongScore3ge5AfterZhong(this);
         }
         private void TabControlInit()
         {
@@ -244,12 +268,37 @@ namespace CpCodeSelect.Score
         {
             var codeStrList = FileUtil.ReadFileAllRecods(filePath, 10000);
             var codeList = FileAnalysis.GetCodeListByCodeListStr(codeStrList);
+
+
             if (codeList != null && codeList.Count > 0)
             {
+                if (progressBar1.InvokeRequired)
+                {
+                    progressBar1.BeginInvoke(new Action(() =>
+                    {
+                        progressBar1.Maximum = codeList.Count;
+                    }));
+                }
+                else
+                {
+                    progressBar1.Maximum = codeList.Count;
+                }
+
                 AddRecord("第一次执行,需要从底下最后一条开始执行记录");
                 int recordNumber = 1;
                 for (int i = codeList.Count - 1; i >= 0; i--)
                 {
+                    if (progressBar1.InvokeRequired)
+                    {
+                        progressBar1.BeginInvoke(new Action(() =>
+                        {
+                            progressBar1.Value = codeList.Count - i;
+                        }));
+                    }
+                    else
+                    {
+                        progressBar1.Value = codeList.Count - i;
+                    }
 
                     currentCode = codeList[i];
                     currentCode.PreCode = lastCode;
@@ -397,21 +446,48 @@ namespace CpCodeSelect.Score
         }
         public void SetForm()
         {
-            if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.ToList().Count > 0)
+            if (lblMaxGua.InvokeRequired)
             {
+                lblMaxGua.BeginInvoke(new Action(() =>
+                {
+                    if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.ToList().Count > 0)
+                    {
+                        var listCopy = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.ToList();
+                        lblMaxGua.Text = listCopy.Count > 0 ? listCopy.Max(p => p.GuaCount).ToString() : "0";
+                        lblTotalNumber.Text = listCopy.Count.ToString();
 
-                lblMaxGua.Text = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Max(p => p.GuaCount).ToString();
-                lblTotalNumber.Text = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count.ToString();
+                        //lblMaxGua.Text = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Max(p => p.GuaCount).ToString();
+                        lblTotalNumber.Text = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count.ToString();
 
+                    }
+                    else
+                    {
+                        lblMaxGua.Text = "0";
+                        lblTotalNumber.Text = "0";
+                    }
+
+                    lblMaxGua2.Text = lblMaxGua.Text;
+                    lblTotalNumber2.Text = lblTotalNumber.Text;
+                }));
             }
             else
             {
-                lblMaxGua.Text = "0";
-                lblTotalNumber.Text = "0";
-            }
+                if (Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.ToList().Count > 0)
+                {
 
-            lblMaxGua2.Text = lblMaxGua.Text;
-            lblTotalNumber2.Text = lblTotalNumber.Text;
+                    lblMaxGua.Text = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Max(p => p.GuaCount).ToString();
+                    lblTotalNumber.Text = Hou3Select350YiLouSetFormScoreAndChuShouBusiness.model350List.Count.ToString();
+
+                }
+                else
+                {
+                    lblMaxGua.Text = "0";
+                    lblTotalNumber.Text = "0";
+                }
+
+                lblMaxGua2.Text = lblMaxGua.Text;
+                lblTotalNumber2.Text = lblTotalNumber.Text;
+            }
         }
         public void InitOfferNumber()
         {
@@ -516,23 +592,26 @@ namespace CpCodeSelect.Score
         /// <summary>
         /// 从文件中获取最新的号码
         /// </summary>
-        public void GetCodeFromFile()
+        public async void GetCodeFromFile()
         {
-            lock (lockObj)
+            await Task.Run(() =>
             {
-                Thread.Sleep(1000); // 等待1000毫秒，确保文件写入完成
-                if (firstTime)
+                lock (lockObj)
                 {
-                    //如果是第一次执行,需要读取全部的号码
-                    ReadAllLine();
-                    firstTime = false;
-                    ReadFirstLineExec();
+                    Thread.Sleep(1000); // 等待1000毫秒，确保文件写入完成
+                    if (firstTime)
+                    {
+                        //如果是第一次执行,需要读取全部的号码
+                        ReadAllLine();
+                        firstTime = false;
+                        ReadFirstLineExec();
+                    }
+                    else
+                    {
+                        ReadFirstLineExec();
+                    }
                 }
-                else
-                {
-                    ReadFirstLineExec();
-                }
-            }
+            });
         }
         private void ReadFirstLineExec()
         {
@@ -730,15 +809,36 @@ namespace CpCodeSelect.Score
             recordCount++;
             string record = $"[{DateTime.Now:HH:mm:ss.fff}] 记录 #{recordCount} - {recordStr}";
 
-            // 添加到集合
-            listBoxHistory.Items.Add(record);
-
-            // 更新UI显示（只显示最近50条以避免性能问题）
-            if (listBoxHistory.Items.Count > 50)
+            if (listBoxHistory.InvokeRequired)
             {
-                listBoxHistory.Items.RemoveAt(0);
+
+                // 添加到集合
+
+                listBoxHistory.BeginInvoke((MethodInvoker)(() =>
+                {
+                    listBoxHistory.Items.Add(record);
+                    // 更新UI显示（只显示最近50条以避免性能问题）
+                    if (listBoxHistory.Items.Count > 50)
+                    {
+                        listBoxHistory.Items.RemoveAt(0);
+                    }
+                    listBoxHistory.TopIndex = listBoxHistory.Items.Count - 1; // 自动滚动到底部
+                }));
+
             }
-            listBoxHistory.TopIndex = listBoxHistory.Items.Count - 1; // 自动滚动到底部
+            else
+            {
+                // 添加到集合
+                listBoxHistory.Items.Add(record);
+
+                // 更新UI显示（只显示最近50条以避免性能问题）
+                if (listBoxHistory.Items.Count > 50)
+                {
+                    listBoxHistory.Items.RemoveAt(0);
+                }
+                listBoxHistory.TopIndex = listBoxHistory.Items.Count - 1; // 自动滚动到底部
+            }
+            
 
         }
         /// <summary>
@@ -1536,7 +1636,7 @@ namespace CpCodeSelect.Score
                         lotteryData.Index = k.CodeQiHao;
                         lotteryData.PeriodNumber = k.CodeQiHao;
                         lotteryData.WinningNumbers = k.CodeNumber;
-                        if(k.MACDResult!=null)
+                        if (k.MACDResult != null)
                         {
                             lotteryData.MACD_DEA = k.MACDResult.DEA;
                             lotteryData.MACD_DIF = k.MACDResult.DIF;
@@ -1806,6 +1906,15 @@ namespace CpCodeSelect.Score
         private void btnMoni9_Click(object sender, EventArgs e)
         {
             moni9.Show();
+        }
+
+        private void btnResfsh_Click(object sender, EventArgs e)
+        {
+            dataGridView2.DataSource = null;
+            dataGridView2.DataSource = TestInfoStatisticList;
+
+            dataGridView2.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            dataGridView2.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
         }
     }
 }

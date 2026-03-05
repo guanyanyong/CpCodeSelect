@@ -28,6 +28,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using CpCodeSelect.html;
 using CpCodeSelect.Util.Scorer156;
 using CpCodeSelect.Score156.Moni;
+using CpCodeSelect.Model.TableModel;
 
 namespace CpCodeSelect.Score
 {
@@ -53,6 +54,7 @@ namespace CpCodeSelect.Score
         private int boFangYanhuaCount = 12;
         private string apiUri = "http://127.0.0.1:5000/";
         private string DataSource = "rexguan-hp2024-01";
+        public List<TestInfoStatistic> TestInfoStatisticList = new List<TestInfoStatistic>();
         //private MoniRunZhouQiZhongScore moniRunZhouQiZhong = new MoniRunZhouQiZhongScore();
         //private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhongScore3ge5AfterZhong();
 
@@ -80,26 +82,26 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhongScore156AllChuShou2 moni5 = new MoniRunZhouQiZhongScore156AllChuShou2();
         private MoniRunZhouQiZhongScore156AllChuShou2 moni6 = new MoniRunZhouQiZhongScore156AllChuShou2();
         */
-        
-        private MoniRunZhouQiZhong156Score35ge1 moni35ge1 = new MoniRunZhouQiZhong156Score35ge1();
 
-        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong156Score35ge1();
-        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhong156Score35ge1();
-        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhong156Score35ge1();
-        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhong156Score35ge1();
-        private MoniRunZhouQiZhong156Score35ge1 sangesanyilou0 = new MoniRunZhouQiZhong156Score35ge1();
-        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong156Score35ge1();
-        private MoniRunZhouQiZhong156Score35ge1 moni1 = new MoniRunZhouQiZhong156Score35ge1();
-        private MoniRunZhouQiZhong156Score35ge1 moni2 = new MoniRunZhouQiZhong156Score35ge1();
-        private MoniRunZhouQiZhong156Score35ge1 moni3 = new MoniRunZhouQiZhong156Score35ge1();
-        private MoniRunZhouQiZhong156Score35ge1 moni4 = new MoniRunZhouQiZhong156Score35ge1();
-        private MoniRunZhouQiZhong156Score35ge1 moni5 = new MoniRunZhouQiZhong156Score35ge1();
-        private MoniRunZhouQiZhong156Score35ge1 moni6 = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 moni35ge1 = null;
 
-        
-        private MoniRunZhouQiZhong156Score35ge1 moni6ge6 = new MoniRunZhouQiZhong156Score35ge1();
-        private MoniRunZhouQiZhong156Score35ge1 moni6ge6a = new MoniRunZhouQiZhong156Score35ge1();
-        
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScore3ge5AfterZhong = null;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongLianXu8 = null;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongLianXu3 = null;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScoreAllChuShou = null;
+        private MoniRunZhouQiZhong156Score35ge1 sangesanyilou0 = null;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhong3Ge3 = null;
+        private MoniRunZhouQiZhong156Score35ge1 moni1 = null;
+        private MoniRunZhouQiZhong156Score35ge1 moni2 = null;
+        private MoniRunZhouQiZhong156Score35ge1 moni3 = null;
+        private MoniRunZhouQiZhong156Score35ge1 moni4 = null;
+        private MoniRunZhouQiZhong156Score35ge1 moni5 = null;
+        private MoniRunZhouQiZhong156Score35ge1 moni6 = null;
+
+
+        private MoniRunZhouQiZhong156Score35ge1 moni6ge6 = null;
+        private MoniRunZhouQiZhong156Score35ge1 moni6ge6a = null;
+
 
         /*
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni35ge1 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
@@ -129,6 +131,7 @@ namespace CpCodeSelect.Score
         int zhongHouDelete = 1500;
         public Hou3Select156YiLouSetFormScoreAndChuShou()
         {
+            InitMoni();
             InitializeComponent();
             Init();
             txtFIlePath.Text = filePath;
@@ -136,6 +139,28 @@ namespace CpCodeSelect.Score
             moniKill3.Hide();
             button1.Focus();
             TabControlInit();
+
+        }
+        private void InitMoni()
+        {
+            moni35ge1 = new MoniRunZhouQiZhong156Score35ge1(this);
+
+            moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong156Score35ge1(this);
+            moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhong156Score35ge1(this);
+            sangesanyilou0 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni1 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni2 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni3 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni4 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni5 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni6 = new MoniRunZhouQiZhong156Score35ge1(this);
+
+
+            moni6ge6 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni6ge6a = new MoniRunZhouQiZhong156Score35ge1(this);
         }
         private void TabControlInit()
         {
@@ -320,6 +345,10 @@ namespace CpCodeSelect.Score
             SetForm();
             //AddToLogFileZu6Kill1(code, "Hou2Select50.txt");
             AddToLogFileHou2Select50Auto(code);
+            if (moniRunZhouQiZhongScore3ge5AfterZhong == null)
+            {
+                InitMoni();
+            }
             moniRunZhouQiZhongScore3ge5AfterZhong.Run(code);
             moniRunZhouQiZhongLianXu8.Run(code);
             //moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
@@ -569,7 +598,8 @@ namespace CpCodeSelect.Score
                     {
                         ReadFirstLineExec();
                     }
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     ExceptionList.Add(ex);
                 }
@@ -959,6 +989,7 @@ namespace CpCodeSelect.Score
             dataGridView1.Columns["IsShow"].Visible = false;
             dataGridView1.Columns["NeedZhong"].Visible = false;
             dataGridView1.Columns["ZhongGount"].Visible = false;
+
             dataGridView1.Columns["ZhongBeforeGua"].Visible = false;
             dataGridView1.Columns["Zhong2BeforeGua"].Visible = false;
             dataGridView1.Columns["Zhong3BeforeGua"].Visible = false;
@@ -1577,7 +1608,7 @@ namespace CpCodeSelect.Score
                         lotteryData.Index = k.CodeQiHao;
                         lotteryData.PeriodNumber = k.CodeQiHao;
                         lotteryData.WinningNumbers = k.CodeNumber;
-                        if(k.MACDResult!=null)
+                        if (k.MACDResult != null)
                         {
                             lotteryData.MACD_DEA = k.MACDResult.DEA;
                             lotteryData.MACD_DIF = k.MACDResult.DIF;
@@ -1842,6 +1873,15 @@ namespace CpCodeSelect.Score
         private void btn6ge6a_Click(object sender, EventArgs e)
         {
             moni6ge6a.Show();
+        }
+
+        private void btnRefesh_Click(object sender, EventArgs e)
+        {
+            dataGridView2.DataSource = null;
+            dataGridView2.DataSource = TestInfoStatisticList;
+
+            dataGridView2.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            dataGridView2.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
         }
     }
 }
