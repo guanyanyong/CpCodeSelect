@@ -7,6 +7,7 @@ using CpCodeSelect.Score;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -19,8 +20,10 @@ namespace CpCodeSelect.Score156.Moni
 {
     public partial class MoniRunZhouQiZhong156Score35ge1 : Form
     {
+        private static Object lockObj = new Object();
         private MoniRunZhouQiZhong156Score35ge1MoniBusiness moniBusiness;
         private Hou3Select156YiLouSetFormScoreAndChuShou parentForm = null;
+        private int LeftRecordCount = -1;
         Code beforeCode = null;
         Code currentCode = null;
         public MoniRunZhouQiZhong156Score35ge1(Hou3Select156YiLouSetFormScoreAndChuShou form):this()
@@ -31,12 +34,34 @@ namespace CpCodeSelect.Score156.Moni
         {
             InitializeComponent();
             moniBusiness=new MoniRunZhouQiZhong156Score35ge1MoniBusiness(CustomLogMethod, Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List);
-            dataGridView1.DataSource = moniBusiness.yilouStatisticList;
+            dataGridView1.DataSource = moniBusiness.yilouStatisticList; 
+            var needDeleteMoniFormRecord = ConfigurationManager.AppSettings["NeedDeleteMoniFormRecord"];
+            if (!string.IsNullOrEmpty(needDeleteMoniFormRecord))
+            {
+                int.TryParse(needDeleteMoniFormRecord, out LeftRecordCount);
+            }
         }
+
         public void Run(Code code)
         {
+            if (dataGridView1.InvokeRequired)
+            {
+                dataGridView1.BeginInvoke((MethodInvoker)(() =>
+                {
+                    RunCode(code);
+                }));
+            }
+            else
+            {
+                RunCode(code);
+            }
+        }
+
+
+        public void RunCode(Code code)
+        {
             currentCode = code;
-            if (beforeCode ==null || beforeCode.CodeQiHao != code.CodeQiHao)
+            if (beforeCode == null || beforeCode.CodeQiHao != code.CodeQiHao)
             {
                 beforeCode = code;
                 //当上一期期号和当前期号不一样时，才进行计算
@@ -66,14 +91,42 @@ namespace CpCodeSelect.Score156.Moni
         public void CustomLogMethod(string message)
         {
             //最新消息排在最上面
-            listBoxExeMsg.Items.Insert(0,message);
+            if (listBoxExeMsg.InvokeRequired)
+            {
+                listBoxExeMsg.BeginInvoke((MethodInvoker)(() =>
+                {
+
+                    CustomLogMethodInstance(message);
+                }));
+            }
+            else
+            {
+                CustomLogMethodInstance(message);
+            }
+        }
+
+        public void CustomLogMethodInstance(string message)
+        {
+            //最新消息排在最上面
+            listBoxExeMsg.Items.Insert(0, message);
+            if (LeftRecordCount > 0)
+            {
+                while (listBoxExeMsg.Items.Count > LeftRecordCount)
+                {
+                    listBoxExeMsg.Items.RemoveAt(listBoxExeMsg.Items.Count - 1);
+                }
+            }
+
             listBoxExeMsg.TopIndex = 0; // 自动滚动到底部
             //listBoxExeMsg.TopIndex = listBoxExeMsg.Items.Count - 1; // 自动滚动到底部
             SetFormTxtValue();
-            using (var writer = new StreamWriter("moni3-3yilou1.txt", true))
+            lock (lockObj)
             {
-                writer.WriteLine(message); 
-                writer.Flush();
+                using (var writer = new StreamWriter("moni35ge1.txt", true))
+                {
+                    writer.WriteLine(message);
+                    writer.Flush();
+                }
             }
         }
 

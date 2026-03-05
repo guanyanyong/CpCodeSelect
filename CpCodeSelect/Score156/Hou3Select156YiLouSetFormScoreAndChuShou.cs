@@ -83,24 +83,24 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhongScore156AllChuShou2 moni6 = new MoniRunZhouQiZhongScore156AllChuShou2();
         */
 
-        private MoniRunZhouQiZhong156Score35ge1 moni35ge1 = null;
+        private MoniRunZhouQiZhong156Score35ge1 moni35ge1;
 
-        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScore3ge5AfterZhong = null;
-        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongLianXu8 = null;
-        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongLianXu3 = null;
-        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScoreAllChuShou = null;
-        private MoniRunZhouQiZhong156Score35ge1 sangesanyilou0 = null;
-        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhong3Ge3 = null;
-        private MoniRunZhouQiZhong156Score35ge1 moni1 = null;
-        private MoniRunZhouQiZhong156Score35ge1 moni2 = null;
-        private MoniRunZhouQiZhong156Score35ge1 moni3 = null;
-        private MoniRunZhouQiZhong156Score35ge1 moni4 = null;
-        private MoniRunZhouQiZhong156Score35ge1 moni5 = null;
-        private MoniRunZhouQiZhong156Score35ge1 moni6 = null;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScore3ge5AfterZhong;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongLianXu8;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongLianXu3;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScoreAllChuShou;
+        private MoniRunZhouQiZhong156Score35ge1 sangesanyilou0;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhong3Ge3;
+        private MoniRunZhouQiZhong156Score35ge1 moni1;
+        private MoniRunZhouQiZhong156Score35ge1 moni2;
+        private MoniRunZhouQiZhong156Score35ge1 moni3;
+        private MoniRunZhouQiZhong156Score35ge1 moni4;
+        private MoniRunZhouQiZhong156Score35ge1 moni5;
+        private MoniRunZhouQiZhong156Score35ge1 moni6;
 
 
-        private MoniRunZhouQiZhong156Score35ge1 moni6ge6 = null;
-        private MoniRunZhouQiZhong156Score35ge1 moni6ge6a = null;
+        private MoniRunZhouQiZhong156Score35ge1 moni6ge6;
+        private MoniRunZhouQiZhong156Score35ge1 moni6ge6a;
 
 
         /*
@@ -306,10 +306,36 @@ namespace CpCodeSelect.Score
             var codeList = FileAnalysis.GetCodeListByCodeListStr(codeStrList);
             if (codeList != null && codeList.Count > 0)
             {
+                if (progressBar1.InvokeRequired)
+                {
+                    progressBar1.BeginInvoke(new Action(() =>
+                    {
+                        progressBar1.Maximum = codeList.Count+1;
+                    }));
+                }
+                else
+                {
+                    progressBar1.Maximum = codeList.Count+1;
+                }
+
                 AddRecord("第一次执行,需要从底下最后一条开始执行记录");
                 int recordNumber = 1;
                 for (int i = codeList.Count - 1; i >= 0; i--)
                 {
+                    if (progressBar1.InvokeRequired)
+                    {
+                        progressBar1.BeginInvoke(new Action(() =>
+                        {
+                            progressBar1.Value = codeList.Count - i;
+
+                            lblNumber.Text = $"{codeList.Count - i}/{codeList.Count}";
+                        }));
+                    }
+                    else
+                    {
+                        progressBar1.Value = codeList.Count - i;
+                        lblNumber.Text = $"{codeList.Count - i}/{codeList.Count}";
+                    }
 
                     currentCode = codeList[i];
                     currentCode.PreCode = lastCode;
@@ -461,11 +487,28 @@ namespace CpCodeSelect.Score
         }
         public void SetForm()
         {
-            if (Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.ToList().Count > 0)
+            if (lblMaxGua.InvokeRequired)
+            {
+                lblMaxGua.BeginInvoke((MethodInvoker)(() =>
+                {
+                    SetFormInstance();
+                }));
+            }
+            else
+            {
+                SetFormInstance();
+            }
+
+        }
+
+        private void SetFormInstance()
+        {
+            var list = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.ToList();
+            if (list.Count > 0)
             {
 
-                lblMaxGua.Text = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.Max(p => p.GuaCount).ToString();
-                lblTotalNumber.Text = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.Count.ToString();
+                lblMaxGua.Text = list.Max(p => p.GuaCount).ToString();
+                lblTotalNumber.Text = list.Count.ToString();
 
             }
             else
@@ -532,7 +575,7 @@ namespace CpCodeSelect.Score
                 string fileName = "Hou2Select50YiLouSet.txt";
                 using (var writer = new StreamWriter(fileName, true))
                 {
-                    var list = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false).ToList();
+                    var list = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.ToList().Where(p => p.NeedZhong == false).ToList();
                     if (list.Count > 0)
                     {
 
@@ -540,7 +583,7 @@ namespace CpCodeSelect.Score
                         if (maxNumber >= boFangYanhuaCount)
                         {
                             needFlush = true;
-                            Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.GuaCount == maxNumber).ToList().ForEach(recode =>
+                            Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.ToList().Where(p => p.GuaCount == maxNumber).ToList().ForEach(recode =>
                             {
                                 writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}，号码：{string.Join(" ", recode.Number156)}");
                                 //writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}");
@@ -580,30 +623,33 @@ namespace CpCodeSelect.Score
         /// <summary>
         /// 从文件中获取最新的号码
         /// </summary>
-        public void GetCodeFromFile()
+        public async void GetCodeFromFile()
         {
-            lock (lockObj)
+            await Task.Run(() =>
             {
-                Thread.Sleep(3000); // 等待1000毫秒，确保文件写入完成
-                try
+                lock (lockObj)
                 {
-                    if (firstTime)
-                    {
-                        //如果是第一次执行,需要读取全部的号码
-                        ReadAllLine();
-                        firstTime = false;
-                        ReadFirstLineExec();
-                    }
-                    else
-                    {
-                        ReadFirstLineExec();
-                    }
+                    Thread.Sleep(3000); // 等待1000毫秒，确保文件写入完成
+                    //try
+                    //{
+                        if (firstTime)
+                        {
+                            //如果是第一次执行,需要读取全部的号码
+                            ReadAllLine();
+                            firstTime = false;
+                            ReadFirstLineExec();
+                        }
+                        else
+                        {
+                            ReadFirstLineExec();
+                        }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    ExceptionList.Add(ex);
+                    //}
                 }
-                catch (Exception ex)
-                {
-                    ExceptionList.Add(ex);
-                }
-            }
+            });
         }
         private void ReadFirstLineExec()
         {
@@ -800,7 +846,20 @@ namespace CpCodeSelect.Score
         {
             recordCount++;
             string record = $"[{DateTime.Now:HH:mm:ss.fff}] 记录 #{recordCount} - {recordStr}";
+            if (listBoxHistory.InvokeRequired)
+            {
+                listBoxHistory.BeginInvoke((MethodInvoker)(() => { AddRecordToListBoxHistory(record); }));
+            }
+            else
+            {
+                AddRecordToListBoxHistory(record);
+            }
 
+
+        }
+
+        private void AddRecordToListBoxHistory(string record)
+        {
             // 添加到集合
             listBoxHistory.Items.Add(record);
 
@@ -810,7 +869,6 @@ namespace CpCodeSelect.Score
                 listBoxHistory.Items.RemoveAt(0);
             }
             listBoxHistory.TopIndex = listBoxHistory.Items.Count - 1; // 自动滚动到底部
-
         }
         /// <summary>
         /// 清除操作历史列表
@@ -1877,6 +1935,19 @@ namespace CpCodeSelect.Score
 
         private void btnRefesh_Click(object sender, EventArgs e)
         {
+            RefershGridView();
+        }
+
+        private void btnClearList2_Click(object sender, EventArgs e)
+        {
+            TestInfoStatisticList.Clear();
+            RefershGridView();
+
+        }
+
+        private void RefershGridView()
+        {
+
             dataGridView2.DataSource = null;
             dataGridView2.DataSource = TestInfoStatisticList;
 

@@ -276,12 +276,12 @@ namespace CpCodeSelect.Score
                 {
                     progressBar1.BeginInvoke(new Action(() =>
                     {
-                        progressBar1.Maximum = codeList.Count;
+                        progressBar1.Maximum = codeList.Count + 1;
                     }));
                 }
                 else
                 {
-                    progressBar1.Maximum = codeList.Count;
+                    progressBar1.Maximum = codeList.Count+1;
                 }
 
                 AddRecord("第一次执行,需要从底下最后一条开始执行记录");
@@ -785,7 +785,7 @@ namespace CpCodeSelect.Score
                 StartMonitoring(filePath);
             }
         }
-
+         
 
         private void btnGetLast10record_Click(object sender, EventArgs e)
         {
@@ -1910,11 +1910,23 @@ namespace CpCodeSelect.Score
 
         private void btnResfsh_Click(object sender, EventArgs e)
         {
+            RefeshGridView();
+        }
+
+        private void btnClearList_Click(object sender, EventArgs e)
+        {
+            TestInfoStatisticList.Clear();
+            RefeshGridView();
+        }
+
+        private void RefeshGridView()
+        {
             dataGridView2.DataSource = null;
             dataGridView2.DataSource = TestInfoStatisticList;
 
             dataGridView2.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             dataGridView2.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
         }
     }
 }

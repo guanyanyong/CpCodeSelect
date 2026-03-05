@@ -340,9 +340,17 @@ namespace CpCodeSelect.Business.Score.Moni
         /// </summary>
         public void Select156AndStartCalc(Code code, bool zhongHouDelete = false)
         {
+            if (TotalGua >= 1)
+            {
+                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，已挂,不再投注。");
+                return;
+            }
+
             var list2 = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List;
             if(model350List == null || model350List.Count == 0) model350List = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List;
-            var list = model350List.Where(p => p.Score > 70).ToList();
+            var middleList = model350List.ToList();
+            if (middleList.Count == 0) return;
+            var list = middleList.Where(p => p.Score > 70).ToList();
             Hou3Select156_ZhouQiZhongScore record = null;
             if (list.Count == 0) return;
             //最多查找5次,如果5次没有找到合适的记录就不投注

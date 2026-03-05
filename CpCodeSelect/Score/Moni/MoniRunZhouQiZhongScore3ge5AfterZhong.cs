@@ -99,7 +99,7 @@ namespace CpCodeSelect.Score.Moni
             {
                 CustomLogMethodInstance(message);
             }
-        }
+        } 
 
         private void CustomLogMethodInstance(string message)
         {

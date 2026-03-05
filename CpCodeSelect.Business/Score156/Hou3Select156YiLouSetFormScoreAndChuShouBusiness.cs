@@ -151,7 +151,7 @@ namespace CpCodeSelect.Business.Score
         public static new void CalcExist156Code(Code code)
         {
             var hou3 = code.GetHou3String();
-            foreach (var model in model350List)
+            foreach (var model in model350List.ToList())
             {
                 CalcCode(code, model, hou3);
             }
