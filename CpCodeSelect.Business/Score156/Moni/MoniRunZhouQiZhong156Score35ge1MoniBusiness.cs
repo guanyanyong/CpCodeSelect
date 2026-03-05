@@ -352,8 +352,12 @@ namespace CpCodeSelect.Business.Score.Moni
             foundRecord = true;
             currentExecute = record;
 
+
             // 没有找到合适的记录,本期不投注
             if (!foundRecord) return;
+
+            //选择后 从列表中删除，这样不会选择重复
+            Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.Remove(record);
 
             if (record != null && record.Number156.Count > 0)
             {

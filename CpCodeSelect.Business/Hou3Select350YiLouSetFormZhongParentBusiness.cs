@@ -197,7 +197,6 @@ namespace CpCodeSelect
 
             if (AllCode != null && AllCode.Count > 270)
             {
-                int count = 0;
                 //while (true)
                 //{
                 var takeCodeList = new List<string>();

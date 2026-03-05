@@ -49,6 +49,8 @@
             this.button12 = new System.Windows.Forms.Button();
             this.btnMoni2 = new System.Windows.Forms.Button();
             this.btnMoni3 = new System.Windows.Forms.Button();
+            this.btn6ge6 = new System.Windows.Forms.Button();
+            this.txt1ge35 = new System.Windows.Forms.Button();
             this.btnMoni1 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -177,7 +179,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button9 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txt1ge35 = new System.Windows.Forms.Button();
+            this.btn6ge6a = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -380,6 +382,8 @@
             this.panel7.Controls.Add(this.button12);
             this.panel7.Controls.Add(this.btnMoni2);
             this.panel7.Controls.Add(this.btnMoni3);
+            this.panel7.Controls.Add(this.btn6ge6a);
+            this.panel7.Controls.Add(this.btn6ge6);
             this.panel7.Controls.Add(this.txt1ge35);
             this.panel7.Controls.Add(this.btnMoni1);
             this.panel7.Controls.Add(this.button11);
@@ -456,6 +460,26 @@
             this.btnMoni3.UseVisualStyleBackColor = true;
             this.btnMoni3.Click += new System.EventHandler(this.btnMoni3_Click);
             // 
+            // btn6ge6
+            // 
+            this.btn6ge6.Location = new System.Drawing.Point(187, 66);
+            this.btn6ge6.Name = "btn6ge6";
+            this.btn6ge6.Size = new System.Drawing.Size(106, 38);
+            this.btn6ge6.TabIndex = 9;
+            this.btn6ge6.Text = "6个6";
+            this.btn6ge6.UseVisualStyleBackColor = true;
+            this.btn6ge6.Click += new System.EventHandler(this.btn6ge6_Click);
+            // 
+            // txt1ge35
+            // 
+            this.txt1ge35.Location = new System.Drawing.Point(299, 66);
+            this.txt1ge35.Name = "txt1ge35";
+            this.txt1ge35.Size = new System.Drawing.Size(106, 38);
+            this.txt1ge35.TabIndex = 9;
+            this.txt1ge35.Text = "1ge35";
+            this.txt1ge35.UseVisualStyleBackColor = true;
+            this.txt1ge35.Click += new System.EventHandler(this.txt1ge35_Click);
+            // 
             // btnMoni1
             // 
             this.btnMoni1.Location = new System.Drawing.Point(375, 17);
@@ -508,7 +532,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(254, 19);
+            this.label6.Location = new System.Drawing.Point(158, 19);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(106, 30);
             this.label6.TabIndex = 6;
@@ -516,7 +540,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(569, 66);
+            this.button4.Location = new System.Drawing.Point(585, 66);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(160, 38);
             this.button4.TabIndex = 7;
@@ -526,7 +550,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(375, 66);
+            this.button3.Location = new System.Drawing.Point(411, 66);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(168, 38);
             this.button3.TabIndex = 7;
@@ -2205,15 +2229,15 @@
             this.panel2.Size = new System.Drawing.Size(1410, 612);
             this.panel2.TabIndex = 10;
             // 
-            // txt1ge35
+            // btn6ge6a
             // 
-            this.txt1ge35.Location = new System.Drawing.Point(236, 63);
-            this.txt1ge35.Name = "txt1ge35";
-            this.txt1ge35.Size = new System.Drawing.Size(106, 38);
-            this.txt1ge35.TabIndex = 9;
-            this.txt1ge35.Text = "1ge35";
-            this.txt1ge35.UseVisualStyleBackColor = true;
-            this.txt1ge35.Click += new System.EventHandler(this.txt1ge35_Click);
+            this.btn6ge6a.Location = new System.Drawing.Point(263, 17);
+            this.btn6ge6a.Name = "btn6ge6a";
+            this.btn6ge6a.Size = new System.Drawing.Size(106, 38);
+            this.btn6ge6a.TabIndex = 9;
+            this.btn6ge6a.Text = "6个6-2";
+            this.btn6ge6a.UseVisualStyleBackColor = true;
+            this.btn6ge6a.Click += new System.EventHandler(this.btn6ge6a_Click);
             // 
             // Hou3Select156YiLouSetFormScoreAndChuShou
             // 
@@ -2446,6 +2470,8 @@
         private System.Windows.Forms.Button btnMoni6;
         private System.Windows.Forms.Button btnMoni5;
         private System.Windows.Forms.Button txt1ge35;
+        private System.Windows.Forms.Button btn6ge6;
+        private System.Windows.Forms.Button btn6ge6a;
     }
 }
 

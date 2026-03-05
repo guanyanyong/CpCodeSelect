@@ -229,7 +229,6 @@ namespace CpCodeSelect.Business.Score
 
             if (AllCode != null && AllCode.Count > RunSkipNumber)
             {
-                int count = 0;
                 //while (true)
                 //{
                 var takeCodeList = new List<string>();

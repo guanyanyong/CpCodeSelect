@@ -40,7 +40,7 @@ namespace CpCodeSelect.Business.Hou2Selct27Three18
         /// 初始化号码
         /// </summary>
         /// <param name="code"></param>
-        public static new void InitCode(Code code, bool zhongHouDelete = false)
+        public static void InitCode(Code code, bool zhongHouDelete = false)
         {
             code.Wan = new PositionNumber
             {

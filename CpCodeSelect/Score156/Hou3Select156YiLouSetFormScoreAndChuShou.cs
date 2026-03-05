@@ -80,6 +80,7 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhongScore156AllChuShou2 moni5 = new MoniRunZhouQiZhongScore156AllChuShou2();
         private MoniRunZhouQiZhongScore156AllChuShou2 moni6 = new MoniRunZhouQiZhongScore156AllChuShou2();
         */
+        
         private MoniRunZhouQiZhong156Score35ge1 moni35ge1 = new MoniRunZhouQiZhong156Score35ge1();
 
         private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong156Score35ge1();
@@ -95,8 +96,30 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhong156Score35ge1 moni5 = new MoniRunZhouQiZhong156Score35ge1();
         private MoniRunZhouQiZhong156Score35ge1 moni6 = new MoniRunZhouQiZhong156Score35ge1();
 
+        
+        private MoniRunZhouQiZhong156Score35ge1 moni6ge6 = new MoniRunZhouQiZhong156Score35ge1();
+        private MoniRunZhouQiZhong156Score35ge1 moni6ge6a = new MoniRunZhouQiZhong156Score35ge1();
+        
+
+        /*
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni35ge1 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong sangesanyilou0 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni1 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni2 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni3 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni4 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni5 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
 
 
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6a = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
+        */
 
 
         private Hou3Select156_ZhouQiZhongScore currentCalcKLineDate = null;
@@ -313,6 +336,9 @@ namespace CpCodeSelect.Score
             moni6.Run(code);
 
             moni35ge1.Run(code);
+
+            moni6ge6.Run(code);
+            moni6ge6a.Run(code);
 
             //把记录添加到界面上 异步方式
             //AddRecordToPage(code);
@@ -1806,6 +1832,16 @@ namespace CpCodeSelect.Score
         private void txt1ge35_Click(object sender, EventArgs e)
         {
             moni35ge1.Show();
+        }
+
+        private void btn6ge6_Click(object sender, EventArgs e)
+        {
+            moni6ge6.Show();
+        }
+
+        private void btn6ge6a_Click(object sender, EventArgs e)
+        {
+            moni6ge6a.Show();
         }
     }
 }
