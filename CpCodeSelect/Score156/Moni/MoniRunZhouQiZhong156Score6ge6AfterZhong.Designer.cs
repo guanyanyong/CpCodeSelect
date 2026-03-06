@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.listBoxExeMsg = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnYinChang = new System.Windows.Forms.Button();
@@ -56,6 +56,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.YilouCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsZhouQiZhongHou = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,7 +154,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label5.Location = new System.Drawing.Point(673, 63);
+            this.label5.Location = new System.Drawing.Point(467, 60);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(110, 21);
             this.label5.TabIndex = 11;
@@ -163,7 +164,7 @@
             // 
             this.txtCurrentAmount.Enabled = false;
             this.txtCurrentAmount.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.txtCurrentAmount.Location = new System.Drawing.Point(789, 60);
+            this.txtCurrentAmount.Location = new System.Drawing.Point(583, 60);
             this.txtCurrentAmount.Name = "txtCurrentAmount";
             this.txtCurrentAmount.Size = new System.Drawing.Size(100, 29);
             this.txtCurrentAmount.TabIndex = 12;
@@ -204,7 +205,7 @@
             this.txtLiushui.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.txtLiushui.Location = new System.Drawing.Point(551, 105);
             this.txtLiushui.Name = "txtLiushui";
-            this.txtLiushui.Size = new System.Drawing.Size(306, 29);
+            this.txtLiushui.Size = new System.Drawing.Size(208, 29);
             this.txtLiushui.TabIndex = 12;
             this.txtLiushui.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -282,30 +283,30 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.YilouCount,
             this.IsZhouQiZhongHou});
             this.dataGridView1.Location = new System.Drawing.Point(1027, 527);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(421, 291);
             this.dataGridView1.TabIndex = 15;
@@ -325,6 +326,17 @@
             this.IsZhouQiZhongHou.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.IsZhouQiZhongHou.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.IsZhouQiZhongHou.Width = 120;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.button1.Location = new System.Drawing.Point(786, 60);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(161, 121);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "添加至统计表中";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MoniRunZhouQiZhong156Score6ge6AfterZhong
             // 
@@ -350,6 +362,7 @@
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.btnCurrent350Code);
             this.Controls.Add(this.btnBefore350Code);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnYinChang);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label2);
@@ -390,5 +403,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn YilouCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsZhouQiZhongHou;
+        private System.Windows.Forms.Button button1;
     }
 }

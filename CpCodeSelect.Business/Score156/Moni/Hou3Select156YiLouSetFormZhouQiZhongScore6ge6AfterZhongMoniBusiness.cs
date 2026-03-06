@@ -52,13 +52,15 @@ namespace CpCodeSelect.Business.Score.Moni
         /// 每轮的投注矩阵,金额
         /// </summary>
         private int[,] LunBeiAmountMatrix = {
-                        { 2,      4,      6,      9,      12, 16,21, },
-                        {          27,     34,     42, 52,     63,   76,     92, },
-                        {        111,  133,    160,    192, 230,    275,  328,},
-                        {       391,    466,    555, 661,  786,    935,    1112, },
-                        {     1322,   1571, 1867,   2218,   2635,   3130,   3717,},
-                        {4414, 5241,   6223,   7389,   8773, 10416,  12366, },
-                        { 14681,  17429,  20691,0,0,0,0}
+                        { 2,      4,      6,      9,      12,  },
+                        {     16,21,     27,     34,     42,  },
+                        {   52,     63,   76,     92,     111,  },
+                        {133,    160,    192, 230,    275,   },
+                        {     328,  391,    466,    555, 661,  },
+                        {    786,    935,    1112,  1322,   1571, },
+                        { 1867,   2218,   2635,   3130,   3717,},
+                        {4414, 5241,   6223,   7389,   8773,  },
+                        { 10416,  12366,14681,  17429,  20691,}
 
 
                 };
@@ -67,24 +69,28 @@ namespace CpCodeSelect.Business.Score.Moni
         /// </summary>
         private decimal[,] LunAmountMatrix =
                     {
-                {0.31M, 0.62M,0.94M, 1.40M,1.87M,2.5M,  3.28M,          },
-                { 4.21M,5.3M,6.55M,8.11M,9.83M,  11.86M,14.35M,            },
-                {17.32M,20.75M,24.96M, 29.95M,35.88M,42.9M,51.17M,     },
-                {61.00M, 72.7M,86.58M, 103.12M,122.62M,145.86M, 173.47M,       },
-                {206.23M,245.08M,91.25M,346.01M, 411.06M,488.28M,579.85M,},
-                {2688.58M,817.6M, 970.79M,1152.68M,1368.59M,1624.9M,1929.1M},
-                { 2290.24M,2718.92M,3227.8M,0M,0M,0M,0M}
+                {0.31M, 0.62M,0.94M, 1.40M,1.87M,          },
+                { 2.5M,  3.28M,4.21M,5.3M,6.55M,            },
+                {8.11M,9.83M,  11.86M,14.35M,17.32M,     },
+                { 20.75M,24.96M, 29.95M,35.88M,42.9M,},
+                {51.17M,61.00M, 72.7M,86.58M, 103.12M,     },
+                { 122.62M,145.86M, 173.47M, 206.23M,245.08M, },
+                {91.25M,346.01M, 411.06M,488.28M,579.85M,},
+                {2688.58M,817.6M, 970.79M,1152.68M,1368.59M,},
+                { 1624.9M,1929.1M,2290.24M,2718.92M,3227.8M}
 
                 };
         private decimal[,] ZhongJiangAmountMatrix =
                     {
-                {1.98M, 3.96M,5.94M, 8.91M,11.88M,15.84M, 20.79M,                  },
-                {26.73M,33.66M,41.58M, 51.48M,62.37M,75.24M,91.08M,              },
-                { 109.89M, 131.67M,158.4M, 190.08M, 227.7M,272.25M,324.72M,          },
-                {387.09M, 461.34M,549.45M,654.39M,778.14M,925.65M, 1100.88M,          },
-                {1308.78M,1555.29M,1848.33M,2195.82M, 2608.65M,3098.7M,3679.83M,      },
-                { 4369.86M,5188.59M, 6160.77M,7315.11M,8685.27M, 10311.84M,12242.34M,   },
-                { 14534.19M,17254.71M,20484.09M,0M,0M,0M,0M}
+                {1.98M, 3.96M,5.94M, 8.91M,11.88M,                  },
+                {15.84M, 20.79M,26.73M,33.66M,41.58M,              },
+                {  51.48M,62.37M,75.24M,91.08M,109.89M,          },
+                { 131.67M,158.4M, 190.08M, 227.7M,272.25M,},
+                {324.72M, 387.09M, 461.34M,549.45M,654.39M,          },
+                {778.14M,925.65M, 1100.88M,1308.78M,1555.29M,     },
+                { 1848.33M,2195.82M, 2608.65M,3098.7M,3679.83M, },
+                { 4369.86M,5188.59M, 6160.77M,7315.11M,8685.27M,    },
+                { 10311.84M,12242.34M,14534.19M,17254.71M,20484.09M,}
 
                 };
         /// <summary>
@@ -114,7 +120,7 @@ namespace CpCodeSelect.Business.Score.Moni
         /// <summary>
         /// 总轮次
         /// </summary>
-        public int TotalLun { get; set; } = 5;
+        public int TotalLun { get; set; } = 7;
 
         /// <summary>
         /// 当前上号的位置
@@ -174,6 +180,12 @@ namespace CpCodeSelect.Business.Score.Moni
         /// <param name="model"></param>
         public void CalcCode(Code code)
         {
+            if (TotalGua >= 1)
+            {
+                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，已挂,不再投注。");
+                return;
+            }
+
             List<PositionNumber> list = new List<PositionNumber>();
             if (this.model350List == null || model350List.Count == 0)
             {
@@ -217,7 +229,7 @@ namespace CpCodeSelect.Business.Score.Moni
                         //执行中,中出
                         TotalZhong++;
                         var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, GuaCount - 1];
-                        int zhongjiangqi = (CurrentLun - 1) * 7 + GuaCount;
+                        int zhongjiangqi = (CurrentLun - 1) * 5 + GuaCount;
                         yilouStatisticList[zhongjiangqi - 1].TotalCount = yilouStatisticList[zhongjiangqi - 1].TotalCount + 1;
                         TotalResult = TotalResult + zhongjiangAmount;
                         //LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
@@ -233,16 +245,16 @@ namespace CpCodeSelect.Business.Score.Moni
                     {
                         //执行中，未中出
                         GuaCount++;
-                        if (GuaCount <= 7)
+                        if (GuaCount <= 5)
                         {
-                            //挂7说明挂了6次
+                            //挂5说明挂了4次
                             IsRunning = true;
                             CurrentaQi = GuaCount;
                             StartCalc(code);
                         }
-                        else if (GuaCount == 8)
+                        else if (GuaCount == 6)
                         {
-                            //挂8说明挂了7次,当前轮结束,开始下一轮
+                            //挂6说明挂了5次,当前轮结束,开始下一轮
                             IsRunning = false;
                             CurrentLun++;
                             CurrentaQi = 1;
@@ -285,6 +297,11 @@ namespace CpCodeSelect.Business.Score.Moni
         /// </summary>
         public void Select350AndStartCalc(Code code)
         {
+            if (TotalGua >= 1)
+            {
+                LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，已挂,不再投注。");
+                return;
+            }
             //list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.
             if (CurrentLun == 0) CurrentLun = 1;
             Hou3Select156_ZhouQiZhongScore getEnoughRecord = null;

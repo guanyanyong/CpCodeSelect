@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFIlePath = new System.Windows.Forms.TextBox();
@@ -176,6 +176,7 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.btnClearList2 = new System.Windows.Forms.Button();
             this.btnRefesh = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
@@ -183,12 +184,11 @@
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.chk3fen = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblNumber = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblNumber = new System.Windows.Forms.Label();
-            this.btnClearList2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -1483,14 +1483,14 @@
             this.IsChuShou,
             this.Score,
             this.ShouNumberStr});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 16F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 16F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -2232,6 +2232,17 @@
             this.panel11.Size = new System.Drawing.Size(1396, 109);
             this.panel11.TabIndex = 0;
             // 
+            // btnClearList2
+            // 
+            this.btnClearList2.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.btnClearList2.Location = new System.Drawing.Point(55, 20);
+            this.btnClearList2.Name = "btnClearList2";
+            this.btnClearList2.Size = new System.Drawing.Size(161, 63);
+            this.btnClearList2.TabIndex = 0;
+            this.btnClearList2.Text = "清空";
+            this.btnClearList2.UseVisualStyleBackColor = true;
+            this.btnClearList2.Click += new System.EventHandler(this.btnClearList2_Click);
+            // 
             // btnRefesh
             // 
             this.btnRefesh.Font = new System.Drawing.Font("微软雅黑", 14F);
@@ -2288,6 +2299,16 @@
             this.panel1.Size = new System.Drawing.Size(1410, 122);
             this.panel1.TabIndex = 9;
             // 
+            // lblNumber
+            // 
+            this.lblNumber.AutoSize = true;
+            this.lblNumber.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.lblNumber.Location = new System.Drawing.Point(556, 83);
+            this.lblNumber.Name = "lblNumber";
+            this.lblNumber.Size = new System.Drawing.Size(42, 25);
+            this.lblNumber.TabIndex = 10;
+            this.lblNumber.Text = "0/0";
+            // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(72, 76);
@@ -2326,27 +2347,6 @@
             this.panel2.Size = new System.Drawing.Size(1410, 612);
             this.panel2.TabIndex = 10;
             // 
-            // lblNumber
-            // 
-            this.lblNumber.AutoSize = true;
-            this.lblNumber.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.lblNumber.Location = new System.Drawing.Point(556, 83);
-            this.lblNumber.Name = "lblNumber";
-            this.lblNumber.Size = new System.Drawing.Size(42, 25);
-            this.lblNumber.TabIndex = 10;
-            this.lblNumber.Text = "0/0";
-            // 
-            // btnClearList2
-            // 
-            this.btnClearList2.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnClearList2.Location = new System.Drawing.Point(989, 20);
-            this.btnClearList2.Name = "btnClearList2";
-            this.btnClearList2.Size = new System.Drawing.Size(161, 63);
-            this.btnClearList2.TabIndex = 0;
-            this.btnClearList2.Text = "清空";
-            this.btnClearList2.UseVisualStyleBackColor = true;
-            this.btnClearList2.Click += new System.EventHandler(this.btnClearList2_Click);
-            // 
             // Hou3Select156YiLouSetFormScoreAndChuShou
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2356,7 +2356,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelError);
             this.Name = "Hou3Select156YiLouSetFormScoreAndChuShou";
-            this.Text = "350注积分与出手";
+            this.Text = "156注执行";
             this.tabControl1.ResumeLayout(false);
             this.TotalInfo.ResumeLayout(false);
             this.TotalInfo.PerformLayout();
