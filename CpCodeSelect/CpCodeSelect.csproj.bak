@@ -738,4 +738,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\Obfuscar.2.2.50\build\obfuscar.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Obfuscar.2.2.50\build\obfuscar.props'))" />
   </Target>
+  <Target Name='PostBuild' AfterTargets='PostBuildEvent' Condition=''$(Configuration)' == 'Release''>
+    <Exec Command=''$(Obfuscar)' obfuscar.xml' />
+  </Target>
 </Project>
