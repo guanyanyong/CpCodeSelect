@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Obfuscator>
+  <!-- 指定输入路径，即编译输出的Release文件夹 -->
+  <Var name='InPath' value='.\bin\Release' />
+  <!-- 指定混淆后文件的输出路径 -->
+  <Var name='OutPath' value='.\bin\Obfuscated' />
+  <!-- 是否保持公共API名称不变，如果你的程序是给其他程序调用的DLL，请设为true -->
+  <Var name='KeepPublicApi' value='false' />
+  <Var name='HidePrivateApi' value='true' />
+  <!-- 指定要混淆的主程序文件 -->
+  <Module file='$(InPath)\CpCodeSelect.exe' />
+</Obfuscator>
