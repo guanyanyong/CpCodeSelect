@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.listBoxExeMsg = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnYinChang = new System.Windows.Forms.Button();
@@ -57,6 +57,9 @@
             this.YilouCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsZhouQiZhongHou = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblTouZhuBei = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,7 +79,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(546, 166);
+            this.label2.Location = new System.Drawing.Point(446, 177);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 25);
             this.label2.TabIndex = 8;
@@ -85,7 +88,7 @@
             // btnYinChang
             // 
             this.btnYinChang.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnYinChang.Location = new System.Drawing.Point(953, 64);
+            this.btnYinChang.Location = new System.Drawing.Point(745, 61);
             this.btnYinChang.Name = "btnYinChang";
             this.btnYinChang.Size = new System.Drawing.Size(161, 66);
             this.btnYinChang.TabIndex = 10;
@@ -154,7 +157,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label5.Location = new System.Drawing.Point(467, 60);
+            this.label5.Location = new System.Drawing.Point(256, 13);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(110, 21);
             this.label5.TabIndex = 11;
@@ -164,7 +167,7 @@
             // 
             this.txtCurrentAmount.Enabled = false;
             this.txtCurrentAmount.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.txtCurrentAmount.Location = new System.Drawing.Point(583, 60);
+            this.txtCurrentAmount.Location = new System.Drawing.Point(372, 13);
             this.txtCurrentAmount.Name = "txtCurrentAmount";
             this.txtCurrentAmount.Size = new System.Drawing.Size(100, 29);
             this.txtCurrentAmount.TabIndex = 12;
@@ -185,7 +188,7 @@
             this.txtTotalAmount.Font = new System.Drawing.Font("微软雅黑", 12F);
             this.txtTotalAmount.Location = new System.Drawing.Point(125, 105);
             this.txtTotalAmount.Name = "txtTotalAmount";
-            this.txtTotalAmount.Size = new System.Drawing.Size(316, 29);
+            this.txtTotalAmount.Size = new System.Drawing.Size(100, 29);
             this.txtTotalAmount.TabIndex = 12;
             this.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -193,7 +196,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.label7.Location = new System.Drawing.Point(467, 108);
+            this.label7.Location = new System.Drawing.Point(256, 108);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 21);
             this.label7.TabIndex = 11;
@@ -203,9 +206,9 @@
             // 
             this.txtLiushui.Enabled = false;
             this.txtLiushui.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.txtLiushui.Location = new System.Drawing.Point(551, 105);
+            this.txtLiushui.Location = new System.Drawing.Point(340, 105);
             this.txtLiushui.Name = "txtLiushui";
-            this.txtLiushui.Size = new System.Drawing.Size(208, 29);
+            this.txtLiushui.Size = new System.Drawing.Size(100, 29);
             this.txtLiushui.TabIndex = 12;
             this.txtLiushui.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -216,14 +219,14 @@
             this.label8.ForeColor = System.Drawing.Color.Red;
             this.label8.Location = new System.Drawing.Point(546, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(536, 25);
+            this.label8.Size = new System.Drawing.Size(53, 25);
             this.label8.TabIndex = 8;
-            this.label8.Text = "6个6，评分,80分后开始打65期,之后是中后打6期,最多6轮36期";
+            this.label8.Text = "7个5";
             // 
             // btnBefore350Code
             // 
             this.btnBefore350Code.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnBefore350Code.Location = new System.Drawing.Point(1120, 64);
+            this.btnBefore350Code.Location = new System.Drawing.Point(745, 133);
             this.btnBefore350Code.Name = "btnBefore350Code";
             this.btnBefore350Code.Size = new System.Drawing.Size(161, 66);
             this.btnBefore350Code.TabIndex = 10;
@@ -234,9 +237,9 @@
             // btnCurrent350Code
             // 
             this.btnCurrent350Code.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnCurrent350Code.Location = new System.Drawing.Point(1287, 64);
+            this.btnCurrent350Code.Location = new System.Drawing.Point(912, 61);
             this.btnCurrent350Code.Name = "btnCurrent350Code";
-            this.btnCurrent350Code.Size = new System.Drawing.Size(161, 66);
+            this.btnCurrent350Code.Size = new System.Drawing.Size(161, 138);
             this.btnCurrent350Code.TabIndex = 10;
             this.btnCurrent350Code.Text = "查看当前350码";
             this.btnCurrent350Code.UseVisualStyleBackColor = true;
@@ -245,9 +248,9 @@
             // btnCopy
             // 
             this.btnCopy.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnCopy.Location = new System.Drawing.Point(1120, 136);
+            this.btnCopy.Location = new System.Drawing.Point(745, 6);
             this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(161, 66);
+            this.btnCopy.Size = new System.Drawing.Size(161, 49);
             this.btnCopy.TabIndex = 10;
             this.btnCopy.Text = "复制350码";
             this.btnCopy.UseVisualStyleBackColor = true;
@@ -283,30 +286,30 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.YilouCount,
             this.IsZhouQiZhongHou});
             this.dataGridView1.Location = new System.Drawing.Point(1027, 527);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle30;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(421, 291);
             this.dataGridView1.TabIndex = 15;
@@ -330,7 +333,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button1.Location = new System.Drawing.Point(786, 60);
+            this.button1.Location = new System.Drawing.Point(578, 57);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(161, 121);
             this.button1.TabIndex = 10;
@@ -338,11 +341,44 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.button2.Location = new System.Drawing.Point(1079, 61);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(161, 137);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "重置";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // lblTouZhuBei
+            // 
+            this.lblTouZhuBei.AutoSize = true;
+            this.lblTouZhuBei.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.lblTouZhuBei.Location = new System.Drawing.Point(157, 13);
+            this.lblTouZhuBei.Name = "lblTouZhuBei";
+            this.lblTouZhuBei.Size = new System.Drawing.Size(67, 21);
+            this.lblTouZhuBei.TabIndex = 16;
+            this.lblTouZhuBei.Text = "投注0倍";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("微软雅黑", 12F);
+            this.label14.Location = new System.Drawing.Point(41, 13);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(110, 21);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "当前投注倍数:";
+            // 
             // MoniRunZhouQiZhong156Score6ge6AfterZhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1503, 852);
+            this.Controls.Add(this.lblTouZhuBei);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txt350Code);
             this.Controls.Add(this.txtCurrentAmount);
@@ -363,12 +399,13 @@
             this.Controls.Add(this.btnCurrent350Code);
             this.Controls.Add(this.btnBefore350Code);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnYinChang);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listBoxExeMsg);
             this.Name = "MoniRunZhouQiZhong156Score6ge6AfterZhong";
-            this.Text = "模拟执行6个6-156注 中后打6期共36期";
+            this.Text = "模拟执行35";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MoniRunDaXiao_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -404,5 +441,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn YilouCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsZhouQiZhongHou;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label lblTouZhuBei;
+        private System.Windows.Forms.Label label14;
     }
 }

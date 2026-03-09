@@ -23,14 +23,16 @@ namespace CpCodeSelect.Business.Score
         /// </summary>
         public new static List<Hou3Select156_ZhouQiZhongScore> model350List = new List<Hou3Select156_ZhouQiZhongScore>();
         public new static List<Hou3Select156_ZhouQiZhongScore> currentNeedCalcList = new List<Hou3Select156_ZhouQiZhongScore>();
+
+        public static Object LockModel350List = new object();
         public static new void InitData()
         {
             AllCode = new List<Code>();
             model350List = new List<Hou3Select156_ZhouQiZhongScore>();
             Hou3NumberCount = new Dictionary<string, int>();
 
-            var RunSkipNumberStr= ConfigurationManager.AppSettings["RunSkipNumber"];
-            if(!string.IsNullOrEmpty(RunSkipNumberStr) && int.TryParse(RunSkipNumberStr, out int runSkipNumber))
+            var RunSkipNumberStr = ConfigurationManager.AppSettings["RunSkipNumber"];
+            if (!string.IsNullOrEmpty(RunSkipNumberStr) && int.TryParse(RunSkipNumberStr, out int runSkipNumber))
             {
                 RunSkipNumber = runSkipNumber;
             }
@@ -107,14 +109,18 @@ namespace CpCodeSelect.Business.Score
                 {
                     var model = model350List[i];
                     var currentDecimal = Convert.ToDecimal(model.CodeQiHao);
-                    if (codeDecimal - currentDecimal >= 150 )
+                    if (codeDecimal - currentDecimal >= 150)
                     {
                         removeList.Add(model);
                     }
                 }
-                foreach (var model in removeList)
+                lock (LockModel350List)
                 {
-                    model350List.Remove(model);
+
+                    foreach (var model in removeList)
+                    {
+                        model350List.Remove(model);
+                    }
                 }
                 removeList.Clear();
                 count++;
@@ -251,26 +257,31 @@ namespace CpCodeSelect.Business.Score
                 var hou3List = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
                 //var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
                 var numerList = MultiThreadedNumberSelectFor156Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 15);
-                foreach (var number in numerList)
+                lock(LockModel350List)
                 {
-                    if (number.Count > 0)
+                    foreach (var number in numerList)
                     {
-                        var list = number.OrderBy(p => p).ToList();
+                        if (number.Count > 0)
+                        {
+                            var list = number.OrderBy(p => p).ToList();
 
 
-                        Hou3Select156_ZhouQiZhongScore model156 = new Hou3Select156_ZhouQiZhongScore();
-                        model156.Number156 = list;
-                        model156.CodeNumber = code.CodeNumber;
-                        model156.CodeQiHao = code.CodeQiHao;
-                        model156.NeedZhong = true;
-                        model156.KLineList = new List<KLine156>();
-                        model156.ScoreDateList = new List<LotteryScoreData>();
-                        model156.YiLouKline350 = new List<YiLouKline350>();
-                        model156.YiLouTuLineList = new List<KLine156>();
-                        KLine156ScoreCalc.CalcKLineHistoryList(model156, AllCode, 100);
-                        model350List.Add(model156);
+                            Hou3Select156_ZhouQiZhongScore model156 = new Hou3Select156_ZhouQiZhongScore();
+                            model156.Number156 = list;
+                            model156.CodeNumber = code.CodeNumber;
+                            model156.CodeQiHao = code.CodeQiHao;
+                            model156.NeedZhong = true;
+                            model156.KLineList = new List<KLine156>();
+                            model156.ScoreDateList = new List<LotteryScoreData>();
+                            model156.YiLouKline350 = new List<YiLouKline350>();
+                            model156.YiLouTuLineList = new List<KLine156>();
+                            KLine156ScoreCalc.CalcKLineHistoryList(model156, AllCode, 100);
+                            model350List.Add(model156);
+                        }
                     }
+
                 }
+                
 
                 //count++;
                 //if (count > 3500)

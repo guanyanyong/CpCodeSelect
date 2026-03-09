@@ -500,22 +500,26 @@ namespace CpCodeSelect.Score
 
         private void SetFormInstance()
         {
-            var list = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.ToList();
-            if (list.Count > 0)
+
+            lock (Hou3Select156YiLouSetFormScoreAndChuShouBusiness.LockModel350List)
             {
+                var list = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.ToList();
+                if (list.Count > 0)
+                {
 
-                //lblMaxGua.Text = list.Max(p => p.GuaCount).ToString();
-                lblTotalNumber.Text = list.Count.ToString();
+                    //lblMaxGua.Text = list.Max(p => p.GuaCount).ToString();
+                    lblTotalNumber.Text = list.Count.ToString();
 
+                }
+                else
+                {
+                    lblMaxGua.Text = "0";
+                    lblTotalNumber.Text = "0";
+                }
+
+                lblMaxGua2.Text = lblMaxGua.Text;
+                lblTotalNumber2.Text = lblTotalNumber.Text;
             }
-            else
-            {
-                lblMaxGua.Text = "0";
-                lblTotalNumber.Text = "0";
-            }
-
-            lblMaxGua2.Text = lblMaxGua.Text;
-            lblTotalNumber2.Text = lblTotalNumber.Text;
         }
         public void InitOfferNumber()
         {

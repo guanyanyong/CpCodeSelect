@@ -78,9 +78,12 @@ namespace CpCodeSelect.Score156.Moni
             txtTotalAmount.Text = moniBusiness.TotalResult.ToString("0.00");
 
             txtLiushui.Text = moniBusiness.TotalLiuShui.ToString("0.00");
+
+            lblTouZhuBei.Text = $"投注{moniBusiness.CurrentBei.ToString()}倍";
         }
         public void CustomLogMethod(string message)
         {
+            lblTouZhuBei.Text = $"投注{moniBusiness.CurrentBei.ToString()}倍";
             //最新消息排在最上面
             if (listBoxExeMsg.InvokeRequired)
             {
@@ -131,6 +134,7 @@ namespace CpCodeSelect.Score156.Moni
         private void btnCurrent350Code_Click(object sender, EventArgs e)
         {
             txt350Code.Text = string.Join(" ", moniBusiness.current350List);
+            Clipboard.SetText(txt350Code.Text);
 
         }
 
@@ -146,6 +150,29 @@ namespace CpCodeSelect.Score156.Moni
             model.LiuShui = moniBusiness.TotalLiuShui;
             model.GuaCount = moniBusiness.TotalGua;
             parentForm.TestInfoStatisticList.Add(model);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            moniBusiness.Reset();
+            ResetForm();
+        }
+
+        private void ResetForm()
+        {
+            txtCurrentLun.Text = "";
+            txtCurrentAmount.Text = "";
+            txtCurrentQi.Text = "1";
+            txtTotalGuaCi.Text = "0";
+            txtTotalZhongCi.Text = "0";
+            lblTouZhuBei.Text = $"0倍";
+
+            txtTotalAmount.Text = "0";
+
+            txtLiushui.Text = "0";
+            listBoxExeMsg.Items.Clear();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = moniBusiness.yilouStatisticList;
         }
     }
 }
