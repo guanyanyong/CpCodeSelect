@@ -52,3 +52,5 @@
 /CpCodeSelect.DA/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /CpCodeSelect.Util/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 /CpCodeSelect.Util/obj/Debug/CpCodeSelect.Util.csproj.FileListAbsolute.txt
+/CpCodeSelect/obj/x64/Debug
+/CpCodeSelect/packages
