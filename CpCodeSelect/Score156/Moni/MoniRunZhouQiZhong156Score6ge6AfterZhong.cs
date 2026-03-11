@@ -12,6 +12,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,6 +25,7 @@ namespace CpCodeSelect.Score156.Moni
         Code beforeCode = null;
         Code currentCode = null;
         private Hou3Select156YiLouSetFormScoreAndChuShou parentForm = null;
+        private int TryCopTime = 0;
         public MoniRunZhouQiZhong156Score6ge6AfterZhong(Hou3Select156YiLouSetFormScoreAndChuShou form) : this()
         {
             parentForm = form;
@@ -133,9 +135,29 @@ namespace CpCodeSelect.Score156.Moni
 
         private void btnCurrent350Code_Click(object sender, EventArgs e)
         {
+            TryCopTime = 0;
             txt350Code.Text = string.Join(" ", moniBusiness.current350List);
-            Clipboard.SetText(txt350Code.Text);
+            CopyCurrent350Code();
+        }
 
+        private void CopyCurrent350Code()
+        {
+            try
+            {
+                if (TryCopTime <= 5)
+                {
+                    Clipboard.SetText(txt350Code.Text);
+                }
+            }
+            catch (Exception ex)
+            {
+                Thread.Sleep(1500);
+                CopyCurrent350Code();
+            }
+            finally
+            {
+                TryCopTime++;
+            }
         }
 
         private void btnCopy_Click(object sender, EventArgs e)

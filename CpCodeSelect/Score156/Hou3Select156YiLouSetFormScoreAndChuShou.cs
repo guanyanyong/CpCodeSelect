@@ -82,7 +82,7 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhongScore156AllChuShou2 moni5 = new MoniRunZhouQiZhongScore156AllChuShou2();
         private MoniRunZhouQiZhongScore156AllChuShou2 moni6 = new MoniRunZhouQiZhongScore156AllChuShou2();
         */
-
+        
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni35ge1;
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong;
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongLianXu8;
@@ -98,7 +98,7 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6;
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6;
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6a;
-
+        
 
         /*
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni35ge1 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
@@ -118,8 +118,24 @@ namespace CpCodeSelect.Score
 
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6a = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
-        */
-
+       
+         //*
+        private MoniRunZhouQiZhong156Score35ge1 moni35ge1;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScore3ge5AfterZhong;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongLianXu8;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongLianXu3;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhongScoreAllChuShou;
+        private MoniRunZhouQiZhong156Score35ge1 sangesanyilou0;
+        private MoniRunZhouQiZhong156Score35ge1 moniRunZhouQiZhong3Ge3;
+        private MoniRunZhouQiZhong156Score35ge1 moni1;
+        private MoniRunZhouQiZhong156Score35ge1 moni2;
+        private MoniRunZhouQiZhong156Score35ge1 moni3;
+        private MoniRunZhouQiZhong156Score35ge1 moni4;
+        private MoniRunZhouQiZhong156Score35ge1 moni5;
+        private MoniRunZhouQiZhong156Score35ge1 moni6;
+        private MoniRunZhouQiZhong156Score35ge1 moni6ge6;
+        private MoniRunZhouQiZhong156Score35ge1 moni6ge6a;
+        //* */
 
         private Hou3Select156_ZhouQiZhongScore currentCalcKLineDate = null;
 
@@ -140,6 +156,7 @@ namespace CpCodeSelect.Score
         }
         private void InitMoni()
         {
+            
             moni35ge1 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
 
             moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
@@ -158,6 +175,27 @@ namespace CpCodeSelect.Score
 
             moni6ge6 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
             moni6ge6a = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
+            
+            /*
+            moni35ge1 = new MoniRunZhouQiZhong156Score35ge1(this);
+
+            moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong156Score35ge1(this);
+            moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhong156Score35ge1(this);
+            sangesanyilou0 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni1 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni2 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni3 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni4 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni5 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni6 = new MoniRunZhouQiZhong156Score35ge1(this);
+
+
+            moni6ge6 = new MoniRunZhouQiZhong156Score35ge1(this);
+            moni6ge6a = new MoniRunZhouQiZhong156Score35ge1(this);
+            */
         }
         private void TabControlInit()
         {
@@ -230,6 +268,7 @@ namespace CpCodeSelect.Score
         public void ReadFirstLine()
         {
             var firstRecord = FileUtil.ReadFileFirstRecord(filePath);
+            if (string.IsNullOrEmpty(firstRecord)) { return; }
             var code = FileAnalysis.GetCodeByStr(firstRecord);
             if (code != null)
             {
@@ -630,7 +669,7 @@ namespace CpCodeSelect.Score
             {
                 lock (lockObj)
                 {
-                    Thread.Sleep(3000); // 等待1000毫秒，确保文件写入完成
+                    Thread.Sleep(3000); // 等待3秒，确保文件写入完成
                     //try
                     //{
                         if (firstTime)

@@ -96,6 +96,7 @@ namespace CpCodeSelect
         public void ReadFirstLine()
         {
             var firstRecord = FileUtil.ReadFileFirstRecord(filePath);
+            if (string.IsNullOrEmpty(firstRecord)) { return; }
             var code = FileAnalysis.GetCodeByStr(firstRecord);
             if (code != null)
             {

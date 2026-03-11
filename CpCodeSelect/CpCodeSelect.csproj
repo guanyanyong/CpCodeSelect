@@ -50,6 +50,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -737,8 +757,10 @@
       <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\Obfuscar.2.2.50\build\obfuscar.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Obfuscar.2.2.50\build\obfuscar.props'))" />
+    <Error Condition="!Exists('packages\AlphaVSS.Native.NetFx.2.0.3\build\net45\AlphaVSS.Native.NetFx.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\AlphaVSS.Native.NetFx.2.0.3\build\net45\AlphaVSS.Native.NetFx.targets'))" />
   </Target>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'Release'">
-  <Exec Command="$(Obfuscar) obfuscar.xml" />
-</Target>
+    <Exec Command="$(Obfuscar) obfuscar.xml" />
+  </Target>
+  <Import Project="packages\AlphaVSS.Native.NetFx.2.0.3\build\net45\AlphaVSS.Native.NetFx.targets" Condition="Exists('packages\AlphaVSS.Native.NetFx.2.0.3\build\net45\AlphaVSS.Native.NetFx.targets')" />
 </Project>

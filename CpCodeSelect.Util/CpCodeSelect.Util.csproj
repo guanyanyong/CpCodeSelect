@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,11 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AlphaFS, Version=2.2.0.0, Culture=neutral, PublicKeyToken=4d31a58f7d7ad5c9, processorArchitecture=MSIL">
+      <HintPath>..\CpCodeSelect\packages\AlphaFS.2.2.6\lib\net452\AlphaFS.dll</HintPath>
+    </Reference>
+    <Reference Include="AlphaVSS.Common, Version=1.4.0.0, Culture=neutral, PublicKeyToken=959d3993561034e3, processorArchitecture=MSIL">
+      <HintPath>..\CpCodeSelect\packages\AlphaVSS.1.4.0\lib\net45\AlphaVSS.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\CpCodeSelect\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -91,6 +100,7 @@
     <Compile Include="Scorer\Rules\ScoreRules.cs" />
     <Compile Include="Scorer\ScorerUtil.cs" />
     <Compile Include="ThreadSafeRandom.cs" />
+    <Compile Include="VssSample\Snapshot.cs" />
     <Compile Include="YiLouKLine\YiLouKLine350Calc.cs" />
     <Compile Include="ZiJinFangAn\TouZhuResult.cs" />
     <Compile Include="ZiJinFangAn\ZiJinFangAn.cs" />
@@ -108,4 +118,13 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\CpCodeSelect\packages\AlphaVSS.Native.NetFx.2.0.3\build\net45\AlphaVSS.Native.NetFx.targets" Condition="Exists('..\CpCodeSelect\packages\AlphaVSS.Native.NetFx.2.0.3\build\net45\AlphaVSS.Native.NetFx.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\CpCodeSelect\packages\AlphaVSS.Native.NetFx.2.0.3\build\net45\AlphaVSS.Native.NetFx.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\CpCodeSelect\packages\AlphaVSS.Native.NetFx.2.0.3\build\net45\AlphaVSS.Native.NetFx.targets'))" />
+    <Error Condition="!Exists('..\CpCodeSelect\packages\AlphaVSS.1.4.0\build\net45\AlphaVSS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\CpCodeSelect\packages\AlphaVSS.1.4.0\build\net45\AlphaVSS.targets'))" />
+  </Target>
+  <Import Project="..\CpCodeSelect\packages\AlphaVSS.1.4.0\build\net45\AlphaVSS.targets" Condition="Exists('..\CpCodeSelect\packages\AlphaVSS.1.4.0\build\net45\AlphaVSS.targets')" />
 </Project>
