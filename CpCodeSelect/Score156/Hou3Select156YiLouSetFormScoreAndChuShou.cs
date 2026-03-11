@@ -82,7 +82,7 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhongScore156AllChuShou2 moni5 = new MoniRunZhouQiZhongScore156AllChuShou2();
         private MoniRunZhouQiZhongScore156AllChuShou2 moni6 = new MoniRunZhouQiZhongScore156AllChuShou2();
         */
-        
+
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni35ge1;
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong;
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongLianXu8;
@@ -98,7 +98,7 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6;
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6;
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6a;
-        
+
 
         /*
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni35ge1 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
@@ -156,7 +156,7 @@ namespace CpCodeSelect.Score
         }
         private void InitMoni()
         {
-            
+
             moni35ge1 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
 
             moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
@@ -175,7 +175,7 @@ namespace CpCodeSelect.Score
 
             moni6ge6 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
             moni6ge6a = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            
+
             /*
             moni35ge1 = new MoniRunZhouQiZhong156Score35ge1(this);
 
@@ -346,12 +346,12 @@ namespace CpCodeSelect.Score
                 {
                     progressBar1.BeginInvoke(new Action(() =>
                     {
-                        progressBar1.Maximum = codeList.Count+1;
+                        progressBar1.Maximum = codeList.Count + 1;
                     }));
                 }
                 else
                 {
-                    progressBar1.Maximum = codeList.Count+1;
+                    progressBar1.Maximum = codeList.Count + 1;
                 }
 
                 AddRecord("第一次执行,需要从底下最后一条开始执行记录");
@@ -670,19 +670,21 @@ namespace CpCodeSelect.Score
                 lock (lockObj)
                 {
                     Thread.Sleep(3000); // 等待3秒，确保文件写入完成
-                    //try
-                    //{
-                        if (firstTime)
-                        {
-                            //如果是第一次执行,需要读取全部的号码
-                            ReadAllLine();
-                            firstTime = false;
-                            ReadFirstLineExec();
-                        }
-                        else
-                        {
-                            ReadFirstLineExec();
-                        }
+                                        //try
+                                        //{
+                    if (firstTime)
+                    {
+                        //如果是第一次执行,需要读取全部的号码
+                        ReadAllLine();
+                        firstTime = false;
+                        ReadFirstLineExec();
+
+                        AfterFirsttimeReadDeleteFile(filePath);
+                    }
+                    else
+                    {
+                        ReadFirstLineExec();
+                    }
                     //}
                     //catch (Exception ex)
                     //{
@@ -690,6 +692,18 @@ namespace CpCodeSelect.Score
                     //}
                 }
             });
+        }
+
+        /// <summary>
+        /// 第一次执行完成后 删除文件
+        /// </summary>
+        /// <param name="filePath"></param>
+        private void AfterFirsttimeReadDeleteFile(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
         }
         private void ReadFirstLineExec()
         {

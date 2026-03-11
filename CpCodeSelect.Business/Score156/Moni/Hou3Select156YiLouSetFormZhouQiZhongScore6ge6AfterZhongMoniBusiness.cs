@@ -75,7 +75,7 @@ namespace CpCodeSelect.Business.Score.Moni
                 {51.17M,61.00M, 72.7M,86.58M, 103.12M,     },
                 { 122.62M,145.86M, 173.47M, 206.23M,245.08M, },
                 {91.25M,346.01M, 411.06M,488.28M,579.85M,},
-                {2688.58M,817.6M, 970.79M,1152.68M,1368.59M,},
+                {688.58M,817.6M, 970.79M,1152.68M,1368.59M,},
                 { 1624.9M,1929.1M,2290.24M,2718.92M,3227.8M}
 
                 };
@@ -173,7 +173,7 @@ namespace CpCodeSelect.Business.Score.Moni
             TotalZhong = 0;
             TotalGua = 0;
 
-            for (int i = 0; i <= 36; i++)
+            for (int i = 0; i <= 35; i++)
             {
                 YilouStatistic entity = new YilouStatistic();
                 entity.YilouCount = i;
