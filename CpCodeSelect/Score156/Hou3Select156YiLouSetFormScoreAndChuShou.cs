@@ -294,42 +294,44 @@ namespace CpCodeSelect.Score
             var record = number;
             var firstRecord = FileUtil.ReadFileFirstRecord(filePath, 1);
             var code = FileAnalysis.GetCodeByStr(firstRecord);
-            if (code != null)
-            {
-                var codeDecimal = Convert.ToDecimal(code.CodeQiHao);
-                var codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
-
-                //如果期号相差不为1,则继续读取下一期号码
-                while (codeDecimal - codeBeforeDecimal != 1 && codeDecimal != codeBeforeDecimal)
+            
+                if (code != null)
                 {
-                    record++;
-                    firstRecord = FileUtil.ReadFileNumberRecord(filePath, record);
-                    code = FileAnalysis.GetCodeByStr(firstRecord);
+                    var codeDecimal = Convert.ToDecimal(code.CodeQiHao);
+                    var codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
 
-
-                    codeDecimal = Convert.ToDecimal(code.CodeQiHao);
-                    codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
-                }
-
-                if (lastCode == null || lastCode.CodeQiHao != code.CodeQiHao)
-                {
-
-
-                    if (codeDecimal - codeBeforeDecimal == 1)
+                    //如果期号相差不为1,则继续读取下一期号码
+                    while (codeDecimal - codeBeforeDecimal != 1 && codeDecimal != codeBeforeDecimal)
                     {
-                        // 如果期号相差为1，说明是最新号码
-                        code.PreCode = lastCode;
-                        currentCode = code;
+                        record++;
+                        firstRecord = FileUtil.ReadFileNumberRecord(filePath, record);
+                        code = FileAnalysis.GetCodeByStr(firstRecord);
 
-                        lastCode = currentCode;
-                        AddRecord($"检测到新号码: 期号={currentCode.CodeQiHao}, 号码={currentCode.CodeNumber}");
-                        //在这里可以添加对号码的分析处理逻辑
-                        AnalySisCode(currentCode);
+
+                        codeDecimal = Convert.ToDecimal(code.CodeQiHao);
+                        codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
+                    }
+
+                    if (lastCode == null || lastCode.CodeQiHao != code.CodeQiHao)
+                    {
+
+
+                        if (codeDecimal - codeBeforeDecimal == 1)
+                        {
+                            // 如果期号相差为1，说明是最新号码
+                            code.PreCode = lastCode;
+                            currentCode = code;
+
+                            lastCode = currentCode;
+                            AddRecord($"检测到新号码: 期号={currentCode.CodeQiHao}, 号码={currentCode.CodeNumber}");
+                            //在这里可以添加对号码的分析处理逻辑
+                            AnalySisCode(currentCode);
+                        }
+
                     }
 
                 }
-
-            }
+            
             return record == 1;
         }
         /// <summary>

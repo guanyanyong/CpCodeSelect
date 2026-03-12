@@ -15,11 +15,16 @@ namespace CpCodeSelect.Util
         public static int TryTime = 1;
         public static string ReadFileFirstRecord(string filePath,int maxReadNumber=100)
         {
+            Encoding encoding = null;
             var firstLineStr= string.Empty;
             int readCount = 0;
             try
             {
-                using (StreamReader reader = new StreamReader(filePath))
+                using (var fs = new FileStream(filePath,
+                                   FileMode.Open,
+                                   FileAccess.Read,
+                                   FileShare.ReadWrite))
+                using (StreamReader reader = new StreamReader(fs, encoding ?? Encoding.UTF8))
                 {
                     if (reader != null)
                     {
