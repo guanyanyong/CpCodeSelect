@@ -13,10 +13,10 @@ namespace CpCodeSelect.Util
     public static class FileUtil
     {
         public static int TryTime = 1;
-        public static string ReadFileFirstRecord(string filePath,int maxReadNumber=100)
+        public static string ReadFileFirstRecord(string filePath, int maxReadNumber = 100)
         {
             Encoding encoding = null;
-            var firstLineStr= string.Empty;
+            var firstLineStr = string.Empty;
             int readCount = 0;
             try
             {
@@ -53,16 +53,16 @@ namespace CpCodeSelect.Util
                     return ReadFileFirstRecord(filePath, maxReadNumber);
                 }
             }
-            
+
             return firstLineStr;
 
         }
 
 
-        public static string ReadFileNumberRecord(string filePath, int lineNumber=1, int maxReadNumber = 100)
+        public static string ReadFileNumberRecord(string filePath, int lineNumber = 1, int maxReadNumber = 100)
         {
             var firstLineStr = string.Empty;
-            
+
             int readCount = 0; //读的总行数
             int readValidCount = 0; //读的有效行数
             try
@@ -71,7 +71,7 @@ namespace CpCodeSelect.Util
                 {
                     if (reader != null)
                     {
-                        
+
                         firstLineStr = reader.ReadLine();
                         while (true)
                         {
@@ -85,10 +85,10 @@ namespace CpCodeSelect.Util
                             else
                             {
                                 readValidCount++;
-                                if(readValidCount == lineNumber)
+                                if (readValidCount == lineNumber)
                                 {
                                     //如果读到的是指定的行号，则返回
-                                   break;
+                                    break;
                                 }
                                 else
                                 {
@@ -113,7 +113,7 @@ namespace CpCodeSelect.Util
                 else
                 {
                     TryTime++;
-                    return ReadFileFirstRecord(filePath, maxReadNumber);
+                    return ReadFileNumberRecord(filePath, lineNumber, maxReadNumber);
                 }
             }
 

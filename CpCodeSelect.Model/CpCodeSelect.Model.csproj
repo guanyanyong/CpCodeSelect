@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseCodeInfo.cs" />
+    <Compile Include="CacheModel\CacheModel.cs" />
     <Compile Include="Code.cs" />
     <Compile Include="ExModel\ADXResult.cs" />
     <Compile Include="ExModel\Bolling.cs" />

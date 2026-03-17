@@ -25,12 +25,13 @@ namespace CpCodeSelect.Business.Score.Moni
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
         private bool WaitingForNextRound = false;//等待中出后开启下一轮
+        private const int TotalQiCount = 45;
         public Hou3Select156YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness(LogDelegate logMethod, List<Hou3Select156_ZhouQiZhongScore> model350List)
         {
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
             this.model350List = model350List;
 
-            for (int i = 0; i <= 35; i++)
+            for (int i = 0; i <= TotalQiCount; i++)
             {
                 YilouStatistic entity = new YilouStatistic();
                 entity.YilouCount = i;
@@ -74,7 +75,7 @@ namespace CpCodeSelect.Business.Score.Moni
                 { 20.75M,24.96M, 29.95M,35.88M,42.9M,},
                 {51.17M,61.00M, 72.7M,86.58M, 103.12M,     },
                 { 122.62M,145.86M, 173.47M, 206.23M,245.08M, },
-                {91.25M,346.01M, 411.06M,488.28M,579.85M,},
+                {291.25M,346.01M, 411.06M,488.28M,579.85M,},
                 {688.58M,817.6M, 970.79M,1152.68M,1368.59M,},
                 { 1624.9M,1929.1M,2290.24M,2718.92M,3227.8M}
 
@@ -119,7 +120,7 @@ namespace CpCodeSelect.Business.Score.Moni
         /// <summary>
         /// 总轮次
         /// </summary>
-        public int TotalLun { get; set; } = 7;
+        public int TotalLun { get; set; } = 9;
 
         /// <summary>
         /// 当前上号的位置
@@ -173,7 +174,7 @@ namespace CpCodeSelect.Business.Score.Moni
             TotalZhong = 0;
             TotalGua = 0;
 
-            for (int i = 0; i <= 35; i++)
+            for (int i = 0; i <= TotalQiCount; i++)
             {
                 YilouStatistic entity = new YilouStatistic();
                 entity.YilouCount = i;
@@ -292,7 +293,7 @@ namespace CpCodeSelect.Business.Score.Moni
                                 LunInit();
                                 before350List = current350List;
                                 Select350AndStartCalc(code);
-                                yilouStatisticList[35].TotalCount = yilouStatisticList[35].TotalCount + 1;
+                                yilouStatisticList[TotalQiCount].TotalCount = yilouStatisticList[TotalQiCount].TotalCount + 1;
                                 return;
                             }
                             else

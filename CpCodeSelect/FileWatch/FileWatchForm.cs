@@ -34,11 +34,10 @@ using CpCodeSelect.Model.CacheModel;
 using Newtonsoft.Json.Serialization;
 using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
-namespace CpCodeSelect.Score
+namespace CpCodeSelect.FileWatch
 {
-    public partial class Hou3Select156YiLouSetFormScoreAndChuShou : Form
+    public partial class FileWatchForm : Form
     {
         public Dictionary<int, List<StatisticModel>> StatisticDic = new Dictionary<int, List<StatisticModel>>();
         private string filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt";
@@ -51,7 +50,6 @@ namespace CpCodeSelect.Score
         private Code currentCode;
         private bool firstTime = true;//是否第一次执行
         private Object lockObj = new Object();
-        private static Object Lock7ge5File = new object();
         private Object LockPlayObj = new object();
         public MoniRunKill3 moniKill3 = new MoniRunKill3();
         public MoniRunKill3_2 moniKill3_2 = new MoniRunKill3_2();
@@ -151,7 +149,7 @@ namespace CpCodeSelect.Score
         public static List<Exception> ExceptionList = new List<Exception>();
         // 从多少条记录后开始中了就删除记录 
         int zhongHouDelete = 1500;
-        public Hou3Select156YiLouSetFormScoreAndChuShou()
+        public FileWatchForm()
         {
             InitMoni();
             InitializeComponent();
@@ -159,7 +157,6 @@ namespace CpCodeSelect.Score
             txtFIlePath.Text = filePath;
             txtDownLoadFilePath.Text = filePath;
             moniKill3.Hide();
-            button1.Focus();
             TabControlInit();
 
 
@@ -195,24 +192,7 @@ namespace CpCodeSelect.Score
         private void InitMoni()
         {
 
-            moni35ge1 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-
-            moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            sangesanyilou0 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            moni1 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            moni2 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            moni3 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            moni4 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            moni5 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            moni6 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-
-
-            moni6ge6 = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
-            moni6ge6a = new MoniRunZhouQiZhong156Score6ge6AfterZhong(this);
+            
 
             /*
             moni35ge1 = new MoniRunZhouQiZhong156Score35ge1(this);
@@ -323,76 +303,6 @@ namespace CpCodeSelect.Score
             }
         }
 
-        public async Task<bool> ReadFirstCodeFromCach(int number = 1)
-        {
-            var record = number;
-            Code code = null;
-            string firstRecord = string.Empty;
-            int tryTime = 0;
-            try
-            {
-
-                code = await GetLastRecordFromCache();
-
-                //获取到新的号码
-                if (code != null)
-                {
-
-                }
-            }
-            catch (Exception)
-            {
-                // 获取文件异常 捕捉到异常 从缓存中获取最新号码 
-                code = await GetLastRecordFromCache();
-                while (code == null)
-                {
-                    if (tryTime <= 5)
-                    {
-                        await Task.Delay(1000);
-                        code = await GetLastRecordFromCache();
-                        tryTime++;
-                    }
-                }
-            }
-            if (code != null)
-            {
-                var codeDecimal = Convert.ToDecimal(code.CodeQiHao);
-                var codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
-
-                //如果期号相差不为1,则继续读取下一期号码
-                while (codeDecimal - codeBeforeDecimal != 1 && codeDecimal != codeBeforeDecimal)
-                {
-                    record++;
-                    firstRecord = FileUtil.ReadFileNumberRecord(filePath, record);
-                    code = FileAnalysis.GetCodeByStr(firstRecord);
-
-
-                    codeDecimal = Convert.ToDecimal(code.CodeQiHao);
-                    codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
-                }
-
-                if (lastCode == null || lastCode.CodeQiHao != code.CodeQiHao)
-                {
-
-
-                    if (codeDecimal - codeBeforeDecimal == 1)
-                    {
-                        // 如果期号相差为1，说明是最新号码
-                        code.PreCode = lastCode;
-                        currentCode = code;
-
-                        lastCode = currentCode;
-                        AddRecord($"检测到新号码: 期号={currentCode.CodeQiHao}, 号码={currentCode.CodeNumber}");
-                        //在这里可以添加对号码的分析处理逻辑
-                        AnalySisCode(currentCode);
-                    }
-
-                }
-
-            }
-
-            return record == 1;
-        }
         /// <summary>
         /// 读取第一行并执行.如果执行的是第一行则返回true,否则返回false
         /// </summary>
@@ -417,60 +327,17 @@ namespace CpCodeSelect.Score
             catch (Exception)
             {
                 // 获取文件异常 捕捉到异常 从缓存中获取最新号码 
-
-                AddRecordAndAddLog($"出现异常从缓存获取,当前获取{tryTime}次");
                 code = await GetLastRecordFromCache();
                 while (code == null)
                 {
                     if (tryTime <= 5)
                     {
-                        AddRecordAndAddLog($"出现异常从缓存获取,当前获取{tryTime}次");
                         await Task.Delay(1000);
                         code = await GetLastRecordFromCache();
                         tryTime++;
                     }
                 }
             }
-            if (code != null)
-            {
-                var codeDecimal = Convert.ToDecimal(code.CodeQiHao);
-                var codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
-
-                //如果期号相差不为1,则继续读取下一期号码
-                while (codeDecimal - codeBeforeDecimal != 1 && codeDecimal != codeBeforeDecimal)
-                {
-                    record++;
-                    var codeList = await GetLastNRecordFromCache(record);
-                    if (codeList != null && codeList.Count == record)
-                    {
-                        code = codeList[record - 1];
-
-                        codeDecimal = Convert.ToDecimal(code.CodeQiHao);
-                        codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
-                    }
-                }
-
-                if (lastCode == null || lastCode.CodeQiHao != code.CodeQiHao)
-                {
-                    if (codeDecimal - codeBeforeDecimal == 1)
-                    {
-                        // 如果期号相差为1，说明是最新号码
-                        code.PreCode = lastCode;
-                        currentCode = code;
-
-                        lastCode = currentCode;
-                        AddRecord($"检测到新号码: 期号={currentCode.CodeQiHao}, 号码={currentCode.CodeNumber}");
-                        //在这里可以添加对号码的分析处理逻辑
-                        AnalySisCode(currentCode);
-                    }
-
-                }
-
-            }else
-            {
-
-            }
-
             return record == 1;
         }
         /// <summary>
@@ -542,7 +409,7 @@ namespace CpCodeSelect.Score
             var codeList = FileAnalysis.GetCodeListByCodeListStr(codeStrList);
             if (codeList != null && codeList.Count > 0)
             {
-
+                
                 if (progressBar1.InvokeRequired)
                 {
                     progressBar1.BeginInvoke(new Action(() =>
@@ -554,7 +421,7 @@ namespace CpCodeSelect.Score
                 {
                     progressBar1.Maximum = codeList.Count + 1;
                 }
-
+                
                 AddRecord("第一次执行,需要从底下最后一条开始执行记录");
                 int recordNumber = 1;
                 for (int i = codeList.Count - 1; i >= 0; i--)
@@ -580,7 +447,7 @@ namespace CpCodeSelect.Score
                     {
                         lastCode = currentCode;
                         AddRecord($"检测到新号码: 期号={currentCode.CodeQiHao}, 号码={currentCode.CodeNumber}");
-                        await Task.Delay(100);
+                        await Task.Delay(1500);
                         await AddCodeToCache(currentCode);
 
                         //Task.Run(async () =>
@@ -610,55 +477,7 @@ namespace CpCodeSelect.Score
         /// </summary>
         public void AnalySisCode(Code code, bool zhongHouDelete = false)
         {
-            //code.NumberCondition = string.Empty;
-            InitCode(code);
-            //NumberConditionSet(code);
-            Hou3Select156YiLouSetFormScoreAndChuShouBusiness.InitCode(code, zhongHouDelete);
-            InitOfferNumber();
-            GenerateOfferNumber();
-            SetForm();
             //AddToLogFileZu6Kill1(code, "Hou2Select50.txt");
-            AddToLogFile7ge5(code);
-            if (moniRunZhouQiZhongScore3ge5AfterZhong == null)
-            {
-                InitMoni();
-            }
-            moniRunZhouQiZhongScore3ge5AfterZhong.Run(code);
-            moniRunZhouQiZhongLianXu8.Run(code);
-            //moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
-            moniRunZhouQiZhongScoreAllChuShou.Run(code);
-            moniRunZhouQiZhongLianXu3.Run(code);
-            sangesanyilou0.Run(code);
-            moniRunZhouQiZhong3Ge3.Run(code);
-
-            moni1.Run(code);
-            moni2.Run(code);
-            moni3.Run(code);
-            moni4.Run(code);
-            moni5.Run(code);
-            moni6.Run(code);
-
-            moni35ge1.Run(code);
-
-            moni6ge6.Run(code);
-            moni6ge6a.Run(code);
-
-            //把记录添加到界面上 异步方式
-            //AddRecordToPage(code);
-
-            //在这里把分析后的可以推荐的号码显示到界面上
-
-            //执行模拟挂机
-            //moniKill3.Run(code);
-            //moniKill3_2.Run(code);
-            //moniKill3_3.Run(code);
-
-            //执行绘图的逻辑
-            if (currentCalcKLineDate != null)
-            {
-                DataLoadKLine();
-            }
-
         }
         private void InitCode(Code code)
         {
@@ -778,69 +597,10 @@ namespace CpCodeSelect.Score
         }
         public void GenerateOfferNumber()
         {
-            if (chkRefersh.Checked)
-            {
-
-                /*
-                offerNumber01.Text = 
-                offerNumber02.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber03.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber04.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber05.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber06.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber07.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber08.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber09.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber10.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber11.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber12.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber13.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber14.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber15.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber16.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber17.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber18.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber19.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber20.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber21.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber22.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber23.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber24.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber25.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber26.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber27.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber28.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber29.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                offerNumber30.Text = Hou2Select50_20Business.GetHou2_50NumerString();
-                */
-            }
+            
         }
 
-        private void AddToLogFile7ge5(string msg)
-        {
-
-            string fileName = "7个5.txt";
-            lock (Lock7ge5File)
-            {
-                using (var writer = new StreamWriter(fileName, true))
-                {
-                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 # 消息:{msg}");
-                }
-            }
-        }
-        private void AddToLogFile7ge5(Code code,string msg)
-        {
-
-            string fileName = "7个5.txt";
-            lock (Lock7ge5File)
-            {
-                using (var writer = new StreamWriter(fileName, true))
-                {
-                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}消息:{msg}");
-                }
-            }
-        }
-        private void AddToLogFile7ge5(Code code)
+        private void AddToLogFileHou2Select50Auto(Code code)
         {
             bool needPlay = false;
             if (Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.Count > 500)
@@ -848,38 +608,35 @@ namespace CpCodeSelect.Score
 
                 bool needFlush = false;
 
-                string fileName = "7个5.txt";
-                lock (Lock7ge5File)
+                string fileName = "Hou2Select50YiLouSet.txt";
+                using (var writer = new StreamWriter(fileName, true))
                 {
-                    using (var writer = new StreamWriter(fileName, true))
+                    var list = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.ToList().Where(p => p.NeedZhong == false).ToList();
+                    if (list.Count > 0)
                     {
-                        var list = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.ToList().Where(p => p.NeedZhong == false).ToList();
-                        if (list.Count > 0)
+
+                        var maxNumber = list.Max(p => p.GuaCount);
+                        if (maxNumber >= boFangYanhuaCount)
                         {
-
-                            var maxNumber = list.Max(p => p.GuaCount);
-                            if (maxNumber >= boFangYanhuaCount)
+                            needFlush = true;
+                            Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.ToList().Where(p => p.GuaCount == maxNumber).ToList().ForEach(recode =>
                             {
-                                needFlush = true;
-                                Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.ToList().Where(p => p.GuaCount == maxNumber).ToList().ForEach(recode =>
-                                {
-                                    writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}，号码：{string.Join(" ", recode.Number156)}");
-                                    //writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}");
-                                });
-                            }
-
-
-                            if (needFlush)
-                            {
-                                writer.Flush();
-                            }
-
-                            if (maxNumber >= boFangYanhuaCount)
-                            {
-                                needPlay = true;
-                            }
-
+                                writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}，号码：{string.Join(" ", recode.Number156)}");
+                                //writer.WriteLine($"[{DateTime.Now:HH:mm:ss.fff}] 记录 #" + $"期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前连挂次数{recode.GuaCount}");
+                            });
                         }
+
+
+                        if (needFlush)
+                        {
+                            writer.Flush();
+                        }
+
+                        if (maxNumber >= boFangYanhuaCount)
+                        {
+                            needPlay = true;
+                        }
+
                     }
                 }
             }
@@ -913,9 +670,6 @@ namespace CpCodeSelect.Score
                                         //{
                     if (firstTime)
                     {
-                        //如果是第一次执行,需要读取全部的号码
-                        ReadAllLine();
-                        firstTime = false;
                         ReadFirstLineExec();
 
                         //AfterFirsttimeReadDeleteFile(filePath);
@@ -944,74 +698,37 @@ namespace CpCodeSelect.Score
                 File.Delete(filePath);
             }
         }
-
-        private async Task<List<Code>> GetLastNRecordFromCache(int n)
+        private async Task<Code> GetLastRecordFromCache()
         {
-            List<Code> codeList = null;
-            string url = $"get_n_data?cpsx=txqqff&n={n}";
+            string url = $"get_latest_data?cpsx=txqqff";
             HttpResponseMessage response = await httpClient.GetAsync(url);
             Code code = null;
             if (response.IsSuccessStatusCode)
             {
                 string responseContent = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<MultiResponse>(responseContent);
+                var result = JsonConvert.DeserializeObject<ApiResponse>(responseContent);
 
-                if (result.data != null && result.data.Count > 0)
+                if (result.latest_data != null)
                 {
-                    codeList = new List<Code>();
-                    foreach (var record in result.data)
-                    {
-                        var newCode = new Code();
-
-                        newCode.CodeQiHao = record.qihao;
-                        newCode.CodeNumber = record.code;
-                        codeList.Add(newCode);
-                    }
-
-                }
-            }
-            return codeList;
-        }
-        private async Task<Code> GetLastRecordFromCache()
-        {
-            AddRecordAndAddLog("从缓存中获取数据。");
-            Code code = null;
-            try
-            {
-
-                string url = $"get_latest_data?cpsx=txqqff";
-                HttpResponseMessage response = await httpClient.GetAsync(url);
-                if (response.IsSuccessStatusCode)
-                {
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<ApiResponse>(responseContent);
-
-                    if (result.latest_data != null)
-                    {
-                        var record = result.latest_data;
-                        code.CodeQiHao = record.qihao;
-                        code.CodeNumber = record.code;
-                    }
-                    else
-                    {
-                        code = null;
-                    }
+                    code = new Code();
+                    var record = result.latest_data;
+                    code.CodeQiHao = record.qihao;
+                    code.CodeNumber = record.code;
                 }
                 else
                 {
                     code = null;
                 }
             }
-            catch (Exception ex)
+            else
             {
-
-                AddRecordAndAddLog($"从缓存中获取数据。出现异常，异常信息是{ex.Message}");
+                code = null;
             }
-
             return code;
         }
         private async Task<bool> AddCodeToCache(Code code)
         {
+            AddRecord($"检测到新号码: 期号={code.CodeQiHao}, 号码={code.CodeNumber}");
             // 准备发送到API的数据，开奖号作为code字段
             var requestData = new
             {
@@ -1094,7 +811,7 @@ namespace CpCodeSelect.Score
             {
                 if (is3fen == "1")
                 {
-                    chk3fen.Checked = true;
+                    //chk3fen.Checked = true;
                     filePath = path3fen;
                     if (string.IsNullOrEmpty(filePath))
                     {
@@ -1103,7 +820,7 @@ namespace CpCodeSelect.Score
                 }
                 else
                 {
-                    chk3fen.Checked = false;
+                    //chk3fen.Checked = false;
                     filePath = path;
                     if (string.IsNullOrEmpty(filePath))
                     {
@@ -1183,14 +900,14 @@ namespace CpCodeSelect.Score
 
         private void button1_Click(object sender, EventArgs e)
         {
-            StartExec();
+            
         }
         /// <summary>
         /// 开始执行
         /// </summary>
         private void StartExec()
         {
-            if (DateTime.Now >= Convert.ToDateTime("2026-06-30"))
+            if (DateTime.Now >= Convert.ToDateTime("2026-03-31"))
             {
                 //MessageBox.Show("软件试用期已过期，请联系作者购买正式版");
                 return;
@@ -1235,12 +952,6 @@ namespace CpCodeSelect.Score
             }
 
 
-        }
-
-        private void AddRecordAndAddLog(string recordStr)
-        {
-            AddRecord(recordStr);
-            AddToLogFile7ge5(recordStr);
         }
 
         private void AddRecordToListBoxHistory(string record)
@@ -1819,7 +1530,8 @@ namespace CpCodeSelect.Score
                 string serverUrl = ConfigurationManager.AppSettings["txtFileNameSerever"];
                 if (string.IsNullOrEmpty(serverUrl)) serverUrl = "http://111.229.194.107:8099/";
                 string url1 = $"{serverUrl}/api/download-source-file";
-                bool is3fen = chk3fen.Checked;
+                //bool is3fen = chk3fen.Checked;
+                bool is3fen = false;
                 string postData1 = "{\"file_name\":\"txffc_file\", \"download_name\":\"downloaded_example.txt\"}";
                 if (is3fen)
                 {
@@ -1888,39 +1600,6 @@ namespace CpCodeSelect.Score
                 txtResult.Text = $"处理文件时出错: {ex.Message}";
 
             }
-        }
-
-        private void chk3fen_CheckedChanged(object sender, EventArgs e)
-        {
-            var path = ConfigurationManager.AppSettings["FilePath"];
-            if (!string.IsNullOrEmpty(path))
-            {
-                filePath = path;
-            }
-
-            var path3fen = ConfigurationManager.AppSettings["3FenCaiFilePath"];
-            var is3fen = ConfigurationManager.AppSettings["Is3fen"];
-
-            var is3Checked = chk3fen.Checked;
-            if (is3Checked)
-            {
-                filePath = path3fen;
-                if (string.IsNullOrEmpty(filePath))
-                {
-                    filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TX3FC.txt"; ;
-                }
-            }
-            else
-            {
-                filePath = path;
-                if (string.IsNullOrEmpty(filePath))
-                {
-                    filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt"; ;
-                }
-            }
-
-            txtFIlePath.Text = filePath;
-            txtDownLoadFilePath.Text = filePath;
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -2343,6 +2022,11 @@ namespace CpCodeSelect.Score
         private void button13_Click(object sender, EventArgs e)
         {
             AsyncToCache();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            StartExec();
         }
     }
 }

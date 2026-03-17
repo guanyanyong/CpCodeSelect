@@ -1,6 +1,6 @@
-﻿namespace CpCodeSelect.Score
+﻿namespace CpCodeSelect.FileWatch
 {
-    partial class Hou3Select156YiLouSetFormScoreAndChuShou
+    partial class FileWatchForm
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -29,17 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.button1 = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFIlePath = new System.Windows.Forms.TextBox();
             this.btnSelectFile = new System.Windows.Forms.Button();
             this.labelError = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnRestart = new System.Windows.Forms.Button();
             this.listBoxHistory = new System.Windows.Forms.ListBox();
-            this.chkRefersh = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.TotalInfo = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -183,14 +180,12 @@
             this.autoClkTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.chk3fen = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblNumber = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -254,17 +249,6 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button1.Location = new System.Drawing.Point(1009, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(161, 63);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "开始执行";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -316,17 +300,6 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "操作历史：";
             // 
-            // btnRestart
-            // 
-            this.btnRestart.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.btnRestart.Location = new System.Drawing.Point(1009, 76);
-            this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(161, 38);
-            this.btnRestart.TabIndex = 0;
-            this.btnRestart.Text = "重新开始";
-            this.btnRestart.UseVisualStyleBackColor = true;
-            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
-            // 
             // listBoxHistory
             // 
             this.listBoxHistory.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -339,16 +312,6 @@
             this.listBoxHistory.Name = "listBoxHistory";
             this.listBoxHistory.Size = new System.Drawing.Size(1396, 432);
             this.listBoxHistory.TabIndex = 5;
-            // 
-            // chkRefersh
-            // 
-            this.chkRefersh.AutoSize = true;
-            this.chkRefersh.Location = new System.Drawing.Point(859, 98);
-            this.chkRefersh.Name = "chkRefersh";
-            this.chkRefersh.Size = new System.Drawing.Size(120, 16);
-            this.chkRefersh.TabIndex = 7;
-            this.chkRefersh.Text = "开出新号是否刷新";
-            this.chkRefersh.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
@@ -1485,14 +1448,14 @@
             this.IsChuShou,
             this.Score,
             this.ShouNumberStr});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 16F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 16F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -2220,8 +2183,8 @@
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.Size = new System.Drawing.Size(1396, 456);
             this.dataGridView2.TabIndex = 0;
@@ -2273,31 +2236,15 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // chk3fen
-            // 
-            this.chk3fen.AutoSize = true;
-            this.chk3fen.Location = new System.Drawing.Point(859, 64);
-            this.chk3fen.Name = "chk3fen";
-            this.chk3fen.Size = new System.Drawing.Size(54, 16);
-            this.chk3fen.TabIndex = 7;
-            this.chk3fen.Text = "3分彩";
-            this.chk3fen.UseVisualStyleBackColor = true;
-            this.chk3fen.CheckedChanged += new System.EventHandler(this.chk3fen_CheckedChanged);
-            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.lblNumber);
             this.panel1.Controls.Add(this.progressBar1);
-            this.panel1.Controls.Add(this.chk3fen);
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button10);
             this.panel1.Controls.Add(this.button13);
-            this.panel1.Controls.Add(this.btnRestart);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtFIlePath);
             this.panel1.Controls.Add(this.btnSelectFile);
-            this.panel1.Controls.Add(this.chkRefersh);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -2321,34 +2268,12 @@
             this.progressBar1.Size = new System.Drawing.Size(469, 38);
             this.progressBar1.TabIndex = 9;
             // 
-            // button9
-            // 
-            this.button9.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button9.Location = new System.Drawing.Point(1176, 7);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(161, 63);
-            this.button9.TabIndex = 0;
-            this.button9.Text = "调试";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // button10
-            // 
-            this.button10.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button10.Location = new System.Drawing.Point(665, 76);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(161, 38);
-            this.button10.TabIndex = 0;
-            this.button10.Text = "统计信息";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.btnRestart_Click);
-            // 
             // button13
             // 
             this.button13.Font = new System.Drawing.Font("微软雅黑", 14F);
-            this.button13.Location = new System.Drawing.Point(1176, 78);
+            this.button13.Location = new System.Drawing.Point(1157, 18);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(161, 38);
+            this.button13.Size = new System.Drawing.Size(200, 90);
             this.button13.TabIndex = 0;
             this.button13.Text = "同步数据到缓存";
             this.button13.UseVisualStyleBackColor = true;
@@ -2363,7 +2288,18 @@
             this.panel2.Size = new System.Drawing.Size(1410, 612);
             this.panel2.TabIndex = 10;
             // 
-            // Hou3Select156YiLouSetFormScoreAndChuShou
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 14F);
+            this.button1.Location = new System.Drawing.Point(981, 18);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(161, 63);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "开始执行";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // FileWatchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -2371,7 +2307,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelError);
-            this.Name = "Hou3Select156YiLouSetFormScoreAndChuShou";
+            this.Name = "FileWatchForm";
             this.Text = "156注执行";
             this.tabControl1.ResumeLayout(false);
             this.TotalInfo.ResumeLayout(false);
@@ -2449,16 +2385,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFIlePath;
         private System.Windows.Forms.Button btnSelectFile;
         private System.Windows.Forms.Label labelError;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.ListBox listBoxHistory;
-        private System.Windows.Forms.CheckBox chkRefersh;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage TotalInfo;
         private System.Windows.Forms.TabPage ResultPage;
@@ -2549,7 +2481,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.CheckBox chk3fen;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TabPage kLine;
@@ -2590,7 +2521,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IsChuShou;
         private System.Windows.Forms.DataGridViewTextBoxColumn Score;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShouNumberStr;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button btnMoni2;
         private System.Windows.Forms.Button btnMoni3;
         private System.Windows.Forms.Button btnMoni1;
@@ -2600,7 +2530,6 @@
         private System.Windows.Forms.Button txt1ge35;
         private System.Windows.Forms.Button btn6ge6;
         private System.Windows.Forms.Button btn6ge6a;
-        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.TabPage tabTestInfo;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -2610,6 +2539,7 @@
         private System.Windows.Forms.Label lblNumber;
         private System.Windows.Forms.Button btnClearList2;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button1;
     }
 }
 

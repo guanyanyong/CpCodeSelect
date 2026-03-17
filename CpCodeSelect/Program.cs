@@ -1,4 +1,5 @@
-﻿using CpCodeSelect.Score;
+﻿using CpCodeSelect.FileWatch;
+using CpCodeSelect.Score;
 using CpCodeSelect.WuXingDuDan;
 using System;
 using System.Configuration;
@@ -114,6 +115,9 @@ namespace CpCodeSelect
             }else if(str == "WuXingDuDanSetForm")
             {
                 Application.Run(new WuXingDuDanSetForm());
+            }else if(str== "FileWatchForm")
+            {
+                Application.Run(new FileWatchForm());
             }
         }
     }
