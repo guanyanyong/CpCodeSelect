@@ -918,7 +918,7 @@ namespace CpCodeSelect.Score
                         firstTime = false;
                         ReadFirstLineExec();
 
-                        //AfterFirsttimeReadDeleteFile(filePath);
+                        AfterFirstTimeReadDeleteFile(filePath);
                     }
                     else
                     {
@@ -937,7 +937,7 @@ namespace CpCodeSelect.Score
         /// 第一次执行完成后 删除文件
         /// </summary>
         /// <param name="filePath"></param>
-        private void AfterFirsttimeReadDeleteFile(string filePath)
+        private void AfterFirstTimeReadDeleteFile(string filePath)
         {
             if (File.Exists(filePath))
             {
@@ -988,6 +988,7 @@ namespace CpCodeSelect.Score
 
                     if (result.latest_data != null)
                     {
+                        code = new Code();
                         var record = result.latest_data;
                         code.CodeQiHao = record.qihao;
                         code.CodeNumber = record.code;
