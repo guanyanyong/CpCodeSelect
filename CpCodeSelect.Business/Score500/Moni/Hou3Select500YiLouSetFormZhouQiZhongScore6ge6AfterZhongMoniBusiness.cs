@@ -5,28 +5,30 @@ using CpCodeSelect.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CpCodeSelect.Business.Score.Moni
+namespace CpCodeSelect.Business.Score500.Moni
 {
     /// <summary>
     /// 模拟执行6个6轮的确认点买入
     /// </summary>
-    public class Hou3Select156YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness 
+    public class Hou3Select500YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness
     {
         public delegate void LogDelegate(string message);
         private LogDelegate _logMethod;
-        private List<Hou3Select156_ZhouQiZhongScore> model350List = new List<Hou3Select156_ZhouQiZhongScore>();
+        private List<Hou3Select500_ZhouQiZhongScore> model350List = new List<Hou3Select500_ZhouQiZhongScore>();
         public List<string> current350List = new List<string>();
         public List<string> before350List = new List<string>();
         public List<YilouStatistic> yilouStatisticList = new List<YilouStatistic>();
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
         private bool WaitingForNextRound = false;//等待中出后开启下一轮
-        private const int TotalQiCount = 45;
-        public Hou3Select156YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness(LogDelegate logMethod, List<Hou3Select156_ZhouQiZhongScore> model350List)
+        private const int TotalQiCount = 10;
+        private Hou3Select500_ZhouQiZhongScore currentSelect = null;
+        public Hou3Select500YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness(LogDelegate logMethod, List<Hou3Select500_ZhouQiZhongScore> model350List)
         {
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
             this.model350List = model350List;
@@ -52,47 +54,64 @@ namespace CpCodeSelect.Business.Score.Moni
         /// 每轮的投注矩阵,金额
         /// </summary>
         private int[,] LunBeiAmountMatrix = {
-                        { 2,      4,      6,      9,      12,  },
-                        {     16,21,     27,     34,     42,  },
-                        {   52,     63,   76,     92,     111,  },
-                        {133,    160,    192, 230,    275,   },
-                        {     328,  391,    466,    555, 661,  },
-                        {    786,    935,    1112,  1322,   1571, },
-                        { 1867,   2218,   2635,   3130,   3717,},
-                        {4414, 5241,   6223,   7389,   8773,  },
-                        { 10416,  12366,14681,  17429,  20691,}
-
-
+                        
+           
+                        { 3,      9 },
+                        {    21,46 },
+                        {  98,205  },
+                        {426,882  },
+                        {  1823,3765  }
+          
+             /*
+                        { 3,      9 ,
+                          21,46 ,
+                          98,205 ,
+                        426,882  ,
+                          1823,3765  }
+              */
                 };
         /// <summary>
         /// 每轮的投注矩阵,金额
         /// </summary>
         private decimal[,] LunAmountMatrix =
                     {
-                {0.31M, 0.62M,0.94M, 1.40M,1.87M,          },
-                { 2.5M,  3.28M,4.21M,5.3M,6.55M,            },
-                {8.11M,9.83M,  11.86M,14.35M,17.32M,     },
-                { 20.75M,24.96M, 29.95M,35.88M,42.9M,},
-                {51.17M,61.00M, 72.7M,86.58M, 103.12M,     },
-                { 122.62M,145.86M, 173.47M, 206.23M,245.08M, },
-                {291.25M,346.01M, 411.06M,488.28M,579.85M,},
-                {688.58M,817.6M, 970.79M,1152.68M,1368.59M,},
-                { 1624.9M,1929.1M,2290.24M,2718.92M,3227.8M}
+           
+                {1.5M, 4.5M,},
+                { 10.5M,  23M},
+                {49M,102M,},
+                { 213M,441M,},
+                {911,1882},
+            /*
 
-                };
+            {
+                1.5M, 4.5M,
+                 10.5M,  23M,
+                49M,102M,
+                 213M,441M,
+                911,1882,
+                } 
+             */
+            };
         private decimal[,] ZhongJiangAmountMatrix =
-                    {
-                {1.98M, 3.96M,5.94M, 8.91M,11.88M,                  },
-                {15.84M, 20.79M,26.73M,33.66M,41.58M,              },
-                {  51.48M,62.37M,75.24M,91.08M,109.89M,          },
-                { 131.67M,158.4M, 190.08M, 227.7M,272.25M,},
-                {324.72M, 387.09M, 461.34M,549.45M,654.39M,          },
-                {778.14M,925.65M, 1100.88M,1308.78M,1555.29M,     },
-                { 1848.33M,2195.82M, 2608.65M,3098.7M,3679.83M, },
-                { 4369.86M,5188.59M, 6160.77M,7315.11M,8685.27M,    },
-                { 10311.84M,12242.34M,14534.19M,17254.71M,20484.09M,}
 
-                };
+                    {
+           
+                {2.91M, 8.73M},
+                {20.37M, 44.62M,},
+                {95.06M,198.85M},
+                {413.22M,855.54M},
+                {1768.31M,3652.05M},
+            
+                 /*
+            
+                {2.91M, 8.73M,
+                20.37M, 44.62M,
+                95.06M,198.85M,
+                413.22M,855.54M,
+                1768.31M,3652.05M,
+                } 
+        */
+        };
         /// <summary>
         /// 总金额
         /// </summary>
@@ -120,7 +139,7 @@ namespace CpCodeSelect.Business.Score.Moni
         /// <summary>
         /// 总轮次
         /// </summary>
-        public int TotalLun { get; set; } = 7;
+        public int TotalLun { get; set; } = 5;
 
         /// <summary>
         /// 当前上号的位置
@@ -209,7 +228,7 @@ namespace CpCodeSelect.Business.Score.Moni
             List<PositionNumber> list = new List<PositionNumber>();
             if (this.model350List == null || model350List.Count == 0)
             {
-                model350List = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List;
+                model350List = Hou3Select500YiLouSetFormScoreAndChuShouBusiness.model350List;
             }
             if (IsOriginBeginStatus())
             {
@@ -221,36 +240,25 @@ namespace CpCodeSelect.Business.Score.Moni
             }
             else
             {
-                if (WaitingForNextRound)
-                {
-                    //当前是等待下一轮状态,说明上一轮已经结束,等待中奖后开启下一轮
-                    var housanStr = code.GetHou3String();
-                    if (!current350List.Contains(housanStr))
-                    {
-                        //等待下一轮,没有中出,继续等待
-                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，-挂了{CurrentLun - 1}轮5期 等待中奖后进入下一轮");
-                        CurrentBei = 0;
-                        return;
-                    }
-                    else
-                    {
-                        WaitingForNextRound = false;
-                        LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，-中奖了 开启下一轮");
-                        //如果当前中了,则是开启开一轮
-                        //return;
-                    }
-                }
                 //继续当前轮次
                 if (IsRunning)
                 {
+                    var model = currentSelect;
                     //当前执行中 当前是中
                     var housanStr = code.GetHou3String();
-                    if (current350List.Contains(housanStr))
+                    if (
+                    model.PositionType == PositionType.万 && model.Number500.Contains(code.Wan.Number.ToString())
+                    || model.PositionType == PositionType.千 && model.Number500.Contains(code.Qian.Number.ToString())
+                    || model.PositionType == PositionType.百 && model.Number500.Contains(code.Bai.Number.ToString())
+                    || model.PositionType == PositionType.十 && model.Number500.Contains(code.Shi.Number.ToString())
+                    || model.PositionType == PositionType.个 && model.Number500.Contains(code.Ge.Number.ToString())
+                    )
+
                     {
                         //执行中,中出
                         TotalZhong++;
                         var zhongjiangAmount = ZhongJiangAmountMatrix[CurrentLun - 1, GuaCount - 1];
-                        int zhongjiangqi = (CurrentLun - 1) * 5 + GuaCount;
+                        int zhongjiangqi = (CurrentLun - 1) * 2 + GuaCount;
                         yilouStatisticList[zhongjiangqi - 1].TotalCount = yilouStatisticList[zhongjiangqi - 1].TotalCount + 1;
                         TotalResult = TotalResult + zhongjiangAmount;
                         //LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber},中奖金额:{zhongjiangAmount}");
@@ -266,16 +274,16 @@ namespace CpCodeSelect.Business.Score.Moni
                     {
                         //执行中，未中出
                         GuaCount++;
-                        if (GuaCount <= 5)
+                        if (GuaCount <= 2)
                         {
-                            //挂5说明挂了4次
+                            //挂2说明挂了1次
                             IsRunning = true;
                             CurrentaQi = GuaCount;
                             StartCalc(code);
                         }
-                        else if (GuaCount == 6)
+                        else if (GuaCount == 3)
                         {
-                            //挂6说明挂了5次,当前轮结束,开始下一轮
+                            //挂3说明挂了2次,当前轮结束,开始下一轮
                             IsRunning = false;
                             CurrentBei = 0;
                             LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，当前第{CurrentLun}轮已挂");
@@ -329,19 +337,36 @@ namespace CpCodeSelect.Business.Score.Moni
             }
             //list = Hou3Select350YiLouSetFormZhouQiZhongBusiness.model350List.
             if (CurrentLun == 0) CurrentLun = 1;
-            Hou3Select156_ZhouQiZhongScore getEnoughRecord = null;
-            var getEnoughRecordList = new List<Hou3Select156_ZhouQiZhongScore>();
-            if (Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 170)
+            Hou3Select500_ZhouQiZhongScore getEnoughRecord = null;
+            var getEnoughRecordList = new List<Hou3Select500_ZhouQiZhongScore>();
+            if (Hou3Select500YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 170)
             {
-                getEnoughRecordList = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List.
-                Where(p => p.IsChuShou && p.Score >= 70).ToList();
-                if (getEnoughRecordList.Count <= 0)
+                foreach (var record in Hou3Select500YiLouSetFormScoreAndChuShouBusiness.model350List)
                 {
-                    return;
+                    var kLine500 = record.YiLouKline500;
+                    var boll = record.KLineList;
+                    if (kLine500.Count > 4)
+                    {
+                        var yilouk1 = kLine500[kLine500.Count - 1];
+                        var yilouk2 = kLine500[kLine500.Count - 2];
+                        var yilouk3 = kLine500[kLine500.Count - 3];
+                        var yilouk4 = kLine500[kLine500.Count - 4];
+                        var kLin1 = boll[boll.Count - 1];
+                        //if (yilouk1.YiLouGuaCount == 0 && yilouk2.YiLouGuaCount == 1 && yilouk3.YiLouGuaCount >= 3)
+                        //要求当前的K值要比布林中轨的值大1.5
+                        if (kLin1.KValue >= kLin1.Bolling.MiddleValue + 1.5)
+                        {
+                            if (yilouk1.YiLouGuaCount == 1 && yilouk2.YiLouGuaCount == 1 && yilouk3.YiLouGuaCount == 0 && yilouk4.YiLouGuaCount == 0)
+
+                            {
+                                getEnoughRecordList.Add(record);
+                            }
+                        }
+                    }
                 }
             }
 
-
+            if (getEnoughRecordList.Count <= 0) return;
             //CurrentExecuteList.AddRange(getEnoughRecordList);
             var randomIndex = _threadLocalRandom.Value.Next(0, getEnoughRecordList.Count);
             randomIndex--;
@@ -354,10 +379,11 @@ namespace CpCodeSelect.Business.Score.Moni
             if (getEnoughRecord == null) return;
 
             //最多查找5次,如果5次没有找到合适的记录就不投注
-            if (getEnoughRecord.Number156.Count > 0)
+            if (getEnoughRecord.Number500.Count > 0)
             {
                 IsRunning = true;
-                current350List = getEnoughRecord.Number156;
+                current350List = GetRemainingDigits(getEnoughRecord.Number500);
+                currentSelect = getEnoughRecord;
                 //初始状态
                 //第一期投注
                 CurrentLun = 1;
@@ -403,6 +429,27 @@ namespace CpCodeSelect.Business.Score.Moni
             TotalLiuShui += CurrentAmount;
             LogInfo($"[{DateTime.Now:HH:mm:ss.fff}]-期号:{code.CodeQiHao},号码：{code.CodeNumber}，第{CurrentLun}轮第{CurrentaQi}期,下注金额【{CurrentAmount}】,投注后总额【{TotalResult}】");
             //CurrentaQi++;
+        }
+
+        /// <summary>
+        /// 获取剩余的数字（从0-9中排除已选的5个数字）
+        /// </summary>
+        /// <param name="selectedDigits">已选择的5个数字字符串列表</param>
+        /// <returns>剩余的5个数字字符串列表</returns>
+        public static List<string> GetRemainingDigits(List<string> selectedDigits)
+        {
+            string allDigits = "0123456789";
+            var remaining = new List<string>();
+
+            foreach (char digit in allDigits)
+            {
+                if (!selectedDigits.Contains(digit.ToString()))
+                {
+                    remaining.Add(digit.ToString());
+                }
+            }
+
+            return remaining;
         }
 
 

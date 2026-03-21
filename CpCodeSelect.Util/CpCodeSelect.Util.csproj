@@ -95,6 +95,8 @@
     <Compile Include="Scorer156\KLine156ScoreCalc.cs" />
     <Compile Include="Scorer156\Rules\ScoreRules.cs" />
     <Compile Include="Scorer156\ScorerUtil156.cs" />
+    <Compile Include="Scorer500\KLine500ScoreCalc.cs" />
+    <Compile Include="Scorer500\ScorerUtil500.cs" />
     <Compile Include="Scorer\BaseScoreRule.cs" />
     <Compile Include="Scorer\KLine350ScoreCalc.cs" />
     <Compile Include="Scorer\Rules\ScoreRules.cs" />

@@ -1,5 +1,6 @@
 ﻿using CpCodeSelect.FileWatch;
 using CpCodeSelect.Score;
+using CpCodeSelect.Score500;
 using CpCodeSelect.WuXingDuDan;
 using System;
 using System.Configuration;
@@ -118,6 +119,9 @@ namespace CpCodeSelect
             }else if(str== "FileWatchForm")
             {
                 Application.Run(new FileWatchForm());
+            }else if(str== "Hou3Select500YiLouSetFormScoreAndChuShou")
+            {
+                Application.Run(new Hou3Select500YiLouSetFormScoreAndChuShou());
             }
         }
     }

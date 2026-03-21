@@ -1,5 +1,4 @@
 ﻿using CpCodeSelect.Model.ExModel;
-using CpCodeSelect.Model.Score;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +6,36 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CpCodeSelect.Model 
+namespace CpCodeSelect.Model.Score
 {
-    public class Hou3Select156_ZhouQiZhong : BaseCodeInfo 
+    public class Hou3Select500_ZhouQiZhongScore : BaseCodeInfo
     {
-        public int Score { get; set; } = 0;
         public bool IsChuShou { get; set; } = false;
+        public int Score { get; set; } = 0;
+        /// <summary>
+        /// 出手次数
+        /// </summary>
         public int ShouNumber { get; set; } = -1;
+        /// <summary>
+        /// 处理的位置
+        /// </summary>
+        public PositionType PositionType { get; set; }
+        public string ShouNumberStr
+        {
+            get
+            {
+                return string.Format($"第{ShouNumber.ToString()}次出手");
+            }
+        }
         public static int ShowNumber = 6;
         /// <summary>
-        /// 350个号码
+        /// 500个号码
         /// </summary>
-        public List<string> Number156 { get; set; }
+        public List<string> Number500 { get; set; }
+        /// <summary>
+        /// 毒胆号码
+        /// </summary>
+        public string DanNumber { get; set; }
         /// <summary>
         /// 中之前挂的次数
         /// </summary>
@@ -30,7 +47,7 @@ namespace CpCodeSelect.Model
         /// <summary>
         /// 2中之前挂的次数
         /// </summary>
-        public int Zhong2BeforeGua { get;set; } = 0;
+        public int Zhong2BeforeGua { get; set; } = 0;
         /// <summary>
         /// 当前是否在周期内的中后周期
         /// </summary>
@@ -40,16 +57,15 @@ namespace CpCodeSelect.Model
         /// </summary>
         public int ZhouQiZhongHouGua { get; set; } = 0;
         /// <summary>
-        /// K线列表
-        /// </summary>
-
-        public List<KLine156> KLineList { get; set; }
-        public List<KLine156> YiLouTuLineList { get; set; }
-        public List<YiLouKline350> YiLouKline350 { get; set; }
-        /// <summary>
         /// 评分数据列表
         /// </summary>
         public List<LotteryScoreData> ScoreDateList { get; set; }
+        /// <summary>
+        /// K线列表
+        /// </summary>
+        public List<KLine156> KLineList { get; set; }
+        public List<KLine156> YiLouTuLineList { get; set; }
+        public List<YiLouKline500> YiLouKline500 { get; set; }
 
         /// <summary>
         /// 是否需要显示

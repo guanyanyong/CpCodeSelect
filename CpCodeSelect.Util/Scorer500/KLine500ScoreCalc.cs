@@ -12,19 +12,19 @@ using CpCodeSelect.Util.Config;
 using System.Threading;
 using CpCodeSelect.Util.IndexCalc;
 
-namespace CpCodeSelect.Util.Scorer156
+namespace CpCodeSelect.Util.Scorer500
 {
-    public class KLine156ScoreCalc
+    public class KLine500ScoreCalc
     { 
-        public static void CalcKlineCurrent(Hou3Select156_ZhouQiZhongScore scoreModel, Code code)
+        public static void CalcKlineCurrent(Hou3Select500_ZhouQiZhongScore scoreModel, Code code)
         {
-            var newModel = new Hou3Select156_ZhouQiZhong();
-            newModel.Number156 = scoreModel.Number156;
+            var newModel = new Hou3Select500_ZhouQiZhong();
+            newModel.Number500 = scoreModel.Number500;
             newModel.ZhongBeforeGua = scoreModel.ZhongBeforeGua;
             newModel.Zhong2BeforeGua = scoreModel.Zhong2BeforeGua;
             newModel.Zhong3BeforeGua = scoreModel.Zhong3BeforeGua;
             newModel.KLineList = scoreModel.KLineList;
-            newModel.YiLouKline350 = scoreModel.YiLouKline350;
+            newModel.YiLouKline500 = scoreModel.YiLouKline500;
             newModel.YiLouTuLineList = scoreModel.YiLouTuLineList;
             newModel.CodeNumber = scoreModel.CodeNumber;
             newModel.CodeQiHao = scoreModel.CodeQiHao;
@@ -34,6 +34,7 @@ namespace CpCodeSelect.Util.Scorer156
             newModel.IsZhouQiZhongHou = scoreModel.IsZhouQiZhongHou;
             newModel.ZhouQiZhongHouGua = scoreModel.ZhouQiZhongHouGua;
             newModel.ScoreDateList = scoreModel.ScoreDateList;
+            newModel.PositionType=scoreModel.PositionType;
             //newModel.IsShow = scoreModel.IsShow;
             newModel = CalcKlineCurrent(newModel, code);
 
@@ -41,7 +42,7 @@ namespace CpCodeSelect.Util.Scorer156
             scoreModel.IsChuShou = newModel.IsChuShou;
             scoreModel.ShouNumber = newModel.ShouNumber;
         }
-        public static Hou3Select156_ZhouQiZhong CalcKlineCurrent(Hou3Select156_ZhouQiZhong model, Code code)
+        public static Hou3Select500_ZhouQiZhong CalcKlineCurrent(Hou3Select500_ZhouQiZhong model, Code code)
         {
             var kline = new KLine156();
             var hou3Str = code.GetHou3String();
@@ -55,10 +56,16 @@ namespace CpCodeSelect.Util.Scorer156
             {
 
                 //判断是否中奖
-                if (model.Number156.Contains(hou3Str))
+                if (
+                model.PositionType == PositionType.万 && model.Number500.Contains(code.Wan.Number.ToString())
+                || model.PositionType == PositionType.千 && model.Number500.Contains(code.Qian.Number.ToString())
+                || model.PositionType == PositionType.百 && model.Number500.Contains(code.Bai.Number.ToString())
+                || model.PositionType == PositionType.十 && model.Number500.Contains(code.Shi.Number.ToString())
+                || model.PositionType == PositionType.个 && model.Number500.Contains(code.Ge.Number.ToString())
+                )
                 {
                     //中了 K值加1.857
-                    kline.KValue = 5.410256;
+                    kline.KValue = 1;
                     
                     isZhong = true;
                 }
@@ -72,10 +79,16 @@ namespace CpCodeSelect.Util.Scorer156
             else
             {
                 //不是第一次执行 判断是否中奖
-                if (model.Number156.Contains(hou3Str))
+                if (
+               model.PositionType == PositionType.万 && model.Number500.Contains(code.Wan.Number.ToString())
+               || model.PositionType == PositionType.千 && model.Number500.Contains(code.Qian.Number.ToString())
+               || model.PositionType == PositionType.百 && model.Number500.Contains(code.Bai.Number.ToString())
+               || model.PositionType == PositionType.十 && model.Number500.Contains(code.Shi.Number.ToString())
+               || model.PositionType == PositionType.个 && model.Number500.Contains(code.Ge.Number.ToString())
+               )
                 {
                     //中了 K值加1.857
-                    kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue + 5.410256;
+                    kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue + 1;
 
                     isZhong = true;
                 }
@@ -107,7 +120,7 @@ namespace CpCodeSelect.Util.Scorer156
             kline.CurrentGuaCount = model.GuaCount;
             kline.CurrentZhongCount = model.ZhongGount;
 
-            kline.Code350Code = model.Number156;
+            kline.Code350Code = model.Number500;
             kline.CodeQiHao = code.CodeQiHao;
             kline.CodeNumber = code.CodeNumber;
             kline.IsZhong = isZhong;
@@ -127,7 +140,7 @@ namespace CpCodeSelect.Util.Scorer156
             scoreData.BollingerBands = kline.Bolling;
 
 
-            scoreData.Number350 = model.Number156;
+            scoreData.Number350 = model.Number500;
             scoreData.QiHao = code.CodeQiHao;
             scoreData.Number = code.CodeNumber;
             model.ScoreDateList.Add(scoreData);
@@ -139,16 +152,16 @@ namespace CpCodeSelect.Util.Scorer156
 
             return model;
         }
-         
-        public static void CalcKLineHistoryList(Hou3Select156_ZhouQiZhongScore scoreModel, List<Code> AllCode, int number = 100)
+
+        public static void CalcKLineHistoryList(Hou3Select500_ZhouQiZhongScore scoreModel, List<Code> AllCode, int number = 100)
         {
-            var newModel = new Hou3Select156_ZhouQiZhong();
-            newModel.Number156 = scoreModel.Number156;
+            var newModel = new Hou3Select500_ZhouQiZhong();
+            newModel.Number500 = scoreModel.Number500;
             newModel.ZhongBeforeGua = scoreModel.ZhongBeforeGua;
             newModel.Zhong2BeforeGua = scoreModel.Zhong2BeforeGua;
             newModel.Zhong3BeforeGua = scoreModel.Zhong3BeforeGua;
             newModel.KLineList = scoreModel.KLineList;
-            newModel.YiLouKline350 = scoreModel.YiLouKline350;
+            newModel.YiLouKline500 = scoreModel.YiLouKline500;
             newModel.YiLouTuLineList = scoreModel.YiLouTuLineList;
             newModel.CodeNumber = scoreModel.CodeNumber;
             newModel.CodeQiHao = scoreModel.CodeQiHao;
@@ -158,6 +171,7 @@ namespace CpCodeSelect.Util.Scorer156
             newModel.IsZhouQiZhongHou = scoreModel.IsZhouQiZhongHou;
             newModel.ZhouQiZhongHouGua = scoreModel.ZhouQiZhongHouGua;
             newModel.ScoreDateList = scoreModel.ScoreDateList;
+            newModel.PositionType = scoreModel.PositionType;
             //newModel.ScoreDateList = scoreModel.ScoreDateList;
             //newModel.IsShow = scoreModel.IsShow;
             newModel = CalcKLineHistoryList(newModel, AllCode, number);
@@ -172,7 +186,7 @@ namespace CpCodeSelect.Util.Scorer156
         /// <param name="model">需要计算的对象</param>
         /// <param name="AllCode">所有的开奖号</param>
         /// <param name="number">需要往前计算的期数</param>
-        public static Hou3Select156_ZhouQiZhong CalcKLineHistoryList(Hou3Select156_ZhouQiZhong model, List<Code> AllCode, int number = 100)
+        public static Hou3Select500_ZhouQiZhong CalcKLineHistoryList(Hou3Select500_ZhouQiZhong model, List<Code> AllCode, int number = 100)
         {
             if (number < 100) number = 100;
             KLine156 beforeKLine = null;
@@ -200,11 +214,17 @@ namespace CpCodeSelect.Util.Scorer156
                 {
                     //第一次执行
                     //判断是否中奖
-                    if (model.Number156.Contains(hou3Str))
+                    if (
+               model.PositionType == PositionType.万 && model.Number500.Contains(code.Wan.Number.ToString())
+               || model.PositionType == PositionType.千 && model.Number500.Contains(code.Qian.Number.ToString())
+               || model.PositionType == PositionType.百 && model.Number500.Contains(code.Bai.Number.ToString())
+               || model.PositionType == PositionType.十 && model.Number500.Contains(code.Shi.Number.ToString())
+               || model.PositionType == PositionType.个 && model.Number500.Contains(code.Ge.Number.ToString())
+               )
                     {
                         yiLouTuKLine = new KLine156();
                         //中了 K值加1.857
-                        kline.KValue = 5.410256;
+                        kline.KValue = 1;
 
                         model.ZhongGount++;
                         model.NeedZhong = false;
@@ -229,11 +249,17 @@ namespace CpCodeSelect.Util.Scorer156
                 else
                 {
                     //不是第一次执行 判断是否中奖
-                    if (model.Number156.Contains(hou3Str))
+                    if (
+               model.PositionType == PositionType.万 && model.Number500.Contains(code.Wan.Number.ToString())
+               || model.PositionType == PositionType.千 && model.Number500.Contains(code.Qian.Number.ToString())
+               || model.PositionType == PositionType.百 && model.Number500.Contains(code.Bai.Number.ToString())
+               || model.PositionType == PositionType.十 && model.Number500.Contains(code.Shi.Number.ToString())
+               || model.PositionType == PositionType.个 && model.Number500.Contains(code.Ge.Number.ToString())
+               )
                     {
                         yiLouTuKLine = new KLine156();
                         //中了 K值加1.857
-                        kline.KValue = beforeKLine.KValue + 5.410256;
+                        kline.KValue = beforeKLine.KValue + 1;
 
                         model.ZhongGount++;
                         model.NeedZhong = false;
@@ -290,7 +316,7 @@ namespace CpCodeSelect.Util.Scorer156
                 }
 
 
-                kline.Code350Code = model.Number156;
+                kline.Code350Code = model.Number500;
                 kline.CodeQiHao = code.CodeQiHao;
                 kline.CodeNumber = code.CodeNumber;
                 kline.CurrentGuaCount = model.GuaCount;
@@ -310,7 +336,7 @@ namespace CpCodeSelect.Util.Scorer156
                 scoreData.KValue = kline.KValue;
                 scoreData.BollingerBands = kline.Bolling;
 
-                scoreData.Number350 = model.Number156;
+                scoreData.Number350 = model.Number500;
                 scoreData.QiHao = code.CodeQiHao;
                 scoreData.Number = code.CodeNumber;
 
@@ -324,17 +350,17 @@ namespace CpCodeSelect.Util.Scorer156
             return model;
         }
         //计算评分的逻辑
-        private static void CalcScore(LotteryScoreData currentData, Hou3Select156_ZhouQiZhong model)
+        private static void CalcScore(LotteryScoreData currentData, Hou3Select500_ZhouQiZhong model)
         {
-            CalcScoreBefore(currentData, model);
-            CalcScoreValue(currentData, model);
+            //CalcScoreBefore(currentData, model);
+            //CalcScoreValue(currentData, model);
         }
         /// <summary>
         /// 计算评分之前的逻辑
         /// </summary>
         /// <param name="currentData"></param>
         /// <param name="model"></param>
-        private static void CalcScoreBefore(LotteryScoreData currentData, Hou3Select156_ZhouQiZhong model)
+        private static void CalcScoreBefore(LotteryScoreData currentData, Hou3Select500_ZhouQiZhong model)
         {
 
             // 计算遗漏值
@@ -353,15 +379,15 @@ namespace CpCodeSelect.Util.Scorer156
         /// </summary>
         /// <param name="currentData"></param>
         /// <param name="model"></param>
-        private static void CalcScoreValue(LotteryScoreData currentData, Hou3Select156_ZhouQiZhong model)
+        private static void CalcScoreValue(LotteryScoreData currentData, Hou3Select500_ZhouQiZhong model)
         {
             RecalculateAllScoresAsync(currentData, model);
         }
 
-        private static void RecalculateAllScoresAsync(LotteryScoreData currentData, Hou3Select156_ZhouQiZhong model)
+        private static void RecalculateAllScoresAsync(LotteryScoreData currentData, Hou3Select500_ZhouQiZhong model)
         {
             var Scoring156Engine = new Scoring156Engine();
-            ScorerUtil156.InitializeScoringRulesForEngine(Scoring156Engine);
+            ScorerUtil500.InitializeScoringRulesForEngine(Scoring156Engine);
             var historyData = model.ScoreDateList;
             // 首先重置所有周期相关字段，确保重新计算不会受到之前结果的影响
 
@@ -518,7 +544,7 @@ namespace CpCodeSelect.Util.Scorer156
         /// 计算其他指标
         /// </summary>
         /// <param name="currentData"></param>
-        private static void CalculateOtherIndicators(LotteryScoreData currentData, Hou3Select156_ZhouQiZhong model)
+        private static void CalculateOtherIndicators(LotteryScoreData currentData, Hou3Select500_ZhouQiZhong model)
         {
             // 判断是否大遗漏
             currentData.IsDaYiLou = currentData.YiLouValue >= 6;
@@ -634,7 +660,7 @@ namespace CpCodeSelect.Util.Scorer156
         /// 计算连中连挂次数
         /// </summary>
         /// <param name="currentData"></param>
-        private static void CalculateConsecutiveCounts(LotteryScoreData currentData, Hou3Select156_ZhouQiZhong model)
+        private static void CalculateConsecutiveCounts(LotteryScoreData currentData, Hou3Select500_ZhouQiZhong model)
         {
             if (model.ScoreDateList == null) model.ScoreDateList = new List<LotteryScoreData>();
             var HistoryData = model.ScoreDateList;
@@ -664,7 +690,7 @@ namespace CpCodeSelect.Util.Scorer156
         /// 检查确认点
         /// </summary>
         /// <param name="currentData"></param>
-        private static void CheckConfirmPoint(LotteryScoreData currentData, Hou3Select156_ZhouQiZhong model)
+        private static void CheckConfirmPoint(LotteryScoreData currentData, Hou3Select500_ZhouQiZhong model)
         {
             var HistoryData = model.ScoreDateList;
             // 确认点：大遗漏之后中奖，且在中奖后理论周期内再次中奖
@@ -740,7 +766,7 @@ namespace CpCodeSelect.Util.Scorer156
         /// 检查趋势段
         /// </summary>
         /// <param name="currentData"></param>
-        private static void CheckTrendSegment(LotteryScoreData currentData, Hou3Select156_ZhouQiZhong model)
+        private static void CheckTrendSegment(LotteryScoreData currentData, Hou3Select500_ZhouQiZhong model)
         {
             // 如果当前期是大遗漏，则趋势段结束或不开始，重新计算从当前期开始
             if (currentData.IsDaYiLou)
@@ -827,7 +853,7 @@ namespace CpCodeSelect.Util.Scorer156
         /// 严格按照"中奖或达到设定周期数"来完成一个周期的规则
         /// </summary>
         /// <param name="currentData"></param>
-        public static void CalculateChuShouCycleAndHandNumber(LotteryScoreData currentData, Hou3Select156_ZhouQiZhong model)
+        public static void CalculateChuShouCycleAndHandNumber(LotteryScoreData currentData, Hou3Select500_ZhouQiZhong model)
         {
             // 如果没有出手，直接返回
             if (!currentData.IsChuShou)

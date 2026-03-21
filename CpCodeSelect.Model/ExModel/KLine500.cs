@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace CpCodeSelect.Model.ExModel
 {
-    public class KLine156  
+    public class KLine500
     {
-        public double ZhongAddValue { get; set; } = 5.4102564;
+        public double ZhongAddValue { get; set; } = 1;
         public double GuaAddValue { get; set; } = -1;
         public string CodeQiHao { get; set; }
         public string CodeNumber { get; set; }
-        public List<string> Code350Code { get; set; }
+        public List<string> Code500Code { get; set; }
         public bool IsZhong { get; set; }
         public double KValue { get; set; }
         /// <summary>

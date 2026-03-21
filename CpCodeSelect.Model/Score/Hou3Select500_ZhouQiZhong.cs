@@ -7,18 +7,19 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CpCodeSelect.Model 
+namespace CpCodeSelect.Model
 {
-    public class Hou3Select156_ZhouQiZhong : BaseCodeInfo 
+    public class Hou3Select500_ZhouQiZhong : BaseCodeInfo 
     {
         public int Score { get; set; } = 0;
         public bool IsChuShou { get; set; } = false;
         public int ShouNumber { get; set; } = -1;
         public static int ShowNumber = 6;
+        public PositionType PositionType { get; set; }
         /// <summary>
         /// 350个号码
         /// </summary>
-        public List<string> Number156 { get; set; }
+        public List<string> Number500 { get; set; }
         /// <summary>
         /// 中之前挂的次数
         /// </summary>
@@ -45,7 +46,7 @@ namespace CpCodeSelect.Model
 
         public List<KLine156> KLineList { get; set; }
         public List<KLine156> YiLouTuLineList { get; set; }
-        public List<YiLouKline350> YiLouKline350 { get; set; }
+        public List<YiLouKline500> YiLouKline500 { get; set; }
         /// <summary>
         /// 评分数据列表
         /// </summary>

@@ -192,7 +192,7 @@ namespace CpCodeSelect
             }
         }
 
-        public static void Generate350Code(Code code)
+        public static void Generate500Code(Code code)
         {
 
             if (AllCode != null && AllCode.Count > 270)
@@ -208,26 +208,17 @@ namespace CpCodeSelect
                 numerList = numerList.OrderBy(item => item).ToList();
 
                 */
-
-                var hou3List = Hou3Select350YiLouSetFormZhouQiZhongBusiness.GenerateHou3NumbereFromCode(270);
-                var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
-                foreach (var number in numerList)
+                if (model350List == null || model350List.Count <= 0)
                 {
-                    if (number.Count > 0)
+                    var numerList = GetAllCombinations();
+                    foreach (var number in numerList)
                     {
-                        var list = number.OrderBy(p => p).ToList();
+                        if (number.Count > 0)
+                        {
+                            var list = number.OrderBy(p => p).ToList();
 
 
-                        Hou3Select350_ZhouQiZhong model350 = new Hou3Select350_ZhouQiZhong();
-                        model350.Number350 = list;
-                        model350.CodeNumber = code.CodeNumber;
-                        model350.CodeQiHao = code.CodeQiHao;
-                        model350.NeedZhong = true;
-                        model350.KLineList = new List<KLine>();
-                        model350.YiLouKline350 = new List<YiLouKline350>();
-                        model350.YiLouTuLineList = new List<KLine>();
-                        KLine350Calc.CalcKLineHistoryList(model350, AllCode, 100);
-                        model350List.Add(model350);
+                        }
                     }
                 }
 
@@ -238,6 +229,21 @@ namespace CpCodeSelect
                 //    break;
                 //}
             }
+        }
+
+        private static void Add(Code code,List<string> list)
+        {
+
+            Hou3Select350_ZhouQiZhong model350 = new Hou3Select350_ZhouQiZhong();
+            model350.Number350 = list;
+            model350.CodeNumber = code.CodeNumber;
+            model350.CodeQiHao = code.CodeQiHao;
+            model350.NeedZhong = true;
+            model350.KLineList = new List<KLine>();
+            model350.YiLouKline350 = new List<YiLouKline350>();
+            model350.YiLouTuLineList = new List<KLine>();
+            KLine350Calc.CalcKLineHistoryList(model350, AllCode, 100);
+            model350List.Add(model350);
         }
         /// <summary>
         /// 从Code列表中生成指定数量的后3号码,没有做滤重操作
@@ -263,7 +269,47 @@ namespace CpCodeSelect
         }
 
 
+        /// <summary>
+        /// 从0-9中选择5个字符的所有组合，返回List<List<string>>格式
+        /// 每个内部List<string>包含5个数字字符串
+        /// </summary>
+        /// <returns>包含所有组合的列表，每个组合是包含5个字符串的List</returns>
+        public static List<List<string>> GetAllCombinations()
+        {
+            string digits = "0123456789";
+            List<List<string>> result = new List<List<string>>();
 
+            // 使用递归生成组合
+            GenerateCombinations(digits, new List<string>(), 0, 5, result);
+
+            return result;
+        }
+
+        /// <summary>
+        /// 递归生成组合的辅助方法
+        /// </summary>
+        /// <param name="digits">源字符串</param>
+        /// <param name="current">当前构建的组合字符串列表</param>
+        /// <param name="start">起始索引</param>
+        /// <param name="k">还需要选择的字符数量</param>
+        /// <param name="result">结果列表</param>
+        private static void GenerateCombinations(string digits, List<string> current, int start, int k, List<List<string>> result)
+        {
+            // 如果已经选择了5个字符，添加到结果中
+            if (k == 0)
+            {
+                result.Add(new List<string>(current));
+                return;
+            }
+
+            // 从start开始选择字符
+            for (int i = start; i <= digits.Length - k; i++)
+            {
+                current.Add(digits[i].ToString());
+                GenerateCombinations(digits, current, i + 1, k - 1, result);
+                current.RemoveAt(current.Count - 1); // 回溯
+            }
+        }
 
     }
 }

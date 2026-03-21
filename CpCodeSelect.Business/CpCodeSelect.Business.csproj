@@ -64,6 +64,8 @@
     <Compile Include="Score156\Moni\Hou3Select156YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness.cs" />
     <Compile Include="Score156\Moni\MoniRunZhouQiZhong156Score35ge1MoniBusiness.cs" />
     <Compile Include="Score156\Moni\MoniRunZhouQiZhongScore156AllChuShou2MoniBusiness.cs" />
+    <Compile Include="Score500\Hou3Select500YiLouSetFormScoreAndChuShouBusiness.cs" />
+    <Compile Include="Score500\Moni\Hou3Select500YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness.cs" />
     <Compile Include="Score\Moni\Hou3Select350YiLouSetFormZhouQiZhongScore3ge5AfterZhongMoniBusiness.cs" />
     <Compile Include="Score\Moni\MoniRunZhouQiZhongScoreAllChuShou2MoniBusiness.cs" />
     <Compile Include="Score\Moni\MoniRunZhouQiZhongScoreAllChuShouMoniBusiness.cs" />

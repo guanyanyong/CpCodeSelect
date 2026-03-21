@@ -47,8 +47,10 @@
     <Compile Include="ExModel\ADXResult.cs" />
     <Compile Include="ExModel\Bolling.cs" />
     <Compile Include="ExModel\CheckResult.cs" />
+    <Compile Include="ExModel\KLine500.cs" />
     <Compile Include="ExModel\KLine156.cs" />
     <Compile Include="ExModel\MACDResult.cs" />
+    <Compile Include="ExModel\YiLouKline500.cs" />
     <Compile Include="ExModel\YiLouKline350.cs" />
     <Compile Include="ExModel\KLine.cs" />
     <Compile Include="ExModel\YiLouSetExModel.cs" />
@@ -66,7 +68,9 @@
     <Compile Include="PositionNumber.cs" />
     <Compile Include="PositionType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Score\Hou3Select500_ZhouQiZhong.cs" />
     <Compile Include="Score\Hou3Select156_ZhouQiZhongScore.cs" />
+    <Compile Include="Score\Hou3Select500_ZhouQiZhongScore.cs" />
     <Compile Include="Score\Hou3Select156_ZhouQiZhong.cs" />
     <Compile Include="Score\Hou3Select350_ZhouQiZhongScore.cs" />
     <Compile Include="Score\LotteryScoreData.cs" />

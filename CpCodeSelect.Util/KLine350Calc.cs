@@ -299,7 +299,7 @@ namespace CpCodeSelect.Util
         }
 
         public static void CalcKLineHistoryList(Hou3Select350_ZhouQiZhongScore scoreModel, List<Code> AllCode, int number = 100)
-        {
+        { 
             var newModel = new Hou3Select350_ZhouQiZhong();
             newModel.Number350 = scoreModel.Number350;
             newModel.ZhongBeforeGua = scoreModel.ZhongBeforeGua;

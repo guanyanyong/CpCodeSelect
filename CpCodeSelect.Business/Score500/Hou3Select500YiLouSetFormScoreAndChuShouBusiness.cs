@@ -4,6 +4,7 @@ using CpCodeSelect.Model.Score;
 using CpCodeSelect.Util;
 using CpCodeSelect.Util.Scorer;
 using CpCodeSelect.Util.Scorer156;
+using CpCodeSelect.Util.Scorer500;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,21 +15,21 @@ using System.Text;
 using System.Threading.Tasks;
 using static CpCodeSelect.Model.Zu6Kill1Model;
 
-namespace CpCodeSelect.Business.Score
+namespace CpCodeSelect.Business.Score500
 {
-    public class Hou3Select156YiLouSetFormScoreAndChuShouBusiness : Hou3Select350YiLouSetFormZhongParentBusiness
-    { 
+    public class Hou3Select500YiLouSetFormScoreAndChuShouBusiness : Hou3Select350YiLouSetFormZhongParentBusiness
+    {
         /// <summary>
         /// 评分对象列表
         /// </summary>
-        public new static List<Hou3Select156_ZhouQiZhongScore> model350List = new List<Hou3Select156_ZhouQiZhongScore>();
-        public new static List<Hou3Select156_ZhouQiZhongScore> currentNeedCalcList = new List<Hou3Select156_ZhouQiZhongScore>();
+        public new static List<Hou3Select500_ZhouQiZhongScore> model350List = new List<Hou3Select500_ZhouQiZhongScore>();
+        public new static List<Hou3Select500_ZhouQiZhongScore> currentNeedCalcList = new List<Hou3Select500_ZhouQiZhongScore>();
 
-        public static Object LockModel350List = new object();
+        public static Object LockModel500List = new object();
         public static new void InitData()
         {
             AllCode = new List<Code>();
-            model350List = new List<Hou3Select156_ZhouQiZhongScore>();
+            model350List = new List<Hou3Select500_ZhouQiZhongScore>();
             Hou3NumberCount = new Dictionary<string, int>();
 
             var RunSkipNumberStr = ConfigurationManager.AppSettings["RunSkipNumber"];
@@ -41,7 +42,7 @@ namespace CpCodeSelect.Business.Score
         /// 初始化号码
         /// </summary>
         /// <param name="code"></param>
-        public static new void InitCode(Code code, bool zhongHouDelete = false)
+        public static void InitCode(Code code, bool zhongHouDelete = false)
         {
             code.Wan = new PositionNumber
             {
@@ -70,22 +71,15 @@ namespace CpCodeSelect.Business.Score
             };
             AllCode.Insert(0, code);
             //Hou2_20Numer = Generate20Code();
-
-
-            //先删除记录
-
-            //删除超过3000条的记录 如果没有4挂的就删除
-            RemoveOldModel(code, 1);
+            // 生成新的156码
+            Generate500Code(code);
 
             // 计算已有号码的中挂情况
             //CalcExistCode(code);
-            CalcExist156Code(code);
+            CalcExist500Code(code);
 
-            // 生成新的156码
 
-            Generate350Code(code);
-
-            Hou3Select350YiLouSetFormScoreAndChuShouBusiness.code = code;
+            Hou3Select500YiLouSetFormScoreAndChuShouBusiness.code = code;
         }
         /// <summary>
         ///  删除小于指定挂数的旧记录
@@ -94,7 +88,7 @@ namespace CpCodeSelect.Business.Score
         public static new void RemoveOldModel(Code code, int guaCount = 1)
         {
             var codeDecimal = Convert.ToDecimal(code.CodeQiHao);
-            List<Hou3Select156_ZhouQiZhongScore> removeList = new List<Hou3Select156_ZhouQiZhongScore>();
+            List<Hou3Select500_ZhouQiZhongScore> removeList = new List<Hou3Select500_ZhouQiZhongScore>();
             int count = 0;
             int numberCount = 1000;
             if (!int.TryParse(leftNumberCountStr, out numberCount))
@@ -114,7 +108,7 @@ namespace CpCodeSelect.Business.Score
                         removeList.Add(model);
                     }
                 }
-                lock (LockModel350List)
+                lock (LockModel500List)
                 {
 
                     foreach (var model in removeList)
@@ -154,30 +148,36 @@ namespace CpCodeSelect.Business.Score
         /// 计算已有号码的中挂情况,同时计算K线数据
         /// </summary>
         /// <param name="code"></param>
-        public static new void CalcExist156Code(Code code)
+        public static void CalcExist500Code(Code code)
         {
-            var hou3 = code.GetHou3String();
             foreach (var model in model350List.ToList())
             {
-                CalcCode(code, model, hou3);
+                CalcCode(code, model);
             }
             if (currentNeedCalcList != null)
             {
                 foreach (var model in currentNeedCalcList)
                 {
-                    CalcCode(code, model, hou3);
+                    CalcCode(code, model);
                 }
             }
         }
 
 
-        private static void CalcCode(Code code, Hou3Select156_ZhouQiZhongScore model, string hou3)
+        private static void CalcCode(Code code, Hou3Select500_ZhouQiZhongScore model)
         {
             if (model != null && model.ScoreDateList == null)
             {
                 model.ScoreDateList = new List<LotteryScoreData>();
             }
-            if (model.Number156.Contains(hou3))
+            if (
+                model.PositionType == PositionType.万 && model.Number500.Contains(code.Wan.Number.ToString())
+                || model.PositionType == PositionType.千 && model.Number500.Contains(code.Qian.Number.ToString())
+                || model.PositionType == PositionType.百 && model.Number500.Contains(code.Bai.Number.ToString())
+                || model.PositionType == PositionType.十 && model.Number500.Contains(code.Shi.Number.ToString())
+                || model.PositionType == PositionType.个 && model.Number500.Contains(code.Ge.Number.ToString())
+                )
+
             {
                 //中了
                 model.ZhongGount++;
@@ -187,10 +187,27 @@ namespace CpCodeSelect.Business.Score
 
                 model.GuaCount = 0;
 
+                //先设置之前的一个遗漏K
+                if (model.YiLouKline500 != null && model.YiLouKline500.Count > 0)
+                {
+                    var klin = model.YiLouKline500[model.YiLouKline500.Count - 1];
+                    klin.YiLouZhongCount = 0;
+                    klin.YiLouGuaCount= model.ZhongBeforeGua;
+                }
+
+                //添加新的遗漏K
+                YiLouKline500 kline500 = new YiLouKline500();
+                kline500.Code500Code = model.Number500;
+                kline500.CodeQiHao = code.CodeQiHao;
+                kline500.CodeNumber = code.CodeNumber;
+                kline500.YiLouGuaCount = 0;
+                kline500.YiLouZhongCount= model.ZhongGount++;
+                model.YiLouKline500.Add(kline500);
+
+
                 // 判断是否在中后周期内
                 if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
                 {
-
                     model.IsZhouQiZhongHou = true;
                 }
                 else
@@ -214,6 +231,15 @@ namespace CpCodeSelect.Business.Score
                 //挂了
                 model.GuaCount++;
                 model.ZhongGount = 0;
+
+                if(model.YiLouKline500!=null && model.YiLouKline500.Count > 0)
+                {
+
+                    var klin = model.YiLouKline500[model.YiLouKline500.Count - 1];
+                    klin.YiLouZhongCount = 0;
+                    klin.YiLouGuaCount++;
+                }
+
                 if (model.Zhong2BeforeGua >= 2 && model.ZhongBeforeGua <= 1)
                 {
                     model.IsZhouQiZhongHou = true;
@@ -226,15 +252,14 @@ namespace CpCodeSelect.Business.Score
             }
 
             //计算当前期的K线
-            KLine156ScoreCalc.CalcKlineCurrent(model, code);
+            KLine500ScoreCalc.CalcKlineCurrent(model, code);
         }
 
-        public static new void Generate350Code(Code code)
+        public static new void Generate500Code(Code code)
         {
-
+            if (model350List.Count > 0) return;
             if (AllCode != null && AllCode.Count > RunSkipNumber)
             {
-                int count = 0;
                 //while (true)
                 //{
                 var takeCodeList = new List<string>();
@@ -246,18 +271,10 @@ namespace CpCodeSelect.Business.Score
                 numerList = numerList.OrderBy(item => item).ToList();
 
                 */
-                int numberCount = 1000;
-                if (!int.TryParse(leftNumberCountStr, out numberCount))
-                {
-                    numberCount = 1000;
-                }
-
-                if (model350List.Count >= numberCount)
-                    return;
-                var hou3List = Hou3Select156YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
+                var hou3List = Hou3Select500YiLouSetFormScoreAndChuShouBusiness.GenerateHou3NumbereFromCode(270);
                 //var numerList = MultiThreadedNumberSelectFor350Hou3.GenerateMultipleGroups(hou3List, 50);
-                var numerList = MultiThreadedNumberSelectFor156Hou3ZiRanGenerate.GenerateMultipleGroups(hou3List, 15);
-                lock(LockModel350List)
+                var numerList = GetAllCombinations();
+                lock(LockModel500List)
                 {
                     foreach (var number in numerList)
                     {
@@ -265,18 +282,11 @@ namespace CpCodeSelect.Business.Score
                         {
                             var list = number.OrderBy(p => p).ToList();
 
-
-                            Hou3Select156_ZhouQiZhongScore model156 = new Hou3Select156_ZhouQiZhongScore();
-                            model156.Number156 = list;
-                            model156.CodeNumber = code.CodeNumber;
-                            model156.CodeQiHao = code.CodeQiHao;
-                            model156.NeedZhong = true;
-                            model156.KLineList = new List<KLine156>();
-                            model156.ScoreDateList = new List<LotteryScoreData>();
-                            model156.YiLouKline350 = new List<YiLouKline350>();
-                            model156.YiLouTuLineList = new List<KLine156>();
-                            KLine156ScoreCalc.CalcKLineHistoryList(model156, AllCode, 100);
-                            model350List.Add(model156);
+                            AddToList(list, PositionType.万);
+                            AddToList(list, PositionType.千);
+                            AddToList(list, PositionType.百);
+                            AddToList(list, PositionType.十);
+                            AddToList(list, PositionType.个);
                         }
                     }
 
@@ -290,6 +300,21 @@ namespace CpCodeSelect.Business.Score
                 //    break;
                 //}
             }
+        }
+        private static void AddToList(List<string> list ,PositionType positionType)
+        {
+            Hou3Select500_ZhouQiZhongScore model500 = new Hou3Select500_ZhouQiZhongScore();
+            model500.Number500 = list;
+            model500.CodeNumber = code.CodeNumber;
+            model500.CodeQiHao = code.CodeQiHao;
+            model500.NeedZhong = true;
+            model500.PositionType = positionType;
+            model500.KLineList = new List<KLine156>();
+            model500.ScoreDateList = new List<LotteryScoreData>();
+            model500.YiLouKline500 = new List<YiLouKline500>();
+            model500.YiLouTuLineList = new List<KLine156>();
+            KLine500ScoreCalc.CalcKLineHistoryList(model500, AllCode, 100);
+            model350List.Add(model500);
         }
         /// <summary>
         /// 从Code列表中生成指定数量的后3号码,没有做滤重操作
@@ -312,6 +337,48 @@ namespace CpCodeSelect.Business.Score
                 Hou3NumberCount.Add(key);
             }
             return Hou3NumberCount.ToList();
+        }
+
+        /// <summary>
+        /// 从0-9中选择5个字符的所有组合，返回List<List<string>>格式
+        /// 每个内部List<string>包含5个数字字符串
+        /// </summary>
+        /// <returns>包含所有组合的列表，每个组合是包含5个字符串的List</returns>
+        public static List<List<string>> GetAllCombinations()
+        {
+            string digits = "0123456789";
+            List<List<string>> result = new List<List<string>>();
+
+            // 使用递归生成组合
+            GenerateCombinations(digits, new List<string>(), 0, 5, result);
+
+            return result;
+        }
+
+        /// <summary>
+        /// 递归生成组合的辅助方法
+        /// </summary>
+        /// <param name="digits">源字符串</param>
+        /// <param name="current">当前构建的组合字符串列表</param>
+        /// <param name="start">起始索引</param>
+        /// <param name="k">还需要选择的字符数量</param>
+        /// <param name="result">结果列表</param>
+        private static void GenerateCombinations(string digits, List<string> current, int start, int k, List<List<string>> result)
+        {
+            // 如果已经选择了5个字符，添加到结果中
+            if (k == 0)
+            {
+                result.Add(new List<string>(current));
+                return;
+            }
+
+            // 从start开始选择字符
+            for (int i = start; i <= digits.Length - k; i++)
+            {
+                current.Add(digits[i].ToString());
+                GenerateCombinations(digits, current, i + 1, k - 1, result);
+                current.RemoveAt(current.Count - 1); // 回溯
+            }
         }
 
     }
