@@ -254,7 +254,7 @@ namespace CpCodeSelect.Score500
             */
 
 
-            
+
             moni35ge1 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
 
             moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
@@ -273,7 +273,7 @@ namespace CpCodeSelect.Score500
 
             moni6ge6 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
             moni6ge6a = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            
+
         }
         private void TabControlInit()
         {
@@ -506,7 +506,8 @@ namespace CpCodeSelect.Score500
 
                 }
 
-            }else
+            }
+            else
             {
 
             }
@@ -868,7 +869,7 @@ namespace CpCodeSelect.Score500
                 }
             }
         }
-        private void AddToLogFile7ge5(Code code,string msg)
+        private void AddToLogFile7ge5(Code code, string msg)
         {
 
             string fileName = "7个5.txt";
@@ -1376,6 +1377,49 @@ namespace CpCodeSelect.Score500
             else
                 lblError.Text = text;
         }
+        /// <summary>
+        /// 将字符串数字列表展开成对应的数字集合
+        /// </summary>
+        /// <param name="digits">字符串数字列表，如 ["0","1","2","3","5"]</param>
+        /// <returns>展开后的数字集合（共50个整数）</returns>
+        public static List<string> ExpandGeWeiToNumbers(List<string> digits)
+        {
+            var result = new List<string>();
+
+            foreach (var digitStr in digits)
+            {
+                if (int.TryParse(digitStr, out int digit))
+                {
+                    // 生成 digit, digit+10, digit+20, ..., digit+90
+                    for (int i = 0; i <= 9; i++)
+                    {
+                        result.Add((digit + i * 10).ToString("D2"));
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private List<string> ExpandToTwoDigitStrings(List<string> digits)
+        {
+            var result = new List<string>();
+
+            foreach (var digitStr in digits)
+            {
+                // 将字符串转换为整数
+                if (int.TryParse(digitStr, out int digit))
+                {
+                    int baseValue = digit * 10;
+                    for (int i = 0; i <= 9; i++)
+                    {
+                        result.Add((baseValue + i).ToString("D2"));
+                    }
+                }
+            }
+
+            return result;
+        }
         private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // 检查点击是否有效（非标题行）且是特定的按钮列
@@ -1384,17 +1428,32 @@ namespace CpCodeSelect.Score500
                 lblError.Text = "";
                 // 可以获取当前行的数据
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                string toNumberstr = string.Empty;
                 // ... 执行你的业务逻辑，例如根据row.Cells["SomeColumn"].Value进行不同操作
                 if (row.DataBoundItem is Hou3Select500_ZhouQiZhongScore)
                 {
                     var model = row.DataBoundItem as Hou3Select500_ZhouQiZhongScore;
                     txt50Number.Text = string.Join(" ", model.Number500);
+                    if (model.PositionType != PositionType.个)
+                    {
+                        //不是个位 万-万千 千-千百 百-百十 十-十个
+                        var toNumberList = ExpandToTwoDigitStrings(model.Number500);
+                        toNumberstr = string.Join(" ", toNumberList);
+
+                    }
+                    else
+                    {
+                        //是个位 生成十个
+                        var toNumberList = ExpandGeWeiToNumbers(model.Number500);
+                        toNumberstr = string.Join(" ", toNumberList);
+                    }
                     txtPosition.Text = model.PositionType.ToString();
                     currentCalcKLineDate = model;
                     var numberText = txt50Number.Text;
                     try
                     {
-                        Clipboard.SetText(numberText);
+                        //Clipboard.SetText(numberText);
+                        Clipboard.SetText(toNumberstr);
                         lblError.Text = "号码已拷贝";
 
                     }
@@ -2022,11 +2081,11 @@ namespace CpCodeSelect.Score500
                         model350.Number500 = txtNumber.Split(' ').ToList();
                         model350.CodeNumber = Hou3Select500YiLouSetFormScoreAndChuShouBusiness.code.CodeNumber;
                         model350.CodeQiHao = Hou3Select500YiLouSetFormScoreAndChuShouBusiness.code.CodeQiHao;
-                        
-                        var positonType=txtPosition.Text;
+
+                        var positonType = txtPosition.Text;
                         if (!string.IsNullOrEmpty(positonType))
                         {
-                            if(positonType == "万")
+                            if (positonType == "万")
                             {
 
                                 model350.PositionType = PositionType.万;
@@ -2291,6 +2350,9 @@ namespace CpCodeSelect.Score500
             var guaCount = numericUpDown3.Value;
             //var list = Hou3Select500YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
             var getEnoughRecordList = new List<Hou3Select500_ZhouQiZhongScore>();
+            var positionType = "全";
+            positionType = cmbPosition.Text;
+
             if (Hou3Select500YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 170)
             {
                 foreach (var record in Hou3Select500YiLouSetFormScoreAndChuShouBusiness.model350List)
@@ -2304,21 +2366,50 @@ namespace CpCodeSelect.Score500
                         var yilouk3 = kLine500[kLine500.Count - 3];
                         var yilouk4 = kLine500[kLine500.Count - 4];
                         var kLin1 = boll[boll.Count - 1];
+                        var kLin2 = boll[boll.Count - 2];
+                        var kLin3 = boll[boll.Count - 3];
+                        var kLin4 = boll[boll.Count - 4];
+
+
+                        var gap1 = kLin1.Bolling.BollUpperValue - kLin2.Bolling.BollUpperValue;
+                        var gap2 = kLin2.Bolling.BollUpperValue - kLin3.Bolling.BollUpperValue;
+                        var gap3 = kLin3.Bolling.BollUpperValue - kLin4.Bolling.BollUpperValue;
+                        if (positionType != "全")
+                        {
+                            if (record.PositionType.ToString() == positionType)
+                            {
+                                if (gap1 > 0.3 && gap2 > 0.3 && gap3 > 0.3)
+                                {
+                                    //要求上轨3期向上
+                                    if (yilouk1.YiLouGuaCount == 0 && yilouk2.YiLouGuaCount == 1 && yilouk3.YiLouGuaCount == 0 && yilouk4.YiLouGuaCount == 0)
+                                    //if (yilouk1.YiLouGuaCount == 1 && yilouk2.YiLouGuaCount == 0 && yilouk3.YiLouGuaCount == 0)
+                                    {
+                                        getEnoughRecordList.Add(record);
+                                    }
+                                }
+                            }
+                        }
                         //if (yilouk1.YiLouGuaCount == 0 && yilouk2.YiLouGuaCount == 1 && yilouk3.YiLouGuaCount >= 3)
                         //要求当前的K值要比布林中轨的值大1.5
-                        if (kLin1.KValue >= kLin1.Bolling.MiddleValue + 1.5)
-                        {
-                            if (yilouk1.YiLouGuaCount == 1 && yilouk2.YiLouGuaCount == 1 && yilouk3.YiLouGuaCount == 0 && yilouk4.YiLouGuaCount == 0)
+                        //if (kLin1.KValue <= kLin1.Bolling.BollUpperValue - 1.5 && kLin1.KValue >= kLin1.Bolling.MiddleValue + 0.3)
+                        //{
+                        else //要求上轨3期向上
 
+                        if (gap1 > 0.3 && gap2 > 0.3 && gap3 > 0.3)
+                        {
+
+                            if (yilouk1.YiLouGuaCount == 0 && yilouk2.YiLouGuaCount == 1 && yilouk3.YiLouGuaCount == 0 && yilouk4.YiLouGuaCount == 0)
+                            //if (yilouk1.YiLouGuaCount == 1 && yilouk2.YiLouGuaCount == 0 && yilouk3.YiLouGuaCount == 0)
                             {
                                 getEnoughRecordList.Add(record);
                             }
-                        }
+                            //}
 
-                        //if (yilouk1.YiLouGuaCount == 0 && yilouk2.YiLouGuaCount == 1 && yilouk3.YiLouGuaCount >= 3)
-                        //{
-                        //    getEnoughRecordList.Add(record);
-                        //}
+                            //if (yilouk1.YiLouGuaCount == 0 && yilouk2.YiLouGuaCount == 1 && yilouk3.YiLouGuaCount >= 3)
+                            //{
+                            //    getEnoughRecordList.Add(record);
+                            //}
+                        }
                     }
                 }
             }
@@ -2428,6 +2519,82 @@ namespace CpCodeSelect.Score500
         private void button13_Click(object sender, EventArgs e)
         {
             AsyncToCache();
+        }
+
+        private void btnMachinSearch_Click(object sender, EventArgs e)
+        {
+            var guaCount = numericUpDown3.Value;
+            //var list = Hou3Select500YiLouSetFormScoreAndChuShouBusiness.model350List.Where(p => p.NeedZhong == false && p.ZhouQiZhongHouGua == 0 && p.GuaCount == guaCount && p.IsZhouQiZhongHou).ToList();
+            var getEnoughRecordList = new List<Hou3Select500_ZhouQiZhongScore>();
+            var positionType = "全";
+            positionType = cmbPosition.Text;
+
+            if (Hou3Select500YiLouSetFormScoreAndChuShouBusiness.model350List.Count >= 170)
+            {
+                foreach (var record in Hou3Select500YiLouSetFormScoreAndChuShouBusiness.model350List)
+                {
+                    var kLine500 = record.YiLouKline500;
+                    var boll = record.KLineList;
+                    if (kLine500.Count > 4)
+                    {
+                        var yilouk1 = kLine500[kLine500.Count - 1];
+                        var yilouk2 = kLine500[kLine500.Count - 2];
+                        var yilouk3 = kLine500[kLine500.Count - 3];
+                        var yilouk4 = kLine500[kLine500.Count - 4];
+                        var kLin1 = boll[boll.Count - 1];
+                        var kLin2 = boll[boll.Count - 2];
+                        var kLin3 = boll[boll.Count - 3];
+                        var kLin4 = boll[boll.Count - 4];
+
+
+                        var gap1 = kLin1.Bolling.BollUpperValue - kLin2.Bolling.BollUpperValue;
+                        var gap2 = kLin2.Bolling.BollUpperValue - kLin3.Bolling.BollUpperValue;
+                        var gap3 = kLin3.Bolling.BollUpperValue - kLin4.Bolling.BollUpperValue;
+                        if (positionType != "全")
+                        {
+                            if (record.PositionType.ToString() == positionType)
+                            {
+
+                                if (gap1 > 0.5 && gap2 > 0.5 && gap3 > 0.5 )
+                                {
+                                    if (kLin1.Bolling.BollUpperValue <= kLin1.KValue + 0.3)
+                                    {
+                                        //不要有轨超压
+                                        if(kLin1.Bolling.BollUpperValue - kLin1.Bolling.BollLowerValue> kLin2.Bolling.BollUpperValue - kLin2.Bolling.BollLowerValue
+                                         && kLin2.Bolling.BollUpperValue - kLin2.Bolling.BollLowerValue > kLin3.Bolling.BollUpperValue - kLin3.Bolling.BollLowerValue
+                                         && kLin3.Bolling.BollUpperValue - kLin3.Bolling.BollLowerValue > kLin4.Bolling.BollUpperValue - kLin4.Bolling.BollLowerValue
+                                            )
+                                        {
+                                            //不要有轨沟内翘
+                                            getEnoughRecordList.Add(record);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        //if (yilouk1.YiLouGuaCount == 0 && yilouk2.YiLouGuaCount == 1 && yilouk3.YiLouGuaCount >= 3)
+                        //要求当前的K值要比布林中轨的值大1.5
+                        //if (kLin1.KValue <= kLin1.Bolling.BollUpperValue - 1.5 && kLin1.KValue >= kLin1.Bolling.MiddleValue + 0.3)
+                        //{
+                        else //要求上轨3期向上
+
+                        if (gap1 > 0.5 && gap2 > 0.5 && gap3 > 0.5 && kLin1.Bolling.BollUpperValue <= kLin1.KValue + 0.5)
+                        {
+                            getEnoughRecordList.Add(record);
+                            //}
+
+                            //if (yilouk1.YiLouGuaCount == 0 && yilouk2.YiLouGuaCount == 1 && yilouk3.YiLouGuaCount >= 3)
+                            //{
+                            //    getEnoughRecordList.Add(record);
+                            //}
+                        }
+                    }
+                }
+            }
+
+            getEnoughRecordList = getEnoughRecordList.ToList();
+
+            SetDataSource(getEnoughRecordList);
         }
     }
 }

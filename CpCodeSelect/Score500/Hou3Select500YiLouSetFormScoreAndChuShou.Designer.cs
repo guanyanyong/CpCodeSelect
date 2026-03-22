@@ -141,7 +141,6 @@
             this.btnSelect = new System.Windows.Forms.Button();
             this.btnScore = new System.Windows.Forms.Button();
             this.btnQuShiDuanSearch = new System.Windows.Forms.Button();
-            this.btnYiLou = new System.Windows.Forms.Button();
             this.btnSelectConditonEnough = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnStartAuto = new System.Windows.Forms.Button();
@@ -155,6 +154,8 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtPosition = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -191,8 +192,9 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtPosition = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cmbPosition = new System.Windows.Forms.ComboBox();
+            this.btnMachinSearch = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -1586,6 +1588,8 @@
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.cmbPosition);
+            this.panel9.Controls.Add(this.label18);
             this.panel9.Controls.Add(this.label2);
             this.panel9.Controls.Add(this.lblMaxGua2);
             this.panel9.Controls.Add(this.label13);
@@ -1603,9 +1607,9 @@
             this.panel9.Controls.Add(this.numericUpDownAutoClick);
             this.panel9.Controls.Add(this.lblError);
             this.panel9.Controls.Add(this.btnSelect);
+            this.panel9.Controls.Add(this.btnMachinSearch);
             this.panel9.Controls.Add(this.btnScore);
             this.panel9.Controls.Add(this.btnQuShiDuanSearch);
-            this.panel9.Controls.Add(this.btnYiLou);
             this.panel9.Controls.Add(this.btnSelectConditonEnough);
             this.panel9.Controls.Add(this.btnClear);
             this.panel9.Controls.Add(this.btnStartAuto);
@@ -1820,9 +1824,9 @@
             // btnScore
             // 
             this.btnScore.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnScore.Location = new System.Drawing.Point(1225, 95);
+            this.btnScore.Location = new System.Drawing.Point(1014, 118);
             this.btnScore.Name = "btnScore";
-            this.btnScore.Size = new System.Drawing.Size(155, 57);
+            this.btnScore.Size = new System.Drawing.Size(155, 47);
             this.btnScore.TabIndex = 3;
             this.btnScore.Text = "评分搜索";
             this.btnScore.UseVisualStyleBackColor = true;
@@ -1838,17 +1842,6 @@
             this.btnQuShiDuanSearch.Text = "趋势段搜索";
             this.btnQuShiDuanSearch.UseVisualStyleBackColor = true;
             this.btnQuShiDuanSearch.Click += new System.EventHandler(this.btnQuShiDuanSearch_Click);
-            // 
-            // btnYiLou
-            // 
-            this.btnYiLou.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.btnYiLou.Location = new System.Drawing.Point(917, 109);
-            this.btnYiLou.Name = "btnYiLou";
-            this.btnYiLou.Size = new System.Drawing.Size(155, 58);
-            this.btnYiLou.TabIndex = 3;
-            this.btnYiLou.Text = "最大遗漏搜索";
-            this.btnYiLou.UseVisualStyleBackColor = true;
-            this.btnYiLou.Click += new System.EventHandler(this.btnYiLou_Click);
             // 
             // btnSelectConditonEnough
             // 
@@ -1994,6 +1987,22 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1402, 117);
             this.panel3.TabIndex = 0;
+            // 
+            // txtPosition
+            // 
+            this.txtPosition.Location = new System.Drawing.Point(1101, 7);
+            this.txtPosition.Name = "txtPosition";
+            this.txtPosition.Size = new System.Drawing.Size(81, 36);
+            this.txtPosition.TabIndex = 24;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(1038, 7);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(57, 30);
+            this.label16.TabIndex = 23;
+            this.label16.Text = "位置";
             // 
             // numericUpDown5
             // 
@@ -2367,21 +2376,41 @@
             this.panel2.Size = new System.Drawing.Size(1410, 612);
             this.panel2.TabIndex = 10;
             // 
-            // label16
+            // label18
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(1038, 7);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(57, 30);
-            this.label16.TabIndex = 23;
-            this.label16.Text = "位置";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(462, 122);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(57, 30);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "位置";
             // 
-            // txtPosition
+            // cmbPosition
             // 
-            this.txtPosition.Location = new System.Drawing.Point(1101, 7);
-            this.txtPosition.Name = "txtPosition";
-            this.txtPosition.Size = new System.Drawing.Size(81, 36);
-            this.txtPosition.TabIndex = 24;
+            this.cmbPosition.FormattingEnabled = true;
+            this.cmbPosition.Items.AddRange(new object[] {
+            "全",
+            "万",
+            "千",
+            "百",
+            "十",
+            "个"});
+            this.cmbPosition.Location = new System.Drawing.Point(536, 121);
+            this.cmbPosition.Name = "cmbPosition";
+            this.cmbPosition.Size = new System.Drawing.Size(55, 36);
+            this.cmbPosition.TabIndex = 12;
+            this.cmbPosition.Text = "全";
+            // 
+            // btnMachinSearch
+            // 
+            this.btnMachinSearch.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.btnMachinSearch.Location = new System.Drawing.Point(1225, 118);
+            this.btnMachinSearch.Name = "btnMachinSearch";
+            this.btnMachinSearch.Size = new System.Drawing.Size(155, 47);
+            this.btnMachinSearch.TabIndex = 3;
+            this.btnMachinSearch.Text = "机器搜索";
+            this.btnMachinSearch.UseVisualStyleBackColor = true;
+            this.btnMachinSearch.Click += new System.EventHandler(this.btnMachinSearch_Click);
             // 
             // Hou3Select500YiLouSetFormScoreAndChuShou
             // 
@@ -2596,7 +2625,6 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button btnYiLou;
         private System.Windows.Forms.Button btnQuShiDuanSearch;
         private System.Windows.Forms.Button btnScore;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZhouQiZhongHouGua;
@@ -2632,6 +2660,9 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtPosition;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox cmbPosition;
+        private System.Windows.Forms.Button btnMachinSearch;
     }
 }
 

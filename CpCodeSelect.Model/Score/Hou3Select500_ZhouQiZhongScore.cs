@@ -20,6 +20,10 @@ namespace CpCodeSelect.Model.Score
         /// 处理的位置
         /// </summary>
         public PositionType PositionType { get; set; }
+        /// <summary>
+        /// 是否被选中
+        /// </summary>
+        public bool IsSelect { get; set; } = false;
         public string ShouNumberStr
         {
             get
@@ -35,7 +39,11 @@ namespace CpCodeSelect.Model.Score
         /// <summary>
         /// 毒胆号码
         /// </summary>
-        public string DanNumber { get; set; }
+        public string DanNumber { get
+            {
+                return string.Join(",",Number500);
+            }
+        }
         /// <summary>
         /// 中之前挂的次数
         /// </summary>

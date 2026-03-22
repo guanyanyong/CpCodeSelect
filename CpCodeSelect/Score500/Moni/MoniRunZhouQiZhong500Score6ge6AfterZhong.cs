@@ -139,7 +139,7 @@ namespace CpCodeSelect.Score500.Moni
         private void btnCurrent350Code_Click(object sender, EventArgs e)
         {
             TryCopTime = 0;
-            txt350Code.Text = string.Join(" ", moniBusiness.current350List);
+            txt350Code.Text = $"位置:{moniBusiness.currentSelect.PositionType}，号码:" + string.Join(" ", moniBusiness.currentSelect.Number500);
             CopyCurrent350Code();
         }
 
