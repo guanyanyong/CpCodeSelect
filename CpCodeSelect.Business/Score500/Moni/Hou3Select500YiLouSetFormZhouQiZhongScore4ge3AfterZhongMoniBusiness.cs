@@ -15,7 +15,7 @@ namespace CpCodeSelect.Business.Score500.Moni
     /// <summary>
     /// 模拟执行6个6轮的确认点买入
     /// </summary>
-    public class Hou3Select500YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness
+    public class Hou3Select500YiLouSetFormZhouQiZhongScore4ge3AfterZhongMoniBusiness
     {
         public delegate void LogDelegate(string message);
         private LogDelegate _logMethod;
@@ -28,7 +28,7 @@ namespace CpCodeSelect.Business.Score500.Moni
         private bool WaitingForNextRound = false;//等待中出后开启下一轮
         private const int TotalQiCount = 12;
         public Hou3Select500_ZhouQiZhongScore currentSelect = null;
-        public Hou3Select500YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness(LogDelegate logMethod, List<Hou3Select500_ZhouQiZhongScore> model350List)
+        public Hou3Select500YiLouSetFormZhouQiZhongScore4ge3AfterZhongMoniBusiness(LogDelegate logMethod, List<Hou3Select500_ZhouQiZhongScore> model350List)
         {
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
             this.model350List = model350List;
@@ -403,12 +403,13 @@ namespace CpCodeSelect.Business.Score500.Moni
                 {
                     var kLine500 = record.YiLouKline500;
                     var boll = record.KLineList;
-                    if (kLine500.Count > 4)
+                    if (kLine500.Count > 5)
                     {
                         var kLin1 = boll[boll.Count - 1];
                         var kLin2 = boll[boll.Count - 2];
                         var kLin3 = boll[boll.Count - 3];
                         var kLin4 = boll[boll.Count - 4];
+                        var kLin5 = boll[boll.Count - 5];
 
 
                         var gap1 = kLin1.Bolling.BollUpperValue - kLin2.Bolling.BollUpperValue;
@@ -420,14 +421,24 @@ namespace CpCodeSelect.Business.Score500.Moni
                             //不要有轨超压
                             if (kLin1.Bolling.BollUpperValue <= kLin1.KValue + 0.3)
                             {
-                                //不要有轨沟内翘
-                                if (kLin1.Bolling.BollUpperValue - kLin1.Bolling.BollLowerValue > kLin2.Bolling.BollUpperValue - kLin2.Bolling.BollLowerValue)
+                                //轨距是增加
+                                if (kLin1.Bolling.BollUpperValue - kLin1.Bolling.BollLowerValue > kLin2.Bolling.BollUpperValue - kLin2.Bolling.BollLowerValue
+                                 && kLin2.Bolling.BollUpperValue - kLin2.Bolling.BollLowerValue > kLin3.Bolling.BollUpperValue - kLin3.Bolling.BollLowerValue
+                                 && kLin3.Bolling.BollUpperValue - kLin3.Bolling.BollLowerValue > kLin4.Bolling.BollUpperValue - kLin4.Bolling.BollLowerValue
+                                 && kLin4.Bolling.BollUpperValue - kLin4.Bolling.BollLowerValue > kLin5.Bolling.BollUpperValue - kLin5.Bolling.BollLowerValue
+                                    )
                                 {
-                                    getEnoughRecordList.Add(record);
+                                    //下轨没有出现轨沟向上的
+                                    if (kLin1.Bolling.BollLowerValue < kLin2.Bolling.BollLowerValue
+                                     && kLin2.Bolling.BollLowerValue < kLin3.Bolling.BollLowerValue
+                                     && kLin3.Bolling.BollLowerValue < kLin4.Bolling.BollLowerValue
+                                     && kLin4.Bolling.BollLowerValue < kLin5.Bolling.BollLowerValue
+                                        )
+                                        getEnoughRecordList.Add(record);
                                 }
                             }
                         }
-                        
+
                     }
                 }
             }

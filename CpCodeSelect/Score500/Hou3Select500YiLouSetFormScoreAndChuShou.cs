@@ -110,23 +110,40 @@ namespace CpCodeSelect.Score500
         //private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6;
         //private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6;
         //private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6a;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moni35ge1;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moniRunZhouQiZhongLianXu8;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moniRunZhouQiZhongLianXu3;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moniRunZhouQiZhongScoreAllChuShou;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong sangesanyilou0;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moniRunZhouQiZhong3Ge3;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moni1;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moni2;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moni3;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moni4;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moni5;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moni6;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moni6ge6;
-        private MoniRunZhouQiZhong500Score6ge6AfterZhong moni6ge6a;
+        
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moni35ge1;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moniRunZhouQiZhongLianXu8;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moniRunZhouQiZhongLianXu3;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moniRunZhouQiZhongScoreAllChuShou;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong sangesanyilou0;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moniRunZhouQiZhong3Ge3;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moni1;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moni2;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moni3;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moni4;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moni5;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moni6;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moni6ge6;
+        private MoniRunZhouQiZhong500Score4ge3AfterZhong moni6ge6a;
 
-
+        /*
+        private MoniRunZhouQiZhong500ChuShaDaSha moni35ge1;
+        private MoniRunZhouQiZhong500ChuShaDaSha moniRunZhouQiZhongScore3ge5AfterZhong;
+        private MoniRunZhouQiZhong500ChuShaDaSha moniRunZhouQiZhongLianXu8;
+        private MoniRunZhouQiZhong500ChuShaDaSha moniRunZhouQiZhongLianXu3;
+        private MoniRunZhouQiZhong500ChuShaDaSha moniRunZhouQiZhongScoreAllChuShou;
+        private MoniRunZhouQiZhong500ChuShaDaSha sangesanyilou0;
+        private MoniRunZhouQiZhong500ChuShaDaSha moniRunZhouQiZhong3Ge3;
+        private MoniRunZhouQiZhong500ChuShaDaSha moni1;
+        private MoniRunZhouQiZhong500ChuShaDaSha moni2;
+        private MoniRunZhouQiZhong500ChuShaDaSha moni3;
+        private MoniRunZhouQiZhong500ChuShaDaSha moni4;
+        private MoniRunZhouQiZhong500ChuShaDaSha moni5;
+        private MoniRunZhouQiZhong500ChuShaDaSha moni6;
+        private MoniRunZhouQiZhong500ChuShaDaSha moni6ge6;
+        private MoniRunZhouQiZhong500ChuShaDaSha moni6ge6a;
+         */
         /*
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moni35ge1 = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
         private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong156Score6ge6AfterZhong();
@@ -255,25 +272,47 @@ namespace CpCodeSelect.Score500
 
 
 
-            moni35ge1 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
+            moni6ge6a = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            moni35ge1 = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
 
-            moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            sangesanyilou0 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            moni1 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            moni2 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            moni3 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            moni4 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            moni5 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            moni6 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
+            moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            sangesanyilou0 = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            moni1 = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            moni2 = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            moni3 = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            moni4 = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            moni5 = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            moni6 = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
 
 
-            moni6ge6 = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
-            moni6ge6a = new MoniRunZhouQiZhong500Score6ge6AfterZhong(this);
+            moni6ge6 = new MoniRunZhouQiZhong500Score4ge3AfterZhong(this);
+            
 
+            /*
+            moni35ge1 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+
+            moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            sangesanyilou0 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            moni1 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            moni2 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            moni3 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            moni4 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            moni5 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            moni6 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+
+
+            moni6ge6 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            moni6ge6a = new MoniRunZhouQiZhong500ChuShaDaSha(this);
+            */
+            
         }
         private void TabControlInit()
         {
@@ -458,7 +497,7 @@ namespace CpCodeSelect.Score500
             {
                 // 获取文件异常 捕捉到异常 从缓存中获取最新号码 
 
-                AddRecordAndAddLog($"出现异常从缓存获取,当前获取{tryTime}次");
+                AddRecordAndAddLog($"出现异常从缓存获取,当前是获取第1次");
                 code = await GetLastRecordFromCache();
                 while (code == null)
                 {
@@ -664,13 +703,19 @@ namespace CpCodeSelect.Score500
             {
                 InitMoni();
             }
+
+            moni6ge6a.Run(code);
             moniRunZhouQiZhongScore3ge5AfterZhong.Run(code);
             moniRunZhouQiZhongLianXu8.Run(code);
-            //moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
+               //moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
             moniRunZhouQiZhongScoreAllChuShou.Run(code);
             moniRunZhouQiZhongLianXu3.Run(code);
             sangesanyilou0.Run(code);
             moniRunZhouQiZhong3Ge3.Run(code);
+
+            moni35ge1.Run(code);
+
+            moni6ge6.Run(code);
 
             moni1.Run(code);
             moni2.Run(code);
@@ -679,10 +724,6 @@ namespace CpCodeSelect.Score500
             moni5.Run(code);
             moni6.Run(code);
 
-            moni35ge1.Run(code);
-
-            moni6ge6.Run(code);
-            moni6ge6a.Run(code);
 
             //把记录添加到界面上 异步方式
             //AddRecordToPage(code);
@@ -2545,6 +2586,7 @@ namespace CpCodeSelect.Score500
                         var kLin2 = boll[boll.Count - 2];
                         var kLin3 = boll[boll.Count - 3];
                         var kLin4 = boll[boll.Count - 4];
+                        var kLin5 = boll[boll.Count - 5];
 
 
                         var gap1 = kLin1.Bolling.BollUpperValue - kLin2.Bolling.BollUpperValue;
@@ -2556,16 +2598,23 @@ namespace CpCodeSelect.Score500
                             {
 
                                 if (gap1 > 0.5 && gap2 > 0.5 && gap3 > 0.5 )
-                                {
+                                { 
+                                    //不要有轨超压
                                     if (kLin1.Bolling.BollUpperValue <= kLin1.KValue + 0.3)
                                     {
-                                        //不要有轨超压
-                                        if(kLin1.Bolling.BollUpperValue - kLin1.Bolling.BollLowerValue> kLin2.Bolling.BollUpperValue - kLin2.Bolling.BollLowerValue
+                                        //轨距是增加
+                                        if (kLin1.Bolling.BollUpperValue - kLin1.Bolling.BollLowerValue> kLin2.Bolling.BollUpperValue - kLin2.Bolling.BollLowerValue
                                          && kLin2.Bolling.BollUpperValue - kLin2.Bolling.BollLowerValue > kLin3.Bolling.BollUpperValue - kLin3.Bolling.BollLowerValue
                                          && kLin3.Bolling.BollUpperValue - kLin3.Bolling.BollLowerValue > kLin4.Bolling.BollUpperValue - kLin4.Bolling.BollLowerValue
+                                         && kLin4.Bolling.BollUpperValue - kLin4.Bolling.BollLowerValue > kLin5.Bolling.BollUpperValue - kLin5.Bolling.BollLowerValue
                                             )
                                         {
-                                            //不要有轨沟内翘
+                                            //下轨没有出现轨沟向上的
+                                            if(kLin1.Bolling.BollLowerValue < kLin2.Bolling.BollLowerValue 
+                                             && kLin2.Bolling.BollLowerValue < kLin3.Bolling.BollLowerValue
+                                             && kLin3.Bolling.BollLowerValue < kLin4.Bolling.BollLowerValue
+                                             && kLin4.Bolling.BollLowerValue < kLin5.Bolling.BollLowerValue
+                                                )
                                             getEnoughRecordList.Add(record);
                                         }
                                     }

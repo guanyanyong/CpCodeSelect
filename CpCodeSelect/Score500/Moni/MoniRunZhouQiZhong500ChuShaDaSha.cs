@@ -21,22 +21,22 @@ using System.Windows.Forms;
 
 namespace CpCodeSelect.Score500.Moni
 {
-    public partial class MoniRunZhouQiZhong500Score6ge6AfterZhong : Form
+    public partial class MoniRunZhouQiZhong500ChuShaDaSha : Form
     {
         private static Object lockObj = new object();
-        private Hou3Select500YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness moniBusiness;
+        private MoniRunZhouQiZhong500ChuShaDaShaMoniBusiness moniBusiness;
         Code beforeCode = null;
         Code currentCode = null;
         private Hou3Select500YiLouSetFormScoreAndChuShou parentForm = null;
         private int TryCopTime = 0;
-        public MoniRunZhouQiZhong500Score6ge6AfterZhong(Hou3Select500YiLouSetFormScoreAndChuShou form) : this()
+        public MoniRunZhouQiZhong500ChuShaDaSha(Hou3Select500YiLouSetFormScoreAndChuShou form) : this()
         {
             parentForm = form;
         }
-        public MoniRunZhouQiZhong500Score6ge6AfterZhong()
+        public MoniRunZhouQiZhong500ChuShaDaSha()
         {
             InitializeComponent();
-            moniBusiness = new Hou3Select500YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness(CustomLogMethod, Hou3Select500YiLouSetFormScoreAndChuShouBusiness.model350List);
+            moniBusiness = new MoniRunZhouQiZhong500ChuShaDaShaMoniBusiness(CustomLogMethod, Hou3Select500YiLouSetFormScoreAndChuShouBusiness.model350List);
             dataGridView1.DataSource = moniBusiness.yilouStatisticList;
         }
         public void Run(Code code)

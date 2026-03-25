@@ -209,11 +209,17 @@
     <Compile Include="Score500\Hou3Select500YiLouSetFormScoreAndChuShou.Designer.cs">
       <DependentUpon>Hou3Select500YiLouSetFormScoreAndChuShou.cs</DependentUpon>
     </Compile>
-    <Compile Include="Score500\Moni\MoniRunZhouQiZhong500Score6ge6AfterZhong.cs">
+    <Compile Include="Score500\Moni\MoniRunZhouQiZhong500ChuShaDaSha.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Score500\Moni\MoniRunZhouQiZhong500Score6ge6AfterZhong.Designer.cs">
-      <DependentUpon>MoniRunZhouQiZhong500Score6ge6AfterZhong.cs</DependentUpon>
+    <Compile Include="Score500\Moni\MoniRunZhouQiZhong500ChuShaDaSha.Designer.cs">
+      <DependentUpon>MoniRunZhouQiZhong500ChuShaDaSha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Score500\Moni\MoniRunZhouQiZhong500Score4ge3AfterZhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score500\Moni\MoniRunZhouQiZhong500Score4ge3AfterZhong.Designer.cs">
+      <DependentUpon>MoniRunZhouQiZhong500Score4ge3AfterZhong.cs</DependentUpon>
     </Compile>
     <Compile Include="Score\Moni\MoniRunZhouQiZhongScore3ge5AfterZhong.cs">
       <SubType>Form</SubType>
@@ -559,8 +565,11 @@
     <EmbeddedResource Include="Score500\Hou3Select500YiLouSetFormScoreAndChuShou.resx">
       <DependentUpon>Hou3Select500YiLouSetFormScoreAndChuShou.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Score500\Moni\MoniRunZhouQiZhong500Score6ge6AfterZhong.resx">
-      <DependentUpon>MoniRunZhouQiZhong500Score6ge6AfterZhong.cs</DependentUpon>
+    <EmbeddedResource Include="Score500\Moni\MoniRunZhouQiZhong500ChuShaDaSha.resx">
+      <DependentUpon>MoniRunZhouQiZhong500ChuShaDaSha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Score500\Moni\MoniRunZhouQiZhong500Score4ge3AfterZhong.resx">
+      <DependentUpon>MoniRunZhouQiZhong500Score4ge3AfterZhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Score\Moni\MoniRunZhouQiZhongScore3ge5AfterZhong.resx">
       <DependentUpon>MoniRunZhouQiZhongScore3ge5AfterZhong.cs</DependentUpon>
