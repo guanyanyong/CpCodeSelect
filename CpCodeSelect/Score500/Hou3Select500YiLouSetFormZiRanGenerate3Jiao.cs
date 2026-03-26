@@ -110,7 +110,7 @@ namespace CpCodeSelect.Score500
         //private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6;
         //private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6;
         //private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6a;
-        
+
         private MoniRunZhouQiZhong500ZiRanGenerate3Jiao moni35ge1;
         private MoniRunZhouQiZhong500ZiRanGenerate3Jiao moniRunZhouQiZhongScore3ge5AfterZhong;
         private MoniRunZhouQiZhong500ZiRanGenerate3Jiao moniRunZhouQiZhongLianXu8;
@@ -282,15 +282,15 @@ namespace CpCodeSelect.Score500
             sangesanyilou0 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao(this);
             moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao(this);
             moni1 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao(this);
-            moni2 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao (this);
-            moni3 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao (this);
-            moni4 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao (this);
-            moni5 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao (this);
+            moni2 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao(this);
+            moni3 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao(this);
+            moni4 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao(this);
+            moni5 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao(this);
             moni6 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao(this);
 
 
             moni6ge6 = new MoniRunZhouQiZhong500ZiRanGenerate3Jiao(this);
-            
+
 
             /*
             moni35ge1 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
@@ -312,7 +312,7 @@ namespace CpCodeSelect.Score500
             moni6ge6 = new MoniRunZhouQiZhong500ChuShaDaSha(this);
             moni6ge6a = new MoniRunZhouQiZhong500ChuShaDaSha(this);
             */
-            
+
         }
         private void TabControlInit()
         {
@@ -707,7 +707,7 @@ namespace CpCodeSelect.Score500
             moni6ge6a.Run(code);
             moniRunZhouQiZhongScore3ge5AfterZhong.Run(code);
             moniRunZhouQiZhongLianXu8.Run(code);
-               //moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
+            //moniRunZhouQiZhongScoreAllChuShou.Run(code, zhongHouDelete);
             moniRunZhouQiZhongScoreAllChuShou.Run(code);
             moniRunZhouQiZhongLianXu3.Run(code);
             sangesanyilou0.Run(code);
@@ -1729,6 +1729,26 @@ namespace CpCodeSelect.Score500
             }
 
         }
+        public void Cacl(int n1, ref List<Code> LeftCode, ref List<string> excludeAllList, ref List<string> takeCodeList)
+        {
+            if (takeCodeList == null)
+            {
+                takeCodeList = new List<string>();
+            }
+
+
+
+            if (n1 > 0)
+            {
+                var excludeList = GenerateHou2NumbereFromCode(n1, LeftCode);
+                excludeAllList.AddRange(excludeList);
+                LeftCode = GetCodeFromOriginExceptNumerCode(LeftCode, excludeAllList, n1);
+            }
+            takeCodeList.Add(LeftCode.Take(1).FirstOrDefault().GetHou2String());
+            LeftCode = LeftCode.Skip(1).ToList();
+
+        }
+
 
 
         /// <summary>
@@ -2609,6 +2629,96 @@ namespace CpCodeSelect.Score500
 
             txtNum2.Text = "测试生成350注数据成功";
             txtNum3.Text = string.Join(" ", list.OrderBy(p => p).ToList());
+        }
+
+        private void btnSearch3Jiao_Click(object sender, EventArgs e)
+        {
+            txtNum2.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff");
+            txtNum2.Update();
+            txtNum3.Text = "";
+            txtNum3.Update();
+            //int b1 = (int)num1B.Value;
+            //int e1 = (int)num1E.Value;
+            //int b2 = (int)num2B.Value;
+            //int e2 = (int)num2E.Value;
+            //int b3 = (int)num3B.Value;
+            //int e3 = (int)num3E.Value;
+
+            //int n1 = ThreadSafeRandom.Next(b1, e1);
+            //int n2 = ThreadSafeRandom.Next(b2, e2);
+            //int n3 = ThreadSafeRandom.Next(b3, e3);
+
+
+
+
+            //txtNum1.Text = $"n1={n1},n2={n2},n3={n3}";
+            //MessageBox.Show($"n1={n1},n2={n2},n3={n3}");
+            int count = 0;
+            while (true)
+            {
+                var takeCodeList = new List<string>();
+                var excludeAllList = new List<string>();
+                var AllCode = Hou3Select500ZiRanGenerateBusiness.AllCode;
+                var LeftCode = AllCode;
+                txtNum1.Text = "";
+                /*
+                Cacl(num14B, num14E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num13B, num13E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num12B, num12E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num11B, num11E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num10B, num10E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num9B, num9E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num8B, num8E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num7B, num7E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num6B, num6E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num5B, num5E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num4B, num4E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num3B, num3E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num2B, num2E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                Cacl(num1B, num1E, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                */
+
+                var number = numCondition.Value;
+                if (number > 0)
+                {
+                    for (int i = 0; i < number; i++)
+                    {
+                        Cacl(0, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                        Cacl(1, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                    }
+                }
+
+                takeCodeList = takeCodeList.Distinct().ToList();
+                excludeAllList = excludeAllList.Distinct().ToList();
+                int haomaCount = (int)numHaoMa.Value;
+
+                if (!excludeAllList.Any(item => takeCodeList.Contains(item)))
+                {
+                    //var numerList = NumberSelectForYiLou.Select50NumbersSafe(excludeAllList, takeCodeList);
+                    var numerListList = MultiThreadedNumberSelectForYiLou.GenerateMultipleGroups(1, excludeAllList, takeCodeList, haomaCount);
+                    var numberList = numerListList[0];
+                    numberList = numberList.OrderBy(item => item).ToList();
+                    if (numberList.Count > 0)
+                    {
+                        txtNum3.Text = string.Join(" ", numberList);
+                        txtNum2.Text = txtNum2.Text + "\r\n" + $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")}成功生成号码";
+                        txtNum2.Update();
+                        Clipboard.SetText(txtNum3.Text);
+                        break;
+                    }
+                }
+                else
+                {
+                    //txtNum2.Text = txtNum2.Text + "\n" + "出现重复号码，请调整参数";
+                    txtNum3.Text = "";
+                }
+                count++;
+                if (count > 1000)
+                {
+                    txtNum2.Text = txtNum2.Text + "\r\n" + $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")}没有号码";
+                    break;
+                }
+            }
         }
     }
 }

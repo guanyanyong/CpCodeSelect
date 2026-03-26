@@ -71,6 +71,7 @@
             this.btn10T30Begin = new System.Windows.Forms.Button();
             this.btnyiloudijian = new System.Windows.Forms.Button();
             this.btnTestCode = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.btnTest = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.num14E = new System.Windows.Forms.NumericUpDown();
@@ -195,7 +196,7 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button14 = new System.Windows.Forms.Button();
+            this.btnSearch3Jiao = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -616,6 +617,7 @@
             this.SetSearch.Controls.Add(this.btnTestCode);
             this.SetSearch.Controls.Add(this.button14);
             this.SetSearch.Controls.Add(this.btnTest);
+            this.SetSearch.Controls.Add(this.btnSearch3Jiao);
             this.SetSearch.Controls.Add(this.button2);
             this.SetSearch.Controls.Add(this.num14E);
             this.SetSearch.Controls.Add(this.num13E);
@@ -683,7 +685,7 @@
             // 
             // BtnCopy2
             // 
-            this.BtnCopy2.Location = new System.Drawing.Point(363, 172);
+            this.BtnCopy2.Location = new System.Drawing.Point(363, 161);
             this.BtnCopy2.Name = "BtnCopy2";
             this.BtnCopy2.Size = new System.Drawing.Size(134, 38);
             this.BtnCopy2.TabIndex = 5;
@@ -721,6 +723,16 @@
             this.btnTestCode.UseVisualStyleBackColor = true;
             this.btnTestCode.Click += new System.EventHandler(this.btnTestCode_Click);
             // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(1128, 44);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(129, 44);
+            this.button14.TabIndex = 5;
+            this.button14.Text = "生成500注";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.btnTest500_Click);
+            // 
             // btnTest
             // 
             this.btnTest.Location = new System.Drawing.Point(843, 47);
@@ -733,7 +745,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(363, 122);
+            this.button2.Location = new System.Drawing.Point(363, 111);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(134, 44);
             this.button2.TabIndex = 5;
@@ -1084,7 +1096,7 @@
             this.numCondition.Size = new System.Drawing.Size(120, 36);
             this.numCondition.TabIndex = 4;
             this.numCondition.Value = new decimal(new int[] {
-            6,
+            8,
             0,
             0,
             0});
@@ -2414,15 +2426,15 @@
             this.panel2.Size = new System.Drawing.Size(1410, 612);
             this.panel2.TabIndex = 10;
             // 
-            // button14
+            // btnSearch3Jiao
             // 
-            this.button14.Location = new System.Drawing.Point(1128, 44);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(129, 44);
-            this.button14.TabIndex = 5;
-            this.button14.Text = "生成500注";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.btnTest500_Click);
+            this.btnSearch3Jiao.Location = new System.Drawing.Point(363, 201);
+            this.btnSearch3Jiao.Name = "btnSearch3Jiao";
+            this.btnSearch3Jiao.Size = new System.Drawing.Size(134, 44);
+            this.btnSearch3Jiao.TabIndex = 5;
+            this.btnSearch3Jiao.Text = "搜索3交";
+            this.btnSearch3Jiao.UseVisualStyleBackColor = true;
+            this.btnSearch3Jiao.Click += new System.EventHandler(this.btnSearch3Jiao_Click);
             // 
             // Hou3Select500YiLouSetFormZiRanGenerate3Jiao
             // 
@@ -2676,6 +2688,7 @@
         private System.Windows.Forms.ComboBox cmbPosition;
         private System.Windows.Forms.Button btnMachinSearch;
         private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button btnSearch3Jiao;
     }
 }
 
