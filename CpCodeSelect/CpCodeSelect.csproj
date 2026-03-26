@@ -209,12 +209,6 @@
     <Compile Include="Score500\Hou3Select500YiLouSetFormZiRanGenerate3Jiao.Designer.cs">
       <DependentUpon>Hou3Select500YiLouSetFormZiRanGenerate3Jiao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Score500\Hou2Select50YiLouSetFormZiRanGenerate3Jiao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Score500\Hou2Select50YiLouSetFormZiRanGenerate3Jiao.Designer.cs">
-      <DependentUpon>Hou2Select50YiLouSetFormZiRanGenerate3Jiao.cs</DependentUpon>
-    </Compile>
     <Compile Include="Score500\Hou3Select500YiLouSetFormZiRanGenerate .cs">
       <SubType>Form</SubType>
     </Compile>
@@ -600,9 +594,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Score500\Hou3Select500YiLouSetFormZiRanGenerate3Jiao.resx">
       <DependentUpon>Hou3Select500YiLouSetFormZiRanGenerate3Jiao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Score500\Hou2Select50YiLouSetFormZiRanGenerate3Jiao.resx">
-      <DependentUpon>Hou2Select50YiLouSetFormZiRanGenerate3Jiao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Score500\Hou3Select500YiLouSetFormZiRanGenerate .resx">
       <DependentUpon>Hou3Select500YiLouSetFormZiRanGenerate .cs</DependentUpon>
