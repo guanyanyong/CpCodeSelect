@@ -2683,9 +2683,10 @@ namespace CpCodeSelect.Score500
                 {
                     for (int i = 0; i < number; i++)
                     {
-                        Cacl(0, ref LeftCode, ref excludeAllList, ref takeCodeList);
                         Cacl(1, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                        Cacl(0, ref LeftCode, ref excludeAllList, ref takeCodeList);
                     }
+                    
                 }
 
                 takeCodeList = takeCodeList.Distinct().ToList();
