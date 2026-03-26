@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace CpCodeSelect.Util
 {
-    public class Generate156CodeZiRan 
+    public class Generate500CodeZiRan
     {
         private static Random random = new Random();
         private static HashSet<string> allPossibleStrings;
 
-        static Generate156CodeZiRan()
+        static Generate500CodeZiRan()
         {
             // 生成所有可能的字符串 (000-999)
             allPossibleStrings = GenerateAllPossibleStrings();
@@ -27,7 +27,7 @@ namespace CpCodeSelect.Util
         /// <returns></returns>
         public static List<string> Generate(List<string> list270, Random random = null)
         { 
-            if (random == null) random = Generate156CodeZiRan.random;
+            if (random == null) random = Generate500CodeZiRan.random;
             //Console.WriteLine("=== 字符串选择程序 ===\n");
 
 
@@ -44,7 +44,7 @@ namespace CpCodeSelect.Util
 
 
             // 5. 从C中取字符串形成D
-            List<string> setD = GenerateSetD_Random(setC, 156, random);
+            List<string> setD = GenerateSetD_Random(setC, 500, random);
             return setD;
         }
 
@@ -67,7 +67,7 @@ namespace CpCodeSelect.Util
         // 部分洗牌算法：随机选择k个元素
         static List<string> PartialShuffle(List<string> list, int k, Random random)
         {
-            if (random == null) random = Generate156CodeZiRan.random;
+            if (random == null) random = Generate500CodeZiRan.random;
             int n = list.Count;
             var result = new List<string>(k);
             var tempList = new List<string>(list); // 复制一份避免修改原列表
@@ -125,7 +125,7 @@ namespace CpCodeSelect.Util
         // 快速找到子集B（110-120个）
         static List<string> FindSubsetB_Fast(List<string> setA, int minSize, int maxSize, Random random)
         {
-            if (random == null) random = Generate156CodeZiRan.random;
+            if (random == null) random = Generate500CodeZiRan.random;
             int targetSize = random.Next(minSize, maxSize + 1);
             int n = setA.Count;
 
@@ -142,7 +142,7 @@ namespace CpCodeSelect.Util
         static List<string> GenerateSetA(int count, Random random)
         {
             List<string> setA = new List<string>();
-            if (random == null) random = Generate156CodeZiRan.random;
+            if (random == null) random = Generate500CodeZiRan.random;
 
             // 先确保A中有一定比例的重复字符串
             int uniqueCount = random.Next(50, 150); // A中大约有50-150个不同的字符串

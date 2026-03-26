@@ -56,18 +56,29 @@ namespace CpCodeSelect.Util.Scorer500
             {
 
                 //判断是否中奖
-                if (
-                model.PositionType == PositionType.万 && model.Number500.Contains(code.Wan.Number.ToString())
-                || model.PositionType == PositionType.千 && model.Number500.Contains(code.Qian.Number.ToString())
-                || model.PositionType == PositionType.百 && model.Number500.Contains(code.Bai.Number.ToString())
-                || model.PositionType == PositionType.十 && model.Number500.Contains(code.Shi.Number.ToString())
-                || model.PositionType == PositionType.个 && model.Number500.Contains(code.Ge.Number.ToString())
-                )
+                if (model.Number500.Contains(code.GetHou3String()))
                 {
                     //中了 K值加1.857
                     kline.KValue = 1;
-                    
                     isZhong = true;
+
+                    //先设置之前的一个遗漏K
+                    if (model.YiLouKline500 != null && model.YiLouKline500.Count > 0)
+                    {
+                        var klin = model.YiLouKline500[model.YiLouKline500.Count - 1];
+                        klin.YiLouZhongCount = 0;
+                        klin.YiLouGuaCount = model.ZhongBeforeGua;
+                    }
+
+                    //添加新的遗漏K
+                    YiLouKline500 kline500 = new YiLouKline500();
+                    kline500.Code500Code = model.Number500;
+                    kline500.CodeQiHao = code.CodeQiHao;
+                    kline500.CodeNumber = code.CodeNumber;
+                    kline500.YiLouGuaCount = 0;
+                    kline500.YiLouZhongCount = model.ZhongGount++;
+                    model.YiLouKline500.Add(kline500);
+
                 }
                 else
                 {
@@ -79,18 +90,31 @@ namespace CpCodeSelect.Util.Scorer500
             else
             {
                 //不是第一次执行 判断是否中奖
-                if (
-               model.PositionType == PositionType.万 && model.Number500.Contains(code.Wan.Number.ToString())
-               || model.PositionType == PositionType.千 && model.Number500.Contains(code.Qian.Number.ToString())
-               || model.PositionType == PositionType.百 && model.Number500.Contains(code.Bai.Number.ToString())
-               || model.PositionType == PositionType.十 && model.Number500.Contains(code.Shi.Number.ToString())
-               || model.PositionType == PositionType.个 && model.Number500.Contains(code.Ge.Number.ToString())
-               )
+
+                if (model.Number500.Contains(code.GetHou3String()))
                 {
                     //中了 K值加1.857
                     kline.KValue = model.KLineList[model.KLineList.Count - 1].KValue + 1;
 
                     isZhong = true;
+
+                    //先设置之前的一个遗漏K
+                    if (model.YiLouKline500 != null && model.YiLouKline500.Count > 0)
+                    {
+                        var klin = model.YiLouKline500[model.YiLouKline500.Count - 1];
+                        klin.YiLouZhongCount = 0;
+                        klin.YiLouGuaCount = model.ZhongBeforeGua;
+                    }
+
+                    //添加新的遗漏K
+                    YiLouKline500 kline500 = new YiLouKline500();
+                    kline500.Code500Code = model.Number500;
+                    kline500.CodeQiHao = code.CodeQiHao;
+                    kline500.CodeNumber = code.CodeNumber;
+                    kline500.YiLouGuaCount = 0;
+                    kline500.YiLouZhongCount = model.ZhongGount++;
+                    model.YiLouKline500.Add(kline500);
+
                 }
                 else
                 {
@@ -214,13 +238,7 @@ namespace CpCodeSelect.Util.Scorer500
                 {
                     //第一次执行
                     //判断是否中奖
-                    if (
-               model.PositionType == PositionType.万 && model.Number500.Contains(code.Wan.Number.ToString())
-               || model.PositionType == PositionType.千 && model.Number500.Contains(code.Qian.Number.ToString())
-               || model.PositionType == PositionType.百 && model.Number500.Contains(code.Bai.Number.ToString())
-               || model.PositionType == PositionType.十 && model.Number500.Contains(code.Shi.Number.ToString())
-               || model.PositionType == PositionType.个 && model.Number500.Contains(code.Ge.Number.ToString())
-               )
+                    if (model.Number500.Contains(code.GetHou3String()))
                     {
                         yiLouTuKLine = new KLine156();
                         //中了 K值加1.857
@@ -235,6 +253,24 @@ namespace CpCodeSelect.Util.Scorer500
                         model.GuaCount = 0;
 
                         isZhong = true;
+
+                        //先设置之前的一个遗漏K
+                        if (model.YiLouKline500 != null && model.YiLouKline500.Count > 0)
+                        {
+                            var klin = model.YiLouKline500[model.YiLouKline500.Count - 1];
+                            klin.YiLouZhongCount = 0;
+                            klin.YiLouGuaCount = model.ZhongBeforeGua;
+                        }
+
+                        //添加新的遗漏K
+                        YiLouKline500 kline500 = new YiLouKline500();
+                        kline500.Code500Code = model.Number500;
+                        kline500.CodeQiHao = code.CodeQiHao;
+                        kline500.CodeNumber = code.CodeNumber;
+                        kline500.YiLouGuaCount = 0;
+                        kline500.YiLouZhongCount = model.ZhongGount++;
+                        model.YiLouKline500.Add(kline500);
+
                     }
                     else
                     {
@@ -249,13 +285,8 @@ namespace CpCodeSelect.Util.Scorer500
                 else
                 {
                     //不是第一次执行 判断是否中奖
-                    if (
-               model.PositionType == PositionType.万 && model.Number500.Contains(code.Wan.Number.ToString())
-               || model.PositionType == PositionType.千 && model.Number500.Contains(code.Qian.Number.ToString())
-               || model.PositionType == PositionType.百 && model.Number500.Contains(code.Bai.Number.ToString())
-               || model.PositionType == PositionType.十 && model.Number500.Contains(code.Shi.Number.ToString())
-               || model.PositionType == PositionType.个 && model.Number500.Contains(code.Ge.Number.ToString())
-               )
+
+                    if (model.Number500.Contains(code.GetHou3String()))
                     {
                         yiLouTuKLine = new KLine156();
                         //中了 K值加1.857
@@ -274,6 +305,22 @@ namespace CpCodeSelect.Util.Scorer500
                         isZhong = true;
 
 
+                        //先设置之前的一个遗漏K
+                        if (model.YiLouKline500 != null && model.YiLouKline500.Count > 0)
+                        {
+                            var klin = model.YiLouKline500[model.YiLouKline500.Count - 1];
+                            klin.YiLouZhongCount = 0;
+                            klin.YiLouGuaCount = model.ZhongBeforeGua;
+                        }
+
+                        //添加新的遗漏K
+                        YiLouKline500 kline500 = new YiLouKline500();
+                        kline500.Code500Code = model.Number500;
+                        kline500.CodeQiHao = code.CodeQiHao;
+                        kline500.CodeNumber = code.CodeNumber;
+                        kline500.YiLouGuaCount = 0;
+                        kline500.YiLouZhongCount = model.ZhongGount++;
+                        model.YiLouKline500.Add(kline500);
 
                     }
                     else

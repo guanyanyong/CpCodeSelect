@@ -122,6 +122,12 @@ namespace CpCodeSelect
             }else if(str== "Hou3Select500YiLouSetFormScoreAndChuShou")
             {
                 Application.Run(new Hou3Select500YiLouSetFormScoreAndChuShou());
+            }else if(str== "Hou3Select500YiLouSetFormZiRanGenerate")
+            {
+                Application.Run(new Hou3Select500YiLouSetFormZiRanGenerate());
+            }else if(str== "Hou3Select500YiLouSetFormZiRanGenerate3Jiao")
+            {
+                Application.Run(new Hou3Select500YiLouSetFormZiRanGenerate3Jiao());
             }
         }
     }

@@ -67,7 +67,9 @@
     <Compile Include="Generate350CodeYiLouJiaChuCi.cs" />
     <Compile Include="Generate350CodeZiRan.cs" />
     <Compile Include="Generate350Code.cs" />
+    <Compile Include="GenerateNumberCode\Generate500CodeZiRan.cs" />
     <Compile Include="GenerateNumberCode\Generate156CodeZiRan.cs" />
+    <Compile Include="GenerateNumberCode\MultiThreadedNumberSelectFor500Hou3ZiRanGenerate.cs" />
     <Compile Include="GenerateNumberCode\MultiThreadedNumberSelectFor156Hou3ZiRanGenerate.cs" />
     <Compile Include="IndexCalc\ADXCalculator.cs" />
     <Compile Include="IndexCalc\MACDCalculator.cs" />

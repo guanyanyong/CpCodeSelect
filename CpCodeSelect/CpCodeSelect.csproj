@@ -203,6 +203,24 @@
     <Compile Include="Score156\Moni\MoniRunZhouQiZhong156Score6ge6AfterZhong.Designer.cs">
       <DependentUpon>MoniRunZhouQiZhong156Score6ge6AfterZhong.cs</DependentUpon>
     </Compile>
+    <Compile Include="Score500\Hou3Select500YiLouSetFormZiRanGenerate3Jiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score500\Hou3Select500YiLouSetFormZiRanGenerate3Jiao.Designer.cs">
+      <DependentUpon>Hou3Select500YiLouSetFormZiRanGenerate3Jiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Score500\Hou2Select50YiLouSetFormZiRanGenerate3Jiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score500\Hou2Select50YiLouSetFormZiRanGenerate3Jiao.Designer.cs">
+      <DependentUpon>Hou2Select50YiLouSetFormZiRanGenerate3Jiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Score500\Hou3Select500YiLouSetFormZiRanGenerate .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score500\Hou3Select500YiLouSetFormZiRanGenerate .Designer.cs">
+      <DependentUpon>Hou3Select500YiLouSetFormZiRanGenerate .cs</DependentUpon>
+    </Compile>
     <Compile Include="Score500\Hou3Select500YiLouSetFormScoreAndChuShou.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +232,24 @@
     </Compile>
     <Compile Include="Score500\Moni\MoniRunZhouQiZhong500ChuShaDaSha.Designer.cs">
       <DependentUpon>MoniRunZhouQiZhong500ChuShaDaSha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Score500\Moni\MoniRunZhouQiZhong50ZiRanGenerate3Jiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score500\Moni\MoniRunZhouQiZhong50ZiRanGenerate3Jiao.Designer.cs">
+      <DependentUpon>MoniRunZhouQiZhong50ZiRanGenerate3Jiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Score500\Moni\MoniRunZhouQiZhong500ZiRanGenerate3Jiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score500\Moni\MoniRunZhouQiZhong500ZiRanGenerate3Jiao.Designer.cs">
+      <DependentUpon>MoniRunZhouQiZhong500ZiRanGenerate3Jiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Score500\Moni\MoniRunZhouQiZhong500ZiRanGenerate4ge3AfterZhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score500\Moni\MoniRunZhouQiZhong500ZiRanGenerate4ge3AfterZhong.Designer.cs">
+      <DependentUpon>MoniRunZhouQiZhong500ZiRanGenerate4ge3AfterZhong.cs</DependentUpon>
     </Compile>
     <Compile Include="Score500\Moni\MoniRunZhouQiZhong500Score4ge3AfterZhong.cs">
       <SubType>Form</SubType>
@@ -562,11 +598,29 @@
     <EmbeddedResource Include="Score156\Moni\MoniRunZhouQiZhong156Score6ge6AfterZhong.resx">
       <DependentUpon>MoniRunZhouQiZhong156Score6ge6AfterZhong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Score500\Hou3Select500YiLouSetFormZiRanGenerate3Jiao.resx">
+      <DependentUpon>Hou3Select500YiLouSetFormZiRanGenerate3Jiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Score500\Hou2Select50YiLouSetFormZiRanGenerate3Jiao.resx">
+      <DependentUpon>Hou2Select50YiLouSetFormZiRanGenerate3Jiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Score500\Hou3Select500YiLouSetFormZiRanGenerate .resx">
+      <DependentUpon>Hou3Select500YiLouSetFormZiRanGenerate .cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Score500\Hou3Select500YiLouSetFormScoreAndChuShou.resx">
       <DependentUpon>Hou3Select500YiLouSetFormScoreAndChuShou.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Score500\Moni\MoniRunZhouQiZhong500ChuShaDaSha.resx">
       <DependentUpon>MoniRunZhouQiZhong500ChuShaDaSha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Score500\Moni\MoniRunZhouQiZhong50ZiRanGenerate3Jiao.resx">
+      <DependentUpon>MoniRunZhouQiZhong50ZiRanGenerate3Jiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Score500\Moni\MoniRunZhouQiZhong500ZiRanGenerate3Jiao.resx">
+      <DependentUpon>MoniRunZhouQiZhong500ZiRanGenerate3Jiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Score500\Moni\MoniRunZhouQiZhong500ZiRanGenerate4ge3AfterZhong.resx">
+      <DependentUpon>MoniRunZhouQiZhong500ZiRanGenerate4ge3AfterZhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Score500\Moni\MoniRunZhouQiZhong500Score4ge3AfterZhong.resx">
       <DependentUpon>MoniRunZhouQiZhong500Score4ge3AfterZhong.cs</DependentUpon>
