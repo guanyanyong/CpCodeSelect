@@ -73,6 +73,7 @@
             this.btnTestCode = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.btnTest = new System.Windows.Forms.Button();
+            this.btnSearch3Jiao = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.num14E = new System.Windows.Forms.NumericUpDown();
             this.num13E = new System.Windows.Forms.NumericUpDown();
@@ -104,7 +105,6 @@
             this.num3B = new System.Windows.Forms.NumericUpDown();
             this.num2B = new System.Windows.Forms.NumericUpDown();
             this.num1B = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownCondition = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.ResultPage = new System.Windows.Forms.TabPage();
@@ -154,9 +154,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtPosition = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -196,7 +194,12 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnSearch3Jiao = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.comPosition = new System.Windows.Forms.ComboBox();
+            this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
+            this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
+            this.radioBtnHong = new System.Windows.Forms.RadioButton();
+            this.radioBtnLan = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -232,7 +235,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.num3B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num2B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num1B)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCondition)).BeginInit();
             this.ResultPage.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -608,6 +610,9 @@
             // 
             // SetSearch
             // 
+            this.SetSearch.Controls.Add(this.radioBtnLan);
+            this.SetSearch.Controls.Add(this.radioBtnHong);
+            this.SetSearch.Controls.Add(this.comPosition);
             this.SetSearch.Controls.Add(this.txtNum3);
             this.SetSearch.Controls.Add(this.txtNum2);
             this.SetSearch.Controls.Add(this.txtNum1);
@@ -649,8 +654,8 @@
             this.SetSearch.Controls.Add(this.num3B);
             this.SetSearch.Controls.Add(this.num2B);
             this.SetSearch.Controls.Add(this.num1B);
-            this.SetSearch.Controls.Add(this.numericUpDownCondition);
             this.SetSearch.Controls.Add(this.label11);
+            this.SetSearch.Controls.Add(this.label21);
             this.SetSearch.Controls.Add(this.label7);
             this.SetSearch.Location = new System.Drawing.Point(4, 37);
             this.SetSearch.Name = "SetSearch";
@@ -742,6 +747,16 @@
             this.btnTest.Text = "生成350注";
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
+            // btnSearch3Jiao
+            // 
+            this.btnSearch3Jiao.Location = new System.Drawing.Point(363, 201);
+            this.btnSearch3Jiao.Name = "btnSearch3Jiao";
+            this.btnSearch3Jiao.Size = new System.Drawing.Size(134, 44);
+            this.btnSearch3Jiao.TabIndex = 5;
+            this.btnSearch3Jiao.Text = "搜索3交";
+            this.btnSearch3Jiao.UseVisualStyleBackColor = true;
+            this.btnSearch3Jiao.Click += new System.EventHandler(this.btnSearch3Jiao_Click);
             // 
             // button2
             // 
@@ -1081,7 +1096,7 @@
             // numCondition
             // 
             this.numCondition.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numCondition.Location = new System.Drawing.Point(152, 52);
+            this.numCondition.Location = new System.Drawing.Point(135, 50);
             this.numCondition.Maximum = new decimal(new int[] {
             20,
             0,
@@ -1413,29 +1428,6 @@
             0,
             -2147483648});
             // 
-            // numericUpDownCondition
-            // 
-            this.numericUpDownCondition.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numericUpDownCondition.Location = new System.Drawing.Point(152, 52);
-            this.numericUpDownCondition.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.numericUpDownCondition.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownCondition.Name = "numericUpDownCondition";
-            this.numericUpDownCondition.Size = new System.Drawing.Size(120, 36);
-            this.numericUpDownCondition.TabIndex = 4;
-            this.numericUpDownCondition.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -1450,7 +1442,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label7.Location = new System.Drawing.Point(45, 52);
+            this.label7.Location = new System.Drawing.Point(30, 50);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(101, 30);
             this.label7.TabIndex = 3;
@@ -1991,15 +1983,6 @@
             this.tabPage4.Text = "K线走势";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // lotteryKLine
-            // 
-            this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lotteryKLine.Location = new System.Drawing.Point(3, 3);
-            this.lotteryKLine.Name = "lotteryKLine";
-            this.lotteryKLine.Size = new System.Drawing.Size(1388, 407);
-            this.lotteryKLine.TabIndex = 0;
-            this.lotteryKLine.TopMessage = "";
-            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.yiLouLotteryKLine);
@@ -2010,15 +1993,6 @@
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "遗漏K走势";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // yiLouLotteryKLine
-            // 
-            this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
-            this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
-            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1388, 407);
-            this.yiLouLotteryKLine.TabIndex = 0;
-            this.yiLouLotteryKLine.TopMessage = "";
             // 
             // panel3
             // 
@@ -2426,15 +2400,70 @@
             this.panel2.Size = new System.Drawing.Size(1410, 612);
             this.panel2.TabIndex = 10;
             // 
-            // btnSearch3Jiao
+            // label21
             // 
-            this.btnSearch3Jiao.Location = new System.Drawing.Point(363, 201);
-            this.btnSearch3Jiao.Name = "btnSearch3Jiao";
-            this.btnSearch3Jiao.Size = new System.Drawing.Size(134, 44);
-            this.btnSearch3Jiao.TabIndex = 5;
-            this.btnSearch3Jiao.Text = "搜索3交";
-            this.btnSearch3Jiao.UseVisualStyleBackColor = true;
-            this.btnSearch3Jiao.Click += new System.EventHandler(this.btnSearch3Jiao_Click);
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.label21.Location = new System.Drawing.Point(30, 10);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(79, 30);
+            this.label21.TabIndex = 3;
+            this.label21.Text = "位置：";
+            // 
+            // comPosition
+            // 
+            this.comPosition.FormattingEnabled = true;
+            this.comPosition.Items.AddRange(new object[] {
+            "前二",
+            "千百",
+            "百十",
+            "后二"});
+            this.comPosition.Location = new System.Drawing.Point(135, 10);
+            this.comPosition.Name = "comPosition";
+            this.comPosition.Size = new System.Drawing.Size(85, 36);
+            this.comPosition.TabIndex = 9;
+            this.comPosition.Text = "后二";
+            // 
+            // lotteryKLine
+            // 
+            this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lotteryKLine.Location = new System.Drawing.Point(3, 3);
+            this.lotteryKLine.Name = "lotteryKLine";
+            this.lotteryKLine.Size = new System.Drawing.Size(1388, 407);
+            this.lotteryKLine.TabIndex = 0;
+            this.lotteryKLine.TopMessage = "";
+            // 
+            // yiLouLotteryKLine
+            // 
+            this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
+            this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
+            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1388, 407);
+            this.yiLouLotteryKLine.TabIndex = 0;
+            this.yiLouLotteryKLine.TopMessage = "";
+            // 
+            // radioBtnHong
+            // 
+            this.radioBtnHong.AutoSize = true;
+            this.radioBtnHong.Location = new System.Drawing.Point(288, 13);
+            this.radioBtnHong.Name = "radioBtnHong";
+            this.radioBtnHong.Size = new System.Drawing.Size(53, 34);
+            this.radioBtnHong.TabIndex = 10;
+            this.radioBtnHong.TabStop = true;
+            this.radioBtnHong.Text = "红";
+            this.radioBtnHong.UseVisualStyleBackColor = true;
+            // 
+            // radioBtnLan
+            // 
+            this.radioBtnLan.AutoSize = true;
+            this.radioBtnLan.Checked = true;
+            this.radioBtnLan.Location = new System.Drawing.Point(363, 12);
+            this.radioBtnLan.Name = "radioBtnLan";
+            this.radioBtnLan.Size = new System.Drawing.Size(53, 34);
+            this.radioBtnLan.TabIndex = 10;
+            this.radioBtnLan.TabStop = true;
+            this.radioBtnLan.Text = "蓝";
+            this.radioBtnLan.UseVisualStyleBackColor = true;
             // 
             // Hou3Select500YiLouSetFormZiRanGenerate3Jiao
             // 
@@ -2484,7 +2513,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.num3B)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num2B)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num1B)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCondition)).EndInit();
             this.ResultPage.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
@@ -2553,7 +2581,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownAutoClick;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TabPage SetSearch;
-        private System.Windows.Forms.NumericUpDown numericUpDownCondition;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown num3E;
         private System.Windows.Forms.NumericUpDown num2E;
@@ -2689,6 +2716,10 @@
         private System.Windows.Forms.Button btnMachinSearch;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button btnSearch3Jiao;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox comPosition;
+        private System.Windows.Forms.RadioButton radioBtnHong;
+        private System.Windows.Forms.RadioButton radioBtnLan;
     }
 }
 

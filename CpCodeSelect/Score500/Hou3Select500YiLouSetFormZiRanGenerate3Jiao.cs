@@ -1710,7 +1710,7 @@ namespace CpCodeSelect.Score500
             {
                 takeCodeList = new List<string>();
             }
-
+            var position = comPosition.Text;
 
             int b1 = (int)nb.Value;
             int e1 = (int)ne.Value;
@@ -1720,11 +1720,13 @@ namespace CpCodeSelect.Score500
                 txtNum1.Text = txtNum1.Text.Trim() + $"{nb.Name}={n1},";
                 if (n1 > 0)
                 {
-                    var excludeList = GenerateHou2NumbereFromCode(n1, LeftCode);
+                    var excludeList = Generate2XingNumbereFromCode(n1, LeftCode, position);
                     excludeAllList.AddRange(excludeList);
-                    LeftCode = GetCodeFromOriginExceptNumerCode(LeftCode, excludeAllList, n1);
+                    LeftCode = GetCodeFromOriginExceptNumerCode(LeftCode, excludeAllList, n1,position);
                 }
-                takeCodeList.Add(LeftCode.Take(1).FirstOrDefault().GetHou2String());
+                takeCodeList.Add(
+                    Get2NumberByPosition(LeftCode.Take(1).FirstOrDefault(), position)
+                    );
                 LeftCode = LeftCode.Skip(1).ToList();
             }
 
@@ -1735,16 +1737,18 @@ namespace CpCodeSelect.Score500
             {
                 takeCodeList = new List<string>();
             }
-
+            var position = comPosition.Text;
 
 
             if (n1 > 0)
             {
-                var excludeList = GenerateHou2NumbereFromCode(n1, LeftCode);
+                var excludeList = Generate2XingNumbereFromCode(n1, LeftCode, position);
                 excludeAllList.AddRange(excludeList);
-                LeftCode = GetCodeFromOriginExceptNumerCode(LeftCode, excludeAllList, n1);
+                LeftCode = GetCodeFromOriginExceptNumerCode(LeftCode, excludeAllList, n1, position);
             }
-            takeCodeList.Add(LeftCode.Take(1).FirstOrDefault().GetHou2String());
+            takeCodeList.Add(
+                    Get2NumberByPosition(LeftCode.Take(1).FirstOrDefault(), position)
+                    );
             LeftCode = LeftCode.Skip(1).ToList();
 
         }
@@ -1758,14 +1762,16 @@ namespace CpCodeSelect.Score500
         /// <param name="exceptList"></param>
         /// <param name="number"></param>
         /// <returns></returns>
-        public List<Code> GetCodeFromOriginExceptNumerCode(List<Code> codeList, List<string> exceptList, int number)
+        public List<Code> GetCodeFromOriginExceptNumerCode(List<Code> codeList, List<string> exceptList, int number,string position)
         {
             int count = 0;
             for (int i = number; i < codeList.Count; i++)
             {
                 var code = codeList[i];
-                var hou2Str = code.GetHou2String();
-                if (exceptList.Contains(hou2Str))
+                //var hou2Str = code.GetHou2String();
+                var number2Str = Get2NumberByPosition(code, position);
+
+                if (exceptList.Contains(number2Str))
                 {
                     count++;
                 }
@@ -1776,6 +1782,59 @@ namespace CpCodeSelect.Score500
             }
 
             return codeList.Skip(number + count).ToList();
+        }
+
+        public static string Get2NumberByPosition(Code code,string position)
+        {
+            var key = string.Empty;
+            if (position == "后二" || position == "十个")
+            {
+                key = code.GetHou2String();
+            }
+            else if (position == "百十")
+            {
+                key = code.GetBaiShi2String();
+            }
+            else if (position == "千百")
+            {
+                key = code.GetQianBai2String();
+            }
+            else if (position == "前二" || position == "万千")
+            {
+                key = code.GetQian2String();
+            }
+            return key;
+        }
+
+        /// <summary>
+        /// 从Code列表中生成指定数量的后2号码,已经做了滤重操作
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="AllCode"></param>
+        /// <returns></returns>
+        public static List<string> Generate2XingNumbereFromCode(int number, List<Code> AllCode, string position)
+        {
+            Dictionary<string, int> Hou2NumberCount = new Dictionary<string, int>();
+            Hou2NumberCount.Clear();
+            var key = string.Empty;
+            foreach (var code in AllCode)
+            {
+                key = Get2NumberByPosition(code, position);
+
+                if (!Hou2NumberCount.Keys.Contains(key))
+                {
+                    Hou2NumberCount.Add(key, 1);
+                }
+                else
+                {
+                    Hou2NumberCount[key] = Hou2NumberCount[key] + 1;
+                }
+                if (Hou2NumberCount.Keys.Count == number)
+                {
+                    break;
+                }
+            }
+            return Hou2NumberCount.Keys.ToList();
         }
 
         /// <summary>
@@ -1810,8 +1869,32 @@ namespace CpCodeSelect.Score500
         private void BtnCopy2_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtNum3.Text))
-                Clipboard.SetText(txtNum3.Text);
+            {
+                try
+                {
+
+                    if (radioBtnHong.Checked)
+                    {
+                        //选红,直接复制
+                        Clipboard.SetText(txtNum3.Text);
+                        lblError.Text = "拷贝成功";
+                    }
+                    else if (radioBtnLan.Checked)
+                    {
+                        //选蓝色,复制反向的50个号码
+                        var numberList = GetRemainingDigits(txtNum3.Text.Split(' ').ToList());
+                        Clipboard.SetText(string.Join(" ", numberList));
+
+
+                        lblError.Text = "拷贝成功";
+                    }
+                }catch(Exception ex)
+                {
+                    lblError.Text = "拷贝失败,请手动复制";
+                }
+            }
         }
+
 
         private void btnSetCondition_Click(object sender, EventArgs e)
         {
@@ -2683,10 +2766,11 @@ namespace CpCodeSelect.Score500
                 {
                     for (int i = 0; i < number; i++)
                     {
-                        Cacl(1, ref LeftCode, ref excludeAllList, ref takeCodeList);
                         Cacl(0, ref LeftCode, ref excludeAllList, ref takeCodeList);
+                        Cacl(1, ref LeftCode, ref excludeAllList, ref takeCodeList);
                     }
-                    
+                    Cacl(0, ref LeftCode, ref excludeAllList, ref takeCodeList);
+
                 }
 
                 takeCodeList = takeCodeList.Distinct().ToList();
@@ -2720,6 +2804,39 @@ namespace CpCodeSelect.Score500
                     break;
                 }
             }
+        }
+
+        /// <summary>
+        /// 获取剩余的数字（从0-9中排除已选的5个数字）
+        /// </summary>
+        /// <param name="selectedDigits">已选择的5个数字字符串列表</param>
+        /// <returns>剩余的5个数字字符串列表</returns>
+        public List<string> GetRemainingDigits(List<string> selectedDigits)
+        {
+            var allDigits = GenerateAllPossibleStrings();
+            var remaining = new List<string>();
+
+            foreach (var digit in allDigits)
+            {
+                if (!selectedDigits.Contains(digit.ToString()))
+                {
+                    remaining.Add(digit.ToString());
+                }
+            }
+
+            return remaining;
+        }
+
+
+        // 生成所有可能的字符串 (000-999)
+        public HashSet<string> GenerateAllPossibleStrings()
+        {
+            var strings = new HashSet<string>();
+            for (int i = 0; i < 100; i++)
+            {
+                strings.Add(i.ToString("D2"));
+            }
+            return strings;
         }
     }
 }

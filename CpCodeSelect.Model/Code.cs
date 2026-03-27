@@ -70,6 +70,27 @@ namespace CpCodeSelect.Model
         {
             return $"{Shi.Number}{Ge.Number}";
         }
+        public string GetShiGeString()
+        {
+            return $"{Shi.Number}{Ge.Number}";
+        }
+        public string GetQian2String()
+        {
+            return $"{Wan.Number}{Qian.Number}";
+        }
+        public string GetWanQianString()
+        {
+            return $"{Wan.Number}{Qian.Number}";
+        }
+        public string GetQianBai2String()
+        {
+            return $"{Qian.Number}{Bai.Number}";
+        }
+        public string GetBaiShi2String()
+        {
+            return $"{Bai.Number}{Shi.Number}";
+        }
+
         public string GetHou3String()
         {
             return $"{Bai.Number}{Shi.Number}{Ge.Number}";
