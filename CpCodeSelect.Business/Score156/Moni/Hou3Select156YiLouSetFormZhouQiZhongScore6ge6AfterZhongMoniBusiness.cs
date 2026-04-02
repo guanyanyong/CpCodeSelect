@@ -26,6 +26,7 @@ namespace CpCodeSelect.Business.Score.Moni
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
         private bool WaitingForNextRound = false;//等待中出后开启下一轮
         private const int TotalQiCount = 45;
+        
         public Hou3Select156YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness(LogDelegate logMethod, List<Hou3Select156_ZhouQiZhongScore> model350List)
         {
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
@@ -38,6 +39,7 @@ namespace CpCodeSelect.Business.Score.Moni
                 entity.TotalCount = 0;
                 yilouStatisticList.Add(entity);
             }
+            InitData();
         }
         public void SetLogMethod(LogDelegate logMethod)
         {
@@ -49,7 +51,7 @@ namespace CpCodeSelect.Business.Score.Moni
         /// </summary>
         private int[] LunGuaTime = { 2, 3, 4 };
         /// <summary>
-        /// 每轮的投注矩阵,金额
+        /// 每轮的投注矩阵,金额 原始2倍投资倍数
         /// </summary>
         private int[,] LunBeiAmountMatrix = {
                         { 2,      4,      6,      9,      12,  },
@@ -151,8 +153,101 @@ namespace CpCodeSelect.Business.Score.Moni
         public void InitData()
         {
             TotalResult = 0;
+
+            InitBei();
             LunInit();
         }
+        /// <summary>
+        /// 初始化投资倍数
+        /// </summary>
+        public void InitBei()
+        {
+            if (Hou3Select156YiLouSetFormScoreAndChuShouBusiness.TouZiAmountBei == 2)
+            {
+                LunBeiAmountMatrix = new int[,]{
+                        { 2,      4,      6,      9,      12,  },
+                        {     16,21,     27,     34,     42,  },
+                        {   52,     64,   78,     94,     114,  },
+                        {137,    165,    198, 237,    284,   },
+                        {     339,  405,    483,    576, 687,  },
+                        {    819,    976,    1162,  1384,   1648, },
+                        { 1962,   2335,   2779,   3307,   3935,},
+                        {4682, 5570,   6626,   7882,   9376,  },
+                        { 11153,  13266,15779,  18768,  22323,}
+
+
+                };
+                LunAmountMatrix = new decimal[,]
+                            {
+                {0.31M, 0.62M,0.94M, 1.40M,1.87M,          },
+                { 2.5M,  3.28M,4.21M,5.3M,6.55M,            },
+                {8.11M,9.98M,  12.17M,14.66M,17.78M,     },
+                { 21.37M,25.74M, 30.89M,36.97M,44.3M,},
+                {52.88M,63.18M, 75.35M,89.86M, 107.17M,     },
+                { 127.76M,152.26M, 181.27M, 215.9M,257.09M, },
+                {306.07M,364.26M, 433.52M,515.89M,613.86M,},
+                {730.39M,868.92M, 1033.66M,1229.59M,1462.66M,},
+                { 1739.87M,2069.5M,2461.52M,2927.81M,3482.39M}
+
+                        };
+                ZhongJiangAmountMatrix = new decimal[,]
+                            {
+                {1.96M, 3.92M,5.88M, 8.82M,11.76M,                  },
+                {15.68M, 20.58M,26.46M,33.32M,41.16M,              },
+                {  50.96M,62.72M,76.44M,92.12M,111.72M,          },
+                { 134.26M,161.7M, 194.04M, 232.26M,278.32M,},
+                {332.22M, 396.9M, 473.34M,564.48M,673.26M,          },
+                {802.62M,956.48M, 1138.76M,1356.32M,1615.04M,     },
+                { 1922.76M,2288.3M, 2723.42M,3240.86M,3856.3M, },
+                { 4588.36M,5458.6M, 6493.48M,7724.36M,9188.48M,    },
+                { 10929.94M,13000.68M,15463.42M,18392.64M,21876.54M,}
+
+                        };
+            }
+            else if (Hou3Select156YiLouSetFormScoreAndChuShouBusiness.TouZiAmountBei == 1)
+            {
+
+                LunBeiAmountMatrix = new int[,]{
+                        { 1,      2,      3,      4,      6,  },
+                        {     8,10,     13,     16,     20,  },
+                        {   25,     31,   38,     46,     56,  },
+                        {68,    82,    98, 117,    140,   },
+                        {     167,  200,    239,    285, 340,  },
+                        {    405,    483,    575,  685,   816, },
+                        { 971,   1156,   1376,   1637,   1948,},
+                        {2318, 2758,   3281,   3903,   4643,  },
+                        { 5523,  6570,7815,  9295,  11056,}
+
+
+                };
+                LunAmountMatrix = new decimal[,]
+                            {
+                {0.16M, 0.31M,0.47M, 0.62M,0.94M,          },
+                { 1.25M,  1.56M,2.03M,2.5M,3.12M,            },
+                {3.9M,4.84M,  5.93M,7.18M,8.74M,     },
+                { 10.61M,12.79M, 15.29M,18.25M,21.84M,},
+                {26.05M,31.2M, 37.28M,44.46M, 53.04M,     },
+                { 63.18M,75.35M, 89.7M, 106.86M,127.3M, },
+                {151.48M,180.34M, 214.66M,255.37M,303.89M,},
+                {361.61M,430.25M, 511.84M,608.87M,724.31M,},
+                { 861.59M,1024.92M,1219.14M,1450.02M,1724.74M}
+
+                        };
+                ZhongJiangAmountMatrix = new decimal[,]
+                            {
+                {0.98M, 1.96M,2.94M, 3.92M,5.88M,                  },
+                {7.84M, 9.8M,12.74M,15.68M,19.6M,              },
+                {  24.5M,30.38M,37.24M,45.08M,54.88M,          },
+                { 66.64M,80.36M, 96.04M, 114.66M,137.2M,},
+                {163.66M, 196M, 234.22M,279.3M,333.2M,          },
+                {396.9M,473.34M, 563.5M,671.3M,799.68M,     },
+                { 951.58M,1132.88M, 1348.48M,1604.26M,1909.04M, },
+                { 2271.64M,2702.84M, 3215.38M,3824.94M,4550.14M,    },
+                { 5412.54M,6438.6M,7658.7M,9109.1M,10834.88M,}
+
+                        };
+            }
+    }
         /// <summary>
         /// 轮次初始化
         /// </summary>

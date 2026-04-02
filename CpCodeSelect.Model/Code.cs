@@ -82,15 +82,42 @@ namespace CpCodeSelect.Model
         {
             return $"{Wan.Number}{Qian.Number}";
         }
+        public string GetWanBaiString()
+        {
+            return $"{Wan.Number}{Bai.Number}";
+        }
+
+        public string GetWanShiString()
+        {
+            return $"{Wan.Number}{Shi.Number}";
+        }
+
+        public string GetWanGeString()
+        {
+            return $"{Wan.Number}{Ge.Number}";
+        }
+
         public string GetQianBai2String()
         {
             return $"{Qian.Number}{Bai.Number}";
+        }
+        public string GetQianShi2String()
+        {
+            return $"{Qian.Number}{Shi.Number}";
+        }
+        public string GetQianGe2String()
+        {
+            return $"{Qian.Number}{Ge.Number}";
         }
         public string GetBaiShi2String()
         {
             return $"{Bai.Number}{Shi.Number}";
         }
 
+        public string GetBaiGe2String()
+        {
+            return $"{Bai.Number}{Ge.Number}";
+        }
         public string GetHou3String()
         {
             return $"{Bai.Number}{Shi.Number}{Ge.Number}";

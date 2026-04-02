@@ -23,6 +23,10 @@ namespace CpCodeSelect.Business.Score
         /// </summary>
         public new static List<Hou3Select156_ZhouQiZhongScore> model350List = new List<Hou3Select156_ZhouQiZhongScore>();
         public new static List<Hou3Select156_ZhouQiZhongScore> currentNeedCalcList = new List<Hou3Select156_ZhouQiZhongScore>();
+        /// <summary>
+        /// 投资倍数,用于控制每期投注的倍数
+        /// </summary>
+        
 
         public static Object LockModel350List = new object();
         public static new void InitData()
@@ -36,6 +40,7 @@ namespace CpCodeSelect.Business.Score
             {
                 RunSkipNumber = runSkipNumber;
             }
+
         }
         /// <summary>
         /// 初始化号码

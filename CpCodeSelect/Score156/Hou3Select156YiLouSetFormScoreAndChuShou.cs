@@ -35,6 +35,7 @@ using Newtonsoft.Json.Serialization;
 using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CpCodeSelect.Score
 {
@@ -60,9 +61,15 @@ namespace CpCodeSelect.Score
         public List<Hou2Select50_ZhouQiZhong> modelList = new List<Hou2Select50_ZhouQiZhong>();
         private int boFangYanhuaCount = 12;
         private string apiUri = "http://127.0.0.1:5000/";
+        /// <summary>
+        /// 电脑心跳接口
+        /// </summary>
+        private string AliveUri = "http://127.0.0.1:9199/";
+        private string CurrentCPAccount = "";
         private string DataSource = "rexguan-hp2024-01";
 
         private HttpClient httpClient;
+        private HttpClient httpAliveUrl;
         public List<TestInfoStatistic> TestInfoStatisticList = new List<TestInfoStatistic>();
         //private MoniRunZhouQiZhongScore moniRunZhouQiZhong = new MoniRunZhouQiZhongScore();
         //private MoniRunZhouQiZhongScore3ge5AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhongScore3ge5AfterZhong();
@@ -173,9 +180,15 @@ namespace CpCodeSelect.Score
 
             var boFangYanhuaCountStr = ConfigurationManager.AppSettings["BoFangYanhuaCount"];
             apiUri = ConfigurationManager.AppSettings["apiUri"];
+            var AliveUriStr = ConfigurationManager.AppSettings["AliveUri"];
             DataSource = ConfigurationManager.AppSettings["DataSource"];
+            CurrentCPAccount = ConfigurationManager.AppSettings["CurrentCPAccount"];
             if (string.IsNullOrEmpty(apiUri))
                 apiUri = "http://127.0.0.1:5050/";
+            if (!string.IsNullOrEmpty(AliveUriStr))
+            {
+                AliveUri = AliveUriStr;
+            }
             if (int.TryParse(boFangYanhuaCountStr, out int count))
             {
                 boFangYanhuaCount = count;
@@ -186,8 +199,11 @@ namespace CpCodeSelect.Score
             }
 
             httpClient = new HttpClient();
-
             httpClient.BaseAddress = new Uri(apiUri);
+
+            httpAliveUrl = new HttpClient();
+            httpAliveUrl.BaseAddress = new Uri(AliveUri);
+
 
             Hou3Select156YiLouSetFormScoreAndChuShouBusiness.InitData();
         }
@@ -437,7 +453,7 @@ namespace CpCodeSelect.Score
                 var codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
 
                 //如果期号相差不为1,则继续读取下一期号码
-                while (codeDecimal - codeBeforeDecimal != 1 && codeDecimal != codeBeforeDecimal)
+                while (codeDecimal - codeBeforeDecimal > 1 && codeDecimal != codeBeforeDecimal )
                 {
                     record++;
                     var codeList = await GetLastNRecordFromCache(record);
@@ -447,26 +463,44 @@ namespace CpCodeSelect.Score
 
                         codeDecimal = Convert.ToDecimal(code.CodeQiHao);
                         codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
+
+                        if (codeDecimal - codeBeforeDecimal >= 1)
+                        {
+                            break;
+                        }
                     }
+                    if (code.CodeQiHao.Substring(code.CodeQiHao.Length - 4) == "0001" || lastCode.CodeQiHao.Substring(lastCode.CodeQiHao.Length - 4) == "0001")
+                    {
+                        //如果有第一期的期号 则直接跳出循环
+                        break;
+                    }
+                    if (record > 10)
+                    {
+                        //如果读取了10条记录还没有找到相差为1的号码 则直接跳出循环
+                        break;
+                    }
+                        
                 }
 
                 if (lastCode == null || lastCode.CodeQiHao != code.CodeQiHao)
                 {
-                    if (codeDecimal - codeBeforeDecimal == 1)
+                    if (codeDecimal - codeBeforeDecimal == 1 || code.CodeQiHao.Substring(code.CodeQiHao.Length - 4) == "0001" || lastCode.CodeQiHao.Substring(lastCode.CodeQiHao.Length - 4) == "0001")
                     {
-                        // 如果期号相差为1，说明是最新号码
+                        // 如果期号相差为1，说明是最新号码 或者有第一期的号码 直接执行
                         code.PreCode = lastCode;
                         currentCode = code;
 
                         lastCode = currentCode;
                         AddRecord($"检测到新号码: 期号={currentCode.CodeQiHao}, 号码={currentCode.CodeNumber}");
+                        AddAliveRecordToServer(currentCode);
                         //在这里可以添加对号码的分析处理逻辑
                         AnalySisCode(currentCode);
                     }
 
                 }
 
-            }else
+            }
+            else
             {
 
             }
@@ -733,6 +767,31 @@ namespace CpCodeSelect.Score
                 }
             }
         }
+
+
+
+        private async void AddAliveRecordToServer(Code code)
+        {
+            // 创建HttpClient（在实际应用中，建议使用IHttpClientFactory以避免资源耗尽）
+
+            //http://127.0.0.1:9199/add_record?Account=guantest5&QiHao=202603310062
+            try
+            {
+                string url = $"add_record?Account={CurrentCPAccount}&QiHao={code.CodeQiHao}";
+                HttpResponseMessage response = await httpAliveUrl.GetAsync(url);
+                if (!response.IsSuccessStatusCode)
+                {
+                    string errorContent = await response.Content.ReadAsStringAsync();
+                    //AddRecord($"添加到url中的结果是:{response.StatusCode}\n{Regex.Unescape(errorContent)}");
+                    AddToLogFile7ge5($"发送心跳失败,结果是:{response.StatusCode}\n{Regex.Unescape(errorContent)}");
+                }
+            }catch(Exception e)
+            {
+                AddToLogFile7ge5($"发送心跳发生异常,信息是:{e.Message}\n{e.InnerException}");
+            }
+
+
+        }
         public void SetForm()
         {
             if (lblMaxGua.InvokeRequired)
@@ -828,7 +887,7 @@ namespace CpCodeSelect.Score
                 }
             }
         }
-        private void AddToLogFile7ge5(Code code,string msg)
+        private void AddToLogFile7ge5(Code code, string msg)
         {
 
             string fileName = "7个5.txt";

@@ -20,13 +20,27 @@ namespace CpCodeSelect
         public static Object lockObj = new Object();
         public static List<Hou3Select350_ZhouQiZhong> model350List = new List<Hou3Select350_ZhouQiZhong>();
         public static string leftNumberCountStr = ConfigurationManager.AppSettings["LeftNumberCount"];
+        public static string touziAmountBeiStr = ConfigurationManager.AppSettings["TouZiAmountBei"];
         public static List<Hou3Select350_ZhouQiZhong> currentNeedCalcList = new List<Hou3Select350_ZhouQiZhong>();
         public static int RunSkipNumber=100;
+        public static int TouZiAmountBei = 2;
+
+        static Hou3Select350YiLouSetFormZhongParentBusiness()
+        {
+            int bei = 2;
+            var TouZiAmountBeiStr = ConfigurationManager.AppSettings["TouZiAmountBei"];
+            if (!string.IsNullOrEmpty(TouZiAmountBeiStr) && int.TryParse(TouZiAmountBeiStr, out bei))
+            {
+                TouZiAmountBei = bei;
+            }
+        }
+
         public static void InitData()
         {
             AllCode = new List<Code>();
             model350List = new List<Hou3Select350_ZhouQiZhong>();
             Hou3NumberCount = new Dictionary<string, int>();
+
         }
         /// <summary>
         /// 初始化号码

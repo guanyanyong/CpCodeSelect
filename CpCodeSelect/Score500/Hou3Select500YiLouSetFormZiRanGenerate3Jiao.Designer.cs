@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFIlePath = new System.Windows.Forms.TextBox();
@@ -64,6 +64,9 @@
             this.lblMaxGua = new System.Windows.Forms.Label();
             this.lblTotalNumber = new System.Windows.Forms.Label();
             this.SetSearch = new System.Windows.Forms.TabPage();
+            this.radioBtnLan = new System.Windows.Forms.RadioButton();
+            this.radioBtnHong = new System.Windows.Forms.RadioButton();
+            this.comPosition = new System.Windows.Forms.ComboBox();
             this.txtNum3 = new System.Windows.Forms.TextBox();
             this.txtNum2 = new System.Windows.Forms.TextBox();
             this.txtNum1 = new System.Windows.Forms.TextBox();
@@ -106,6 +109,7 @@
             this.num2B = new System.Windows.Forms.NumericUpDown();
             this.num1B = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.ResultPage = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -194,12 +198,8 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.comPosition = new System.Windows.Forms.ComboBox();
             this.lotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
             this.yiLouLotteryKLine = new CpCodeSelect.Control.LotteryKLineControl();
-            this.radioBtnHong = new System.Windows.Forms.RadioButton();
-            this.radioBtnLan = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.TotalInfo.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -664,6 +664,49 @@
             this.SetSearch.Text = "搜索设置";
             this.SetSearch.UseVisualStyleBackColor = true;
             // 
+            // radioBtnLan
+            // 
+            this.radioBtnLan.AutoSize = true;
+            this.radioBtnLan.Checked = true;
+            this.radioBtnLan.Location = new System.Drawing.Point(362, 9);
+            this.radioBtnLan.Name = "radioBtnLan";
+            this.radioBtnLan.Size = new System.Drawing.Size(53, 34);
+            this.radioBtnLan.TabIndex = 10;
+            this.radioBtnLan.TabStop = true;
+            this.radioBtnLan.Text = "蓝";
+            this.radioBtnLan.UseVisualStyleBackColor = true;
+            // 
+            // radioBtnHong
+            // 
+            this.radioBtnHong.AutoSize = true;
+            this.radioBtnHong.Location = new System.Drawing.Point(287, 10);
+            this.radioBtnHong.Name = "radioBtnHong";
+            this.radioBtnHong.Size = new System.Drawing.Size(53, 34);
+            this.radioBtnHong.TabIndex = 10;
+            this.radioBtnHong.TabStop = true;
+            this.radioBtnHong.Text = "红";
+            this.radioBtnHong.UseVisualStyleBackColor = true;
+            // 
+            // comPosition
+            // 
+            this.comPosition.FormattingEnabled = true;
+            this.comPosition.Items.AddRange(new object[] {
+            "万千",
+            "万百",
+            "万十",
+            "万个",
+            "千百",
+            "千十",
+            "千个",
+            "百十",
+            "百个",
+            "十个"});
+            this.comPosition.Location = new System.Drawing.Point(135, 10);
+            this.comPosition.Name = "comPosition";
+            this.comPosition.Size = new System.Drawing.Size(85, 36);
+            this.comPosition.TabIndex = 9;
+            this.comPosition.Text = "十个";
+            // 
             // txtNum3
             // 
             this.txtNum3.Location = new System.Drawing.Point(761, 293);
@@ -690,9 +733,9 @@
             // 
             // BtnCopy2
             // 
-            this.BtnCopy2.Location = new System.Drawing.Point(363, 161);
+            this.BtnCopy2.Location = new System.Drawing.Point(266, 165);
             this.BtnCopy2.Name = "BtnCopy2";
-            this.BtnCopy2.Size = new System.Drawing.Size(134, 38);
+            this.BtnCopy2.Size = new System.Drawing.Size(231, 80);
             this.BtnCopy2.TabIndex = 5;
             this.BtnCopy2.Text = "复制";
             this.BtnCopy2.UseVisualStyleBackColor = true;
@@ -750,9 +793,9 @@
             // 
             // btnSearch3Jiao
             // 
-            this.btnSearch3Jiao.Location = new System.Drawing.Point(363, 201);
+            this.btnSearch3Jiao.Location = new System.Drawing.Point(266, 50);
             this.btnSearch3Jiao.Name = "btnSearch3Jiao";
-            this.btnSearch3Jiao.Size = new System.Drawing.Size(134, 44);
+            this.btnSearch3Jiao.Size = new System.Drawing.Size(231, 109);
             this.btnSearch3Jiao.TabIndex = 5;
             this.btnSearch3Jiao.Text = "搜索3交";
             this.btnSearch3Jiao.UseVisualStyleBackColor = true;
@@ -760,7 +803,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(363, 111);
+            this.button2.Location = new System.Drawing.Point(1128, -4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(134, 44);
             this.button2.TabIndex = 5;
@@ -1078,7 +1121,7 @@
             // numHaoMa
             // 
             this.numHaoMa.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.numHaoMa.Location = new System.Drawing.Point(387, 53);
+            this.numHaoMa.Location = new System.Drawing.Point(981, -1);
             this.numHaoMa.Minimum = new decimal(new int[] {
             1,
             0,
@@ -1432,11 +1475,21 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label11.Location = new System.Drawing.Point(302, 58);
+            this.label11.Location = new System.Drawing.Point(896, 4);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 30);
             this.label11.TabIndex = 3;
             this.label11.Text = "注数：";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("微软雅黑", 16F);
+            this.label21.Location = new System.Drawing.Point(30, 10);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(79, 30);
+            this.label21.TabIndex = 3;
+            this.label21.Text = "位置：";
             // 
             // label7
             // 
@@ -1495,14 +1548,14 @@
             this.IsChuShou,
             this.Score,
             this.ShouNumberStr});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 16F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 16F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -2257,8 +2310,8 @@
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.Size = new System.Drawing.Size(1396, 456);
             this.dataGridView2.TabIndex = 0;
@@ -2400,30 +2453,6 @@
             this.panel2.Size = new System.Drawing.Size(1410, 612);
             this.panel2.TabIndex = 10;
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("微软雅黑", 16F);
-            this.label21.Location = new System.Drawing.Point(30, 10);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(79, 30);
-            this.label21.TabIndex = 3;
-            this.label21.Text = "位置：";
-            // 
-            // comPosition
-            // 
-            this.comPosition.FormattingEnabled = true;
-            this.comPosition.Items.AddRange(new object[] {
-            "前二",
-            "千百",
-            "百十",
-            "后二"});
-            this.comPosition.Location = new System.Drawing.Point(135, 10);
-            this.comPosition.Name = "comPosition";
-            this.comPosition.Size = new System.Drawing.Size(85, 36);
-            this.comPosition.TabIndex = 9;
-            this.comPosition.Text = "后二";
-            // 
             // lotteryKLine
             // 
             this.lotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2438,32 +2467,9 @@
             this.yiLouLotteryKLine.Dock = System.Windows.Forms.DockStyle.Fill;
             this.yiLouLotteryKLine.Location = new System.Drawing.Point(3, 3);
             this.yiLouLotteryKLine.Name = "yiLouLotteryKLine";
-            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1388, 407);
+            this.yiLouLotteryKLine.Size = new System.Drawing.Size(1388, 422);
             this.yiLouLotteryKLine.TabIndex = 0;
             this.yiLouLotteryKLine.TopMessage = "";
-            // 
-            // radioBtnHong
-            // 
-            this.radioBtnHong.AutoSize = true;
-            this.radioBtnHong.Location = new System.Drawing.Point(288, 13);
-            this.radioBtnHong.Name = "radioBtnHong";
-            this.radioBtnHong.Size = new System.Drawing.Size(53, 34);
-            this.radioBtnHong.TabIndex = 10;
-            this.radioBtnHong.TabStop = true;
-            this.radioBtnHong.Text = "红";
-            this.radioBtnHong.UseVisualStyleBackColor = true;
-            // 
-            // radioBtnLan
-            // 
-            this.radioBtnLan.AutoSize = true;
-            this.radioBtnLan.Checked = true;
-            this.radioBtnLan.Location = new System.Drawing.Point(363, 12);
-            this.radioBtnLan.Name = "radioBtnLan";
-            this.radioBtnLan.Size = new System.Drawing.Size(53, 34);
-            this.radioBtnLan.TabIndex = 10;
-            this.radioBtnLan.TabStop = true;
-            this.radioBtnLan.Text = "蓝";
-            this.radioBtnLan.UseVisualStyleBackColor = true;
             // 
             // Hou3Select500YiLouSetFormZiRanGenerate3Jiao
             // 

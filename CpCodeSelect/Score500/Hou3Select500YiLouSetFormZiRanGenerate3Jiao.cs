@@ -1720,7 +1720,7 @@ namespace CpCodeSelect.Score500
                 txtNum1.Text = txtNum1.Text.Trim() + $"{nb.Name}={n1},";
                 if (n1 > 0)
                 {
-                    var excludeList = Generate2XingNumbereFromCode(n1, LeftCode, position);
+                    var excludeList = Generate2XingNumbereFromCodeNotDeleteSamee(n1, LeftCode, position);
                     excludeAllList.AddRange(excludeList);
                     LeftCode = GetCodeFromOriginExceptNumerCode(LeftCode, excludeAllList, n1,position);
                 }
@@ -1729,6 +1729,25 @@ namespace CpCodeSelect.Score500
                     );
                 LeftCode = LeftCode.Skip(1).ToList();
             }
+
+        }
+        public void CaclDelte1qi(ref List<Code> LeftCode, ref List<string> excludeAllList, ref List<string> takeCodeList)
+        {
+            if (takeCodeList == null)
+            {
+                takeCodeList = new List<string>();
+            }
+            var position = comPosition.Text;
+
+
+            var excludeList = Generate2XingNumbereFromCodeNotDeleteSamee(1, LeftCode, position);
+            excludeAllList.AddRange(excludeList);
+            LeftCode = GetCodeFromOriginExceptNumerCode(LeftCode, excludeAllList, 1, position);
+
+            takeCodeList.Add(
+                    Get2NumberByPosition(LeftCode.Take(1).FirstOrDefault(), position)
+                    );
+            LeftCode = LeftCode.Skip(1).ToList();
 
         }
         public void Cacl(int n1, ref List<Code> LeftCode, ref List<string> excludeAllList, ref List<string> takeCodeList)
@@ -1742,9 +1761,9 @@ namespace CpCodeSelect.Score500
 
             if (n1 > 0)
             {
-                var excludeList = Generate2XingNumbereFromCode(n1, LeftCode, position);
+                var excludeList = Generate2XingNumbereFromCodeNotDeleteSamee(n1, LeftCode, position);
                 excludeAllList.AddRange(excludeList);
-                LeftCode = GetCodeFromOriginExceptNumerCode(LeftCode, excludeAllList, n1, position);
+                LeftCode = GetCodeFromOriginExceptNumerCodeDelete1Qi(LeftCode, excludeAllList, position);
             }
             takeCodeList.Add(
                     Get2NumberByPosition(LeftCode.Take(1).FirstOrDefault(), position)
@@ -1753,7 +1772,10 @@ namespace CpCodeSelect.Score500
 
         }
 
-
+        public List<Code> GetCodeFromOriginExceptNumerCodeDelete1Qi(List<Code> codeList, List<string> exceptList, string position)
+        {
+            return codeList.Skip(1).ToList();
+        }
 
         /// <summary>
         /// 从Code列表中获取从指定位置开始,排除掉exceptList中的号码后的Code列表
@@ -1802,9 +1824,67 @@ namespace CpCodeSelect.Score500
             else if (position == "前二" || position == "万千")
             {
                 key = code.GetQian2String();
+            }else if (position == "万百")
+            {
+                key = code.GetWanBaiString();
+            }
+            else if (position == "万十")
+            {
+                key = code.GetWanShiString();
+            }
+            else if (position == "万个")
+            {
+                key = code.GetWanGeString();
+            }
+            else if (position == "千十")
+            {
+                key = code.GetQianShi2String();
+            }
+            else if (position == "千个")
+            {
+                key = code.GetQianGe2String();
+            }
+            else if (position == "百个")
+            {
+                key = code.GetBaiGe2String();
             }
             return key;
         }
+
+
+        /// <summary>
+        /// 从Code列表中生成指定数量的后2号码,不需要滤重
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="AllCode"></param>
+        /// <returns></returns>
+        public static List<string> Generate2XingNumbereFromCodeNotDeleteSamee(int number, List<Code> AllCode, string position)
+        {
+            Dictionary<string, int> Hou2NumberCount = new Dictionary<string, int>();
+            Hou2NumberCount.Clear();
+            var key = string.Empty;
+            int i = 0;
+            foreach (var code in AllCode)
+            {
+                i++;
+                key = Get2NumberByPosition(code, position);
+
+                if (!Hou2NumberCount.Keys.Contains(key))
+                {
+                    Hou2NumberCount.Add(key, 1);
+                }
+                else
+                {
+                    Hou2NumberCount[key] = Hou2NumberCount[key] + 1;
+                }
+                if (i == number)
+                {
+                    break;
+                }
+            }
+            return Hou2NumberCount.Keys.ToList();
+        }
+
 
         /// <summary>
         /// 从Code列表中生成指定数量的后2号码,已经做了滤重操作
