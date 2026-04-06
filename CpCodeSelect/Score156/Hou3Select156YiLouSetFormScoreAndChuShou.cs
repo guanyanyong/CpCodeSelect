@@ -469,7 +469,9 @@ namespace CpCodeSelect.Score
                             break;
                         }
                     }
-                    if (code.CodeQiHao.Substring(code.CodeQiHao.Length - 4) == "0001" || lastCode.CodeQiHao.Substring(lastCode.CodeQiHao.Length - 4) == "0001")
+                    if (code.CodeQiHao.Substring(code.CodeQiHao.Length - 4) == "0001" || lastCode.CodeQiHao.Substring(lastCode.CodeQiHao.Length - 4) == "0001"
+                        || lastCode.CodeQiHao.Substring(lastCode.CodeQiHao.Length - 4) == "1440"
+                        )
                     {
                         //如果有第一期的期号 则直接跳出循环
                         break;
@@ -484,7 +486,9 @@ namespace CpCodeSelect.Score
 
                 if (lastCode == null || lastCode.CodeQiHao != code.CodeQiHao)
                 {
-                    if (codeDecimal - codeBeforeDecimal == 1 || code.CodeQiHao.Substring(code.CodeQiHao.Length - 4) == "0001" || lastCode.CodeQiHao.Substring(lastCode.CodeQiHao.Length - 4) == "0001")
+                    if (codeDecimal - codeBeforeDecimal == 1 || code.CodeQiHao.Substring(code.CodeQiHao.Length - 4) == "0001" || lastCode.CodeQiHao.Substring(lastCode.CodeQiHao.Length - 4) == "0001"
+                        || lastCode.CodeQiHao.Substring(lastCode.CodeQiHao.Length - 4) == "1440"
+                        )
                     {
                         // 如果期号相差为1，说明是最新号码 或者有第一期的号码 直接执行
                         code.PreCode = lastCode;
@@ -1115,9 +1119,16 @@ namespace CpCodeSelect.Score
         {
             bool firstRunResult = false;
             //firstRunResult = await ReadFirstLineAndCheck();
+            int tryTime = 0;
             while (!firstRunResult)
             {
                 firstRunResult = await ReadFirstLineAndCheck();
+                tryTime++;
+                if (tryTime > 5)
+                {
+                    AddRecordAndAddLog($"连续执行超过5次 退出循环");
+                    break;
+                }
             }
         }
 

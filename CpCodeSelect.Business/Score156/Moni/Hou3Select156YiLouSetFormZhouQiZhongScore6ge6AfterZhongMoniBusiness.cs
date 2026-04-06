@@ -25,7 +25,7 @@ namespace CpCodeSelect.Business.Score.Moni
         private static readonly ThreadLocal<Random> _threadLocalRandom =
         new ThreadLocal<Random>(() => new Random(Guid.NewGuid().GetHashCode()));
         private bool WaitingForNextRound = false;//等待中出后开启下一轮
-        private const int TotalQiCount = 45;
+        private const int TotalQiCount = 30;
         
         public Hou3Select156YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness(LogDelegate logMethod, List<Hou3Select156_ZhouQiZhongScore> model350List)
         {
@@ -122,7 +122,7 @@ namespace CpCodeSelect.Business.Score.Moni
         /// <summary>
         /// 总轮次
         /// </summary>
-        public int TotalLun { get; set; } = 7;
+        public int TotalLun { get; set; } = 6;
 
         /// <summary>
         /// 当前上号的位置
