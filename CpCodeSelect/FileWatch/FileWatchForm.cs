@@ -90,21 +90,21 @@ namespace CpCodeSelect.FileWatch
         private MoniRunZhouQiZhongScore156AllChuShou2 moni6 = new MoniRunZhouQiZhongScore156AllChuShou2();
         */
 
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni35ge1;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongLianXu8;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongLianXu3;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhongScoreAllChuShou;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong sangesanyilou0;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moniRunZhouQiZhong3Ge3;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni1;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni2;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni3;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni4;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni5;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6;
-        private MoniRunZhouQiZhong156Score6ge6AfterZhong moni6ge6a;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni35ge1;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moniRunZhouQiZhongLianXu8;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moniRunZhouQiZhongLianXu3;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moniRunZhouQiZhongScoreAllChuShou;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong sangesanyilou0;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moniRunZhouQiZhong3Ge3;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni1;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni2;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni3;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni4;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni5;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni6;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni6ge6;
+        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni6ge6a;
 
 
         /*

@@ -14,7 +14,7 @@ namespace CpCodeSelect.Business.Score.Moni
     /// <summary>
     /// 模拟执行6个6轮的确认点买入
     /// </summary>
-    public class Hou3Select156YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness 
+    public class Hou3Select156YiLouSetFormZhouQiZhongScore6ge5AfterZhongMoniBusiness
     {
         public delegate void LogDelegate(string message);
         private LogDelegate _logMethod;
@@ -27,7 +27,7 @@ namespace CpCodeSelect.Business.Score.Moni
         private bool WaitingForNextRound = false;//等待中出后开启下一轮
         private const int TotalQiCount = 30;
         
-        public Hou3Select156YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness(LogDelegate logMethod, List<Hou3Select156_ZhouQiZhongScore> model350List)
+        public Hou3Select156YiLouSetFormZhouQiZhongScore6ge5AfterZhongMoniBusiness(LogDelegate logMethod, List<Hou3Select156_ZhouQiZhongScore> model350List)
         {
             _logMethod = logMethod ?? throw new ArgumentNullException(nameof(logMethod));
             this.model350List = model350List;

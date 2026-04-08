@@ -18,22 +18,22 @@ using System.Windows.Forms;
 
 namespace CpCodeSelect.Score156.Moni
 {
-    public partial class MoniRunZhouQiZhong156Score6ge6AfterZhong : Form
+    public partial class MoniRunZhouQiZhong156Score7ge5AfterZhong : Form
     {
         private static Object lockObj = new object();
-        private Hou3Select156YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness moniBusiness;
+        private Hou3Select156YiLouSetFormZhouQiZhongScore7ge5AfterZhongMoniBusiness moniBusiness;
         Code beforeCode = null;
         Code currentCode = null;
         private Hou3Select156YiLouSetFormScoreAndChuShou parentForm = null;
         private int TryCopTime = 0;
-        public MoniRunZhouQiZhong156Score6ge6AfterZhong(Hou3Select156YiLouSetFormScoreAndChuShou form) : this()
+        public MoniRunZhouQiZhong156Score7ge5AfterZhong(Hou3Select156YiLouSetFormScoreAndChuShou form) : this()
         {
             parentForm = form;
         }
-        public MoniRunZhouQiZhong156Score6ge6AfterZhong()
+        public MoniRunZhouQiZhong156Score7ge5AfterZhong()
         {
             InitializeComponent();
-            moniBusiness = new Hou3Select156YiLouSetFormZhouQiZhongScore6ge6AfterZhongMoniBusiness(CustomLogMethod, Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List);
+            moniBusiness = new Hou3Select156YiLouSetFormZhouQiZhongScore7ge5AfterZhongMoniBusiness(CustomLogMethod, Hou3Select156YiLouSetFormScoreAndChuShouBusiness.model350List);
             dataGridView1.DataSource = moniBusiness.yilouStatisticList;
         }
         public void Run(Code code)
@@ -74,6 +74,7 @@ namespace CpCodeSelect.Score156.Moni
             txtCurrentQi.Text = moniBusiness.CurrentaQi.ToString();
             txtTotalGuaCi.Text = moniBusiness.TotalGua.ToString();
             txtTotalZhongCi.Text = moniBusiness.TotalZhong.ToString();
+            txtTotalLun.Text = moniBusiness.TotalLun.ToString();
             int zhongjiangCount = 0;
             if (moniBusiness.CurrentLun > 1) zhongjiangCount = moniBusiness.CurrentLunZhongJiangCiShu + 1;
 

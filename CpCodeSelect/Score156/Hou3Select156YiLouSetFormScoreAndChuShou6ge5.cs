@@ -39,7 +39,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace CpCodeSelect.Score
 {
-    public partial class Hou3Select156YiLouSetFormScoreAndChuShou : Form
+    public partial class Hou3Select156YiLouSetFormScoreAndChuShou6ge5 : Form
     {
         public Dictionary<int, List<StatisticModel>> StatisticDic = new Dictionary<int, List<StatisticModel>>();
         private string filePath = @"C:\Program Files (x86)\hengshengguaji\OpenCode\TXFFC.txt";
@@ -99,21 +99,21 @@ namespace CpCodeSelect.Score
         private MoniRunZhouQiZhongScore156AllChuShou2 moni6 = new MoniRunZhouQiZhongScore156AllChuShou2();
         */
 
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni35ge1;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moniRunZhouQiZhongLianXu8;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moniRunZhouQiZhongLianXu3;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moniRunZhouQiZhongScoreAllChuShou;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong sangesanyilou0;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moniRunZhouQiZhong3Ge3;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni1;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni2;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni3;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni4;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni5;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni6;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni6ge6;
-        private MoniRunZhouQiZhong156Score7ge5AfterZhong moni6ge6a;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moni35ge1;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moniRunZhouQiZhongScore3ge5AfterZhong;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moniRunZhouQiZhongLianXu8;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moniRunZhouQiZhongLianXu3;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moniRunZhouQiZhongScoreAllChuShou;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong sangesanyilou0;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moniRunZhouQiZhong3Ge3;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moni1;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moni2;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moni3;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moni4;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moni5;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moni6;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moni6ge6;
+        private MoniRunZhouQiZhong156Score6ge5AfterZhong moni6ge6a;
 
 
         /*
@@ -158,7 +158,7 @@ namespace CpCodeSelect.Score
         public static List<Exception> ExceptionList = new List<Exception>();
         // 从多少条记录后开始中了就删除记录 
         int zhongHouDelete = 1500;
-        public Hou3Select156YiLouSetFormScoreAndChuShou()
+        public Hou3Select156YiLouSetFormScoreAndChuShou6ge5()
         {
             InitMoni();
             InitializeComponent();
@@ -211,24 +211,24 @@ namespace CpCodeSelect.Score
         private void InitMoni()
         {
 
-            moni35ge1 = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
+            moni35ge1 = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
 
-            moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
-            moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
-            moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
-            moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
-            sangesanyilou0 = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
-            moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
-            moni1 = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
-            moni2 = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
-            moni3 = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
-            moni4 = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
-            moni5 = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
-            moni6 = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
+            moniRunZhouQiZhongScore3ge5AfterZhong = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
+            moniRunZhouQiZhongLianXu8 = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
+            moniRunZhouQiZhongLianXu3 = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
+            moniRunZhouQiZhongScoreAllChuShou = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
+            sangesanyilou0 = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
+            moniRunZhouQiZhong3Ge3 = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
+            moni1 = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
+            moni2 = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
+            moni3 = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
+            moni4 = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
+            moni5 = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
+            moni6 = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
 
 
-            moni6ge6 = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
-            moni6ge6a = new MoniRunZhouQiZhong156Score7ge5AfterZhong(this);
+            moni6ge6 = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
+            moni6ge6a = new MoniRunZhouQiZhong156Score6ge5AfterZhong(this);
 
             /*
             moni35ge1 = new MoniRunZhouQiZhong156Score35ge1(this);
@@ -468,7 +468,7 @@ namespace CpCodeSelect.Score
                 var codeBeforeDecimal = Convert.ToDecimal(lastCode.CodeQiHao);
 
                 //如果期号相差不为1,则继续读取下一期号码
-                while (codeDecimal - codeBeforeDecimal > 1 && codeDecimal != codeBeforeDecimal )
+                while (codeDecimal - codeBeforeDecimal > 1 && codeDecimal != codeBeforeDecimal)
                 {
                     record++;
                     var codeList = await GetLastNRecordFromCache(record);
@@ -496,13 +496,13 @@ namespace CpCodeSelect.Score
                         //如果读取了10条记录还没有找到相差为1的号码 则直接跳出循环
                         break;
                     }
-                        
+
                 }
 
                 if (lastCode == null || lastCode.CodeQiHao != code.CodeQiHao)
                 {
                     if (codeDecimal - codeBeforeDecimal == 1 || code.CodeQiHao.Substring(code.CodeQiHao.Length - 4) == "0001" || lastCode.CodeQiHao.Substring(lastCode.CodeQiHao.Length - 4) == "0001"
-                        || lastCode.CodeQiHao.Substring(lastCode.CodeQiHao.Length - 4) == "1440" || code.CodeQiHao.Substring(code.CodeQiHao.Length - 4) == "1440"
+                        || lastCode.CodeQiHao.Substring(lastCode.CodeQiHao.Length - 4) == "1440"
                         )
                     {
                         // 如果期号相差为1，说明是最新号码 或者有第一期的号码 直接执行
@@ -532,8 +532,8 @@ namespace CpCodeSelect.Score
                 }
                 else
                 {
-                    result = true;
                     AddRecordAndAddLog($"获取到号码 但是不符合执行条件2,重新获取");
+                    result = true;
                 }
             }
             else
@@ -2450,6 +2450,17 @@ namespace CpCodeSelect.Score
         private void button13_Click(object sender, EventArgs e)
         {
             AsyncToCache();
+        }
+
+        private async void btnTestGetFromCache_Click(object sender, EventArgs e)
+        {
+            var code = await GetLastRecordFromCache();
+            if (code != null)
+            {
+                txtCurrentTime.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff");
+                txtQiHao.Text=code.CodeQiHao;
+                txtCpNumber.Text = code.CodeNumber;
+            }
         }
     }
 }

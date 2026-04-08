@@ -179,6 +179,12 @@
     <Compile Include="Number156\Moni\MoniRunHou3Select156Hot4DanAllChuShou.Designer.cs">
       <DependentUpon>MoniRunHou3Select156Hot4DanAllChuShou.cs</DependentUpon>
     </Compile>
+    <Compile Include="Score156\Hou3Select156YiLouSetFormScoreAndChuShou6ge5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score156\Hou3Select156YiLouSetFormScoreAndChuShou6ge5.Designer.cs">
+      <DependentUpon>Hou3Select156YiLouSetFormScoreAndChuShou6ge5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Score156\Hou3Select156YiLouSetFormScoreAndChuShou.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,17 +197,23 @@
     <Compile Include="Score156\Moni\MoniRunZhouQiZhong156Score35ge1.Designer.cs">
       <DependentUpon>MoniRunZhouQiZhong156Score35ge1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Score156\Moni\MoniRunZhouQiZhong156Score6ge5AfterZhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Score156\Moni\MoniRunZhouQiZhong156Score6ge5AfterZhong.Designer.cs">
+      <DependentUpon>MoniRunZhouQiZhong156Score6ge5AfterZhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Score156\Moni\MoniRunZhouQiZhongScore156AllChuShou2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Score156\Moni\MoniRunZhouQiZhongScore156AllChuShou2.Designer.cs">
       <DependentUpon>MoniRunZhouQiZhongScore156AllChuShou2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Score156\Moni\MoniRunZhouQiZhong156Score6ge6AfterZhong.cs">
+    <Compile Include="Score156\Moni\MoniRunZhouQiZhong156Score7ge5AfterZhong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Score156\Moni\MoniRunZhouQiZhong156Score6ge6AfterZhong.Designer.cs">
-      <DependentUpon>MoniRunZhouQiZhong156Score6ge6AfterZhong.cs</DependentUpon>
+    <Compile Include="Score156\Moni\MoniRunZhouQiZhong156Score7ge5AfterZhong.Designer.cs">
+      <DependentUpon>MoniRunZhouQiZhong156Score7ge5AfterZhong.cs</DependentUpon>
     </Compile>
     <Compile Include="Score500\Hou3Select500YiLouSetFormZiRanGenerate3Jiao.cs">
       <SubType>Form</SubType>
@@ -574,17 +586,23 @@
     <EmbeddedResource Include="Number156\Moni\MoniRunHou3Select156Hot4DanAllChuShou.resx">
       <DependentUpon>MoniRunHou3Select156Hot4DanAllChuShou.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Score156\Hou3Select156YiLouSetFormScoreAndChuShou6ge5.resx">
+      <DependentUpon>Hou3Select156YiLouSetFormScoreAndChuShou6ge5.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Score156\Hou3Select156YiLouSetFormScoreAndChuShou.resx">
       <DependentUpon>Hou3Select156YiLouSetFormScoreAndChuShou.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Score156\Moni\MoniRunZhouQiZhong156Score35ge1.resx">
       <DependentUpon>MoniRunZhouQiZhong156Score35ge1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Score156\Moni\MoniRunZhouQiZhong156Score6ge5AfterZhong.resx">
+      <DependentUpon>MoniRunZhouQiZhong156Score6ge5AfterZhong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Score156\Moni\MoniRunZhouQiZhongScore156AllChuShou2.resx">
       <DependentUpon>MoniRunZhouQiZhongScore156AllChuShou2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Score156\Moni\MoniRunZhouQiZhong156Score6ge6AfterZhong.resx">
-      <DependentUpon>MoniRunZhouQiZhong156Score6ge6AfterZhong.cs</DependentUpon>
+    <EmbeddedResource Include="Score156\Moni\MoniRunZhouQiZhong156Score7ge5AfterZhong.resx">
+      <DependentUpon>MoniRunZhouQiZhong156Score7ge5AfterZhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Score500\Hou3Select500YiLouSetFormZiRanGenerate3Jiao.resx">
       <DependentUpon>Hou3Select500YiLouSetFormZiRanGenerate3Jiao.cs</DependentUpon>
