@@ -1297,7 +1297,7 @@ namespace CpCodeSelect.Score
         /// </summary>
         private void StartExec()
         {
-            if (DateTime.Now >= Convert.ToDateTime("2026-06-30"))
+            if (DateTime.Now >= Convert.ToDateTime("2026-12-31"))
             {
                 //MessageBox.Show("软件试用期已过期，请联系作者购买正式版");
                 return;
